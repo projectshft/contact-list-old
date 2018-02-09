@@ -14,12 +14,19 @@ class App extends Component {
         {name: 'qdogs'},{name: 'Bart'}
       ]
     }
+  this.updateContact = this.updateContact.bind(this)
+  }
+
+  updateContact = (contact) => {
+    this.setState({
+      contacts: this.state.contacts.concat([contact])
+    })
   }
 
   render () {
     return (
       <div>
-        <ContactView />
+        <ContactView updateContact={this.updateContact} />
         <ContactList contacts={this.state.contacts} />
       </div>
     )
@@ -28,6 +35,9 @@ class App extends Component {
 
 /*WISHLIST
 Prettier styling on contact view
+Add default props
+When updating imageURL, do something nicer than broken image. Maybe don't have that one update on every change? (be sure to deal with submit function)
+Page Headers
 */
 
 // //set App with routes
