@@ -1,6 +1,8 @@
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import EditContact from './edit-contact'
+
 
 const App = () => (
   <div>
@@ -24,11 +26,11 @@ const Header = () => (
           </Link>
           --
           <Link className="navigation-link" to="/list">
-            <i className="fa fa-comments"></i> Contact List
+            <i className="fa fa-comments"></i> Edit List
           </Link>
            --
           <Link className="navigation-link" to="/edit">
-            <i className="fa fa-comments"></i> Add/Edit Contact
+            <i className="fa fa-comments"></i> Add Contact
           </Link>
         </li>
       </ul>
@@ -95,19 +97,19 @@ const ContactList = () => (
   </div>
 )
 
-const EditContact = () => (
-  <div>
-    <Header />
-    <h1>Add / Edit Contact</h1>
-    <form action="/action_page.php">
-      First name:
-      <input type="text" name="firstname" value="Mickey" />
-      Last name:
-      <input type="text" name="lastname" value="Mouse" />
-      <input type="submit" value="Add/Edit"/>
-    </form>
-  </div>
-)
+// const EditContact = () => (
+//   <div>
+//     <Header />
+//     <h1>Add Contact</h1>
+//     <form action="/action_page.php">
+//       First name:
+//       <input type="text" name="firstname" value="Mickey" />
+//       Last name:
+//       <input type="text" name="lastname" value="Mouse" />
+//       <input type="submit" value="Add/Edit"/>
+//     </form>
+//   </div>
+// )
 
 const Main = () => (
   <main>
