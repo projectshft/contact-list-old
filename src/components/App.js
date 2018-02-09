@@ -23,12 +23,12 @@ const Header = () => (
             Home
           </Link>
           --
-          <Link className="navigation-link" to="/contact-list">
+          <Link className="navigation-link" to="/list">
             <i className="fa fa-comments"></i> Contact List
           </Link>
            --
-          <Link className="navigation-link" to="/Schedule">
-            <i className="fa fa-comments"></i> Schedule
+          <Link className="navigation-link" to="/edit">
+            <i className="fa fa-comments"></i> Add/Edit Contact
           </Link>
         </li>
       </ul>
@@ -57,7 +57,7 @@ const FullContactList = () => (
       {
         ContactAPI.all().map(p => (
           <li key={p.number}>
-            <Link to={`/contact-list/${p.number}`}>{p.name}</Link>
+            <Link to={`/list/${p.number}`}>{p.name}</Link>
           </li>
         ))
       }
@@ -79,28 +79,34 @@ const ContactView = (props) => {
       <h2>Image URL: <img src={contact.imageurl}/></h2>
       <h2>Email: {contact.email}</h2>
       <h2>Phone Number: {contact.phone}</h2>
-      <Link to='/contact-list'>Back</Link>
+      <Link to='/list'>Back</Link>
     </div>
   )
 }
 
 const ContactList = () => (
-  <Switch>
-    <Route exact path='/contact-list' component={FullContactList}/>
-    <Route path='/contact-list/:number' component={ContactView}/>
-  </Switch>
+  <div>
+    <Header />
+    <Switch>
+      <Route exact path='/list' component={FullContactList}/>
+      <Route path='/list/:number' component={ContactView}/>
+    </Switch>
+  </div>
 )
 
-const Schedule = () => (
-  <h1>Schedule</h1>
+const EditContact = () => (
+  <div>
+    <Header />
+    <h1>Add / Edit Contact</h1>
+  </div>
 )
 
 const Main = () => (
   <main>
     <Switch>
       <Route exact path='/' component={Home}/>
-      <Route path='/contact-list' component={ContactList}/>
-      <Route path='/schedule' component={Schedule}/>
+      <Route path='/list' component={ContactList}/>
+      <Route path='/edit' component={EditContact}/>
     </Switch>
   </main>
 )
