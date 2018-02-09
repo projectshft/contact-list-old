@@ -3,7 +3,17 @@ import React, {Component} from 'react';
 class ContactView extends Component {
   constructor(props) {
     super(props)
-    this.state = {
+
+    const findContact = (props) => {
+      const contacts = props.contacts;
+      const index = contacts.find((contact) => {
+        return contact.name === props.name && contact.email === props.email;
+      });
+      return contacts[index];
+    }
+
+    this.state = findContact(props) || {
+      id: null,
       name: 'Q. Dogs',
       imageUrl: 'https://i.pinimg.com/736x/97/27/a5/9727a533b8d35ec176155e92fd643477--pet-tattoos-wall-tattoo.jpg',
       email: 'qdogs@example.com',
@@ -11,7 +21,7 @@ class ContactView extends Component {
     }
   }
 
-  onInputChange (input) {
+  onInputChange(input) {
     //input has both className and value. use className to determine which input has changed.
     this.setState({
       [input.className]: input.value
@@ -19,30 +29,49 @@ class ContactView extends Component {
   }
 
   render() {
-    return (
+    return (<div><div>
       <div className="row">
         <div className="col-md-1 offset-md-1">
-          <img className="img-fluid mw-100" src={this.state.imageUrl} alt={this.state.name}/>
+          <a href="/">
+            <button className="btn btn-outline-secondary m-3">Back</button>
+          </a>
         </div>
-      {/* attach change handler to entire div to avoid repetition. */}
-        <div className="col-md-4" onChange={(event) => this.onInputChange(event.target)} >
-          <p><strong>Name: </strong>
-            <input className="name" value={this.state.name} />
+      </div>
+      <div className="row">
+        <div className="col-md-1 offset-md-1">
+
+          <img className="img-fluid mw-100" src={this.state.imageUrl} alt={this.state.name}/>
+
+        </div>
+        {/* attach change handler to entire div to avoid repetition. */}
+        <div className="col-md-4" onChange={(event) => this.onInputChange(event.target)}>
+          <p>
+            <strong>Name:
+            </strong>
+            <input className="name" value={this.state.name}/>
           </p>
-          <p><strong>Email: </strong>
-            <input className="email" value={this.state.email} />
+          <p>
+            <strong>Email:
+            </strong>
+            <input className="email" value={this.state.email}/>
           </p>
-          <p><strong>Phone number: </strong>
-            <input className="phoneNumber" value ={this.state.phoneNumber}/>
+          <p>
+            <strong>Phone number:
+            </strong>
+            <input className="phoneNumber" value={this.state.phoneNumber}/>
           </p>
-          <p><strong>Image URL: </strong>
-            <input className="imageUrl" value={this.state.imageUrl} />
+          <p>
+            <strong>Image URL:
+            </strong>
+            <input className="imageUrl" value={this.state.imageUrl}/>
           </p>
           <button className="btn btn-default m-1">Cancel</button>
           <button className="btn btn-primary btn-lg m-1" onClick={() => this.props.updateContact(this.state)}>Update</button>
         </div>
+      </div>
     </div>
-  )
+</div>
+    )
   }
 
 }
