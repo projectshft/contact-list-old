@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {Switch, Route, Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {onUpdate, forceUpdate, sendEvent} from './state'
+import {onUpdate, forceUpdate, sendEvent, queryState} from './state'
 import 'open-iconic/font/css/open-iconic-bootstrap.css'
 
 const App = () => {
@@ -16,50 +16,72 @@ const Contacts = () => {
   return (
     <Switch>
       <Route exact path='/contacts' component={AllContacts}/>
-      <Route path='/contacts/:number' component={Contact}/>
+      <Route path='/contacts/:id' component={Contact}/>
     </Switch>
 )
 }
 
 const getContacts = () => {
-  sendEvent('getContacts')
+  return queryState("getContacts")
+}
+
+const getSpecificContact = (id) => {
+  console.log(queryState("getSpecificContact",id))
+  return queryState("getSpecificContact",id)
 }
 
 const AllContacts = (props) => {
-  console.log(props)
-  return ""
-  // return (
-  //   <div>
-  //     <ul>
-  //       {
-  //         props.contacts.map(c => (<li key={c.id}>
-  //           <Link to={`/contacts/${c.id}`}>{c.name}</Link>
-  //           <button type="button" className="ml-3 btn btn-sm btn-outline-primary">
-  //             <span className="oi oi-pencil"></span>
-  //           </button>
-  //           <button type="button" className="ml-1 btn btn-sm btn-outline-danger">
-  //             <span className="oi oi-x"></span>
-  //           </button>
-  //         </li>))
-  //       }
-  //     </ul>
-  //   </div>)
+  const contactsList = getContacts()
+  return (
+    <div className = "container-fluid">
+      <div className = "row">
+        <ul>
+          {
+            contactsList.map(c => (<li key={c.id}>
+              <Link to={`/contacts/${c.id}`}>{c.name}</Link>
+              <button type="button" className="ml-3 btn btn-sm btn-outline-primary">
+                <span className="oi oi-pencil"></span>
+              </button>
+              <button type="button" className="ml-1 btn btn-sm btn-outline-danger">
+                <span className="oi oi-x"></span>
+              </button>
+            </li>))
+          }
+        </ul>
+      </div>
+      <div className="row">
+        <button className="ml-5 btn btn-sm btn-primary">Add a contact</button>
+      </div>
+    </div>)
 }
 
 const Contact = (props) => {
-  console.log(props)
+  const contact = getSpecificContact(parseInt(props.match.params.id))
+  return (
+    <div className="container-fluid">
+      <div className="row ml-3">
+        <button className="btn btn-outline-secondary"><Link to='/contacts'>Back</Link></button>
+      </div>
+      <div className="row ml-3">
+        <img src={contact.imageUrl}></img>
+      </div>
+      <div className="row ml-3">
+        <h2>{contact.name}<button type="button" className="ml-3 btn btn-sm btn-outline-primary">
+          <span className="oi oi-pencil"></span>
+        </button>
+          <button type="button" className="ml-1 btn btn-sm btn-outline-danger">
+            <span className="oi oi-x"></span>
+          </button></h2>
 
-    const contact_id = parseInt(props.match.params.id)
-    props.contacts.forEach((c) => {
-      if (c.id == contact_id) {
-        return (<div>
-          <h1>{c.name}
-            (#{c.id})</h1>
-          <h2>Position: {c.number}</h2>
-          <Link to='/Contacts'>Back</Link>
-        </div>)
-      }
-    })
+      </div>
+      <div className="row ml-3">
+        <h4>email: {contact.email}</h4>
+      </div>
+      <div className="row ml-3">
+        <h4>phone number: {contact.number}</h4>
+      </div>
+    </div>
+  )
 }
 
 const Header = () => (<nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -74,9 +96,8 @@ const Header = () => (<nav className="navbar navbar-expand-lg navbar-light bg-li
 const Main = (props) => {
   return (<main>
     <Switch>
-      <Route exact path='/' render={(routeProps)=><Contacts {...routeProps} {...props}/>}/>
-      <Route path='/' render={(routeProps)=><Contacts {...routeProps} {...props}/>}/>
-      <Route path='/contacts' render={(routeProps)=><Contact {...routeProps} {...props}/>}/>
+      <Route exact path='/' component={Contacts}/>
+      <Route path='/contacts' component={Contacts}/>
     </Switch>
   </main>)
 }

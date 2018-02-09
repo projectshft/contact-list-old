@@ -4,7 +4,7 @@ import _ from 'lodash';
 // over time to reflect the current state of the application. When we first
 // load, it represents the initial state of our application.
 const STATE = {
-  current_contact_id: null,
+  current_contact_id: 0,
   contacts: [
     {
       id: 0,
@@ -12,12 +12,13 @@ const STATE = {
       imageUrl: null,
       email: "Albert@Genius.com",
       number: "919-123-4567"
-    },
-    {id: 1,
-    name: "Your Mom",
-    imageUrl: null,
-    email: "mom@yourhouse.com",
-    number: "867-5309"}
+    }, {
+      id: 1,
+      name: "Your Mom",
+      imageUrl: null,
+      email: "mom@yourhouse.com",
+      number: "867-5309"
+    }
   ]
 };
 
@@ -63,28 +64,45 @@ const sendEvent = (name, data) => {
   }
 };
 
+const queryState = (name, data) => {
+  if (name === 'getContacts') {
+    return STATE.contacts;
+  } else if (name === 'getCurrentContact') {
+    return STATE.current_contact_id
+  } else if (name === 'getSpecificContact') {
+    const contact = STATE.contacts.find((contact) => {
+      return contact.id == data
+    })
+    return contact
+  } else {
+    // If we don't know what kind of event this is, alert the developer!
+    throw new Error(`Unrecognized event: ${name}`);
+  }
+}
+
 // Given an event name and the current state of the application, should mutate
 // the state in-place as it sees fit.
 //
 // NOTE: This is where you should add support for any new events you want to
 // handle!
-const handleEvent = ({name,data}, state) => {
+const handleEvent = ({
+  name,
+  data
+}, state) => {
   if (name === 'addContact') {
     state.contacts = state.contacts.concat([data]);
   } else if (name === 'editContact') {
-      state.contacts.forEach((c) => {
-        if (c.id === data.id) {
-          c.name = data.name
-          c.imageUrl = data.imageUrl
-          c.email = data.email
-          c.number = data.number
-        }
-      });
-    } else if  (name === 'selectContact') {
-      state.current_contact_id = data.id
-    } else if (name==='getContacts') {
-      return state.contacts.slice(0)
-    } else {
+    state.contacts.forEach((c) => {
+      if (c.id === data.id) {
+        c.name = data.name
+        c.imageUrl = data.imageUrl
+        c.email = data.email
+        c.number = data.number
+      }
+    });
+  } else if (name === 'selectContact') {
+    state.current_contact_id = data.id
+  } else {
     // If we don't know what kind of event this is, alert the developer!
     throw new Error(`Unrecognized event: ${name}`);
   }
@@ -98,5 +116,7 @@ export {
 
   onUpdate,
 
-  sendEvent
+  sendEvent,
+
+  queryState
 };
