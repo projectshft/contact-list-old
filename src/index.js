@@ -1,8 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import ContactView from './contact-view';
+import ContactList from './contact-list';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      contacts: []
+    }
+  }
+
+  render () {
+    return (
+      <div>
+        <ContactView />
+        <ContactList />
+      </div>
+    )
+  }
+}
+// //set App with routes
+// const Main = () => {
+//   <main>
+//     <Switch>
+//       <Route exact path='/' component={Main}/>
+//       <Route path='/:id' component={ContactView}/>
+//     </Switch>
+//   </main>
+// }
+
+//set routes
+
+
+const root = document.getElementById('root');
+
+ReactDOM.render(
+  <App />,
+  root
+);
