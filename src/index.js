@@ -10,7 +10,9 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      contacts: []
+      contacts: [
+        {name: 'qdogs'},{name: 'Bart'}
+      ]
     }
   }
 
@@ -18,11 +20,16 @@ class App extends Component {
     return (
       <div>
         <ContactView />
-        <ContactList />
+        <ContactList contacts={this.state.contacts} />
       </div>
     )
   }
 }
+
+/*WISHLIST
+Prettier styling on contact view
+*/
+
 // //set App with routes
 // const Main = () => {
 //   <main>
