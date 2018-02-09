@@ -1,21 +1,70 @@
-import { BrowserRouter, Switch, Link, Route } from 'react-router-dom'
-import React from 'react'
+import { BrowserRouter, Link, Redirect, Route, Switch } from 'react-router-dom'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
+import { onUpdate, forceUpdate, sendEvent } from './state'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../node_modules/jquery/dist/jquery.slim.min.js'
+import '../node_modules/popper.js/dist/umd/popper.min.js'
+import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
 import './index.css'
+import ContactList from './components/contact_list'
+import ContactsView from './components/contacts_view'
 
-const App = () => (
-  <div>
-    <header>
-      <h1>Not Your Parents's Rolodex</h1>
-    </header>
-  </div>
-)
+const generateId = () => Math.round(Math.random() * 100000000)
 
+const STATE = {
+  defaultHeader: 'Not Your Parents\' Rolodex',
+  currentContact: this.contacts,
+  contacts: [
+    { id: generateId(), name: 'Al E. Gator', imageURL: '', email: '', phoneNumber: 5551234567}
+  ],
+  getAllContacts() { return this.contacts },
+  getContact: id => {
+    const isContact = contact => contact.id === id
+    return this.contacts.find(isContact)
+  }
+}
 
+class App extends Component {
 
-ReactDOM.render((
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-), document.getElementById('root'))
+  constructor (props) {
+    super(props)
+  }
+
+  render () {
+    return (
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-12'>
+            <h1 className='text-center mt-5'>{this.props.showContacts ? this.props.currentHeaderText : this.props.currentContact.name }<button type='button' className='btn btn-outline-primary ml-3'>{this.props.showContacts ? this.props.currentHeaderButtonText : 'Back' }</button></h1>
+          </div>
+        </div>
+        <main>
+          <Switch>
+            <Redirect exact from='/' to='/contacts' />
+            <Route
+              path='/contacts'
+              render={ () => (
+                <ContactsView currentContact={this.props.currentContact} contacts={this.props.contacts} />
+              )}
+            />
+          </Switch>
+        </main>
+        <footer className='navbar footer fixed-bottom footer-light content container-fluid'>
+          <span className='text-muted mx-auto'><small>Coded with	&hearts; by Austin Stevens for <a href='https://projectshift.io' alt='Project Shift'>Project Shift</a></small></span>
+        </footer>
+      </div>
+    )
+  }
+}
+
+onUpdate((state) => {
+  ReactDOM.render(
+    <BrowserRouter>
+      <App {...state} />
+    </BrowserRouter>,
+    document.getElementById('root')
+  )
+})
+
+forceUpdate()

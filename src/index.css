@@ -1,5 +1,20 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+.btn {
+  border-radius: 0;
+  border-width: 3px;
+}
+
+.form-control {
+  border-radius: 0;
+}
+
+.modal-content {
+  border-radius: 0;
+}
+
+.modal-header {
+  border-bottom: 0;
+}
+
+.modal-footer {
+  border-top: 0;
 }
