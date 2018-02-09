@@ -32,7 +32,10 @@ export default class HomePage extends Component {
       <div className=''>
         <div className="row">
         <h1>Contacts</h1>
-        <button onClick={this.toggleModal} type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add contact</button>
+        <div>
+        
+        <button onClick={this.toggleModal} type="button" className="btn btn-success" data-toggle="modal" data-target="#exampleModal">Add contact</button>
+        </div>
         <ContactModal 
           show={this.state.isOpen} 
           onClose={this.toggleModal} 
@@ -41,7 +44,7 @@ export default class HomePage extends Component {
         </div>
         
         <div className="row">
-          <ContactList contactInfo={this.state} />
+          <ContactList contactInfo={this.state.contacts} />
         </div>
       </div>
     )

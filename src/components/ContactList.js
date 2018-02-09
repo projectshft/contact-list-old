@@ -1,6 +1,9 @@
 import React from 'react';
+import Contact from './Contact'
 
-const ContactList = () => {
+const ContactList = (props) => {
+  console.log(props.contactInfo)
+  const contactList = props.contactInfo.map((contact, i) => <Contact key={i} contact={contact} /> )
   return (
     <div>
     <table className="table table-striped">
@@ -14,24 +17,11 @@ const ContactList = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
+        {
+          props.contactInfo.map((contact, i) => {
+            return <Contact key={i} id={i} contact={contact} />
+          })
+        }
       </tbody>
     </table>
     </div>

@@ -24,8 +24,8 @@ export class ContactModal extends Component {
       tel: this.state.tel
     }
     console.log(contactInfo)
-    console.log(this.props.handleSubmit(contactInfo))
- 
+    this.props.handleSubmit(contactInfo)
+    this.props.onClose()
     
   }
   
@@ -42,7 +42,7 @@ export class ContactModal extends Component {
               </button>
             </div>
               <div className="col-md-12">
-                <form className="form" role="form" autoComplete="off">
+                <form className="form" autoComplete="off">
                   <div className="form-group">
                     <label htmlFor="inputName">Name</label>
                     <input autoComplete= "name" type="text" className="form-control" id="inputName" placeholder="Full name"
