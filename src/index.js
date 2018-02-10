@@ -7,15 +7,6 @@ import ContactList from './contact-list';
 import AddContact from './add-contact'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-// const App = () => {
-//   (
-//     <Switch>
-//       <Route exact path='/' component={ContactList}/>
-//       <Route path='/:id' component={ContactView}/>
-//     </Switch>
-//   )
-// }
-
 class App extends Component {
   constructor() {
     super();
@@ -26,35 +17,48 @@ class App extends Component {
         {id: 1, name: 'bat', email: 'notBart@bats.com'},
       ]
     }
-  console.log('appState: ', this.state)
 
   this.addContact = this.addContact.bind(this)
+  this.renderContactView = this.renderContactView.bind(this)
   }
 
 
-  handleEdit = (id) => {
+  updateContact = (updatedContact) => {
+    //first, use ID to find the contact to be updated in our state array
+    let contact = this.state.contacts.find((contact) => {return contact.id = updatedContact.id});
+    //then set those contact's details to the updated details
+    this.setState({contact: updatedContact})
   }
 
   addContact = (contact) => {
+    console.log(contact)
     this.setState({
       contacts: this.state.contacts.concat([contact])
     })
-    this.forceUpdate( () => { console.log(this.state)} );
-    //check - is it not rendering yet but just queued?
   }
 
+  // Helper function to render '/:id' and '/add' paths. Since same render function is used in multiple Route statements, I'm adding it to the class declaration to keep it DRY.
+  renderContactView = (props) => {
 
-
+  // Use spread operator to pass Router's match props to component page. The match props allow the component page to access its own id, which will be used to determine which contact to show.
+    return <ContactView contacts={this.state.contacts} updateContact={this.updateContact} {...props} />
+    }
 
   render () {
     return (
       <Switch>
+        {/* render functions inside Route tags pass props to components */}
         <Route exact path='/' render = {() => <ContactList contacts={this.state.contacts} handleEdit={this.handleEdit} />}/>
-        <Route path='/add'
-          render =
-          {() =>  <AddContact component={AddContact} contacts={this.state.contacts} addContact={this.addContact} /> }
-        />
-        <Route path='/:id' render = {() => <ContactView contacts={this.state.contacts} updateContact={this.updateContact}/>} />
+
+
+        <Route path='/:id' render = {(props) => {<ContactView contacts={this.state.contacts} updateContact={this.updateContact} {...props} />}} />
+
+        {/* <Route path='/:id' render = {() => <ContactView contacts={this.state.contacts} updateContact={this.updateContact}/>} /> */}
+
+
+
+        {/* The add page is almost identical to the '/:id' pages, so the render */}
+        <Route path='/:add' render = {(props) => {this.renderContactView(props)}} />
       </Switch>
 
     )
@@ -64,10 +68,11 @@ class App extends Component {
 /*WISHLIST
 Prettier styling on contact view
 Add default props
-When updating imageURL, do something nicer than broken image. Maybe don't have that one update on every change? (be sure to deal with submit function)
+When updating imageURL, do something nicer than broken image. Maybe don't have that one update on every change? (be sure to deal with submit function) - use img onerror (see MDN) for broken link handling
 Page Headers for contact list and contact view
 Merge add and update contacts
 Handle duplicate contacts
+VALIDATION
 */
 
 // //set App with routes

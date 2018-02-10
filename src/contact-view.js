@@ -1,24 +1,27 @@
 import React, {Component} from 'react';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+
 
 class ContactView extends Component {
   constructor(props) {
     super(props)
 
-    const findContact = (props) => {
-      const contacts = props.contacts;
-      const index = contacts.find((contact) => {
-        return contact.name === props.name && contact.email === props.email;
-      });
-      return contacts[index];
-    }
-
-    this.state = findContact(props) || {
-      id: null,
+    this.state = this.findContact(props) ||
+    {
       name: 'Q. Dogs',
       imageUrl: 'https://i.pinimg.com/736x/97/27/a5/9727a533b8d35ec176155e92fd643477--pet-tattoos-wall-tattoo.jpg',
       email: 'qdogs@example.com',
       phoneNumber: '123-456-7890'
     }
+  }
+
+  //helper function to find the correct contact within our props array
+  findContact (props) {
+    console.log(props)
+    return props.contacts.find((contact) => {
+    //match.params grabs the router's id parameters, which uniquely identify the selected contact
+      return contact.id == props.match.params.id; //using double-equals so don't have to worry about strings vs numbers 
+    });
   }
 
   onInputChange(input) {
@@ -32,9 +35,9 @@ class ContactView extends Component {
     return (<div><div>
       <div className="row">
         <div className="col-md-1 offset-md-1">
-          <a href="/">
+          <Link to="/">
             <button className="btn btn-outline-secondary m-3">Back</button>
-          </a>
+          </Link>
         </div>
       </div>
       <div className="row">

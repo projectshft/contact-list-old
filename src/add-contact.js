@@ -1,16 +1,31 @@
 import React, {Component} from 'react';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+
 
 class AddContact extends Component {
   constructor(props) {
     super(props)
-    console.log(props)
+
     this.state = {
-      id: Math.round(Math.random() * 10000),
+      id: this.generateId(this.props),
       name: 'Q. Dogs',
       imageUrl: 'https://i.pinimg.com/736x/97/27/a5/9727a533b8d35ec176155e92fd643477--pet-tattoos-wall-tattoo.jpg',
       email: 'qdogs@example.com',
       phoneNumber: '123-456-7890'
     }
+  }
+
+  //helper function to generate unique ID for each contact
+  generateId (props) {
+    //when generating pseudorandom ID, check to make sure it is unique. regenerate if it isn't.
+    let id = Math.round(Math.random() * 10000);
+    //condition returns true only if another contact has the same id
+    let idIsDuplicate = props.contacts.find((contact) => {return contact.id === id})
+
+    while (idIsDuplicate) {
+      id = Math.round(Math.random() * 10000);
+    }
+    return id;
   }
 
   onInputChange(input) {
@@ -24,9 +39,9 @@ class AddContact extends Component {
     return (<div><div>
       <div className="row">
         <div className="col-md-1 offset-md-1">
-          <a href="/">
+          <Link to="/">
             <button className="btn btn-outline-secondary m-3">Back</button>
-          </a>
+          </Link>
         </div>
       </div>
       <div className="row">
@@ -58,7 +73,7 @@ class AddContact extends Component {
             <input className="imageUrl" value={this.state.imageUrl}/>
           </p>
           <button className="btn btn-default m-1">Cancel</button>
-          <button className="btn btn-primary btn-lg m-1" onClick={() => this.props.addContact(this.state)}>Add</button>
+          <Link to="/"><button className="btn btn-primary btn-lg m-1" onClick={() => this.props.addContact(this.state)}>Add</button></Link>
         </div>
       </div>
     </div>
