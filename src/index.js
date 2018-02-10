@@ -23,10 +23,16 @@ class App extends Component {
 
 
   updateContact = (updatedContact) => {
-    //first, use ID to find the contact to be updated in our state array
-    let contact = this.state.contacts.find((contact) => {return contact.id = updatedContact.id});
-    //then set those contact's details to the updated details
-    this.setState({contact: updatedContact})
+    //first, use ID to find the index of the contact to be updated in our state array
+    let indexToUpdate = this.state.contacts.findIndex((contact) => {return contact.id === updatedContact.id});
+
+    //then make a copy array and update the contact at the found index.
+    let newContacts = this.state.contacts.slice();
+    newContacts.splice(indexToUpdate, 1, updatedContact);
+
+    //set the spliced array as the new value of state.contacts
+    this.setState({contacts: newContacts})
+
   }
 
   addContact = (contact) => {
@@ -46,11 +52,10 @@ class App extends Component {
         <Route exact path='/' render = {() => <ContactList contacts={this.state.contacts} handleEdit={this.handleEdit} />}/>
 
         {/* Use spread operator to pass Router's match props to component page. The match props allow the component page to access its own id, which will be used to determine which contact to show. */}
+        <Route path='/add' render = {(props) => <ContactView contacts={this.state.contacts} addContact={this.addContact} {...props} />} />
+
         <Route path='/:id' render = {(props) => <ContactView contacts={this.state.contacts} updateContact={this.updateContact} {...props} />} />
 
-
-        {/* The add page is almost identical to the '/:id' pages, so the render */}
-        <Route path='/:add' render = {(props) => <ContactView contacts={this.state.contacts} addContact={this.addContact} {...props} />} />
       </Switch>
 
     )

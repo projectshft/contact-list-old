@@ -66,10 +66,10 @@ class ContactView extends Component {
     let submitButton = null;
 
     if (this.state.contactIsNew){
-      submitButton = <button className="btn btn-primary btn-lg m-1" onClick={() => this.props.addContact(this.state)}>Add</button>
+      submitButton = <button className="btn btn-primary btn-lg m-1" onClick={() => this.props.addContact(contact) }>Add</button>
 
     } else {
-      submitButton = <button className="btn btn-primary btn-lg m-1" onClick={() => this.props.updateContact(this.state)}>Update</button>
+      submitButton = <button className="btn btn-primary btn-lg m-1" onClick={() => this.props.updateContact(contact)}>Update</button>
 
     }
 
@@ -110,8 +110,12 @@ class ContactView extends Component {
             </strong>
             <input className="imageUrl" value={this.state.imageUrl}/>
           </p>
-          <button className="btn btn-default m-1">Cancel</button>
-          {submitButton}
+          <Link to="/">
+            <button className="btn btn-default m-1">Cancel</button>
+          </Link>
+          <Link to="/">
+            {submitButton}
+          </Link>
           </div>
 
       </div>

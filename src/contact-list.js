@@ -2,30 +2,30 @@ import React from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 const ContactList = (props) => {
-
-  const handleAdd = () => {
-    //returns default values and a unique ID for new contact
-    return {
-        id: this.generateId(),
-        name: 'Q. Dogs',
-        imageUrl: 'https://i.pinimg.com/736x/97/27/a5/9727a533b8d35ec176155e92fd643477--pet-tattoos-wall-tattoo.jpg',
-        email: 'qdogs@example.com',
-        phoneNumber: '123-456-7890'
-      }
-    }
-    //helper function to generate unique ID for each contact
-
-    const generateId = () => {
-      //when generating pseudorandom ID, check to make sure it is unique. regenerate if it isn't.
-      let id = Math.round(Math.random() * 10000);
-      //condition returns true only if another contact has the same id
-      let idIsDuplicate = this.state.contacts.find((contact) => {return contact.id === id})
-
-      while (idIsDuplicate) {
-        id = Math.round(Math.random() * 10000);
-      }
-      return id;
-    }
+  //
+  // const handleAdd = () => {
+  //   //returns default values and a unique ID for new contact
+  //   return {
+  //       id: this.generateId(),
+  //       name: 'Q. Dogs',
+  //       imageUrl: 'https://i.pinimg.com/736x/97/27/a5/9727a533b8d35ec176155e92fd643477--pet-tattoos-wall-tattoo.jpg',
+  //       email: 'qdogs@example.com',
+  //       phoneNumber: '123-456-7890'
+  //     }
+  //   }
+  //   //helper function to generate unique ID for each contact
+  //
+  //   const generateId = () => {
+  //     //when generating pseudorandom ID, check to make sure it is unique. regenerate if it isn't.
+  //     let id = Math.round(Math.random() * 10000);
+  //     //condition returns true only if another contact has the same id
+  //     let idIsDuplicate = this.state.contacts.find((contact) => {return contact.id === id})
+  //
+  //     while (idIsDuplicate) {
+  //       id = Math.round(Math.random() * 10000);
+  //     }
+  //     return id;
+  //   }
 
   const contactListItems = props.contacts.map( (contact) => {
     return (
