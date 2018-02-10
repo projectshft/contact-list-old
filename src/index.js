@@ -30,7 +30,6 @@ class App extends Component {
   }
 
   addContact = (contact) => {
-
     this.setState({
       contacts: this.state.contacts.concat([contact])
     })
@@ -51,7 +50,7 @@ class App extends Component {
 
 
         {/* The add page is almost identical to the '/:id' pages, so the render */}
-        <Route path='/:add' render = {(props) => <ContactView contacts={this.state.contacts} updateContact={this.updateContact} {...props} />} />
+        <Route path='/:add' render = {(props) => <ContactView contacts={this.state.contacts} addContact={this.addContact} {...props} />} />
       </Switch>
 
     )

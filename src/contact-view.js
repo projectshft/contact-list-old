@@ -24,17 +24,6 @@ class ContactView extends Component {
     }
   }
 
-  // handleAdd () {
-  //   //returns default values and a unique ID for new contact
-  //   return {
-  //       id: this.generateId(),
-  //       name: 'Q. Dogs',
-  //       imageUrl: 'https://i.pinimg.com/736x/97/27/a5/9727a533b8d35ec176155e92fd643477--pet-tattoos-wall-tattoo.jpg',
-  //       email: 'qdogs@example.com',
-  //       phoneNumber: '123-456-7890'
-  //     }
-  //   }
-
     //helper function to generate unique ID for each contact
   generateId (props) {
       //when generating pseudorandom ID, check to make sure it is unique. regenerate if it isn't.
@@ -69,6 +58,22 @@ class ContactView extends Component {
   }
 
   render() {
+
+    //How freakin' cool is ES6 syntax!?? This grabs all of state's contact-related properties to pass up to App state, while leaving contactIsNew, which only belongs here in contact view.
+    let {contactIsNew, ...contact} = this.state;
+
+    //Show update or add button as appropriate
+    let submitButton = null;
+
+    if (this.state.contactIsNew){
+      submitButton = <button className="btn btn-primary btn-lg m-1" onClick={() => this.props.addContact(this.state)}>Add</button>
+
+    } else {
+      submitButton = <button className="btn btn-primary btn-lg m-1" onClick={() => this.props.updateContact(this.state)}>Update</button>
+
+    }
+
+
     return (<div><div>
       <div className="row">
         <div className="col-md-1 offset-md-1">
@@ -106,8 +111,9 @@ class ContactView extends Component {
             <input className="imageUrl" value={this.state.imageUrl}/>
           </p>
           <button className="btn btn-default m-1">Cancel</button>
-          <button className="btn btn-primary btn-lg m-1" onClick={() => this.props.updateContact(this.state)}>Update</button>
-        </div>
+          {submitButton}
+          </div>
+
       </div>
     </div>
 </div>
