@@ -21,6 +21,21 @@ class App extends Component {
   this.addContact = this.addContact.bind(this)
   }
 
+  deleteContact = (contactToDelete) => {
+    let confirm = window.confirm(`Are you sure you want to delete ${contactToDelete.name}?`);
+    if (!confirm) {
+      return
+    } else {
+      //first, use ID to find the index of the contact to be deleted in our state array
+      let indexToUpdate = this.state.contacts.findIndex((contact) => {return contact.id === contactToDelete.id});
+
+      //then make a copy array and remove the contact at the found index.
+      let newContacts = this.state.contacts.slice();
+      newContacts.splice(indexToUpdate, 1);
+      this.setState({contacts: newContacts})
+    }
+
+  }
 
   updateContact = (updatedContact) => {
     //first, use ID to find the index of the contact to be updated in our state array
@@ -49,7 +64,7 @@ class App extends Component {
     return (
       <Switch>
         {/* render functions inside Route tags pass props to components */}
-        <Route exact path='/' render = {() => <ContactList contacts={this.state.contacts} handleEdit={this.handleEdit} />}/>
+        <Route exact path='/' render = {() => <ContactList contacts={this.state.contacts} deleteContact={this.deleteContact} />}/>
 
         {/* Use spread operator to pass Router's match props to component page. The match props allow the component page to access its own id, which will be used to determine which contact to show. */}
         <Route path='/add' render = {(props) => <ContactView contacts={this.state.contacts} addContact={this.addContact} {...props} />} />
@@ -70,6 +85,7 @@ Page Headers for contact list and contact view
 Merge add and update contacts
 Handle duplicate contacts
 Nicer way to handle IsNew boolean in contactview (really only needs to be local state) - maybe dont pass it back to App?
+DRY up update and delete buttons
 VALIDATION
 */
 

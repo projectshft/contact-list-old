@@ -35,7 +35,7 @@ const ContactList = (props) => {
         </div>
         <div className="col-md-2">
         <Link to={`${contact.id}`}> <button className="btn btn-sm btn-info m-1 edit" >edit</button></Link>
-        <button className="btn btn-sm btn-danger m-1 delete" onClick={() => props.handleDelete(contact.id)}>delete</button>
+        <button className="btn btn-sm btn-danger m-1 delete" onClick={() => props.deleteContact(contact)}>delete</button>
         </div>
       </div>
       )
