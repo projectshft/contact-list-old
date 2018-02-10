@@ -30,11 +30,14 @@ class App extends Component {
   }
 
   addContact = (contact) => {
-    console.log(contact)
+
     this.setState({
       contacts: this.state.contacts.concat([contact])
     })
   }
+
+
+
 
 
   render () {
@@ -62,6 +65,7 @@ When updating imageURL, do something nicer than broken image. Maybe don't have t
 Page Headers for contact list and contact view
 Merge add and update contacts
 Handle duplicate contacts
+Nicer way to handle IsNew boolean in contactview (really only needs to be local state) - maybe dont pass it back to App?
 VALIDATION
 */
 

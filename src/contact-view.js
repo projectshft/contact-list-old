@@ -6,29 +6,66 @@ class ContactView extends Component {
   constructor(props) {
     super(props)
 
-    this.state = this.findContact(props) ||
-    {
-      name: 'Q. Dogs',
-      imageUrl: 'https://i.pinimg.com/736x/97/27/a5/9727a533b8d35ec176155e92fd643477--pet-tattoos-wall-tattoo.jpg',
-      email: 'qdogs@example.com',
-      phoneNumber: '123-456-7890'
+    //state should contain contact values and a boolean indicating whether this contact is already in the contacts array (update) or not (add)
+
+    //if findContact returns null or undefined, contact was not in the contacts array and contact is new
+    let contactDetails = this.findContact(props);
+    if (contactDetails) {
+      this.state = {...contactDetails, contactIsNew: false}
+    } else {
+      this.state = {
+          id: this.generateId(props),
+          name: 'Q. Dogs',
+          imageUrl: 'https://i.pinimg.com/736x/97/27/a5/9727a533b8d35ec176155e92fd643477--pet-tattoos-wall-tattoo.jpg',
+          email: 'qdogs@example.com',
+          phoneNumber: '123-456-7890',
+          contactIsNew: true
+      }
     }
   }
 
+  // handleAdd () {
+  //   //returns default values and a unique ID for new contact
+  //   return {
+  //       id: this.generateId(),
+  //       name: 'Q. Dogs',
+  //       imageUrl: 'https://i.pinimg.com/736x/97/27/a5/9727a533b8d35ec176155e92fd643477--pet-tattoos-wall-tattoo.jpg',
+  //       email: 'qdogs@example.com',
+  //       phoneNumber: '123-456-7890'
+  //     }
+  //   }
+
+    //helper function to generate unique ID for each contact
+  generateId (props) {
+      //when generating pseudorandom ID, check to make sure it is unique. regenerate if it isn't.
+      let id = Math.round(Math.random() * 10000);
+      //condition returns true only if another contact has the same id
+      let idIsDuplicate = props.contacts.find((contact) => {return contact.id === id})
+
+      while (idIsDuplicate) {
+        id = Math.round(Math.random() * 10000);
+      }
+      return id;
+    }
+
   //helper function to find the correct contact within our props array
   findContact (props) {
-    console.log(props)
-    return props.contacts.find((contact) => {
     //match.params grabs the router's id parameters, which uniquely identify the selected contact
-      return contact.id == props.match.params.id; //using double-equals so don't have to worry about strings vs numbers 
-    });
+    let id = props.match.params.id;
+    //...unless we're on the add page, in which case this is a new contact. in that case, return null.
+    if (id === 'add') {
+      return null
+    //otherwise, find this contact in the contacts array and return that.
+    } else {
+      return props.contacts.find((contact) => {
+        return contact.id.toString() === id;
+      });
+    }
   }
 
   onInputChange(input) {
     //input has both className and value. use className to determine which input has changed.
-    this.setState({
-      [input.className]: input.value
-    })
+    this.setState({[input.className]: input.value})
   }
 
   render() {
