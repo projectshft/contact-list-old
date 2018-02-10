@@ -12,7 +12,13 @@ class NewContact extends Component {
       name: '',
       imageUrl: '',
       email: '',
-      number: ''
+      number: '',
+      label:[
+        false,
+        false,
+        false,
+        false
+      ]
     }
   }
 
@@ -21,14 +27,20 @@ class NewContact extends Component {
       name: this.state.name,
       imageUrl: this.state.imageUrl,
       email: this.state.email,
-      number: this.state.number
+      number: this.state.number,
+      label:[
+        this.state.personal,
+        this.state.business,
+        this.state.family,
+        this.state.other
+      ]
     }
     //TODO add validation for name, imageUrl, email, and number
     this.props.addContact(contact);
     this.props.history.push('/')
   }
 
-  render() {
+  render(props) {
     return (<table className="text-center">
       <tbody>
         <tr className="ml-3">
@@ -48,7 +60,7 @@ class NewContact extends Component {
           </td>
           <td>
             <input style={{
-                width: 300
+                width: 450
             }} className="name" placeholder="Contact's name" value={this.state.name} onChange={event => this.setState({name: event.target.value})}/>
           </td>
         </tr>
@@ -58,7 +70,7 @@ class NewContact extends Component {
           </td>
           <td>
             <input style={{
-                width: 300
+                width: 450
             }} className="imageUrl" placeholder="Contact's image url" value={this.state.imageUrl} onChange={event => this.setState({imageUrl: event.target.value})}/>
           </td>
         </tr>
@@ -68,7 +80,7 @@ class NewContact extends Component {
           </td>
           <td>
             <input style={{
-                width: 300
+                width: 450
             }} className="email" placeholder="Contact's email address" value={this.state.email} onChange={event => this.setState({email: event.target.value})}/>
           </td>
         </tr>
@@ -77,7 +89,31 @@ class NewContact extends Component {
             Phone #:
           </td>
           <td>
-            <input style={{width: 300}} className="number" placeholder="Contact's phone number" value={this.state.number} onChange={event => this.setState({number: event.target.value})}/>
+            <input style={{
+                width: 450
+            }} className="number" placeholder="Contact's phone number" value={this.state.number} onChange={event => this.setState({number: event.target.value})}/>
+          </td>
+        </tr>
+
+        <tr>
+          <td className="ml-2 label">
+            Label:
+          </td>
+          <td className="text-left">
+            <div className="row">
+              <div className="col-sm-3 label-selector">
+                <input className="" type='checkbox' onChange={event => this.setState({personal: event.target.checked})}/> Personal
+              </div>
+              <div className="col-sm-3 label-selector">
+                <input className="" type='checkbox' onChange={event => this.setState({business: event.target.checked})}/> Business
+              </div>
+              <div className="col-sm-3 label-selector">
+                <input className="" type='checkbox' onChange={event => this.setState({family: event.target.checked})}/> Family
+              </div>
+              <div className="col-sm-3 label-selector">
+                <input className="" type='checkbox' onChange={event => this.setState({other: event.target.checked})}/> Other
+              </div>
+            </div>
           </td>
         </tr>
 

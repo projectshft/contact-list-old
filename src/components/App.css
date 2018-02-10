@@ -1,4 +1,23 @@
 
 .label {
-  width:100px
+  width:100px;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover
+}
+
+.label-selector: {
+  width: 50px;
+  float:left;
+}
+
+ul {
+  list-style-type: none
+}
+
+li.nav {
+  float:left;
 }

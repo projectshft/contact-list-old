@@ -7,7 +7,7 @@ import 'open-iconic/font/css/open-iconic-bootstrap.css'
 import NewContact from './NewContact'
 import Contact from './Contact'
 import EditContact from './EditContact'
-
+import AllContacts from './ContactLists'
 
 const App = () => {
   return (<div>
@@ -18,7 +18,21 @@ const App = () => {
 
 const Contacts = () => {
   return (<Switch>
-    <Route exact path='/' component={AllContacts}/>
+    <Route exact path='/' render={(params) => (
+      <AllContacts {...params} deleteContact={deleteContact} getContacts={getContacts}/>
+    )}/>
+    <Route path='/personal' render={(params) => (
+      <AllContacts {...params} deleteContact={deleteContact} getContacts={getContacts} />
+    )}/>
+    <Route path='/business' render={(params) => (
+      <AllContacts {...params} deleteContact={deleteContact} getContacts={getContacts} />
+    )}/>
+    <Route path='/family' render={(params) => (
+      <AllContacts {...params} deleteContact={deleteContact} getContacts={getContacts} />
+    )}/>
+    <Route path='/other' render={(params) => (
+      <AllContacts {...params} deleteContact={deleteContact} getContacts={getContacts} />
+    )}/>
     <Route path='/new' render={(params) => (
       <NewContact {...params} addContact={addContact} />
     )}/>
@@ -51,54 +65,37 @@ const deleteContact = (contact) => {
   sendEvent("deleteContact", contact)
 }
 
-const AllContacts = (props) => {
-  const contactsList = getContacts()
-  const handleXClick = (contact) => {
-    if (window.confirm(`Are you sure you want to delete ${contact.name}?`)) {
-      deleteContact(contact)
-    }
-    props.history.push('/')
-  }
-  const handleEditClick = (contact) => {
-    props.history.push(`/${contact.id}/edit`)
-  }
-  return (<div className="container-fluid">
-    <div className="row">
-      <ul>
-        {
-          contactsList.map(c => (<li key={c.id}>
-            <Link to={`/${c.id}`}>{c.name}</Link>
-            <button type="button" onClick={() => { handleEditClick(c) }} className="ml-3 btn btn-sm btn-outline-primary">
-              <span className="oi oi-pencil"></span>
-            </button>
-            <button type="button" onClick={() => { handleXClick(c) }} className="ml-1 btn btn-sm btn-outline-danger">
-              <span className="oi oi-x"></span>
-            </button>
-          </li>))
-        }
-      </ul>
-    </div>
-    <div className="row">
-      <button className="ml-5 btn btn-sm btn-primary">
-        <Link to={'/new'} style={{
-            textDecoration: 'none',
-            color: 'white'
-          }}>Add a contact</Link>
-      </button>
-    </div>
-  </div>)
-}
 
 
-const Header = () => (<nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <a className="navbar-brand">Contact List</a>
-  <ul className="navbar-nav">
-    <li className="nav-item nav-link">
+const Header = () => (<nav className="navbar navbar-expand-sm navbar-light bg-light">
+  <div className="navbar-brand">Contact List</div>
+  <ul  className="nav navbar-nav" role="tablist">
+    <li className="nav nav-item nav-link">
       <Link to={'/'} style={{
           textDecoration: 'none'
-        }}>All Contacts</Link>
+      }}>All Contacts</Link>
     </li>
-  </ul>
-</nav>)
+    <li className="nav nav-item nav-link">
+      <Link to={'/personal'} style={{
+          textDecoration: 'none'
+      }}>Personal</Link></li>
+    <li className="nav nav-item nav-link">
+      <Link to={'/business'} style={{
+          textDecoration: 'none'
+      }}>Business</Link></li>
+    <li className="nav nav-item nav-link">
+      <Link to={'/family'} style={{
+          textDecoration: 'none'
+      }}>Family</Link>
+    </li>
+    <li className="nav nav-item nav-link">
+      <Link to={'/other'} style={{
+          textDecoration: 'none'
+        }}>Other</Link>
+      </li>
+
+    </ul>
+  </nav>
+  )
 
 export default App;

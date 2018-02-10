@@ -9,15 +9,33 @@ const STATE = {
     {
       id: 0,
       name: "Albert Einstein",
-      imageUrl: null,
+      imageUrl: "https://ichef-1.bbci.co.uk/news/660/media/images/82399000/jpg/_82399978_75952740.jpg",
       email: "Albert@Genius.com",
-      number: "919-123-4567"
+      number: "919-123-4567",
+      personal: false,
+      business:false,
+      family:false,
+      other:true
     }, {
       id: 1,
       name: "Your Mom",
-      imageUrl: null,
+      imageUrl: "http://juicebubble.co.za/wp-content/uploads/2015/04/Supermom-on-white.png",
       email: "mom@yourhouse.com",
-      number: "867-5309"
+      number: "867-5309",
+      personal: false,
+      business:false,
+      family:true,
+      other:false
+    },{
+    id: 2,
+    name: "Anonymous",
+    imageUrl: "http://www.oebmidsummit.com/img/noavatar.jpg",
+    email: "??@???.com",
+    number: "???-???-????",
+    personal: false,
+    business:false,
+    family:true,
+    other:false
     }
   ]
 };
