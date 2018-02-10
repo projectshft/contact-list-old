@@ -4,7 +4,6 @@ import _ from 'lodash';
 // over time to reflect the current state of the application. When we first
 // load, it represents the initial state of our application.
 const STATE = {
-  current_contact_id: 0,
   contacts: [
     {
       id: 0,
@@ -91,9 +90,6 @@ const queryState = (name, data) => {
         return contact[data]
       })
     }
-  }
-    else if (name === 'getCurrentContact') {
-    return STATE.current_contact_id
   } else if (name === 'getSpecificContact') {
     const contact = STATE.contacts.find((contact) => {
       return contact.id === data
@@ -122,9 +118,9 @@ const handleEvent = ({ name, data}, state) => {
     newContact.imageUrl = data.imageUrl
     newContact.email = data.email
     newContact.number = data.number
-    newContact.personal = data.personal,
-    newContact.business = data.business,
-    newContact.family = data.family,
+    newContact.personal = data.personal
+    newContact.business = data.business
+    newContact.family = data.family
     newContact.other = data.other
     state.contacts = state.contacts.concat([newContact]);
   } else if (name === 'editContact') {
@@ -134,9 +130,9 @@ const handleEvent = ({ name, data}, state) => {
         c.imageUrl = data.imageUrl
         c.email = data.email
         c.number = data.number
-        c.personal = data.personal,
-        c.business = data.business,
-        c.family = data.family,
+        c.personal = data.personal
+        c.business = data.business
+        c.family = data.family
         c.other = data.other
       }
     });

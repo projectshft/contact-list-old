@@ -25,13 +25,14 @@ const AllContacts = (props) => {
       <ul>
         {
           contactsList.map(c => (<li key={c.id}>
-            <Link to={`/${c.id}`}>{c.name}</Link>
-            <button type="button" onClick={() => { handleEditClick(c) }} className="ml-3 btn btn-sm btn-outline-primary">
+            <button type="button" onClick={() => { handleEditClick(c) }} className="mb-1 btn btn-sm btn-outline-primary">
               <span className="oi oi-pencil"></span>
             </button>
-            <button type="button" onClick={() => { handleXClick(c) }} className="ml-1 btn btn-sm btn-outline-danger">
+            <button type="button" onClick={() => { handleXClick(c) }} className="ml-1 mr-2 mb-1 btn btn-sm btn-outline-danger">
               <span className="oi oi-x"></span>
             </button>
+            <Link to={`/${c.id}`}>{c.name}</Link>
+
           </li>))
         }
       </ul>

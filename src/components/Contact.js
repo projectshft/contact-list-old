@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import { Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'open-iconic/font/css/open-iconic-bootstrap.css'
 
@@ -16,7 +15,9 @@ const Contact = (props) => {
     }
   }
 
-  console.log(contact.personal, contact.business, contact.family, contact.other)
+  const addDefaultImg = (event) => {
+    event.target.src = 'http://www.oebmidsummit.com/img/noavatar.jpg'
+  }
 
   const personalShow = contact.personal ? "" : "d-none"
   const businessShow = contact.business ? "" : "d-none"
@@ -36,7 +37,7 @@ const Contact = (props) => {
       </button>
     </div>
     <div className="row ml-3">
-      <img src={contact.imageUrl} alt={`${contact.name}`}></img>
+      <img src={contact.imageUrl} onError={addDefaultImg} alt={`${contact.name}`}></img>
     </div>
     <div className="row ml-3">
       <h2>{contact.name}<button type="button" onClick={handleEditClick} className="ml-3 btn btn-sm btn-outline-primary">

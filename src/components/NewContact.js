@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'open-iconic/font/css/open-iconic-bootstrap.css'
 
+//TODO Add validation for name/url/email/number
+
 class NewContact extends Component {
   constructor() {
     super()
@@ -31,7 +33,6 @@ class NewContact extends Component {
       family: this.state.family,
       other:this.state.other
     }
-    console.log(contact)
     //TODO add validation for name, imageUrl, email, and number
     this.props.addContact(contact);
     this.props.history.push('/')

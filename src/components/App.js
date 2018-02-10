@@ -65,8 +65,6 @@ const deleteContact = (contact) => {
   sendEvent("deleteContact", contact)
 }
 
-
-
 const Header = () => (<nav className="navbar navbar-expand-sm navbar-light bg-light">
   <div className="navbar-brand">Contact List</div>
   <ul  className="nav navbar-nav" role="tablist">
