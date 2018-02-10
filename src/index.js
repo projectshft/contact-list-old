@@ -19,7 +19,6 @@ class App extends Component {
     }
 
   this.addContact = this.addContact.bind(this)
-  this.renderContactView = this.renderContactView.bind(this)
   }
 
 
@@ -37,12 +36,6 @@ class App extends Component {
     })
   }
 
-  // Helper function to render '/:id' and '/add' paths. Since same render function is used in multiple Route statements, I'm adding it to the class declaration to keep it DRY.
-  renderContactView = (props) => {
-
-  // Use spread operator to pass Router's match props to component page. The match props allow the component page to access its own id, which will be used to determine which contact to show.
-    return <ContactView contacts={this.state.contacts} updateContact={this.updateContact} {...props} />
-    }
 
   render () {
     return (
@@ -50,15 +43,12 @@ class App extends Component {
         {/* render functions inside Route tags pass props to components */}
         <Route exact path='/' render = {() => <ContactList contacts={this.state.contacts} handleEdit={this.handleEdit} />}/>
 
-
-        <Route path='/:id' render = {(props) => {<ContactView contacts={this.state.contacts} updateContact={this.updateContact} {...props} />}} />
-
-        {/* <Route path='/:id' render = {() => <ContactView contacts={this.state.contacts} updateContact={this.updateContact}/>} /> */}
-
+        {/* Use spread operator to pass Router's match props to component page. The match props allow the component page to access its own id, which will be used to determine which contact to show. */}
+        <Route path='/:id' render = {(props) => <ContactView contacts={this.state.contacts} updateContact={this.updateContact} {...props} />} />
 
 
         {/* The add page is almost identical to the '/:id' pages, so the render */}
-        <Route path='/:add' render = {(props) => {this.renderContactView(props)}} />
+        <Route path='/:add' render = {(props) => <ContactView contacts={this.state.contacts} updateContact={this.updateContact} {...props} />} />
       </Switch>
 
     )
