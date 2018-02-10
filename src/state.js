@@ -85,12 +85,15 @@ const queryState = (name, data) => {
 //
 // NOTE: This is where you should add support for any new events you want to
 // handle!
-const handleEvent = ({
-  name,
-  data
-}, state) => {
+const handleEvent = ({ name, data}, state) => {
   if (name === 'addContact') {
-    state.contacts = state.contacts.concat([data]);
+    const newContact = {}
+    newContact.id = state.contacts.length,
+    newContact.name= data.name,
+    newContact.imageUrl = data.imageUrl,
+    newContact.email = data.email,
+    newContact.number = data.number
+    state.contacts = state.contacts.concat([newContact]);
   } else if (name === 'editContact') {
     state.contacts.forEach((c) => {
       if (c.id === data.id) {
@@ -102,6 +105,12 @@ const handleEvent = ({
     });
   } else if (name === 'selectContact') {
     state.current_contact_id = data.id
+  } else if (name === 'deleteContact') {
+    const contact = state.contacts.find((contact) => {
+      return contact.id == data
+    })
+    const index = state.contacts.indexOf(contact)
+    state.contacts.splice(index,1)
   } else {
     // If we don't know what kind of event this is, alert the developer!
     throw new Error(`Unrecognized event: ${name}`);
