@@ -71,7 +71,7 @@ const queryState = (name, data) => {
     return STATE.current_contact_id
   } else if (name === 'getSpecificContact') {
     const contact = STATE.contacts.find((contact) => {
-      return contact.id == data
+      return contact.id === data
     })
     return contact
   } else {
@@ -88,10 +88,14 @@ const queryState = (name, data) => {
 const handleEvent = ({ name, data}, state) => {
   if (name === 'addContact') {
     const newContact = {}
-    newContact.id = state.contacts.length,
-    newContact.name= data.name,
-    newContact.imageUrl = data.imageUrl,
-    newContact.email = data.email,
+    if (state.contacts.length === 0) {
+      newContact.id = 0
+    } else {
+      newContact.id = state.contacts[state.contacts.length-1].id+1
+    }
+    newContact.name= data.name
+    newContact.imageUrl = data.imageUrl
+    newContact.email = data.email
     newContact.number = data.number
     state.contacts = state.contacts.concat([newContact]);
   } else if (name === 'editContact') {
@@ -103,11 +107,9 @@ const handleEvent = ({ name, data}, state) => {
         c.number = data.number
       }
     });
-  } else if (name === 'selectContact') {
-    state.current_contact_id = data.id
   } else if (name === 'deleteContact') {
     const contact = state.contacts.find((contact) => {
-      return contact.id == data
+      return contact === data
     })
     const index = state.contacts.indexOf(contact)
     state.contacts.splice(index,1)
