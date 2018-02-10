@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import {faUser} from '@fortawesome/fontawesome-free-solid'
 export default class Contact extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +16,8 @@ export default class Contact extends Component {
         <td>{this.props.contact.email}</td>
         <td>{this.props.contact.imageUrl}</td>
         <td>{this.props.contact.tel}</td>
-        <td>edit</td>
+        <td><FontAwesomeIcon icon={faUser}/>Coffee</td>
+        <td><FontAwesomeIcon icon={faUser}/>Coffee</td>
       </tr>
     )
   }

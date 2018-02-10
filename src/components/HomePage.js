@@ -3,6 +3,11 @@ import '../../node_modules/bootstrap/dist/js/bootstrap.js'
 import ContactModal from './ContactModal'
 import ContactList from './ContactList'
 
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import faUsers from '@fortawesome/fontawesome-pro-regular/faUsers'
+import faPlus from '@fortawesome/fontawesome-pro-regular/faPlus'
+
+
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -31,10 +36,12 @@ export default class HomePage extends Component {
     return (
       <div className=''>
         <div className="row">
-        <h1>Contacts</h1>
+        <h1><FontAwesomeIcon icon={faUsers} />Contacts</h1>
         <div>
         
-        <button onClick={this.toggleModal} type="button" className="btn btn-success" data-toggle="modal" data-target="#exampleModal">Add contact</button>
+        <button onClick={this.toggleModal} type="button" className="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+          <FontAwesomeIcon icon={faPlus} /> Add contact
+        </button>
         </div>
         <ContactModal 
           show={this.state.isOpen} 
