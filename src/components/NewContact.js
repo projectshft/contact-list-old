@@ -13,12 +13,10 @@ class NewContact extends Component {
       imageUrl: '',
       email: '',
       number: '',
-      label:[
-        false,
-        false,
-        false,
-        false
-      ]
+      personal:false,
+      business:false,
+      family:false,
+      other:false
     }
   }
 
@@ -28,13 +26,12 @@ class NewContact extends Component {
       imageUrl: this.state.imageUrl,
       email: this.state.email,
       number: this.state.number,
-      label:[
-        this.state.personal,
-        this.state.business,
-        this.state.family,
-        this.state.other
-      ]
+      personal: this.state.personal,
+      business: this.state.business,
+      family: this.state.family,
+      other:this.state.other
     }
+    console.log(contact)
     //TODO add validation for name, imageUrl, email, and number
     this.props.addContact(contact);
     this.props.history.push('/')

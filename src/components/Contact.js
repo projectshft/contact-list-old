@@ -15,6 +15,14 @@ const Contact = (props) => {
       props.history.push('/')
     }
   }
+
+  console.log(contact.personal, contact.business, contact.family, contact.other)
+
+  const personalShow = contact.personal ? "" : "d-none"
+  const businessShow = contact.business ? "" : "d-none"
+  const familyShow = contact.family ? "" : "d-none"
+  const otherShow = contact.other ? "": "d-none"
+
   const backButton = () => {
     props.history.push('/')
   }
@@ -45,6 +53,12 @@ const Contact = (props) => {
     </div>
     <div className="row ml-3">
       <h4>phone number: {contact.number}</h4>
+    </div>
+    <div className={`ml-3 row`}>Labels:
+      <div className={`ml-3 ${personalShow}`}> Personal</div>
+      <div className={`ml-3 ${businessShow}`}> Business</div>
+      <div className={`ml-3 ${familyShow}`}> Family</div>
+      <div className={`ml-3 ${otherShow}`}> Other</div>
     </div>
   </div>)
 }

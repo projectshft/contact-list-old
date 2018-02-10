@@ -32,10 +32,10 @@ const STATE = {
     imageUrl: "http://www.oebmidsummit.com/img/noavatar.jpg",
     email: "??@???.com",
     number: "???-???-????",
-    personal: false,
-    business:false,
-    family:true,
-    other:false
+    personal: true,
+    business: false,
+    family: true,
+    other: true
     }
   ]
 };
@@ -84,8 +84,15 @@ const sendEvent = (name, data) => {
 
 const queryState = (name, data) => {
   if (name === 'getContacts') {
-    return STATE.contacts;
-  } else if (name === 'getCurrentContact') {
+    if (data === "") {
+      return STATE.contacts;
+    } else {
+      return STATE.contacts.filter(contact => {
+        return contact[data]
+      })
+    }
+  }
+    else if (name === 'getCurrentContact') {
     return STATE.current_contact_id
   } else if (name === 'getSpecificContact') {
     const contact = STATE.contacts.find((contact) => {
@@ -115,6 +122,10 @@ const handleEvent = ({ name, data}, state) => {
     newContact.imageUrl = data.imageUrl
     newContact.email = data.email
     newContact.number = data.number
+    newContact.personal = data.personal,
+    newContact.business = data.business,
+    newContact.family = data.family,
+    newContact.other = data.other
     state.contacts = state.contacts.concat([newContact]);
   } else if (name === 'editContact') {
     state.contacts.forEach((c) => {
@@ -123,6 +134,10 @@ const handleEvent = ({ name, data}, state) => {
         c.imageUrl = data.imageUrl
         c.email = data.email
         c.number = data.number
+        c.personal = data.personal,
+        c.business = data.business,
+        c.family = data.family,
+        c.other = data.other
       }
     });
   } else if (name === 'deleteContact') {

@@ -15,7 +15,11 @@ class EditContact extends Component {
       name: this.contact.name,
       imageUrl: this.contact.imageUrl,
       email: this.contact.email,
-      number: this.contact.number
+      number: this.contact.number,
+      personal:this.contact.personal,
+      business:this.contact.business,
+      family:this.contact.family,
+      other:this.contact.other
     }
   }
 
@@ -32,9 +36,12 @@ class EditContact extends Component {
       name: this.state.name,
       imageUrl: this.state.imageUrl,
       email: this.state.email,
-      number: this.state.number
+      number: this.state.number,
+      personal:this.state.personal,
+      business:this.state.business,
+      family:this.state.family,
+      other:this.state.other
     }
-    console.log(editedContact)
 //TODO add validation for name, imageUrl, email, and number
     this.props.editContact(editedContact);
     this.props.history.push('/')
@@ -74,6 +81,20 @@ class EditContact extends Component {
         </div>
         <div className="row ml-3">
           <h4>phone number: <input className="ml-2" style={{width: 313}} onChange={event => this.setState({number: event.target.value})} value={this.state.number}/></h4>
+        </div>
+        <div className="row">
+          <div className="col-sm-3 label-selector">
+            <input className="" type='checkbox' checked={this.state.personal} onChange={event => this.setState({personal: event.target.checked})}/> Personal
+          </div>
+          <div className="col-sm-3 label-selector">
+            <input className="" type='checkbox' checked={this.state.business} onChange={event => this.setState({business: event.target.checked})}/> Business
+          </div>
+          <div className="col-sm-3 label-selector">
+            <input className="" type='checkbox' checked={this.state.family} onChange={event => this.setState({family: event.target.checked})}/> Family
+          </div>
+          <div className="col-sm-3 label-selector">
+            <input className="" type='checkbox' checked={this.state.other} onChange={event => this.setState({other: event.target.checked})}/> Other
+          </div>
         </div>
         <button className="mt-3 btn btn-sm btn-primary" style={{
             textDecoration: 'none',

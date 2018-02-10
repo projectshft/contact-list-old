@@ -5,8 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'open-iconic/font/css/open-iconic-bootstrap.css'
 
 const AllContacts = (props) => {
-  console.log(props)
-  const contactsList = props.getContacts()
+  const contactsList = props.getContacts(props.match.path.slice(1))
   const handleXClick = (contact) => {
     if (window.confirm(`Are you sure you want to delete ${contact.name}?`)) {
       props.deleteContact(contact)

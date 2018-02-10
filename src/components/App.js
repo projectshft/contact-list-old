@@ -49,8 +49,8 @@ const editContact = (contact) => {
   return sendEvent("editContact", contact)
 }
 
-const getContacts = () => {
-  return queryState("getContacts")
+const getContacts = (data) => {
+  return queryState("getContacts",data)
 }
 
 const getSpecificContact = (id) => {
