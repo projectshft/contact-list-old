@@ -7,10 +7,10 @@ const ContactList = (props) => {
   const contactListItems = props.contacts.map( (contact) => {
     return (
       <div key={contact.id} className="row m-2 mh-100 text-right">
-        <div className="col-md-6 bg-light rounded ">
-          <span className="float-left text-truncate d-inline-block">{contact.name}</span>
+        <div className="col-lg-6 bg-light rounded text-left text-truncate">
+          {contact.name}
         </div>
-        <div className="col-md-2 bg-light rounded">
+        <div className="col-lg-2 bg-light rounded">
         <Link to={`${contact.id}`}> <button className="btn btn-sm btn-info m-1">edit</button></Link>
         <button className="btn btn-sm btn-danger m-1" onClick={() => props.deleteContact(contact)}>delete</button>
         </div>
