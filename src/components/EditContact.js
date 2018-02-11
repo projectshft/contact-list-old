@@ -42,7 +42,7 @@ class EditContact extends Component {
       family:this.state.family,
       other:this.state.other
     }
-//TODO add validation for name, imageUrl, email, and number
+
     this.props.editContact(editedContact);
     this.props.history.push(`/${this.state.id}`)
   }

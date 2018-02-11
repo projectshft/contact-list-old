@@ -4,6 +4,7 @@ import _ from 'lodash';
 // over time to reflect the current state of the application. When we first
 // load, it represents the initial state of our application.
 const STATE = {
+  syncStatus: false,
   contacts: [
     {
       id: 0,
@@ -14,7 +15,8 @@ const STATE = {
       personal: false,
       business:false,
       family:false,
-      other:true
+      other:true,
+      fromGoogle: false,
     }, {
       id: 1,
       name: "Your Mom",
@@ -24,7 +26,8 @@ const STATE = {
       personal: false,
       business:false,
       family:true,
-      other:false
+      other:false,
+      fromGoogle: false,
     },{
     id: 2,
     name: "Anonymous",
@@ -34,7 +37,8 @@ const STATE = {
     personal: true,
     business: false,
     family: true,
-    other: true
+    other: true,
+    fromGoogle: false,
     }
   ]
 };
@@ -84,7 +88,7 @@ const sendEvent = (name, data) => {
 const queryState = (name, data) => {
   if (name === 'getContacts') {
     if (data === "") {
-      return STATE.contacts;
+      return STATE.contacts.slice();
     } else {
       return STATE.contacts.filter(contact => {
         return contact[data]
@@ -95,7 +99,10 @@ const queryState = (name, data) => {
       return contact.id === data
     })
     return contact
-  } else {
+  } else if (name === 'getSyncStatus') {
+    return STATE.syncedStatus
+  }
+  else {
     // If we don't know what kind of event this is, alert the developer!
     throw new Error(`Unrecognized event: ${name}`);
   }
@@ -122,6 +129,7 @@ const handleEvent = ({ name, data}, state) => {
     newContact.business = data.business
     newContact.family = data.family
     newContact.other = data.other
+    newContact.fromGoogle = data.fromGoogle
     state.contacts = state.contacts.concat([newContact]);
   } else if (name === 'editContact') {
     state.contacts.forEach((c) => {
@@ -142,7 +150,10 @@ const handleEvent = ({ name, data}, state) => {
     })
     const index = state.contacts.indexOf(contact)
     state.contacts.splice(index,1)
-  } else {
+  } else if (name === 'updateSyncStatus') {
+    state.syncedStatus = true
+  }
+  else {
     // If we don't know what kind of event this is, alert the developer!
     throw new Error(`Unrecognized event: ${name}`);
   }

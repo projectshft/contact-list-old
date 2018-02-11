@@ -1,4 +1,6 @@
-const gapi = window.gapi = window.gapi || {};
+// Google's API script
+
+var gapi = window.gapi = window.gapi || {};
 gapi._bs = new Date().getTime();
 (function() {
   /*

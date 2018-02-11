@@ -4,8 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'open-iconic/font/css/open-iconic-bootstrap.css'
 
 
-
-
 const Contact = (props) => {
   const contact = props.getSpecificContact(parseInt(props.match.params.id,10))
   const handleXClick = () => {
@@ -23,6 +21,7 @@ const Contact = (props) => {
   const businessShow = contact.business ? "" : "d-none"
   const familyShow = contact.family ? "" : "d-none"
   const otherShow = contact.other ? "": "d-none"
+  const googleShow = contact.fromGoogle ? "": "d-none"
 
   const backButton = () => {
     props.history.push('/')
@@ -60,6 +59,7 @@ const Contact = (props) => {
       <div className={`ml-3 ${businessShow}`}> Business</div>
       <div className={`ml-3 ${familyShow}`}> Family</div>
       <div className={`ml-3 ${otherShow}`}> Other</div>
+      <div className={`ml-3 ${googleShow}`}> Google Contact</div>
     </div>
   </div>)
 }

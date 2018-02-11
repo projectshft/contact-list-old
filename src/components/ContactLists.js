@@ -6,6 +6,20 @@ import 'open-iconic/font/css/open-iconic-bootstrap.css'
 
 const AllContacts = (props) => {
   const contactsList = props.getContacts(props.match.path.slice(1))
+  // Display contacts in alphabetical order
+  contactsList.sort((a, b) => {
+    const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+    const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    // names must be equal
+    return 0;
+});
+
   const handleXClick = (contact) => {
     if (window.confirm(`Are you sure you want to delete ${contact.name}?`)) {
       props.deleteContact(contact)
@@ -20,7 +34,7 @@ const AllContacts = (props) => {
     props.history.push('/new')
   }
 
-  const synced = props.synced ? "hide" : ""
+  const synced = props.getSyncStatus() ? "hide" : ""
 
   return (<div className="container-fluid">
     <div className="row">
