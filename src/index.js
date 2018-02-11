@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './index.css';
 import ContactView from './contact-view';
 import ContactList from './contact-list';
-import AddContact from './add-contact'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
@@ -79,28 +78,16 @@ class App extends Component {
 
 /*WISHLIST
 Prettier styling on contact view
-Add default props
+
 When updating imageURL, do something nicer than broken image. Maybe don't have that one update on every change? (be sure to deal with submit function) - use img onerror (see MDN) for broken link handling
+
 Page Headers for contact list and contact view
-Merge add and update contacts
-Handle duplicate contacts
-Nicer way to handle IsNew boolean in contactview (really only needs to be local state) - maybe dont pass it back to App?
 DRY up update and delete buttons
+Router should send edit to contacts/id, not just /id
+Default display when contact list first opens
 VALIDATION
+
 */
-
-// //set App with routes
-// const Main = () => {
-//   <main>
-//     <Switch>
-//       <Route exact path='/' component={Main}/>
-//       <Route path='/:id' component={ContactView}/>
-//     </Switch>
-//   </main>
-// }
-
-//set routes
-
 
 const root = document.getElementById('root');
 

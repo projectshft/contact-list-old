@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class ContactView extends Component {
@@ -57,6 +57,37 @@ class ContactView extends Component {
     this.setState({[input.className]: input.value})
   }
 
+  validateName() {
+    //name must not be blank. setting max length to 75 characters. Prefer to allow nonstandard names (like Q.Dogs) rather than risk a user not being able to enter their actual name. See: http://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/
+
+  }
+
+  validateEmail() {
+    //email address must not be null. this guy has thought of all of the edge cases - https://hackernoon.com/the-100-correct-way-to-validate-email-addresses-7c4818f24643 https://hackernoon.com/how-to-reduce-incorrect-email-addresses-df3b70cb15a9 .
+    //For the sake of learning, let's assume that my contacts will have email addresses that
+      //1. are 75 characters max
+      //2. contain one @ at neither the first nor last position
+  }
+
+  validateImageUrl(){
+
+  }
+
+  validatePhoneNumber (){
+
+  }
+
+  validateAllInput() {
+    //runs validator functions for each input area.
+    //if all inputs are valid, runs either add or update function as appropriate
+    console.log(this.props)
+    console.log(this.state)
+
+
+    //set values to pass up to App state
+    //call appropriate function from this.props
+  }
+
   render() {
 
     //How freakin' cool is ES6 syntax!?? This grabs all of state's contact-related properties to pass up to App state, while leaving contactIsNew, which only belongs here in contact view.
@@ -69,7 +100,7 @@ class ContactView extends Component {
       submitButton = <button className="btn btn-primary btn-lg m-1" onClick={() => this.props.addContact(contact) }>Add</button>
 
     } else {
-      submitButton = <button className="btn btn-primary btn-lg m-1" onClick={() => this.props.updateContact(contact)}>Update</button>
+      submitButton = <button className="btn btn-primary btn-lg m-1" onClick={() => this.validateAllInput()}>Update</button>
 
     }
 
@@ -93,22 +124,22 @@ class ContactView extends Component {
           <p>
             <strong>Name:
             </strong>
-            <input className="name" value={this.state.name}/>
+            <input className="name" value={this.state.name} onChange={(event) => this.onInputChange(event.target)}/>
           </p>
           <p>
             <strong>Email:
             </strong>
-            <input className="email" value={this.state.email}/>
+            <input className="email" value={this.state.email} onChange={(event) => this.onInputChange(event.target)}/>
           </p>
           <p>
             <strong>Phone number:
             </strong>
-            <input className="phoneNumber" value={this.state.phoneNumber}/>
+            <input className="phoneNumber" value={this.state.phoneNumber} onChange={(event) => this.onInputChange(event.target)}/>
           </p>
           <p>
             <strong>Image URL:
             </strong>
-            <input className="imageUrl" value={this.state.imageUrl}/>
+            <input className="imageUrl" value={this.state.imageUrl} onChange={(event) => this.onInputChange(event.target)} />
           </p>
           <Link to="/">
             <button className="btn btn-default m-1">Cancel</button>

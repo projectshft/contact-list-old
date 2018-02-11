@@ -15,6 +15,8 @@ class AddContact extends Component {
     }
   }
 
+  //test
+
   //helper function to generate unique ID for each contact
   generateId (props) {
     //when generating pseudorandom ID, check to make sure it is unique. regenerate if it isn't.
