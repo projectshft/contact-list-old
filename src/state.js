@@ -9,18 +9,26 @@ const generateId = () => Math.round(Math.random() * 100000000)
 const STATE = {
   defaultHeaderText: 'Not Your Parents\' Rolodex',
   defaultHeaderButtonText: 'Add Contact',
-  currentContact: {},
+  currentContact: null,
   currentHeaderText: 'Not Your Parents\' Rolodex',
   currentHeaderButtonText: 'Add Contact',
   contacts: [
-    { id: generateId(), name: 'Al E. Gator', imageURL: '', email: '', phoneNumber: 5551234567}
+    { id: generateId(), name: 'Al E. Gator', imageURL: '', email: 'al@ufl.edu', phoneNumber: 5551234567},
+    { id: generateId(), name: 'IBM Watson', imageURL: '', email: 'watson@ibm.com', phoneNumber: 5551234567}
   ],
   getAllContacts: function () { return this.contacts },
   getContact: id => {
     const isContact = contact => contact.id === id
     return this.contacts.find(isContact)
   },
-  showContacts: true
+  showContacts: true,
+  temporaryContact: {
+    id: 0,
+    name: 'Full Name',
+    imageURL: 'http://your-image.url.com/image.jpg',
+    email: 'someone@example.com',
+    phoneNumber: 5551234567
+  }
 };
 
 let ON_UPDATE_CALLBACK = null
@@ -65,6 +73,26 @@ const sendEvent = (name, data) => {
   }
 };
 
+// Requests a piece of state from the model using event names similar to sendEvent.
+// each request _may_ have some data that will help narrow down the scope of the
+// state requested (e.g the id of the value desired)
+const queryState = (name, data) => {
+  if (name === 'getAllContacts') {
+    return STATE.contacts;
+  } else if (name === 'getContact') {
+    return STATE.contacts.find( (contact) => contact.id === data)
+  } else if (name === 'getTemporaryContact') {
+    return STATE.currentContact
+  } else if (name === 'getCurrentContact') {
+    if (STATE.currentContact) {
+      return STATE.currentContact
+    }
+  } else {
+    // If we don't know what kind of event this is, alert the developer!
+    throw new Error(`Unrecognized event: ${name}`);
+  }
+}
+
 // Given an event name and the current state of the application, should mutate
 // the state in-place as it sees fit.
 //
@@ -73,11 +101,17 @@ const sendEvent = (name, data) => {
 const handleEvent = ({ name, data }, state) => {
   if (name === 'changeName') {
     state.name = data
-  // } else if (name === 'updateHeader') {
-  //   if (state.currentHeaderText === state.defaultHeaderText) {
-  //     state.currentHeaderText = state.currentContact.name
-  //     state.currentHeaderButtonText =
-  //   }
+  } else if (name === 'updateShowContacts') {
+    data === 'viewContacts' ? state.showContacts = true : state.showContacts = false
+  } else if (name === 'updateCurrentContact') {
+    if (typeof data === 'object') {
+      state.currentContact = data
+    }
+  } else if (name === 'deleteClickedContact') {
+    if (typeof data === 'number') {
+      state.contacts = state.contacts.filter(contact => contact.id !== data)
+      state.currentContact = null
+    }
   } else {
     // If we don't know what kind of event this is, alert the developer!
     throw new Error(`Unrecognized event: ${name}`)
@@ -91,6 +125,8 @@ export {
   forceUpdate,
 
   onUpdate,
+
+  queryState,
 
   sendEvent,
 }

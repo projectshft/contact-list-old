@@ -1,7 +1,7 @@
 import { BrowserRouter, Link, Redirect, Route, Switch } from 'react-router-dom'
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
-import { onUpdate, forceUpdate, sendEvent } from './state'
+import { onUpdate, forceUpdate, queryState, sendEvent } from './state'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/jquery/dist/jquery.slim.min.js'
 import '../node_modules/popper.js/dist/umd/popper.min.js'
@@ -10,25 +10,26 @@ import './index.css'
 import ContactList from './components/contact_list'
 import ContactsView from './components/contacts_view'
 
-const generateId = () => Math.round(Math.random() * 100000000)
-
-const STATE = {
-  defaultHeader: 'Not Your Parents\' Rolodex',
-  currentContact: this.contacts,
-  contacts: [
-    { id: generateId(), name: 'Al E. Gator', imageURL: '', email: '', phoneNumber: 5551234567}
-  ],
-  getAllContacts() { return this.contacts },
-  getContact: id => {
-    const isContact = contact => contact.id === id
-    return this.contacts.find(isContact)
-  }
-}
-
 class App extends Component {
 
   constructor (props) {
     super(props)
+  }
+
+  showContactsList () {
+    sendEvent('updateShowContacts', 'viewContacts')
+  }
+
+  addNewContactButton () {
+    return (
+      <Link className='btn btn-outline-primary ml-3' to='/contacts'>{this.props.currentHeaderButtonText}</Link>
+    )
+  }
+
+  navigateBackButton () {
+    return (
+      <Link className='btn btn-outline-primary ml-3' to='/contacts' onClick={this.showContactsList}>Back</Link>
+    )
   }
 
   render () {
@@ -36,7 +37,7 @@ class App extends Component {
       <div className='container'>
         <div className='row'>
           <div className='col-md-12'>
-            <h1 className='text-center mt-5'>{this.props.showContacts ? this.props.currentHeaderText : this.props.currentContact.name }<button type='button' className='btn btn-outline-primary ml-3'>{this.props.showContacts ? this.props.currentHeaderButtonText : 'Back' }</button></h1>
+            <h1 className='text-center mt-5'>{this.props.showContacts ? this.props.currentHeaderText : this.props.currentContact.name } {this.props.showContacts ? this.addNewContactButton() : this.navigateBackButton() }</h1>
           </div>
         </div>
         <main>
