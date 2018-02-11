@@ -12,8 +12,8 @@ class App extends Component {
 
     this.state = {
       contacts: [
-        {id: 0, name: 'bart', email: 'hi@bart.com'},
-        {id: 1, name: 'bat', email: 'notBart@bats.com'},
+        {id: 0, name: 'bart', email: 'hi@bart.com', imageUrl: '', phoneNumber: ''},
+        {id: 1, name: 'bat', email: 'notBart@bats.com', imageUrl: '', phoneNumber: ''},
       ]
     }
 
@@ -46,7 +46,6 @@ class App extends Component {
 
     //set the spliced array as the new value of state.contacts
     this.setState({contacts: newContacts})
-
   }
 
   addContact = (contact) => {
@@ -85,9 +84,17 @@ Page Headers for contact list and contact view
 DRY up update and delete buttons
 Router should send edit to contacts/id, not just /id
 Default display when contact list first opens
+
 VALIDATION
+- decide on criteria for each input
+- disable add/update button until all inputs are valid
+- add error messages as conditional renders
+
+
+
 linting
 styling for contact view - each input/label pair in a row
+handling long inputs - css should contain
 
 */
 
