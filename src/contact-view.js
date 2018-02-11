@@ -120,26 +120,22 @@ class ContactView extends Component {
 
         </div>
         {/* attach change handler to entire div to avoid repetition. */}
-        <div className="col-md-4" onChange={(event) => this.onInputChange(event.target)}>
+        <div className="col-md-4 m-2">
           <p>
-            <strong>Name:
-            </strong>
+            <strong>Name: </strong>
             <input className="name" value={this.state.name} onChange={(event) => this.onInputChange(event.target)}/>
           </p>
           <p>
-            <strong>Email:
-            </strong>
+            <strong>Email: </strong>
             <input className="email" value={this.state.email} onChange={(event) => this.onInputChange(event.target)}/>
           </p>
           <p>
-            <strong>Phone number:
-            </strong>
+            <strong>Phone number: </strong>
             <input className="phoneNumber" value={this.state.phoneNumber} onChange={(event) => this.onInputChange(event.target)}/>
           </p>
           <p>
-            <strong>Image URL:
-            </strong>
-            <input className="imageUrl" value={this.state.imageUrl} onChange={(event) => this.onInputChange(event.target)} />
+            <strong>Image URL: </strong>
+            <input className="imageUrl" value={this.state.imageUrl} onChange={(event) => this.onInputChange(event.target)}/>
           </p>
           <Link to="/">
             <button className="btn btn-default m-1">Cancel</button>

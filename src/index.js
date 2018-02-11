@@ -86,6 +86,8 @@ DRY up update and delete buttons
 Router should send edit to contacts/id, not just /id
 Default display when contact list first opens
 VALIDATION
+linting
+styling for contact view - each input/label pair in a row
 
 */
 
