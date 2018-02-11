@@ -16,8 +16,6 @@ class App extends Component {
         {id: 1, name: 'bat', email: 'notBart@bats.com', imageUrl: '', phoneNumber: ''},
       ]
     }
-
-  this.addContact = this.addContact.bind(this)
   }
 
   deleteContact = (contactToDelete) => {
@@ -25,19 +23,21 @@ class App extends Component {
     if (!confirm) {
       return
     } else {
-      //first, use ID to find the index of the contact to be deleted in our state array
+      //first, use ID to find the index of the contact to be deleted in our state's contacts array
       let indexToUpdate = this.state.contacts.findIndex((contact) => {return contact.id === contactToDelete.id});
 
       //then make a copy array and remove the contact at the found index.
       let newContacts = this.state.contacts.slice();
       newContacts.splice(indexToUpdate, 1);
+
+      //set the spliced array as the new value of state.contacts
       this.setState({contacts: newContacts})
     }
 
   }
 
   updateContact = (updatedContact) => {
-    //first, use ID to find the index of the contact to be updated in our state array
+    //first, use ID to find the index of the contact to be updated in our state's contacts array
     let indexToUpdate = this.state.contacts.findIndex((contact) => {return contact.id === updatedContact.id});
 
     //then make a copy array and update the contact at the found index.
@@ -53,9 +53,6 @@ class App extends Component {
       contacts: this.state.contacts.concat([contact])
     })
   }
-
-
-
 
 
   render () {
@@ -77,17 +74,10 @@ class App extends Component {
 
 /*WISHLIST
 
-When updating imageURL, do something nicer than broken image. Maybe don't have that one update on every change? (be sure to deal with submit function) - use img onerror (see MDN) for broken link handling
-
 
 DRY up update and delete buttons
 
-Default display when contact list first opens
-
-VALIDATION
-- decide on criteria for each input
-- disable add/update button until all inputs are valid
-- add error messages as conditional renders
+Default display when contact list first opens / remove test contacts
 
 
 

@@ -80,7 +80,10 @@ class ContactView extends Component {
         return value && value.length <= 75
 
       case 'imageUrl':
-        break;
+      // I REALLY wanted to check whether images were broken, but as far as I can tell that requires some async skills I don't have yet. Alas. Will just check that value is of format somestring.someimageextension.
+        const imageUrlRegEx = RegExp(/(.)\.(jpeg|jpg|gif|png|JPEG|JPG|GIF|PNG)$/);
+        return value === null || imageUrlRegEx.test(value);
+        
       case 'email':
       //this guy has thought of all of the edge cases - https://hackernoon.com/the-100-correct-way-to-validate-email-addresses-7c4818f24643 https://hackernoon.com/how-to-reduce-incorrect-email-addresses-df3b70cb15a9 .
       //For the sake of learning, let's assume that my contacts will have email addresses that
@@ -147,6 +150,10 @@ class ContactView extends Component {
       ? null
       : 'Phone number must take the form of xxx-xxx-xxxx. You may leave this field blank.';
 
+    let imageUrlError = this.state.imageUrl.isValid
+      ? null
+      : 'Link should go to a .jpg, .gif, or .png file. You may leave this field blank.';
+
     //Show update or add button as appropriate
     //Button should be disabled if all input is not valid.
     let submitButton = null;
@@ -166,12 +173,6 @@ class ContactView extends Component {
           <div className="col-md-2">
             <img className="img-fluid" src={this.state.imageUrl.value} alt={this.state.name.value}/>
           </div>
-          {/* <div className="col-md-1">
-            <Link to="/">
-              <button className="btn btn-secondary">Back</button>
-            </Link>
-          </div> */}
-
         </div>
 
           <p>
@@ -190,7 +191,7 @@ class ContactView extends Component {
           </p>
 
           <p>
-            <strong>Image URL: </strong>
+            <strong>Image URL: </strong><span className="text-danger float-right">{imageUrlError}</span>
             <input className="imageUrl" value={this.state.imageUrl.value} onChange={(event) => this.onInputChange(event.target)}/>
           </p>
 

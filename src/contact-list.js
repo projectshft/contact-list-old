@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 const ContactList = (props) => {
 
-
   const contactListItems = props.contacts.map( (contact) => {
     return (
       <div key={contact.id} className="row m-2 mh-100 text-right">
@@ -17,8 +16,6 @@ const ContactList = (props) => {
       </div>
       )
     });
-
-  //clicking on Edit should switch name to contact view
 
   return (
     <div className="container m-2">
