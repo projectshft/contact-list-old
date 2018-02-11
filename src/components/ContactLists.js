@@ -20,6 +20,8 @@ const AllContacts = (props) => {
     props.history.push('/new')
   }
 
+  const synced = props.synced ? "hide" : ""
+
   return (<div className="container-fluid">
     <div className="row">
       <ul>
@@ -37,10 +39,13 @@ const AllContacts = (props) => {
         }
       </ul>
     </div>
-    <div className="row">
-      <button className="ml-5 btn btn-sm btn-primary" onClick={handleAddContact}>
+    <div>
+      <button className="ml-3 btn btn-sm btn-primary" onClick={handleAddContact}>
         Add a contact
       </button>
+    </div>
+    <div>
+      <button className={`${synced} btn btn-primary btn-sm mt-3 ml-3`} id="authorize-button" onClick={props.handleAuthClick}>Add Google Contacts</button>
     </div>
   </div>)
 }

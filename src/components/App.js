@@ -8,6 +8,7 @@ import NewContact from './NewContact'
 import Contact from './Contact'
 import EditContact from './EditContact'
 import AllContacts from './ContactLists'
+import gapi from "./api.js"
 
 const App = () => {
   return (<div>
@@ -19,19 +20,19 @@ const App = () => {
 const Contacts = () => {
   return (<Switch>
     <Route exact path='/' render={(params) => (
-      <AllContacts {...params} deleteContact={deleteContact} getContacts={getContacts}/>
+      <AllContacts {...params} handleAuthClick={handleAuthClick} deleteContact={deleteContact} synced={synced} getContacts={getContacts}/>
     )}/>
     <Route path='/personal' render={(params) => (
-      <AllContacts {...params} deleteContact={deleteContact} getContacts={getContacts} />
+      <AllContacts {...params} handleAuthClick={handleAuthClick} deleteContact={deleteContact} synced={synced} getContacts={getContacts} />
     )}/>
     <Route path='/business' render={(params) => (
-      <AllContacts {...params} deleteContact={deleteContact} getContacts={getContacts} />
+      <AllContacts {...params} handleAuthClick={handleAuthClick} deleteContact={deleteContact} synced={synced} getContacts={getContacts} />
     )}/>
     <Route path='/family' render={(params) => (
-      <AllContacts {...params} deleteContact={deleteContact} getContacts={getContacts} />
+      <AllContacts {...params} handleAuthClick={handleAuthClick} deleteContact={deleteContact} synced={synced} getContacts={getContacts} />
     )}/>
     <Route path='/other' render={(params) => (
-      <AllContacts {...params} deleteContact={deleteContact} getContacts={getContacts} />
+      <AllContacts {...params} handleAuthClick={handleAuthClick} deleteContact={deleteContact} synced={synced} getContacts={getContacts} />
     )}/>
     <Route path='/new' render={(params) => (
       <NewContact {...params} addContact={addContact} />
@@ -89,11 +90,103 @@ const Header = () => (<nav className="navbar navbar-expand-sm navbar-light bg-li
     <li className="nav nav-item nav-link">
       <Link to={'/other'} style={{
           textDecoration: 'none'
-        }}>Other</Link>
-      </li>
+      }}>Other</Link>
+    </li>
 
-    </ul>
-  </nav>
-  )
+  </ul>
+</nav>
+)
+
+//Google People API stuff
+const CLIENT_ID = '347488225091-rfs761jces9tujlh5pn4n544uijrqbr4.apps.googleusercontent.com';
+const API_KEY = 'AIzaSyCaj-LT9CWSH2KojeKLbk0TxDc-NOJIE8s';
+
+// Array of API discovery doc URLs for APIs used by the quickstart
+const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/people/v1/rest"];
+
+// Authorization scopes required by the API; multiple scopes can be
+// included, separated by spaces.
+const SCOPES = "https://www.googleapis.com/auth/contacts.readonly";
+
+const authorizeButton = document.getElementById('authorize-button');
+
+/**
+ *  On load, called to load the auth2 library and API client library.
+ */
+const handleClientLoad = () => {
+  gapi.load('client:auth2', initClient);
+}
+
+/**
+ *  Initializes the API client library and sets up sign-in state
+ *  listeners.
+ */
+const initClient = () => {
+  gapi.client.init({
+    apiKey: API_KEY,
+    clientId: CLIENT_ID,
+    discoveryDocs: DISCOVERY_DOCS,
+    scope: SCOPES
+  }).then(function () {
+    // Listen for sign-in state changes.
+    gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+    // Handle the initial sign-in state.
+    updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+  });
+}
+
+/**
+ *  Called when the signed in status changes, to update the UI
+ *  appropriately. After a sign-in, the API is called.
+ */
+let synced = false
+const updateSigninStatus = (isSignedIn) => {
+  if (isSignedIn) {
+    listConnectionNames()
+    synced = true
+  }
+}
+
+/**
+ *  Sign in the user upon button click.
+ */
+const handleAuthClick = (event) => {
+  gapi.auth2.getAuthInstance().signIn();
+}
+
+/**
+ *  Sign out the user upon button click.
+ */
+const handleSignoutClick = (event) => {
+  gapi.auth2.getAuthInstance().signOut();
+}
+
+/**
+ * Print the display name if available for 10 connections.
+ */
+const listConnectionNames = () => {
+  gapi.client.people.people.connections.list({
+     'resourceName': 'people/me',
+     'pageSize': 1000,
+     'personFields': 'names,emailAddresses,phoneNumbers,coverPhotos,photos',
+   }).then((response) => {
+     const contacts = response.result.connections
+     for (let i = 0; i<contacts.length; i++) {
+       const contact = {
+         name: contacts[i].names[0].displayName,
+         imageUrl: contacts[i].photos[0].url,
+         email: contacts[i].emailAddresses ? contacts[i].emailAddresses[0].value : null,
+         number: contacts[i].phoneNumbers ? contacts[i].phoneNumbers[0].value : null
+       }
+        addContact(contact)
+     }
+
+     })
+     return true
+   };
+
+
+handleClientLoad()
 
 export default App;
