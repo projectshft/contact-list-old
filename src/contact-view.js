@@ -12,7 +12,6 @@ class ContactView extends Component {
     if (this.findContact(props)) {
       //create a new copy of the contact details so we don't mutate state
       let contactDetails = Object.assign({}, this.findContact(props));
-      console.log(contactDetails === this.findContact(props))
       //each user-entered detail should have a value and a boolean indicating whether the value is valid
         for (let detail in contactDetails){
           if (detail !== 'id'){
@@ -20,7 +19,6 @@ class ContactView extends Component {
           }
         }
         this.state = {...contactDetails, contactIsNew: false}
-        console.log(this.state)
     } else {
       this.state = {
           id: this.generateId(props),
@@ -106,66 +104,89 @@ class ContactView extends Component {
   }
 
   validateAllInput() {
-    //runs validator functions for each input area.
-    //if all inputs are valid, runs either add or update function as appropriate
-    console.log(this.props)
-    console.log(this.state)
-
-
-    //set values to pass up to App state
-    //call appropriate function from this.props
+    //runs validator functions for each input area. returns true if all are valid.
+    return this.state.name.isValid
+      && this.state.email.isValid
+      // && this.state.imageUrl.isValid
+      && this.state.phoneNumber.isValid;
   }
 
-  render() {
+  setContact() {
+    //Creates a contact object to be sent back up to App State
 
     //How freakin' cool is ES6 syntax!?? This grabs all of state's contact-related properties to pass up to App state, while leaving contactIsNew, which only belongs here in contact view.
     let {contactIsNew, ...contact} = this.state;
-    //remove "isValid" properties before passing values to App state.
+    //For properties with object values(e.g. name: {value: 'qdogs', isValid: true}), remove "isValid" properties and replace object with object.value before passing contact back to App state.
     for (let detail in contact) {
       if (typeof contact[detail] === 'object') {
         contact[detail] = contact[detail].value;
       }
     }
-    console.log(contact)
+    return contact;
+  }
+
+  render() {
+    //Check that all inputs are valid. If not, disable add/update button.
+    let allInputIsValid = this.validateAllInput();
+    let contact = null;
+
+    if (allInputIsValid){
+      contact = this.setContact();
+    }
+
+  //Add errors to be rendered for invalid inputs only
+    let nameError = this.state.name.isValid
+      ? null
+      : 'You must enter a name. Name can be no longer than 75 characters.';
+
+    let emailError = this.state.email.isValid
+      ? null
+      :'You must enter a valid email address.';
+
+    let phoneNumberError = this.state.phoneNumber.isValid
+      ? null
+      : 'Phone number must take the form of xxx-xxx-xxxx. You may leave this field blank.';
+
     //Show update or add button as appropriate
-    //Button should be disabled if input is not valid.
+    //Button should be disabled if all input is not valid.
     let submitButton = null;
 
     if (this.state.contactIsNew){
-      submitButton = <button className="btn btn-primary btn-lg m-1" onClick={() => this.props.addContact(contact) }>Add</button>
+      submitButton = <button className="btn btn-primary btn-lg m-1" disabled={!allInputIsValid} onClick={() => this.props.addContact(contact) }>Add</button>
 
     } else {
-      submitButton = <button className="btn btn-primary btn-lg m-1" onClick={() => this.props.updateContact(contact)}>Update</button>
+      submitButton = <button className="btn btn-primary btn-lg m-1" disabled={!allInputIsValid} onClick={() => this.props.updateContact(contact)}>Update</button>
 
     }
 
 
     return (
       <div className="container">
-        <div className="row m-2">
-          <div className="col-md-1">
+        <div className="row mt-2">
+          <div className="col-md-2">
+            <img className="img-fluid" src={this.state.imageUrl.value} alt={this.state.name.value}/>
+          </div>
+          {/* <div className="col-md-1">
             <Link to="/">
-              <button className="btn btn-outline-secondary">Back</button>
+              <button className="btn btn-secondary">Back</button>
             </Link>
-          </div>
-          <div className="col-md-1">
-            <img className="img w-100" src={this.state.imageUrl.value} alt={this.state.name.value}/>
-          </div>
+          </div> */}
+
         </div>
 
           <p>
-            <strong>Name:</strong> {/* error message goes here */}
-            <input className="name" value={this.state.name.value} onChange={(event) => this.onInputChange(event.target)}/>
+            <strong>Name:</strong> <span className="text-danger float-right">{nameError}</span>
+            <input className="name" value={this.state.name.value} maxLength="75" onChange={(event) => this.onInputChange(event.target)}/>
           </p>
 
           <p>
-            <strong>Email: </strong>
-            <input className="email" type="email" value={this.state.email.value} onChange={(event) => this.onInputChange(event.target)}/>
+            <strong>Email: </strong> <span className="text-danger float-right">{emailError}</span>
+            <input className="email" type="email" value={this.state.email.value} maxLength="100" onChange={(event) => this.onInputChange(event.target)}/>
           </p>
 
           <p>
-            <strong>Phone number: </strong>
-            <input className="phoneNumber" value={this.state.phoneNumber.value} onChange={(event) => this.onInputChange(event.target)}/>
+            <strong>Phone number: </strong><span className="text-danger float-right">{phoneNumberError}</span>
+            <input className="phoneNumber" value={this.state.phoneNumber.value} maxLength="15" onChange={(event) => this.onInputChange(event.target)}/>
           </p>
 
           <p>

@@ -76,13 +76,12 @@ class App extends Component {
 }
 
 /*WISHLIST
-Prettier styling on contact view
 
 When updating imageURL, do something nicer than broken image. Maybe don't have that one update on every change? (be sure to deal with submit function) - use img onerror (see MDN) for broken link handling
 
-Page Headers for contact list and contact view
+
 DRY up update and delete buttons
-Router should send edit to contacts/id, not just /id
+
 Default display when contact list first opens
 
 VALIDATION
@@ -93,8 +92,7 @@ VALIDATION
 
 
 linting
-styling for contact view - each input/label pair in a row
-handling long inputs - css should contain
+
 
 */
 
