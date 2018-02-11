@@ -6,13 +6,13 @@ class ContactView extends Component {
   constructor(props) {
     super(props)
 
-    //state should contain contact values and a boolean indicating whether this contact is already in the contacts array (update) or not (add)
+    //state should contain contact values and a boolean indicating whether this contact is already in the contacts array (update) or not (add).
 
     //if findContact returns null or undefined, contact was not in the contacts array and contact is new
     if (this.findContact(props)) {
-      //create a new copy of the contact details so we don't mutate state
+      //if contact exists, create a new copy of the contact details so we don't mutate state
       let contactDetails = Object.assign({}, this.findContact(props));
-      //each user-entered detail should have a value and a boolean indicating whether the value is valid
+      //each user-entered detail should have both a value and a boolean indicating whether the value is valid
         for (let detail in contactDetails){
           if (detail !== 'id'){
             contactDetails[detail] = {value: contactDetails[detail], isValid: true}
@@ -38,14 +38,15 @@ class ContactView extends Component {
   generateId (props) {
       //when generating pseudorandom ID, check to make sure it is unique. regenerate if it isn't.
       let id = Math.round(Math.random() * 10000);
-      //condition returns true only if another contact has the same id
+
       let idIsDuplicate = props.contacts.find((contact) => {return contact.id === id})
 
+      //while loop condition returns true only if another contact has the same id. if true, generate new pseudorandom id.
       while (idIsDuplicate) {
         id = Math.round(Math.random() * 10000);
       }
-      return id;
-    }
+    return id;
+  }
 
   //helper function to find the correct contact within our props array
   findContact (props) {
@@ -62,7 +63,7 @@ class ContactView extends Component {
     }
   }
 
-  onInputChange(input) {
+  handleInputChange(input) {
     //input's className tells us which input has changed. use that info to validate the input and update state acccordingly.
     let detailName = input.className;
     let inputDetails = {
@@ -72,18 +73,15 @@ class ContactView extends Component {
     this.setState({[detailName]: inputDetails})
   }
 
+  //evaluates whether a given input is valid. returns true or false as appropriate.
   validate(detailName, value) {
 
     switch (detailName) {
+
       case 'name':
       // name must not be blank. setting max length to 75 characters. Prefer to allow nonstandard names (like Q.Dogs) rather than risk a user not being able to enter their actual name. See: http://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/
         return value && value.length <= 75
 
-      case 'imageUrl':
-      // I REALLY wanted to check whether images were broken, but as far as I can tell that requires some async skills I don't have yet. Alas. Will just check that value is of format somestring.someimageextension.
-        const imageUrlRegEx = RegExp(/(.)\.(jpeg|jpg|gif|png|JPEG|JPG|GIF|PNG)$/);
-        return value === null || imageUrlRegEx.test(value);
-        
       case 'email':
       //this guy has thought of all of the edge cases - https://hackernoon.com/the-100-correct-way-to-validate-email-addresses-7c4818f24643 https://hackernoon.com/how-to-reduce-incorrect-email-addresses-df3b70cb15a9 .
       //For the sake of learning, let's assume that my contacts will have email addresses that
@@ -99,18 +97,21 @@ class ContactView extends Component {
         const phoneNumberRegEx = RegExp(/^([0-9]{3}-[0-9]{3}-[0-9]{4})$/);
         return value === null || phoneNumberRegEx.test(value);
 
+      case 'imageUrl':
+      // I REALLY wanted to check whether images were broken, but as far as I can tell that requires some async skills I don't have yet. Alas. Will just check that value is of format somestring.someimageextension.
+        const imageUrlRegEx = RegExp(/(.)\.(jpeg|jpg|gif|png|JPEG|JPG|GIF|PNG)$/);
+        return value === null || imageUrlRegEx.test(value);
+
       default:
         break;
     }
-
-
   }
 
   validateAllInput() {
     //runs validator functions for each input area. returns true if all are valid.
     return this.state.name.isValid
       && this.state.email.isValid
-      // && this.state.imageUrl.isValid
+      && this.state.imageUrl.isValid
       && this.state.phoneNumber.isValid;
   }
 
@@ -148,14 +149,15 @@ class ContactView extends Component {
 
     let phoneNumberError = this.state.phoneNumber.isValid
       ? null
-      : 'Phone number must take the form of xxx-xxx-xxxx. You may leave this field blank.';
+      : 'Phone number must take the form of xxx-xxx-xxxx. You may leave the phone number field blank.';
 
     let imageUrlError = this.state.imageUrl.isValid
       ? null
-      : 'Link should go to a .jpg, .gif, or .png file. You may leave this field blank.';
+      : 'Link should go to a .jpg, .gif, or .png file. You may leave the image field blank.';
 
     //Show update or add button as appropriate
-    //Button should be disabled if all input is not valid.
+
+    //Buttons should be disabled if all input is not valid.
     let submitButton = null;
 
     if (this.state.contactIsNew){
@@ -163,9 +165,7 @@ class ContactView extends Component {
 
     } else {
       submitButton = <button className="btn btn-primary btn-lg m-1" disabled={!allInputIsValid} onClick={() => this.props.updateContact(contact)}>Update</button>
-
     }
-
 
     return (
       <div className="container">
@@ -177,22 +177,22 @@ class ContactView extends Component {
 
           <p>
             <strong>Name:</strong> <span className="text-danger float-right">{nameError}</span>
-            <input className="name" value={this.state.name.value} maxLength="75" onChange={(event) => this.onInputChange(event.target)}/>
+            <input className="name" value={this.state.name.value} maxLength="75" onChange={(event) => this.handleInputChange(event.target)}/>
           </p>
 
           <p>
             <strong>Email: </strong> <span className="text-danger float-right">{emailError}</span>
-            <input className="email" type="email" value={this.state.email.value} maxLength="100" onChange={(event) => this.onInputChange(event.target)}/>
+            <input className="email" type="email" value={this.state.email.value} maxLength="100" onChange={(event) => this.handleInputChange(event.target)}/>
           </p>
 
           <p>
             <strong>Phone number: </strong><span className="text-danger float-right">{phoneNumberError}</span>
-            <input className="phoneNumber" value={this.state.phoneNumber.value} maxLength="15" onChange={(event) => this.onInputChange(event.target)}/>
+            <input className="phoneNumber" value={this.state.phoneNumber.value} maxLength="15" onChange={(event) => this.handleInputChange(event.target)}/>
           </p>
 
           <p>
             <strong>Image URL: </strong><span className="text-danger float-right">{imageUrlError}</span>
-            <input className="imageUrl" value={this.state.imageUrl.value} onChange={(event) => this.onInputChange(event.target)}/>
+            <input className="imageUrl" value={this.state.imageUrl.value} onChange={(event) => this.handleInputChange(event.target)}/>
           </p>
 
           <Link to="/">
@@ -204,7 +204,6 @@ class ContactView extends Component {
       </div>
     )
   }
-
 }
 
 export default ContactView;
