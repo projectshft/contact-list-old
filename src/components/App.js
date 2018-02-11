@@ -109,6 +109,7 @@ const App = () => {
   </div>)
 }
 
+
 const Contacts = () => {
   return (<Switch>
     <Route exact path='/' render={(params) => (
@@ -161,16 +162,18 @@ const deleteContact = (contact) => {
   sendEvent("deleteContact", contact)
 }
 
+//has the user added their google contacts
 const getSyncStatus = () => {
   return queryState("getSyncStatus")
 }
 
+//change sync status to true when google contacts are added
 const updateSyncStatus = () => {
   sendEvent("updateSyncStatus")
 }
 
 const Header = () => {
-
+  //hide or show the Google Contacts tab
   const fromGoogle = getSyncStatus() ? "" : "hide"
 
   return (<nav className="navbar navbar-expand-sm navbar-light bg-light">

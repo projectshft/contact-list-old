@@ -20,7 +20,7 @@ class NewContact extends Component {
       fromGoogle: false
     }
   }
-
+  //updates the "new user"'s data in the local state and then adds this user to the global state
   handleClick = (props) => {
     const contact = {
       name: this.state.name,

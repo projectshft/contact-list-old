@@ -5,18 +5,21 @@ import 'open-iconic/font/css/open-iconic-bootstrap.css'
 
 
 const Contact = (props) => {
+  //get the specific contact by id based on the route
   const contact = props.getSpecificContact(parseInt(props.match.params.id,10))
+
   const handleXClick = () => {
     if (window.confirm(`Are you sure you want to delete ${contact.name}?`)) {
       props.deleteContact(contact)
       props.history.push('/')
     }
   }
-
+  // if the url given dos not display correctly, use this default image
   const addDefaultImg = (event) => {
     event.target.src = 'http://www.oebmidsummit.com/img/noavatar.jpg'
   }
 
+  //only show what categories this user has been placed in
   const personalShow = contact.personal ? "" : "d-none"
   const businessShow = contact.business ? "" : "d-none"
   const familyShow = contact.family ? "" : "d-none"
@@ -29,6 +32,7 @@ const Contact = (props) => {
   const handleEditClick = () => {
     props.history.push(`/${contact.id}/edit`)
   }
+
   return (<div className="container-fluid">
     <div className="row ml-3">
       <button className="mb-2 btn btn-sm btn-primary" onClick={backButton}>

@@ -30,6 +30,7 @@ class EditContact extends Component {
     this.props.history.push('/')
   }
 
+  //updates the contact's information in the state of this function and then updates the global state
   handleClick = () => {
     const editedContact = {
       id: this.state.id,

@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'open-iconic/font/css/open-iconic-bootstrap.css'
 
 const AllContacts = (props) => {
+  // Get the specific contact list for the route selected (all, family, etc.)
   const contactsList = props.getContacts(props.match.path.slice(1))
   // Display contacts in alphabetical order
   contactsList.sort((a, b) => {
@@ -26,14 +27,17 @@ const AllContacts = (props) => {
     }
     props.history.push('/')
   }
+
   const handleEditClick = (contact) => {
     props.history.push(`/${contact.id}/edit`)
   }
 
+  //routes user to the "new" page where they can create a new contact
   const handleAddContact = (contact) => {
     props.history.push('/new')
   }
 
+  //only displays the "Add Google Contacts" button if the contacts have not been added yet
   const synced = props.getSyncStatus() ? "hide" : ""
 
   return (<div className="container-fluid">
