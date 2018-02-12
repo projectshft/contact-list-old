@@ -2,9 +2,6 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 
 const Contact = (props) => {
-  // const contact = this.state.get(
-  //   parseInt(props.match.params.number, 10)
-  // )
   if (!props.contact) {
     return (
       <div>

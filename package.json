@@ -26,5 +26,6 @@
   "bugs": {
     "url": "https://github.com/lapeterson01/contact-list/issues"
   },
-  "homepage": "https://github.com/lapeterson01/contact-list#readme"
+  "homepage": "https://github.com/lapeterson01/contact-list#readme",
+  "devDependencies": {}
 }

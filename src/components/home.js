@@ -11,7 +11,7 @@ const Home = (props) => {
         <hr/>
       </header>
       <div>
-        <ContactsList contacts={props.state.all()} />
+        <ContactsList contacts={props.state.all()} removeContact={props.removeContact} />
       </div>
     </div>
   )
