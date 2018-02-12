@@ -12,13 +12,11 @@ class App extends Component {
 
     this.state = {
       contacts: [
-        {id: 0, name: 'bart', email: 'hi@bart.com', imageUrl: '', phoneNumber: ''},
-        {id: 1, name: 'bat', email: 'notBart@bats.com', imageUrl: '', phoneNumber: ''},
       ]
     }
   }
 
-  deleteContact = (contactToDelete) => {
+  handleDelete = (contactToDelete) => {
     let confirm = window.confirm(`Are you sure you want to delete ${contactToDelete.name}?`);
     if (!confirm) {
       return
@@ -36,7 +34,7 @@ class App extends Component {
 
   }
 
-  updateContact = (updatedContact) => {
+  handleUpdate = (updatedContact) => {
     //first, use ID to find the index of the contact to be updated in our state's contacts array
     let indexToUpdate = this.state.contacts.findIndex((contact) => {return contact.id === updatedContact.id});
 
@@ -48,7 +46,7 @@ class App extends Component {
     this.setState({contacts: newContacts})
   }
 
-  addContact = (contact) => {
+  handleAdd = (contact) => {
     this.setState({
       contacts: this.state.contacts.concat([contact])
     })
@@ -59,12 +57,12 @@ class App extends Component {
     return (
       <Switch>
         {/* render functions inside Route tags pass props to components */}
-        <Route exact path='/' render = {() => <ContactList contacts={this.state.contacts} deleteContact={this.deleteContact} />}/>
+        <Route exact path='/' render = {() => <ContactList contacts={this.state.contacts} handleDelete={this.handleDelete} />}/>
 
         {/* Use spread operator to pass Router's match props to component page. The match props allow the component page to access its own id, which will be used to determine which contact to show. */}
-        <Route path='/add' render = {(props) => <ContactView contacts={this.state.contacts} addContact={this.addContact} {...props} />} />
+        <Route path='/add' render = {(props) => <ContactView contacts={this.state.contacts} handleAdd={this.handleAdd} {...props} />} />
 
-        <Route path='/:id' render = {(props) => <ContactView contacts={this.state.contacts} updateContact={this.updateContact} {...props} />} />
+        <Route path='/:id' render = {(props) => <ContactView contacts={this.state.contacts} handleUpdate={this.handleUpdate} {...props} />} />
 
       </Switch>
 
@@ -72,19 +70,6 @@ class App extends Component {
   }
 }
 
-/*WISHLIST
-
-
-DRY up update and delete buttons
-
-Default display when contact list first opens / remove test contacts
-
-
-
-linting
-
-
-*/
 
 const root = document.getElementById('root');
 

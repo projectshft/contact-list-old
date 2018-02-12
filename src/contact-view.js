@@ -134,6 +134,7 @@ class ContactView extends Component {
     let allInputIsValid = this.validateAllInput();
     let contact = null;
 
+    //If valid, get local state ready to be sent back to App state.
     if (allInputIsValid){
       contact = this.setContact();
     }
@@ -161,10 +162,10 @@ class ContactView extends Component {
     let submitButton = null;
 
     if (this.state.contactIsNew){
-      submitButton = <button className="btn btn-primary btn-lg m-1" disabled={!allInputIsValid} onClick={() => this.props.addContact(contact) }>Add</button>
+      submitButton = <button className="btn btn-primary btn-lg m-1" disabled={!allInputIsValid} onClick={() => this.props.handleAdd(contact) }>Add</button>
 
     } else {
-      submitButton = <button className="btn btn-primary btn-lg m-1" disabled={!allInputIsValid} onClick={() => this.props.updateContact(contact)}>Update</button>
+      submitButton = <button className="btn btn-primary btn-lg m-1" disabled={!allInputIsValid} onClick={() => this.props.handleUpdate(contact)}>Update</button>
     }
 
     return (
