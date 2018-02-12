@@ -87,7 +87,7 @@ const listConnectionNames = () => {
          business: false,
          family: false,
          other: false,
-         fromGoogle: true,
+         fromGoogle: true, //only contacts imported this way get this category, it's unavailble to be selected/unselected
        }
         addContact(contact)
      }
@@ -109,7 +109,7 @@ const App = () => {
   </div>)
 }
 
-
+//different paths depending on whether a user wants to view a single contact, make a new contact, view all contacts, or view a subset of contacts by category
 const Contacts = () => {
   return (<Switch>
     <Route exact path='/' render={(params) => (
@@ -131,7 +131,7 @@ const Contacts = () => {
       <AllContacts {...params} handleAuthClick={handleAuthClick} deleteContact={deleteContact} getSyncStatus={getSyncStatus} getContacts={getContacts} />
     )}/>
     <Route path='/new' render={(params) => (
-      <NewContact {...params} addContact={addContact} />
+      <NewContact {...params} getMostRecentId={getMostRecentId} addContact={addContact} />
     )}/>
     <Route exact path='/:id' render={(params) => (
       <Contact {...params} getSpecificContact={getSpecificContact} deleteContact={deleteContact}/>
@@ -162,7 +162,7 @@ const deleteContact = (contact) => {
   sendEvent("deleteContact", contact)
 }
 
-//has the user added their google contacts
+//returns boolean - has the user added their google contacts?
 const getSyncStatus = () => {
   return queryState("getSyncStatus")
 }
@@ -172,8 +172,12 @@ const updateSyncStatus = () => {
   sendEvent("updateSyncStatus")
 }
 
+const getMostRecentId = () => {
+  return queryState("getMostRecentId")
+}
+
 const Header = () => {
-  //hide or show the Google Contacts tab
+  //hide or show the Google Contacts tab based on whether they've been added
   const fromGoogle = getSyncStatus() ? "" : "hide"
 
   return (<nav className="navbar navbar-expand-sm navbar-light bg-light">

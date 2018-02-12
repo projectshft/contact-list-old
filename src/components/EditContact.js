@@ -19,8 +19,14 @@ class EditContact extends Component {
       personal:this.contact.personal,
       business:this.contact.business,
       family:this.contact.family,
-      other:this.contact.other
+      other:this.contact.other,
+      fromGoogle: this.contact.fromGoogle
     }
+  }
+
+  // if the url given does not display correctly, use this default image
+  addDefaultImg = (event) => {
+    event.target.src = 'http://www.oebmidsummit.com/img/noavatar.jpg'
   }
 
   handleXClick = (props) => {
@@ -32,20 +38,26 @@ class EditContact extends Component {
 
   //updates the contact's information in the state of this function and then updates the global state
   handleClick = () => {
-    const editedContact = {
-      id: this.state.id,
-      name: this.state.name,
-      imageUrl: this.state.imageUrl,
-      email: this.state.email,
-      number: this.state.number,
-      personal:this.state.personal,
-      business:this.state.business,
-      family:this.state.family,
-      other:this.state.other
-    }
+    const editedContact = this.state
 
-    this.props.editContact(editedContact);
-    this.props.history.push(`/${this.state.id}`)
+    //validate that the phone number and email address are valid formats
+    const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    if (phoneRegex.test(editedContact.number)) {
+    const formattedPhoneNumber =
+        editedContact.number.replace(phoneRegex, "($1) $2-$3");
+        editedContact.number = formattedPhoneNumber
+        if ((editedContact.email && emailRegex.test(editedContact.email)) || !editedContact.email) {
+          this.props.editContact(editedContact);
+          this.props.history.push(`/${this.state.id}`)
+        } else
+        alert("please enter a valid e-mail address")
+        return
+      } else {
+    alert("please enter a valid 10-digit phone number in the format (xxx) xxx-xxxx")
+    return
+      }
   }
 
   render() {
@@ -66,7 +78,7 @@ class EditContact extends Component {
           </button>
         </div>
         <div className="row ml-3 mb-1">
-          <img  src={this.contact.imageUrl} alt=""></img>
+          <img  src={this.contact.imageUrl} onError={this.addDefaultImg} alt=""></img>
         </div>
         <div className="row ml-3 mb-1">
           image url: <input className="ml-2" style={{width: 401}} onChange={event => this.setState({imageUrl: event.target.value})} value={this.state.imageUrl} />
@@ -84,16 +96,16 @@ class EditContact extends Component {
           <h4>phone number: <input className="ml-2" style={{width: 313}} onChange={event => this.setState({number: event.target.value})} value={this.state.number}/></h4>
         </div>
         <div className="row">
-          <div className="col-sm-3 label-selector">
+          <div className="col-sm-3 col-md-2 label-selector">
             <input className="" type='checkbox' checked={this.state.personal} onChange={event => this.setState({personal: event.target.checked})}/> Personal
           </div>
-          <div className="col-sm-3 label-selector">
+          <div className="col-sm-3 col-md-2 label-selector">
             <input className="" type='checkbox' checked={this.state.business} onChange={event => this.setState({business: event.target.checked})}/> Business
           </div>
-          <div className="col-sm-3 label-selector">
+          <div className="col-sm-3 col-md-2 label-selector">
             <input className="" type='checkbox' checked={this.state.family} onChange={event => this.setState({family: event.target.checked})}/> Family
           </div>
-          <div className="col-sm-3 label-selector">
+          <div className="col-sm-3 col-md-2 label-selector">
             <input className="" type='checkbox' checked={this.state.other} onChange={event => this.setState({other: event.target.checked})}/> Other
           </div>
         </div>

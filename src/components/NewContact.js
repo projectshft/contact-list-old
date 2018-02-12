@@ -22,21 +22,28 @@ class NewContact extends Component {
   }
   //updates the "new user"'s data in the local state and then adds this user to the global state
   handleClick = (props) => {
-    const contact = {
-      name: this.state.name,
-      imageUrl: this.state.imageUrl,
-      email: this.state.email,
-      number: this.state.number,
-      personal: this.state.personal,
-      business: this.state.business,
-      family: this.state.family,
-      other:this.state.other,
-      fromGoogle: false
-    }
+    const newContact = this.state
 
-    this.props.addContact(contact);
-    this.props.history.push('/')
+
+    const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    if (phoneRegex.test(newContact.number)) {
+    const formattedPhoneNumber =
+        newContact.number.replace(phoneRegex, "($1) $2-$3");
+        newContact.number = formattedPhoneNumber
+        if ((newContact.email && emailRegex.test(newContact.email)) || !newContact.email) {
+          this.props.addContact(newContact);
+          const newId = this.props.getMostRecentId()
+          this.props.history.push(`/${newId}`)
+        } else
+        alert("please enter a valid e-mail address")
+        return
+      } else {
+    alert("please enter a valid 10-digit phone number in the format (xxx) xxx-xxxx")
+    return
   }
+}
 
   render(props) {
     return (<table className="text-center">

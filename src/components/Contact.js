@@ -14,7 +14,8 @@ const Contact = (props) => {
       props.history.push('/')
     }
   }
-  // if the url given dos not display correctly, use this default image
+
+  // if the url given does not display correctly, use this default image
   const addDefaultImg = (event) => {
     event.target.src = 'http://www.oebmidsummit.com/img/noavatar.jpg'
   }

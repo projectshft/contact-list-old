@@ -5,6 +5,7 @@ import _ from 'lodash';
 // load, it represents the initial state of our application.
 const STATE = {
   syncStatus: false,
+  mostRecentId: null,
   contacts: [
     {
       id: 0,
@@ -102,7 +103,9 @@ const queryState = (name, data) => {
   } else if (name === 'getSyncStatus') {
     return STATE.syncedStatus
   }
-  else {
+  else if (name === 'getMostRecentId') {
+    return STATE.mostRecentId
+  } else {
     // If we don't know what kind of event this is, alert the developer!
     throw new Error(`Unrecognized event: ${name}`);
   }
@@ -131,6 +134,7 @@ const handleEvent = ({ name, data}, state) => {
     newContact.other = data.other
     newContact.fromGoogle = data.fromGoogle
     state.contacts = state.contacts.concat([newContact]);
+    state.mostRecentId = newContact.id
   } else if (name === 'editContact') {
     state.contacts.forEach((c) => {
       if (c.id === data.id) {

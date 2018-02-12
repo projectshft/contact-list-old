@@ -62,9 +62,10 @@ const AllContacts = (props) => {
         Add a contact
       </button>
     </div>
-    <div>
+    <div className="mb-5" >
       <button className={`${synced} btn btn-primary btn-sm mt-3 ml-3`} id="authorize-button" onClick={props.handleAuthClick}>Add Google Contacts</button>
     </div>
+    <div className="spacer"></div>
   </div>)
 }
 
