@@ -34,32 +34,58 @@ class App extends Component {
         return $this.state.contacts.find(person)
       }
     }
-
-
+    this.addContact = this.addContact.bind(this)
+    this.editContact = this.editContact.bind(this)
+    this.deleteContact = this.deleteContact.bind(this)
   }
 
-  tester = "tester"
-
   addContact (contact) {
-    console.log(this);
+    contact.number = this.state.contacts.length + 1
     this.setState({contacts: this.state.contacts.concat([contact])});
+    console.log(this.state.contacts);
   }
 
   editContact (newData, contact) {
-    const index = this.all().indexOf(this.get(contact))
-    let newState = this.all()
+    const index = this.state.all().indexOf(this.state.get(contact))
+    let newState = this.state.all()
     newState.splice(index, 1)
     newState.push(newData)
-    this.setState({contacts: newState});
+    this.setState({contacts: newState})
+  }
 
+  deleteContact (contact) {
+
+    const index = this.state.all().indexOf(this.state.get(contact))
+    let newState = this.state.all()
+    //this works the first time but for some reason loops back through after the contact has been deleted and throws an error when
+    if (this.state.get(contact)){
+      let name = this.state.get(contact).name
+      let acceptDelete = window.confirm("Are you sure you want to delete " + name + " ?")
+      if (acceptDelete) {
+        newState.splice(index, 1)
+        this.setState({contacts: newState});
+        return (
+          <div>
+            <h3>Contact deleted.</h3>
+            <Link to='/contacts'>Back</Link>
+          </div>
+        )
+      } else {
+        return (
+          <div>
+            <h3>Cancelled</h3>
+            <Link to='/contacts'>Back</Link>
+          </div>
+        )
+      }
+    }
   }
 
 
   render() {
     return (
-  //Does App need to have its state defined as ContactAPI.contacts?
       <div>
-        <Main get={this.state.get} all={this.state.all} contacts={this.state.contacts} addContact={this.addContact} editContact={this.editContact} setState={this.setState}/>
+        <Main get={this.state.get} all={this.state.all} addContact={this.addContact} editContact={this.editContact} deleteContact={this.deleteContact}/>
       </div>
     )
   }
@@ -75,15 +101,15 @@ const Main = (props) =>  (
 
 const Contacts = (props) => (
   <Switch>
+    <Route path='/contacts/:number/delete' render={(params) =>
+      <DeleteContact {...params} deleteContact={props.deleteContact}/>}/>
     <Route path='/contacts/:number/edit' render={(params) =>
-      <EditContact {...params} all={props.all} get={props.get} editContact={props.editContact} addContact={props.addContact} setState={props.setState}/>}/>
-    <Route path='/contacts/add' component={AddContact}/>
+      <EditContact {...params} get={props.get} editContact={props.editContact}/>}/>
+    <Route path='/contacts/add' render={(params) =>
+      <AddContact {...params} addContact={props.addContact}/>}/>
     <Route path='/contacts/:number' render={(params) =>
       <Person {...params} get={props.get}/>}/>
-
     <Route exact path='/contacts' render={() => <ContactList all={props.all}/>}/>
-
-
   </Switch>
 )
 
@@ -97,6 +123,7 @@ const ContactList = (props) => (
           <li key={p.number}>
             <Link to={`/contacts/${p.number}`}>{p.name}</Link>
             <Link to={`/contacts/${p.number}/edit`}>Edit</Link>
+            <Link to={`/contacts/${p.number}/delete`}>Remove</Link>
           </li>
         ))
       }
@@ -163,6 +190,7 @@ class EditContact extends Component {
               <input
                 id="idNumber"
                 defaultValue={this.state.number}
+                type="hidden"
               />
               <input
                 id="name"
@@ -198,8 +226,18 @@ class EditContact extends Component {
     const newState = this.state
     const idNumber = newState.number
     this.props.editContact(newState, idNumber)
+    this.props.history.goBack();
   }
 }
+
+const DeleteContact = (props) => {
+  const id = parseInt(props.match.params.number, 10)
+
+  return (
+    props.deleteContact(id)
+  )
+}
+
 
 class AddContact extends Component {
 
@@ -247,11 +285,19 @@ class AddContact extends Component {
               />
               <button type="form-group" onClick={this.onSubmit}>Save</button>
             </div>
-
+            <Link to='/contacts'>Back</Link>
           </div>
         </form>
       </div>
     );
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    const newState = this.state
+    this.props.addContact(newState)
+
+    this.props.history.push('/contacts')
   }
 }
 
