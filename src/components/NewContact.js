@@ -28,14 +28,20 @@ class NewContact extends Component {
     const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-    if (phoneRegex.test(newContact.number)) {
+    if ((newContact.number && phoneRegex.test(newContact.number)) || !newContact.number) {
     const formattedPhoneNumber =
         newContact.number.replace(phoneRegex, "($1) $2-$3");
         newContact.number = formattedPhoneNumber
         if ((newContact.email && emailRegex.test(newContact.email)) || !newContact.email) {
-          this.props.addContact(newContact);
-          const newId = this.props.getMostRecentId()
-          this.props.history.push(`/${newId}`)
+          if (newContact.name) {
+            this.props.addContact(newContact);
+            const newId = this.props.getMostRecentId()
+            this.props.history.push(`/${newId}`)
+          }
+          else {
+            alert("please enter a name for this contact")
+            return
+          }
         } else
         alert("please enter a valid e-mail address")
         return

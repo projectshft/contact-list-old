@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import { Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'open-iconic/font/css/open-iconic-bootstrap.css'
 
@@ -44,13 +44,19 @@ class EditContact extends Component {
     const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-    if (phoneRegex.test(editedContact.number)) {
+    if ((editedContact.number && phoneRegex.test(editedContact.number)) || !editedContact.number) {
     const formattedPhoneNumber =
         editedContact.number.replace(phoneRegex, "($1) $2-$3");
         editedContact.number = formattedPhoneNumber
         if ((editedContact.email && emailRegex.test(editedContact.email)) || !editedContact.email) {
-          this.props.editContact(editedContact);
-          this.props.history.push(`/${this.state.id}`)
+          if (editedContact.name) {
+            this.props.editContact(editedContact);
+            this.props.history.push(`/${this.state.id}`)
+          }
+          else {
+            alert("please enter a name for this contact")
+            return
+          }
         } else
         alert("please enter a valid e-mail address")
         return
