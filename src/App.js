@@ -53,13 +53,12 @@ class App extends Component {
     this.setState({contacts: newState})
   }
 
-  deleteContact (contact) {
+  deleteContact (contactId) {
 
-    const index = this.state.all().indexOf(this.state.get(contact))
+    const index = this.state.all().indexOf(this.state.get(contactId))
     let newState = this.state.all()
-    //this works the first time but for some reason loops back through after the contact has been deleted and throws an error when
-    if (this.state.get(contact)){
-      let name = this.state.get(contact).name
+    //need some logic here. It updates the first time, but once executed, it loops back through and the below declaration for 'name' returns a type error becaues the contact Id no longer exists on the array.
+      let name = this.state.get(contactId).name
       let acceptDelete = window.confirm("Are you sure you want to delete " + name + " ?")
       if (acceptDelete) {
         newState.splice(index, 1)
@@ -78,7 +77,6 @@ class App extends Component {
           </div>
         )
       }
-    }
   }
 
 
@@ -157,7 +155,6 @@ class EditContact extends Component {
 
   constructor(props) {
     super(props)
-    console.log(props)
     const person = props.get(
       parseInt(props.match.params.number, 10)
     )
