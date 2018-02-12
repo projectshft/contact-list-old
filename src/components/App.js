@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import {Switch, Route, Link} from 'react-router-dom'
+import {withRouter, Switch, Route, Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { sendEvent, queryState} from '../state'
+import {sendEvent, queryState} from '../state'
 import 'open-iconic/font/css/open-iconic-bootstrap.css'
 import NewContact from './NewContact'
 import Contact from './Contact'
@@ -104,7 +104,7 @@ handleClientLoad()
 
 const App = () => {
   return (<div>
-    <Header/>
+    <HeaderWithRouter/>
     <Contacts/>
   </div>)
 }
@@ -176,45 +176,55 @@ const getMostRecentId = () => {
   return queryState("getMostRecentId")
 }
 
-const Header = () => {
+const Header = (props) => {
+  console.log(props)
   //hide or show the Google Contacts tab based on whether they've been added
   const fromGoogle = getSyncStatus() ? "" : "hide"
 
+  const handleAddContact = (contact) => {
+    props.history.push('/new')
+  }
+
   return (<nav className="navbar navbar-expand-sm navbar-light bg-light">
-      <div className="navbar-brand">Contact List</div>
-      <ul  className="nav navbar-nav" role="tablist">
-        <li className="nav nav-item nav-link">
-          <Link to={'/'} style={{
+    <div className="navbar-brand">Contact List</div>
+    <ul  className="nav navbar-nav" role="tablist">
+      <li className="nav nav-item nav-link">
+        <Link to={'/'} style={{
             textDecoration: 'none'
-          }}>All Contacts</Link>
-        </li>
-        <li className="nav nav-item nav-link">
-          <Link to={'/personal'} style={{
+        }}>All Contacts</Link>
+      </li>
+      <li className="nav nav-item nav-link">
+        <Link to={'/personal'} style={{
             textDecoration: 'none'
-          }}>Personal</Link></li>
-        <li className="nav nav-item nav-link">
-          <Link to={'/business'} style={{
+        }}>Personal</Link></li>
+      <li className="nav nav-item nav-link">
+        <Link to={'/business'} style={{
             textDecoration: 'none'
-          }}>Business</Link></li>
-        <li className="nav nav-item nav-link">
-          <Link to={'/family'} style={{
+        }}>Business</Link></li>
+      <li className="nav nav-item nav-link">
+        <Link to={'/family'} style={{
             textDecoration: 'none'
-          }}>Family</Link>
-        </li>
-        <li className="nav nav-item nav-link">
-          <Link to={'/other'} style={{
+        }}>Family</Link>
+      </li>
+      <li className="nav nav-item nav-link">
+        <Link to={'/other'} style={{
             textDecoration: 'none'
-          }}>Other</Link>
-        </li>
-        <li className={`${fromGoogle} nav nav-item nav-link`}>
-          <Link to={'/fromGoogle'} style={{
+        }}>Other</Link>
+      </li>
+      <li className={`${fromGoogle} nav nav-item nav-link`}>
+        <Link to={'/fromGoogle'} style={{
             textDecoration: 'none'
-          }}>Google Contacts</Link>
-        </li>
+        }}>Google Contacts</Link>
+      </li>
+      <li><button className="mt-1 ml-1 btn btn-sm btn-primary" onClick={handleAddContact}>
+        Add a contact
+      </button></li>
 
       </ul>
     </nav>
   )
 }
+//to ensure the header component has access to the history param
+const HeaderWithRouter = withRouter(Header)
 
 export default App;
