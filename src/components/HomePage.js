@@ -1,10 +1,8 @@
 import '../../node_modules/bootstrap/dist/js/bootstrap.js'
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Switch, Link, withRouter} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import ContactModal from './ContactModal'
 import ContactList from './ContactList'
-import { queryState, printState } from '../state'
-
 
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
@@ -18,68 +16,37 @@ export default class HomePage extends Component {
     
     this.state = {
       contacts: [{
-        name: '',
-        email: '',
-        url: '',
-        tel: ''
+        name: 'Aaron H.',
+        email: 'Aaron@projectshift.com',
+        url: 'projectshift.jpeg',
+        tel: '919-555-1234'
       }],
       isOpen: false
       
     }
-    console.log(this.props)
-    // this.state.contacts = [...this.state.contacts];
+    this.props.history.push('/contacts', this.state.contacts)
+
   }
 
   onChange = (e) => {
     const state = this.state.contacts
-    // debugger 
     state[e.target.name] = e.target.value;
-    // this.setState({ contacts: [...this.state.contacts, contactInfo]})
-    // this.setState({state: }, () => console.log('changing state...', this.state));
   }
   
-  // handleSubmit = (info) => {
-  //   queryState('getName', info)
-  //   // debugger
-  //   console.log(printState())
-    
-    
-  //   // ^^ Callback function, remember to do this when you want to log your recently changed state
-  // }
   onSubmit = (e) => {
     e.preventDefault()
-    // let tempArray = [...this.state.contacts]
     const contactInfo = {
       name: this.state.contacts.name,
       email: this.state.contacts.email,
       url: this.state.contacts.url,
       tel: this.state.contacts.tel
     }
-    console.log('Inside Submit:', this.state)
-    // tempArray.push(contactInfo);
-    let tempArray = [...this.state.contacts, contactInfo]
-    // this.setState({tempArray});
-    console.log(tempArray)
-    this.setState({contacts: tempArray }, () => this.props.history.push('/contacts', this.state.contacts));
-    // history.push('/contacts', this.state.contacts)
-    // this.setState({contacts: tempArray }, () => console.log(this.state));
-    // window.history.replaceState({
-    //   key: history.location.key,
-    //   state: this.state
-    // })
-    // debugger
-    this.toggleModal()
-    // const {name, email, url, tel} = this.state.contacts
 
-    // this.setState({
-    //   contacts: this.state.contacts.concat([contactInfo])
-    // }, () => console.log(this.state) ) 
-    // console.log('name', name)
-    // queryState('saveName', name)
-    // console.log('Printing.... STATE')
-    // printState();
-    // this.props.onSubmit(contactInfo)
-    // this.props.push(`${this.state.name}/${this.state.name}`)
+    let tempArray = [...this.state.contacts, contactInfo]
+
+    this.setState({contacts: tempArray }, () => this.props.history.push('/contacts', this.state.contacts));
+    this.toggleModal()
+
   }
 
   toggleModal = () => {

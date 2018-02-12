@@ -4,13 +4,9 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faEdit from '@fortawesome/fontawesome-pro-regular/faEdit'
 import faSortNumericDown from '@fortawesome/fontawesome-pro-regular/faSortNumericDown'
 
-import {withRouter} from 'react-router-dom'
 
 const ContactList = (props) => {
-  // const {history} = props
-  console.log('history PROPS: ', props.data.history.location.state)
-  // const { match, location, history } = props
-  // const contactList = props.contactsState.map((contact, i) => <Contact key={i} contact={contact} /> )
+
   return (
     <div className="row">
     <table className="table table-striped">
@@ -28,15 +24,11 @@ const ContactList = (props) => {
       </thead>
       <tbody>
         {
-          props.data.history.location.state.map((elem, i) => {
-            console.log(elem)
+          props.data.history.location.state.map((elem = {}, i) => {
+            // console.log(elem)
+            // let id = i+1
             return <Contact key={i} id={i} data={props} contactData={elem} />
           })
-        }
-        {
-          // props.contactsState.map((contact, i) => {
-          //   return <Contact key={i} id={i} props={this.props} />
-          // })
         }
       </tbody>
     </table>

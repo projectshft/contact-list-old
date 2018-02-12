@@ -3,34 +3,9 @@ import React, { Component } from 'react'
 export class ContactModal extends Component {
   constructor(props) {
     super(props);
-    // this.props = this.props.bind(this)
-
-    // this.state = {
-    //   name: '',
-    //   email: '',
-    //   url: '',
-    //   tel: ''
-    // }
-    // this.props = this.props.bind(this)
   }
-
-  // onSubmit = (e) => {
-  //   e.preventDefault()
-  //   // console.log('Inside Submit', this.props)
-  //   const contactInfo = {
-  //     name: this.state.name,
-  //     email: this.state.email,
-  //     url: this.state.imageUrl,
-  //     tel: this.state.tel
-  //   }
-  //   console.log(contactInfo)
-  //   this.props.onSubmit(contactInfo)
-  //   this.props.onClose()
-  //   // this.props.push(`${this.state.name}/${this.state.name}`)
-  // }
   
   render() {
-    console.log('Inside MODAL:', this.props.contactInfo)
     const { name, email, url, tel } = this.props.contactInfo.contacts
     return (
       <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

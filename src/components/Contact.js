@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Link, Route } from 'react-router-dom'
-import ContactInfo from './ContactInfo'
+import { Link } from 'react-router-dom'
+// import ContactInfo from './ContactInfo'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import {faUser} from '@fortawesome/fontawesome-free-solid'
+import {faEdit} from '@fortawesome/fontawesome-pro-regular'
+import {faTrashAlt} from '@fortawesome/fontawesome-pro-regular'
 export default class Contact extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +13,7 @@ export default class Contact extends Component {
   render() {
     return (
       <tr>
-        <th scope="row">{this.props.id}</th>
+        <th scope="row">{this.props.id + 1}</th>
         <td>
         <Link to={{
           pathname: `${this.props.data.data.match.url}/${this.props.id}`,
@@ -28,8 +29,8 @@ export default class Contact extends Component {
         <td>{this.props.contactData.email}</td>
         <td>{this.props.contactData.imageUrl}</td>
         <td>{this.props.contactData.tel}</td>
-        <td><FontAwesomeIcon icon={faUser}/>Coffee</td>
-        <td><FontAwesomeIcon icon={faUser}/>Coffee</td>
+        <td><FontAwesomeIcon icon={faEdit}/>Edit</td>
+        <td><FontAwesomeIcon icon={faTrashAlt}/>Delete</td>
       </tr>
     )
   }
