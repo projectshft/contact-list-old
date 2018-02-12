@@ -3,11 +3,16 @@ import Contact from './Contact'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faEdit from '@fortawesome/fontawesome-pro-regular/faEdit'
 import faSortNumericDown from '@fortawesome/fontawesome-pro-regular/faSortNumericDown'
+
+import {withRouter} from 'react-router-dom'
+
 const ContactList = (props) => {
-  console.log(props.contactInfo)
-  const contactList = props.contactInfo.map((contact, i) => <Contact key={i} contact={contact} /> )
+  // const {history} = props
+  console.log('history PROPS: ', props.data.history.location.state)
+  // const { match, location, history } = props
+  // const contactList = props.contactsState.map((contact, i) => <Contact key={i} contact={contact} /> )
   return (
-    <div>
+    <div className="row">
     <table className="table table-striped">
       <thead>
         <tr>
@@ -16,14 +21,22 @@ const ContactList = (props) => {
           <th scope="col">email</th>
           <th scope="col">image:</th>
           <th scope="col">Telephone:</th>
-          <th scope="col"><FontAwesomeIcon icon={faEdit} /></th>
+          <th scope="col"><FontAwesomeIcon icon={faEdit} />
+
+          </th>
         </tr>
       </thead>
       <tbody>
         {
-          props.contactInfo.map((contact, i) => {
-            return <Contact key={i} id={i} contact={contact} />
+          props.data.history.location.state.map((elem, i) => {
+            console.log(elem)
+            return <Contact key={i} id={i} data={props} contactData={elem} />
           })
+        }
+        {
+          // props.contactsState.map((contact, i) => {
+          //   return <Contact key={i} id={i} props={this.props} />
+          // })
         }
       </tbody>
     </table>

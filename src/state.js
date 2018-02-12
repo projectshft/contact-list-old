@@ -3,9 +3,9 @@ import _ from 'lodash';
 // A plain JavaScript object that contains our current state. We update this
 // over time to reflect the current state of the application. When we first
 // load, it represents the initial state of our application.
-const STATE = {
+let STATE = [{
   name: 'N/A'
-};
+}];
 
 let ON_UPDATE_CALLBACK = null;
 
@@ -53,13 +53,16 @@ const sendEvent = (name, data) => {
 // each request _may_ have some data that will help narrow down the scope of the 
 // state requested (e.g the id of the value desired)
 const queryState = (name,data) => {
-  if (name === 'getName') {
-    return STATE.name;
+  if (name === 'saveName') {
+    console.log('Saving... in STATE')
+    STATE = STATE.concat([data]);
   } else {
     // If we don't know what kind of event this is, alert the developer!
     throw new Error(`Unrecognized event: ${name}`);
   }
 }
+
+const printState = () => console.log(STATE)
 
 // Given an event name and the current state of the application, should mutate
 // the state in-place as it sees fit.
@@ -84,6 +87,8 @@ export {
   onUpdate,
 
   sendEvent,
+
+  printState,
 
   queryState
 };

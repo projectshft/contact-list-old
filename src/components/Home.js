@@ -3,8 +3,10 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch, Link, withRouter} from 'react-router-dom'
 import ContactModal from './ContactModal'
 import ContactList from './ContactList'
+import ContactInfo from './ContactInfo'
+import Layout from './Layout'
 import { queryState, printState } from '../state'
-
+import history from '../history'
 
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
@@ -26,7 +28,7 @@ export default class HomePage extends Component {
       isOpen: false
       
     }
-    console.log(this.props)
+    const locationKey = props.location.pathname
     // this.state.contacts = [...this.state.contacts];
   }
 
@@ -38,14 +40,14 @@ export default class HomePage extends Component {
     // this.setState({state: }, () => console.log('changing state...', this.state));
   }
   
-  // handleSubmit = (info) => {
-  //   queryState('getName', info)
-  //   // debugger
-  //   console.log(printState())
+  handleSubmit = (info) => {
+    queryState('getName', info)
+    // debugger
+    console.log(printState())
     
     
-  //   // ^^ Callback function, remember to do this when you want to log your recently changed state
-  // }
+    // ^^ Callback function, remember to do this when you want to log your recently changed state
+  }
   onSubmit = (e) => {
     e.preventDefault()
     // let tempArray = [...this.state.contacts]
@@ -60,7 +62,7 @@ export default class HomePage extends Component {
     let tempArray = [...this.state.contacts, contactInfo]
     // this.setState({tempArray});
     console.log(tempArray)
-    this.setState({contacts: tempArray }, () => this.props.history.push('/contacts', this.state.contacts));
+    this.setState({contacts: tempArray }, () => history.push('/contacts', this.state.contacts));
     // history.push('/contacts', this.state.contacts)
     // this.setState({contacts: tempArray }, () => console.log(this.state));
     // window.history.replaceState({
@@ -69,7 +71,7 @@ export default class HomePage extends Component {
     // })
     // debugger
     this.toggleModal()
-    // const {name, email, url, tel} = this.state.contacts
+    const {name, email, url, tel} = this.state.contacts
 
     // this.setState({
     //   contacts: this.state.contacts.concat([contactInfo])
@@ -86,33 +88,28 @@ export default class HomePage extends Component {
     console.log('Clicked')
     this.setState({ isOpen: !this.state.isOpen });
   }
-
-  myFunction = () => this.props.history.push("/contacts");
   
   render() {
     return (
-      <div className='container'>
-        <h2>Your Contact List</h2>
-        <div className="row">
-          <div className="container">
-            <h1><FontAwesomeIcon icon={faUsers} />Contacts</h1>
-          <div>
-          
-          <button onClick={this.toggleModal} type="button" className="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-            <FontAwesomeIcon icon={faPlus} /> Add contact
-          </button>
-          </div>
-            <ContactModal 
-            onClose={this.toggleModal}
-            onChange={this.onChange}
-            onSubmit={this.onSubmit} 
-            contactInfo={this.state} />
+        <div className='container'>
+          <h2>Your Contact ContactList</h2>
+          <div className="row">
+            <div className="container">
+              <Link to="/"><h1><FontAwesomeIcon icon={faUsers} />Contacts</h1></Link>
+            <div>
+            
+            <button onClick={this.toggleModal} type="button" className="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+              <FontAwesomeIcon icon={faPlus} /> Add contact
+            </button>
+            </div>
+              <ContactModal 
+              // onClose={this.toggleModal}
+              onChange={this.onChange}
+              onSubmit={this.onSubmit} 
+              contactInfo={this.state} />
+            </div>
           </div>
         </div>
-        <div className="row">
-          <ContactList contactsState={this.state.contacts} data={this.props} />
-        </div>
-      </div>
     )
   }
 }

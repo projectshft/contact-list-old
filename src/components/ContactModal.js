@@ -5,31 +5,33 @@ export class ContactModal extends Component {
     super(props);
     // this.props = this.props.bind(this)
 
-    this.state = {
-      name: '',
-      email: '',
-      imageUrl: '',
-      tel: ''
-    }
+    // this.state = {
+    //   name: '',
+    //   email: '',
+    //   url: '',
+    //   tel: ''
+    // }
     // this.props = this.props.bind(this)
   }
 
-  onSumbit = (e) => {
-    e.preventDefault()
-    // console.log('Inside Submit', this.props)
-    const contactInfo = {
-      name: this.state.name,
-      email: this.state.email,
-      imageUrl: this.state.imageUrl,
-      tel: this.state.tel
-    }
-    console.log(contactInfo)
-    this.props.handleSubmit(contactInfo)
-    this.props.onClose()
-    
-  }
+  // onSubmit = (e) => {
+  //   e.preventDefault()
+  //   // console.log('Inside Submit', this.props)
+  //   const contactInfo = {
+  //     name: this.state.name,
+  //     email: this.state.email,
+  //     url: this.state.imageUrl,
+  //     tel: this.state.tel
+  //   }
+  //   console.log(contactInfo)
+  //   this.props.onSubmit(contactInfo)
+  //   this.props.onClose()
+  //   // this.props.push(`${this.state.name}/${this.state.name}`)
+  // }
   
   render() {
+    console.log('Inside MODAL:', this.props.contactInfo)
+    const { name, email, url, tel } = this.props.contactInfo.contacts
     return (
       <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
@@ -45,26 +47,26 @@ export class ContactModal extends Component {
                 <form className="form" autoComplete="off">
                   <div className="form-group">
                     <label htmlFor="inputName">Name</label>
-                    <input autoComplete= "name" type="text" className="form-control" id="inputName" placeholder="Full name"
-                      onInput={(e) => this.setState({name: e.target.value})} />
+                    <input value={name} name="name" autoComplete="Name" type="text" className="form-control" id="inputName" placeholder="Full name"
+                      onChange={this.props.onChange} />
                   </div>
                   <div className="form-group">
                     <label htmlFor="inputEmail3">Email</label>
-                    <input autoComplete= "email" type="email" className="form-control" id="inputEmail3" placeholder="Email" required=""
-                    onInput={(e) => this.setState({email: e.target.value})} />
+                    <input value={email} name="email" autoComplete= "email" type="email" className="form-control" id="inputEmail3" placeholder="Email" required=""
+                    onChange={this.props.onChange} />
                   </div>
                   <div className="form-group">
                     <label htmlFor="inputVerify3">Image URL:</label>
-                    <input autoComplete= "url" type="url" className="form-control" id="inputVerify3" placeholder="Image url" required=""
-                    onInput={(e) => this.setState({imageUrl: e.target.value})} />
+                    <input value={url} name="url" autoComplete= "url" type="url" className="form-control" id="inputVerify3" placeholder="Image url" required=""
+                    onChange={this.props.onChange} />
                   </div>
                   <div className="form-group">
                     <label htmlFor="inputPassword3">Telephone</label>
-                    <input autoComplete= "tel" type="tel" className="form-control" id="inputPassword3" placeholder="919-555-1234" required=""
-                    onInput={(e) => this.setState({tel: e.target.value})} />
+                    <input value={tel} name="tel" autoComplete= "tel" type="tel" className="form-control" id="inputPassword3" placeholder="919-555-1234" required=""
+                    onChange={this.props.onChange} />
                   </div>
                   <div className="modal-footer form-group">
-                    <button onClick={this.onSumbit} type="button" className="btn btn-primary" data-dismiss="modal">Save changes</button>
+                    <button onClick={this.props.onSubmit} type="button" className="btn btn-primary" data-dismiss="modal">Save changes</button>
                     <button onClick={this.props.onClose} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                   </div>
                 </form>

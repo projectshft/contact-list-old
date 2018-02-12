@@ -1,30 +1,18 @@
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
-import { BrowserRouter, Switch, Route, Link, IndexRoute } from 'react-router-dom'
 import React from 'react';
 import ReactDOM from 'react-dom'
+import { BrowserRouter, Route, Switch, Link} from 'react-router-dom'
+// import App from './App'
+// import Index from './routes/Index'
 import HomePage from './components/HomePage'
+import ContactInfo from './components/ContactInfo'
 
-const PrimaryLayout = props => (
-  <div className="primary-layout container">
-    <header>
-      Our React Router 4 App
-    </header>
-    <main>
-      <Route exact path="/" render={()=> <HomePage />} />
-      <Route path="/contacts" component={HomePage} />
-    </main>
-  </div>
-)
 
-const App = () => (
-  <BrowserRouter>
-    <PrimaryLayout />
-  </BrowserRouter>
-)
-
-// TODO: Add propTypes if needed
-// App.propTypes = {
-
-// };
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <BrowserRouter >
+    <Switch>
+      <Route exact path="/" render={(props)=> <HomePage {...props} />} />
+      <Route path="/contacts/:id" render={(props)=> <ContactInfo {...props} />} />
+      <Route path="/contacts" render={(props)=> <HomePage {...props} />} />
+    </Switch>
+  </BrowserRouter>, document.getElementById('root'));
