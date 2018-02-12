@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './components/App'
 import Header from './components/header'
-import ContactList from './'
+
 
 class Index extends Component {
   constructor () {
@@ -26,7 +26,7 @@ class Index extends Component {
 render(){
     return (
       <div>
-        <Header onSearchTermChange={this.videoSearch} />
+        <Header />
         <ContactList contacts={this.state.contacts} />
       </div>
     )
