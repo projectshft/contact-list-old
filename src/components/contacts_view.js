@@ -1,14 +1,9 @@
-import { Link, Route, Switch } from 'react-router-dom'
-import { onUpdate, forceUpdate, queryState, sendEvent } from '../state'
+import { Route, Switch } from 'react-router-dom'
 import React, {Component} from 'react'
 import ContactList from './contact_list'
 import EditContactForm from './edit_contact_form'
 
 class ContactsView extends Component {
-
-  constructor(props) {
-    super(props)
-  }
 
   render() {
     return (
