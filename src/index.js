@@ -23,6 +23,7 @@ class App extends Component {
     }
   }
 
+  // User can change contact information
   updateContact = (contact) => {
     const oldContact = this.state.get(contact.number);
 
@@ -33,14 +34,16 @@ class App extends Component {
     this.setState({ contacts: newContacts });
   }
 
+  // User can create new contacts
   addContact = (contact) => {
     contact.number = Math.round(Math.random() * 1000000);
 
     this.setState({contacts: this.state.contacts.concat([contact])});
   }
 
+  // User can delete existing contacts
   removeContact = (contact) => {
-    const c = window.confirm('confirm?');
+    const c = window.confirm('are you sure you would like to delete ' + contact.name + '?');
 
     if (c) {
       let newContacts = this.state.contacts.slice();
