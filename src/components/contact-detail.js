@@ -1,76 +1,52 @@
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, { Component } from 'react';
 
-const Contact = (props) => {
-  if (!props.contact) {
+class Contact extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      number: this.props.contact.number,
+      name: this.props.contact.name,
+      imageUrl: this.props.contact.imageUrl,
+      email: this.props.contact.email,
+      phoneNumber: this.props.contact.phoneNumber
+    };
+  }
+
+  render() {
     return (
       <div>
         <div className="row">
-          <h1>New Contact</h1>
-          <Link to={'/contacts'}>Back to Contacts List</Link>
+          <h1>{this.state.name}</h1>
+          <Link to={'/'}>Back to Contacts List</Link>
         </div>
         <div className="row">
           <h3>Name:</h3>
           <div className="form-group">
-            <input className="form-control" placeholder="John Doe"></input>
+            <input className="form-control" onChange={event => this.setState({name: event.target.value})} value={this.state.name}/>
           </div>
         </div>
         <div className="row">
           <h3>Image URL:</h3>
           <div className="form-group">
-            <input className="form-control" placeholder="http://www.example.com/picture.jpg"></input>
+            <input className="form-control" onChange={event => this.setState({imageUrl: event.target.value})} value={this.state.imageUrl}/>
           </div>
         </div>
         <div className="row">
           <h3>Email:</h3>
           <div className="form-group">
-            <input className="form-control" placeholder="jdoe@example.com"></input>
+            <input className="form-control" onChange={event => this.setState({email: event.target.value})} value={this.state.email}/>
           </div>
         </div>
         <div className="row">
           <h3>Phone Number:</h3>
           <div className="form-group">
-            <input className="form-control" placeholder="1-555-555-5555"></input>
+            <input className="form-control" onChange={event => this.setState({phoneNumber: event.target.value})} value={this.state.phoneNumber}/>
           </div>
         </div>
         <div className="row">
-          <button className="btn btn-secondary">Save Changes</button>
-        </div>
-      </div>
-    )
-  } else {
-    return (
-      <div>
-        <div className="row">
-          <h1>{props.contact.name}</h1>
-          <Link to={'/contacts'}>Back to Contacts List</Link>
-        </div>
-        <div className="row">
-          <h3>Name:</h3>
-          <div className="form-group">
-            <input className="form-control" defaultValue={props.contact.name}></input>
-          </div>
-        </div>
-        <div className="row">
-          <h3>Image URL:</h3>
-          <div className="form-group">
-            <input className="form-control" defaultValue={props.contact.imageUrl}></input>
-          </div>
-        </div>
-        <div className="row">
-          <h3>Email:</h3>
-          <div className="form-group">
-            <input className="form-control" defaultValue={props.contact.email}></input>
-          </div>
-        </div>
-        <div className="row">
-          <h3>Phone Number:</h3>
-          <div className="form-group">
-            <input className="form-control" defaultValue={props.contact.phoneNumber}></input>
-          </div>
-        </div>
-        <div className="row">
-          <button className="btn btn-secondary">Save Changes</button>
+          <Link to='/' className="btn btn-secondary" onClick={() => this.props.updateContact(this.state)}>Save Changes</Link>
         </div>
       </div>
     )

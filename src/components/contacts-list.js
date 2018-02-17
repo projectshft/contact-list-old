@@ -7,7 +7,7 @@ const ContactsList = (props) => (
       props.contacts.map(c => (
         <div key={c.number} className="contact">
           <p>{c.name}</p>
-          <Link to={`/contacts/${c.number}`}>edit</Link>
+          <Link to={`/${c.number}`}>edit</Link>
           <button onClick={() => props.removeContact(c)} id={c.number} className="btn-link">delete</button>
           <hr/>
         </div>

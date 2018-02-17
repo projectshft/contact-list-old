@@ -7,7 +7,7 @@ const Home = (props) => {
     <div>
       <header>
         <h1>Contacts</h1>
-        <Link to={`/contacts/${props.state.contacts.length + 1}`}>Add Contact</Link>
+        <Link to='/contact/new'>Add Contact</Link>
         <hr/>
       </header>
       <div>
