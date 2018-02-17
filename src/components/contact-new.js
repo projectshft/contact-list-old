@@ -45,7 +45,7 @@ class ContactNew extends Component {
           </div>
         </div>
         <div className="row">
-          <Link to='/' className="btn btn-secondary" onClick={() => this.props.addContact(this.state)}>Save Changes</Link>
+          <Link className="btn btn-secondary" onClick={() => this.props.addContact(this.state)} to='/'>Save Changes</Link>
         </div>
       </div>
     )

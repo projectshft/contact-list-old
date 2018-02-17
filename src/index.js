@@ -34,18 +34,21 @@ class App extends Component {
   }
 
   addContact = (contact) => {
-    contact.number = this.state.contacts.length + 1;
+    contact.number = Math.round(Math.random() * 1000000);
 
     this.setState({contacts: this.state.contacts.concat([contact])});
   }
 
   removeContact = (contact) => {
+    const c = window.confirm('confirm?');
 
-    let newContacts = this.state.contacts.slice();
-    let index = newContacts.indexOf(contact);
+    if (c) {
+      let newContacts = this.state.contacts.slice();
+      let index = newContacts.indexOf(contact);
 
-    newContacts.splice( index, 1 );
-    this.setState({ contacts: newContacts });
+      newContacts.splice( index, 1 );
+      this.setState({ contacts: newContacts });
+    }
   }
 
   render () {
