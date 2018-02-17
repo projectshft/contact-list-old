@@ -20,7 +20,7 @@ class Contact extends Component {
     return (
       <div>
         <div className="row justify-content-end">
-          <Link className="btn btn-secondary" to={'/'}>Back to Contacts List</Link>
+          <Link className="btn btn-secondary" to={'/'}><i className="material-icons small-icon">arrow_back</i>Back to Contacts List</Link>
         </div>
         <div className="row justify-content-center">
           <h1>{this.state.name === "" ? "New Contact" : this.state.name}</h1>
@@ -52,7 +52,7 @@ class Contact extends Component {
         </div>
         <hr/>
         <div className="row justify-content-end">
-          <Link className="btn btn-secondary" onClick={() => this.props.updateContact(this.state)} to='/'>Save Changes</Link>
+          <Link className="btn btn-primary" onClick={() => this.props.updateContact(this.state)} to='/'>Save Changes</Link>
         </div>
       </div>
     )

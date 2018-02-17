@@ -8,10 +8,10 @@ const Home = (props) => {
     <div>
       <header>
         <div className="row justify-content-center">
-          <h1>Contacts</h1>
+          <h1>Contacts<i className="material-icons">contacts</i></h1>
         </div>
         <div className="row justify-content-center">
-          <Link className="btn btn-primary add-contacts" to='/contact/new'>Add Contact</Link>
+          <Link className="btn btn-primary add-contacts" to='/contact/new'><i className="small-icon material-icons">add</i>Add Contact</Link>
         </div>
         <hr/>
       </header>
