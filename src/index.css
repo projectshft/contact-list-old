@@ -2,4 +2,54 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: linear-gradient(to bottom right, white, gray);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+html, body {
+  height: 100%;
+}
+
+.btn-link {
+  cursor: pointer;
+  border: 0px;
+}
+
+.container {
+  margin-top: 50px;
+  padding: 50px;
+  box-shadow: 20px 20px 50px black;
+  background: white
+}
+
+.input {
+  margin: 25px;
+}
+
+.btn {
+  font-size: 20px;
+  margin: 10px;
+}
+
+.contact {
+  margin: 25px;
+  margin-left: 75px;
+  margin-right: 75px;
+}
+
+#root {
+  font-family: 'Inconsolata', monospace;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.material-icons {
+  margin: 15px;
+  font-size: 30px;
+}
+
+.small-icon {
+  font-size: 20px;
+  margin: 0px;
+  margin-right: 10px;
 }
