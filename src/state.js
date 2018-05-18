@@ -35,7 +35,7 @@ const forceUpdate = () => {
 
 // Sends an event to be handled by our event handler function. The event always
 // has a name, and _may_ have some data.
-const sendEvent = (name, data) => {
+const sendEvent = (name, data, identity) => {
   // Make a copy of the existing state as a sort of "checkpoint" so we can
   // compare it to the potentially-changed state that comes out of
   // `handleEvent`.
@@ -48,7 +48,8 @@ const sendEvent = (name, data) => {
   // This modifies the state however it likes, or maybe even not at all!
   handleEvent({
     name,
-    data: data
+    data: data,
+    identity
   }, newState);
 
   // If the state was changed between the time we made the copy and after we
@@ -76,13 +77,27 @@ const queryState = (name,data) => {
 //
 // NOTE: This is where you should add support for any new events you want to
 // handle!
-const handleEvent = ({ name, data }, state) => {
+const handleEvent = ({ name, data, identity }, state) => {
   if (name === 'changeName') {
     state.name = data;
   }
-  else if (name === "changeDay") {
-    state.day = data;
-  } else {
+  else if (name === 'nameChange') {
+   let num =  _.findIndex(state.contacts, ['id', identity])
+   state.contacts[num].name = data;
+  }
+  else if (name === 'emailChange') {
+   let num =  _.findIndex(state.contacts, ['id', identity])
+   state.contacts[num].email = data;
+  }
+  else if (name === 'numChange') {
+   let num =  _.findIndex(state.contacts, ['id', identity])
+   state.contacts[num].phone_number = data;
+  }
+  else if (name === 'urlChange') {
+   let num =  _.findIndex(state.contacts, ['id', identity])
+   state.contacts[num].image_url = data;
+  }
+  else {
     // If we don't know what kind of event this is, alert the developer!
     throw new Error(`Unrecognized event: ${name}`);
   }
