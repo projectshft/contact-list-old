@@ -4,14 +4,18 @@ import Contact from './contact'
 import {Switch, Route} from 'react-router-dom'
 
 const Main = (props) => (
-  <main>
-    <Switch>
-    <Route exact path="/"  render={() =>
+<div className="container">
+  <div className="row">
+    <main className="col">
+      <Switch>
+      <Route exact path="/"  render={() =>
         <MainContacts state={props.state} />}/>
       <Route path="/:id" render={(search) =>
-          <Contact search={search}  stateHandler={props} />}/>
-    </Switch>
-  </main>
+            <Contact search={search}  stateHandler={props} />}/>
+          </Switch>
+    </main>
+  </div>
+</div>
 )
 
 export default Main
