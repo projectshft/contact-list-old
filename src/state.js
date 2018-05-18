@@ -5,16 +5,8 @@ import _ from 'lodash';
 // load, it represents the initial state of our application.
 const STATE = {
   "currentContact": null,
-  "ID": 2,
-  "contacts": [
-    {
-      "id": 1,
-      "name": "Albert Einstein",
-      "image_url": "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
-      "email": "aeinstein@example.com",
-      "phone_number": "15555555555"
-    }
-  ]
+  "ID": 0,
+  "contacts": []
 };
 
 let ON_UPDATE_CALLBACK = null;
@@ -96,6 +88,15 @@ const handleEvent = ({ name, data, identity }, state) => {
   else if (name === 'urlChange') {
    let num =  _.findIndex(state.contacts, ['id', identity])
    state.contacts[num].image_url = data;
+  }
+  else if (name === 'newContact') {
+    data.id = state.ID;
+    state.contacts.push(data);
+    state.ID = state.ID +1;
+  }
+  else if(name ==="deleteContact"){
+    let num =  _.findIndex(state.contacts, ['id', identity])
+    state.contacts.splice(num, 1)
   }
   else {
     // If we don't know what kind of event this is, alert the developer!
