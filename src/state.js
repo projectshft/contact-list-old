@@ -16,7 +16,9 @@ const STATE = {
   currentContact: null
 };
 
-// create a variable that will assign a unique ID
+// create a variable that will assign a unique ID and a function that
+// will allow components to retrieve it. ID will be incremented after
+// it has been assigned to a new contact (inside handleEvent - 'saveContact').
 let ID = 0;
 const getNextId = () => ID;
 
@@ -116,10 +118,6 @@ const handleEvent = ({
     } else {
       alert('No contact found');
     }
-
-  } else if (name === 'setCurrentContact') {
-    // Set the currentContact of state to the contact with the id passed by data
-    state.currentContact = state.contacts.find((item) => item.id === data);
 
   } else {
     // If we don't know what kind of event this is, alert the developer!
