@@ -1,5 +1,61 @@
 body {
-  margin: 0;
+  margin: auto;
   padding: 0;
   font-family: sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding-top: 20px;
+}
+
+li {
+  padding: 0 10px;
+}
+
+li a {
+  margin-left: 10px;
+}
+
+.contact {
+  border-bottom: 1px solid #ddd;
+  font-size: 1.2em;
+  line-height: 70px;;
+  height: 70px;
+}
+
+.contact img {
+  width: 50px;
+  height: 50px;
+}
+
+.contact span {
+  margin-left: 10px;
+}
+
+.contact .delete-contact {
+  cursor: pointer;
+}
+
+.contact .contact-options {
+  float: right;
+}
+
+.contact:nth-child(even) {
+  background-color: #eee;
+}
+
+.contact-view input {
+  margin: 10px 0px;
+}
+
+.contact-view .back {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.contact-view img {
+  width: 150px;
+  height: 150px;
+  margin-top: 20px;
 }
