@@ -16,7 +16,7 @@ class Contact extends React.Component {
   render(props) {
     return (
       <li className="contact">
-        <img src={`${this.props.contact.image_url}`} alt=""/>
+        <img src={this.props.contact.image_url} alt=""/>
         <span>{this.props.contact.name}</span>
         <span className="contact-options">
           <Link to={`/contacts/${this.props.contact.id}`}>edit</Link>

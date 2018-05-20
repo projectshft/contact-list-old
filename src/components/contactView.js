@@ -63,7 +63,7 @@ class ContactView extends React.Component {
       <div className="row contact-view">
         <Link to='/' id="back" className="back">&lt; Back to Contacts</Link>
         <div>
-          <img src={`${this.state.currentContact.image_url}`} alt=""/>
+          <img src={this.state.currentContact.image_url} alt=""/>
           <h2>{this.state.currentContact.name}</h2>
         </div>
         <form action="#">
