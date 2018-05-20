@@ -15,8 +15,6 @@ const App = () => {
   );
 };
 
-// TODO: add PropType validation
-
 // Cache the element we'll be rendering to.
 const root = document.querySelector('#root');
 
