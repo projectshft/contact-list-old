@@ -115,10 +115,10 @@ class ContactView extends React.Component {
 // PropType validation
 ContactView.propTypes = {
   name: PropTypes.string.isRequired,
-  // id: PropTypes.number.isRequired,
-  image_url: PropTypes.string.isRequired,
+  id: PropTypes.number,
+  image_url: PropTypes.string,
   email: PropTypes.string.isRequired,
-  phone_number: PropTypes.string.isRequired
+  phone_number: PropTypes.string
 };
 
 // Default props in the event nothing is provided
