@@ -2,7 +2,7 @@ import React from 'react'
 import MainContacts from './mainContacts'
 import Contact from './contact'
 import {Switch, Route} from 'react-router-dom'
-
+//render (search) on line 13 passes in the match parameter methods. stateHandler passes in the state from state.js
 const Main = (props) => (
 <div className="container">
   <div className="row">

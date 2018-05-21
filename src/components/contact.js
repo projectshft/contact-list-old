@@ -6,10 +6,11 @@ import { CSSTransitionGroup } from 'react-transition-group'
 
 //selects contact and gets its unique identifier
 const Contact = (props) => {
+  console.log("searching for contact ID: " + props.search.match.params.id)
   const contactId = parseInt(props.search.match.params.id, 10)
   let contact = _.find(props.stateHandler.state.contacts, {id: contactId})
 
-  //sets the state values forcing a render
+  //sends event setting values of form forcing a render
 const handleSubmitClick = () => {
   const nameVal =  this._name.value;
   const numberVal = this._number.value;
@@ -37,7 +38,7 @@ const handleSubmitClick = () => {
     phone_number: this._number.value,
     email: this._email.value
   }
-
+//placeholder img if a image url isnt submitted
   if(this._url.value === "") {
     tempContact.image_url = 'https://i0.wp.com/www.calvary.edu/wp-content/uploads/2016/08/person-placeholder.jpg'
   }
@@ -61,7 +62,7 @@ else{
 
 
 
-
+//if the contact doesnt exist, display default value props
   if(!contact) {
     return (
 
@@ -101,7 +102,7 @@ else{
           <button className="btn btn-primary" onClick={createContact}>Submit</button>
               </div>
             </div>
-          <Link to='/'><h4>Back</h4></Link>
+          <Link to='/'><h4>Back To Contacts</h4></Link>
         </div>
 
         </CSSTransitionGroup>
@@ -109,7 +110,7 @@ else{
     }
 
 
-
+//if the contact ID is found within state,js
       return (
 
       <CSSTransitionGroup
@@ -148,7 +149,7 @@ else{
             <button className="btn btn-primary" onClick={handleSubmitClick}>Submit</button>
                 </div>
               </div>
-            <Link to='/'><h4>Back</h4></Link>
+            <Link to='/'><h4>Back To Contacts</h4></Link>
           </div>
       </CSSTransitionGroup>
     )

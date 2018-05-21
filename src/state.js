@@ -70,10 +70,8 @@ const queryState = (name,data) => {
 // NOTE: This is where you should add support for any new events you want to
 // handle!
 const handleEvent = ({ name, data, identity }, state) => {
-  if (name === 'changeName') {
-    state.name = data;
-  }
-  else if (name === 'nameChange') {
+  //handles existing contact edits
+  if (name === 'nameChange') {
    let num =  _.findIndex(state.contacts, ['id', identity])
    state.contacts[num].name = data;
   }
@@ -89,11 +87,13 @@ const handleEvent = ({ name, data, identity }, state) => {
    let num =  _.findIndex(state.contacts, ['id', identity])
    state.contacts[num].image_url = data;
   }
+  //handles new contact entry
   else if (name === 'newContact') {
     data.id = state.ID;
     state.contacts.push(data);
     state.ID = state.ID +1;
   }
+  //handles delete contact 
   else if(name ==="deleteContact"){
     let num =  _.findIndex(state.contacts, ['id', identity])
     state.contacts.splice(num, 1)
