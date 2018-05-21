@@ -3,3 +3,66 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.app-header {
+  background-color: #222;
+  padding: 20px;
+}
+
+.nav {
+  color: white;
+  text-decoration: none;
+}
+
+.nav:hover {
+  color: yellow;
+  text-decoration: none;
+}
+
+.main-body {
+  padding: 70px;
+}
+
+.normal-button, .normal-button:hover {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+img {
+  height: 300px;
+}
+
+.inputError {
+  border-color: red !important;
+}
+
+.hide-error {
+  display: none;
+}
+
+.show-error {
+  color: red;
+  text-align:center;
+}
+
+li {
+  list-style: none;
+}
+
+.login-to-google {
+  color:red;
+  text-align: center;
+}
+
+.login-to-google:hover {
+  cursor:pointer;
+}
+
+.list-container {
+  border: 1px dotted black;
+  padding: 20px;
+  height: 600px;
+  width:100%;
+  overflow: scroll;
+}
