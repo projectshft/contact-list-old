@@ -1,10 +1,8 @@
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import EditContact from './ContactEdit'
-import ContactView from './ContactView'
-import Header from './Header'
-import ContactList from './ContactList'
+import React, { Component } from "react";
+import { Switch, Route, Link } from 'react-router-dom'
+import '../node_modules/bootstrap'
+import './App.css'
+
 
 const App = () => (
   <div>
