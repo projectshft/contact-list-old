@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import {sendEvent} from '../state';
 
 class Contact extends React.Component {
-
   deleteContact = () => {
     // Confirm the user really wants to delete contact
     var deleteConfirmed = window.confirm(`Are you sure you want to delete ${this.props.contact.name}`);

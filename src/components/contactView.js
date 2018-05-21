@@ -8,13 +8,13 @@ class ContactView extends React.Component {
     super(props)
 
     // Using the id from the params, get the contact
-    // with that id from from state
+    // with that id from state
     const id = Number(this.props.match.params.id);
     let contact = get(id);
 
     // if a contact is found, set the state of THIS component
     // equal to the properties and values to the returned
-    // contact otherwise set it to the defaults
+    // contact otherwise set it to the defaults(this.props)
     if (!contact) {
       contact = this.props;
     }
@@ -44,7 +44,7 @@ class ContactView extends React.Component {
     const contact = {
       id: this.state.currentContact.id,
       name: this.state.name,
-      image_url: this.state.image_url || this.props.image_url,
+      image_url: this.state.image_url || this.props.image_url, // prevents user from leaving a blank picture
       email: this.state.email,
       phone_number: this.state.phone_number
     };

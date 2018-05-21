@@ -16,7 +16,7 @@ const STATE = {
   currentContact: null
 };
 
-// create a variable that will assign a unique ID and a function that
+// Create a variable that will assign a unique ID and a function that
 // will allow components to retrieve it. ID will be incremented after
 // it has been assigned to a new contact (inside handleEvent - 'saveContact').
 let ID = 0;
@@ -94,10 +94,9 @@ const handleEvent = ({
     // store the index of the contact passed in via data parameter
     const contactIndex = getContactIndex(data.id);
     // if the index doesn't exist (contactIndex = -1),
-    // add it to the contacts array and increment the counter
-    // used to assign new ID's
+    // add it to the contacts array and increment the ID counter
     if (contactIndex < 0) {
-      // assign a unique ID to new contacts
+      // assign a unique ID to new contact about to be added
       data.id = getNextId();
       // add new contact to contacts list
       state.contacts = state.contacts.concat([data]);
