@@ -3,8 +3,34 @@ import _ from 'lodash';
 // A plain JavaScript object that contains our current state. We update this
 // over time to reflect the current state of the application. When we first
 // load, it represents the initial state of our application.
-const STATE = {
-  name: null
+const STATE = "currentContact": 123,
+"contacts": [{
+    "id": 1,
+    "name": "Albert Einstein",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/220px-Albert_Einstein_Head.jpg",
+    "email": "aeinstein@example.com",
+    "phone_number": "3361115555"
+  },
+  {
+    "id": 2,
+    "name": "Jake Statefarm",
+    "image_url": "http://i0.kym-cdn.com/entries/icons/original/000/017/912/uhh_khakis.png",
+    "email": "JakeSF@example.com",
+    "phone_number": "9192224444"
+  },
+  {
+    "id": 3,
+    "name": "Henry John",
+    "image_url": "https://411mania.com/wp-content/uploads/2018/01/Mark-Henry-645x370.jpg",
+    "email": "HJ101@example.com",
+    "phone_number": "9101117777"
+  }
+],
+all: function() { return this.contacts},
+get: function(id) {
+  const isContact = p => p.id === id
+  return this.contacts.find(isContact)
+}
 };
 
 let ON_UPDATE_CALLBACK = null;

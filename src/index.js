@@ -45,19 +45,19 @@ const state = {
   }
 }
 
-// const Home = () => (
-//   <div>
-//         {
-//           state.all().map(p => (
-//             <p key={p.id}>
-//               <span> {p.name}</span>
-//               <Link to={`/roster/${p.id}`}> Edit </Link>
-//               <span><button>Delete</button></span>
-//             </p>
-//           ))
-//         }
-//   </div>
-// )
+const Home = () => (
+  <div>
+        {
+          state.all().maps(p => (
+            <p key={p.id}>
+              <span> {p.name}</span>
+              <Link to={`/roster/${p.id}`}> Edit </Link>
+              <span><button>Delete</button></span>
+            </p>
+          ))
+        }
+  </div>
+)
 
 const ContactList = () => (
   <div>
@@ -90,26 +90,26 @@ const Header = () => (
   </div>
 )
 
-// const ContactView = (props) => {
-//   console.log(props)
-//   const contact = state.get(
-//     parseInt(props.match.params.id, 10)
-//   )
-//   if (!contact) {
-//     return <div>Sorry, but the contact was not found</div>
-//   }
-//   return (
-//     <div>
-//       <h4>{contact.name} <button><Link to='/'>Back to Contacts List</Link></button></h4>
-//       <p>Name: {contact.name}</p>
-//       <p>Phone Number: {contact.phone_number}</p>
-//       <p>Email: {contact.email}</p>
-//       <img className="contact-pic" src={contact.image_url} alt="Contact"/>
-//
-//
-//     </div>
-//   )
-// }
+const ContactView = (props) => {
+  console.log(props)
+  const contact = state.get(
+    parseInt(props.match.params.id, 10)
+  )
+  if (!contact) {
+    return <div>Sorry, but the contact was not found</div>
+  }
+  return (
+    <div>
+      <h4>{contact.name} <button><Link to='/'>Back to Contacts List</Link></button></h4>
+      <p>Name: {contact.name}</p>
+      <p>Phone Number: {contact.phone_number}</p>
+      <p>Email: {contact.email}</p>
+      <img className="contact-pic" src={contact.image_url} alt="Contact"/>
+
+
+    </div>
+  )
+}
 
 const Main = () => (
   <main>
@@ -119,6 +119,19 @@ const Main = () => (
     </Switch>
   </main>
 )
+
+const root = document.querySelector('#root');
+
+// When the state changes, re-render our app!
+onUpdate((state) => {
+  ReactDOM.render(
+    <Hello name={state.name} />,
+    root
+  );
+});
+
+// Trigger the initial update so our app will render for the first time.
+forceUpdate();
 
 ReactDOM.render((
   <BrowserRouter>

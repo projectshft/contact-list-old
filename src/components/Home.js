@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { Link } from 'react';
+import React from 'react';
+import ContactsList from './contacts-list';
 
 const Home = () => (
   <div>
