@@ -1,3 +1,6 @@
+//I tried to implement this at one point but I couldn't figure it out
+//So I'm leaving this here for now till I understand how.
+
 import _ from 'lodash';
 
 // A plain JavaScript object that contains our current state. We update this

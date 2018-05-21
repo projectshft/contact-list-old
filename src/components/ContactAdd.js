@@ -6,25 +6,35 @@ class ContactAdd extends Component {
     super()
 
     this.state = {
-      name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       phone_number: '',
       image_url: ''
     }
   }
 
+  render() {
+    return (
   <div>
-        <div className="row justify-content-end">
-          <Link className="btn btn-secondary" to={'/'}><i className="material-icons small-icon">arrow_back</i>Back to Contacts List</Link>
+        {/*button to go back to homepage*/}
+        <div className="row justify-content-center">
+          <Link className="btn btn-info" to={'/'}>Back to Contacts List</Link>
         </div>
         <div className="row justify-content-center">
-          <h1>{this.state.name === "" ? "New Contact" : this.state.name}</h1>
+        {/*these below are the inputs that will take the values for a new contact made*/}
+          <h1>Add New Contact</h1>
         </div>
-        <hr/>
         <div className="row justify-content-center">
-          <h3 className="input">Name:</h3>
+          <h3 className="input">First Name:</h3>
           <div className="form-group input">
-            <input className="form-control" onChange={event => this.setState({name: event.target.value})} value={this.state.name} placeholder="John Doe"/>
+            <input className="form-control" onChange={event => this.setState({firstName: event.target.value})} value={this.state.firstName} placeholder="example: Davis"/>
+          </div>
+        </div>
+        <div className="row justify-content-center">
+          <h3 className="input">Last Name:</h3>
+          <div className="form-group input">
+            <input className="form-control" onChange={event => this.setState({lastName: event.target.value})} value={this.state.lastName} placeholder="example: Umana"/>
           </div>
         </div>
         <div className="row justify-content-center">
@@ -45,8 +55,8 @@ class ContactAdd extends Component {
             <input className="form-control" onChange={event => this.setState({phone_number: event.target.value})} value={this.state.phone_number} placeholder="3364445555"/>
           </div>
         </div>
-        <hr/>
-        <div className="row justify-content-end">
+        <div className="row justify-content-center">
+          {/*This is the save button below*/}
           <Link className="btn btn-primary" onClick={() => this.props.addContact(this.state)} to='/'>Save Changes</Link>
         </div>
       </div>
