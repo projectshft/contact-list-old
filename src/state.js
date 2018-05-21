@@ -5,24 +5,24 @@ import _ from 'lodash';
 // load, it represents the initial state of our application.
 const STATE = {
   //Last Created ID
-  lastCreatedID:null,
+  lastCreatedID: "",
   contacts: [
     {
-      id: 0,
+      id: 1,
       name: "Albert Einstein",
       imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/220px-Albert_Einstein_Head.jpg",
       email: "A.Einstein@example.com",
       phoneNumber: "(123)123-1234",
     },
     {
-      id: 1,
+      id: 2,
       name: "Ryan Gosling",
       imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIe7XDIEvhNXpqK0CzeufFmow7R8zAZ_j90_pxNR4H_iijOyQ5LVauUXM",
       email: "R.Gosling@example.com",
       phoneNumber: "(234)111-1234",
     },
     {
-      id: 2,
+      id: 3,
       name: "Neils Bohr",
       imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Niels_Bohr.jpg/220px-Niels_Bohr.jpg",
       email: "N.Bohr@example.com",
@@ -103,13 +103,13 @@ const handleEvent = ({ name, data}, state) => {
       break;
     case 'updateContact':
     // Not quite the definition of "updating", this deletes the previous entry and re-add the updated contact.
-      const contactToBeUpdated = state.contacts.find((contact) => {return contact === data});
-      state.contacts.splice(state.contacts.indexOf(contactToBeUpdated),1)
+      const contactToBeUpdated = state.contacts.find((contact) => {return contact.id === data.id});
+      state.contacts.splice(state.contacts.indexOf(contactToBeUpdated),1);
       state.contacts = state.contacts.concat([data]);
       break;
     case 'deleteContact':
     // Find contact in the state.contacts array, then splice it from state.contacts.
-      const contactToBeDeleted = state.contacts.find((contact) => {return contact === data});
+      const contactToBeDeleted = state.contacts.find((contact) => {return contact.id === data.id});
       state.contacts.splice(state.contacts.indexOf(contactToBeDeleted),1)
       break;
     default:
