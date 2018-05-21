@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Contact from './components/ContactDetailAndEdit';
 import Home from './components/Home';
-import ContactNew from './components/ContactAdd';
+import ContactAdd from './components/ContactAdd';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
@@ -44,7 +44,7 @@ class App extends Component {
     }
   }
 
-  // User can create new contacts
+// addContact and add id
   addContact = (contact) => {
     contact.id = Math.round(Math.random() * 1000000);
 
@@ -52,18 +52,7 @@ class App extends Component {
   }
 
 
-  // User can change contact information
-  updateContact = (contact) => {
-    const oldContact = this.state.get(contact.id);
-
-    let newContacts = this.state.contacts.slice();
-    let index = newContacts.indexOf(oldContact);
-
-    newContacts[index] = contact;
-    this.setState({ contacts: newContacts });
-  }
-
-  // User can delete existing contacts
+  // delete contact clicked on
   removeContact = (contact) => {
     const c = window.confirm('Are you sure you would like to delete ' + '"' + contact.firstName + ' ' + contact.lastName + '"' + '?');
 
@@ -76,6 +65,17 @@ class App extends Component {
     }
   }
 
+  // change the contact info
+  changeContact = (contact) => {
+    const oldContact = this.state.get(contact.id);
+
+    let newContacts = this.state.contacts.slice();
+    let index = newContacts.indexOf(oldContact);
+
+    newContacts[index] = contact;
+    this.setState({ contacts: newContacts });
+  }
+
   render () {
     return (
       <div className="container">
@@ -84,15 +84,15 @@ class App extends Component {
             <Route exact path='/' render={(props) => (
               <Home state={this.state} removeContact={this.removeContact}/>
             )}/>
+            <Route exact path='/contact/new' render={(props) => (
+              <ContactAdd addContact={this.addContact} />
+            )}/>
             <Route exact path='/:id' render={(props) => (
               <Contact updateContact={this.updateContact}
                 contact={this.state.get(
                   parseInt(props.match.params.id, 10)
                 )}
               />
-            )}/>
-            <Route exact path='/contact/new' render={(props) => (
-              <ContactNew addContact={this.addContact} />
             )}/>
           </Switch>
         </main>
