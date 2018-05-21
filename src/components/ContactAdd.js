@@ -16,7 +16,7 @@ class ContactAdd extends Component {
 
   render() {
     return (
-  <div>
+      <div>
         {/*button to go back to homepage*/}
         <div className="row justify-content-center">
           <Link className="btn btn-info" to={'/'}>Back to Contacts List</Link>
