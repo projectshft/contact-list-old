@@ -75,28 +75,27 @@ const queryState = (name,data) => { //data should be the id of the player if it'
 
 const handleEvent = ({name, data}, state) => {
   if (name === 'add') {
-    STATE.contacts.push({
+    state.contacts.push({
       name: "Edit Me!",
       email: "",
       phone: "xxx-xxx-xxxx",
       id: STATE.next_id
     });
-    STATE.next_id++;
+    state.next_id++;
   } else if(name === "update") {
-    const contact = STATE.contacts.find(function (element){
+    const contact = state.contacts.find(function (element){
       return element.id == data.id;
     });
     contact.name=data.name;
     contact.email = data.email;
     contact.phone = data.phone;
-    console.log(STATE);
   } else if(name === "remove") {
     console.log(data);
-    STATE.contacts = STATE.contacts.filter((item) => {
+    state.contacts = state.contacts.filter((item) => {
       console.log(item.id);
       return item.id != data;
     });
-    console.log(STATE);
+    console.log(state);
   } else {
     // If we don't know what kind of event this is, alert the developer!
     throw new Error(`Unrecognized event: ${name}`);
