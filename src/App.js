@@ -1,18 +1,33 @@
+import { Switch, Route } from 'react-router-dom'
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Home from './Home'
+import AddContact from './AddContact'
 import './App.css';
 
 class App extends Component {
+  constructor () {
+    super()
+
+    this.state = {
+      contacts: []
+    }
+
+    this.addContact = this.addContact.bind(this);
+  }
+
+  addContact () {
+    alert('clicked add contact');
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route path='/addcontact' render={() => (
+            <AddContact addContact={this.addContact} contacts={this.state.contacts}/>
+          )}/>
+        </Switch>
       </div>
     );
   }
