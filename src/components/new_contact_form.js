@@ -8,20 +8,29 @@ class NewContactForm extends Component {
       name: '',
       image: '',
       email: '',
-      phone: ''
+      phone: '',
+      deleted: false,
+      id: 0
     }
 
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick () {
+
+    //generates unique id for contact
+    const generateId = () => Math.round(Math.random() * 100000000);
+    //console.log this id for test
+    console.log(generateId());
     //whenever handleClick function is invoked -
     //1. create the contact object with with user/text properties and values from input
     const contact = {
       name: this.state.name,
       image: this.state.image,
       email: this.state.email,
-      phone:this.state.phone
+      phone:this.state.phone,
+      deleted:false,
+      id: generateId()
 
     }
     //2. give the created contact object reference to the AddContact function in app.js so that addContact on app.js will recieve the properties of the contact object and know to invoke addContact and re-render the state.
