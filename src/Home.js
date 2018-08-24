@@ -1,30 +1,42 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Switch, Route, } from 'react-router-dom';
 import Contact from './contact';
+import ContactList from './ContactList'
 
-const Home = (props) => {
-  console.log(props);
-  const contactList = props.contacts.map((contact, index) => {
-    return (
-      <Contact contact={contact} key={index} updateSelectedContact={props.updateSelectedContact}/>
-    )
-  })
+const Home = (contacts, props) => (
+  <Switch>
+    <Route path='/contacts/:id' render={(props) => (
+      <Contact props={props} key={props.id} updateSelectedContact={props.updateSelectedContact}/>
+    )}/>
 
-  return (
-    <div>
-    <header className="App-header">
-      <h1 className="App-title">Recontact</h1>
-    </header>
-    <p/>
+    <Route path='/contacts' render={(props) => (
+      <ContactList contacts={contacts} updateSelectedContact={props.updateSelectedContact}/>
+    )}/>
+  </Switch>
+)
 
-    <Link to='/contacts/new'>Add New Contact</Link>
-    <p/>
-
-    <div className="contacts">
-      {contactList}
-    </div>
-    </div>
-  )
-}
+// const Home = (props) => {
+//   const contactList = props.contacts.map((contact, index) => {
+//     return (
+//       <Contact contact={contact} key={index} updateSelectedContact={props.updateSelectedContact}/>
+//     )
+//   })
+//
+//   return (
+//     <div>
+//     <header className="App-header">
+//       <h1 className="App-title">Recontact</h1>
+//     </header>
+//     <p/>
+//
+//     <Link to='/contacts/new'>Add New Contact</Link>
+//     <p/>
+//
+//     <div className="contacts">
+//       {contactList}
+//     </div>
+//     </div>
+//   )
+// }
 
 export default Home

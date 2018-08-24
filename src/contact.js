@@ -4,8 +4,6 @@ const Contact = (props) => {
 
   let person = props.contact
 
-  console.log(person);
-
   let makeSelection = function () {
     props.updateSelectedContact(person)
   }
