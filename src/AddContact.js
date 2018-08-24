@@ -8,17 +8,23 @@ class AddContact extends React.Component {
     this.state = {
       name: '',
       number: '',
-      email: ''
+      email: '',
+      id: ''
     }
 
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
+  }
+
+  generateID () {
+    return Math.round(Math.random() * 100000000)
   }
 
   handleSubmitContactClick () {
     const newContact = {
       name: this.state.name,
       number: this.state.number,
-      email: this.state.email
+      email: this.state.email,
+      id: this.generateID()
     };
 
     this.props.addContact(newContact)

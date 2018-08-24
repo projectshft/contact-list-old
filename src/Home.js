@@ -5,7 +5,6 @@ import Contact from './contact';
 const Home = (props) => {
   console.log(props);
   const contactList = props.contacts.map((contact, index) => {
-    // console.log(props.contacts.map)
     return (
       <Contact contact={contact} key={index} />
     )
@@ -14,7 +13,7 @@ const Home = (props) => {
   return (
     <div>
     <header className="App-header">
-      <h1 className="App-title">Recontact Home</h1>
+      <h1 className="App-title">Recontact</h1>
     </header>
     <p/>
 
