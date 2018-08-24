@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import React from 'react'
 
 class AddContact extends React.Component {
@@ -22,7 +22,7 @@ class AddContact extends React.Component {
     };
 
     this.props.addContact(newContact)
-    // this.props.props.history.push('/addcontact') ---come back to this
+    this.props.history.push('/')
   }
 
   render () {
@@ -63,4 +63,4 @@ class AddContact extends React.Component {
   }
 }
 
-export default AddContact
+export default withRouter(AddContact)

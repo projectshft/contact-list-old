@@ -20,7 +20,8 @@ class App extends Component {
 
   addContact (contact) {
     this.setState({
-      contacts: this.state.contacts.concat([contact])
+      contacts: this.state.contacts.concat([contact]),
+      // this.props.history.push('/')
       //add redirect
     })
   }
