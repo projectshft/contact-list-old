@@ -11,6 +11,11 @@ const Contact = (props) => {
     props.deleteContact(key)
   }
 
+  const handleEditButtonClick = ({key}) =>{
+    props.updateContact(key);
+    console.log(props);
+  }
+
 /*
   return:
   ** jsx format for contact detail with name, image, email
@@ -28,7 +33,7 @@ const Contact = (props) => {
           <span aria-hidden="true">&times; delete </span>
           </button> -
 
-          <button type="button" aria-label="Close">
+          <button type="button" aria-label="Close" onClick={handleEditButtonClick}>
           <span aria-hidden="true">edit</span>
           </button>
 

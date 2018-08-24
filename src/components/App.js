@@ -2,6 +2,8 @@ import { Switch, Route } from 'react-router-dom';
 import React, { Component } from 'react';
 import Home from './Home';
 import NewContactForm from './new_contact_form';
+import { Link } from 'react-router-dom'
+import _ from 'lodash'
 import ContactsList from './contacts_list';
 
 //App is a component --> has all functionality of React components and we are extending it here
@@ -49,6 +51,7 @@ class App extends Component {
 
     this.addContact = this.addContact.bind(this)
     this.deleteContact = this.deleteContact.bind(this)
+    this.updateContact = this.updateContact.bind(this)
   }
 
   //re-render contacts array each time a new instance of App component is rendered (props for this are passed from new_contact_form)
@@ -56,6 +59,11 @@ class App extends Component {
     this.setState({
       contacts: this.state.contacts.concat([contact])
     });
+  }
+
+  updateContact(contact) {
+    alert('update contact function was invoked!');
+    console.log(this.state.contacts.contact);
   }
 
   deleteContact(index) {
@@ -85,8 +93,9 @@ class App extends Component {
         )}/>
 
         <ContactsList
-        contacts={this.state.contacts} deleteContact={this.deleteContact}/>
-      </div>
+        contacts={this.state.contacts} deleteContact={this.deleteContact}
+        updateContact={this.updateContact}/>
+    </div>
 
     )
   }

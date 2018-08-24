@@ -7,7 +7,8 @@ const ContactsList = (props) => {
   //contactsList will pass in props and return a hash of the contacts
   const contactItems = props.contacts.map((contact, index) => {
     return (
-      <Contact key={index} contact={contact} deleteContact={props.deleteContact}/>
+      <Contact key={index} contact={contact} deleteContact={props.deleteContact}
+      updateContact={props.updateContact}/>
     )
   })
 

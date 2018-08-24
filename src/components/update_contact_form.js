@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import React, { Component } from 'react';
 import _ from 'lodash'
 
-class NewContactForm extends Component {
+class UpdateContactForm extends Component {
   constructor () {
     super()
 
@@ -19,10 +19,6 @@ class NewContactForm extends Component {
   }
 
   handleClick () {
-    //generates unique id for contact
-    const generateId = () => Math.round(Math.random() * 100000000);
-     //console.log this id for test
-     console.log(generateId());
     //whenever handleClick function is invoked -
     //1. create the contact object with with user/text properties and values from input
     const contact = {
@@ -31,17 +27,40 @@ class NewContactForm extends Component {
       email: this.state.email,
       phone:this.state.phone,
       deleted:false,
-      id:generateId()
+      id:
 
     }
     //2. give the created contact object reference to the UpdateContact function in app.js so that addContact on app.js will recieve the properties of the contact object and know to invoke updateContact and re-render the state.
-    this.props.addContact(contact);
+    this.props.updateContact(contact);
   }
+
+    const NewContactList = (props) => {
+
+      //contactsList will pass in props and return a hash of the contacts
+      const updatedContactItem = props.contacts.map((contact, index) => {
+        return (
+          <Contact key={index} contact={contact} deleteContact={props.deleteContact}/>
+        )
+      })
+
+    handleClick () {
+      //1. create the contact object with with user/text properties and values from input
+      const updatedContact = {
+        name: this.state.name,
+        image: this.state.image,
+        email: this.state.email,
+        phone:this.state.phone,
+        deleted:false,
+        }
+      //2. give the created contact object reference to the AddContact function in app.js so that addContact on app.js will recieve the properties of the contact object and know to invoke addContact and re-render the state.
+      this.props.addContact(contact);
+    }
+
 
   render() {
     return (
-      <form className="new-contact-form">
-        <h3>Add a New Contact</h3>
+      <form className="update-contact-form">
+        <h3>Edit Contact</h3>
 
         <div className="form-group">
           <input className="form-control" placeholder="Name"
@@ -71,10 +90,10 @@ class NewContactForm extends Component {
           onChange={event => this.setState({phone: event.target.value})}/>
         </div>
 
-        <button onClick={this.handleClick} type="button" className="btn btn-primary add-new-contact">Add Contact</button>
+        <button onClick={this.handleClick} type="button" className="btn btn-primary update-contact">Save</button>
       </form>
     );
   }
 }
 
-export default NewContactForm;
+export default UpdateContactForm;
