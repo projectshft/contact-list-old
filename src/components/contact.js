@@ -5,7 +5,7 @@ const Contact = (props) => {
   return (
     <div>
       <li>
-        <span>{props.contact.name} - {props.contact.image}</span>
+        <span>{props.contact.name} - <img src="{props.contact.image}" /></span>
         <p>{props.contact.phone}</p>
         <p>{props.contact.email}</p>
       </li>

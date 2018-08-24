@@ -1,4 +1,6 @@
+import { Switch, Route } from 'react-router-dom';
 import React, { Component } from 'react';
+import Home from './Home';
 import NewContactForm from './new_contact_form';
 import ContactsList from './contacts_list';
 
@@ -57,24 +59,19 @@ class App extends Component {
     // so that the posts are rendered/accessed in the stateful part of the app, below jsx will essentially tell each instance of the App to recieve the portion of postForm that is set to pass props to the app.js addPost function (see addPost function above in app.js and post-form.js click-handler for more information)
     return (
       <div>
-      <div className="row">
-        <div className="col-md-6 col-md-offset-3">
-          <div className="page-header">
-            <h1>Contacts List</h1>
-          </div>
+        <Switch>
+            <Route exact path='/' component={Home}/>
+        </Switch>
 
-          <div className="contacts">
-          </div>
-
-          <ContactsList contacts={this.state.contacts} />
-
+        <Route path='/new_contact' render={() => (
           <NewContactForm addContact={this.addContact} />
-
-        </div>
-        </div>
+        )}/>
+        
+        <ContactsList contacts={this.state.contacts} />
 
       </div>
-    );
+
+    )
   }
 }
 
