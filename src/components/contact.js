@@ -7,7 +7,7 @@ const Contact = (props) => {
   const handleDeleteButtonClick = ({key}) =>{
     console.log('delete button was clicked!');
     console.log(props)
-  props.deleteContact(key)
+    props.deleteContact(key)
   }
 
   //test with console log to be sure click function is being invoked and accessing the correct Object
@@ -15,6 +15,15 @@ const Contact = (props) => {
   const handleEditButtonClick = ({key}) =>{
     props.updateContact(key);
     console.log(props);
+  }
+
+  //test with console log to be sure click function is being invoked and accessing the correct Object
+  //onClick, pass props to callback function called showContactDetail(contact) which is on App.js - key passed in references the index of the current state's contacts array (also in app.js)
+  const handleContactDetailClick = ({key}) =>{
+    console.log('id is ' + props.contact.id);
+    console.log(props.contact);
+    props.showContactDetail(key);
+
   }
 
 /*
@@ -36,6 +45,10 @@ const Contact = (props) => {
 
           <button type="button" aria-label="Close" onClick={handleEditButtonClick}>
           <span aria-hidden="true">edit</span>
+          </button>
+
+          <button type="button" aria-label="Close" onClick={handleContactDetailClick}>
+          <span aria-hidden="true">Details</span>
           </button>
 
         </span>

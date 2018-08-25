@@ -55,6 +55,7 @@ class App extends Component {
     this.addContact = this.addContact.bind(this)
     this.deleteContact = this.deleteContact.bind(this)
     this.updateContact = this.updateContact.bind(this)
+    this.showContactDetail=this.showContactDetail.bind(this)
   }
 
   //re-render contacts array each time a new instance of App component is rendered (props for this are passed from new_contact_form)
@@ -66,9 +67,11 @@ class App extends Component {
 
   updateContact(contact) {
     alert('update contact function was invoked!');
-    console.log(this.state.contacts.contact);
+    console.log(this.state.contacts[contact]);
   }
 
+  //delete contact at a particular index when click handler function on contact.js is invoked
+  //rerender after delete
   deleteContact(index) {
     const contacts = Object.assign([], this.state.contacts);
     this.state.contacts.splice(index, 1);
@@ -78,23 +81,36 @@ class App extends Component {
 
   }
 
+  showContactDetail(contact) {
+    this.state.contacts
+  }
+
   /* ============== Return: ==================
   -give new_contact_form access to the addContent function so the form can 'fill in' that function with necessary properties
   -give ContactsList access to the current state of conacts array so that the list can access necessary properties when the state needs to re-render
   --give contactsList access to the deleteContent function so the form can 'fill in' that function with necessary properties and invoke interval
   -route components path='/' displays a list of contacts
   ====================================================== */
-
   render(){
     return (
       <div>
-        <Switch>
+
           <Route exact path='/' component={Home}/>
-          )}/>
-          <Route path='/contacts' render={() => (
-            <Contacts addContact={this.addContact} contacts={this.state.contacts} deleteContact={this.deleteContact}/>
-          )}/>
-        </Switch>
+
+            <Route path='/contacts' render={() => (
+              <Contacts addContact={this.addContact} contacts={this.state.contacts} deleteContact={this.deleteContact}
+              showContactDetail={this.showContactDetail}
+              updateComment={this.updateComment}/>
+            )}/>
+
+              <NewContactForm addContact={this.addContact} />
+
+              <UpdateContactForm addContact={this.addContact} />
+
+              <ContactsList
+              contacts={this.state.contacts} deleteContact={this.deleteContact}
+              updateContact={this.updateContact}/>
+
       </div>
     )
     }

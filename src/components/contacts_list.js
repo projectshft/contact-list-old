@@ -8,7 +8,8 @@ const ContactsList = (props) => {
   const contactItems = props.contacts.map((contact, index) => {
     return (
       <Contact key={index} contact={contact} deleteContact={props.deleteContact}
-      updateContact={props.updateContact}/>
+      updateContact={props.updateContact}
+      showContactDetail={props.showContactDetail}/>
     )
   })
 
