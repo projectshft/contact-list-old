@@ -7,7 +7,7 @@ import NewContactForm from './new_contact_form';
 import UpdateContactForm from './update_contact_form';
 import _ from 'lodash';
 import ContactsList from './contacts_list';
-import Contacts from './Contacts';
+
 
 //App is a component --> has all functionality of React components and we are extending it here
 class App extends Component {
@@ -82,7 +82,8 @@ class App extends Component {
   }
 
   showContactDetail(contact) {
-    this.state.contacts
+    alert('detail contact function was invoked!');
+    console.log(this.state.contacts[contact]);
   }
 
   /* ============== Return: ==================
@@ -95,21 +96,14 @@ class App extends Component {
     return (
       <div>
 
-          <Route exact path='/' component={Home}/>
-
-            <Route path='/contacts' render={() => (
-              <Contacts addContact={this.addContact} contacts={this.state.contacts} deleteContact={this.deleteContact}
-              showContactDetail={this.showContactDetail}
-              updateComment={this.updateComment}/>
-            )}/>
-
               <NewContactForm addContact={this.addContact} />
 
               <UpdateContactForm addContact={this.addContact} />
 
               <ContactsList
               contacts={this.state.contacts} deleteContact={this.deleteContact}
-              updateContact={this.updateContact}/>
+              updateContact={this.updateContact}
+              showContactDetail={this.showContactDetail}/>
 
       </div>
     )

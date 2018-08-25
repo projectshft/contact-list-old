@@ -20,10 +20,8 @@ const Contact = (props) => {
   //test with console log to be sure click function is being invoked and accessing the correct Object
   //onClick, pass props to callback function called showContactDetail(contact) which is on App.js - key passed in references the index of the current state's contacts array (also in app.js)
   const handleContactDetailClick = ({key}) =>{
-    console.log('id is ' + props.contact.id);
-    console.log(props.contact);
     props.showContactDetail(key);
-
+    console.log(props);
   }
 
 /*
@@ -45,7 +43,7 @@ const Contact = (props) => {
 
           <button type="button" aria-label="Close" onClick={handleEditButtonClick}>
           <span aria-hidden="true">edit</span>
-          </button>
+          </button>-
 
           <button type="button" aria-label="Close" onClick={handleContactDetailClick}>
           <span aria-hidden="true">Details</span>
@@ -58,5 +56,6 @@ const Contact = (props) => {
     </div>
   )
 }
+
 
 export default Contact
