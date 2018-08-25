@@ -18,30 +18,30 @@ class UpdateContactForm extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick () {
-    //whenever handleClick function is invoked -
-    //1. create the contact object with with user/text properties and values from input
-    const contact = {
-      name: this.state.name,
-      image: this.state.image,
-      email: this.state.email,
-      phone:this.state.phone,
-      deleted:false,
-      id:
+  // handleClick () {
+  //   //whenever handleClick function is invoked -
+  //   //1. create the contact object with with user/text properties and values from input
+  //   const contact = {
+  //     name: this.state.name,
+  //     image: this.state.image,
+  //     email: this.state.email,
+  //     phone:this.state.phone,
+  //     deleted:false,
+  //     id:
+  //
+  //   }
+  //   //2. give the created contact object reference to the UpdateContact function in app.js so that addContact on app.js will recieve the properties of the contact object and know to invoke updateContact and re-render the state.
+  //   this.props.updateContact(contact);
+  // }
 
-    }
-    //2. give the created contact object reference to the UpdateContact function in app.js so that addContact on app.js will recieve the properties of the contact object and know to invoke updateContact and re-render the state.
-    this.props.updateContact(contact);
-  }
-
-    const NewContactList = (props) => {
+    // const NewContactList = (props) => {
 
       //contactsList will pass in props and return a hash of the contacts
-      const updatedContactItem = props.contacts.map((contact, index) => {
-        return (
-          <Contact key={index} contact={contact} deleteContact={props.deleteContact}/>
-        )
-      })
+      // const updatedContactItem = props.contacts.map((contact, index) => {
+      //   return (
+      //     <Contact key={index} contact={contact} deleteContact={props.deleteContact}/>
+      //   )
+      // })
 
     handleClick () {
       //1. create the contact object with with user/text properties and values from input
@@ -53,7 +53,7 @@ class UpdateContactForm extends Component {
         deleted:false,
         }
       //2. give the created contact object reference to the AddContact function in app.js so that addContact on app.js will recieve the properties of the contact object and know to invoke addContact and re-render the state.
-      this.props.addContact(contact);
+      // this.props.addContact(contact);
     }
 
 

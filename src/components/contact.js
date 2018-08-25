@@ -1,16 +1,17 @@
 import React from 'react';
 
-
 const Contact = (props) => {
 
 //test with console log to be sure click function is being invoked
-//onClick, pass props to callback function
+//onClick, pass props to callback function called deleteContact(contact) which is on App.js - key passed in references the index of the current state's contacts array (also in app.js)
   const handleDeleteButtonClick = ({key}) =>{
     console.log('delete button was clicked!');
     console.log(props)
-    props.deleteContact(key)
+  props.deleteContact(key)
   }
 
+  //test with console log to be sure click function is being invoked and accessing the correct Object
+  //onClick, pass props to callback function called updateContact(contact) which is on App.js - key passed in references the index of the current state's contacts array (also in app.js)
   const handleEditButtonClick = ({key}) =>{
     props.updateContact(key);
     console.log(props);
@@ -19,7 +20,7 @@ const Contact = (props) => {
 /*
   return:
   ** jsx format for contact detail with name, image, email
-  ** onClick function invocation
+  ** onClick function invocations
 */
 
   return (

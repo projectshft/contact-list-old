@@ -1,10 +1,13 @@
-import { Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 import Home from './Home';
 import NewContactForm from './new_contact_form';
-import { Link } from 'react-router-dom'
-import _ from 'lodash'
+import UpdateContactForm from './update_contact_form';
+import _ from 'lodash';
 import ContactsList from './contacts_list';
+import Contacts from './Contacts';
 
 //App is a component --> has all functionality of React components and we are extending it here
 class App extends Component {
@@ -81,24 +84,31 @@ class App extends Component {
   --give contactsList access to the deleteContent function so the form can 'fill in' that function with necessary properties and invoke interval
   -route components path='/' displays a list of contacts
   ====================================================== */
-  render() {
+
+  render(){
     return (
       <div>
         <Switch>
-            <Route exact path='/' component={Home}/>
+          <Route exact path='/' component={Home}/>
+          )}/>
+          <Route path='/contacts' render={() => (
+            <Contacts addContact={this.addContact} contacts={this.state.contacts} deleteContact={this.deleteContact}/>
+          )}/>
         </Switch>
-
-        <Route path='/new_contact' render={() => (
-          <NewContactForm addContact={this.addContact} />
-        )}/>
-
-        <ContactsList
-        contacts={this.state.contacts} deleteContact={this.deleteContact}
-        updateContact={this.updateContact}/>
-    </div>
-
+      </div>
     )
-  }
+    }
 }
-
 export default App;
+
+// <div>
+//
+//   <NewContactForm addContact={this.addContact} />
+//
+//   <UpdateContactForm addContact={this.addContact} />
+//
+//   <ContactsList
+//   contacts={this.state.contacts} deleteContact={this.deleteContact}
+//   updateContact={this.updateContact}/>
+//
+// </div>
