@@ -6,10 +6,13 @@
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
+.home-title {
+  margin-bottom: 25px;
+}
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 75px;
   padding: 20px;
   color: white;
 }

@@ -1,0 +1,23 @@
+[
+  {
+    "Id": 1,
+  "Name":  "Albert Einstein",
+  "PhoneNumber": "123-456-7890",
+  "Email": "abc@example.com",
+  "Image_URL":"http://img.com/url.img"
+  },
+  {
+        "Id": 2,
+  "Name":  "Bacon Einstein",
+  "PhoneNumber": "123-456-7890",
+  "Email": "abc@example.com",
+  "Image_URL":"http://img.com/url.img"
+  },
+  {
+        "Id": 3,
+  "Name":  "Sheetz Einstein",
+  "PhoneNumber": "123-456-7890",
+  "Email": "abc@example.com",
+  "Image_URL":"http://img.com/url.img"
+  }
+]
