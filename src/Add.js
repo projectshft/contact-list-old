@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import React from 'react'
 
 class newContact extends React.Component {
@@ -70,7 +70,6 @@ class newContact extends React.Component {
         <button type="button" onClick={this.handleSubmitContactClick}>Submit</button>
         </form>
 
-        <Link to='/Contacts'>Back to Contacts</Link>
       </div>
     )
   }

@@ -4,6 +4,7 @@ import Home from './Home.js'
 import Contacts from './Contacts.js'
 import Contact from './Contact.js'
 import newContact from './Add.js'
+import Edit from './Edit.js'
 import './App.css';
 
 class App extends React.Component {
@@ -34,6 +35,8 @@ class App extends React.Component {
       <div className="App">
         <Switch>
           <Route exact path='/' component={Home}/>
+          <Route exact path='/Edit' component={Edit}/>
+          <Route exact path ='/Add' component={newContact}/>
           <Route path='/Contacts' render={() => (
             <Contacts contactList = {this.state.contactList} />
           )}/>
