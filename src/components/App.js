@@ -89,6 +89,8 @@ class App extends Component {
     console.log(this.state.contacts[contact]);
   }
 
+  
+
   /* ============== Return: ==================
   -give new_contact_form access to the addContent function so the form can 'fill in' that function with necessary properties
   -give ContactsList access to the current state of conacts array so that the list can access necessary properties when the state needs to re-render

@@ -3,20 +3,32 @@ import React, { Component } from 'react';
 import Contact from './contact';
 import _ from 'lodash'
 
-const ContactsList = (props) =>
+class UpdateContactForm extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      name: props.name || '',
+      image: props.image || '',
+      email: props.email || '',
+      phone: props.phone || ''
+
+    }
+
+console.log(this.state);
+console.log(props)
+
+  }
 
 
-
-
-  render(){
-
+render()
+{
     return (
       <form className="update-contact-form">
         <h3>Edit Contact</h3>
 
         <div className="form-group">
-          <input className="form-control" defaultValue={props.name}
-            value={this.state.name}
+          <input className="form-control" placeholder={this.state.name} value={this.state.name}
             onChange={event => this.setState({name: event.target.value})}/>
 
           <br/>
