@@ -5,7 +5,6 @@ import React from 'react';
 const Contact = ({props, contacts}) => {
   const contact = contacts.find(contact => contact.Id == parseInt(props.match.params.id)
   )
-
   const back = () => {
     props.history.push('/')
   }

@@ -20,7 +20,7 @@ class Home extends Component {
             <div className='row col-md-3' key={contact.Id}>
               <Link to={`/contact/${contact.Id}`}>{contact.Name}</Link>
                 <div>
-                  <Link to={'/editContact'}>edit</Link>
+                  <Link to={`/editContact/${contact.id}`}>edit</Link>
                 </div>
             </div>
           ))

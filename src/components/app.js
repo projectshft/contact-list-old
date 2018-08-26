@@ -18,8 +18,9 @@ class App extends Component {
 
   editContact = (newInformation) => {
     console.log(newInformation)
-    let person = this.state.contacts.find(contact => contact.Id == newInformation.Id)
+    let person = this.state.contacts.find(contacts => contacts.Id == newInformation.Id)
     let index  = this.state.contacts.indexOf(person)
+    // debugger;
     return this.state.contacts[index] = newInformation
   }
 
@@ -40,7 +41,7 @@ class App extends Component {
             <Route path='/contact/:id' render={(props) => (
                 <Contact contacts={this.state.contacts} props={props} />
             )}/>
-            <Route path='/editContact' render={(props) =>
+            <Route path='/editContact/:id' render={(props) =>
               <EditContact editContact={this.editContact} {...props} contacts={this.state.contacts}/>
             }/>
             <Route path='/addContact' render={(props) => (
