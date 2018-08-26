@@ -10,8 +10,8 @@ class App extends Component {
 
     this.state = {
       contacts: [
-        { number: '352-207-0354', name: "Paul Stanley", email: "paulnstanley@gmail.com", id:this.generateID() },
-        { number: '919-606-8594', name: "Caitlin Stanley", email: "caitlinmoorman@gmail.com", id:this.generateID() },
+        { number: '555-867-5309', name: "Jenny", email: "jenny@wat.com", id:this.generateID() },
+        { number: '555-123-4567', name: "Paul Stanley", email: "paulnstanley@gmail.com", id:this.generateID() },
       ],
       selectedContact: null
     };
@@ -38,13 +38,16 @@ class App extends Component {
     console.log('selected id: ' + selection.id)
   }
 
+//Within the following router, ideally I'd move "/contacts/new" into the nested contacts router, but I built it
+//this way prior to adding that nested router and am electing to spend time on other features rather
+//than on moving this router.
   render() {
     return (
       <div className="App">
         <Switch>
           <Redirect exact from="/" to="/contacts" />
-          <Route exact path='/contacts' render={() => (
-            <Home contacts={this.state.contacts} updateSelectedContact={this.updateSelectedContact}/>
+          <Route exact path='/contacts' render={(routerProps) => (
+            <Home routerProps={routerProps} contacts={this.state.contacts} updateSelectedContact={this.updateSelectedContact}/>
           )}/>
           <Route path='/contacts/new' render={() => (
             <AddContact addContact={this.addContact} contacts={this.state.contacts}/>
