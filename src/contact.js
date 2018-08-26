@@ -3,14 +3,12 @@ import { Link } from 'react-router-dom'
 import _ from 'lodash'
 
 const Contact = (props, contacts) => {
-  console.log(props);
-  console.log(contacts);
-  const contact = _.find(contacts, { number: parseInt(contacts.match.params.id, 10) });
-
-  const person = props.contact
+  const person = _.find(props.contacts, { id: parseInt(props.routerProps.match.params.id, 10) });
+  console.log(props)
+  console.log(person)
 
   const makeSelection = function () {
-    props.updateSelectedContact(person)
+    props.updateSelectedContact(person.id)
   }
 
   const editContact = function () {
@@ -19,6 +17,10 @@ const Contact = (props, contacts) => {
 
   const deleteContact = function () {
     alert('clicked delete on id ' + person.id +'!')
+  }
+
+  if (!person) {
+    return <div>Sorry, but the person was not found</div>
   }
 
   return (

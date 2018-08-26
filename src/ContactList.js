@@ -3,14 +3,11 @@ import React from 'react'
 import Contact from './contact'
 
 const ContactList = ({contacts, updateSelectedContact, routerProps}) => {
-  // console.log(props);
   const contactList = contacts.map((contact, index) => {
     return (
-      <Contact routerProps={routerProps} contact={contact} key={index} updateSelectedContact={updateSelectedContact}/>
+      <Contact routerProps={routerProps} contact={contact} key={contact.id} updateSelectedContact={updateSelectedContact}/>
     )
   })
-
-console.log(contacts)
 
   return (
     <div>

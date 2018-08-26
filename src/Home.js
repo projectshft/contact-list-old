@@ -11,7 +11,7 @@ const Home = ({id, updateSelectedContact, contacts, routerProps}) => (
   console.log(routerProps)
 
     <Route path='/contacts/:id' render={(routerProps) => (
-      <Contact routerProps={routerProps} contacts={contacts} key={id} updateSelectedContact={updateSelectedContact}/>
+      <Contact routerProps={routerProps} contacts={contacts} updateSelectedContact={updateSelectedContact}/>
     )}/>
 
     <Route path='/contacts' render={(routerProps) => (

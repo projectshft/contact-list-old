@@ -46,7 +46,7 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Redirect exact from="/" to="/contacts" />
-          <Route exact path='/contacts' render={(routerProps) => (
+          <Route path='/contacts' render={(routerProps) => (
             <Home routerProps={routerProps} contacts={this.state.contacts} updateSelectedContact={this.updateSelectedContact}/>
           )}/>
           <Route path='/contacts/new' render={() => (
