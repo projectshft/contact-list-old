@@ -1,6 +1,8 @@
 import React from 'react';
 import Contact from './contact';
 import NewContactForm from './new_contact_form';
+import ContactDetail from './contact_detail_display';
+import UpdateContactForm from './update_contact_form';
 
 const ContactsList = (props) => {
 
@@ -12,6 +14,7 @@ const ContactsList = (props) => {
       showContactDetail={props.showContactDetail}/>
     )
   })
+
 
 //return the contactItems mapped in the contacts_list.js and  return the li contact elements in a list
   return (

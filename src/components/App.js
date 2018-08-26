@@ -4,9 +4,10 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import Home from './Home';
 import NewContactForm from './new_contact_form';
-import UpdateContactForm from './update_contact_form';
 import _ from 'lodash';
 import ContactsList from './contacts_list';
+import UpdateContactForm from './update_contact_form'
+
 
 
 //App is a component --> has all functionality of React components and we are extending it here
@@ -65,9 +66,11 @@ class App extends Component {
     });
   }
 
-  updateContact(contact) {
+  updateContact(index) {
     alert('update contact function was invoked!');
-    console.log(this.state.contacts[contact]);
+    return (
+      <UpdateContactForm conact={this.state.contacts[index]}/>
+    )
   }
 
   //delete contact at a particular index when click handler function on contact.js is invoked
@@ -98,12 +101,13 @@ class App extends Component {
 
               <NewContactForm addContact={this.addContact} />
 
-              <UpdateContactForm addContact={this.addContact} />
-
               <ContactsList
               contacts={this.state.contacts} deleteContact={this.deleteContact}
               updateContact={this.updateContact}
               showContactDetail={this.showContactDetail}/>
+
+              <UpdateContactForm />
+
 
       </div>
     )

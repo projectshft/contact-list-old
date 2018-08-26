@@ -1,4 +1,6 @@
 import React from 'react';
+import UpdateContactForm from './update_contact_form'
+
 
 const Contact = (props) => {
 
@@ -23,6 +25,7 @@ const Contact = (props) => {
     props.showContactDetail(key);
     console.log(props);
   }
+
 
 /*
   return:
@@ -53,6 +56,8 @@ const Contact = (props) => {
         <p>{props.contact.phone}</p>
         <p>{props.contact.email}</p>
       </li>
+
+
     </div>
   )
 }
