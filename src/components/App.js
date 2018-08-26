@@ -48,7 +48,12 @@ class App extends Component {
           "phone_number": "15555555557",
           "deleted": false
         }
-      ]
+      ],
+      all: function() { return this.state.contacts},
+      get: function(id) {
+        const isContact = c => c.id === id;
+        return this.state.contacts.find(isContact)
+      }
     }
 
     // set the value of addContact equal to the result of calling bind on add contact and bind refers to App -->  results in making addContact's context App whenever it is called
@@ -58,6 +63,9 @@ class App extends Component {
     this.updateContact = this.updateContact.bind(this)
     this.showContactDetail=this.showContactDetail.bind(this)
   }
+
+indexBasedOnID = (id) => _.findIndex(this.state.contacts, function(id) { return {id} == {id}});
+
 
   //re-render contacts array each time a new instance of App component is rendered (props for this are passed from new_contact_form)
   addContact(contact) {
@@ -73,23 +81,21 @@ class App extends Component {
     )
   }
 
+  //use helper function to find index of contact to delete based on id passed in via contact.js click handler
   //delete contact at a particular index when click handler function on contact.js is invoked
   //rerender after delete
   deleteContact(index) {
     const contacts = Object.assign([], this.state.contacts);
+    console.log(contacts);
     this.state.contacts.splice(index, 1);
     this.setState({
-      contacts: this.state.contacts
-    });
-
+      contacts: this.state.contacts});
   }
 
   showContactDetail(contact) {
     alert('detail contact function was invoked!');
     console.log(this.state.contacts[contact]);
   }
-
-  
 
   /* ============== Return: ==================
   -give new_contact_form access to the addContent function so the form can 'fill in' that function with necessary properties
@@ -106,10 +112,12 @@ class App extends Component {
               <ContactsList
               contacts={this.state.contacts} deleteContact={this.deleteContact}
               updateContact={this.updateContact}
-              showContactDetail={this.showContactDetail}/>
+              showContactDetail={this.showContactDetail}
+              allContacts={this.state.all}
+              contactById={this.state.get}
+              />
 
               <UpdateContactForm />
-
 
       </div>
     )

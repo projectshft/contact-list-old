@@ -3,6 +3,7 @@ import UpdateContactForm from './update_contact_form'
 
 
 const Contact = (props) => {
+  console.log(props);
 
 //test with console log to be sure click function is being invoked
 //onClick, pass props to callback function called deleteContact(contact) which is on App.js - key passed in references the index of the current state's contacts array (also in app.js)
@@ -15,7 +16,7 @@ const Contact = (props) => {
   //test with console log to be sure click function is being invoked and accessing the correct Object
   //onClick, pass props to callback function called updateContact(contact) which is on App.js - key passed in references the index of the current state's contacts array (also in app.js)
   const handleEditButtonClick = ({key}) =>{
-    props.updateContact(key);
+    props.updateContact(props.index);
     console.log(props);
   }
 
