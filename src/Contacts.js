@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import Individual from './Id'
 
 const Contacts = (props) => {
-  const contactItems = props.contactList.map((newContact, index) => {
+  const contactItems = props.contactList.map((contactNew, index) => {
   return (
-    <Individual key = {index} contact = {newContact} />
+    <Individual key = {index} contact = {contactNew} />
   )
 });
   return (

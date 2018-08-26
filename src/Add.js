@@ -39,14 +39,14 @@ class newContact extends React.Component {
     return (
       <div>
         <form>
-        <label>* Name: </label>
+        <label>Name: </label>
         <input type='text' className='form-control'onChange={event =>
           this.setState({ name: event.target.value })
         }/>
 
         <br/>
 
-        <label>* Phone Number: </label>
+        <label>Phone Number: </label>
         <input type='text' className='form-control'onChange={event =>
           this.setState({ phone: parseInt(event.target.value) })
         }/>

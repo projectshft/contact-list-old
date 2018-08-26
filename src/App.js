@@ -24,14 +24,14 @@ class App extends React.Component {
     return Math.round(Math.random()*100000000)
   }
 
-  addContact (Individual) {
+  addContact (contactNew) {
     this.setState({
-      contactList: this.state.contactList.concat([Individual])
+      contactList: this.state.contactList.concat([contactNew])
     })
   }
 
   removeContact (Individual) {
-    this.setState({ contactList: this.state.contactList.filter(el => el !== name)
+    this.setState({ contactList: this.state.contactList.filter(el => el)
     })
   }
 
