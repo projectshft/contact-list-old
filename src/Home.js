@@ -4,16 +4,16 @@ import Contact from './contact';
 import ContactList from './ContactList'
 
 const Home = (props) => (
-  // console.log(contacts),
-  console.log(props),
   <Switch>
-    <Route path='/contacts/:id' render={() => (
+
+    <Route path='/contacts/:id' render={(props) => (
       <Contact props={props} key={props.id} updateSelectedContact={props.updateSelectedContact}/>
     )}/>
 
     <Route path='/contacts' render={() => (
       <ContactList contacts={props.contacts} updateSelectedContact={props.updateSelectedContact}/>
     )}/>
+
   </Switch>
 )
 
