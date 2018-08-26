@@ -4,9 +4,9 @@ import Contact from './contact'
 
 const ContactList = (props) => {
   console.log(props);
-  const contactList = props.contacts.contacts.map((contact, index) => {
+  const contactList = props.contacts.map((contact, index) => {
     return (
-      <Contact contact={contact} key={index} updateSelectedContact={props.contacts.updateSelectedContact}/>
+      <Contact contact={contact} key={index} updateSelectedContact={props.updateSelectedContact}/>
     )
   })
 

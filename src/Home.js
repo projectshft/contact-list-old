@@ -3,14 +3,16 @@ import { Switch, Route, } from 'react-router-dom';
 import Contact from './contact';
 import ContactList from './ContactList'
 
-const Home = (contacts, props) => (
+const Home = (props) => (
+  // console.log(contacts),
+  console.log(props),
   <Switch>
-    <Route path='/contacts/:id' render={(props) => (
+    <Route path='/contacts/:id' render={() => (
       <Contact props={props} key={props.id} updateSelectedContact={props.updateSelectedContact}/>
     )}/>
 
-    <Route path='/contacts' render={(props) => (
-      <ContactList contacts={contacts} updateSelectedContact={props.updateSelectedContact}/>
+    <Route path='/contacts' render={() => (
+      <ContactList contacts={props.contacts} updateSelectedContact={props.updateSelectedContact}/>
     )}/>
   </Switch>
 )

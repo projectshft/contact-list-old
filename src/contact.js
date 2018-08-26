@@ -2,6 +2,8 @@ import React from 'react';
 
 const Contact = (props) => {
 
+  console.log(props);
+
   let person = props.contact
 
   let makeSelection = function () {
