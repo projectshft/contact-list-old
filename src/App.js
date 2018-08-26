@@ -1,21 +1,46 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Switch, Route } from 'react-router-dom'
+import React from 'react'
+import Home from './Home.js'
+import Contacts from './Contacts.js'
+import Contact from './Contact.js'
+import newContact from './Add.js'
 import './App.css';
 
-class App extends Component {
+class App extends React.Component {
+  constructor () {
+    super()
+
+    this.state = {
+      contactList: [
+        { "phone": "4011234567", "name": "Ben Blocker", "address": "12 Why Lane", "email": "B@email.com", "id": this.generateId()},
+        { "phone": "4011234567", "name": "Dave Defender", "address": "12 What Lane", "email": "D@email.com", "id": this.generateId()},
+      ]
+    }
+      this.addContact = this.addContact.bind(this);
+  }
+
+  generateId () {
+    return Math.round(Math.random()*100000000)
+  }
+
+  addContact (Individual) {
+    this.setState({
+      contactList: this.state.contactList.concat([Individual])
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route path='/Contacts' render={() => (
+            <Contacts contactList = {this.state.contactList} />
+          )}/>
+        </Switch>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
