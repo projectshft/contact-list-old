@@ -30,6 +30,11 @@ class App extends React.Component {
     })
   }
 
+  removeContact (Individual) {
+    this.setState({ contactList: this.state.contactList.filter(el => el !== name)
+    })
+  }
+
   render() {
     return (
       <div className="App">
