@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 
+
 class AddContact extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       Name: '',
@@ -14,6 +15,8 @@ class AddContact extends Component {
 
   handleSubmit = () => {
     this.props.addContact(this.state)
+    this.props.history.push('/')
+
   }
 
 

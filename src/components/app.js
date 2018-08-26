@@ -16,7 +16,15 @@ class App extends Component {
     }
   }
 
+  editContact = (newInformation) => {
+    console.log(newInformation)
+    let person = this.state.contacts.find(contact => contact.Id == newInformation.Id)
+    let index  = this.state.contacts.indexOf(person)
+    return this.state.contacts[index] = newInformation
+  }
+
   addContact = (contact) => {
+    contact.Id = Math.round(Math.random() * 100000000);
     this.setState({ contacts: this.state.contacts.concat([contact]) })
   }
 
@@ -29,10 +37,14 @@ class App extends Component {
             <Route exact path='/' render={() => (
               <Home allContacts={this.state.contacts} />
             )}/>
-            <Route path='/contact' component={Contact}/>
-            <Route path='/editContact' component={EditContact}/>
-            <Route path='/addContact' render={() => (
-              <AddContact addContact={this.addContact} />
+            <Route path='/contact/:id' render={(props) => (
+                <Contact contacts={this.state.contacts} props={props} />
+            )}/>
+            <Route path='/editContact' render={(props) =>
+              <EditContact editContact={this.editContact} {...props} contacts={this.state.contacts}/>
+            }/>
+            <Route path='/addContact' render={(props) => (
+              <AddContact addContact={this.addContact} {...props}/>
             )}/>
           </Switch>
         </div>

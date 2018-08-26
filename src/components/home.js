@@ -14,11 +14,14 @@ class Home extends Component {
         <div className='home-title'>
           <h1>All Contacts</h1>
         </div>
-      <div>
+      <div className='container'>
         {
           this.props.allContacts.map((contact) => (
-            <div key={contact.Id}>
-              <Link to='/contact'>{contact.Name}</Link>
+            <div className='row col-md-3' key={contact.Id}>
+              <Link to={`/contact/${contact.Id}`}>{contact.Name}</Link>
+                <div>
+                  <Link to={'/editContact'}>edit</Link>
+                </div>
             </div>
           ))
         }
