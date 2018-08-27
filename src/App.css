@@ -21,7 +21,16 @@
 
 .App-title {
   font-size: 1.2em;
+  text-align: center;
 }
+
+.thumbnail{
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+}
+
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
