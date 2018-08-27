@@ -7,9 +7,6 @@ const Home = ({id, updateSelectedContact, contacts, routerProps}) => (
 
   <Switch>
 
-  console.log(props)
-  console.log(routerProps)
-
     <Route path='/contacts/:id' render={(routerProps) => (
       <Contact routerProps={routerProps} contacts={contacts} updateSelectedContact={updateSelectedContact}/>
     )}/>
