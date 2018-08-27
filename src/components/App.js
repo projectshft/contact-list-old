@@ -7,6 +7,7 @@ import _ from 'lodash';
 import UpdateContactForm from './update_contact_form'
 import ContactsList from './contacts_list'
 import Contacts from './Contacts'
+import SingleContact from './contact';
 
 
 //App is a component --> has all functionality of React components and we are extending it here
@@ -60,13 +61,7 @@ class App extends Component {
     this.addContact = this.addContact.bind(this)
     this.deleteContact = this.deleteContact.bind(this)
 
-
-    }
-
-
-
-
-
+  }
 
   //re-render contacts array each time a new instance of App component is rendered (props for this are passed from new_contact_form)
   addContact(contact) {
@@ -75,6 +70,7 @@ class App extends Component {
     });
   }
 
+//create a new contacts array and set it to this.state with the id filtered out
   deleteContact(id) {
     this.setState({
       contacts: this.state.contacts.filter((contact) => contact.id !== id)
@@ -83,45 +79,26 @@ class App extends Component {
 
 
   /* ============== Return: ==================
-  -give new_contact_form access to the addContent function so the form can 'fill in' that function with necessary properties
-  -give ContactsList access to the current state of conacts array so that the list can access necessary properties when the state needs to re-render
-  --give contactsList access to the deleteContent function so the form can 'fill in' that function with necessary properties and invoke interval
-  -route components path='/' displays a list of contacts
+  -route components path='/contacts' displays a list of contacts
   ====================================================== */
-
 
   render(){
     return (
       <div>
 
-      <ul>
-        <li><Link to="/contacts"> All Contacts </Link></li>
-        <li><Link to="/contacts/new"> Add Contact</Link></li>
-      </ul>
+        <Switch>
 
-      <Route path="/contacts" render={() => (
-        <Contacts
-        addContact={this.addContact}
-        contacts={this.state.contacts}
-        deleteContact={this.deleteContact}
-        updateContact={this.updateContact}
-        />)}
-      />
-
-      </div>
+          <Route path="/contacts" render={() => (
+            <Contacts
+            addContact={this.addContact}
+            contacts={this.state.contacts}
+            deleteContact={this.deleteContact}
+            updateContact={this.updateContact}
+            />)}
+          />
+      </Switch>
+    </div>
     )
     }
 }
 export default App;
-
-// <div>
-//
-//   <NewContactForm addContact={this.addContact} />
-//
-//   <UpdateContactForm addContact={this.addContact} />
-//
-//   <ContactsList
-//   contacts={this.state.contacts} deleteContact={this.deleteContact}
-//   updateContact={this.updateContact}/>
-//
-// </div>
