@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import React, { Component } from 'react';
 import _ from 'lodash'
 
+
+
 class NewContactForm extends Component {
   constructor () {
     super()
@@ -40,39 +42,62 @@ class NewContactForm extends Component {
 
   render() {
     return (
-      <form className="new-contact-form">
-        <h3>Add a New Contact</h3>
 
-        <div className="form-group">
-          <input className="form-control" placeholder="Name"
-            value={this.state.name}
-            onChange={event => this.setState({name: event.target.value})}/>
 
-          <br/>
+  <div>
+    <div class="container form-container">
+      <div class="row" >
 
-        <input
-          className="form-control" placeholder="Image"
-          value={this.state.image}
-          onChange={event => this.setState({image: event.target.value})}/>
+        <div class="col-2"> </div>
 
-          <br/>
+        <div class="col-8">
+          <div class="card text-white p-2 bg-secondary">
+            <div class="card-body">
 
-        <input
-          className="form-control" placeholder="Email"
-          value={this.state.email}
-          onChange={event => this.setState({email: event.target.value})}/>
+              <h1>Add Contact</h1>
 
-          <br/>
+                <div class="form-group" className="new-contact-form">
+                  <label>Name</label>
+                  <input className="form-control" placeholder="Name"
+                    value={this.state.name}
+                    onChange={event => this.setState({name:   event.target.value})}/>
+                </div>
 
-        <input
-          className="form-control"
-          placeholder="Phone"
-          value={this.state.phone}
-          onChange={event => this.setState({phone: event.target.value})}/>
-        </div>
+                <div class="form-group" className="new-contact-form">
+                  <label>Email</label>
+                  <input
+                    className="form-control" placeholder="Email"
+                    value={this.state.email}
+                    onChange={event => this.setState({email: event.target.value})}/>
+                </div>
 
-        <button onClick={this.handleClick} type="button" className="btn btn-primary add-new-contact">Add Contact</button>
-      </form>
+                <div class="form-group" className="new-contact-form">
+                  <label>Phone</label>
+                  <input
+                    className="form-control"
+                    placeholder="Phone"
+                    value={this.state.phone}
+                    onChange={event => this.setState({phone:event.target.value})}/>
+                </div>
+
+                <div class="form-group" className="new-contact-form">
+                  <label>Image Url</label>
+                    <input
+                    className="form-control" placeholder="Image"
+                    value={this.state.image}
+                    onChange={event => this.setState({image:event.target.value})}/>
+                </div>
+
+                    <button onClick={this.handleClick} type="button" className="btn btn-primary add-new-contact">Add Contact</button>
+
+                    </div>
+                  <div class="col-2"> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
     );
   }
 }

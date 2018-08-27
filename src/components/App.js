@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
@@ -8,6 +9,9 @@ import UpdateContactForm from './update_contact_form'
 import ContactsList from './contacts_list'
 import Contacts from './Contacts'
 import SingleContact from './contact';
+
+
+
 
 
 //App is a component --> has all functionality of React components and we are extending it here
@@ -72,9 +76,11 @@ class App extends Component {
 
 //create a new contacts array and set it to this.state with the id filtered out
   deleteContact(id) {
+    alert('delete contact function was invoked')
     this.setState({
       contacts: this.state.contacts.filter((contact) => contact.id !== id)
     })
+
   };
 
 
@@ -84,19 +90,46 @@ class App extends Component {
 
   render(){
     return (
-      <div>
+      <div className="main-App">
 
+        <header>
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul >
+              <li class="nav-item"><Link to='/'>Contacts</Link></li>
+              <li class="nav-item"><Link to='/new_contact'>Add Contacts</Link></li>
+            </ul>
+          </nav>
+        </header>
+
+        <main>
         <Switch>
 
-          <Route path="/contacts" render={() => (
-            <Contacts
-            addContact={this.addContact}
-            contacts={this.state.contacts}
-            deleteContact={this.deleteContact}
-            updateContact={this.updateContact}
-            />)}
-          />
+          <Route path="/new_contact" component={NewContactForm}/>
+
+            <Route path='/contacts/new' render={(props) => (
+              <NewContactForm props={props} contacts={this.state.contacts} addContact={this.addContact} />
+            )}/>
+
+            <Route path='/contacts/:id' render={(props) =>(
+                <SingleContact props={props} contacts={this.state.contacts}
+                deleteContact={this.deleteContact} addContact={this.addContact}
+                />
+            )}/>
+
+            <Route path='/contacts/edit' render={(props) =>(
+                <UpdateContactForm props={props} contacts={this.state.contacts}
+                deleteContact={this.deleteContact} addContact={this.addContact}
+                />
+            )}/>
+
+            <Route exact path='/' render={(props) => (
+              <ContactsList contacts={this.state.contacts}
+              deleteContact={this.deleteContact}
+              showContactDetail={this.showContactDetail}/>
+            )}/>
+
       </Switch>
+      </main>
     </div>
     )
     }
