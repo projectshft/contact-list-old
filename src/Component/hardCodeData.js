@@ -38,7 +38,7 @@ function ContactList () {
       <hr />
 
       <Router>
-        <Route  path="/contact/" component={Player} />
+        <Route  path="/contact/:number" component={Player} />
       </Router>
 
     </div>
@@ -51,22 +51,14 @@ function Player (props) {
 
   return (
     <div>
-      <h2>Hello Mr. Anderson</h2>
+      <h2>Hello </h2>
 
       <hr />
     </div>
   )
 };
 
-function Ladies () {
 
-  return (
-    <div>
-      <h2>Hello Ladies</h2>
-      <hr />
-    </div>
-  )
-};
 
 
 
