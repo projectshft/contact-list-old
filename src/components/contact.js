@@ -1,32 +1,18 @@
 import React from 'react';
 import UpdateContactForm from './update_contact_form'
+import _ from 'lodash'
 
 
-const Contact = (props) => {
-  console.log(props);
+const Contact = ({props, contacts}) => {
+  const contact = _.find(props.contacts, {id:parseInt(props.match.params.id, 10) })
 
-//test with console log to be sure click function is being invoked
+  //test with console log to be sure click function is being invoked
 //onClick, pass props to callback function called deleteContact(contact) which is on App.js - key passed in references the index of the current state's contacts array (also in app.js)
-  const handleDeleteButtonClick = ({key}) =>{
+  const handleDeleteButtonClick = () =>{
     console.log('delete button was clicked!');
     console.log(props)
-    props.deleteContact(key)
+    props.deleteContact(props.contact.id)
   }
-
-  //test with console log to be sure click function is being invoked and accessing the correct Object
-  //onClick, pass props to callback function called updateContact(contact) which is on App.js - key passed in references the index of the current state's contacts array (also in app.js)
-  const handleEditButtonClick = ({key}) =>{
-    props.updateContact(props.index);
-    console.log(props);
-  }
-
-  //test with console log to be sure click function is being invoked and accessing the correct Object
-  //onClick, pass props to callback function called showContactDetail(contact) which is on App.js - key passed in references the index of the current state's contacts array (also in app.js)
-  const handleContactDetailClick = ({key}) =>{
-    props.showContactDetail(key);
-    console.log(props);
-  }
-
 
 /*
   return:
@@ -36,29 +22,17 @@ const Contact = (props) => {
 
   return (
     <div>
-      <li>
+    <h1>helloooo</h1>
         <span>
-          {props.contact.name} -
-          <img src="{props.contact.image}"/>  -
+          {contacts.contact.name} -
+          <img src={props.contact.image}/>  -
+        </span>
+        <p>{props.contact.phone}</p>
+        <p>{props.contact.email}</p>
 
           <button type="button" aria-label="Close" onClick={handleDeleteButtonClick}>
           <span aria-hidden="true">&times; delete </span>
           </button> -
-
-          <button type="button" aria-label="Close" onClick={handleEditButtonClick}>
-          <span aria-hidden="true">edit</span>
-          </button>-
-
-          <button type="button" aria-label="Close" onClick={handleContactDetailClick}>
-          <span aria-hidden="true">Details</span>
-          </button>
-
-        </span>
-        <p>{props.contact.phone}</p>
-        <p>{props.contact.email}</p>
-      </li>
-
-
     </div>
   )
 }

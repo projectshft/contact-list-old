@@ -2,12 +2,11 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
-import Home from './Home';
 import NewContactForm from './new_contact_form';
 import _ from 'lodash';
-import ContactsList from './contacts_list';
 import UpdateContactForm from './update_contact_form'
-
+import ContactsList from './contacts_list'
+import Contacts from './Contacts'
 
 
 //App is a component --> has all functionality of React components and we are extending it here
@@ -49,10 +48,10 @@ class App extends Component {
           "deleted": false
         }
       ],
-      all: function() { return this.state.contacts},
+      all: function() { return this.contacts},
       get: function(id) {
         const isContact = c => c.id === id;
-        return this.state.contacts.find(isContact)
+        return this.contacts.find(isContact)
       }
     }
 
@@ -60,11 +59,13 @@ class App extends Component {
 
     this.addContact = this.addContact.bind(this)
     this.deleteContact = this.deleteContact.bind(this)
-    this.updateContact = this.updateContact.bind(this)
-    this.showContactDetail=this.showContactDetail.bind(this)
-  }
 
-indexBasedOnID = (id) => _.findIndex(this.state.contacts, function(id) { return {id} == {id}});
+
+    }
+
+
+
+
 
 
   //re-render contacts array each time a new instance of App component is rendered (props for this are passed from new_contact_form)
@@ -74,28 +75,12 @@ indexBasedOnID = (id) => _.findIndex(this.state.contacts, function(id) { return 
     });
   }
 
-  updateContact(index) {
-    alert('update contact function was invoked!');
-    return (
-      <UpdateContactForm conact={this.state.contacts[index]}/>
-    )
-  }
-
-  //use helper function to find index of contact to delete based on id passed in via contact.js click handler
-  //delete contact at a particular index when click handler function on contact.js is invoked
-  //rerender after delete
-  deleteContact(index) {
-    const contacts = Object.assign([], this.state.contacts);
-    console.log(contacts);
-    this.state.contacts.splice(index, 1);
+  deleteContact(id) {
     this.setState({
-      contacts: this.state.contacts});
-  }
+      contacts: this.state.contacts.filter((contact) => contact.id !== id)
+    })
+  };
 
-  showContactDetail(contact) {
-    alert('detail contact function was invoked!');
-    console.log(this.state.contacts[contact]);
-  }
 
   /* ============== Return: ==================
   -give new_contact_form access to the addContent function so the form can 'fill in' that function with necessary properties
@@ -103,21 +88,25 @@ indexBasedOnID = (id) => _.findIndex(this.state.contacts, function(id) { return 
   --give contactsList access to the deleteContent function so the form can 'fill in' that function with necessary properties and invoke interval
   -route components path='/' displays a list of contacts
   ====================================================== */
+
+
   render(){
     return (
       <div>
 
-              <NewContactForm addContact={this.addContact} />
+      <ul>
+        <li><Link to="/contacts"> All Contacts </Link></li>
+        <li><Link to="/contacts/new"> Add Contact</Link></li>
+      </ul>
 
-              <ContactsList
-              contacts={this.state.contacts} deleteContact={this.deleteContact}
-              updateContact={this.updateContact}
-              showContactDetail={this.showContactDetail}
-              allContacts={this.state.all}
-              contactById={this.state.get}
-              />
-
-              <UpdateContactForm />
+      <Route path="/contacts" render={() => (
+        <Contacts
+        addContact={this.addContact}
+        contacts={this.state.contacts}
+        deleteContact={this.deleteContact}
+        updateContact={this.updateContact}
+        />)}
+      />
 
       </div>
     )

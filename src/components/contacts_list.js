@@ -1,30 +1,27 @@
 import React from 'react';
-import Contact from './contact';
+import { Link } from 'react-router-dom'
 import NewContactForm from './new_contact_form';
 import ContactDetail from './contact_detail_display';
 import UpdateContactForm from './update_contact_form';
+import Contact from './contact';
 
 const ContactsList = (props) => {
 
-  //contactsList will pass in props and return a hash of the contacts
-  const contactItems = props.contacts.map((contact, index) => {
-    return (
-      <Contact key={contact.id} contact={contact} deleteContact={props.deleteContact}
-      updateContact={props.updateContact}
-      showContactDetail={props.showContactDetail}
-      index={index}
-      allContacts={allContacts}
-      contactById={contactById}/>
-    )
-  })
-
 
 //return the contactItems mapped in the contacts_list.js and  return the li contact elements in a list
-  return (
+return(
+  <div>
     <ul className='col-md-4 list-group'>
-      {contactItems}
+      {props.contacts.map(c =>(
+      <li key={c.id}>
+        <Link to={`/contacts/${c.id}`}>{c.name}</Link>
+      </li>
+    ))
+  }
     </ul>
-  )
+  </div>
+
+)
 }
 
 export default ContactsList
