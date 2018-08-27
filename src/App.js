@@ -13,7 +13,7 @@ class App extends Component {
         { number: '555-867-5309', name: "Jenny", email: "jenny@wat.com", id:this.generateID() },
         { number: '555-123-4567', name: "Paul Stanley", email: "paulnstanley@gmail.com", id:this.generateID() },
       ],
-      selectedContact: null
+      selectedContact: null,
     };
 
     this.addContact = this.addContact.bind(this);
@@ -49,7 +49,7 @@ class App extends Component {
           <Route path='/contacts' render={(routerProps) => (
             <Home routerProps={routerProps} contacts={this.state.contacts} updateSelectedContact={this.updateSelectedContact}/>
           )}/>
-          <Route path='/contacts/new' render={() => (
+          <Route exact path='/contacts/new' render={(routerProps) => (
             <AddContact addContact={this.addContact} contacts={this.state.contacts}/>
           )}/>
         </Switch>

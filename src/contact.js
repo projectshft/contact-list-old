@@ -1,10 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, matchPath } from 'react-router-dom'
 import _ from 'lodash'
 
-const Contact = (props, contacts) => {
-  const person = _.find(props.contacts, { id: parseInt(props.routerProps.match.params.id, 10) });
+
+//stuck here because match does not exist at this point, so i can't match anything to it
+//ex: console.log(person) -- person is empty because match is empty
+//seems like it has something to do with the order that things are rendering in, but i'm stuck
+
+const Contact = (props) => {
+
+  const person = _.find(props.contact, { id: parseInt(props.routerProps.match.params.id, 10) });
+
   console.log(props)
+  console.log(props.contact)
   console.log(person)
 
   const makeSelection = function () {
@@ -17,10 +25,6 @@ const Contact = (props, contacts) => {
 
   const deleteContact = function () {
     alert('clicked delete on id ' + person.id +'!')
-  }
-
-  if (!person) {
-    return <div>Sorry, but the person was not found</div>
   }
 
   return (
