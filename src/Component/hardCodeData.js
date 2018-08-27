@@ -18,6 +18,7 @@ const contact = [
     { name: "Isaac Bonga", number: "666-666-6666", email: "sgThird@none.edu", image:"https://en.wikipedia.org/wiki/Isaac_Bonga#/media/File:Isaac_Bonga.jpg" },
   ];
 
+
 //==============================================================================
 
 function ContactList () {
@@ -37,7 +38,7 @@ function ContactList () {
       <hr />
 
       <Router>
-        <Route  path="/contact/:number" component={Player} />
+        <Route  path="/contact/" component={Player} />
       </Router>
 
     </div>
@@ -46,7 +47,7 @@ function ContactList () {
 
 //==============================================================================
 
-function Player () {
+function Player (props) {
 
   return (
     <div>
