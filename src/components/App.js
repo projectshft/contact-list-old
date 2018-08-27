@@ -5,7 +5,8 @@ import React from 'react'
 import ContactList from './ContactList'
 
 
-
+// global state
+  //add function, delete function, and update functions go here
 class App extends React.Component {
   constructor () {
     super()
@@ -18,13 +19,14 @@ class App extends React.Component {
     }
   }
 
+
   render() {
     return (
       <div>
         <Switch>
-        
+
           <Route path='/contacts' render={() => (
-            <ContactList contacts={this.state.contacts} />
+            <ContactList contacts={this.state.contacts} deleteContact={this.deleteContact} />
           )}/>
           <Route exact path='/' render={() => (
             <ContactList contacts={this.state.contacts} />

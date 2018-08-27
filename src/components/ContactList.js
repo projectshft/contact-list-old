@@ -4,11 +4,11 @@ import Contacts from './Contacts';
 import ContactView from './ContactView'
 
 
-const ContactList = ({contacts}) => (
+const ContactList = ({contacts, deleteContact}) => (
   <Switch>
 
     <Route path='/contacts/:id' render={(props) => (
-      <ContactView props={props} contacts={contacts} />
+      <ContactView props={props} contacts={contacts} deleteContact={deleteContact} />
     )}/>
 
     <Route exact path='/' render={() => (
