@@ -7,8 +7,8 @@ import NewContactForm from './new_contact_form';
 import _ from 'lodash';
 import UpdateContactForm from './update_contact_form'
 import ContactsList from './contacts_list'
-import Contacts from './Contacts'
 import SingleContact from './contact';
+
 
 
 
@@ -76,11 +76,17 @@ class App extends Component {
 
 //create a new contacts array and set it to this.state with the id filtered out
   deleteContact(id) {
-    alert('delete contact function was invoked')
+    console.log('delete contact function was invoked')
     this.setState({
       contacts: this.state.contacts.filter((contact) => contact.id !== id)
     })
 
+  };
+
+
+  editContact(id) {
+    console.log('edit contact function was invoked')
+    //edit contact function will be passed to the updateContactForm
   };
 
 
@@ -93,10 +99,10 @@ class App extends Component {
       <div className="main-App">
 
         <header>
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <ul >
-              <li class="nav-item"><Link to='/'>Contacts</Link></li>
-              <li class="nav-item"><Link to='/new_contact'>Add Contacts</Link></li>
+              <li className="nav-item"><Link to='/'>Contacts</Link></li>
+              <li className="nav-item"><Link to='/new_contact'>Add Contacts</Link></li>
             </ul>
           </nav>
         </header>
@@ -104,28 +110,26 @@ class App extends Component {
         <main>
         <Switch>
 
-          <Route path="/new_contact" component={NewContactForm}/>
-
             <Route path='/contacts/new' render={(props) => (
               <NewContactForm props={props} contacts={this.state.contacts} addContact={this.addContact} />
             )}/>
 
-            <Route path='/contacts/:id' render={(props) =>(
-                <SingleContact props={props} contacts={this.state.contacts}
-                deleteContact={this.deleteContact} addContact={this.addContact}
-                />
+            <Route path='/contacts/:id/edit' render={(props) =>(
+              <UpdateContactForm props={props} editContact={this.editContact}
+              />
             )}/>
 
-            <Route path='/contacts/edit' render={(props) =>(
-                <UpdateContactForm props={props} contacts={this.state.contacts}
-                deleteContact={this.deleteContact} addContact={this.addContact}
-                />
+            <Route path='/contacts/:id' render={(props) =>(
+              <SingleContact props={props} contacts={this.state.contacts}
+              deleteContact={this.deleteContact} addContact={this.addContact}
+              editContact={this.editContact}
+              />
             )}/>
+
 
             <Route exact path='/' render={(props) => (
               <ContactsList contacts={this.state.contacts}
-              deleteContact={this.deleteContact}
-              showContactDetail={this.showContactDetail}/>
+              deleteContact={this.deleteContact}/>
             )}/>
 
       </Switch>

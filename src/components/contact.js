@@ -3,8 +3,8 @@ import _ from 'lodash'
 import { Link } from 'react-router-dom'
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Contacts from './Contacts'
 import ContactsList from './contacts_list';
+import UpdateContactForm from './update_contact_form';
 
 const SingleContact = (props) =>{
 
@@ -21,13 +21,24 @@ const SingleContact = (props) =>{
     window.location.assign("/");
   }
 
+  const handleEditLinkClick = ({key}) => {
+    console.log('edit link was clicked');
+    console.log(singleContact.id);
+    props.editContact(singleContact.id);
+  }
 
 return (
   <div>
     <div class="card contact-card py-5" >
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><img src={singleContact.image_url}/></li>
-        <li class="list-group-item">{singleContact.name} </li>
+        <li class="list-group-item">
+        <img src={singleContact.image_url}/>
+        </li>
+        <li class="list-group-item" onClick={handleEditLinkClick}>
+          <Link to={`/contacts/${singleContact.id}/edit`}>
+          {singleContact.name}
+          </Link>
+         </li>
         <li class="list-group-item"> {singleContact.phone_number} </li>
         <li class="list-group-item"> {singleContact.email} </li>
         <li class="list-group-item">

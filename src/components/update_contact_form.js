@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import React, { Component } from 'react';
-import Contact from './contact';
-import _ from 'lodash'
+import SingleContact from './contact';
+import _ from 'lodash';
+import ContactsList from './contacts_list';
 
 class UpdateContactForm extends Component {
   constructor (props) {
@@ -27,25 +28,17 @@ render()
 
 
   <div>
-    <div class="container form-container">
-      <div class="row" >
-
-        <div class="col-2"> </div>
-
-        <div class="col-8">
-          <div class="card text-white p-2 bg-secondary">
-            <div class="card-body">
 
               <h1>Edit Contact</h1>
 
-                <div class="form-group" className="new-contact-form">
+                <div class="form-group" className="update-contact-form">
                   <label>Name</label>
                   <input className="form-control" placeholder="Name"
                     value={this.state.name}
-                    onChange={event => this.setState({name:   event.target.value})}/>
+                    onChange={event => this.setState({name:event.target.value})}/>
                 </div>
 
-                <div class="form-group" className="new-contact-form">
+                <div class="form-group" className="update-contact-form">
                   <label>Email</label>
                   <input
                     className="form-control" placeholder="Email"
@@ -53,7 +46,7 @@ render()
                     onChange={event => this.setState({email: event.target.value})}/>
                 </div>
 
-                <div class="form-group" className="new-contact-form">
+                <div class="form-group" className="update-contact-form">
                   <label>Phone</label>
                   <input
                     className="form-control"
@@ -62,7 +55,7 @@ render()
                     onChange={event => this.setState({phone:event.target.value})}/>
                 </div>
 
-                <div class="form-group" className="new-contact-form">
+                <div class="form-group" className="update-contact-form">
                   <label>Image Url</label>
                     <input
                     className="form-control" placeholder="Image"
@@ -70,15 +63,9 @@ render()
                     onChange={event => this.setState({image:event.target.value})}/>
                 </div>
 
-                    <button onClick={this.handleClick} type="button" className="btn btn-primary add-new-contact">Add Contact</button>
+                    <button onClick={this.handleClick} type="button" className="btn btn-primary update-contact">Edit Contact</button>
 
-                    </div>
-                    <div class="col-2"> </div>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-      </div>
+    </div>
 
     );
   }
