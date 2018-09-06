@@ -19,9 +19,9 @@ class App extends Component {
   editContact = (newInformation) => {
     console.log(newInformation)
     console.log(this.state.contacts)
-    let person = this.state.contacts.find(contact => contact.Id == newInformation.id)
+    let person = this.state.contacts.find(contact => contact.Id == newInformation.Id)
     let index  = this.state.contacts.indexOf(person)
-    debugger;
+    // debugger;
     return this.state.contacts[index] = newInformation
   }
 

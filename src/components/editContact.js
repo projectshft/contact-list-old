@@ -5,7 +5,7 @@ class EditContact extends Component {
     super(props)
 
     this.state = {
-      id: this.props.match.params.id,
+      Id: parseInt(this.props.match.params.id),
       Name: '',
       PhoneNumber: '',
       Email: '',

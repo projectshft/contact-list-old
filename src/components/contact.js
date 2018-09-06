@@ -13,7 +13,7 @@ const Contact = ({props, contacts}) => {
   return(
     <div className='container'>
       <div className='row'>
-        <h1>{contact.Name}</h1>
+        <h1 key='index'>{contact.Name}</h1>
       </div>
       <div className='row'>
         <div className='col-md-2'>Phone Number:</div>
