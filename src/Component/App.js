@@ -3,27 +3,29 @@ import {Component} from "react";
 import {render} from 'react-dom';
 import { BrowserRouter as  Router, Route, Link } from "react-router-dom";
 import {Switch} from "react-router-dom";
-import ContactList from './hardCodeData.js';
+import ContactRouter from './hardCodeData.js';
 import Player from './hardCodeData.js';
 
 class App extends Component {
   render() {
     return(
+      
       <Router>
         <div>
           <ul>
-            <li><Link to="/contact"><h3>Contacts Index</h3></Link></li>
+            <li><Link to="/contacts"><h3>Contacts Index</h3></Link></li>
             <li><Link to= "/contact/New"><button>Add Contact</button></Link></li>
           </ul>
 
           <hr />
           <Switch>
-            <Route exact path="/contact/" component={ContactList} />
+            <Route path="/contacts/" component={ContactRouter} />
             <Route path="/contact/New" component={NewContact} />
 
           </Switch>
         </div>
       </Router>
+
     )
   }
 };
