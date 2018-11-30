@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import React, {Fragment} from 'react'
-import {getState} from '../state'
+import {getState, sendEvent} from '../state'
 
 const FullContact = () => {
   if (!getState('selectedContact')) {
@@ -13,7 +13,7 @@ const FullContact = () => {
     <Fragment>
     <h1>{name} </h1>
     <h2> {email}</h2>
-    <Link to='/contacts'>Back</Link>
+    <Link to='/contacts' onClick ={() => sendEvent('setSelectedContact', null)}>Back</Link>
     <Link to={editUrl}>Edit Contact</Link>
     </Fragment>
   )
