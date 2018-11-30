@@ -4,8 +4,8 @@ import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
 import './index.css';
 import { onUpdate, forceUpdate } from './state';
 import FullContactList from './components/FullContactList';
-import NewContact from './components/NewContact'
-
+import NewContact from './components/NewContact';
+import ContactDetail from "./components/ContactDetail"
 
 class App extends Component {
 
@@ -16,6 +16,7 @@ class App extends Component {
       <Route exact path = "/" render= { () => <Redirect to="/contacts" />}/>
       <Route exact path = "/contacts" component = {FullContactList}/>
       <Route path = "/contacts/new" component = {NewContact}/>
+      <Route path = "/contacts/:id" component = {ContactDetail}/>
       </Switch>
       </Fragment>
     );

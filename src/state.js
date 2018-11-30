@@ -71,7 +71,9 @@ const handleEvent = ({ name, data }, state) => {
     state.contacts.push(data);
   } else if (name === 'deleteContact') {
     state.contacts = state.contacts.filter(contact => data.id !== contact.id);
-  } else {
+  } else if (name === 'setSelectedContact') {
+    state.selectedContact = data;
+  }  else {
     // If we don't know what kind of event this is, alert the developer!
     throw new Error(`Unrecognized event: ${name}`);
   }

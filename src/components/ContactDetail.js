@@ -1,9 +1,12 @@
 import { Switch, Route } from 'react-router-dom';
 import React from 'react';
+import FullContact from './FullContact';
+import EditContact from './EditContact';
+import {getState} from '../state'
 
 
-const Contact = ({props, players, editPlayer}) => {
-  const player = _.find(players, { number: parseInt(props.match.params.number, 10) });
+const ContactDetail = () => {
+  const contact = getState('selectedContact');
   return (
     <Switch>
       <Route exact path='/contacts/:id' component = {FullContact}/>
@@ -13,4 +16,4 @@ const Contact = ({props, players, editPlayer}) => {
 
 }
 
-export default Player
+export default ContactDetail
