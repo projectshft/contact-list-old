@@ -1,5 +1,5 @@
 import React from 'react';
-import { sendEvent } from '../state';
+import { sendEvent, forceUpdate} from '../state';
 
 const ContactListItem = ({contact}) => {
   const contactURL = `/contacts/${contact.id}`
@@ -7,7 +7,7 @@ const ContactListItem = ({contact}) => {
     <li>
     <img className = "contact-image" alt={contact.name} src={contact.image_url}></img>
     <a href = {contactURL}>{contact.name}</a>
-    <button type="button" className = "btn btn-primary" onClick={() => sendEvent("deleteContact",contact)}>Delete Contact</button>
+    <button type="button" className = "btn btn-primary" onClick={() => {sendEvent("deleteContact",contact)}}>Delete Contact</button>
     </li>
   )
 }

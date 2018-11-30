@@ -6,15 +6,18 @@ import ContactListItem from './ContactListItem';
 
 
 class FullContactList extends Component {
-    contactList = getState('contacts').map((c,index) => {
+    //force a regeneration of the contact list whenever this component is rendered
+    newContactList = () =>
+      getState('contacts').map((c,index) => {
       return (<ContactListItem key={c.id} contact={c} />
       )
     })
+
   render () {
     return (
       <Fragment>
       <ul className="col-md-4 list-group">
-        {this.contactList}
+        {this.newContactList()}
       </ul>
       <Link to="/contacts/new" className="btn btn-primary">Add New Contact</Link>
       </Fragment>

@@ -32,7 +32,6 @@ renderRedirect = () => {
     const {name, image_url, email, phone_number} = this.state;
     const newContact = {name, image_url,email, phone_number,id: generateId()}
     sendEvent('addNewContact', newContact);
-    console.log(getState('contacts'))
     this.setRedirect();
   }
 

@@ -31,7 +31,6 @@ const onUpdate = (callback) => {
 const forceUpdate = () => {
   if (ON_UPDATE_CALLBACK) {
     ON_UPDATE_CALLBACK(STATE);
-    console.log(STATE.contacts);
 
   }
 };
@@ -58,7 +57,6 @@ const sendEvent = (name, data) => {
   // passed it to `handleEvent`, we know we need to notify any listener that
   // there was a change!
   if (!_.isEqual(newState, oldState)) {
-    console.log('force updating')
     forceUpdate()
   }
 };
