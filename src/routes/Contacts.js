@@ -12,13 +12,19 @@ class Contacts extends Component {
       contacts: []
     };
 
+    const generateId = () => Math.round(Math.random() * 100000000);
+
+    // Random users API returns names in lowercase
+    const capitalizeFirstLetter = str => str.charAt(0).toUpperCase() + str.slice(1);
+
     // Fetch random contacts and setup state upon app initialization
-    fetch('https://randomuser.me/api/?results=10&inc=name,picture,email,phone')
+    fetch('https://randomuser.me/api/?results=10&inc=name,picture,email,phone&nat=US')
       .then(resp => resp.json())
       .then(myJson => {
         const contacts = myJson.results.map(contact => {
           return {
-            name: `${contact.name.first} ${contact.name.last}`,
+            id: generateId(),
+            name: `${capitalizeFirstLetter(contact.name.first)} ${capitalizeFirstLetter(contact.name.last)}`,
             email: contact.email,
             phone: contact.phone,
             image: contact.picture.large
@@ -28,12 +34,30 @@ class Contacts extends Component {
       });
   }
 
+  addContact = contact => {
+    this.state.contacts.concat([contact]);
+  }
+
+  deleteContact = contact => {
+    this.state.contacts.filter(c => c === contact);
+  }
+
+  editContact = contact => {
+    // TODO: Implement function
+  }
+
   render() {
     return (
       <Switch>
-        <Route exact path='/contacts' component={ContactList}></Route>
-        <Route path='/contacts/new' component={NewContact}></Route>
-        <Route path='/contacts/:id' component={Contact}></Route>
+        <Route exact path='/contacts' render={routerProps => (
+          <ContactList routerProps={routerProps} contacts={this.state.contacts} /> 
+        )} />
+        <Route path='/contacts/new' render={routerProps => (
+          <NewContact routerProps={routerProps} addContact={this.addContact} />
+        )} />
+        <Route path='/contacts/:id' component={Contact} render={routerProps => (
+          <Contact routerProps={routerProps} contacts={this.state.contacts} editContact={this.editContact} deleteContact={this.deleteContact}/>
+        )} />
       </Switch>
     );
   }
