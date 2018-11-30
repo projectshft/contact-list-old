@@ -10,7 +10,7 @@ const ContactItem = ({contact}) => {
           {contact.firstName} {contact.lastName}
         </Link>
       </h3>
-      <p>email:{contact.email}</p> <p># - {contact.phone}</p>
+      
       <button className="delete-contact">X</button>
     </div>;
 }
