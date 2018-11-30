@@ -1,4 +1,5 @@
 import React from 'react'
+import ContactsTable from './ContactsTable'
 
 const ContactsPage = ({contacts}) => {
     console.log(contacts);
@@ -10,18 +11,7 @@ const ContactsPage = ({contacts}) => {
           </div>
           <div className="row d-flex justify-content-center">
             <table className="table contacts-list border">
-              <tr>
-                <td>First name</td>
-                <td>Last name</td>
-                <td><a className="edit " href="#">edit</a></td>
-                <td><a className="delete" href="#">delete</a></td>
-              </tr>
-              <tr>
-                <td>First</td>
-                <td>Last</td>
-                <td><a className="edit" href="#">edit</a></td>
-                <td><a className="delete" href="#">delete</a></td>
-              </tr>
+              <ContactsTable contacts={contacts}/>
             </table>
           </div>
       </div>
