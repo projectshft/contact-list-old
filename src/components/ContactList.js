@@ -19,8 +19,6 @@ const ContactList = ({routerProps, contacts}) => (
             <li className="contact list-group-item my-2">
               <h3 className='contact-name'>{c.name}</h3>
               <a href={`/contacts/${c.id}`} className="btn btn-sm btn-primary mx-2">Details</a>
-              <a className="btn btn-sm btn-secondary mr-2" href={`/contacts/${c.id}/edit`}>Edit</a>
-              <button className="btn btn-sm btn-danger">Delete</button>
             </li>
           </ul>
         );
