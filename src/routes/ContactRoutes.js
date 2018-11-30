@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import ContactDetail from './ContactDetail';
-import EditContact from './EditContact';
+import ContactDetail from '../components/ContactDetail';
+import EditContact from '../components/EditContact';
 
 const Contact = () => (
   <Switch>

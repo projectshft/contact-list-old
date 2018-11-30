@@ -1,12 +1,13 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
-import Home from './Home';
-import Contacts from './Contacts';
+import {Switch, Route, Redirect} from 'react-router-dom';
+import ContactsRoutes from '../routes/ContactsRoutes';
 
 const App = () => (
   <Switch>
-    <Route exact path='/' component={Home}></Route>
-    <Route path='/contacts' component={Contacts}></Route>
+    <Route exact path='/'>
+      <Redirect to='/contacts' />
+    </Route>
+    <Route path='/contacts' component={ContactsRoutes}></Route>
   </Switch>
 );
 

@@ -3,7 +3,7 @@ import React from 'react';
 const Home = () => (
   <div className="container-fluid">
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">eContacts</a>
+      <a className="navbar-brand" href="/">eContacts</a>
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
