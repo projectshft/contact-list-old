@@ -23,12 +23,15 @@ constructor(){
 }
   render() {
     return <div>
-        <Switch>
-          <Route exact path="/" render={() => <List contacts={this.state.contacts} />} />
-          <Route path="/contacts" render={() => <List contacts={this.state.contacts} />} />
-        </Switch>
+      
+      
       </div>;
   }
 }
 
 export default App
+//Just holding onti the code for later
+
+//        <Route path='/contacts/:key' render={() => <Info contacts={this.state.contacts} />} />
+
+      // <List contacts={this.state.contacts} /> 

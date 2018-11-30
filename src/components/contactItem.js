@@ -1,16 +1,18 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 const ContactItem = ({contact}) => {
-console.log(contact)
-  return (
 
-    <div className="contact-list-item">
+  return <div className="contact-list-item">
       <img src={contact.imgUrl} className="contact-list-img" />
-      <h3 className="name">{contact.firstName} {contact.lastName}</h3>
+      <h3 className="name">
+        <Link to={`contacts/${contact.key}`}>
+          {contact.firstName} {contact.lastName}
+        </Link>
+      </h3>
       <p>email:{contact.email}</p> <p># - {contact.phone}</p>
-      
-    </div>
-  )
+      <button className="delete-contact">X</button>
+    </div>;
 }
 
 export default ContactItem
