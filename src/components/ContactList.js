@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
-const ContactList = () => (
-  <div className="container-fluid">
+const ContactList = ({routerProps, contacts}) => (
+  <Fragment>
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">eContacts</a>
       <div className="collapse navbar-collapse" id="navbarNav">
@@ -12,8 +12,21 @@ const ContactList = () => (
         </ul>
       </div>
     </nav>
-    <h1>CONTACTS PAGE</h1>
-  </div>
+    <div className="container mt-5">
+      {contacts.map(c => {
+        return (
+          <ul className="contact-list list-group" key={c.id}>
+            <li className="contact list-group-item my-2">
+              <h3 className='contact-name'>{c.name}</h3>
+              <a href={`/contacts/${c.id}`} className="btn btn-sm btn-primary mx-2">Details</a>
+              <a className="btn btn-sm btn-secondary mr-2" href={`/contacts/${c.id}/edit`}>Edit</a>
+              <button className="btn btn-sm btn-danger">Delete</button>
+            </li>
+          </ul>
+        );
+      })}
+    </div>
+  </Fragment>
 );
 
 export default ContactList;
