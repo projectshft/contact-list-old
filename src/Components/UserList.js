@@ -1,13 +1,15 @@
+import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 
-export default class UserList extends Component {
-  render() {
-    return (
-      <div>
-        
-      </div>
-    )
-  }
-}
 
+const UserList = ({user}) =>(
+    <div>
+      <ul>
+          {
+              
+          }
+      </ul>
+    </div>
+
+)   
 export default UserList
