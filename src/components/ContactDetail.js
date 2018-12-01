@@ -12,7 +12,7 @@ const ContactDetail = ({routerProps, contact, deleteContact}) => (
             <p className="card-text contact-email">{contact.email}</p>
             <p className="card-text contact-phone">{contact.phone}</p>
             <a className="btn btn-sm btn-primary mr-2" href={`/contacts/${contact.id}/edit`}>Edit</a>
-            <a className="btn btn-sm btn-danger" href='/contacts' onClick={() => deleteContact(contact)}>Delete</a>
+            <a className="btn btn-sm btn-danger" href='#' onClick={() => deleteContact(contact)}>Delete</a>
           </div>
         </div>
         </div>

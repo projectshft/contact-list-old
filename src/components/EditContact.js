@@ -29,6 +29,7 @@ class EditContact extends Component {
     };
 
     this.props.editContact(updatedContact);
+    window.location.assign(`/contacts/${this.props.contact.id}`);
   }
 
   render() {
@@ -54,7 +55,7 @@ class EditContact extends Component {
                 <label htmlFor="image">Image</label>
                 <input type="url" value={this.state.image} name='image' onChange={this.handleChange} className="form-control" id="image" placeholder="Enter image URL" required />
               </div>
-              <button type="submit" className="btn btn-primary">Submit</button>
+              <button type="submit" className="btn btn-primary">Save</button>
             </form>
           </div>
         </div>

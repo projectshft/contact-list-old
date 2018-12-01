@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import ContactDetail from '../components/ContactDetail';
-import EditContact from '../components/EditContact';
+import ContactDetail from '../ContactDetail';
+import EditContact from '../EditContact';
 
 const Contact = ({routerProps, contacts, editContact, deleteContact}) => {
   const contact = contacts.find(c => c.id === parseInt(routerProps.match.params.id));
