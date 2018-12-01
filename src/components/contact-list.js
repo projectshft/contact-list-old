@@ -9,7 +9,7 @@ const ContactList = ({contacts}) => {
     <ContactItem key={contacts.key} contact={person} />
   ))
   return (
-    <div>
+    <div className="row">
       
     {contactList}  
     </div>

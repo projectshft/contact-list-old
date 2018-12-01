@@ -1,5 +1,6 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+
 
 //This destructiring is weird but it works???
 const Info = ({ match, contacts }) => {
