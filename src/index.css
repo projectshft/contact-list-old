@@ -5,7 +5,10 @@ h1 {
 a {
   font-size: 15px;
 }
-
+table {
+  max-width: 600px;
+  margins: auto;
+}
 .edit {
   margin-left: 40px;
 }
@@ -20,7 +23,15 @@ a {
 .contacts-list {
 
 }
-table {
-  max-width: 600px;
-  margins: auto;
+.addContactButton{
+  margin-top: 6px;
+}
+
+img {
+  height: 300px;
+
+}
+
+.contactCard {
+  /* max-width: 800px; */
 }

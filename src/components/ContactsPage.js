@@ -1,16 +1,18 @@
 import React from 'react'
 import ContactsTable from './ContactsTable'
+import StyledLinkWhite from './StyledLinkWhite.js'
+
 
 const ContactsPage = ({contacts}) => {
-    console.log(contacts);
+
     return (
       <div className="container">
           <div className="row d-flex justify-content-center">
             <h1>Contacts</h1>
-            <button className="btn btn-primary btn-sm" type="button" name="button">Add Contact</button>
+            <StyledLinkWhite to='/contacts/new'><button className="btn btn-primary addContactButton" type="button" name="button">Add Contact</button></StyledLinkWhite>
           </div>
           <div className="row d-flex justify-content-center">
-            <table className="table contacts-list border">
+            <table className="table contacts-list">
               <ContactsTable contacts={contacts}/>
             </table>
           </div>
