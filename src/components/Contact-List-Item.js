@@ -1,18 +1,14 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 
-const ContactListItem = ({contacts}) => (
-  <div>
-    <ul className="list-group">
-    {
-     contacts.map(contact => (
+const ContactListItem = ({contact}) => {
+    return (
        <li className="list-group-item" key={contact.id}>
-       <img src={contact.image}></img>{contact.name}{contact.phoneNumber}{contact.email}
+        <img src={contact.image}></img>{contact.name}
        </li>
-     )) 
-    }
-   </ul>
-  </div>
-)
+     )
+}
+
+
 
 export default ContactListItem
