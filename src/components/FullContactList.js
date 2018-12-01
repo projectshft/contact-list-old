@@ -1,7 +1,6 @@
-import React, {Component, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom'
-import ReactDOM from 'react-dom';
-import {getState } from '../state';
+import { getState } from '../state';
 import ContactListItem from './ContactListItem';
 
 

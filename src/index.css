@@ -12,3 +12,7 @@ body {
 li {
   list-style: none;
 }
+
+input {
+  width: 50%;
+}

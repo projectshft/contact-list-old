@@ -1,10 +1,14 @@
+
 import { Link, Redirect } from 'react-router-dom'
 import React, {Component, Fragment} from 'react'
-import {getState, sendEvent} from '../state'
+import {getState, sendEvent, validateContact} from '../state'
 
 class EditContact extends Component {
   constructor () {
     super ();
+    if (!getState('selectedContact')) {
+      return <h1>No contact with that ID is available</h1>
+    }
     const {name, image_url, email, phone_number, id} = getState('selectedContact');
     sendEvent('deleteContact',getState('selectedContact'));
     this.state = {
@@ -32,8 +36,12 @@ renderRedirect = () => {
 handleSubmitClick = () => {
   const {name, image_url, email, phone_number, id} = this.state;
   const newContact = {name, image_url,email, phone_number,id}
-  sendEvent('addNewContact', newContact);
-  this.setRedirect();
+  if (validateContact(newContact)) {
+    sendEvent('addNewContact', newContact);
+    this.setRedirect();
+  } else {
+    alert("Your contact must have a name, a valid email, and a phone number with area code");
+  }
 }
 
 render () {

@@ -11,11 +11,20 @@ const STATE = {
       email: "aeinstein@example.com",
       phone_number: "15555555555"
     }],
-      selectedContact: null
+      selectedContact: null,
+      showDeleteModal: false
     }
 
 const getState = prop => {
   return STATE[prop];
+}
+
+//use this to validate instead of proptypes because there are no props anywhere
+const validateContact = contact => {
+  return (contact.name.length > 0 &&
+  contact.email.includes('@') &&
+  contact.email.includes('.') &&
+  contact.phone_number.length >= 10)
 }
 
 let ON_UPDATE_CALLBACK = null;
@@ -70,9 +79,14 @@ const handleEvent = ({ name, data }, state) => {
   if (name === 'addNewContact') {
     state.contacts.push(data);
   } else if (name === 'deleteContact') {
+    state.showDeleteModal = false;
     state.contacts = state.contacts.filter(contact => data.id !== contact.id);
   } else if (name === 'setSelectedContact') {
     state.selectedContact = data;
+  }  else if (name === 'requestDelete') {
+    state.showDeleteModal = true;
+  }  else if (name === 'cancelDelete') {
+    state.showDeleteModal = false;
   }  else {
     // If we don't know what kind of event this is, alert the developer!
     throw new Error(`Unrecognized event: ${name}`);
@@ -83,5 +97,6 @@ export {
   forceUpdate,
   onUpdate,
   sendEvent,
-  getState
+  getState,
+  validateContact
 };

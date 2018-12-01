@@ -1,6 +1,6 @@
 import { Link, Redirect } from 'react-router-dom'
 import React, {Component, Fragment} from 'react'
-import {sendEvent, getState} from '../state'
+import {sendEvent, validateContact} from '../state'
 
 const generateId = () => Math.round(Math.random() * 100000000);
 
@@ -31,8 +31,12 @@ renderRedirect = () => {
   handleSubmitClick = () => {
     const {name, image_url, email, phone_number} = this.state;
     const newContact = {name, image_url,email, phone_number,id: generateId()}
-    sendEvent('addNewContact', newContact);
-    this.setRedirect();
+    if (validateContact(newContact)) {
+      sendEvent('addNewContact', newContact);
+      this.setRedirect();
+    } else {
+      alert("Your contact must have a name, a valid email, and a phone number with area code");
+    }
   }
 
   render () {
@@ -67,5 +71,6 @@ renderRedirect = () => {
     )
   }
 }
+
 
 export default NewContact
