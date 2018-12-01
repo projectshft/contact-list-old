@@ -48,30 +48,35 @@ handleSubmitClick = () => {
 render = () =>
   <Fragment>
     {this.renderRedirect()}
-    <form>
+    <form className="form">
       <label>Name</label>
-        <input type='text' value={this.state.name} className='form-control'onChange={event =>
+        <input type='text' value={this.state.name} className='form-control col-6' onChange={event =>
           this.setState({ name: event.target.value })
         }/>
       <br/>
       <label>Image URL</label>
-        <input type='text' value={this.state.image_url}className='form-control'onChange={event =>
+        <input type='text' value={this.state.image_url} className='form-control col-10'onChange={event =>
           this.setState({ image_url: event.target.value })
         }/>
       <br/>
+      <div className="row">
+      <div className = "col-5">
       <label>Email</label>
-        <input type='email' value={this.state.email}className='form-control'onChange={event =>
+        <input type='email' value={this.state.email} className='form-control form-email'onChange={event =>
           this.setState({ email: event.target.value })
         }/>
-      <br/>
+        </div>
+        <div className='col-5'>
       <label>Phone</label>
-        <input type='tel' value={this.state.phone_number} className='form-control'onChange={event =>
+        <input type='tel' value={this.state.phone_number} className='form-control form-phone'onChange={event =>
           this.setState({ phone_number: event.target.value })
         }/>
+        </div>
       <br/>
-      <button href="/contacts" type="button" onClick={this.handleSubmitClick}>Submit Changes</button>
+      </div>
+      <button href="/contacts" className = "btn btn-success add-btn btn-lg" type="button" onClick={this.handleSubmitClick}>Submit Changes</button>
     </form>
-    <Link to={this.state.backLink}>Back</Link>
+    <Link to={this.state.backLink} className= "btn btn-warning back-btn" >Back</Link>
   </Fragment>
 }
 

@@ -2,11 +2,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Chakra Petch', sans-serif;
+  background-color: #dcdcdc;
 }
 
-.contact-image {
-  width: 100px;
-  height: 100px;
+
+
+h1 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 3.5rem;
 }
 
 li {
@@ -15,4 +19,78 @@ li {
 
 input {
   width: 50%;
+}
+
+.card {
+  align-items: center;
+  margin: 5px;
+  background-color: #dce0e0;
+}
+
+.contact-image-main {
+  width: 200px;
+  height: 150px;
+}
+
+.contact-name-main {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.add-new-btn {
+text-align: center;
+}
+
+.delete-modal {
+  position: absolute;
+  top: 40%;
+  left: 35%;
+  right: 35%;
+  bottom: 40%;
+  background-color: white;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #dcdcdc;
+  text-align: center;
+}
+
+.ReactModal__Content {
+  opacity: 0;
+}
+
+.ReactModal__Content--after-open {
+  opacity: 1;
+  transition: opacity 250ms;
+}
+
+.ReactModal__Content--before-close {
+  opacity: 0;
+}
+
+.modal-btn {
+  margin: 5px;
+}
+
+.form, .back-btn {
+  margin: 10px;
+}
+
+.add-btn {
+  margin-top: 10px;
+}
+
+.full-contact-img {
+  width: 300px;
+  height: 250px;
+  float: right;
+}
+
+.row {
+  justify-content: center;
 }

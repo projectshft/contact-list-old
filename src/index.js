@@ -6,11 +6,7 @@ import './index.css';
 import { onUpdate, forceUpdate } from './state';
 import FullContactList from './components/FullContactList';
 import NewContact from './components/NewContact';
-import ContactDetail from "./components/ContactDetail"
-
-
-//do CSS to format nicely
-//use Google contacts API
+import ContactDetail from "./components/ContactDetail";
 
 const App = () =>  (
   <Fragment>

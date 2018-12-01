@@ -11,10 +11,12 @@ const FullContactList = () => {
   return (
       <Fragment>
         <h1>Contacts</h1>
-        <ul className="col-md-4 list-group">
+        <div className="row">
           {newContactList()}
-        </ul>
-        <Link to="/contacts/new" className="btn btn-primary">Add New Contact</Link>
+        </div>
+        <div className="add-new-btn">
+        <Link to="/contacts/new" className="btn btn-primary btn-lg add-btn">Add New Contact</Link>
+        </div>
       </Fragment>
     );
 }
