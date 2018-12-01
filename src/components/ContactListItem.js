@@ -10,33 +10,25 @@ const ContactListItem = ({ contact }) => {
 
   return (
     <li>
-      <img
-        className="contact-image"
-        alt={contact.name}
-        src={contact.image_url}
-      />
-      <Link
-        to={contactURL}
-        onClick={() => sendEvent("setSelectedContact", contact)}
-      >
+      <img className="contact-image" alt={contact.name} src={contact.image_url}/>
+      <Link to={contactURL} onClick={() => sendEvent("setSelectedContact", contact)}>
         {contact.name}
       </Link>
-      <button
-        type="button"
-        className="btn btn-danger"
-        onClick={() => sendEvent("requestDelete")}
-      >
+      <button type="button" className="btn btn-danger" onClick={() => sendEvent("requestDelete")}>
         Delete Contact
       </button>
       <Modal
            isOpen={getState('showDeleteModal')}
            contentLabel="onRequestClose"
-           onRequestClose={this.cancelDelete}
-        >
+           onRequestClose={this.cancelDelete}>
           <p>Are you sure you wish to delete this contact?</p>
-          <button onClick={() => sendEvent("deleteContact", contact)}>Confirm Delete</button>
-          <button onClick={() => sendEvent('cancelDelete')}>Never Mind</button>
-        </Modal>
+          <button onClick={() => sendEvent("deleteContact", contact)}>
+            Confirm Delete
+          </button>
+          <button onClick={() => sendEvent('cancelDelete')}>
+            Never Mind
+          </button>
+      </Modal>
     </li>
   );
 };

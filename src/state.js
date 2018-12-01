@@ -15,16 +15,29 @@ const STATE = {
       showDeleteModal: false
     }
 
+//use to check on current state without being able to manipulate it: for
+//example, to check the selected contact when one is clicked
 const getState = prop => {
   return STATE[prop];
 }
 
 //use this to validate instead of proptypes because there are no props anywhere
+//returns true if the new contact meets all the provided conditions
 const validateContact = contact => {
-  return (contact.name.length > 0 &&
-  contact.email.includes('@') &&
-  contact.email.includes('.') &&
-  contact.phone_number.length >= 10)
+  let valid = true;
+  //contact must have a name
+  if (contact.name.length < 1) {
+    valid = false;
+  }
+  //if an email has been entered, it must include an '@' and a '.'
+  if (contact.email.length > 0 && !(contact.email.includes('@') && contact.email.includes('.'))) {
+    valid = false;
+  }
+  //if a phone has been entered, it must be at least 10 characters
+  if (contact.phone_number.length > 0 && contact.phone_number.length < 10) {
+    valid = false;
+  }
+  return valid;
 }
 
 let ON_UPDATE_CALLBACK = null;
@@ -72,9 +85,6 @@ const sendEvent = (name, data) => {
 
 // Given an event name and the current state of the application, should mutate
 // the state in-place as it sees fit.
-//
-// NOTE: This is where you should add support for any new events you want to
-// handle!
 const handleEvent = ({ name, data }, state) => {
   if (name === 'addNewContact') {
     state.contacts.push(data);

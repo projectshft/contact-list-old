@@ -3,12 +3,14 @@ import React, {Fragment} from 'react'
 import {getState, sendEvent} from '../state'
 
 const FullContact = () => {
+  //first make sure it's been linked to by a valid ID
   if (!getState('selectedContact')) {
     return <h1>No contact with that ID is available</h1>
   }
 
   const {name, image_url, email, phone_number, id} = getState('selectedContact');
   const editUrl = `/contacts/${id}/edit`;
+  
   return (
     <Fragment>
     <img src={image_url} alt={name}></img>

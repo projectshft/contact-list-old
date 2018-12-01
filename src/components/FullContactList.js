@@ -1,28 +1,22 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom'
 import { getState } from '../state';
 import ContactListItem from './ContactListItem';
 
+const FullContactList = () => {
+  //forces a regeneration of the contact list whenever the list renders
+  const newContactList = () =>
+    getState('contacts').map((c) => <ContactListItem key={c.id} contact={c} />)
 
-class FullContactList extends Component {
-    //force a regeneration of the contact list whenever this component is rendered
-    newContactList = () =>
-      getState('contacts').map((c,index) => {
-      return (<ContactListItem key={c.id} contact={c} />
-      )
-    })
-
-  render () {
-    return (
+  return (
       <Fragment>
-      <ul className="col-md-4 list-group">
-        {this.newContactList()}
-      </ul>
-      <Link to="/contacts/new" className="btn btn-primary">Add New Contact</Link>
+        <h1>Contacts</h1>
+        <ul className="col-md-4 list-group">
+          {newContactList()}
+        </ul>
+        <Link to="/contacts/new" className="btn btn-primary">Add New Contact</Link>
       </Fragment>
-
     );
-  };
 }
 
 export default FullContactList
