@@ -18,10 +18,12 @@ class App extends React.Component {
 	}
 
 	addContact (contact) {
-		this.setState({contacts: this.state.contacts.concat([contact])});
+        // debugger;
+        this.setState({contacts: this.state.contacts.concat([contact])});
     }
     
       render() {
+        console.log(this.state.contacts)
           return (
         <div>
             <Switch>
@@ -29,8 +31,8 @@ class App extends React.Component {
             <Route exact path='/' render={() => (
                 <ContactList contacts={this.state.contacts} />
             )}/>
-            <Route path='/new' render={() => (
-            <NewContact addContact={this.addContact}/>
+            <Route exact path='/new' render={() => (
+            <NewContact addContact={this.addContact} contacts={this.state.contacts}/>
             )}/>
             {/* <Route exact path='/new' component={NewContact}/> */}
             {/* <Route exact path='/:id' component={Contact-View}/> */}

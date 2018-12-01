@@ -15,13 +15,20 @@ const ContactList = ({contacts}) => {
         </div>
       )
     }
-   return (
+    const Contacts = contacts.map((contact, id) => {
+      return (
+        <ContactListItem key={id} contact={contact} />
+      )
+    })
+    
+    return (
      <div>
-     <Home />
-     <ul>
-      <Contact-List-Item contacts={contacts}/> 
-      </ul>
-      </div>
+      <Home />
+      <ul className="list-group">
+        {Contacts}
+        </ul>
+      {/* <Contact-List-Item contacts={props}/>  */}
+    </div>
     )
 }
 

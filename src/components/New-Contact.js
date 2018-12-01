@@ -8,11 +8,11 @@ class NewContact extends Component {
     super()
 
     this.state = {
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired,
-      phoneNumber: PropTypes.string.isRequired
+      id: null,
+      name: '',
+      image: '',
+      email: '',
+      phoneNumber: '',
     }
   }
 
@@ -26,9 +26,10 @@ class NewContact extends Component {
     };
 
     this.props.addContact(newContact);
-    // this.props.history.push('/');
+    // this.props.props.history.push('/');
     alert('New Contact Added!')
     console.log(newContact);
+    // console.log(this.props.contacts)
   }
 
 
@@ -57,3 +58,13 @@ class NewContact extends Component {
 
 
 export default NewContact
+
+
+// this.state = {
+//   id: PropTypes.number.isRequired,
+//   name: PropTypes.string.isRequired,
+//   image: PropTypes.string.isRequired,
+//   email: PropTypes.string.isRequired,
+//   phoneNumber: PropTypes.string.isRequired
+// }
+// }

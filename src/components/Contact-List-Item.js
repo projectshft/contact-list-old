@@ -3,9 +3,9 @@ import React from 'react'
 
 const ContactListItem = ({contact}) => {
     return (
-       <li className="list-group-item" key={contact.id}>
-        <img src={contact.image}></img>{contact.name}
-       </li>
+      <li className="list-group-item">
+      <span> <img src={contact.image}></img> - {contact.name} </span>
+      </li>
      )
 }
 
