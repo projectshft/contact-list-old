@@ -35,11 +35,15 @@ constructor(){
     
   };
   this.addContact = this.addContact.bind(this)
+  this.editContact = this.editContact.bind(this)
 
   }
     addContact(contactInfo) {
     this.setState({ contacts: this.state.contacts.concat([contactInfo]) })
 }
+    editContact(newContactInfo){
+      console.log(newContactInfo)
+    }
 
  
  
@@ -48,8 +52,8 @@ constructor(){
     return <div className="container">
       
       <Switch>
-        <Route exact path='/contacts' render={() => <ContactList contacts={this.state.contacts} addContact={this.addContact} />} />
-        <Route path='/contacts/:id' render={(props) => <Info getPersonById={this.getPersonById} {...props} contacts={contacts} />} />
+        <Route exact path='/contacts' render={() => <ContactList contacts={contacts} addContact={this.addContact} />} />
+        <Route path='/contacts/:id' render={(props) => <Info getPersonById={this.getPersonById} {...props} contacts={contacts} editContact={this.editContact} /> } />
 
       </Switch>
       
