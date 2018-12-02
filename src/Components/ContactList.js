@@ -5,6 +5,7 @@ var uniqid = require('uniqid');
 var id = uniqid.process();
 
 const ContactList = (props) => {
+    //map through contacts and construct a unique id for each
     const contactItems = props.contacts.map(function (contact) {
         return (
             <ContactListItem key={id} contact={contact} />

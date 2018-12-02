@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import React from 'react';
 import { Button } from 'reactstrap';
+
+import React from 'react';
 import ContactList from '../Components/ContactList';
 import ContactForm from '../Components/ContactForm'
 
 
 
 // import ShowContact from '../Components/ShowContact'
-// import NewContact from '../Components/NewContact';
 // import logo from './logo.svg';
 // import '../index.css';
 
@@ -21,34 +21,35 @@ class App extends React.Component {
       contactList: props.contactData
     }
     console.log(this.state.contactList);
-   
+
+    this.addContact = this.addContact.bind(this);
   }
-
-  // <Route path="/contacts" component={App} />
-  
-
-  
+ 
+  addContact (contact) {
+    this.setState({ contactList: this.state.contacts.concat([contact]) });
+  }
   render() {
     return (
       <Router> 
-      <div className="App">
-        <header>
-          <h1>My Contacts</h1>
-          
-          <Link to="/contacts/new">
-            <Button color="primary">Add Contact </Button>
-          </Link>
-          
-        </header>
+        <div className="App">
+          <main>
+            <header>
+              <h1>My Contacts</h1>
 
-        <main>
-          <div>
-            <ContactList contacts={this.state.contactList}/>
-          </div>
-        </main>
+              <Link to="/contacts/form">
+                <Button color="primary">Add Contact </Button>
+              </Link>
+            </header>
 
-          <Route path="/contacts/new" component={ContactForm} />
-      </div>
+            <div>
+              <ContactList contacts={this.state.contactList} />
+            </div>
+          </main>
+
+          <Route path="/contacts/form" component={ContactForm} />
+          
+          
+       </div>
       </Router>
     );
   }
