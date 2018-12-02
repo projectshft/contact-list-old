@@ -13,12 +13,14 @@ class EditContact extends Component {
     };
   }
 
+  // Update state as user changes inputs
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   }
   
+  // Creates an updated contact, passes that to the Contacts component editContact method to update the Contacts state, redirects to /contacts/:id
   handleSubmit = e => {
     e.preventDefault();
     

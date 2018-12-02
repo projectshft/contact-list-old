@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 
 const ContactDetail = ({routerProps, contact, deleteContact}) => {
+  // Deletes contact then redirects to contacts page
   const handleClick = () => {
     deleteContact(contact);
     routerProps.history.push('/contacts');

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 
 class NewContact extends Component {
   constructor(props) {
@@ -16,12 +15,14 @@ class NewContact extends Component {
 
   generateId = () => Math.round(Math.random() * 100000000);
 
+  // Update state as user changes inputs
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   }
   
+  // Creates a new contact, adds it to Contacts state contacts array, redirects to /contacts
   handleSubmit = e => {
     e.preventDefault();
     

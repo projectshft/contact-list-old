@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const ContactList = ({routerProps, contacts, deleteContact}) => (
+const ContactList = ({contacts, deleteContact}) => (
   <div className="container mt-5">
     <ul className="contact-list list-group">
       {contacts.map(c => {

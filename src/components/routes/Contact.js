@@ -4,6 +4,7 @@ import ContactDetail from '../ContactDetail';
 import EditContact from '../EditContact';
 
 const Contact = ({routerProps, contacts, editContact, deleteContact}) => {
+  // Locates specific contact to pass down to contact components as a prop
   const contact = contacts.find(c => c.id === parseInt(routerProps.match.params.id));
 
   return (
