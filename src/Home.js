@@ -1,9 +1,5 @@
 import { render } from 'react-dom';
-import React, { BrowserRouter, Switch, Route, Link,  Component } from 'react';
-import Header from './Header.js';
-import Main from './Main.js';
-
-
+import React from 'react';
 
 
 

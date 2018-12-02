@@ -1,8 +1,9 @@
 import { render } from 'react-dom';
-import React, { BrowserRouter, Switch, Route, Link,  Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import React from 'react';
 import Home from './Home.js';
 import Contact from './Contact.js';
-import Header from './Header.js';
+
 
 
 const Main = () => (

@@ -1,9 +1,8 @@
 import { render } from 'react-dom';
-import React, { BrowserRouter, Switch, Route, Link,  Component } from 'react';
+import { Link } from 'react-router-dom';
+import React from 'react';
 import ContactAPI from './ContactAPI.js';
-import Header from './Header.js';
-import Home from './Home.js';
-import Main from './Main.js';
+
 
 
 const AllContacts = () => (

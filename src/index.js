@@ -1,10 +1,12 @@
 import { render } from 'react-dom';
-import React, { BrowserRouter, Switch, Route, Link } from 'react'
-import App from "./App";
+import { Route } from 'react-router-dom';
+import React from 'react';
+import Contacts from "./Contacts.js";
 
-render((
-  <BrowserRouter>
-  <App />
-  </BrowserRouter>), document.getElementById("root"));
 
-export default BrowserRouter;
+<Route path='/contacts' render={() => (
+  <Contacts addContact={this.addContact} players={this.state.contacts} />
+)}/>
+
+
+export default Route;
