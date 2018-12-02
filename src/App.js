@@ -46,14 +46,15 @@ constructor(){
     }
 
  
- 
+ //trying to make a copy of the state so the edit function does not change the app state. currently not working still
   render() {
-    const {contacts} = this.state;
+    const {contacts} = Object.assign({},this.state);
+    console.log(contacts)
     return <div className="container">
       
       <Switch>
         <Route exact path='/contacts' render={() => <ContactList contacts={contacts} addContact={this.addContact} />} />
-        <Route path='/contacts/:id' render={(props) => <Info getPersonById={this.getPersonById} {...props} contacts={contacts} editContact={this.editContact} /> } />
+        <Route path='/contacts/:id' render={(props) => <Info {...props} contacts={contacts} editContact={this.editContact} /> } />
 
       </Switch>
       

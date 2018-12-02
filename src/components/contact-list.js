@@ -12,7 +12,7 @@ class ContactList extends Component {
       lastName: '',
       phone: '',
       email: '',
-      imgUrl: '',
+      imgUrl: ''
       
     }
     this.handleClick = this.handleClick.bind(this)
@@ -23,6 +23,13 @@ class ContactList extends Component {
   ))
 
   handleClick () {
+    let blankState = {
+      firstName: '',
+      lastName: '',
+      phone: '',
+      email: '',
+      imgUrl: ''
+    } 
     let contactInfo = {
       firstName:this.state.firstName,
       lastName:this.state.lastName,
@@ -31,7 +38,8 @@ class ContactList extends Component {
       imgUrl:this.state.imgUrl,
       key: Math.round(Math.random() * 100000000)
     }
-    this.props.addContact(contactInfo)
+    this.props.addContact(contactInfo);
+    this.setState({blankState})
   }
  
 
