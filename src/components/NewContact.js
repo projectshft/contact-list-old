@@ -1,16 +1,20 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 class NewContact extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      id: 0,
       name: '',
       email: '',
       phone: '',
       image: ''
     };
   }
+
+  generateId = () => Math.round(Math.random() * 100000000);
 
   handleChange = e => {
     this.setState({
@@ -22,6 +26,7 @@ class NewContact extends Component {
     e.preventDefault();
     
     const newContact = {
+      id: this.generateId(),
       name: this.state.name,
       email: this.state.email,
       phone: this.state.phone,
@@ -29,7 +34,7 @@ class NewContact extends Component {
     };
 
     this.props.addContact(newContact);
-    window.location.assign(`/contacts`);
+    this.props.routerProps.history.push('/contacts');
   }
 
   render() {
