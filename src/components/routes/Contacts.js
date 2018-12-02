@@ -10,9 +10,9 @@ class Contacts extends Component {
 
     this.state = {
       contacts: [
-        {id: 14808094, name: "Carole Graves", email: "carole.graves@example.com", phone: "(381)-588-2660", image: "https://randomuser.me/api/portraits/women/94.jpg", editing: false, deleted: false},
-        {id: 29436895, name: "Georgia Alvarez", email: "georgia.alvarez@example.com", phone: "(798)-473-0583", image: "https://randomuser.me/api/portraits/women/0.jpg", editing: false, deleted: false},
-        {id: 5299408, name: "Wade Lewis", email: "wade.lewis@example.com", phone: "(803)-786-3649", image: "https://randomuser.me/api/portraits/men/29.jpg", editing: false, deleted: false}
+        {id: 14808094, name: "Carole Graves", email: "carole.graves@example.com", phone: "(381)-588-2660", image: "https://randomuser.me/api/portraits/women/94.jpg", editing: false},
+        {id: 29436895, name: "Georgia Alvarez", email: "georgia.alvarez@example.com", phone: "(798)-473-0583", image: "https://randomuser.me/api/portraits/women/0.jpg", editing: false},
+        {id: 5299408, name: "Wade Lewis", email: "wade.lewis@example.com", phone: "(803)-786-3649", image: "https://randomuser.me/api/portraits/men/29.jpg", editing: false}
       ]
     };
   }
@@ -41,21 +41,16 @@ class Contacts extends Component {
   // }
 
   addContact = contact => {
-    console.log(contact);
-    const neww = this.state.contacts.concat([contact]);
-    console.log(neww);
-    // this.setState({
-    //   contacts: this.state.contacts.concat([contact])
-    // });
+    this.setState({
+      contacts: this.state.contacts.concat([contact])
+    });
   }
 
   deleteContact = contact => {
-    console.log(contact);
-    const filter = this.state.contacts.filter(c => c.id !== contact.id);
-    console.log(filter)
-    // this.setState({
-    //   contacts: this.state.contacts.filter(c => c.id !== contact.id)
-    // });
+    console.log('this is:', this);
+    this.setState({
+      contacts: this.state.contacts.filter(c => c.id !== contact.id)
+    });
   }
 
   editContact = contact => {
@@ -79,7 +74,7 @@ class Contacts extends Component {
         </nav>
         <Switch>
           <Route exact path='/contacts' render={routerProps => (
-            <ContactList routerProps={routerProps} contacts={this.state.contacts} /> 
+            <ContactList routerProps={routerProps} contacts={this.state.contacts} deleteContact={this.deleteContact} /> 
           )} />
           <Route path='/contacts/new' render={routerProps => (
             <NewContact routerProps={routerProps} addContact={this.addContact} />

@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 
-const ContactDetail = ({routerProps, contact, deleteContact}) => (
+const ContactDetail = ({routerProps, contact}) => (
   <Fragment>
     <div className="container my-5">
       <div className="row">
@@ -12,7 +12,7 @@ const ContactDetail = ({routerProps, contact, deleteContact}) => (
             <p className="card-text contact-email">{contact.email}</p>
             <p className="card-text contact-phone">{contact.phone}</p>
             <a className="btn btn-sm btn-primary mr-2" href={`/contacts/${contact.id}/edit`}>Edit</a>
-            <a className="btn btn-sm btn-danger" href='#' onClick={() => deleteContact(contact)}>Delete</a>
+            <a className="btn btn-sm btn-secondary" href={`/contacts`}>Back</a>
           </div>
         </div>
         </div>
