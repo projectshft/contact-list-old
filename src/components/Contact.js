@@ -2,6 +2,7 @@ import StyledLink from './StyledLink.js'
 import React from 'react'
 
 const Contact = ({props, contacts}) => {
+
   const contactID = parseInt(props.match.params.contactID, 10);
   const currentContact = contacts.find(contact => contact.id === contactID);
 
@@ -15,7 +16,7 @@ const Contact = ({props, contacts}) => {
           <p>Phone: {currentContact.phone_number}</p>
         </div>
         <div className='col-md-auto'>
-          <img className="rounded"src={currentContact.image_url} alt=""/>
+          <img src={currentContact.image_url} alt=""/>
         </div>
       </div>
       <hr/>

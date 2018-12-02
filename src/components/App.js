@@ -31,8 +31,8 @@ class App extends Component {
     this.addContact = this.addContact.bind(this);
   }
 
-  addContact = (contact) => {
-    this.state.setState({contacts: this.state.contacts.concat([contact])});
+  addContact (contact) {
+    this.setState({contacts: this.state.contacts.concat([contact])});
   }
 
   render() {
@@ -43,8 +43,8 @@ class App extends Component {
           <Route exact path='/contacts' render={() => (
             <ContactsPage contacts={contacts}/>
           )}/>
-          <Route path='/contacts/new' render={() => (
-            <NewContact addContact={this.addContact} contacts={this.state.contacts} />
+          <Route path='/contacts/new' render={(props) => (
+            <NewContact props={props} addContact={this.addContact} contacts={this.state.contacts} />
           )}/>
           <Route path='/contacts/:contactID' render={(props) => (
             <Contact props={props} contacts={this.state.contacts} />
