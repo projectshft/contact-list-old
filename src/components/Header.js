@@ -1,8 +1,7 @@
-import React, { Component} from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import ContactList from './Contact-List.js'
 
-class Home extends Component {
+class Header extends Component {
 	// constructor() {
 	// 	super()
 
@@ -18,11 +17,9 @@ class Home extends Component {
 
 	render() {
 	  return (
-	   <div className="Home">
-			<header className="Home-header">
-			<h1 className="Home-title">React Rolodex</h1>
-			</header>
-			<h2 className="Home-intro">
+	   <div className="Header">
+			<h1 className="Header-title">React Rolodex</h1>
+			<h2 className="Header-intro">
 			Contacts:
 			<Link to={'/new'}><button className="btn btn-primary">Add Contacts</button></Link>
 			</h2>
@@ -30,5 +27,5 @@ class Home extends Component {
 		)
 	}
 } 
-export default Home
+export default Header
 

@@ -1,29 +1,31 @@
 import React from 'react'
-import Home from './Home.js'
+import Header from './Header.js'
 import ContactListItem from './Contact-List-Item'
 
 
 const ContactList = ({contacts}) => {
-  // debugger;
+  /* instead of having hardcoded contacts at the start of the application,
+     I decided to take the approach of having a notification to inform the
+     user that no contacts have been entered */
     if (contacts.length  === 0) {
       return (
         <div>
-          <Home />
+          <Header />
         <div className="jumbotron">
         <p>Oh no, you have no friends :( Please add a contact using the 'Add Contacts' Button Above</p>
         </div>
         </div>
       )
     }
-    const Contacts = contacts.map((contact, id) => {
+    const Contacts = contacts.map((contact, index) => {
       return (
-        <ContactListItem key={id} contact={contact} />
+        <ContactListItem key={index} contact={contact} />
       )
     })
     
     return (
      <div>
-      <Home />
+      <Header />
       <ul className="list-group">
         {Contacts}
         </ul>
