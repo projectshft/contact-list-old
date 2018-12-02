@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, Link} from 'react-router-dom';
 import ContactList from '../ContactList';
 import Contact from './Contact';
 import NewContact from '../NewContact';
@@ -47,7 +47,6 @@ class Contacts extends Component {
   }
 
   deleteContact = contact => {
-    console.log('this is:', this);
     this.setState({
       contacts: this.state.contacts.filter(c => c.id !== contact.id)
     });
@@ -63,11 +62,11 @@ class Contacts extends Component {
     return (
       <Fragment>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a className="navbar-brand" href="/">eContacts</a>
+          <Link className="navbar-brand" to="/contacts">eContacts</Link>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" href="/contacts/new">Add Contact</a>
+                <Link className="nav-link" to="/contacts/new">Add Contact</Link>
               </li>
             </ul>
           </div>
