@@ -6,6 +6,7 @@ import Modal from "react-modal";
 
 Modal.setAppElement('#root');
 
+//display the main page of all contacts
 const FullContactList = () => {
   //forces a regeneration of the contact list whenever the list renders
   const newContactList = () =>

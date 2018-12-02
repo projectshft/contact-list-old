@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { sendEvent } from "../state";
 
+//builds a contact for the main display page
 const ContactListItem = ({ contact }) => {
   const contactURL = `/contacts/${contact.id}`;
 
@@ -9,7 +10,7 @@ const ContactListItem = ({ contact }) => {
     <div className="card col-2" >
       <img className="contact-image-main" alt={contact.name} src={contact.image_url}/>
       <Link to={contactURL} onClick={() => sendEvent("setSelectedContact", contact)}
-      className = "contact-name-main">
+      className = "contact-name-main" name={contact.name}>
         {contact.name}
       </Link>
       <button type="button" className="btn btn-danger btn-sm" onClick={() => {sendEvent('setSelectedContact', contact); sendEvent('requestDelete')}}>

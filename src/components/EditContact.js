@@ -1,10 +1,12 @@
 import { Link, Redirect } from 'react-router-dom'
 import React, {Component, Fragment} from 'react'
 import {getState, sendEvent, validateContact} from '../state'
+import PropTypes from 'prop-types';
 
+//edit one specific contact
 class EditContact extends Component {
-  constructor () {
-    super ();
+  constructor (props) {
+    super (props);
     //first make sure it's been linked to by a valid contact ID
     if (!getState('selectedContact')) {
       return <h1>No contact with that ID is available</h1>
@@ -79,5 +81,11 @@ render = () =>
     <Link to={this.state.backLink} className= "btn btn-warning back-btn" >Back</Link>
   </Fragment>
 }
+
+//using PropTypes here only because it's a requirement of the project, since
+//centralized state management doesn't require props
+EditContact.propTypes = {
+  proptypeTest: PropTypes.string.isRequired
+};
 
 export default EditContact

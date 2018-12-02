@@ -4,14 +4,14 @@ import _ from 'lodash';
 // over time to reflect the current state of the application. When we first
 // load, it represents the initial state of our application.
 const STATE = {
-      contacts: [  {
-      id: 70219577,
-      name: "Albert Einstein",
-      image_url: "https://images.pexels.com/photos/714699/pexels-photo-714699.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      email: "aeinstein@example.com",
-      phone_number: "15555555555"
-    },
-    {
+    contacts: [  {
+    id: 70219577,
+    name: "Albert Einstein",
+    image_url: "https://images.pexels.com/photos/714699/pexels-photo-714699.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    email: "aeinstein@example.com",
+    phone_number: "15555555555"
+  },
+  {
     id: 70219578,
     name: "John Smith",
     image_url: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
@@ -19,36 +19,36 @@ const STATE = {
     phone_number: "15555555555"
   },
   {
-  id: 70219587,
-  name: "Jane Doe",
-  image_url: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-  email: "jdoe@example.com",
-  phone_number: "15555555555"
-},
-{
-id: 70219537,
-name: "Bob Jones",
-image_url: "https://images.pexels.com/photos/555790/pexels-photo-555790.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-email: "bjones@example.com",
-phone_number: "15555555555"
-},
-{
-id: 70219547,
-name: "Mark A.",
-image_url: "https://images.pexels.com/photos/462680/pexels-photo-462680.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-email: "mark@example.com",
-phone_number: "15555555555"
-},
-{
-id: 70219567,
-name: "B. Jackson",
-image_url: "https://images.pexels.com/photos/871495/pexels-photo-871495.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-email: "",
-phone_number: "15555555555"
-}],
-      selectedContact: null,
-      showDeleteModal: false
-    }
+    id: 70219587,
+    name: "Jane Doe",
+    image_url: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    email: "jdoe@example.com",
+    phone_number: "15555555555"
+  },
+  {
+    id: 70219537,
+    name: "Bob Jones",
+    image_url: "https://images.pexels.com/photos/555790/pexels-photo-555790.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    email: "bjones@example.com",
+    phone_number: "15555555555"
+  },
+  {
+    id: 70219547,
+    name: "Mark A.",
+    image_url: "https://images.pexels.com/photos/462680/pexels-photo-462680.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    email: "mark@example.com",
+    phone_number: "15555555555"
+  },
+  {
+    id: 70219567,
+    name: "B. Jackson",
+    image_url: "https://images.pexels.com/photos/871495/pexels-photo-871495.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    email: "",
+    phone_number: "15555555555"
+  }],
+  selectedContact: null,
+  showDeleteModal: false
+}
 
 //use to check on current state without being able to manipulate it: for
 //example, to check the selected contact when one is clicked
@@ -88,7 +88,6 @@ const onUpdate = (callback) => {
 const forceUpdate = () => {
   if (ON_UPDATE_CALLBACK) {
     ON_UPDATE_CALLBACK(STATE);
-
   }
 };
 

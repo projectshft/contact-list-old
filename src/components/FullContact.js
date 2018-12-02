@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom'
-import React, {Fragment} from 'react'
-import {getState, sendEvent} from '../state'
+import { Link } from 'react-router-dom';
+import React, {Fragment} from 'react';
+import {getState, sendEvent} from '../state';
 
+//display one full contact page
 const FullContact = () => {
   //first make sure it's been linked to by a valid ID
   if (!getState('selectedContact')) {
@@ -22,7 +23,7 @@ const FullContact = () => {
     <h2><strong>Email: </strong>{email}</h2>
     <h2><strong>Phone: </strong>{phone_number}</h2>
     <Link to='/contacts' className="btn btn-warning back-btn" onClick ={() => sendEvent('setSelectedContact', null)}>Back</Link>
-    <Link className="btn btn-success" to={editUrl}>Edit Contact</Link>
+    <Link className="btn btn-success" proptypeTest="I'm a string" to={editUrl}>Edit Contact</Link>
     </div>
     </div>
     </Fragment>

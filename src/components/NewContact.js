@@ -4,9 +4,10 @@ import {sendEvent, validateContact} from '../state'
 
 const generateId = () => Math.round(Math.random() * 100000000);
 
+//build a user-input new contact from the form
 class NewContact extends Component {
-  constructor () {
-    super ()
+  constructor (props) {
+    super (props)
     this.state = {
       name: "",
       image_url: "",
