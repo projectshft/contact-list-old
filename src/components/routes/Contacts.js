@@ -54,7 +54,18 @@ class Contacts extends Component {
 
   editContact = contact => {
     this.setState({
-      contacts: this.state.contacts.concat([contact])
+      contacts: this.state.contacts.map(c => {
+        if(c.id === contact.id) {
+          c = {
+            ...c,
+            name: contact.name,
+            email: contact.email,
+            phone: contact.phone,
+            image: contact.image
+          }
+        }
+        return c;
+      })
     });
   }
 

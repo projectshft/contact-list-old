@@ -5,6 +5,7 @@ class EditContact extends Component {
     super(props);
 
     this.state = {
+      id: this.props.contact.id,
       name: this.props.contact.name,
       email: this.props.contact.email,
       phone: this.props.contact.phone,
@@ -22,6 +23,7 @@ class EditContact extends Component {
     e.preventDefault();
     
     const updatedContact = {
+      id: this.state.id,
       name: this.state.name,
       email: this.state.email,
       phone: this.state.phone,
@@ -29,7 +31,7 @@ class EditContact extends Component {
     };
 
     this.props.editContact(updatedContact);
-    window.location.assign(`/contacts/${this.props.contact.id}`);
+    this.props.routerProps.history.push(`/contacts/${this.props.contact.id}`);
   }
 
   render() {
