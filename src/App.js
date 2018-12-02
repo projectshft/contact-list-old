@@ -1,21 +1,25 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { render } from 'react-dom';
+import React, { BrowserRouter, Switch, Route, Link, Component } from 'react';
+import "./App.css";
+import AllContacts from "./AllContacts.js";
+import ContactAPI from "./ContactAPI.js";
+import Contact from "./Contact.js";
+import Contacts from "./Contacts.js";
+import Home from "./Home.js";
+import Main from "./Main.js";
+import Header from "./Header.js";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div className="App">
+    <Home />
+    <AllContacts />
+    <Contact />
+    <ContactAPI />
+    <Contacts />
+    <Header />
+    <Home />
+    <Main />
+  </div>
+);
 
 export default App;
