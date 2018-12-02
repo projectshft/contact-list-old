@@ -1,6 +1,8 @@
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import React from 'react';
 import { Button } from 'reactstrap';
 import ContactList from '../Components/ContactList';
+import ContactForm from '../Components/ContactForm'
 
 
 
@@ -19,17 +21,24 @@ class App extends React.Component {
       contactList: props.contactData
     }
     console.log(this.state.contactList);
+   
   }
 
+  // <Route path="/contacts" component={App} />
+  
 
   
   render() {
     return (
+      <Router> 
       <div className="App">
         <header>
-          <h1>My Contacts <Button color="primary">Add Contact </Button>
-          </h1>
-    
+          <h1>My Contacts</h1>
+          
+          <Link to="/contacts/new">
+            <Button color="primary">Add Contact </Button>
+          </Link>
+          
         </header>
 
         <main>
@@ -37,7 +46,10 @@ class App extends React.Component {
             <ContactList contacts={this.state.contactList}/>
           </div>
         </main>
+
+          <Route path="/contacts/new" component={ContactForm} />
       </div>
+      </Router>
     );
   }
 }

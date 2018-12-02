@@ -1,3 +1,4 @@
+
 import React  from 'react';
 import { Col, Button, Form, FormGroup, Label, Input, FormText, FormFeedback } from 'reactstrap';
 
@@ -52,7 +53,6 @@ class ContactForm extends React.Component {
                 </FormGroup>
 
                 <FormGroup>
-                    // check row>
                     <Col sm={{ size: 10, offset: 2 }}>
                         <Button>Submit</Button>
                     </Col>
@@ -62,4 +62,4 @@ class ContactForm extends React.Component {
     }
 };
 
-export default NewContact;
+export default ContactForm;
