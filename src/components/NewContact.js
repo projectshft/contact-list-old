@@ -1,10 +1,11 @@
 import React from 'react'
 import StyledLink from './StyledLink.js'
+import PropTypes from 'prop-types';
 
 
 class NewContact extends React.Component {
-  constructor() {
-    super ()
+  constructor(props) {
+    super (props)
 
     this.state = {
       name: "",
@@ -24,11 +25,11 @@ class NewContact extends React.Component {
     const newContact = {
       id: this.generateId(),
       name: this.state.name,
-      image_url: this.state.image_url,
+      image_url: (this.state.image_url ||'https://www.libertyspecialtymarkets.com/wp-content/uploads/2017/01/profile-default.jpg'),
       email: this.state.email,
       phone_number: this.state.phone_number,
     };
-    console.log('Submit button pushed. newContact: ',newContact);
+
     this.props.addContact(newContact);
     this.props.props.history.push('/contacts');
   }
@@ -79,9 +80,17 @@ class NewContact extends React.Component {
         <hr/>
         <p><StyledLink to='/contacts/'>back</StyledLink></p>
       </div>
-      )
-    }
-
+    )
+  }
 }
+
+NewContact.proptypes = {
+  addContact: PropTypes.func.required,
+  props: PropTypes.shape({
+    history: PropTypes.shape({
+      push: PropTypes.func.required
+    })
+  })
+};
 
 export default NewContact

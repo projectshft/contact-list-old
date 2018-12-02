@@ -44,7 +44,7 @@ class App extends Component {
             <ContactsPage contacts={contacts}/>
           )}/>
           <Route path='/contacts/new' render={(props) => (
-            <NewContact props={props} addContact={this.addContact} contacts={this.state.contacts} />
+            <NewContact props={props} addContact={this.addContact}/>
           )}/>
           <Route path='/contacts/:contactID' render={(props) => (
             <Contact props={props} contacts={this.state.contacts} />

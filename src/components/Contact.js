@@ -1,5 +1,6 @@
 import StyledLink from './StyledLink.js'
 import React from 'react'
+import PropTypes from 'prop-types';
 
 const Contact = ({props, contacts}) => {
 
@@ -24,6 +25,16 @@ const Contact = ({props, contacts}) => {
     </div>
   )
 }
+
+Contact.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.shape({
+    email: PropTypes.string.required,
+    id: PropTypes.number.required,
+    name: PropTypes.string.required,
+    phone_number: PropTypes.string.required,
+    image_url: PropTypes.string.required
+  })),
+};
 
 
 export default Contact
