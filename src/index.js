@@ -9,26 +9,29 @@ import Home from './components/Home'
 import ContactView from './components/Contact-View'
 
 
+
 class App extends Component {
     constructor() {
 		super()
 
 		this.state = {
-            contacts: []
+            contacts: [
+                { name: 'Antonio Gramsci',
+                  phoneNumber: '561-555-8888',
+                  id: 1,
+                  email: 'mfine@wesleyan.edu',
+                  image: 'https://upload.wikimedia.org/wikipedia/commons/e/e6/Gramsci.png'
+                }
+            ]
 		}
-		this.addContact = this.addContact.bind(this);
+        this.addContact = this.addContact.bind(this);
 	};
 
 	addContact (contact) {
         this.setState({contacts: this.state.contacts.concat([contact])});
     };
 
-    deleteContact(contactToDelete) {
-        this.setState({contacts: this.state.contacts.filter(contact => contact.id !== contactToDelete.id)});
-    };
-    
       render() {
-        console.log(this.state.contacts)
           return (
         <div>
             <Switch>
@@ -37,7 +40,7 @@ class App extends Component {
                 <ContactList contacts={this.state.contacts}/>
             )}/>
             <Route exact path='/contacts/new' render={() => (
-            <NewContact addContact={this.addContact} contacts={this.state.contacts}/>
+                <NewContact addContact={this.addContact} contacts={this.state.contacts}/>
             )}/>
              <Route path='/contacts/:id' render={(props) => (
                 <ContactView props={props} contacts={this.state.contacts} deleteContact={this.deleteContact}/>

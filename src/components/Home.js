@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
  /*I created this homepage component to take up the '/' route. Ideally in a
   a full operational App this would serve as a sign-in page*/
 
-class Home extends Component {
+const Home = () => {
 
-  render() {
     return (
       <div>
       <h1 className="Header-title">React Rolodex</h1>
@@ -17,5 +16,5 @@ class Home extends Component {
       </div>
     )
   }
-} 
+
 export default Home
