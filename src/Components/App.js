@@ -1,5 +1,7 @@
-import { Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import React from 'react'
+import UserList from './UserList';
+import DeleteUser from './DeleteUser';
 // import DeleteUser from './DeleteUser'
 
 class App extends React.Component {
@@ -33,10 +35,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <ul>
-
-
-        </ul>
+        <Switch>
+          <Route exact path="/ContactList" Component={UserList}/>
+          <Route path='/deleteuser' Component={DeleteUser}/>
+        </Switch>
       </div>
     )
   }
