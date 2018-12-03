@@ -17,7 +17,7 @@ class Info extends Component {
     this.updateState = this.updateState.bind(this)
     //either mounts the state (if its a first page load) or re-sets the state to a new contact
     this.getPersonById();
-    console.log(props)
+
   }
 
   toggleEditMode() {
@@ -50,7 +50,7 @@ class Info extends Component {
   //   this.props.editContact(editedContactObject)
   // } 
 //this function is necessary because currentContact is nested inside the state, so a new copy of the state is made
-//and then used to update the state with the new value
+//and then used to update the APP state with the new value
   updateState = (property, value) => {
     let stateCopy = Object.assign({}, this.state);
     stateCopy.currentContact[property] = value;
@@ -72,6 +72,7 @@ class Info extends Component {
           <h1>{currentContact.firstName} {currentContact.lastName}</h1>
           <p>{currentContact.email}</p> &nbsp; <p>{currentContact.phone}</p>
           <button onClick= {() =>{this.toggleEditMode()}}>Edit Contact</button>
+          <Link to="/contacts"> Back </Link>
         </div>
         )
     } else {
