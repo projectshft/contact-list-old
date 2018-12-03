@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class EditContact extends Component {
   constructor(props) {
@@ -66,6 +67,12 @@ class EditContact extends Component {
       </div>
     );
   }
+};
+
+EditContact.propTypes = {
+  routerProps: PropTypes.object.isRequired,
+  contact: PropTypes.object.isRequired,
+  editContact: PropTypes.func.isRequired
 };
 
 export default EditContact;

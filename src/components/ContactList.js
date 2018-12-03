@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const ContactList = ({contacts, deleteContact}) => (
   <div className="container mt-5">
@@ -17,5 +18,9 @@ const ContactList = ({contacts, deleteContact}) => (
   </div>
 );
 
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  deleteContact: PropTypes.func.isRequired
+};
 
 export default ContactList;

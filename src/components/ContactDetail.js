@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const ContactDetail = ({routerProps, contact, deleteContact}) => {
   // Deletes contact then redirects to contacts page
@@ -29,6 +30,12 @@ const ContactDetail = ({routerProps, contact, deleteContact}) => {
       </div>
     </Fragment>
   );
+};
+
+ContactDetail.propTypes = {
+  routerProps: PropTypes.object.isRequired,
+  contact: PropTypes.object.isRequired,
+  deleteContact: PropTypes.func.isRequired
 };
 
 export default ContactDetail;

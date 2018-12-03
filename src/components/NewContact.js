@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class NewContact extends Component {
   constructor(props) {
@@ -68,6 +69,11 @@ class NewContact extends Component {
       </div>
     );
   }
+};
+
+NewContact.propTypes = {
+  routerProps: PropTypes.object.isRequired,
+  addContact: PropTypes.func.isRequired,
 };
 
 export default NewContact;

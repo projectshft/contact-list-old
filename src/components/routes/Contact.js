@@ -2,6 +2,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import ContactDetail from '../ContactDetail';
 import EditContact from '../EditContact';
+import PropTypes from 'prop-types';
 
 const Contact = ({routerProps, contacts, editContact, deleteContact}) => {
   // Locates specific contact to pass down to contact components as a prop
@@ -17,6 +18,13 @@ const Contact = ({routerProps, contacts, editContact, deleteContact}) => {
       )} />
     </Switch>
   );
+};
+
+Contact.propTypes = {
+  routerProps: PropTypes.object.isRequired,
+  contacts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  editContact: PropTypes.func.isRequired,
+  deleteContact: PropTypes.func.isRequired
 };
 
 export default Contact;
