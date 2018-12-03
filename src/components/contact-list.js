@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import PropTypes from "prop-types";
 
 
+
 class ContactList extends Component {
   constructor(props) {
     super()
@@ -96,6 +97,7 @@ class ContactList extends Component {
         <button onClick={this.handleClick} className="btn btn-confirm col-md-12 add">
           Add Contact
           </button>
+         
       </div>
     </div>;
   }

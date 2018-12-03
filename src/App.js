@@ -5,6 +5,7 @@ import Info from "./components/info";
 
 // const keyGen = () => Math.round(Math.random() * 100000000);
 
+
 class App extends Component {
 
 
@@ -63,14 +64,16 @@ class App extends Component {
   render() {
     const { contacts } = Object.assign({}, this.state);
     return <div className="container">
-
-      <Switch>
-        <Route exact path='/contacts' render={() => <ContactList contacts={contacts} addContact={this.addContact} deleteContact={this.deleteContact} />} />
-        <Route path='/contacts/:id' render={(props) => <Info {...props} contacts={contacts} editContact={this.editContact} />} />
-
-      </Switch>
-
-    </div>;
+        <div className="jumbotron heading">
+          <h1>Contact List</h1>
+          <hr className="my-4"/>
+          <p className="lead">Keep track of all your people</p>
+        </div>
+        <Switch>
+          <Route exact path="/contacts" render={() => <ContactList contacts={contacts} addContact={this.addContact} deleteContact={this.deleteContact} />} />
+          <Route path="/contacts/:id" render={props => <Info {...props} contacts={contacts} editContact={this.editContact} />} />
+        </Switch>
+      </div>;
   }
 }
 

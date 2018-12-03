@@ -3,6 +3,8 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 
 
+
+
 class Info extends Component {
 
   constructor(props) {
@@ -68,11 +70,13 @@ class Info extends Component {
 
       return (
         <div>
+          <div className="details">
           <img src={currentContact.imgUrl} alt="" />
           <h1>{currentContact.firstName} {currentContact.lastName}</h1>
-          <p>{currentContact.email}</p> &nbsp; <p>{currentContact.phone}</p>
-          <button onClick= {() =>{this.toggleEditMode()}}>Edit Contact</button>
+          <p>{currentContact.email}</p> <p>{currentContact.phone}</p>
+          <button className="btn btn-info" onClick= {() =>{this.toggleEditMode()}}>Edit Contact</button>
           <Link to="/contacts"> Back </Link>
+          </div>
         </div>
         )
     } else {
@@ -109,7 +113,7 @@ class Info extends Component {
               <br />
             </div>
           </div>
-          <button onClick={() => {this.toggleEditMode()
+          <button className="btn btn-success" onClick={() => {this.toggleEditMode()
             this.toggleEditMode()}}>Confirm Edit</button>
         </div>
       )
