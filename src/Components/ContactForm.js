@@ -3,10 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import App from './App';
+import ContactList from './ContactList';
+
 
 
 class ContactForm extends React.Component {
-    constructor({addContact, contacts, props}) {
+    constructor(props) {
         super(props)
 
         this.state = {
@@ -27,7 +29,8 @@ class ContactForm extends React.Component {
             phone_number: this.phone_number
         };
 
-        this.props.addContact(contact);
+        // addContact(contact);
+        this.state.addContact(contact);
 
         //pushes new entry onto history stack
         // this.state.props.history.push('/contacts')
@@ -92,7 +95,8 @@ class ContactForm extends React.Component {
                     </FormGroup>
                 </Form>
 
-                <Route exact path="/contacts" component={App} />
+                <Route exact path="/contacts" render={() =>(<App addContact={this.addContact} />)} />
+                <Route path="/contacts/list" render={() => (<ContactList addContact={this.addContact} contacts={this.state.contactList} />)} />
             </div>
         );
     }

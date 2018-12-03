@@ -2,6 +2,7 @@ import { Route, Link } from 'react-router-dom';
 import React from 'react';
 import ContactForm from './ContactForm';
 import ContactListItem from './ContactListItem';
+import App from './App';
 
 
 var uniqid = require('uniqid');
