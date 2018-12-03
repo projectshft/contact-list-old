@@ -17,11 +17,11 @@ class Header extends Component {
 
 	render() {
 	  return (
-	   <div className="Header">
-			<h1 className="Header-title">React Rolodex</h1>
+	   <div className='container container-fluid'>
+			<h1>React Rolodex</h1>
 			<h2 className="Header-intro">
 			Contacts:
-			<Link to={'/new'}><button className="btn btn-primary">Add Contacts</button></Link>
+			<Link to={'/contacts/new'}><button className="btn btn-primary">Add Contacts</button></Link>
 			</h2>
 		</div>
 		)
