@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-
-
-
-
+//This component will display detailed information and allow editing of contacts
+//the props are: the contact list (to match the given URL to the keys in the contact list), and router props
 class Info extends Component {
 
   constructor(props) {
     super(props)
-//initializes with a 'temporary state' that will be different from the main state until edits are confirmed
+    //initializes with a 'temporary state' that will be different from the main state until edits are confirmed
     this.state = {
       currentContact: null,
       editMode: false
@@ -36,32 +34,27 @@ class Info extends Component {
       this.setState({ currentContact: thisPerson })
     }
   }
-  //gathers edit data and updates main state - which will then update this state - hopefully
 
 
-  //This code is not being used, because the App State gets updated with every input,
-  //despite making a cope of the app state before passing the contact list into props.
-  // sendEditInfoToState = () => {
-  //   let editedContactObject = {
-  //     firstName:this.state.currentContact.firstName,
-  //     lastName:this.state.currentContact.lastName,
-  //     email:this.state.currentContact.email,
-  //     phone:this.state.currentContact.phone,
-  //     imgUrl:this.state.currentContact.imgUrl
-  //   }
-  //   this.props.editContact(editedContactObject)
-  // } 
-//this function is necessary because currentContact is nested inside the state, so a new copy of the state is made
-//and then used to update the APP state with the new value
+  //this function is necessary because currentContact is nested inside the state, so a new copy of the state is made
+  //and then used to update the APP state with the new value
   updateState = (property, value) => {
     let stateCopy = Object.assign({}, this.state);
     stateCopy.currentContact[property] = value;
     console.log(value)
     console.log(stateCopy)
-    this.setState({...stateCopy})
+    this.setState({ ...stateCopy })
   }
 
-
+  _emailValidation(emailString) {
+    console.log(emailString)
+    if (/(.+)@(.+){2,}\.(.+){2,}/.test(emailString)) {
+      return true
+    } else {
+      return false
+    }
+  }
+  //Two different views, based on if the page is in edit mode or not
   render() {
 
     let { currentContact } = this.state
@@ -71,50 +64,59 @@ class Info extends Component {
       return (
         <div>
           <div className="details">
-          <img src={currentContact.imgUrl} alt="" />
-          <h1>{currentContact.firstName} {currentContact.lastName}</h1>
-          <p>{currentContact.email}</p> <p>{currentContact.phone}</p>
-          <button className="btn btn-info" onClick= {() =>{this.toggleEditMode()}}>Edit Contact</button>
-          <Link to="/contacts"> Back </Link>
+            <img src={currentContact.imgUrl} alt="" />
+            <h1>{currentContact.firstName} {currentContact.lastName}</h1>
+            <p>{currentContact.email}</p> <p>{currentContact.phone}</p>
+            <button className="btn btn-info" onClick={() => { this.toggleEditMode() }}>Edit Contact</button>
+            <Link to="/contacts"> Back </Link>
           </div>
         </div>
-        )
+      )
     } else {
 
-      return(
+      return (
         <div>
           <div className="row add-contact">
             <div className="col-md-9">
               <label>First Name</label>
-              <input type="text" className="form-control" value={currentContact.firstName} 
-              onChange={event => this.updateState('firstName', event.target.value)} />
+              <input type="text" className="form-control" value={currentContact.firstName}
+                onChange={event => this.updateState('firstName', event.target.value)} />
             </div>
 
             <div className="col-md-9">
               <label>Last Name</label>
-              <input type="text" className="form-control" value={currentContact.lastName} 
+              <input type="text" className="form-control" value={currentContact.lastName}
                 onChange={event => this.updateState('lastName', event.target.value)} />
             </div>
 
             <div className="col-md-9">
               <label>Email</label>
-              <input type="text" className="form-control" value={currentContact.email} 
+              <input type="text" className="form-control" value={currentContact.email}
                 onChange={event => this.updateState('email', event.target.value)} />
             </div>
             <div className="col-md-9">
               <label>Phone #</label>
-              <input type="text" className="form-control" value={currentContact.phone} 
+              <input type="text" className="form-control" value={currentContact.phone}
                 onChange={event => this.updateState('phone', event.target.value)} />
             </div>
             <div className="col-md-9">
               <label>Pic URL</label>
-              <input type="text" className="form-control" value={currentContact.imgUrl} 
+              <input type="text" className="form-control" value={currentContact.imgUrl}
                 onChange={event => this.updateState('imgUrl', event.target.value)} />
               <br />
             </div>
           </div>
-          <button className="btn btn-success" onClick={() => {this.toggleEditMode()
-            this.toggleEditMode()}}>Confirm Edit</button>
+          <button className="btn btn-success" onClick={() => {
+            if (!this._emailValidation(currentContact.email)) {
+              alert("Invalid Email");
+              return
+            }
+            if (!currentContact.firstName && !currentContact.lastName) {
+              alert("Enter at least a first or last name");
+              return
+            }
+            this.toggleEditMode()
+          }}>Confirm Edit</button>
         </div>
       )
     }
@@ -122,5 +124,3 @@ class Info extends Component {
 }
 
 export default Info
-
-//<Route path='/' render={(props) => <Info props={props} contacts={this.state.contacts} />} />
