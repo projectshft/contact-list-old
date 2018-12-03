@@ -1,13 +1,15 @@
-import { Router, Route, Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Button, Form, FormGroup, Label, Input, FormText, FormFeedback } from 'reactstrap';
+import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import App from '../Components/App'
 
+var uniqid = require('uniqid');
+var id = uniqid.process();
 
 class ContactForm extends React.Component {
-    constructor(contact) {
-        super(contact)
+    constructor(props) {
+        super(props)
 
         this.state = {
             id: '',
@@ -16,55 +18,53 @@ class ContactForm extends React.Component {
             email: '',
             phone_number: ''
         }
+        this.handleSubmit= this.handleSubmit.bind(this);
     }
-
-    handleSubmit(){
-        const newContact = {
-            id: this.state.id,
-            name: this.state.name,
-            image_url: this.state.image_url,
-            email: this.state.email,
-            phone_number: this.state.phone_number
+    
+    handleSubmit () {
+        const contact = {
+            id: id,
+            name: this.name,
+            image_url: this.image_url,
+            email: this.email,
+            phone_number: this.phone_number
         };
-        this.props.addContact(newContact)
+
+        this.props.addContact(contact);
 
         //pushes new entry onto history stack
-        this.props.props.history.push('/contacts')
+        // this.state.props.history.push('/contacts')
     }
-
+    
     render() {
         return (
-            <Router>
+            <div>
                 <Form>
                     <FormGroup>
-                        <Label for="name">Valid input</Label>
-                        <Input valid onChange={event => this.setState({name: event.target.value})}/>
-                        <FormFeedback valid>Sweet! that name is available</FormFeedback>
-                        <FormText>Please enter your first and last names.</FormText>
+                        <Label for="name">Name</Label>
+                        <Input placeholder="First Last" onChange={event => this.setState({name: event.target.value})}/>
                     </FormGroup>
 
                     <br />
 
                     <FormGroup>
-                        <Label for="phoneNumber">Number</Label>
+                        <Label for="phoneNumber">Phone Number</Label>
                         <Input 
-                        type="number" name="number" id="phoneNumber" placeholder="number placeholder" 
+                        type="number" name="number" id="phoneNumber" placeholder="(123) 456-7890" 
                             onChange={event =>
                                 this.setState({ phone_number: event.target.value })
                             }/>
                     </FormGroup>
-                    {/* row matter here or needed on rest? */}
-
+                   
                     <br />
 
-                    <FormGroup row>
+                    <FormGroup>
                         <Label for="Email" sm={2}>Email</Label>
                         <Col sm={10}>
                             <Input
                                 type="email"
                                 name="email"
                                 id="Email"
-                                placeholder="with a placeholder" 
                                 onChange={event =>
                                     this.setState({ email: event.target.value })
                                 }/>
@@ -74,12 +74,11 @@ class ContactForm extends React.Component {
                     <br />
 
                     <FormGroup>
-                        <Label for="imageUrl">Url</Label>
+                        <Label for="imageUrl">Image URL</Label>
                         <Input
                             type="url"
                             name="url"
                             id="imageUrl"
-                            placeholder="url placeholder"
                             onChange={event =>
                                 this.setState({ image_url: event.target.value })
                             } />
@@ -97,17 +96,16 @@ class ContactForm extends React.Component {
                 </Form>
 
                 <Route exact path="/contacts" component={App} />
-            </Router>
+            </div>
         );
     }
 }
 
 ContactForm.propTypes = {
-    id: this.PropTypes.number,
-    name: this.PropTypes.string.isRequired,
-    image_url: this.PropTypes.string,
-    email: this.PropTypes.string,
-    phone_number: this.PropTypes.number.isRequired
+    id: PropTypes.string,
+    name: PropTypes.string,
+    email: PropTypes.string,
+    phone_number: PropTypes.number
 }
 
 export default ContactForm;

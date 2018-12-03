@@ -1,17 +1,9 @@
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { Route, Link} from 'react-router-dom';
 import { Button } from 'reactstrap';
 
 import React from 'react';
 import ContactList from '../Components/ContactList';
 import ContactForm from '../Components/ContactForm'
-
-
-
-// import ShowContact from '../Components/ShowContact'
-// import logo from './logo.svg';
-// import '../index.css';
-
-
 
 class App extends React.Component {
   constructor(props) {
@@ -25,12 +17,11 @@ class App extends React.Component {
     this.addContact = this.addContact.bind(this);
   }
  
-  addContact (contact) {
-    this.setState({ contactList: this.state.contacts.concat([contact]) });
+  addContact(contact) {
+    this.setState({ contactList: this.state.contactList.concat(contact) });
   }
   render() {
-    return (
-      <Router> 
+    return ( 
         <div className="App">
           <main>
             <header>
@@ -46,11 +37,9 @@ class App extends React.Component {
             </div>
           </main>
 
-          <Route path="/contacts/form" component={ContactForm} />
-          
-          
+          <Route path="/contacts/form" render={() => (<ContactForm addContact={this.addContact} contactList={this.props.ContactData}/>)}/>
+                   
        </div>
-      </Router>
     );
   }
 }
