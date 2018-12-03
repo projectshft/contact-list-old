@@ -28,11 +28,11 @@ const Contact = ({props, contacts}) => {
 
 Contact.propTypes = {
   contacts: PropTypes.arrayOf(PropTypes.shape({
-    email: PropTypes.string.required,
-    id: PropTypes.number.required,
-    name: PropTypes.string.required,
-    phone_number: PropTypes.string.required,
-    image_url: PropTypes.string.required
+    email: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    phone_number: PropTypes.string.isRequired,
+    image_url: PropTypes.string.isRequired
   })),
 };
 

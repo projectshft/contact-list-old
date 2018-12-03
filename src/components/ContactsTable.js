@@ -2,6 +2,10 @@ import React from 'react'
 import ContactsRow from './ContactsRow'
 import PropTypes from 'prop-types';
 
+/*
+ This component should simply render the table whereby all the contacts are rendered within.
+*/
+
 const ContactsTable = ({contacts, removeContact}) => {
   return (
     <tbody>
@@ -16,7 +20,7 @@ const ContactsTable = ({contacts, removeContact}) => {
 
 ContactsTable.proptypes = {
   contacts: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.required
+    id: PropTypes.number.isRequired
   })),
 };
 

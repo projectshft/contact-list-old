@@ -4,6 +4,18 @@ import ContactsPage from './ContactsPage'
 import NewContact from './NewContact'
 import Contact from './Contact.js'
 
+/*
+  The App component's hierarchy has three branches:
+
+  1. App --> ContactsPage --> ContactsTable --> ContactsRow
+  --This hierarchy renders the 'Home' page, which is a listed view of all contacts.
+
+  2. App --> newContact
+  --Renders the form to add a new contact.
+
+  3. App --> Contact
+  --Renders a detailed view of one contact.
+*/
 
 class App extends Component {
   constructor () {
@@ -42,8 +54,10 @@ class App extends Component {
 
     contactsCopy.splice(indexToRemove, 1);
     this.setState({contacts: contactsCopy});
-
   }
+
+  /*
+    When starting the app, the user should be routed to the '/contacts' path. The NewContact component should be rendered when the Add Contact button is clicked. The Contact component should be rendered when a person's name is clicked on the home screen.  */
 
   render() {
     const {contacts} = this.state;

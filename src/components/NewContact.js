@@ -21,6 +21,23 @@ class NewContact extends React.Component {
     return Math.round(Math.random() * 100000000)
   }
 
+/*
+  As part of handling the Submit Contact click, the following validation of user input should occur:
+  Name is a required field. Any input, except for empty, is valid.
+  Phone number can take the following forms, where d is a digit [0-9]:
+    dddddddddd
+    ddd ddd dddd
+    ddd.ddd.dddd
+    ddd-ddd-dddd
+  Email can be blank. However, if an email is entered, the entry is checked so that:
+    1. Starts with a word character.
+    2. Accepts any number of word characters, '.', or '-' before the @ symbol.
+    3. Must have an @ symbol immediately follwed by a word character.
+    4. Accepts any number of word characters, '.', or '-' before the last '.'
+    5. Accepts any two or three word characters as a domain.
+  image_url can be any input. If none is provided, a default picture is added.
+*/
+
   isInputValid () {
     const phoneRegEx1 = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     const phoneRegEx2 = /^\d{10}$/;
@@ -103,10 +120,10 @@ class NewContact extends React.Component {
 }
 
 NewContact.proptypes = {
-  addContact: PropTypes.func.required,
+  addContact: PropTypes.func.isRequired,
   props: PropTypes.shape({
     history: PropTypes.shape({
-      push: PropTypes.func.required
+      push: PropTypes.func.isRequired
     })
   })
 };

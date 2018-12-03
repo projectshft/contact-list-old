@@ -2,9 +2,13 @@ import React from 'react'
 import ContactsTable from './ContactsTable'
 import StyledLinkWhite from './StyledLinkWhite.js'
 
+/*
+ The normal React Link component's CSS was modified by creating two new components, SyledLinkWhite and StyledLink. Details can be found by looking at the StyledLink.js and StyledLinkWhite.js files in the components folder. They function exactly as the Link component would.
+*/
+
 
 const ContactsPage = ({contacts, removeContact}) => {
-    
+
     return (
       <div className="container">
           <div className="row d-flex justify-content-center">
