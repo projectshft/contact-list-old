@@ -3,8 +3,8 @@ import ContactsTable from './ContactsTable'
 import StyledLinkWhite from './StyledLinkWhite.js'
 
 
-const ContactsPage = ({contacts}) => {
-
+const ContactsPage = ({contacts, removeContact}) => {
+    
     return (
       <div className="container">
           <div className="row d-flex justify-content-center">
@@ -13,7 +13,7 @@ const ContactsPage = ({contacts}) => {
           </div>
           <div className="row d-flex justify-content-center">
             <table className="table contacts-list">
-              <ContactsTable contacts={contacts}/>
+              <ContactsTable contacts={contacts} removeContact={removeContact}/>
             </table>
           </div>
       </div>

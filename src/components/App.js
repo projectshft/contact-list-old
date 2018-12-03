@@ -29,10 +29,20 @@ class App extends Component {
     }
 
     this.addContact = this.addContact.bind(this);
+    this.removeContact = this.removeContact.bind(this);
   }
 
   addContact (contact) {
     this.setState({contacts: this.state.contacts.concat([contact])});
+  }
+
+  removeContact (id) {
+    let contactsCopy = [...this.state.contacts];
+    const indexToRemove = contactsCopy.indexOf(contactsCopy.find(contact => contact.id === id));
+
+    contactsCopy.splice(indexToRemove, 1);
+    this.setState({contacts: contactsCopy});
+
   }
 
   render() {
@@ -41,7 +51,7 @@ class App extends Component {
       <div>
         <Switch>
           <Route exact path='/contacts' render={() => (
-            <ContactsPage contacts={contacts}/>
+            <ContactsPage contacts={contacts} removeContact={this.removeContact}/>
           )}/>
           <Route path='/contacts/new' render={(props) => (
             <NewContact props={props} addContact={this.addContact}/>

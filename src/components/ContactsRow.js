@@ -1,16 +1,27 @@
-import React from 'react'
+import React, { Component } from 'react'
 import StyledLink from './StyledLink.js'
 import PropTypes from 'prop-types';
 
-const ContactsRow = ({contact}) => {
+class ContactsRow extends Component {
+  constructor(props) {
+    super(props)
 
-  return (
-      <tr>
-        <td><StyledLink to={`/contacts/${contact.id}`}>{contact.name}</StyledLink></td>
-        <td><a className="edit " tabIndex='0'>edit</a></td>
-        <td><a className="delete" tabIndex='0'>delete</a></td>
-      </tr>
-  )
+    this.removeThisContact = this.removeThisContact.bind(this);
+  }
+
+  removeThisContact (id) {
+    this.props.removeContact(id);
+  }
+
+  render(){
+    return (
+        <tr>
+          <td><StyledLink to={`/contacts/${this.props.contact.id}`}>{this.props.contact.name}</StyledLink></td>
+          <td><a className="edit " tabIndex='0' data-id={this.props.contact.id}>edit</a></td>
+          <td><a className="delete" onClick={() => this.removeThisContact(this.props.contact.id)} tabIndex='0'>delete</a></td>
+        </tr>
+    )
+  }
 }
 
 ContactsRow.propTypes = {

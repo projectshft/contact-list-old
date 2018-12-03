@@ -2,12 +2,12 @@ import React from 'react'
 import ContactsRow from './ContactsRow'
 import PropTypes from 'prop-types';
 
-const ContactsTable = ({contacts}) => {
+const ContactsTable = ({contacts, removeContact}) => {
   return (
     <tbody>
       {contacts.map(contact => {
           return (
-            <ContactsRow key={contact.id} contact={contact}/>
+            <ContactsRow key={contact.id} contact={contact} removeContact={removeContact}/>
           )
       })}
     </tbody>
