@@ -10,7 +10,7 @@ const Contact = ({contacts, addContact, AddContact}) => (
       <AddContact props={props} contacts={contacts} addContact={addContact} />
     )}/>
 
-    <Route path='/ContactList/:Id' render={(props) => (
+    <Route path='/ContactPage/:name' render={(props) => (
       <ContactPage props={props} contacts={contacts} />
     )}/>
 

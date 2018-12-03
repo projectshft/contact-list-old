@@ -1,6 +1,7 @@
 import { Switch, Route } from "react-router-dom"
 import React from "react"
 import Home from "./Home"
+import Contact from "./Contact"
 import AddContact from "./AddContact"
 import ContactList from "./ContactList"
 import ContactPage from "./ContactPage"
@@ -29,14 +30,14 @@ addContact = (newContact) => {
 
 render() {
   return (
-    <div className="App">
+    <div>
       <Switch>
-        <Route exact path="/"component={Home} />
+        <Route exact path="/" component={Home} />
         <Route path="/AddContact" component={AddContact} />
-        <Route path="/ContactPage" component={ContactPage} />
         <Route path="/ContactList" render={() => (
           <ContactList contacts = {this.state.contacts} />
         )} />
+        <Route path="/ContactList/:id" component={ContactPage} />
       </Switch>
     </div>
   )

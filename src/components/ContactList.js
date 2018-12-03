@@ -9,7 +9,7 @@ const ContactList = (props) => {
     )
   })
 
-  console.log("here");
+  //console.log("here");
 
   return (
     <div>

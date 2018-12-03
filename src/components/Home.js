@@ -15,7 +15,3 @@ const Home = () => (
 
 
 export default Home
-
-
-
-{/* On this Page (the home page), their should be a current list of contacts and an add contact button that should re-direct you to another page to do so*/}
