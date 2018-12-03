@@ -3,7 +3,8 @@ import { Button } from 'reactstrap';
 
 import React from 'react';
 import ContactList from '../Components/ContactList';
-import ContactForm from '../Components/ContactForm'
+import ContactForm from '../Components/ContactForm';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -33,11 +34,13 @@ class App extends React.Component {
             </header>
 
             <div>
-              <ContactList contacts={this.state.contactList} />
+              
+
+            <Route path="/contacts/list" render={() => (<ContactList addContact={this.addContact} contacts={this.state.contactList} />)} />
             </div>
           </main>
 
-          <Route path="/contacts/form" render={() => (<ContactForm addContact={this.addContact} contactList={this.props.ContactData}/>)}/>
+            <Route path="/contacts/form" component={ContactForm}/>
                    
        </div>
     );

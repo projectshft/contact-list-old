@@ -1,25 +1,35 @@
+import { Route, Link } from 'react-router-dom';
 import React from 'react';
-import ContactListItem from '../Components/ContactListItem';
+import ContactForm from './ContactForm';
+import ContactListItem from './ContactListItem';
+
 
 var uniqid = require('uniqid');
 var id = uniqid.process();
 
-const ContactList = (props) => {
-    //map through contacts and construct a unique id for each
-    const contactItems = props.contacts.map(function (contact) {
-        return (
-            <ContactListItem key={id} contact={contact} />
-        );
-
-    })
-
-
+const ContactList = ({ contacts, addContact}) => {
     return (
-        <ul>
-            {contactItems}
-        </ul>
+        //map through contacts and construct a unique id for each
 
+        <div>
+            <ul>
+                {contacts.map(contact => (
+                    <li key={id}>
+                        <Link to="/contacts/:id">
+                            {contact.name}
+                        </Link>
+                    </li>
+                ))
+                }
+            </ul>
+
+            <Route path="/contacts/form" render={() => (<ContactForm  addContact={addContact} contacts={contacts} />)} />
+
+
+            <Route path="/contacts/:id" render={() => (<ContactListItem  key={id} contacts={contacts} />)} />
+        </div>
     )
+
 }
 
 

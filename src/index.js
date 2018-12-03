@@ -3,14 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Components/App';
-// import ContactList from '../src/Components/ContactList';
-// import ContactListItem from '../src/Components/ContactListItem';
 
-import registerServiceWorker from './registerServiceWorker';
+
+
 
 const Contacts = [
     {
-        "id": "70219577",
+        "id": '',
         "name": "Albert Einstein",
         "image_url": "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
         "email": "aeinstein@example.com",
@@ -24,4 +23,4 @@ ReactDOM.render(
     </BrowserRouter>),
     document.getElementById('root')
 );
-registerServiceWorker();
+
