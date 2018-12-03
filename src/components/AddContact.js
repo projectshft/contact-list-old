@@ -27,7 +27,8 @@ class AddContact extends React.Component {
       id: this.generateId()
     };
 
-    this.props.addContact(newContact);
+    this.props.addContact(newContact)
+    this.props.props.history.push('/ContactList')
 
 
   }

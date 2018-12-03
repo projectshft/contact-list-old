@@ -2,6 +2,8 @@ import { Switch, Route } from "react-router-dom"
 import React from "react"
 import Home from "./Home"
 import AddContact from "./AddContact"
+import ContactList from "./ContactList"
+import ContactPage from "./ContactPage"
 
 class App extends React.Component {
   constructor () {
@@ -30,7 +32,11 @@ render() {
     <div className="App">
       <Switch>
         <Route exact path="/"component={Home} />
-        <Route path="/new" component={AddContact} />
+        <Route path="/AddContact" component={AddContact} />
+        <Route path="/ContactPage" component={ContactPage} />
+        <Route path="/ContactList" render={() => (
+          <ContactList contacts = {this.state.contacts} />
+        )} />
       </Switch>
     </div>
   )
