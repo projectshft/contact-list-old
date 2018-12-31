@@ -4,7 +4,7 @@ import React from 'react';
 import _ from 'lodash'
 
 const TheContact = ({ props, contacts}) => {
-    const contact = _.find(contacts, { id: parseInt(props.match.params.id, 1)}
+    const contact = _.find(contacts, { id: parseInt(props.match.params.id, 10)}
     )
     if (!contact) {
         return <div> Sorry, but the contact was not found.</div>
@@ -49,4 +49,4 @@ const TheContact = ({ props, contacts}) => {
     // );
 // };
 
-export default TheContact
+export default TheContact    

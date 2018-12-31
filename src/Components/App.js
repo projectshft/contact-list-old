@@ -11,8 +11,8 @@ import ContactList from './ContactList';                    //Roster
 
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
 
     this.state = {
       contacts: [
@@ -31,7 +31,7 @@ class App extends React.Component {
 
 
   addContact(contact) {
-    this.setState({ contactList: this.state.contacts.concat([contact]) });
+    this.setState({ contacts: this.state.contacts.concat([contact]) });
   }
 
   render() {

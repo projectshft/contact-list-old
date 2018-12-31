@@ -7,3 +7,12 @@ it('renders without crashing', () => {
   ReactDOM.render(<App />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
+
+
+//USE PROPTYPES
+{/* ContactForm.propTypes = {
+     key: PropTypes.string,
+     name: PropTypes.string,
+     email: PropTypes.string,
+    phone_number: PropTypes.number
+ } */}

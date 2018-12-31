@@ -17,7 +17,7 @@ const ContactList = ({ contacts, addContact }) => (
     
 
     <Route path='/contactList'  render={() => (
-        <FullList contact={contacts} />
+        <FullList contacts={contacts} />
     )} />
 </Switch>
     )

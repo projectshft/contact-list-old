@@ -1,6 +1,8 @@
 // Route = /contactList/new
 // generate unique id
 // SUBMIT button-- > /contacts
+//USE PROPTYPES
+
 
 import { Link } from "react-router-dom";
 import React from 'react';
@@ -10,7 +12,7 @@ import React from 'react';
 
 
 class ContactNew extends React.Component {
-    constructor() {
+    constructor({ props, contacts, addContact }) {
         super()
 
         this.state = {
@@ -22,7 +24,10 @@ class ContactNew extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    //After clicking "submit", the user should be re-routed back to the /contacts view where they'll see all their contact.
+   
+
+
+    //After clicking "submit", the user should be re-routed back to the /contacts view where they'll see all their contacts.
     handleSubmit(e) {
         e.preventDefault()
         const newContact = {
@@ -41,24 +46,23 @@ class ContactNew extends React.Component {
         return (
             <div>
                 <form>
-                    <label for="name">Name</label>
-                    <input type='text' placeholder="First Last" onChange={event => this.setState({ name: event.target.value })
+                    <label>Name</label>
+                    <input type='text' placeholder="First Last" className='form-control' onChange={event => this.setState({ name: event.target.value })
                     } />
 
                     <br />
 
-                    <label for="phoneNumber">Phone Number</label>
-                    <input type="number" name="number" id="phoneNumber" placeholder="(123) 456-7890" onChange={event => this.setState({ phone_number: parseInt(event.target.value, 10) })
+                    <label>Phone Number</label>
+                    <input type="number" name="number" id="phoneNumber" className='form-control' placeholder="(123) 456-7890" onChange={event => this.setState({ phone_number: parseInt(event.target.value, 10) })
                     } />
 
                     <br />
 
-                    <label for="Email">Email</label>
-                   
+                    <label>Email</label>
                     <input
                         type="email"
                         name="email"
-                        id="Email"
+                        id="Email" className='form-control'
                         onChange={event =>
                             this.setState({ email: event.target.value })
                         } />
@@ -66,16 +70,17 @@ class ContactNew extends React.Component {
                     <br />
 
                     <label for="imageUrl">Image URL</label>
-                    <input type="url" name="url" id="imageUrl" onChange={event =>
+                    <input type="url" name="url" id="imageUrl" className='form-control' onChange={event =>
                         this.setState({ image_url: event.target.value })
                     } />
 
                     <br />
                    
-                    <button type="submit" onClick={this.handleSubmit}>Submit</button>
-                   
                 </form>
-                <Link to="/contactList">Contact List</Link>
+
+                <Link to="/contactList">
+                    <button type="submit" onClick={this.handleSubmit}>Submit</button>
+                </Link>
             </div>
         )
     }
