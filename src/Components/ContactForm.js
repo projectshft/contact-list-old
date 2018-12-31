@@ -1,18 +1,19 @@
-import { Route, Link } from "react-router-dom";
+// Route = /contactList/new
+// generate unique id
+// SUBMIT button-- > /contacts
+
+import { Link } from "react-router-dom";
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import App from './App';
-import ContactList from './ContactList';
+// import PropTypes from 'prop-types';
+// import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 
 
-class ContactForm extends React.Component {
-    constructor(props) {
-        super(props)
+class ContactNew extends React.Component {
+    constructor() {
+        super()
 
         this.state = {
-            // key: '',
             name: '',
             image_url: '',
             email: '',
@@ -21,92 +22,67 @@ class ContactForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit() {
-        const contact = {
-            name: this.name,
-            image_url: this.image_url,
-            email: this.email,
-            phone_number: this.phone_number
+    //After clicking "submit", the user should be re-routed back to the /contacts view where they'll see all their contact.
+    handleSubmit(e) {
+        e.preventDefault()
+        const newContact = {
+            name: this.state.name,
+            image_url: this.state.image_url,
+            email: this.state.email,
+            phone_number: this.state.phone_number
         };
 
-        // addContact(contact);
-        this.state.addContact(contact);
-
+        this.props.addContact(newContact);
         //pushes new entry onto history stack
-        // this.state.props.history.push('/contacts')
+        this.state.props.history.push('/contactList')
     }
 
-    render() {
+     render() {
         return (
             <div>
-                <Form>
-                    <FormGroup>
-                        <Label for="name">Name</Label>
-                        <Input placeholder="First Last" onChange={event => this.setState({ name: event.target.value })} />
-                    </FormGroup>
+                <form>
+                    <label for="name">Name</label>
+                    <input type='text' placeholder="First Last" onChange={event => this.setState({ name: event.target.value })
+                    } />
 
                     <br />
 
-                    <FormGroup>
-                        <Label for="phoneNumber">Phone Number</Label>
-                        <Input
-                            type="number" name="number" id="phoneNumber" placeholder="(123) 456-7890"
-                            onChange={event =>
-                                this.setState({ phone_number: event.target.value })
-                            } />
-                    </FormGroup>
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="number" name="number" id="phoneNumber" placeholder="(123) 456-7890" onChange={event => this.setState({ phone_number: parseInt(event.target.value, 10) })
+                    } />
 
                     <br />
 
-                    <FormGroup>
-                        <Label for="Email" sm={2}>Email</Label>
-                        <Col sm={10}>
-                            <Input
-                                type="email"
-                                name="email"
-                                id="Email"
-                                onChange={event =>
-                                    this.setState({ email: event.target.value })
-                                } />
-                        </Col>
-                    </FormGroup>
-
+                    <label for="Email">Email</label>
+                   
+                    <input
+                        type="email"
+                        name="email"
+                        id="Email"
+                        onChange={event =>
+                            this.setState({ email: event.target.value })
+                        } />
+                   
                     <br />
 
-                    <FormGroup>
-                        <Label for="imageUrl">Image URL</Label>
-                        <Input
-                            type="url"
-                            name="url"
-                            id="imageUrl"
-                            onChange={event =>
-                                this.setState({ image_url: event.target.value })
-                            } />
-                    </FormGroup>
+                    <label for="imageUrl">Image URL</label>
+                    <input type="url" name="url" id="imageUrl" onChange={event =>
+                        this.setState({ image_url: event.target.value })
+                    } />
 
                     <br />
-
-                    <FormGroup>
-                        <Col sm={{ size: 10, offset: 2 }}>
-                            <Link to="/contacts">
-                                <Button onClick={this.handleSubmit}>Submit</Button>
-                            </Link>
-                        </Col>
-                    </FormGroup>
-                </Form>
-
-                <Route exact path="/contacts" render={() =>(<App addContact={this.addContact} />)} />
-                <Route path="/contacts/list" render={() => (<ContactList addContact={this.addContact} contacts={this.state.contactList} />)} />
+                   
+                    <button type="submit" onClick={this.handleSubmit}>Submit</button>
+                   
+                </form>
+                <Link to="/contactList">Contact List</Link>
             </div>
-        );
+        )
     }
 }
 
-ContactForm.propTypes = {
-    key: PropTypes.string,
-    name: PropTypes.string,
-    email: PropTypes.string,
-    phone_number: PropTypes.number
-}
 
-export default ContactForm;
+
+
+
+export default ContactNew

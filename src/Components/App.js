@@ -1,9 +1,13 @@
-import { Route, Link} from 'react-router-dom';
-import { Button } from 'reactstrap';
+// //SHOW USER A LIST OF ALL OF THEIR CONTACTS
+// //HAS OWN ROUTE (/CONTACTS)
+// //Click "ADD CONTACT" --> /contacts/form
+
+import { Switch, Route } from 'react-router-dom';
+
 
 import React from 'react';
-import ContactList from '../Components/ContactList';
-import ContactForm from '../Components/ContactForm';
+import Contacts from './Contacts';                           //Home
+import ContactList from './ContactList';                    //Roster
 
 
 class App extends React.Component {
@@ -11,38 +15,36 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      contactList: props.contactData
+      contacts: [
+        {
+          "id": '1',
+          "name": "Albert Einstein",
+          "image_url": "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
+          "email": "aeinstein@example.com",
+          "phone_number": 15555555555
+        },
+      ],
     }
-    console.log(this.state.contactList);
 
     this.addContact = this.addContact.bind(this);
   }
- 
+
+
   addContact(contact) {
-    this.setState({ contactList: this.state.contactList.concat(contact) });
+    this.setState({ contactList: this.state.contacts.concat([contact]) });
   }
+
   render() {
-    return ( 
-        <div className="App">
-          <main>
-            <header>
-              <h1>My Contacts</h1>
+    return (
+      <div>
+        <Switch>
+          <Route exact path='/contacts' component={Contacts} />
 
-              <Link to="/contacts/form">
-                <Button color="primary">Add Contact </Button>
-              </Link>
-            </header>
-
-            <div>
-              
-
-            <Route path="/contacts/list" render={() => (<ContactList addContact={this.addContact} contacts={this.state.contactList} />)} />
-            </div>
-          </main>
-
-            <Route path="/contacts/form" component={ContactForm}/>
-                   
-       </div>
+{/* render f() passes props: contacts and addContact */}
+          <Route path="/contactList" render={() => (
+            <ContactList addContact={this.addContact} contacts={this.state.contacts} />)} />
+        </Switch>
+      </div>
     );
   }
 }
