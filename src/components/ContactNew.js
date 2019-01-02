@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom'
-import React from 'react'
+import React, { Component } from 'react';
 
-
-class ContactNew extends React.Component {
-  constructor () {
-    super ()
+class ContactNew extends Component {
+  constructor (props) {
+    super (props);
 
     this.state = {
       id: '',
@@ -14,7 +13,7 @@ class ContactNew extends React.Component {
       phone_number: ''
     }
 
-    this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
+    this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this);
   }
 
   handleSubmitContactClick () {
@@ -27,7 +26,7 @@ class ContactNew extends React.Component {
     };
 
     this.props.addContact(newContact)
-    this.props.props.history.push('/contacts/:id')
+    this.props.props.history.push(`/`)
   }
 
   render () {
@@ -36,7 +35,7 @@ class ContactNew extends React.Component {
         <form>
         <label>Id: </label>
         <input type='text' className='form-control'onChange={event =>
-          this.setState({ id: parseInt(event.target.id, 10) })
+          this.setState({ id: parseInt(event.target.value, 10) })
         }/>
 
         <br/>
@@ -74,7 +73,8 @@ class ContactNew extends React.Component {
 
         <br/>
 
-        <Link to='/contacts/:id'>Roster</Link>
+        <Link to='/'>Roster</Link>
+  
       </div>
     )
   }

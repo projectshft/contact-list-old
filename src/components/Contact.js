@@ -1,27 +1,26 @@
-import { render } from 'react-dom';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import React from 'react';
-import ContactAPI from './ContactAPI.js';
-import AllContacts from './AllContacts.js';
-import _ from 'lodash'
+import _ from 'lodash';
 
 
-const Contact = (props, contacts) => {
-  const contact = _.find(contacts, { id: parseInt(props.props.match.params.id, 10)});
+
+
+const Contact = ({props, contacts}) => {
+  const contact = _.find(contacts, { 'phone_number': props.match.params.phone_number });
+
   if (!contact) {
-  return <div>Sorry, but the player was not found! <Link to='/'> Back</Link></div>
-}
-else {
-return (
-  <div>
-    <h1>{contact.name} (#{contact.image_url})</h1>
-    <h2>Email: {contact.email}</h2>
-    <h3>Phone Number: {contact.phone_number}</h3>
+    return <div>Sorry, but the contact was not found <Link to='/'>Roster</Link></div> 
+  }
 
-    <Link to='/contacts'>Back</Link>
-  </div>
-)
-}
+  return(
+      <div>
+        <h1>Name: {contact.name}</h1>
+         <img src={contact.image_url} alt="Img" height="100" width="100" />
+        <h2> email: {contact.email}</h2>
+        <h3>number: {contact.phone_number}</h3>
+        <Link to='/'>Roster</Link>
+      </div>
+  )
 }
 
-export default Contact;
+export default Contact
