@@ -1,13 +1,23 @@
-import { Link } from 'react-router-dom'
-import React, { Component } from 'react'
+import { Switch, Route } from 'react-router-dom'
+import React from 'react';
+import User from './User';
+import NewUser from './NewUser';
 
 
-const UserList = ({user}) =>(
-    <div>
-      <ul>
-          <h1>YO</h1>
-      </ul>
-    </div>
+const Roster = ({users, addUser}) => (
+  <Switch>    
+    <Route path='/user/new' render={(routerProps) => (
+      <NewUser routerProps={routerProps} users={users} addUser={addUser} />
+    )}/>
+  
+    <Route path='/roster/:number' render={(props) => (
+      <User props={props} users={users} />
+    )}/>
+    
+    {/* <Route path='/' render={() => (
+      <FullRoster players={players} />
+    )}/> */}
+  </Switch>
+)
 
-)   
-export default UserList
+export default Roster
