@@ -7,7 +7,7 @@ class AddContact extends React.Component {
     super (props)
 
 //update state with new user input
-    this. state = {
+    this.state = {
       name: '',
       email: '',
       phone: '',
@@ -21,26 +21,19 @@ class AddContact extends React.Component {
   }
 
 //add new contact to state
-  handleNewContactClick = event => {
 
-    const newContact = {
-      name: this.state.name,
-      email: this.state.email,
-      phone: this.state.phone,
-      thumbnail: this.state.thumbnail,
-      id: this.generateId()
-    };
-
-    this.props.addContact(newContact)
-    this.props.props.history.push('/ContactList')
-
-
+  handleSubmit = e => {
+    e.preventDefault();
+    const {name, email, phone, thumbnail} = this.state;
+    const newContact = {name, email, phone, thumbnail, id: this.generateId()};
+    this.props.addContact(newContact);
+    this.props.props.history.push('/Contacts');
   }
 
   render () {
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
         <label>Name: </label>
         <input type ='text' className='form-control' onChange={event =>
         this.setState({ name: event.target.value })
@@ -66,10 +59,10 @@ class AddContact extends React.Component {
     this.setState({ thumbnail: event.target.value })
   } />
 
-    <button type="button" onclick={this.handleNewContactClick}>Add Contact</button>
+    <button type="submit">Submit</button>
     </form>
 
-    <Link to='/ContactList'> Back to Contact List</Link>
+    <Link to='/Contacts'> Back to Contact List</Link>
   </div>
     )
   }

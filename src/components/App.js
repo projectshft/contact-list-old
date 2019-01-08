@@ -1,5 +1,5 @@
 import { Switch, Route } from "react-router-dom"
-import React from "react"
+import React, {Component} from "react"
 import Home from "./Home"
 import Contact from "./Contact"
 import AddContact from "./AddContact"
@@ -7,8 +7,8 @@ import ContactList from "./ContactList"
 import ContactPage from "./ContactPage"
 
 class App extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.state = {
       contacts: [
@@ -20,7 +20,7 @@ class App extends React.Component {
 }
 
 generateId = () => {
-  Math.round(Math.random()*100000000)
+  return Math.round(Math.random()*100000000)
 }
 
 
@@ -29,15 +29,18 @@ addContact = (newContact) => {
 }
 
 render() {
+  const {contacts} = this.state;
   return (
     <div>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/AddContact" component={AddContact} />
-        <Route path="/ContactList" render={() => (
-          <ContactList contacts = {this.state.contacts} />
+        <Route exact path="/contacts" render={props => (
+          <ContactList contacts={contacts} {...props}/>
+        )}/>
+        <Route path="/contacts/:id" render={props => (
+          <ContactPage contacts={contacts} {...props} />
         )} />
-        <Route path="/ContactList/:id" component={ContactPage} />
+        <Route path="/AddContact" component={AddContact} />
       </Switch>
     </div>
   )

@@ -3,6 +3,7 @@ import React from 'react'
 
 
 const ContactId = (props) => {
+  console.log(props)
   return (
       <div className = {props.contact.id}>
         <li>
