@@ -9,17 +9,19 @@ const ContactPage = ({ contacts, match }) => {
   
 
   return (
-    <div>
-      <h1>{contact.name} ({contact.id})</h1>
-      <h2>Email: {contact.email}</h2>
-      <h2>Phone: {contact.phone}</h2>
-      <h2>Thumbnail: {contact.thumbnail}</h2>
-
-      <Link to='/Contacts'>Back</Link>
-    </div>
-
+    <div className="container">
+      <div className="row d-flex justify-content-center">
+        <div className="col-md-4">
+          <h1>{contact.name} ({contact.id})</h1>
+          <p>Email: {contact.email}</p>
+          <p>Phone: {contact.phone}</p>
+        </div>
+        <div className="col-lg-auto"></div>
+          <img src={contact.thumbnail} alt="" />
+        </div>  
+          <Link to='/Contacts'>Back</Link>
+      </div>   
   )
-
 }
 
 ContactPage.propTypes = {

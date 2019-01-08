@@ -3,37 +3,35 @@ import React from "react"
 import PropTypes from "prop-types"
 
 class AddContact extends React.Component {
-  constructor (props) {
-    super (props)
-
 //update state with new user input
-    this.state = {
+    state = {
       name: '',
       email: '',
       phone: '',
       thumbnail: '',
       id: ''
     }
-  }
+
 
   generateId = () => {
-    Math.round(Math.random() * 100000000)
+    return Math.round(Math.random() * 100000000)
   }
 
 //add new contact to state
 
   handleSubmit = e => {
+    const {history} = this.props.props;
     e.preventDefault();
     const {name, email, phone, thumbnail} = this.state;
     const newContact = {name, email, phone, thumbnail, id: this.generateId()};
     this.props.addContact(newContact);
-    this.props.props.history.push('/Contacts');
+    history.push('/Contacts');
   }
 
   render () {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={e => this.handleSubmit(e)}>
         <label>Name: </label>
         <input type ='text' className='form-control' onChange={event =>
         this.setState({ name: event.target.value })
@@ -50,7 +48,7 @@ class AddContact extends React.Component {
 
     <label>Phone: </label>
     <input type ='text' className='form-control' onChange={event =>
-    this.setState({ phone: parseInt(event.target.value) })
+    this.setState({ phone: event.target.value })
   } />
 
 
