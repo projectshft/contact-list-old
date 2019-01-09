@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom'
 import React from 'react';
-import _ from 'lodash';
 
 
 
 
 const Contact = ({props, contacts}) => {
-  const contact = _.find(contacts, { 'phone_number': props.match.params.phone_number });
-
+const {id} = props.match.params;
+console.log(id)
+const contact = contacts.find(contact => Number(contact.id) === Number(id))
+console.log(contact)
+//This is supposed to return the info of the contact whose link you clicked on. You will be able to go back to the main page whether you get the contact results or not. 
   if (!contact) {
     return <div>Sorry, but the contact was not found <Link to='/'>Roster</Link></div> 
   }
