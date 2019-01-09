@@ -16,6 +16,7 @@ class AddContact extends React.Component {
   generateId = () => {
     return Math.round(Math.random() * 100000000)
   }
+  //}
 
 //add new contact to state
 
@@ -26,42 +27,48 @@ class AddContact extends React.Component {
     const newContact = {name, email, phone, thumbnail, id: this.generateId()};
     this.props.addContact(newContact);
     history.push('/Contacts');
-  }
 
-  render () {
+    if (!this.state.name < 1) {
+      alert ("Please enter a valid name");
+    } 
+    if (this.state.email.length > 0 && !this.state.email.includes('@')) {
+      alert ("Please enter a valid email address");
+    } 
+    if (this.state.phone.length > 0 && this.state.phone.length < 10) {
+      alert ("Please enter a valid phone number");
+    } else {
+      return;
+    }
+  };
+  
+  render() {
     return (
       <div>
         <form onSubmit={e => this.handleSubmit(e)}>
-        <label>Name: </label>
-        <input type ='text' className='form-control' onChange={event =>
-        this.setState({ name: event.target.value })
-      } />
+         <label>Name: </label>
+         <input type ='text' className='form-control' onChange={event =>
+          this.setState({ name: event.target.value })
+          } />
 
+         <label>Email: </label>
+         <input type ='text' className='form-control' onChange={event =>
+         this.setState({ email: event.target.value })
+         } />
 
+         <label>Phone: </label>
+         <input type ='text' className='form-control' onChange={event =>
+         this.setState({ phone: event.target.value })
+         } />
 
-      <label>Email: </label>
-      <input type ='text' className='form-control' onChange={event =>
-      this.setState({ email: event.target.value })
-    } />
-
-
-
-    <label>Phone: </label>
-    <input type ='text' className='form-control' onChange={event =>
-    this.setState({ phone: event.target.value })
-  } />
-
-
-    <label>thumbnail: </label>
-    <input type ='text' className='form-control' onChange={event =>
-    this.setState({ thumbnail: event.target.value })
-  } />
-
-    <button type="submit">Submit</button>
-    </form>
-
-    <Link to='/Contacts'> Back to Contact List</Link>
-  </div>
+         <label>thumbnail: </label>
+         <input type ='text' className='form-control' onChange={event =>
+         this.setState({ thumbnail: event.target.value })
+         } />
+         
+         <button type="submit">Submit</button>
+        </form>
+          <Link to='/Contacts'> Back to Contact List</Link>
+      </div>
     )
   }
 }
