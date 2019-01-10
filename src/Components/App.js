@@ -1,52 +1,45 @@
-// //SHOW USER A LIST OF ALL OF THEIR CONTACTS
-// //HAS OWN ROUTE (/CONTACTS)
-// //Click "ADD CONTACT" --> /contacts/form
+//SHOW USER A LIST OF ALL OF THEIR CONTACTS
+//HAS OWN ROUTE (/CONTACTS)
+//Click "ADD CONTACT" --> /contacts/form
 
-import { Switch, Route } from 'react-router-dom';
-
-
+// import { Switch, Route } from 'react-router-dom';
 import React from 'react';
-import Contacts from './Contacts';                           //Home
-import ContactList from './ContactList';                    //Roster
+import ContactList from './ContactList';
 
 
+//PARENT COMPONENT
 class App extends React.Component {
-  constructor() {
-    super()
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     contacts: { contacts }
+  //   }
+  // }
+  
 
-    this.state = {
-      contacts: [
-        {
-          "id": '1',
-          "name": "Albert Einstein",
-          "image_url": "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
-          "email": "aeinstein@example.com",
-          "phone_number": 15555555555
-        },
-      ],
-    }
+    // }
 
-    this.addContact = this.addContact.bind(this);
-  }
+    //   this.addContact = this.addContact.bind(this);
+    // }
 
 
-  addContact(contact) {
-    this.setState({ contacts: this.state.contacts.concat([contact]) });
-  }
+    // addContact(contact) {
+    //   this.setState({ contacts: this.state.contacts.concat([contact]) });
+    // }
 
-  render() {
-    return (
-      <div>
-        <Switch>
-          <Route exact path='/contacts' component={Contacts} />
+    render() {
+      return (
+        <div>
+          <h1>My Contacts</h1>
 
-{/* render f() passes props: contacts and addContact */}
-          <Route path="/contactList" render={() => (
-            <ContactList addContact={this.addContact} contacts={this.state.contacts} />)} />
-        </Switch>
-      </div>
-    );
-  }
-}
+          {/* PASS CONTACTS PROP TO CONTACT lIST CHILD */}
+          <ContactList  contacts={this.props.contacts}/>
+        </div>
+      );
+    };
+  
+};
+
+
 
 export default App;
