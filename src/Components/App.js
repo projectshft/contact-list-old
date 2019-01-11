@@ -1,43 +1,30 @@
+//ALL OF THE ROUTING
+
 //SHOW USER A LIST OF ALL OF THEIR CONTACTS
 //HAS OWN ROUTE (/CONTACTS)
-//Click "ADD CONTACT" --> /contacts/form
 
-// import { Switch, Route } from 'react-router-dom';
+
 import React from 'react';
-import ContactList from './ContactList';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import ContactForm from './ContactForm';
+import Contacts from './Contacts';
 
 
-//PARENT COMPONENT
+//PARENT COMPONENT - stateful --> render
 class App extends React.Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     contacts: { contacts }
-  //   }
-  // }
   
+render(){
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/'  component={Contacts} />
+          <Route path='/new' component={ContactForm} />
+        </Switch>
+      </BrowserRouter>
+    )  
+  };
 
-    // }
-
-    //   this.addContact = this.addContact.bind(this);
-    // }
-
-
-    // addContact(contact) {
-    //   this.setState({ contacts: this.state.contacts.concat([contact]) });
-    // }
-
-    render() {
-      return (
-        <div>
-          <h1>My Contacts</h1>
-
-          {/* PASS CONTACTS PROP TO CONTACT lIST CHILD */}
-          <ContactList  contacts={this.props.contacts}/>
-        </div>
-      );
-    };
-  
 };
 
 
