@@ -3,17 +3,12 @@ import React from 'react';
 // import { Card, CardImg, CardBody, CardTitle, Button } from 'reactstrap';
 // import _ from 'lodash'
 
+//RENDERS NAME AND NUMBER FOR EACH CONTACT IN LIST
 class Contact extends React.Component {
-    //     // const contact = _.find(contacts, { id: parseInt(props.match.params.id, 10)}
-    //     // )
-    //     // if (!contact) {
-    //     //     return <div> Sorry, but the contact was not found.</div>
-    //     // }
-
     render() {
         return (
             <div>
-                <li>
+                <li> 
                     {this.props.contact.name} 
                     {this.props.contact.phone_number}
                 </li>
@@ -54,4 +49,4 @@ class Contact extends React.Component {
 // );
 // };
 
-export default Contact    
+export default Contact;   

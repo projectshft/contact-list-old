@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
+import PropTypes from 'prop-types'; 
 import { Button } from 'reactstrap';
 import ContactList from './ContactList';
 
-class Contacts extends React.Component {
-    constructor() {
-        super();
+
+class State extends React.Component {
+    constructor(props) {
+        super(props);
         this.state = {
             contacts: [
                 {
@@ -24,6 +26,13 @@ class Contacts extends React.Component {
                 },
             ]
         }
+
+        this.addContact = this.addContact.bind(this);
+    }
+
+
+    addContact(newContact) {
+        this.setState({contacts: this.state.contacts.concat([newContact])});
     }
 
     render() {
@@ -37,10 +46,19 @@ class Contacts extends React.Component {
                 </Link>
 
                 {/* PASS CONTACTS PROP TO CONTACT lIST CHILD */}
+                
                 <ContactList contacts={this.state.contacts} />
             </div>
         )
     }
 }
 
-export default Contacts;
+State.propTypes = {
+    id: PropTypes.number,
+    name: PropTypes.string,
+    image_url: PropTypes.string,
+    email: PropTypes.string,
+    phone_number: PropTypes.string
+};
+
+export default State;

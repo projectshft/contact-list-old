@@ -1,90 +1,110 @@
 // Route = /new
 // generate unique id
-// SUBMIT button-- > /contacts
+// SUBMIT button-- > /
 //USE PROPTYPES
 
 
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-
 
 
 class ContactForm extends React.Component {
-    constructor({ }) {
-        super()
+    constructor(props) {
+        super(props);
+
+        const generateId = () => Math.round(Math.random() * 100000000);
 
         this.state = {
+            id: generateId(),
             name: '',
             image_url: '',
             email: '',
             phone_number: ''
         }
-        // this.handleSubmit = this.handleSubmit.bind(this);
+
+
+        // this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-   
+    //updates the state of the parent component and passes the new value 
+    // handleChange = (event) => {
+    //     this.setState({
+    //         name: event.target.name,
+    //         image_url: event.target.image || null,
+    //         email: event.target.email,
+    //         phone_number: event.target.phone
+    //     });
+    // };
 
 
-// //     //After clicking "submit", the user should be re-routed back to the /contacts view where they'll see all their contacts.
-// //     handleSubmit(e) {
-// //         e.preventDefault()
-// //         const newContact = {
-// //             name: this.state.name,
-// //             image_url: this.state.image_url,
-// //             email: this.state.email,
-// //             phone_number: this.state.phone_number
-// //         };
+    //After clicking "submit", the user should be re-routed back to the / view where they'll see all their contacts.
 
-// //         this.props.addContact(newContact);
-// //         //pushes new entry onto history stack
-// //         this.state.props.history.push('/contactList')
-// //     }
+
+    handleSubmit = (event) => {
+        console.log("Submitted");
+        event.preventDefault();
+        const newContact = {
+            id: this.state.id,
+            name: this.state.name,
+            image_url: this.state.image,
+            email: this.state.email,
+            phone_number: this.state.phone_number
+        };
+
+        this.props.addContact(newContact)
+        // this.props.history.push('/')
+        // this.setState({
+        //     name: event.target.name,
+        //     image_url: event.target.image || null,
+        //     email: event.target.email,
+        //     phone_number: event.target.phone
+        // });
+
+    };
+    // onChange = { this.handleChange }
 
     render() {
         return (
             <div>
+                {/* When you need to handle multiple controlled input elements, you can add a name attribute to each element and let the handler function choose what to do based on the value of event.target.name. */}
                 <form>
-                    <label>Name</label>
-                    <input type='text' placeholder="First Last" className='form-control' onChange={event => this.setState({ name: event.target.value })
-                    } />
+                    <label>Name:
+                        <input type='text' placeholder="First Last" name="name" onChange={event => this.setState({ name: event.target.value })} />
+                    </label>
 
                     <br />
 
-                    <label>Phone Number</label>
-                    <input type="number" name="number" id="phoneNumber" className='form-control' placeholder="(123) 456-7890" onChange={event => this.setState({ phone_number: parseInt(event.target.value, 10) })
-                    } />
+                    <label>Phone Number:
+                        <input type="text" placeholder="(123) 456-7890" name="phone_number" onChange={event => this.setState({ phone_number: event.target.value })} />
+                    </label>
 
                     <br />
 
-                    <label>Email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        id="Email" className='form-control'
-                        onChange={event =>
-                            this.setState({ email: event.target.value })
-                        } />
-                   
-                    <br />
-
-                    <label for="imageUrl">Image URL</label>
-                    <input type="url" name="url" id="imageUrl" className='form-control' onChange={event =>
-                        this.setState({ image_url: event.target.value })
-                    } />
+                    <label>Email:
+                        <input type="text" name="email" onChange={event => this.setState({ email: event.target.value })} />
+                    </label>
 
                     <br />
-                   
+
+                    <label>Image URL:
+                        <input type="text" name="image" onChange={event => this.setState({ image: event.target.value || null })} />
+                    </label>
+
+                    <br />
+                    
+                    <button type="submit" onSubmit={this.handleSubmit}>Submit</button>
                 </form>
 
-                <Link to="/">
-                    <button type="submit" onClick={this.handleSubmit}>Submit</button>
-                </Link>
+                {/* <Link to="/"> */}
+
+                {/* </Link> */}
+
             </div>
         )
     }
 }
 
 
-export default ContactForm;
+
+export default withRouter(ContactForm);

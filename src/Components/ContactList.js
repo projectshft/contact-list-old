@@ -1,24 +1,25 @@
-// import { Switch, Route} from 'react-router-dom';
+
 import React from 'react';
 import Contact from './Contact';
-// import ContactNew from './ContactForm';
-// import FullList from './FullList';
+import PropTypes from 'prop-types';
 
+//RENDERS LIST OF CONTACTS
 
 class ContactList extends React.Component {
     render() {
+        console.log('this ContactList:', this);
         return (
             <ul>
-                {/* <li>{this.props.contacts.name} {this.props.contacts.phone_number} </li> */}
-
-{/* iterate over array of contacts and render each CONTACT PASSED IN */}
                 {this.props.contacts.map((contact) => {
                     return <Contact contact={contact} key={contact.id} />
                 })}
             </ul>
         )
-
     }
+};
+
+ContactList.propTypes = {
+    contacts: PropTypes.arrayOf(PropTypes.shape(Contact.propTypes)).isRequired
 };
 
 
@@ -27,13 +28,10 @@ class ContactList extends React.Component {
 //         <ContactNew props={props} contacts={contacts} addContact={addContact} />
 //     )} />
 
-//     <Route path="/contactList/:id" render={(props) => (<TheContact props=       {props} contacts={contacts} />
-//     )} />
+// <Route path="/contactList/:id" render={(props) => (<TheContact props=       {props} contacts={contacts} />
+// )} />
 
 
-//     <Route path='/contactList'  render={() => (
-//         <FullList contacts={contacts} />
-//     )} />
 // </Switch>
 
 

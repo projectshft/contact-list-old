@@ -1,14 +1,16 @@
 //ALL OF THE ROUTING
 
 //SHOW USER A LIST OF ALL OF THEIR CONTACTS
-//HAS OWN ROUTE (/CONTACTS)
+//HAS OWN ROUTE (/)
 
 
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import State from './State';
 import ContactForm from './ContactForm';
-import Contacts from './Contacts';
+
+
 
 
 //PARENT COMPONENT - stateful --> render
@@ -18,7 +20,7 @@ render(){
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path='/'  component={Contacts} />
+          <Route exact path='/'  component={State} />
           <Route path='/new' component={ContactForm} />
         </Switch>
       </BrowserRouter>
