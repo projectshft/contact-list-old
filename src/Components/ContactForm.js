@@ -24,23 +24,13 @@ class ContactForm extends React.Component {
 
 
         // this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    //updates the state of the parent component and passes the new value 
-    // handleChange = (event) => {
-    //     this.setState({
-    //         name: event.target.name,
-    //         image_url: event.target.image || null,
-    //         email: event.target.email,
-    //         phone_number: event.target.phone
-    //     });
-    // };
+
 
 
     //After clicking "submit", the user should be re-routed back to the / view where they'll see all their contacts.
-
-
     handleSubmit = (event) => {
         console.log("Submitted");
         event.preventDefault();
@@ -52,7 +42,7 @@ class ContactForm extends React.Component {
             phone_number: this.state.phone_number
         };
 
-        this.props.addContact(newContact)
+        this.addContact(newContact);
         // this.props.history.push('/')
         // this.setState({
         //     name: event.target.name,
@@ -92,13 +82,11 @@ class ContactForm extends React.Component {
                     </label>
 
                     <br />
-                    
-                    <button type="submit" onSubmit={this.handleSubmit}>Submit</button>
+
                 </form>
-
-                {/* <Link to="/"> */}
-
-                {/* </Link> */}
+                <Link to="/">
+                    <button type="button" onClick={this.handleSubmit}>Submit</button>
+                </Link>
 
             </div>
         )
