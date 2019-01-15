@@ -1,53 +1,53 @@
 import { Switch, Route } from 'react-router-dom'
-import React from 'react'
-import UserList from './UserList';
+import React, { Component } from 'react'
+import FullContactList from './FullContactList';
+import Contacts from './Contacts';
+import ContactDetails from './ContactDetails'
+import NewContact from './NewContact'
+
+class App extends Component {
+  constructor(props) {
+  super() 
 
 
-
-class App extends React.Component {
-  constructor() {
-    super()
-
-    const generateId = () => Math.round(Math.random() * 100000000)
-    
-    //test data for the contact-list
-      this.state = {
-        users: [
-        {id: generateId(), 
-          name: "Albert Einstein",
-          image_url: "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
-          email: "aeinstein@example.com",
-          phone_number: "15555555555"
-        },
-        {id: generateId(),
-          name: "Marcus Swain",
-          image_url: "https://www.megamarc.com",
-          email: "superduperswain@gmail.com",
-          phone_number: "15555555557"
-        }
-        ]
-    }
-    this.addUser = this.addUser.bind(this);
+  this.state = {
+    contacts : [
+      { name:'Albert', id: Math.round(Math.random() * 100000000), email: 'something@gmail.com', phone: 333333333}
+    ]
   }
 
-  addUser(user){
-    this.setState({users: this.state.users.concat([user])});
-  }
+  this.addContact = this.addContact.bind(this);
+}
 
+addContact  (contact) {
+  console.log(this.state.contacts)
+  this.setState({contacts: this.state.contacts.concat([contact])});
+  
+}
   render() {
     return (
       <div>
-        <Switch>
-          <Route exact path='/' component={UserList}/>
-          <Route path='/roster' render={() => (
-            <UserList addUser={this.addUser} users={this.state.users} />
-          )}/>
-        </Switch>
+        
+      <Switch>
+
+      <Route exact path='/contacts/new' render={(routerProps) => (
+        <NewContact routerProps={routerProps} contacts={this.state.contacts} addContact={this.addContact} />
+      )}/>
+
+      <Route exact path='/contacts' render={(props) => (
+        <FullContactList contacts={this.state.contacts} />
+     )} />
+     
+      <Route exact path='/contacts/:id' render={(props) => (
+        <ContactDetails props={props} contacts={this.state.contacts} />
+     )}/>
+
+      </Switch> 
+
       </div>
-    )
+    );
   }
 }
 
-export default App
 
-    
+export default App;
