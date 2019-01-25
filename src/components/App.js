@@ -45,7 +45,7 @@ class App extends React.Component {
         <Switch>
         {/* This gives us an index page. */}
           <Route exact path='/' render={() => (
-            <Contacts addContact={this.addContact} contacts={this.state.contacts} />
+            <Contacts addContact={this.addContact} contacts={this.state.contacts}/>
           )}/>
           {/* This Router allows us to access the id in the Contacts Id page. Without contact, contact/:id in Contacts.js would not work. */}
           <Route path='/contact' render={() => (
