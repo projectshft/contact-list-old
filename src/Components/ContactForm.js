@@ -4,36 +4,32 @@
 //USE PROPTYPES
 
 
-import { Link, withRouter } from "react-router-dom";
+
 import React from 'react';
 
 
 class ContactForm extends React.Component {
-    constructor(props) {
-        super(props);
-
-        const generateId = () => Math.round(Math.random() * 100000000);
-
+    constructor() {
+        super()
         this.state = {
-            id: generateId(),
+            id: Math.round(Math.random() * 100000000),
             name: '',
             image_url: '',
             email: '',
             phone_number: ''
         }
-
-
-        // this.handleChange = this.handleChange.bind(this);
-         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
 
 
-
     //After clicking "submit", the user should be re-routed back to the / view where they'll see all their contacts.
-    handleSubmit = (event) => {
+    handleSubmit = (e) => {
+        e.preventDefault();
+
+        const { addContact, history } = this.props;
         console.log("Submitted");
-        event.preventDefault();
+        
         const newContact = {
             id: this.state.id,
             name: this.state.name,
@@ -41,52 +37,48 @@ class ContactForm extends React.Component {
             email: this.state.email,
             phone_number: this.state.phone_number
         };
-
-        this.addContact(newContact);
-        // this.props.history.push('/')
-        // this.setState({
-        //     name: event.target.name,
-        //     image_url: event.target.image || null,
-        //     email: event.target.email,
-        //     phone_number: event.target.phone
-        // });
-
+        console.log(newContact)
+        
+        addContact(newContact)
+        history.push('/')
     };
-    // onChange = { this.handleChange }
 
+    handleChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
     render() {
         return (
             <div>
                 {/* When you need to handle multiple controlled input elements, you can add a name attribute to each element and let the handler function choose what to do based on the value of event.target.name. */}
-                <form>
+                <form onSubmit={e => this.handleSubmit(e)}>
                     <label>Name:
-                        <input type='text' placeholder="First Last" name="name" onChange={event => this.setState({ name: event.target.value })} />
+                        <input type='text' placeholder="First Last" name="name" onChange={e => this.handleChange(e)} />
                     </label>
 
                     <br />
 
                     <label>Phone Number:
-                        <input type="text" placeholder="(123) 456-7890" name="phone_number" onChange={event => this.setState({ phone_number: event.target.value })} />
+                        <input type="text" placeholder="(123) 456-7890" name="phone_number" onChange={e => this.handleChange(e)} />
                     </label>
 
                     <br />
 
                     <label>Email:
-                        <input type="text" name="email" onChange={event => this.setState({ email: event.target.value })} />
+                        <input type="text" name="email" onChange={e => this.handleChange(e)} />
                     </label>
 
                     <br />
 
                     <label>Image URL:
-                        <input type="text" name="image" onChange={event => this.setState({ image: event.target.value || null })} />
+                        <input type="text" name="image_url" onChange={e => this.handleChange(e)} />
                     </label>
 
                     <br />
-
+                    <button type="submit">Submit</button>
                 </form>
-                <Link to="/">
-                    <button type="button" onClick={this.handleSubmit}>Submit</button>
-                </Link>
+
+
+
 
             </div>
         )
@@ -95,4 +87,4 @@ class ContactForm extends React.Component {
 
 
 
-export default withRouter(ContactForm);
+export default ContactForm;
