@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <nav className="navbar bg-success navbar-dark navbar-expand-sm mb-3 py-0">
       <div className="container">
-        <h4>Contact List</h4>
+        <h4 style={{ color: '#fff' }}>Contact List</h4>
         <div>
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">

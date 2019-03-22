@@ -1,29 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Contact extends Component {
   render() {
-    const { avatar, name, email, phone } = this.props;
+    const { avatar, name } = this.props.contact;
 
     return (
       <div>
         <p>{avatar}</p>
-        <h4>Name: {name}</h4>
-        <ul>
-          <li>Email: {email}</li>
-          <li>Phone: {phone}</li>
-        </ul>
+        <h4>{name}</h4>
       </div>
     );
   }
 }
 
 Contact.propTypes = {
-  avatar: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired
+  contact: PropTypes.object.isRequired
 };
 
 export default Contact;
