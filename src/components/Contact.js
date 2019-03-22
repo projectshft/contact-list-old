@@ -9,9 +9,16 @@ export class Contact extends Component {
 
     //a "Back" button will takes the user back to the /contacts view and main contacts list.
   render() {
+
+    const { name } = this.props.contact;
+
     return (
       <div>
-          <h4>This is the Contact Component</h4>
+            <ul className="list-group">
+                <li className="list-group-item">Name: {name}</li>
+                <li className="list-group-item">Name: {name}</li>
+                <li className="list-group-item">Name: {name}</li>
+            </ul>
       </div>
     )
   }

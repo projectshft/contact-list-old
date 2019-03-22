@@ -19,7 +19,7 @@ class App extends Component {
         <AddContact />
         {/* each contact on the main route should be clickable; when clicked, it leads to a new route /counts/{the id of the contact} */}
         <Contacts />
-        <Contact />
+        {/* <Contact /> */}
       </div>
     );
   }
