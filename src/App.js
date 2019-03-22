@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AddContact from './components/AddContact';
 import Contacts from './components/Contacts';
-import ContactDetail from './components/ContactDetail';
+//import ContactDetail from './components/ContactDetail';
 
 //import ReactDom to use broswer router
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
@@ -48,7 +48,7 @@ class App extends Component {
             {/* each contact on the main route should be clickable; when clicked, it leads to a new route /counts/{the id of the contact} */}
             <Switch>
               <Route exact path="/contacts" render= {() => <Contacts contacts={this.state.contacts} /> } />
-              {/* <Route exact path="/" component={Contacts} /> */}
+              <Route exact path="/" render= {() => <Contacts contacts={this.state.contacts} /> } />
               <Route path="/contacts/new" component={AddContact}/>}
               {/* <Route path="/contacts/:contactId" render={routerProps => <ContactDetail routerProps={routerProps} contacts={this.state.contacts} />
                 }/>} */}

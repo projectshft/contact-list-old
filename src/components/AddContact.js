@@ -41,6 +41,7 @@ export class AddContact extends Component {
                             className="form-control form-control-md"
                             placeholder="Enter Name..."
                             value={name}
+                            onChange = {this.onChange}
                         />
                     </div>
                     <div className="form-group">
@@ -51,6 +52,7 @@ export class AddContact extends Component {
                             className="form-control form-control-md"
                             placeholder="Enter Phone Number..."
                             value={phone_number}
+                            onChange = {this.onChange}
                         />
                     </div>
                     <div className="form-group">
@@ -61,6 +63,8 @@ export class AddContact extends Component {
                             className="form-control form-control-md"
                             placeholder="Enter Email..."
                             value={email}
+                            onChange = {this.onChange}
+
                         />
                     </div>
                     <div className="form-group">
@@ -71,6 +75,7 @@ export class AddContact extends Component {
                             className="form-control form-control-md"
                             placeholder="Image Address..."
                             value={image_url}
+                            onChange= {this.onChange}
                         />
                     </div>
                     <Link to="/contacts"><button className="btn-dark btn btn-sm">Back to Contacts</button></Link>

@@ -28,7 +28,7 @@ const contactNameStyle = {
     padding: '1em'
 }
 
-//Contact should use props to access the state that Contacts holds
+{/* Contact should use props to access the state that Contacts holds */}
 Contact.propTypes = {
     contact: PropTypes.object.isRequired
 }
