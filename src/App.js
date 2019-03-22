@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 
 import Contacts from './components/Contact';
 import AddNewContacts from './components/AddNewContact';
+import ViewContact from './components/ViewContact';
 
 class App extends Component {
   render() {
@@ -13,8 +14,17 @@ class App extends Component {
           <Route exact path="/" render={() => (
             <Redirect to='/contact'></Redirect>
           )} />
-          <Route exact path="/contact" component={Contacts} />
+          <Route
+            exact
+            path="/contact"
+            render={() => <Contacts contactList={this.props.contactList} />}
+          />
           <Route exact path="/contacts/new" component={AddNewContacts} />
+          <Route
+            exact
+            path="/contact/:id"
+            render={(props) => <ViewContact {...props} contactList={this.props.contactList} />}
+          />
         </Switch>
       </BrowserRouter>
     );
