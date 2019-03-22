@@ -40,7 +40,7 @@ export class AddContact extends Component {
 
      //addContact should have input fields to create a new contact
     return (
-        <div className="col-md-6 offset-md-3">
+        <div className="col-md-6 offset-md-3 shadow-sm">
             <div className="row">
                 <form style={formStyle} onSubmit={this.onSubmit} onKeyPress={this.onKeyPress}>
                     <div className="form-group">

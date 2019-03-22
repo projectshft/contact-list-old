@@ -16,7 +16,7 @@ class App extends Component {
     contacts: [
         {
             id: generateId(),
-            name: 'Juliette Ryan',
+            name: 'Zena Ryan',
             image_url: 'https://static1.squarespace.com/static/59bc843229f1875d2162cea4/59bc88e8f7e0ab3297d524fb/5bdb626d4d7a9c8118757a94/1541104241789/SQUARE+4.jpeg',
             email: 'jry@gmail.com',
             phone_number: '111-111-1111'

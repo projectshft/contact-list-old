@@ -23,6 +23,17 @@ export class Contacts extends Component {
                     <Contact key={contact.id} contact={contact}
                     />
                 ).sort()}
+                
+                {/* // .sort(function(a, b) { 
+                     const nameA = a.name; //.toUpperCase()
+                     const nameB = b.name; //.toUpperCase()
+                     if (nameA < nameB) {
+                         return -1;
+                     } else if (nameA > nameB) {
+                         return 1;
+                     }
+                     return 0;
+                 })} */}
             </React.Fragment>
         )
     }
