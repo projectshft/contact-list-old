@@ -23,9 +23,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-//import ReactDom to use broswer router
-import ReactDOM from 'react-dom';
 
-//implement browser router
 //renderthe app component into the element 
 ReactDOM.render(<App />, document.getElementById('root'));

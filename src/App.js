@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import AddContact from './components/AddContact';
 import Contacts from './components/Contacts';
 import Contact from './components/Contact';
+//import ReactDom to use broswer router
+//import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
 import './App.css';
 
 class App extends Component {
+
+  //use Switch to ensure only one route renders at a time
   render() {
     return (
       <div className="App">
@@ -20,6 +24,5 @@ class App extends Component {
     );
   }
 }
-
 
 export default App;
