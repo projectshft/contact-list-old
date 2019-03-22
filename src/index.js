@@ -17,6 +17,12 @@
 
     -contacts.js:
     should hold all of the state of the contacts
+bugs:
+    -detail won't show up (look at structure of router)
+    -can't submit form on enter
+    -can submit any gibberish as a name
+    -form disappears on enter
+    -input fields don't clear after submit
 */
 
 import React from 'react';

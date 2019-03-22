@@ -21,8 +21,18 @@ export class AddContact extends Component {
     //Users should be able to click submit and their new contact be added to Contacts//interactive in the same way as the other contacts
     onSubmit = (e) => {
         e.preventDefault();
+        //the input fields should clear after submit
+        this.setState({ [e.target.name]: '' });
+        console.log("The user input looks like:", this.state);
     }
 
+    onKeyPress = (e) => {
+        if (e.charCode === '13') {
+            e.preventDefault();
+            this.setState({ [e.target.name]: '' });
+            console.log("The user input looks like:", this.state);
+        }
+    }
     // After clicking "submit", the user should be re-routed back to the /contacts view where they'll see all their contact.
   render() {
       //destructure
@@ -32,7 +42,7 @@ export class AddContact extends Component {
     return (
         <div className="col-md-6 offset-md-3">
             <div className="row">
-                <form style={formStyle} onSubmit={this.onSubmit}>
+                <form style={formStyle} onSubmit={this.onSubmit} onKeyPress={this.onKeyPress}>
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
                         <input
@@ -42,6 +52,7 @@ export class AddContact extends Component {
                             placeholder="Enter Name..."
                             value={name}
                             onChange = {this.onChange}
+                            required
                         />
                     </div>
                     <div className="form-group">
@@ -53,6 +64,7 @@ export class AddContact extends Component {
                             placeholder="Enter Phone Number..."
                             value={phone_number}
                             onChange = {this.onChange}
+                            required
                         />
                     </div>
                     <div className="form-group">
@@ -64,7 +76,6 @@ export class AddContact extends Component {
                             placeholder="Enter Email..."
                             value={email}
                             onChange = {this.onChange}
-
                         />
                     </div>
                     <div className="form-group">
