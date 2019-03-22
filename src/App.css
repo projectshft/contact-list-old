@@ -3,3 +3,43 @@ i {
   color:"white"
 }
 
+ul{
+margin:0;
+padding:0;
+list-style:none;
+}
+
+
+.full-page{
+background: url("http://www.webcoderskull.com/img/right-sider-banner.png") no-repeat center top / cover;
+
+}
+.contact-card{ 
+ float:left; 
+ width:100%; 
+ background:#fff; 
+ padding:30px 20px; 
+ text-align:center; 
+ border:2px solid #d5d5d5;
+ margin: 0 0 28px;
+}
+
+.contact-card img{ 
+ width:148px; 
+ height:148px; 
+ border-radius:100%; 
+}
+.contact-card h3{ 
+ color:#2a2a2a; 
+ font-size:20px; 
+ font-weight:500; 
+ padding:6px 0;
+ text-transform:uppercase;
+}
+.contact-card h3 a{
+text-decoration:none;
+color:#2a2a2a;
+}
+.contact-card h3 a:hover{
+color:#337ab7;
+}
