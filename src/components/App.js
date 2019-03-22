@@ -1,12 +1,14 @@
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import React from 'react';
-import ContactList from './ContactList';
 import Header from './Header';
+import ContactList from './ContactList';
+import ContactDetails from './ContactDetails';
 import NewContact from './NewContact'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 
+//generate a random ID number for all contacts
 const generateId = () => Math.round(Math.random() * 100000000)
 
 class App extends React.Component {
@@ -24,6 +26,13 @@ class App extends React.Component {
         },
         {
           id: generateId(),
+          name: 'Taylor Swift',
+          email: 'tswift@gmail.com',
+          phone: '000-000-0000',
+          imgUrl: 'https://pixel.nymag.com/imgs/daily/vulture/2018/07/06/06-taylor-swift-1.w330.h330.jpg' 
+        },
+        {
+          id: generateId(),
           name: 'RBG',
           email: 'rbg@gmail.com',
           phone: '444-444-4444',
@@ -31,29 +40,55 @@ class App extends React.Component {
         },
         {
           id: generateId(),
-          name: 'Taylor Swift',
-          email: 'tswift@gmail.com',
-          phone: '000-000-0000',
-          imgUrl: 'https://pixel.nymag.com/imgs/daily/vulture/2018/07/06/06-taylor-swift-1.w330.h330.jpg' 
-        }
+          name: "It's Britney Bitch",
+          email: 'hitmebabyonemoretime@gmail.com',
+          phone: '555-555-555',
+          imgUrl: 'https://images-na.ssl-images-amazon.com/images/I/71c0cI9r2dL.png' 
+        },
       ]
-    };
+    }
+    this.addContact = this.addContact.bind(this);
   }
+
+  addContact(contact) {
+    this.setState({contacts: this.state.contacts.concat([contact])})
+  }
+
   render() {
     return (
       <div>
         <Header />
-        <div className="container">
-          <ul class="row">
-          <ContactList contacts={this.state.contacts}/>
-          </ul>
-        {/* create a switch for contacts, indvidual contact & create new contact */}
-        
+
+        {/* create a switch for contacts, contact details & create new contact */}
+
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/contacts" />
+          </Route>
+
+          <Route path="/contacts" 
+            render={() => 
+            <ContactList contacts={this.state.contacts} />} 
+          />
+
+          <Route path="/contacts/:contactId" 
+            render={routerProps => 
+              <ContactDetails contacts={this.state.contacts} 
+              routerProps={routerProps} 
+              />
+            }
+          />
+
+          <Route path="/addContact"
+            render={() => <NewContact />}
+          />
+    
 
 
-        <NewContact />
+          <NewContact />
 
-        </div>
+
+        </Switch>
       </div>
     );
   }

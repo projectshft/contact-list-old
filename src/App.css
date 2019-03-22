@@ -1,6 +1,11 @@
+body {
+  background-color: #BDEDFF
+}
+
 i {
-  cursor: "pointer";
-  color:"white"
+  cursor: pointer;
+  color: white;
+  margin: 3px;
 }
 
 ul{
@@ -9,13 +14,7 @@ padding:0;
 list-style:none;
 }
 
-
-.full-page{
-background: url("http://www.webcoderskull.com/img/right-sider-banner.png") no-repeat center top / cover;
-
-}
 .contact-card{ 
- float:left; 
  width:100%; 
  background:#fff; 
  padding:30px 20px; 
