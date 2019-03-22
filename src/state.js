@@ -51,7 +51,6 @@ const sendEvent = (name, data) => {
   const newState = STATE;
 
   // This modifies the state however it likes, or maybe even not at all!
-  console.log('event name:', name, 'event data: ', data);
   handleEvent(
     {
       name,
@@ -59,7 +58,6 @@ const sendEvent = (name, data) => {
     },
     newState
   );
-  console.log('new state:', newState);
 
   // If the state was changed between the time we made the copy and after we
   // passed it to `handleEvent`, we know we need to notify any listener that
@@ -75,9 +73,8 @@ const sendEvent = (name, data) => {
 // NOTE: This is where you should add support for any new events you want to
 // handle!
 const handleEvent = ({ name, data }, state) => {
-  if (name === 'setVideos') {
-    state.videos = data;
-    state.selectedVideo = data[0];
+  if (name === 'addNewContact') {
+    state.contactList.push(data);
   } else {
     // If we don't know what kind of event this is, alert the developer!
     throw new Error(`Unrecognized event: ${name}`);

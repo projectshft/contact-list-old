@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import { sendEvent } from '../state';
 
 export default class AddNewContact extends Component {
   constructor(props) {
@@ -21,9 +22,14 @@ export default class AddNewContact extends Component {
     })
   }
 
+
+
   handleSubmit = (e) => {
     e.preventDefault();
+    const generateId = () => Math.round(Math.random() * 100000000);
+    this.state.id = generateId();
     console.log(this.state)
+    sendEvent('addNewContact', this.state);
     this.props.history.push('/contact');
   }
 
