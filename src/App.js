@@ -23,7 +23,7 @@ class App extends Component {
               <Route exact path="/contacts" component={Contacts}/>
               <Route exact path="/" component={Contacts} />
               <Route path="/contacts/new" component={AddContact}/>}
-              {/* <Route path="/contacts/detail" component={ContactDetail}/> */}
+              {/* <Route path="/contacts/detail" component={ContactDetail}/> */} */}
             </Switch>
           </div>
         </div>

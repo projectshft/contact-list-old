@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 //we will use a class component because add contact will be stateful
 export class AddContact extends Component {
@@ -72,7 +73,7 @@ export class AddContact extends Component {
                             value={image_url}
                         />
                     </div>
-                    <button className="btn-dark btn btn-sm">Back to Contacts</button>
+                    <Link to="/contacts"><button className="btn-dark btn btn-sm">Back to Contacts</button></Link>
                     <input
                         type="submit"
                         className="btn-light btn btn-sm float-right"

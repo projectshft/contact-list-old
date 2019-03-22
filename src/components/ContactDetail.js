@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 
 export class ContactDetail extends Component {
+
   render() {
     //destructure props
     const { name, email, phone_number, image_url } = this.props.contact;

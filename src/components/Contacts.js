@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Contact from './Contact';
+import { Link } from 'react-router-dom';
 
 //generate unique id
 const generateId = () => Math.round(Math.random() * 100000000);
@@ -41,8 +42,10 @@ export class Contacts extends Component {
             <React.Fragment>
 
                 {/* clicking the addContact button  should take you a new route (/contacts/new) with a form for adding a new contact */}
-              <div><img className="add-contact-icon" src="https://static.thenounproject.com/png/783652-200.png" alt="add user icon"></img></div>
-
+                <div>
+                    <Link to="/contacts/detail"><img className="add-contact-icon" src="https://static.thenounproject.com/png/783652-200.png" alt="add user icon">
+                    </img></Link>
+                </div>
                 {contacts.map(contact =>
                     <Contact key={contact.id} contact={contact}
                     />
