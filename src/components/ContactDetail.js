@@ -23,4 +23,10 @@ export class ContactDetail extends Component {
   }
 }
 
+const contactPhotoStyle = {
+    'maxWidth': '200px',
+    'maxHeight': '200px',
+    'borderRadius': '50%'
+}
+
 export default ContactDetail;

@@ -15,17 +15,15 @@ export class Contact extends Component {
     return (
       <div>
         <ul className="list-group">
-            <li className="list-group-item">{name}</li>
+            <li className="list-group-item shadow-sm p-3 mb-5 bg-white rounded" style={contactNameStyle}>{name}</li>
         </ul>
       </div>
     )
   }
 }
 
-const contactPhotoStyle = {
-    'maxWidth': '200px',
-    'maxHeight': '200px',
-    'borderRadius': '50%'
+const contactNameStyle = {
+    padding: '1em'
 }
 
 export default Contact;
