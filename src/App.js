@@ -5,7 +5,7 @@ import Contacts from './components/Contacts';
 //import Contact from './components/Contact';
 //import ReactDom to use broswer router
 //import {BrowserRouter, Switch, Route} from 'react-router-dom'
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 
 class App extends Component {
