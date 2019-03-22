@@ -19,10 +19,16 @@ export class Contacts extends Component {
     }
 
     render() { //Contacts will need to loop through the state and output on the page
+        //destructure this.state
+        const { contacts } = this.state;
+
         return (
             // contacts will need to call a method on the prop that will then be available for the app
             <React.Fragment>
-                <h3>This is the Contacts Component</h3>
+                {contacts.map(contact =>
+                    <Contact key={contact.id} contact={contact}
+                    />
+                )}
             </React.Fragment>
         )
     }
