@@ -13,7 +13,7 @@ const ContactInfo = ({contacts, routerProps}) => {
 
   return (
     <div>
-      <h3>{contact.lastName}, {contact.firstName}</h3>
+      <h3>{contact.firstName} {contact.lastName}</h3>
       <img src={contact.imageURL}></img>
       <h5>Email: {contact.email}</h5>
       <h5>Phone: {contact.phone}</h5>
