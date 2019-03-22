@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { Link } from 'react-router-dom';
+
 //we will use a class component because Contact will be stateful
 export class Contact extends Component {
 
@@ -9,12 +11,13 @@ export class Contact extends Component {
     //a "Back" button will takes the user back to the /contacts view and main contacts list.
   render() {
 
-    const { name } = this.props.contact;
+    const { contact } = this.props;
 
     return (
       <div>
         <ul className="list-group">
-            <li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle}>{name}</li>
+            <li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle}>{contact.name}</li>
+            <Link to={`/contacts/${contact.id}`}/ >
         </ul>
       </div>
     )
