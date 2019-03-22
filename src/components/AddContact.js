@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 export class AddContact extends Component {
   render() {
     return (
-      <div>
-        <h2>This is the AddContact component</h2>
-      </div>
+      <h1>This is the Add Contact Component</h1>
     )
   }
 }

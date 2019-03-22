@@ -9,6 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Contacts</h1>
+        <div><img className="add" src="https://static.thenounproject.com/png/783652-200.png" alt="add user icon"></img></div>
         <AddContact />
         <Contacts />
         <Contact />
