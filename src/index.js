@@ -11,7 +11,7 @@
     this is where I'd imagine the context API would be helpful...?
 
     -contact.js:
-    each contact on the main route should be clickable; when clicked, it leads to a new route /counts/{the id of your contact}
+    each contact on the main route should be clickable; when clicked, it leads to a new route /contacts/{the id of your contact}
     each time a new contact is created, you should generate a unique id for them 
     To the individual contact view, add a "Back" button that takes the user back to the /contacts view and main contacts list.
 

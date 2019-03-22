@@ -14,14 +14,18 @@ export class Contact extends Component {
 
     return (
       <div>
-            <ul className="list-group">
-                <li className="list-group-item">Name: {name}</li>
-                <li className="list-group-item">Name: {name}</li>
-                <li className="list-group-item">Name: {name}</li>
-            </ul>
+        <ul className="list-group">
+            <li className="list-group-item">{name}</li>
+        </ul>
       </div>
     )
   }
+}
+
+const contactPhotoStyle = {
+    'maxWidth': '200px',
+    'maxHeight': '200px',
+    'borderRadius': '50%'
 }
 
 export default Contact;

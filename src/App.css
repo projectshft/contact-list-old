@@ -6,3 +6,9 @@
 body {
     font-family: 'Roboto', sans-serif;
 }
+
+.list-group-item {
+    list-style-type: none;
+    background-color: #ddd;
+}
+
