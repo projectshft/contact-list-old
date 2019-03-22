@@ -63,7 +63,7 @@ export class AddContact extends Component {
   }
 }
 const formStyle = {
-    backgroundColor: 'pink',
+    backgroundColor: '#b19999',
     padding: '1em'
 }
 export default AddContact;
