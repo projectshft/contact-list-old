@@ -2,4 +2,27 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: rgb(241, 193, 193) !important;
+}
+
+button.btn-success {
+  margin-left: 2rem;
+  margin-top: .5rem;
+}
+
+.d-flex {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.form-group {
+  width: 40%;
+}
+
+.contact-header {
+  padding-bottom: 1rem;
+}
+
+.contact-form {
+  padding-top: 3rem;
 }

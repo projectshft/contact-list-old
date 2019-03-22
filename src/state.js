@@ -74,6 +74,7 @@ const sendEvent = (name, data) => {
 // handle!
 const handleEvent = ({ name, data }, state) => {
   if (name === 'addNewContact') {
+    data.id = Math.round(Math.random() * 100000000)
     state.contactList.push(data);
   } else {
     // If we don't know what kind of event this is, alert the developer!

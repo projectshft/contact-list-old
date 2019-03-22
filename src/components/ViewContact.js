@@ -7,13 +7,15 @@ const ViewContact = ({ contactList, match: { params: { id } } }) => {
     return user.id === contactId;
   });
 
+  console.log('contact', contactFound)
+
   return (
     <div>
       <Link to="/contact">Go Back</Link>
+      <img src={contactFound.imageUrl} alt="profile" />
       <h1>{contactFound.name}</h1>
-      <h3>{contactFound.email}</h3>
-      <h1>{contactFound.phone_number}</h1>
-      <img src="{contactFound.image_url}" />
+      <h3>email: {contactFound.email}</h3>
+      <h3>phone number: {contactFound.phone_number}</h3>
     </div>
   )
 }

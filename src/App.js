@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './App.css';
 
 import Contacts from './components/Contact';
 import AddNewContacts from './components/AddNewContact';
 import ViewContact from './components/ViewContact';
+
 
 class App extends Component {
   render() {
@@ -29,6 +31,10 @@ class App extends Component {
       </BrowserRouter>
     );
   }
+}
+
+App.propTypes = {
+  contactList: PropTypes.array.isRequired,
 }
 
 export default App;
