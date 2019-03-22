@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 export class AddContact extends Component {
     //addContact should hold it's own state from the input fields
     state = {
+       // id: generateId(),
         name: '',
         email: '',
         phone_number: '',

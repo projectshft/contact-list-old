@@ -10,7 +10,7 @@ export class ContactDetail extends Component {
         <div className="col-md-12 offset-md-2">
             <div className="row">
                 <div className="col-md-3">
-                    <img clasName="img-responsive contact-photo" style={contactPhotoStyle} src={image_url} alt="contact photo"/>
+                    <img clasName="img-responsive contact-photo" style={contactPhotoStyle} src={image_url} alt="contact"/>
                 </div>
                 <div className="col-md-3">
                     <p>{name}</p>

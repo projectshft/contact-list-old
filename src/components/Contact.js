@@ -26,7 +26,7 @@ const contactNameStyle = {
 }
 
 //Contact should use props to access the state that Contacts holds
-Contact.PropTypes = {
+Contact.propTypes = {
     contact: PropTypes.object.isRequired
 }
 
