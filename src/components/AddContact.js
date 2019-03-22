@@ -3,7 +3,12 @@ import React, { Component } from 'react';
 //we will use a class component because add contact will be stateful
 export class AddContact extends Component {
     //addContact should hold it's own state from the input fields
-    state = []
+    state = {
+        name: '',
+        email: '',
+        phone_number: '',
+        image_url: ''
+    }
     //addContact should also have access to Contacts state because it will need to add to it
     
     //addContact should have input fields to create a new contact
@@ -11,6 +16,9 @@ export class AddContact extends Component {
     // After clicking "submit", the user should be re-routed back to the /contacts view where they'll see all their contact.
 
   render() {
+      //destructure
+    const { name, email, phone_number, image_url } = this.state;
+
     return (
         <div className="col-md-6 offset-md-3">
             <div className="row">
@@ -22,6 +30,7 @@ export class AddContact extends Component {
                             name="name"
                             className="form-control form-control-md"
                             placeholder="Enter Name..."
+                            value={name}
                         />
                     </div>
                     <div className="form-group">
@@ -31,6 +40,7 @@ export class AddContact extends Component {
                             name="phone"
                             className="form-control form-control-md"
                             placeholder="Enter Phone Number..."
+                            value={phone_number}
                         />
                     </div>
                     <div className="form-group">
@@ -40,6 +50,7 @@ export class AddContact extends Component {
                             name="email"
                             className="form-control form-control-md"
                             placeholder="Enter Email..."
+                            value={email}
                         />
                     </div>
                     <div className="form-group">
@@ -49,6 +60,7 @@ export class AddContact extends Component {
                             name="photo"
                             className="form-control form-control-md"
                             placeholder="Image Address..."
+                            value={image_url}
                         />
                     </div>
                     <button className="btn-dark btn btn-sm">Back to Contacts</button>
