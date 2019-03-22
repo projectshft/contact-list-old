@@ -10,10 +10,11 @@ export default class AddNewContact extends Component {
       name: '',
       email: '',
       phone_number: '',
-      imageUrl: ''
+      image_url: ''
     }
   }
 
+  /* Set input vales to our state */
   onInputChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -70,7 +71,7 @@ export default class AddNewContact extends Component {
     }
 
     // Validate url string
-    if (!this.validateImageUrl(this.state.imageUrl)) {
+    if (!this.validateImageUrl(this.state.image_url)) {
       alert('Invalid image url')
       return;
     }
@@ -124,11 +125,11 @@ export default class AddNewContact extends Component {
               className="form-control"
               value={this.state.imageUrl}
               onChange={this.onInputChange}
-              name="imageUrl"
+              name="image_url"
               placeholder='Image URL'
             />
           </div>
-          <button type='submit' onClick={this.handleSubmit}>Submit</button>
+          <button className="btn btn-info" type='submit' onClick={this.handleSubmit}>Submit</button>
         </Form>
       </div>
     )

@@ -8,16 +8,16 @@ const STATE = {
     {
       id: 70219577,
       name: "Albert Einstein",
-      image_url: "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
+      image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/220px-Albert_Einstein_Head.jpg",
       email: "aeinstein@example.com",
-      phone_number: "15555555555"
+      phone_number: "707-555-5555"
     },
     {
       id: 70219534,
       name: "Benas Benesky",
-      image_url: "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
-      email: "aeinstein@example.com",
-      phone_number: "15555555555"
+      image_url: "https://vignette.wikia.nocookie.net/mrbean/images/4/4b/Mr_beans_holiday_ver2.jpg/revision/latest/scale-to-width-down/310?cb=20181130033425",
+      email: "benas@example.com",
+      phone_number: "030-203-20303"
     }
   ],
 };
