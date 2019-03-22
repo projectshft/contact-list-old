@@ -14,30 +14,41 @@ const generateId = () => Math.round(Math.random() * 100000000);
 class App extends Component {
   state = {
     contacts: [
-        {
-            id: generateId(),
-            name: 'Zena Ryan',
-            image_url: 'https://static1.squarespace.com/static/59bc843229f1875d2162cea4/59bc88e8f7e0ab3297d524fb/5bdb626d4d7a9c8118757a94/1541104241789/SQUARE+4.jpeg',
-            email: 'jry@gmail.com',
-            phone_number: '111-111-1111'
-        },
-        {
-            id: generateId(),
-            name: 'James Bradley',
-            image_url: 'https://ninaparkerstudios.com/wp-content/uploads/2018/07/LanceHuff-Headshot-Atlanta-NinaParkerStudios-9879-SQUARE-800x800.jpg',
-            email: 'jbrad@gmail.com',
-            phone_number: '222-222-2222'
-        },
-        {
-            id: generateId(),
-            name: 'Simon React',
-            image_url: 'https://photos.peterhurley.com/sites/default/files/styles/large/public/uploads/2018/03/23/43/hurley-square.jpg?itok=t3bMGCXV',
-            email: 'simon@gmail.com',
-            phone_number: '333-333-3333'
-        }
+      {
+          id: generateId(),
+          name: 'Zena Ryan',
+          image_url: 'https://static1.squarespace.com/static/59bc843229f1875d2162cea4/59bc88e8f7e0ab3297d524fb/5bdb626d4d7a9c8118757a94/1541104241789/SQUARE+4.jpeg',
+          email: 'jry@gmail.com',
+          phone_number: '111-111-1111'
+      },
+      {
+          id: generateId(),
+          name: 'James Bradley',
+          image_url: 'https://ninaparkerstudios.com/wp-content/uploads/2018/07/LanceHuff-Headshot-Atlanta-NinaParkerStudios-9879-SQUARE-800x800.jpg',
+          email: 'jbrad@gmail.com',
+          phone_number: '222-222-2222'
+      },
+      {
+          id: generateId(),
+          name: 'Simon React',
+          image_url: 'https://photos.peterhurley.com/sites/default/files/styles/large/public/uploads/2018/03/23/43/hurley-square.jpg?itok=t3bMGCXV',
+          email: 'simon@gmail.com',
+          phone_number: '333-333-3333'
+      }
     ]
-}
+  } 
+  addContact = () => {
+    const newContact = {
+      id: generateId(),
+      name: '',
+      image_url: '',
+      email: '',
+      phone_number: ''
+    }
 
+    this.setState({ contacts:
+      [...this.state.contacts, newContact]})
+  }
   //use Switch to ensure only one route renders at a time
   render() {
     return (
@@ -49,7 +60,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/contacts" render= {() => <Contacts contacts={this.state.contacts} /> } />
               <Route exact path="/" render= {() => <Contacts contacts={this.state.contacts} /> } />
-              <Route path="/contacts/new" component={AddContact}/>}
+              <Route path="/contacts/new" render={props => <AddContact addContact={this.addContact} /> }/>}
               {/* <Route path="/contacts/:contactId" render={routerProps => <ContactDetail routerProps={routerProps} contacts={this.state.contacts} />
                 }/>} */}
             </Switch>

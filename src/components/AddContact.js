@@ -21,8 +21,8 @@ export class AddContact extends Component {
     //Users should be able to click submit and their new contact be added to Contacts//interactive in the same way as the other contacts
     onSubmit = (e) => {
         e.preventDefault();
-        
-        
+        this.props.addContact(this.state.contacts);
+
         console.log("The user input looks like:", this.state);
 
         //the input fields should clear after submit (or enter) is pressed
