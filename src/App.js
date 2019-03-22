@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AddContact from './components/AddContact';
 import Contacts from './components/Contacts';
-//import ContactDetail from './components/'
+//import ContactDetail from './components/ContactDetail'
 //import Contact from './components/Contact';
 //import ReactDom to use broswer router
 //import {BrowserRouter, Switch, Route} from 'react-router-dom'

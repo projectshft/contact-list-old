@@ -20,7 +20,7 @@ export class AddContact extends Component {
                         <input
                             type="text"
                             name="name"
-                            className="form-control form-control-lg"
+                            className="form-control form-control-md"
                             placeholder="Enter Name..."
                         />
                     </div>
@@ -29,7 +29,7 @@ export class AddContact extends Component {
                         <input
                             type="text"
                             name="phone"
-                            className="form-control form-control-lg"
+                            className="form-control form-control-md"
                             placeholder="Enter Phone Number..."
                         />
                     </div>
@@ -38,7 +38,7 @@ export class AddContact extends Component {
                         <input
                             type="email"
                             name="email"
-                            className="form-control form-control-lg"
+                            className="form-control form-control-md"
                             placeholder="Enter Email..."
                         />
                     </div>
@@ -47,13 +47,14 @@ export class AddContact extends Component {
                         <input
                             type="url"
                             name="photo"
-                            className="form-control form-control-lg"
+                            className="form-control form-control-md"
                             placeholder="Image Address..."
                         />
                     </div>
+                    <button className="btn-dark btn btn-sm">Back to Contacts</button>
                     <input
                         type="submit"
-                        className="btn-light float-right"
+                        className="btn-light btn btn-sm float-right"
                     />
                 </form>
             </div>
