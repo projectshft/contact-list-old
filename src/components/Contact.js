@@ -1,23 +1,35 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 //each individual contact
 class Contact extends Component {
   render() {
     return (
-      <div>
-        <h4>Taylor Swift</h4>
-        <ul>
-          <li>id: 1</li>
-          <li>phone: 000-000-0000</li>
-          <li>email: tswift@gmail.com</li>
-          <li>
-            <img className="img-responsive" src='https://pixel.nymag.com/imgs/daily/vulture/2018/07/06/06-taylor-swift-1.w330.h330.jpg' />
-            </li>
+      <div className= "card card-body mb-3">
+        <h4>{this.props.name}</h4>
+        <ul className="list-group">
+
+          <li className="list-group-item">
+            <img className="img-responsive" src={this.props.img} />
+          </li>
+
+          <li className="list-group-item">Phone: {this.props.phone}
+          </li>
+          
+          <li className="list-group-item">Email: {this.props.email}
+          </li>
 
         </ul>
       </div>
     )
   }
+}
+
+Contact.proptypes = {
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
+  img_url: PropTypes.string
 }
 
 export default Contact;

@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Contact from './Contact';
+import ContactList from './ContactList';
 import Header from './Header';
 import NewContact from './NewContact'
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../App.css';
 
 
 class App extends React.Component {
@@ -10,11 +13,13 @@ class App extends React.Component {
     return (
       <div>
         <Header />
+        <div className="container">
         {/* create a switch for contacts, indvidual contact & create new contact */}
         
-        <Contact />
+        <ContactList />
 
         <NewContact />
+        </div>
 
       </div>
     );
