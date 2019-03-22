@@ -21,16 +21,20 @@ export class AddContact extends Component {
     //Users should be able to click submit and their new contact be added to Contacts//interactive in the same way as the other contacts
     onSubmit = (e) => {
         e.preventDefault();
-        //the input fields should clear after submit
-        this.setState({ [e.target.name]: '' });
+        
+        
         console.log("The user input looks like:", this.state);
+
+        //the input fields should clear after submit (or enter) is pressed
+        e.target.value = '';
     }
 
-    onKeyPress = (e) => {
-        if (e.charCode === '13') {
+     //Users should be able to press Enter and their new contact be added to Contacts//interactive in the same way as the other contacts
+    handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
             e.preventDefault();
-            this.setState({ [e.target.name]: '' });
-            console.log("The user input looks like:", this.state);
+            //pressing enter should have the same functionality as calling onSubmit()
+            this.onSubmit(e);
         }
     }
     // After clicking "submit", the user should be re-routed back to the /contacts view where they'll see all their contact.
@@ -42,7 +46,7 @@ export class AddContact extends Component {
     return (
         <div className="col-md-6 offset-md-3 shadow-sm">
             <div className="row">
-                <form style={formStyle} onSubmit={this.onSubmit} onKeyPress={this.onKeyPress}>
+                <form style={formStyle} onSubmit={this.onSubmit} onKeyPress={this.handleKeyPress}>
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
                         <input
@@ -59,12 +63,12 @@ export class AddContact extends Component {
                         <label htmlFor="number">Phone</label>
                         <input
                             type="text"
-                            name="phone"
+                            name="phone_number"
                             className="form-control form-control-md"
                             placeholder="Enter Phone Number..."
                             value={phone_number}
                             onChange = {this.onChange}
-                            required
+                            //required
                         />
                     </div>
                     <div className="form-group">
@@ -76,6 +80,7 @@ export class AddContact extends Component {
                             placeholder="Enter Email..."
                             value={email}
                             onChange = {this.onChange}
+                            //required
                         />
                     </div>
                     <div className="form-group">
@@ -87,6 +92,7 @@ export class AddContact extends Component {
                             placeholder="Image Address..."
                             value={image_url}
                             onChange= {this.onChange}
+                            //required
                         />
                     </div>
                     <Link to="/contacts"><button className="btn-dark btn btn-sm">Back to Contacts</button></Link>
