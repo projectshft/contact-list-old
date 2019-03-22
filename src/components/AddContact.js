@@ -73,6 +73,7 @@ export class AddContact extends Component {
                             value={image_url}
                         />
                     </div>
+                    
                     <Link to="/contacts"><button className="btn-dark btn btn-sm">Back to Contacts</button></Link>
                     <input
                         type="submit"
