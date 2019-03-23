@@ -46,12 +46,12 @@ class AddContact extends React.Component {
 
   render () {
     return (
-      <div className="container">
+      <div className="container" style={{marginTop: 40}}>
         <form>
           <label>First Name</label>
           <input type='text' className='form-control' onChange={event =>
             this.setState({ firstName: event.target.value })
-          }/>
+          } />
 
           <br/>
 
@@ -83,10 +83,12 @@ class AddContact extends React.Component {
 
           <br/>
 
-          <button type="button" onClick={this.handleAddContactClick}>Add Contact</button>
+          <button type="button" className='btn btn-primary' onClick={this.handleAddContactClick}>Add Contact</button>
         </form>
 
-        <Link to='/contacts'>Contact List</Link>
+        <br/>
+
+        <Link to='/contacts'>Back To Contact List</Link>
       </div>
     )
   }
