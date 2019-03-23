@@ -33,7 +33,7 @@ class App extends Component {
       {
           id: generateId(),
           fname: 'Simon',
-          lname: ' React',
+          lname: 'React',
           image_url: 'https://photos.peterhurley.com/sites/default/files/styles/large/public/uploads/2018/03/23/43/hurley-square.jpg?itok=t3bMGCXV',
           email: 'simon@gmail.com',
           phone_number: '333-333-3333'

@@ -23,6 +23,7 @@ bugs:
     -can submit any gibberish as a name
     -form disappears on enter - FIXED
     -input fields don't clear after submit
+    -sort.() sorts the objects in the contacts array, not just name
 
 */
 
