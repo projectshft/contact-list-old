@@ -6,22 +6,25 @@ import { Link } from 'react-router-dom';
 //we will use a class component because Contact will be stateful
 export class Contact extends Component {
 
-    //each time a new contact is created, a unique id should be generated for them
+    // each contact on the main route should be clickable; when clicked, it leads to a new route /contacts/{the id of your contact}
+    // onClick
+    
+    render() {
 
-    //a "Back" button will takes the user back to the /contacts view and main contacts list.
-  render() {
+        const { contact } = this.props;
 
-    const { contact } = this.props;
+        return (
+            <div>
+                <ul className="list-group">
+                    <Link to='/contacts/detail'><li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle}>{contact.name}</li></Link>
+                    
+                    {/* <Link to={`/contacts/${contact.id}`}><li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle}>{contact.name}</li></Link> */}
 
-    return (
-      <div>
-        <ul className="list-group">
-            <li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle}>{contact.name}</li>
-            <Link to={`/contacts/${contact.id}`}/ >
-        </ul>
-      </div>
-    )
-  }
+                    {/* <li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle} onClick={this.onClick}>{contact.name}</li> */}
+                </ul>
+            </div>
+        )
+    }
 }
 
 const contactNameStyle = {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AddContact from './components/AddContact';
 import Contacts from './components/Contacts';
-//import ContactDetail from './components/ContactDetail';
+import ContactDetail from './components/ContactDetail';
 
 //import ReactDom to use broswer router
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
@@ -39,7 +39,9 @@ class App extends Component {
   } 
 
   //add the new contact to the app level state
+
   addContact = (name, phone_number, email, image_url) => {
+    //each time a new contact is created, a unique id should be generated for them
     const newContact = {
       id: generateId(),
       name,
@@ -61,7 +63,8 @@ class App extends Component {
             {/* each contact on the main route should be clickable; when clicked, it leads to a new route /counts/{the id of the contact} */}
             <Switch>
               <Route exact path={["/contacts", "/"]} render= {() => <Contacts contacts={this.state.contacts} /> } />
-              <Route path="/contacts/new" render={props => <AddContact addContact={this.addContact} /> }/>}
+              <Route path="/contacts/new" render={props => <AddContact addContact={this.addContact} /> }/>
+              <Route path="/contacts/detail" render={() => <ContactDetail contacts={this.state.contacts} />} />
               {/* <Route path="/contacts/:contactId" render={routerProps => <ContactDetail routerProps={routerProps} contacts={this.state.contacts} />
                 }/>} */}
             </Switch>

@@ -24,11 +24,15 @@ export class AddContact extends Component {
 
         console.log("The user input looks like:", this.state);
 
-        //AddContact should take in props from App
+        //AddContact should take in router props from App.
         this.props.addContact(this.state.name, this.state.phone_number, this.state.email, this.state.image_url);
 
         //the input fields should clear after submit (or enter) is pressed
         e.target.value = '';
+
+        // After clicking "submit", the user should be re-routed back to the /contacts view where they'll see all their contact.
+        //this.props.history.push('contacts');
+
     }
 
      //Users should be able to press Enter and their new contact be added to Contacts//interactive in the same way as the other contacts

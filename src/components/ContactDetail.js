@@ -3,15 +3,17 @@ import React, { Component } from 'react';
 
 export class ContactDetail extends Component {
 
+    //a "Back" button will takes the user back to the /contacts view and main contacts list.
+    
   render() {
     //destructure props
-    const { name, email, phone_number, image_url } = this.props.contact;
+    const { name, email, phone_number, image_url } = this.props.contacts;
     
     return (
         <div className="col-md-12 offset-md-2">
             <div className="row">
                 <div className="col-md-3">
-                    <img clasName="img-responsive contact-photo" style={contactPhotoStyle} src={image_url} alt="contact"/>
+                    <img className="img-responsive contact-photo" style={contactPhotoStyle} src={image_url} alt="contact"/>
                 </div>
                 <div className="col-md-3">
                     <p>{name}</p>
