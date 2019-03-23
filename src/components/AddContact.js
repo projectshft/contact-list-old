@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import uuid from '../../node_modules/uuid';
 
 class AddContact extends Component {
@@ -36,59 +37,62 @@ class AddContact extends Component {
 
   render() {
     return (
-      <form
-        className="col-md-8 m-auto new-contact-form"
-        onSubmit={this.handleClick}
-      >
-        <input
-          type="text"
-          className="form-control form-field-top"
-          placeholder="First name (required)"
-          autoFocus
-          value={this.state.fname}
-          onChange={e => this.setState({ fname: e.target.value })}
-        />
-
-        <input
-          type="text"
-          className="form-control form-field"
-          placeholder="Last name (required)"
-          value={this.state.lname}
-          onChange={e => this.setState({ lname: e.target.value })}
-        />
-
-        <input
-          type="text"
-          className="form-control form-field"
-          placeholder="Phone"
-          value={this.state.phone}
-          onChange={e => this.setState({ phone: e.target.value })}
-        />
-
-        <input
-          type="email"
-          className="form-control form-field"
-          placeholder="Email (required)"
-          value={this.state.email}
-          onChange={e => this.setState({ email: e.target.value })}
-        />
-
-        <input
-          type="text"
-          className="form-control form-field-bot"
-          placeholder="Image URL"
-          value={this.state.image_url}
-          onChange={e => this.setState({ image_url: e.target.value })}
-        />
-
-        <button
-          type="button"
-          className="btn btn-primary mt-2 form-control"
-          onClick={this.handleClick}
+      <div>
+        <form
+          className="col-md-8 m-auto new-contact-form"
+          onSubmit={this.handleClick}
         >
-          Submit
-        </button>
-      </form>
+          <input
+            type="text"
+            className="form-control form-field-top"
+            placeholder="First name (required)"
+            autoFocus
+            value={this.state.fname}
+            onChange={e => this.setState({ fname: e.target.value })}
+          />
+
+          <input
+            type="text"
+            className="form-control form-field"
+            placeholder="Last name (required)"
+            value={this.state.lname}
+            onChange={e => this.setState({ lname: e.target.value })}
+          />
+
+          <input
+            type="text"
+            className="form-control form-field"
+            placeholder="Phone"
+            value={this.state.phone}
+            onChange={e => this.setState({ phone: e.target.value })}
+          />
+
+          <input
+            type="email"
+            className="form-control form-field"
+            placeholder="Email (required)"
+            value={this.state.email}
+            onChange={e => this.setState({ email: e.target.value })}
+          />
+
+          <input
+            type="text"
+            className="form-control form-field-bot"
+            placeholder="Image URL"
+            value={this.state.image_url}
+            onChange={e => this.setState({ image_url: e.target.value })}
+          />
+
+          <button
+            type="button"
+            className="btn btn-primary mt-2 form-control"
+            onClick={this.handleClick}
+          >
+            Submit
+          </button>
+        </form>
+        <Link to="/">Back to Contacts</Link>
+      </div>
     );
   }
 }

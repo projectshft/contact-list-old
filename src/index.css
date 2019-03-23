@@ -1,3 +1,7 @@
+body {
+  background-color: #f0f0f0;
+}
+
 tr.contact:hover {
   background-color: #E8ECEF;
   transition-duration: .3s;
@@ -27,4 +31,26 @@ i:hover {
 
 .form-field-bot {
   border-radius: 0 0 5px 5px;
+}
+
+.detail-view {
+  padding: 20px;
+  position: relative;
+}
+
+.headshot-container {
+  width: 33vw;
+  height: 33vw;
+  position: absolute;
+  left: 10vw;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 0 30px 3px black;
+}
+
+.headshot {
+  position: absolute;
+  height: 100%;
+  width: auto;
+  right: 0;
 }

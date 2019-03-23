@@ -31,12 +31,6 @@ class App extends Component {
     }
   };
 
-  // detailView = e => {
-  //   if (!e.target.classList.contains('delete')) {
-  //     this.props.history.push(`/contacts/${e.currentTarget.id}`);
-  //   }
-  // };
-
   render() {
     return (
       <div>
@@ -61,7 +55,9 @@ class App extends Component {
           />
           <Route
             path="/contacts/:id"
-            render={() => <DetailView contacts={this.state.contacts} />}
+            render={props => (
+              <DetailView {...props} contacts={this.state.contacts} />
+            )}
           />
           <Redirect to="/contacts" />
         </Switch>
