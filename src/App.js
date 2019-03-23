@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ContactList from './components/ContactList';
+import FocusContact from './components/FocusContact';
 import Header from './components/Header';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import avatars from './avatars/avatars';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 class App extends Component {
   //declare the state for the entire app
@@ -42,12 +44,28 @@ class App extends Component {
     const { contacts } = this.state;
 
     return (
-      <div className="App">
-        <Header />
-        <div className="container">
-          <ContactList contacts={contacts} focusContact={this.focusContact} />
+      <Router>
+        <div className="App">
+          <Header />
+          <div className="container">
+            {/* <ContactList contacts={contacts} focusContact={this.focusContact} /> */}
+            {/* <Route
+              exact
+              path="/"
+              render={props => (
+                <React.Fragment>
+                  <ContactList
+                    {...props}
+                    contacts={contacts}
+                    focusContact={this.focusContact}
+                  />
+                </React.Fragment>
+              )}
+            /> */}
+            <FocusContact contact={contacts[0]} />
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
