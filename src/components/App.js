@@ -6,44 +6,15 @@ import DetailView from './DetailView';
 
 class App extends Component {
   state = {
-    contacts: [
-      // {
-      //   id: 'abc-123',
-      //   fname: 'John',
-      //   lname: 'Doe',
-      //   phone: '555-5555',
-      //   email: 'john@doe.com',
-      //   image_url: 'https://some-url@something.com'
-      // },
-      // {
-      //   id: '456-xyz',
-      //   fname: 'Jane',
-      //   lname: 'Doe',
-      //   phone: '555-5555',
-      //   email: 'jane@doe.com',
-      //   image_url: 'https://some-url@something.com'
-      // },
-      // {
-      //   id: 'ale-930',
-      //   fname: 'Little Johnny',
-      //   lname: 'Doe',
-      //   phone: '555-5555',
-      //   email: 'liljohnny@doe.com',
-      //   image_url: 'https://some-url@something.com'
-      // },
-      // {
-      //   id: 'rce-424',
-      //   fname: 'Little Janie',
-      //   lname: 'Doe',
-      //   phone: '555-5555',
-      //   email: 'liljanie@doe.com',
-      //   image_url: 'https://some-url@something.com'
-      // }
-    ]
+    contacts: []
   };
 
+  // Added local storage just to help persist some data upon refresh
+
   componentDidMount() {
-    this.setState({ contacts: JSON.parse(localStorage.getItem('contacts')) });
+    this.setState({
+      contacts: JSON.parse(localStorage.getItem('contacts')) || []
+    });
   }
 
   addContact = contact => {
@@ -54,7 +25,17 @@ class App extends Component {
     );
   };
 
-  detailView = contact => {};
+  deleteContact = e => {
+    if (e.target.classList.contains('delete')) {
+      console.log(e.target.id);
+    }
+  };
+
+  // detailView = e => {
+  //   if (!e.target.classList.contains('delete')) {
+  //     this.props.history.push(`/contacts/${e.currentTarget.id}`);
+  //   }
+  // };
 
   render() {
     return (
@@ -68,6 +49,7 @@ class App extends Component {
                 {...props}
                 contacts={this.state.contacts}
                 detailView={this.detailView}
+                deleteContact={this.deleteContact}
               />
             )}
           />
@@ -79,9 +61,7 @@ class App extends Component {
           />
           <Route
             path="/contacts/:id"
-            render={props => (
-              <DetailView {...props} image_url={this.state.image_url} />
-            )}
+            render={() => <DetailView contacts={this.state.contacts} />}
           />
           <Redirect to="/contacts" />
         </Switch>

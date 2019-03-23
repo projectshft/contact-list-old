@@ -1,17 +1,23 @@
 import React from 'react';
 
-const DetailView = props => {
+const DetailView = ({ contacts }) => {
+  const currentContact = contacts.reduce((result, contact) => {
+    result = contact;
+    return result;
+  }, {});
+
   return (
     <div className="row">
       <div className="col-6">
-        <img className="headshot" src={props.image_url} alt="" />
+        {/* {contact.image_url === undefined && (
+          <img className="headshot" src={contact.image_url} alt="" />
+        )} */}
       </div>
       <div className="col-6">
-        <h3>Stuff and</h3>
-        <h3>Stuff and</h3>
-        <h3>Stuff and</h3>
-        <h3>Stuff and</h3>
-        <h3>Stuff</h3>
+        <h3>{currentContact.fname}</h3>
+        <h3>{currentContact.lname}</h3>
+        <h3>{currentContact.phone}</h3>
+        <h3>{currentContact.email}</h3>
       </div>
     </div>
   );

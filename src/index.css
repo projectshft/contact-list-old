@@ -1,3 +1,30 @@
 tr.contact:hover {
   background-color: #E8ECEF;
+  transition-duration: .3s;
+}
+
+i {
+  color: #f00;
+  transition-duration: .3s;
+}
+
+i:hover {
+  color: #c00000;
+  transition-duration: .3s;
+}
+
+.new-contact-form {
+  padding-top: 15px;
+}
+
+.form-field-top {
+  border-radius: 5px 5px 0 0;
+}
+
+.form-field {
+  border-radius: 0;
+}
+
+.form-field-bot {
+  border-radius: 0 0 5px 5px;
 }

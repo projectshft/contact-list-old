@@ -36,10 +36,13 @@ class AddContact extends Component {
 
   render() {
     return (
-      <form className="col-md-8 m-auto" onSubmit={this.handleClick}>
+      <form
+        className="col-md-8 m-auto new-contact-form"
+        onSubmit={this.handleClick}
+      >
         <input
           type="text"
-          className="form-control"
+          className="form-control form-field-top"
           placeholder="First name (required)"
           autoFocus
           value={this.state.fname}
@@ -48,7 +51,7 @@ class AddContact extends Component {
 
         <input
           type="text"
-          className="form-control"
+          className="form-control form-field"
           placeholder="Last name (required)"
           value={this.state.lname}
           onChange={e => this.setState({ lname: e.target.value })}
@@ -56,7 +59,7 @@ class AddContact extends Component {
 
         <input
           type="text"
-          className="form-control"
+          className="form-control form-field"
           placeholder="Phone"
           value={this.state.phone}
           onChange={e => this.setState({ phone: e.target.value })}
@@ -64,7 +67,7 @@ class AddContact extends Component {
 
         <input
           type="email"
-          className="form-control"
+          className="form-control form-field"
           placeholder="Email (required)"
           value={this.state.email}
           onChange={e => this.setState({ email: e.target.value })}
@@ -72,7 +75,7 @@ class AddContact extends Component {
 
         <input
           type="text"
-          className="form-control"
+          className="form-control form-field-bot"
           placeholder="Image URL"
           value={this.state.image_url}
           onChange={e => this.setState({ image_url: e.target.value })}
@@ -80,7 +83,7 @@ class AddContact extends Component {
 
         <button
           type="button"
-          className="btn btn-primary form-control"
+          className="btn btn-primary mt-2 form-control"
           onClick={this.handleClick}
         >
           Submit

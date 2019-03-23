@@ -6,6 +6,12 @@ class ContactsList extends Component {
     this.props.history.push('/contacts/new');
   };
 
+  detailView = e => {
+    if (!e.target.classList.contains('delete')) {
+      this.props.history.push(`/contacts/:${e.currentTarget.id}`);
+    }
+  };
+
   render() {
     return (
       <div>
@@ -29,13 +35,15 @@ class ContactsList extends Component {
                 id={contact.id}
                 number={index + 1}
                 contact={contact}
+                deleteContact={this.props.deleteContact}
+                detailView={this.detailView}
               />
             ))}
           </tbody>
         </table>
 
         <button className="btn btn-primary" onClick={this.handleClick}>
-          Add Contact
+          Add New Contact
         </button>
       </div>
     );
