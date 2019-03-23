@@ -37,15 +37,17 @@ class App extends Component {
       }
     ]
   } 
-  addContact = () => {
+
+  //add the new contact to the app level state
+  addContact = (name, phone_number, email, image_url) => {
     const newContact = {
       id: generateId(),
-      name: '',
-      image_url: '',
-      email: '',
-      phone_number: ''
+      name,
+      phone_number,
+      email,
+      image_url
     }
-    //add the new contact to the app level state
+  
     this.setState({ contacts:
       [...this.state.contacts, newContact]})
   }
@@ -59,7 +61,7 @@ class App extends Component {
             {/* each contact on the main route should be clickable; when clicked, it leads to a new route /counts/{the id of the contact} */}
             <Switch>
               <Route exact path={["/contacts", "/"]} render= {() => <Contacts contacts={this.state.contacts} /> } />
-              <Route path="/contacts/new" render={routerProps => <AddContact routerProps={routerProps} addContact={this.addContact} /> }/>}
+              <Route path="/contacts/new" render={props => <AddContact addContact={this.addContact} /> }/>}
               {/* <Route path="/contacts/:contactId" render={routerProps => <ContactDetail routerProps={routerProps} contacts={this.state.contacts} />
                 }/>} */}
             </Switch>
