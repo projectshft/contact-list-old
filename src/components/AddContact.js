@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 //we will use a class component because add contact will be stateful
 export class AddContact extends Component {
@@ -32,7 +32,8 @@ export class AddContact extends Component {
         e.target.value = '';
 
         // After clicking "submit", the user should be re-routed back to the /contacts view where they'll see all their contact.
-        //this.props.history.push('contacts');
+        let path = `/contacts/`;
+        this.props.history.push(path);
 
     }
 
@@ -129,4 +130,6 @@ const formStyle = {
     backgroundColor: '#b19999',
     padding: '1em'
 }
-export default AddContact;
+
+//enable AddContact to redirect to contacts after form submission
+export default withRouter(AddContact);

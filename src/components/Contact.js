@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 //we will use a class component because Contact will be stateful
 export class Contact extends Component {
+    
     //give the Contact access to Component's state property with a constructor calling super inside 
     constructor() {
        super();
