@@ -13,17 +13,17 @@ class Contact extends Component {
   };
 
   render() {
-    const { avatar, name } = this.props.contact;
+    const { avatar, name, id } = this.props.contact;
     return (
-      <div className="card bg-dark mb-3">
+      <div className="bg-dark mb-3" style={{ borderRadius: '5px' }}>
         <div className="row align-items-center">
           <div className="col-auto">
             <img src={avatar} alt="avatar" style={this.style()} />
           </div>
           <div className="col align-middle">
-            {/* <div className="card-body"> */}
-            <h3 style={{ color: '#fff', cursor: 'pointer' }}>{name}</h3>
-            {/* </div> */}
+            <h3 id={id} style={{ color: '#fff', cursor: 'pointer' }}>
+              {name}
+            </h3>
           </div>
         </div>
       </div>

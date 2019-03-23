@@ -6,25 +6,26 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import avatars from './avatars/avatars';
 
 class App extends Component {
+  //declare the state for the entire app
   state = {
     contacts: [
       {
-        id: 1,
-        avatar: avatars[0],
+        id: randomId(),
+        avatar: avatars[randomNum(5) - 1],
         name: 'Elinor Hurt',
         email: 'elinor.hurt@gmail.com',
         phone: '7042130348'
       },
       {
-        id: 2,
-        avatar: avatars[1],
+        id: randomId(),
+        avatar: avatars[randomNum(5) - 1],
         name: 'Jane Williams',
         email: 'jane.williams@gmail.com',
         phone: '9104897382'
       },
       {
-        id: 3,
-        avatar: avatars[2],
+        id: randomId(),
+        avatar: avatars[randomNum(5) - 1],
         name: 'Jackie Johnson',
         email: 'jackie.johnson@gmail.com',
         phone: '9198024312'
@@ -33,6 +34,7 @@ class App extends Component {
   };
 
   render() {
+    //deconstruct the state and pull out the contacts array
     const { contacts } = this.state;
 
     return (
@@ -45,5 +47,9 @@ class App extends Component {
     );
   }
 }
+
+const randomId = () => Math.floor(Math.random() * 100000000);
+
+const randomNum = num => Math.ceil(Math.random() * num);
 
 export default App;
