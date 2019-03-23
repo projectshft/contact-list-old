@@ -68,9 +68,7 @@ class App extends Component {
             <Switch>
               <Route exact path={["/contacts", "/"]} render= {() => <Contacts contacts={this.state.contacts} /> } />
               <Route path="/contacts/new" render={props => <AddContact addContact={this.addContact} /> }/>
-              <Route path="/contacts/detail" render={() => <ContactDetail contacts={this.state.contacts} />} />
-              {/* <Route path="/contacts/:contactId" render={routerProps => <ContactDetail routerProps={routerProps} contacts={this.state.contacts} />
-                }/>} */}
+              <Route path="/contacts/:contactId" render={props => <ContactDetail contacts={this.state.contacts} />} />
             </Switch>
           </div>
         </div>

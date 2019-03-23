@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 //we will use a class component because Contact will be stateful
 export class Contact extends Component {
-    
+
     //give the Contact access to Component's state property with a constructor calling super inside 
     constructor() {
        super();
@@ -12,9 +12,8 @@ export class Contact extends Component {
     
     }
     // each contact on the main route should be clickable; when clicked, it leads to a new route /contacts/{the id of your contact}
-    //{`/contacts/${contact.id}`}
     handleClick = () => {
-        let path = `/contacts/detail`;
+        let path = `/contacts/${this.props.contact.id}`;
         this.props.history.push(path);
     }  
     render() {
@@ -48,7 +47,7 @@ const initialsStyle = {
     color: 'white'
 }
 
-{/* Contact should use props to access the state that Contacts holds */}
+//proptypes to validate the data coming in
 Contact.propTypes = {
     contact: PropTypes.object.isRequired
 }

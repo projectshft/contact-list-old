@@ -3,11 +3,11 @@
 -Allow the user to add a contact with a name, image, email, and phone number.
 -use Proptypes (only on Contact.js thus far)
 -edge cases
--back buttons
+-back buttons DONE
 
     -addcontact.js (and app.js):
     DONE clicking the addContact button  should take you a new route (/contacts/new) with a form for adding a new contact. 
-    After clicking "submit", the user should be re-routed back to the /contacts view where they'll see all their contact.
+    DONE After clicking "submit", the user should be re-routed back to the /contacts view where they'll see all their contact.
     -contact.js:
     DONE each contact on the main route should be clickable; when clicked, it leads to a new route /contacts/{the id of your contact}
     DONE each time a new contact is created, you should generate a unique id for them 
@@ -16,7 +16,7 @@
     -contacts.js:
     should hold all of the state of the contacts MOVED TO APP
 bugs:
-    -detail won't show up (look at structure of router)
+    -detail won't show up correctly (look at structure of router)
     -can't submit form on enter - FIXED
     -can submit any gibberish as a name
     -form disappears on enter - FIXED

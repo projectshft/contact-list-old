@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 export class ContactDetail extends Component {
-
-    //a "Back" button will takes the user back to the /contacts view and main contacts list.
 
   render() {
     //destructure props
@@ -21,6 +19,9 @@ export class ContactDetail extends Component {
                     <p>{phone_number}</p>
                     <p>{email}</p>
                 </div>
+
+                {/* a "Back" button will takes the user back to the /contacts view and main contacts list. */}
+
                 <Link to="/contacts"><button className="btn-dark btn btn-sm">Back to Contacts</button></Link>
             </div>
       </div>
