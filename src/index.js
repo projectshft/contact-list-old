@@ -24,6 +24,7 @@ bugs:
     -form disappears on enter - FIXED
     -input fields don't clear after submit
     -sort.() sorts the objects in the contacts array, not just name
+    -when submitting via Enter key, none of the html form required fields work
 
 */
 

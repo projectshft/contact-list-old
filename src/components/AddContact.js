@@ -87,7 +87,7 @@ export class AddContact extends Component {
                             placeholder="Enter Phone Number..."
                             value={phone_number}
                             onChange = {this.onChange}
-                            //required
+                            required
                         />
                     </div>
                     <div className="form-group">
@@ -99,7 +99,7 @@ export class AddContact extends Component {
                             placeholder="Enter Email..."
                             value={email}
                             onChange = {this.onChange}
-                            //required
+                            required
                         />
                     </div>
                     <div className="form-group">

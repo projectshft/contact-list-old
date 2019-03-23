@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+//import { Redirect } from 'react-router-dom';
 
 //we will use a class component because Contact will be stateful
 export class Contact extends Component {
-
+    //to have access to the component's state property, we use a constructor to call super
+    constructor() {
+       super();
+        this.handleClick = this.handleClick.bind(this);
+    
+    }
     // each contact on the main route should be clickable; when clicked, it leads to a new route /contacts/{the id of your contact}
-    // onClick
 
-  
+    //push a new entry onto the history stack
+    routeChange () {
+        let path = `/contacts/detail`;
+        this.props.history.push(path);
+    }  
     render() {
         //destructure props
         const { contact } = this.props;
@@ -22,11 +30,10 @@ export class Contact extends Component {
         return (
             <div>
                 <ul className="list-group">
-                    <Link to='/contacts/detail'><li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle}><span style={initialsStyle}>{initials} </span>  {contact.fname} {contact.lname}</li></Link>
-                    
+
                     {/* <Link to={`/contacts/${contact.id}`}><li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle}>{contact.name}</li></Link> */}
 
-                    {/* <li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle} onClick={this.onClick}>{contact.name}</li> */}
+                    <li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle} onClick={this.routeChange} ><span style={initialsStyle}>{initials} </span> {contact.fname} {contact.lname}</li>
                 </ul>
             </div>
         )
@@ -39,10 +46,10 @@ const contactNameStyle = {
 //styling for the initials
 const initialsStyle = {
     backgroundColor: '#b19999',
-    padding: '.5em',
+    padding: '1.7%',
     borderRadius: '50%',
-    margin: '.5em',
-    color: 'white',
+    margin: '2.5%',
+    color: 'white'
 }
 
 {/* Contact should use props to access the state that Contacts holds */}
@@ -50,4 +57,5 @@ Contact.propTypes = {
     contact: PropTypes.object.isRequired
 }
 
-export default Contact;
+//give the contact component access to this.props.history so that it can redirect the user on click
+export default withRouter(Contact);
