@@ -21,8 +21,9 @@ bugs:
     -detail won't show up (look at structure of router)
     -can't submit form on enter - FIXED
     -can submit any gibberish as a name
-    -form disappears on enter
-    -input fields don't clear after submit - FIXED
+    -form disappears on enter - FIXED
+    -input fields don't clear after submit
+
 */
 
 import React from 'react';
