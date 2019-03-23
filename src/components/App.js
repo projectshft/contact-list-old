@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Switch , Route, Redirect } from 'react-router-dom'
-import AddContact from './AddContact'
-import ContactDetail from './ContactDetail'
 import Contacts from './Contacts'
+import AddContact from './AddContact'
 
 class App extends Component {
   constructor() {
@@ -32,16 +31,21 @@ class App extends Component {
           "phone_number": "33333333"
         }
       ]
-}
+    }
+    this.addContact = this.addContact.bind(this); //binding App to addContact
   }
+
+  addContact (contact) {
+    this.setState({contacts: this.state.contacts.concat([contact])});
+  }
+
   render() {
     return (
       <div>
         <Switch>
-          <Route exact path='/Contacts' render={(props) => <Contacts {...props} contacts={this.state.contacts} />} />
-          <Route exact path='/Contacts/New' component={AddContact}/>
-          <Route exact path='/Contacts/70219577' component={ContactDetail}/>
-          <Redirect to='/Contacts'/> {/* Redirects navigation to /Contacts if it doesn't match a switch value */}
+          <Route exact path='/Contacts' render={(props) => <Contacts {...props} contacts={this.state.contacts}/>} />
+          <Route exact path='/Contacts/New' render={(props) => <AddContact {...props} contacts={this.state.contacts} addContact={this.addContact}/>} /> 
+          <Redirect to='/Contacts'/>
         </Switch>
       </div>
     );
