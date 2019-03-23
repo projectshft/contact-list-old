@@ -16,21 +16,24 @@ class App extends Component {
     contacts: [
       {
           id: generateId(),
-          name: 'Zena Ryan',
+          fname: 'Zena',
+          lname: 'Ryan',
           image_url: 'https://static1.squarespace.com/static/59bc843229f1875d2162cea4/59bc88e8f7e0ab3297d524fb/5bdb626d4d7a9c8118757a94/1541104241789/SQUARE+4.jpeg',
           email: 'jry@gmail.com',
           phone_number: '111-111-1111'
       },
       {
           id: generateId(),
-          name: 'James Bradley',
+          fname: 'James',
+          lname: 'Bradley',
           image_url: 'https://ninaparkerstudios.com/wp-content/uploads/2018/07/LanceHuff-Headshot-Atlanta-NinaParkerStudios-9879-SQUARE-800x800.jpg',
           email: 'jbrad@gmail.com',
           phone_number: '222-222-2222'
       },
       {
           id: generateId(),
-          name: 'Simon React',
+          fname: 'Simon',
+          lname: ' React',
           image_url: 'https://photos.peterhurley.com/sites/default/files/styles/large/public/uploads/2018/03/23/43/hurley-square.jpg?itok=t3bMGCXV',
           email: 'simon@gmail.com',
           phone_number: '333-333-3333'
@@ -40,11 +43,12 @@ class App extends Component {
 
   //add the new contact to the app level state
 
-  addContact = (name, phone_number, email, image_url) => {
+  addContact = (fname, lname, phone_number, email, image_url) => {
     //each time a new contact is created, a unique id should be generated for them
     const newContact = {
       id: generateId(),
-      name,
+      fname,
+      lname,
       phone_number,
       email,
       image_url

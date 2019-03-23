@@ -6,7 +6,8 @@ export class AddContact extends Component {
     //addContact should hold it's own state from the input fields
     state = {
        // id: generateId(),
-        name: '',
+        fname: '',
+        lname: '',
         email: '',
         phone_number: '',
         image_url: ''
@@ -25,7 +26,7 @@ export class AddContact extends Component {
         console.log("The user input looks like:", this.state);
 
         //AddContact should take in router props from App.
-        this.props.addContact(this.state.name, this.state.phone_number, this.state.email, this.state.image_url);
+        this.props.addContact(this.state.fname, this.state.lname, this.state.phone_number, this.state.email, this.state.image_url);
 
         //the input fields should clear after submit (or enter) is pressed
         e.target.value = '';
@@ -46,7 +47,7 @@ export class AddContact extends Component {
     // After clicking "submit", the user should be re-routed back to the /contacts view where they'll see all their contact.
   render() {
       //destructure
-    const { name, phone_number, email, image_url } = this.state;
+    const { fname, lname, phone_number, email, image_url } = this.state;
 
      //addContact should have input fields to create a new contact
     return (
@@ -54,13 +55,25 @@ export class AddContact extends Component {
             <div className="row">
                 <form style={formStyle} onSubmit={this.onSubmit} onKeyPress={this.handleKeyPress}>
                     <div className="form-group">
-                        <label htmlFor="name">Name</label>
+                        <label htmlFor="fname">First Name</label>
                         <input
                             type="text"
-                            name="name"
+                            name="fname"
                             className="form-control form-control-md"
-                            placeholder="Enter Name..."
-                            value={name}
+                            placeholder="Enter First Name..."
+                            value={fname}
+                            onChange = {this.onChange}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="lname">Last Name</label>
+                        <input
+                            type="text"
+                            name="lname"
+                            className="form-control form-control-md"
+                            placeholder="Enter Last Name..."
+                            value={lname}
                             onChange = {this.onChange}
                             required
                         />

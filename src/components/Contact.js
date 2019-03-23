@@ -16,7 +16,7 @@ export class Contact extends Component {
         return (
             <div>
                 <ul className="list-group">
-                    <Link to='/contacts/detail'><li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle}>{contact.name}</li></Link>
+                    <Link to='/contacts/detail'><li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle}>{contact.fname} {contact.lname}</li></Link>
                     
                     {/* <Link to={`/contacts/${contact.id}`}><li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle}>{contact.name}</li></Link> */}
 

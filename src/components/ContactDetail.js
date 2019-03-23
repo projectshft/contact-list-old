@@ -8,7 +8,7 @@ export class ContactDetail extends Component {
 
   render() {
     //destructure props
-    const { name, email, phone_number, image_url } = this.props.contacts;
+    const { fname, lname, email, phone_number, image_url } = this.props.contacts;
     
     return (
         <div className="col-md-12 offset-md-2">
@@ -17,7 +17,7 @@ export class ContactDetail extends Component {
                     <img className="img-responsive contact-photo" style={contactPhotoStyle} src={image_url} alt="contact"/>
                 </div>
                 <div className="col-md-3">
-                    <p>{name}</p>
+                    <p>{fname} {lname}</p>
                     <p>{phone_number}</p>
                     <p>{email}</p>
                 </div>
