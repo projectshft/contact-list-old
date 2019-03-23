@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-//import { Redirect } from 'react-router-dom';
 
 //we will use a class component because Contact will be stateful
 export class Contact extends Component {
-    //to have access to the component's state property, we use a constructor to call super
+    //give the Contact access to Component's state property with a constructor calling super inside 
     constructor() {
        super();
         this.handleClick = this.handleClick.bind(this);
     
     }
     // each contact on the main route should be clickable; when clicked, it leads to a new route /contacts/{the id of your contact}
-
-    //push a new entry onto the history stack
-    routeChange () {
+    //{`/contacts/${contact.id}`}
+    handleClick = () => {
         let path = `/contacts/detail`;
         this.props.history.push(path);
     }  
@@ -30,10 +28,7 @@ export class Contact extends Component {
         return (
             <div>
                 <ul className="list-group">
-
-                    {/* <Link to={`/contacts/${contact.id}`}><li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle}>{contact.name}</li></Link> */}
-
-                    <li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle} onClick={this.routeChange} ><span style={initialsStyle}>{initials} </span> {contact.fname} {contact.lname}</li>
+                    <li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle} onClick={this.handleClick} ><span style={initialsStyle}>{initials} </span> {contact.fname} {contact.lname}</li>
                 </ul>
             </div>
         )
@@ -57,5 +52,5 @@ Contact.propTypes = {
     contact: PropTypes.object.isRequired
 }
 
-//give the contact component access to this.props.history so that it can redirect the user on click
+//wrap the component in withRouter to give it access to this.props.history to allow routing
 export default withRouter(Contact);
