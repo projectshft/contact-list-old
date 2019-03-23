@@ -8,6 +8,7 @@
     -addcontact.js (and app.js):
     DONE clicking the addContact button  should take you a new route (/contacts/new) with a form for adding a new contact. 
     DONE After clicking "submit", the user should be re-routed back to the /contacts view where they'll see all their contact.
+
     -contact.js:
     DONE each contact on the main route should be clickable; when clicked, it leads to a new route /contacts/{the id of your contact}
     DONE each time a new contact is created, you should generate a unique id for them 
@@ -15,7 +16,8 @@
 
     -contacts.js:
     should hold all of the state of the contacts MOVED TO APP
-bugs:
+    
+bugs/edgecases:
     -detail won't show up correctly (look at structure of router)
     -can't submit form on enter - FIXED
     -can submit any gibberish as a name
@@ -23,6 +25,7 @@ bugs:
     -input fields don't clear after submit
     -sort.() sorts the objects in the contacts array, not just name
     -when submitting via Enter key, none of the html form required fields work
+    -add more proptypes
 
 */
 

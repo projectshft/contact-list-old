@@ -131,5 +131,7 @@ const formStyle = {
     padding: '1em'
 }
 
+
+
 //enable AddContact to redirect to contacts after form submission
 export default withRouter(AddContact);

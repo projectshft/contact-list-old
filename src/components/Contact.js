@@ -49,7 +49,14 @@ const initialsStyle = {
 
 //proptypes to validate the data coming in
 Contact.propTypes = {
-    contact: PropTypes.object.isRequired
+    //contact must be an object
+    contact: PropTypes.object.isRequired,
+    // //handleclick must be a function
+    // handleClick: PropTypes.func.isRequired,
+    // //firstname and last name must be strings
+    // fname: PropTypes.string.isRequired,
+    // lname: PropTypes.string.isRequired
+
 }
 
 //wrap the component in withRouter to give it access to this.props.history to allow routing
