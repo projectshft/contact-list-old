@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Router } from 'react-router';
 
 //create New Contact
 
@@ -20,16 +21,27 @@ class NewContact extends Component {
   handleContactSubmit (e) {
     e.preventDefault();
 
+    const { name, email, phone, imgUrl } = this.state
+
     const newContact = {
       id: Math.round(Math.random() * 100000000),
-      name: this.state.name,
-      email: this.state.email,
-      phone: this.state.phone,
-      imgUrl: this.state.imgUrl
+      name,
+      email,
+      phone,
+      imgUrl
     }
 
-    console.log(newContact)
    
+    this.props.addContact(newContact)
+
+    //clear each field so it is emtpy on reload
+    this.setState({
+      name: '',
+      email: '',
+      phone: '',
+      imgUrl: '' 
+    })
+
   }
   
 
@@ -82,7 +94,6 @@ class NewContact extends Component {
               </div>
 
               <input type="submit" value="Add Contact" className="btn btn-block btn-light" onClick={this.handleContactSubmit}/>
-
             </form>
           </div>
         </div>

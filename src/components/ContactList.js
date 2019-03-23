@@ -13,6 +13,7 @@ class ContactList extends Component {
           {contacts.map(contact =>
             <Contact 
             key={contact.id}
+            id={contact.id}
             name={contact.name} 
             email={contact.email} 
             phone={contact.phone} 

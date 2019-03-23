@@ -71,23 +71,15 @@ class App extends React.Component {
             <ContactList contacts={this.state.contacts} />} 
           />
 
-          <Route path="/contacts/:contactId" 
-            render={routerProps => 
-              <ContactDetails contacts={this.state.contacts} 
-              routerProps={routerProps} 
-              />
-            }
+          <Route path='/contacts/:contactId' render={(routerProps) => (
+            <ContactDetails routerProps={routerProps} contacts={this.state.contacts} />
+          )}/>
+
+          <Route path="/new" render={() => 
+            <NewContact addContact={this.addContact} contacts={this.state.contacts}
+            />} 
           />
-
-          <Route path="/addContact"
-            render={() => <NewContact />}
-          />
-    
-
-
-          <NewContact />
-
-
+     
         </Switch>
       </div>
     );

@@ -11,7 +11,7 @@ const Header = () => {
         <div>
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-            <Link to="/addContact">
+            <Link to="/new">
               <i className="fas fa-user-plus fa-fw"></i>
             </Link>
             <Link to="/">
