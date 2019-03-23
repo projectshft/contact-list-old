@@ -33,6 +33,10 @@ class App extends Component {
     ]
   };
 
+  focusContact = id => {
+    console.log(id);
+  };
+
   render() {
     //deconstruct the state and pull out the contacts array
     const { contacts } = this.state;
@@ -41,7 +45,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="container">
-          <ContactList contacts={contacts} />
+          <ContactList contacts={contacts} focusContact={this.focusContact} />
         </div>
       </div>
     );

@@ -8,7 +8,8 @@ class Contact extends Component {
       height: 'auto',
       borderRadius: '20px',
       padding: '10px 10px',
-      marginRight: '-10px'
+      marginRight: '-10px',
+      cursor: 'pointer'
     };
   };
 
@@ -18,10 +19,19 @@ class Contact extends Component {
       <div className="bg-dark mb-3" style={{ borderRadius: '5px' }}>
         <div className="row align-items-center">
           <div className="col-auto">
-            <img src={avatar} alt="avatar" style={this.style()} />
+            <img
+              src={avatar}
+              alt="avatar"
+              style={this.style()}
+              onClick={this.props.focusContact.bind(this, id)}
+            />
           </div>
           <div className="col align-middle">
-            <h3 id={id} style={{ color: '#fff', cursor: 'pointer' }}>
+            <h3
+              id={id}
+              style={{ color: '#fff', cursor: 'pointer' }}
+              onClick={this.props.focusContact.bind(this, id)}
+            >
               {name}
             </h3>
           </div>

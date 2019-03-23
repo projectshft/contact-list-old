@@ -9,7 +9,11 @@ export class ContactList extends Component {
     return (
       <React.Fragment>
         {contacts.map(index => (
-          <Contact key={index.id} contact={index} />
+          <Contact
+            key={index.id}
+            contact={index}
+            focusContact={this.props.focusContact}
+          />
         ))}
       </React.Fragment>
     );
