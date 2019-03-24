@@ -1,22 +1,3 @@
-// import React, { Component } from 'react';
-
-// class Contact extends Component {
-//   render() {
-//     // Use destructuring to pull out data. Is id necessary here?
-//     const { id, name, image_url, email, phone } = this.props;
-//     return (
-//       <div>
-//         <h4>{name}</h4>
-//         <ul>
-//           <li>Image: {image_url}</li>
-//           <li>Email: {email}</li>
-//           <li>Phone: {phone}</li>
-//         </ul>
-//       </div>
-//     );
-//   }
-// }
-// export default Contact;
 /*******************************************
    A component for individual contacts
    * ****************************************/
@@ -33,12 +14,38 @@ class Contact extends Component {
   //   email: PropTypes.string.isRequired,
   //   phone: PropTypes.string.isRequired
   // };
+  state = {
+    showContactInfo: false
+  };
+
+  // A Method to handle a click on a contact name in Contact List
+  // Pass in id?
+  onNameClick = (id, e) => {
+    console.log('Name clicked');
+    console.log(this.state);
+    console.log(e.target);
+    console.log(id);
+    // this.setState({ showContactInfo: false });
+
+    // Create a toggle to change whether an individual contact shows contact info or just the name.
+    this.setState({ showContactInfo: !this.state.showContactInfo });
+  };
+
+  // Define onDeleteClick (using an arrow function, in contrast to onNameClick above. (Just to learn both ways.)
+  onDeleteClick = () => {
+    console.log('Notification from Contact: Delete clicked');
+    // Create a click handler (PropType, so define below)
+    this.props.deleteClickHandler();
+  };
   render() {
     // Use destructuring to pull out data
     // TODO: add image_url
     const { name, id, email, phone } = this.props;
+
+    // In order for toggle on showContactInfo to work, use destructuring to take out necessary data from this.state:
+    const { showContactInfo } = this.state;
     return (
-      // Add bootstrap styling to card.
+      // Add bootstrap styling to rolodex card.
       <div className="card card-body mb-3">
         {/* ************************
           This way prior to inserting the destructuring line above:
@@ -52,15 +59,40 @@ class Contact extends Component {
           ***************************
           Now this way, enabled by the destructuring line above:
           ***************************/}
+        {/* <strong> */}
+        {/* <h4 onClick={this.onNameClick}> */}
+        {/*  <h4 onClick={this.onNameClick.bind(this)}> */}
         <h4>
-          <strong>{name}</strong>
+          {name} <span> </span>
+          <i
+            onClick={this.onNameClick.bind(this, id)}
+            className="fas fa-chevron-right"
+            // Styling: add pointer
+            style={{ cursor: 'pointer', color: '#17a2b8' }}
+          />
+          <i
+            className="fas fa-times"
+            style={{ cursor: 'pointer', float: 'right', color: '#17a2b8' }}
+            // Add click handler
+            onClick={this.onDeleteClick}
+          />
+          {/* <i class="fas fa-expand" /> */}
+          {/* <i class="far fa-arrow-alt-circle-right" /> */}
+          {/* Can also 'emove the onNameClick defition above and just use an arrow function here:
+            onClick={() => this.setState({showContactInfo: !this.state.showContactInfo})} */}
         </h4>
-        <ul className="list-group">
-          {/* <li className="list-group-item">{image_url}</li> */}
-          <li className="list-group-item">Email: {email}</li>
-          <li className="list-group-item">Phone: {phone}</li>
-          {/* <li className="list-group-item">ID: {id}</li> */}
-        </ul>
+        {/* </strong> */}
+
+        {/* Toggle view of contact info or not, based on boolean value of showContactInfo */}
+        {showContactInfo ? (
+          <ul className="list-group">
+            {/* <li className="list-group-item">{image_url}</li> */}
+            <li className="list-group-item">Email: {email}</li>
+            <li className="list-group-item">Phone: {phone}</li>
+            <li className="list-group-item">ID: {id}</li>
+          </ul>
+        ) : null}
+        {/* PS assignment calls for navigation to "/contacts/{id of contact}"" and show data for just that contact */}
       </div>
     );
   }
@@ -73,8 +105,9 @@ Contact.propTypes = {
   // image_url: PropTypes,
   email: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
-  id: PropTypes.number
+  id: PropTypes.number,
   // id: PropTypes.number.isRequired
+  deleteClickHandler: PropTypes.func.isRequired
 };
 // If you have default props, you can do the same thing: Contact.default.props here, or use "static" to define them above.
 
