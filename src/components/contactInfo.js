@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-// This component displays one individuals full contact info
+// This component displays one contacts full contact info
 
 const ContactInfo = ({contacts, routerProps}) => {
   const contact = _.find(contacts, { id: parseInt(routerProps.match.params.id, 10) });
