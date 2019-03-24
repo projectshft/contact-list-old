@@ -16,9 +16,10 @@ const ContactsList = ({contacts, deleteContact}) => (
       <div className='row'>
         <div className='col-2'></div>
         <div className='col-8'>
-          <div className="card shadow" style={{width: '24rem', marginTop: 40, marginLeft: 40, background: 'cornflowerblue'}}>
+          <div className="card shadow" style={{width: '24rem', marginTop: 50, background: '#c7dfff'}}>
             <div className="card-header">
               My Contact List
+              
             </div>
             <ul className="list-group list-group-flush">
               { contacts.sort(compare).map(contact => (
@@ -32,8 +33,9 @@ const ContactsList = ({contacts, deleteContact}) => (
           </div>
         </div>
         <div className='col-2'></div>
-      </div>      
-      <Link to="/contacts/new">Add Contact</Link>
+      </div>
+      <br />
+      <Link to="/contacts/new">Add New Contact</Link>
     </center>
   </div>
 );
