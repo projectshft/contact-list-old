@@ -1,26 +1,45 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faTrashAlt);
 
 /* This component takes in the contacts state, maps through each one, and displays a list of the
    current contacts in your list */
 
-const ContactsList = ({contacts}) => (
-  <div>
-    <h3>My Contacts List:</h3>
-    <ul>
-      { contacts.sort(compare).map(contact => (
-          <li key={contact.id}>
-            <Link to={`/contacts/${contact.id}`}>{contact.lastName}, {contact.firstName}</Link>
-          </li>
-        ))
-      }
-    </ul>
-    <Link to="/contacts/new">Add Contact</Link>
+const ContactsList = ({contacts, deleteContact}) => (
+  <div className='container'>
+    <center>
+      <div className='row'>
+        <div className='col-2'></div>
+        <div className='col-8'>
+          <div className="card shadow" style={{width: '24rem', marginTop: 40, marginLeft: 40, background: 'cornflowerblue'}}>
+            <div className="card-header">
+              My Contact List
+            </div>
+            <ul className="list-group list-group-flush">
+              { contacts.sort(compare).map(contact => (
+                  <li className="list-group-item" key={contact.id}>
+                    <Link to={`/contacts/${contact.id}`}>{contact.lastName}, {contact.firstName}</Link>
+                    <span style={{float: 'right'}}><FontAwesomeIcon icon="trash-alt" onClick={() => deleteContact(contact)}/></span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+        <div className='col-2'></div>
+      </div>      
+      <Link to="/contacts/new">Add Contact</Link>
+    </center>
   </div>
 );
 
-function compare(a, b) {
-  // Use toUpperCase() to ignore character casing
+// This function allows the contacts array to be sorted alphabetically by last name
+
+function compare (a, b) {
   const lastNameA = a.lastName.toUpperCase();
   const lastNameB = b.lastName.toUpperCase();
 
