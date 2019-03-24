@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 // This component displays one individuals full contact info
@@ -38,5 +39,10 @@ const ContactInfo = ({contacts, routerProps}) => {
     </div>
   )
 }
+
+ContactInfo.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  routerProps: PropTypes.object.isRequired
+};
 
 export default ContactInfo;

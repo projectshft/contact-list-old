@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 // This component handles adding a new contact to the contacts list
 
@@ -93,5 +94,10 @@ class AddContact extends React.Component {
     )
   }
 }
+
+AddContact.propTypes = {
+  addContact: PropTypes.func.isRequired,
+  routerProps: PropTypes.object.isRequired  
+};
 
 export default AddContact;
