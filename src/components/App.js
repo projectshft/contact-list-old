@@ -18,6 +18,34 @@ class App extends React.Component {
     this.state = {
       contacts: [
         {
+          id: 1,
+          name: 'Felicia',
+          email: 'byefelicia@gmail.com',
+          phone: '222-222-2222',
+          imgUrl: 'https://media.giphy.com/media/QyDJII5Hj5rYA/giphy.gif' 
+        },
+        {
+          id: generateId(),
+          name: 'Ovy Cado',
+          email: 'imacado@yahoo.com',
+          phone: '000-000-0000',
+          imgUrl: 'https://media.giphy.com/media/13gvXfEVlxQjDO/giphy.gif' 
+        },
+        {
+          id: generateId(),
+          name: 'RBG',
+          email: 'rbg@gmail.com',
+          phone: '444-444-4444',
+          imgUrl: 'https://www.lawcrossing.com/images/articleimages/Notorious-RBG-Big.jpg' 
+        },
+        {
+          id: generateId(),
+          name: "Hot Diggity Dog",
+          email: 'dancindog@hotmal.com',
+          phone: '555-555-555',
+          imgUrl: 'https://media.giphy.com/media/3og0Izv3p7vMprq2Qw/giphy.gif' 
+        },
+        {
           id: generateId(),
           name: 'Barry Obama',
           email: 'b-bama@gmail.com',
@@ -33,13 +61,6 @@ class App extends React.Component {
         },
         {
           id: generateId(),
-          name: 'RBG',
-          email: 'rbg@gmail.com',
-          phone: '444-444-4444',
-          imgUrl: 'https://www.lawcrossing.com/images/articleimages/Notorious-RBG-Big.jpg' 
-        },
-        {
-          id: generateId(),
           name: "It's Britney Bitch",
           email: 'hitmebabyonemoretime@gmail.com',
           phone: '555-555-555',
@@ -50,6 +71,7 @@ class App extends React.Component {
     this.addContact = this.addContact.bind(this);
   }
 
+  //update state to add new contact
   addContact(contact) {
     this.setState({contacts: this.state.contacts.concat([contact])})
   }
@@ -71,7 +93,7 @@ class App extends React.Component {
             <ContactList contacts={this.state.contacts} />} 
           />
 
-          <Route path='/contacts/:contactId' render={(routerProps) => (
+          <Route path="/contact/:contactId" render={(routerProps) => (
             <ContactDetails routerProps={routerProps} contacts={this.state.contacts} />
           )}/>
 

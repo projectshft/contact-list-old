@@ -1,10 +1,16 @@
+import { Link } from 'react-router-dom'
 import React from 'react';
 import _ from 'lodash'
-import { Link } from 'react-router-dom'
 
 const ContactDetails= ({routerProps, contacts}) => {
-  const contact= this.props.contacts.find(c => c.id === routerProps.contactId)
-  // const contacts = _.find(contacts, { id: (routerProps.match.params.id, 10) });
+  // const contact= this.props.contacts.find(c => c.id === routerProps.contactId)
+
+  // const contact = _.find(contacts, { id: 1 });
+  const contact = _.find(contacts, { id: parseInt(routerProps.match.params.contactId) });
+  console.log(routerProps.match.params.contactId)
+  console.log(contact)
+
+
 
   
   if (!contact) {
@@ -16,7 +22,7 @@ const ContactDetails= ({routerProps, contacts}) => {
       <Link to="/">
         <i className="fas fa-arrow-alt-circle-left"style={{ fontSize: '30px', color: "navy"}}></i>
       </Link>
-      <img className="card-img-top" alt="" src={contact.img}></img>
+      <img className="card-img-top" alt="" src={contact.imgUrl}></img>
       <div className="card-body">
         <h2 className="card-title" style={{ textAlign: 'center' }}>{contact.name}
         </h2>

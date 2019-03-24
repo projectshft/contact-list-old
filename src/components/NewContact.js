@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Router } from 'react-router';
+import { withRouter } from 'react-router-dom';
 
 //create New Contact
-
 class NewContact extends Component {
   constructor () {
     super()
@@ -15,6 +14,7 @@ class NewContact extends Component {
       imgUrl: '' 
     }
 
+    //bind this to work with handleContact Submit
     this.handleContactSubmit = this.handleContactSubmit.bind(this)
   }
   
@@ -31,33 +31,39 @@ class NewContact extends Component {
       imgUrl
     }
 
-   
+    //add new contact to state
     this.props.addContact(newContact)
 
+    //automatically load contacts page
+    this.props.history.push('/contacts');
+
     //clear each field so it is emtpy on reload
-    this.setState({
-      name: '',
-      email: '',
-      phone: '',
-      imgUrl: '' 
-    })
+    // this.setState({
+    //   name: '',
+    //   email: '',
+    //   phone: '',
+    //   imgUrl: '' 
+    // })
 
   }
   
 
 
   render() {
+    const required = true;
+
     return (
       <div className="container">
-        <div className="card mb-3">
+        <div className="card mb-3" style={{ width: "30rem"}}>
           <div className="card-header">Add Contact</div>
           <div className="card-body">
             <form>
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input 
-                  type= "text"
+                  type="text"
                   name="name"
+                  required="required"
                   className="form-control" placeholder="full name"
                   onChange={event => this.setState({ name: event.target.value})}
                   />
@@ -66,7 +72,7 @@ class NewContact extends Component {
               <div className="form-group">
                 <label htmlFor="email">Email</label>
                 <input 
-                  type= "email"
+                  type="email"
                   name="email"
                   className="form-control" placeholder="email address"
                   onChange={event => this.setState({ email: event.target.value})}
@@ -76,7 +82,7 @@ class NewContact extends Component {
               <div className="form-group">
                 <label htmlFor="phone">Phone Number</label>
                 <input 
-                  type= "text"
+                  type="text"
                   name="phone"
                   className="form-control" placeholder="phone number"
                   onChange={event => this.setState({ phone: event.target.value})}
@@ -86,14 +92,14 @@ class NewContact extends Component {
               <div className="form-group">
                 <label htmlFor="photo">Upload a Picture</label>
                 <input 
-                  type= "text"
+                  type="text"
                   name="photo"
                   className="form-control" placeholder="picture url"
                   onChange={event => this.setState({ imgUrl: event.target.value})}
                   />
               </div>
 
-              <input type="submit" value="Add Contact" className="btn btn-block btn-light" onClick={this.handleContactSubmit}/>
+              <input type="submit" value="Add Contact" className="btn btn-block btn-outline-info" onClick={this.handleContactSubmit}/>
             </form>
           </div>
         </div>
@@ -101,4 +107,4 @@ class NewContact extends Component {
     )
   }
 }
-export default NewContact
+export default withRouter(NewContact)
