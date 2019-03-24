@@ -9,11 +9,12 @@ class AddContact extends React.Component {
     super ()
 
     this.state = {
-      lastName: '',
+      id: 0,
       firstName: '',
+      lastName: '',
       email: '',
       phone: '',
-      imageURL: ''
+      imageURL: 'http://chittagongit.com//images/default-user-icon/default-user-icon-14.jpg'
     }
 
     this.handleAddContactClick = this.handleAddContactClick.bind(this)
@@ -28,17 +29,21 @@ class AddContact extends React.Component {
      contact list page. */
 
   handleAddContactClick () {
-    const newContact = {
-      id: this.generateId(),
-      lastName: this.state.lastName,
-      firstName: this.state.firstName,
-      email: this.state.email,
-      phone: this.state.phone,
-      imageURL: this.state.imageURL
-    };
+    if (this.state.firstName && this.state.lastName && this.state.email) {
+      const newContact = {
+        id: this.generateId(),
+        lastName: this.state.lastName,
+        firstName: this.state.firstName,
+        email: this.state.email,
+        phone: this.state.phone,
+        imageURL: this.state.imageURL
+      };      
 
-    this.props.addContact(newContact);
-    this.props.routerProps.history.push('/contacts');
+      this.props.addContact(newContact);
+      this.props.routerProps.history.push('/contacts');
+    } else {
+      alert('You did not fill in all required fields');
+    }
   }
 
   /* Creates all of the input fields for entering a new contact, a button to add the new contact, and
@@ -47,38 +52,38 @@ class AddContact extends React.Component {
 
   render () {
     return (
-      <div className="container" style={{marginTop: 40}}>
+      <div className="container" style={{marginTop: 50}}>
         <form>
-          <label>First Name</label>
-          <input type='text' className='form-control' onChange={event =>
+          <label>First Name *</label>
+          <input type='text' className='form-control' placeholder="Enter First Name" onChange={event =>
             this.setState({ firstName: event.target.value })
-          } />
+          }/>
 
           <br/>
 
-          <label>Last Name</label>
-          <input type='text' className='form-control' onChange={event =>
+          <label>Last Name *</label>
+          <input type='text' className='form-control' placeholder="Enter Last Name" onChange={event =>
             this.setState({ lastName: event.target.value })
           }/>
 
           <br/>
 
-          <label>Email</label>
-          <input type='email' className='form-control' onChange={event =>
+          <label>Email *</label>
+          <input type='email' className='form-control' placeholder="Enter Email Address" onChange={event =>
             this.setState({ email: event.target.value })
           }/>
 
           <br/>
 
           <label>Phone</label>
-          <input type='number' className='form-control' onChange={event =>
+          <input type='text' className='form-control' placeholder="Enter Phone Number" onChange={event =>
             this.setState({ phone: event.target.value })
           }/>
 
           <br/>
 
           <label>Image URL</label>
-          <input type='url' className='form-control' onChange={event =>
+          <input type='url' className='form-control' placeholder="Enter Image URL" onChange={event =>
             this.setState({ imageURL: event.target.value })
           }/>
 
