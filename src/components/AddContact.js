@@ -4,12 +4,12 @@ class AddContact extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
+    this.state = { //AddContact's input data - this gets updated as keystrokes are entered in the fields
       id: Math.round(Math.random() * 100000000),
-      name: "",
-      image_url: "",
-      email: "",
-      phone_number: ""
+      name: null,
+      image_url: null,
+      email: null,
+      phone_number: null
     };
 
     this.handleSubmitNewContactClick = this.handleSubmitNewContactClick.bind();
@@ -23,9 +23,8 @@ class AddContact extends React.Component {
       email: this.state.email,
       phone_number: this.state.phone_number
     };
-
     this.props.addContact(newContact);
-    this.props.history.push("/Contacts");
+    this.props.history.push("/Contacts"); //Sends us back to /Contacts after clicking submit
   }
 
   render() {
@@ -46,7 +45,7 @@ class AddContact extends React.Component {
                 />
                 <label>Email</label>
                 <input
-                  type="text"
+                  type="email"
                   className="form-control"
                   onChange={event =>
                     this.setState({ email: event.target.value })
@@ -54,7 +53,7 @@ class AddContact extends React.Component {
                 />
                 <label>Phone Number</label>
                 <input
-                  type="text"
+                  type="tel"
                   className="form-control"
                   onChange={event =>
                     this.setState({ phone_number: event.target.value })
@@ -62,7 +61,7 @@ class AddContact extends React.Component {
                 />
                 <label>Image URL</label>
                 <input
-                  type="text"
+                  type="url"
                   className="form-control"
                   onChange={event =>
                     this.setState({ image_url: event.target.value })
@@ -70,7 +69,7 @@ class AddContact extends React.Component {
                 />
               </div>
               <button
-                type="button"
+                type="input"
                 className="btn btn-primary"
                 onClick={this.handleSubmitNewContactClick}
               >

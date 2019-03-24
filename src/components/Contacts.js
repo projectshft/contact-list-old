@@ -1,7 +1,5 @@
 import React from 'react';
-import { Switch , Route } from 'react-router-dom'
-import AddContact from './AddContact'
-import ContactDetail from './ContactDetail'
+import { Link } from 'react-router-dom'
 
 class Contacts extends React.Component { //Working on building out Contacts as a ul
 constructor(props) {
@@ -16,24 +14,22 @@ handleNewContactClick () {
 
 render() {
   return (
-    <div>
+    <div className="container">
+    <div className="row">
+    <div className="col-sm">
     <h1>Contacts</h1>
     <button type="button" className="btn btn-primary" onClick={this.handleNewContactClick} >Add Contact</button>
     <ul className="list-group">
-    {this.props.contacts.map(contact => {
-      return <li key={contact.id}>{contact.name}</li>}
+    {this.props.contacts.map(contact => { //Generates the list items that populate the Contacts page and gives them a link to their details page.
+    return <li key={contact.id}><Link to={`/Contacts/${contact.id}` }>{contact.name}</Link></li>} 
     )}
     </ul>
+    </div>
+    </div>
     </div>
   )
 } 
 
 }
 
-
 export default Contacts;
-
-  // <Switch>
-  // <Route exact path='/Contacts/New' component={AddContact}/>
-  // <Route exact path='/Contacts/70219577' component={ContactDetail}/>
-  // </Switch>
