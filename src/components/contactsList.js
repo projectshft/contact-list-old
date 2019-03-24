@@ -5,7 +5,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faTrashAlt);
+library.add(faTrashAlt);  // Enables use of trashcan icon for deleting a contact
 
 /* This component takes in the contacts state, maps through each one, and displays a list of the
    current contacts in your list */
@@ -18,14 +18,17 @@ const ContactsList = ({contacts, deleteContact}) => (
         <div className='col-8'>
           <div className="card shadow" style={{width: '24rem', marginTop: 50, background: '#c7dfff'}}>
             <div className="card-header">
-              My Contact List
-              
+              My Contact List              
             </div>
             <ul className="list-group list-group-flush">
-              { contacts.sort(compare).map(contact => (
+              {
+                contacts.sort(compare).map(contact => (
                   <li className="list-group-item" key={contact.id}>
-                    <Link to={`/contacts/${contact.id}`}>{contact.lastName}, {contact.firstName}</Link>
-                    <span style={{float: 'right'}}><FontAwesomeIcon icon="trash-alt" onClick={() => deleteContact(contact)}/></span>
+                    <Link style={{float: 'left'}} to={`/contacts/${contact.id}`}>{contact.lastName}, {contact.firstName}</Link>
+                    <span style={{float: 'right'}}>
+                      <Link to={`/contacts/${contact.id}/edit`}>Edit  </Link>
+                      <FontAwesomeIcon icon="trash-alt" onClick={() => deleteContact(contact)}/>
+                    </span>
                   </li>
                 ))
               }
@@ -37,7 +40,7 @@ const ContactsList = ({contacts, deleteContact}) => (
       <br />
       <Link to="/contacts/new">Add New Contact</Link>
     </center>
-  </div>
+  </div>    
 );
 
 // This function allows the contacts array to be sorted alphabetically by last name
