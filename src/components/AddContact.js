@@ -39,59 +39,61 @@ class AddContact extends Component {
 
   render() {
     return (
-      <div className="col-md-8 pt-3 m-auto">
+      <div className="p-3">
         <Link to="/">Back to Contacts</Link>
-        <h4 className="pt-3">Please enter contact information...</h4>
-        <form className="new-contact-form pb-3" onSubmit={this.handleClick}>
-          <input
-            type="text"
-            className="form-control form-field-top"
-            placeholder="First name (required)"
-            autoFocus
-            value={this.state.fname}
-            onChange={e => this.setState({ fname: e.target.value })}
-          />
+        <div className="col-md-8 pt-3 m-auto">
+          <h4 className="pt-3">Please enter contact information...</h4>
+          <form className="new-contact-form pb-3" onSubmit={this.handleClick}>
+            <input
+              type="text"
+              className="form-control form-field-top"
+              placeholder="First name (required)"
+              autoFocus
+              value={this.state.fname}
+              onChange={e => this.setState({ fname: e.target.value })}
+            />
 
-          <input
-            type="text"
-            className="form-control form-field"
-            placeholder="Last name (required)"
-            value={this.state.lname}
-            onChange={e => this.setState({ lname: e.target.value })}
-          />
+            <input
+              type="text"
+              className="form-control form-field"
+              placeholder="Last name (required)"
+              value={this.state.lname}
+              onChange={e => this.setState({ lname: e.target.value })}
+            />
 
-          <input
-            type="tel"
-            className="form-control form-field"
-            placeholder="Phone"
-            value={this.state.phone}
-            onChange={e => this.setState({ phone: e.target.value })}
-          />
+            <input
+              type="tel"
+              className="form-control form-field"
+              placeholder="Phone"
+              value={this.state.phone}
+              onChange={e => this.setState({ phone: e.target.value })}
+            />
 
-          <input
-            type="email"
-            className="form-control form-field"
-            placeholder="Email (required)"
-            value={this.state.email}
-            onChange={e => this.setState({ email: e.target.value })}
-          />
+            <input
+              type="email"
+              className="form-control form-field"
+              placeholder="Email (required)"
+              value={this.state.email}
+              onChange={e => this.setState({ email: e.target.value })}
+            />
 
-          <input
-            type="url"
-            className="form-control form-field-bot"
-            placeholder="Image URL (for best results use a square image)"
-            value={this.state.image_url}
-            onChange={e => this.setState({ image_url: e.target.value })}
-          />
+            <input
+              type="url"
+              className="form-control form-field-bot"
+              placeholder="Image URL (for best results use a square image)"
+              value={this.state.image_url}
+              onChange={e => this.setState({ image_url: e.target.value })}
+            />
 
-          <button
-            type="button"
-            className="btn btn-primary mt-2 form-control"
-            onClick={this.handleClick}
-          >
-            Submit
-          </button>
-        </form>
+            <button
+              type="button"
+              className="btn btn-primary mt-2 form-control"
+              onClick={this.handleClick}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

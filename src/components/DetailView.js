@@ -24,7 +24,15 @@ const DetailView = props => {
       <Link to="/">Back to Contacts</Link>
       <div className="row detail-view pt-5">
         <div className="headshot-container col-6 mr-auto">
-          <img className="headshot" src={image_url} alt="" />
+          <img
+            className="headshot"
+            src={
+              image_url ||
+              // add default image if none available. This could be clickable link to an edit view
+              `https://media.giphy.com/media/4HpF1SUYkswfJF6SZu/giphy.gif`
+            }
+            alt=""
+          />
         </div>
         <div className="contact-info col-6 ml-auto">
           <h4>Name:</h4>
@@ -34,7 +42,9 @@ const DetailView = props => {
           <h4>Phone:</h4>
           <p className="ml-4">{phone || 'N/A'}</p>
           <h4>Email:</h4>
-          <p className="ml-4">{email}</p>
+          <p className="ml-4">
+            <a href={`mailto:${email}`}>{email}</a>
+          </p>
         </div>
       </div>
     </div>

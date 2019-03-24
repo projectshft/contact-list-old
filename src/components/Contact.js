@@ -5,7 +5,12 @@ const Contact = props => {
   const { id, fname, lname, phone, email } = props.contact;
 
   return (
-    <tr id={id} className="contact" onClick={props.detailView}>
+    <tr
+      id={id}
+      className="contact"
+      title="Click to view contact"
+      onClick={props.detailView}
+    >
       <th scope="row">{props.number}</th>
       <td>{fname}</td>
       <td>{lname}</td>
@@ -15,6 +20,7 @@ const Contact = props => {
         <i
           id={id}
           className="fas fa-times-circle delete"
+          title="Delete contact"
           onClick={props.deleteContact}
         />
       </td>
