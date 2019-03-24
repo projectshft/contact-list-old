@@ -26,6 +26,11 @@ class App extends Component {
       ]
     }
   }
+newContact(contact){
+  this.setState({contacts: this.state.contacts.concat([contact])}, ()=>{
+    console.log("contacts added", this.state.contacts)
+  });
+}
 
   render() {
     return (
