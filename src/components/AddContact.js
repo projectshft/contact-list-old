@@ -1,4 +1,5 @@
 import React from "react";
+import personplaceholder from '../assets/personplaceholder.png'
 
 class AddContact extends React.Component {
   constructor(props) {
@@ -7,30 +8,32 @@ class AddContact extends React.Component {
     this.state = {
       //AddContact's input data - this gets updated as keystrokes are entered in the fields
       id: Math.round(Math.random() * 100000000),
-      name: null,
-      image_url: null,
-      email: null,
-      phone_number: null
+      name: "",
+      image_url: "",
+      email: "",
+      phone_number: ""
     };
 
     this.handleSubmitNewContactClick = this.handleSubmitNewContactClick.bind();
   }
 
-  handleSubmitNewContactClick = (e) => { //Changed from button onClick to form onSubmit so I could take advantage of html5 form validation.
-    e.preventDefault();
+  handleSubmitNewContactClick = e => {
+    //Changed from button onClick to form onSubmit so I could take advantage of html5 form validation.
+    e.preventDefault(); //Prevents submit from trying to actually submit to a server and giving us pesky console warnings.
 
     const newContact = {
       id: this.state.id,
       name: this.state.name,
-      image_url: this.state.image_url,
+      image_url:
+        this.state.image_url !== ""
+          ? this.state.image_url
+          : personplaceholder, //If no url was submitted, substitute placeholder image.
       email: this.state.email,
       phone_number: this.state.phone_number
     };
     this.props.addContact(newContact);
     this.props.history.push("/Contacts"); //Sends us back to /Contacts after clicking submit
   };
-
-  
 
   render() {
     return (
@@ -64,6 +67,7 @@ class AddContact extends React.Component {
                   type="tel"
                   className="form-control"
                   placeholder="123-456-7890"
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                   onChange={event =>
                     this.setState({ phone_number: event.target.value })
                   }
@@ -78,12 +82,7 @@ class AddContact extends React.Component {
                   }
                 />
               </div>
-              <button
-                type="submit"
-                className="btn btn-primary"
-              >
-                Submit
-              </button>
+              <button type="submit" className="btn btn-primary">Submit</button>
             </form>
           </div>
         </div>

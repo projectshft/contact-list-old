@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Contacts from "./Contacts";
 import AddContact from "./AddContact";
 import ContactDetail from "./ContactDetail";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 class App extends Component {
   constructor() {
@@ -17,7 +17,7 @@ class App extends Component {
           image_url:
             "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Einstein_1921_by_F_Schmutzer_-_restoration.jpg/220px-Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
           email: "aeinstein@example.com",
-          phone_number: "15555555555"
+          phone_number: "132-458-7894"
         },
         {
           id: 70219578,
@@ -25,15 +25,15 @@ class App extends Component {
           image_url:
             "https://whydoesitsuck.com/guys-its-true-coding-sucks/thumbnail.png",
           email: "bobn@example.com",
-          phone_number: "1234567890"
+          phone_number: "148-738-5564"
         },
         {
           id: 70219570,
-          name: "3rd dude",
+          name: "ThisIsFine Dog",
           image_url:
             "https://i.kym-cdn.com/entries/icons/mobile/000/018/012/this_is_fine.jpg",
           email: "3rd@example.com",
-          phone_number: "33333333"
+          phone_number: "359-689-7846"
         }
       ]
     };
@@ -72,7 +72,7 @@ class App extends Component {
             render={props => (
               <ContactDetail props={props} contacts={this.state.contacts} />
             )}
-          />{" "}
+          />
           {/* Passing matched prop and contacts to ContactDetails */}
           <Redirect to="/Contacts" />
         </Switch>
@@ -81,11 +81,12 @@ class App extends Component {
   }
 }
 
-App.propTypes = { //unclear how to properly use PropTypes to benefit me here since the form is validating data.
+App.propTypes = {
+  //unclear how to properly use PropTypes to benefit me here since the form is validating data.
   name: PropTypes.string,
   image_url: PropTypes.string,
   email: PropTypes.string,
-  phone_number: PropTypes.number 
-}
+  phone_number: PropTypes.number
+};
 
 export default App;

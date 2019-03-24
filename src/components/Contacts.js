@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 class Contacts extends React.Component {
   //Working on building out Contacts as a ul
   constructor(props) {
@@ -18,14 +19,14 @@ class Contacts extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-sm">
-            <h1>Contacts</h1>
             <button
               type="button"
-              className="btn btn-primary"
+              className="btn btn-primary newContact"
               onClick={this.handleNewContactClick}
             >
               Add Contact
             </button>
+            <h1>Contacts</h1>
             <ul className="list-group">
               {this.props.contacts.map(contact => {
                 //Generates the list items that populate the Contacts page and gives them a link to their details page.
