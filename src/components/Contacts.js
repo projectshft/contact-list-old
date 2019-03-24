@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Contact from './Contact';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 //we will use a class component because Contacts will be stateful
 export class Contacts extends Component {
@@ -39,5 +40,8 @@ export class Contacts extends Component {
     }
 }
 //should use proptypes to validate the information that is coming in
+Contacts.propTypes = {
+    contacts: PropTypes.array.isRequired,
+}
 
 export default Contacts;

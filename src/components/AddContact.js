@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 //we will use a class component because add contact will be stateful
 export class AddContact extends Component {
@@ -149,7 +150,10 @@ const formStyle = {
     padding: '1em'
 }
 
-
+//PropTypes
+AddContact.propTypes = {
+    addContact: PropTypes.func.isRequired
+}
 
 //enable AddContact to redirect to contacts after form submission
 export default withRouter(AddContact);
