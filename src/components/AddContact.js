@@ -19,6 +19,24 @@ export class AddContact extends Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
+        //attempt at form validation
+        // if (emailAdd.value.indexOf("@", 0) < 0) { 
+        //     window.alert("Please enter a valid e-mail address."); 
+        //     emailAdd.focus(); 
+        //     return false; 
+        // } 
+   
+        // if (emailAdd.value.indexOf(".", 0) < 0) { 
+        //     window.alert("Please enter a valid e-mail address."); 
+        //     emailAdd.focus(); 
+        //     return false; 
+        // } 
+        // if (photo.value == '') {
+        //     window.alert("Please enter a photo url");
+        //     photo.focus();
+        //     return false;
+        // }
+
     //Users should be able to click submit and their new contact be added to Contacts//interactive in the same way as the other contacts
     onSubmit = (e) => {
         e.preventDefault();
@@ -54,7 +72,7 @@ export class AddContact extends Component {
     return (
         <div className="col-md-6 offset-md-3 shadow-sm">
             <div className="row">
-                <form style={formStyle} onSubmit={this.onSubmit} onKeyPress={this.handleKeyPress}>
+                <form name="addContact" style={formStyle} onSubmit={this.onSubmit} onKeyPress={this.handleKeyPress}>
                     <div className="form-group">
                         <label htmlFor="fname">First Name</label>
                         <input
