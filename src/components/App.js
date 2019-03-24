@@ -26,12 +26,15 @@ class App extends Component {
   };
 
   deleteContact = e => {
-    if (e.target.classList.contains('delete')) {
-      const keepThese = this.state.contacts.filter(
-        contact => contact.id !== e.target.id
-      );
-      this.setState({ contacts: keepThese });
-      localStorage.setItem('contacts', JSON.stringify(keepThese));
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm('Are you sure you want to delete this contact?')) {
+      if (e.target.classList.contains('delete')) {
+        const keepThese = this.state.contacts.filter(
+          contact => contact.id !== e.target.id
+        );
+        this.setState({ contacts: keepThese });
+        localStorage.setItem('contacts', JSON.stringify(keepThese));
+      }
     }
   };
 

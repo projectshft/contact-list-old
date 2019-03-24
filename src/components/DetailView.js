@@ -17,22 +17,24 @@ const DetailView = props => {
     );
   }
 
+  const { image_url, fname, lname, phone, email } = currentContact;
+
   return (
     <div className="container-fluid pt-3">
       <Link to="/">Back to Contacts</Link>
       <div className="row detail-view pt-5">
         <div className="headshot-container col-6 mr-auto">
-          <img className="headshot" src={currentContact.image_url} alt="" />
+          <img className="headshot" src={image_url} alt="" />
         </div>
         <div className="contact-info col-6 ml-auto">
           <h4>Name:</h4>
           <p className="ml-4">
-            {currentContact.fname} {currentContact.lname}
+            {fname} {lname}
           </p>
           <h4>Phone:</h4>
-          <p className="ml-4">{currentContact.phone || 'N/A'}</p>
+          <p className="ml-4">{phone || 'N/A'}</p>
           <h4>Email:</h4>
-          <p className="ml-4">{currentContact.email}</p>
+          <p className="ml-4">{email}</p>
         </div>
       </div>
     </div>

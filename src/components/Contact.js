@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Contact = props => {
-  const { id } = props.contact;
+  const { id, fname, lname, phone, email } = props.contact;
 
   return (
     <tr id={id} className="contact" onClick={props.detailView}>
       <th scope="row">{props.number}</th>
-      <td>{props.contact.fname}</td>
-      <td>{props.contact.lname}</td>
-      <td style={{ whiteSpace: 'nowrap' }}>{props.contact.phone}</td>
-      <td>{props.contact.email}</td>
+      <td>{fname}</td>
+      <td>{lname}</td>
+      <td style={{ whiteSpace: 'nowrap' }}>{phone}</td>
+      <td>{email}</td>
       <td className="delete">
         <i
           id={id}

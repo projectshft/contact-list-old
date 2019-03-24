@@ -46,8 +46,9 @@ i:hover {
   position: absolute;
   left: 10vw;
   overflow: hidden;
+  border: 1px solid #202428;
   border-radius: 50%;
-  box-shadow: 0 0 30px 3px black;
+  box-shadow: 0 3px 40px -5px #202428;
 }
 
 .headshot {

@@ -26,6 +26,7 @@ class AddContact extends Component {
     };
     // Unable to utilize HTML 'required' as e.preventDefault doesn't work. This is the most basic of form validation checking only that required fields not be empty.
     const { fname, lname, email } = newContact;
+
     if (fname !== '' && lname !== '' && email !== '') {
       // Call addContact to add the new contact
       this.props.addContact(newContact);
@@ -60,7 +61,7 @@ class AddContact extends Component {
           />
 
           <input
-            type="text"
+            type="tel"
             className="form-control form-field"
             placeholder="Phone"
             value={this.state.phone}
@@ -76,7 +77,7 @@ class AddContact extends Component {
           />
 
           <input
-            type="text"
+            type="url"
             className="form-control form-field-bot"
             placeholder="Image URL (for best results use a square image)"
             value={this.state.image_url}
