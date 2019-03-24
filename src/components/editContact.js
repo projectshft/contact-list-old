@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-// This component handles adding a new contact to the contacts list
+// This component handles editing a current contact
 
 class EditContact extends React.Component {
   constructor (props) {
@@ -23,9 +23,9 @@ class EditContact extends React.Component {
     this.handleEditContactClick = this.handleEditContactClick.bind(this);
   }
 
-  /* When the Add Contact button is clicked this first checks to see if all required fields 
+  /* When the Edit Contact button is clicked this first checks to see if all required fields 
      were filled in and if not alerts the user.  It then creates a new object based on the components 
-     current state and passes that object to the addContact function in Contacts.js then
+     current state and passes that object to the editContact function in Contacts.js then
      sends the user back to the contact list page. */
 
   handleEditContactClick () {
@@ -47,9 +47,9 @@ class EditContact extends React.Component {
     }
   }
 
-  /* Creates all of the input fields for entering a new contact, a button to add the new contact, and
-     a link back to the contacts list. As a user types into each input fields it updates the components current
-     state as the input field changes.  */
+  /* Creates all of the input fields for editing a contact with their current value set when the form loads, 
+     a button to edit the contact, and a link back to the contacts list. As a user types into each input 
+     fields it updates the components current state as the input field changes.  */
 
   render () {
     return (
