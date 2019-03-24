@@ -13,7 +13,7 @@ class FocusContact extends Component {
   };
 
   render() {
-    const { id, avatar, name, email, phone } = this.props.contact;
+    const { avatar, name, email, phone } = this.props.contact;
 
     return (
       <div style={this.containerStyle()}>
