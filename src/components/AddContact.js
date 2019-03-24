@@ -152,7 +152,12 @@ const formStyle = {
 
 //PropTypes
 AddContact.propTypes = {
-    addContact: PropTypes.func.isRequired
+    addContact: PropTypes.func.isRequired,
+    fname: PropTypes.string.isRequired,
+    lname: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone_number: PropTypes.number.isRequired,
+    image_url: PropTypes.string.isRequired,
 }
 
 //enable AddContact to redirect to contacts after form submission
