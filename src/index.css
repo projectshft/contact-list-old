@@ -5,6 +5,7 @@ body {
 tr.contact:hover {
   background-color: #E8ECEF;
   transition-duration: .3s;
+  cursor: pointer;
 }
 
 i {
@@ -15,6 +16,7 @@ i {
 i:hover {
   color: #c00000;
   transition-duration: .3s;
+  cursor: pointer;
 }
 
 .new-contact-form {

@@ -27,7 +27,11 @@ class App extends Component {
 
   deleteContact = e => {
     if (e.target.classList.contains('delete')) {
-      console.log(e.target.id);
+      const keepThese = this.state.contacts.filter(
+        contact => contact.id !== e.target.id
+      );
+      this.setState({ contacts: keepThese });
+      localStorage.setItem('contacts', JSON.stringify(keepThese));
     }
   };
 
@@ -42,7 +46,6 @@ class App extends Component {
               <ContactsList
                 {...props}
                 contacts={this.state.contacts}
-                detailView={this.detailView}
                 deleteContact={this.deleteContact}
               />
             )}

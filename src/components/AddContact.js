@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import uuid from '../../node_modules/uuid';
 
 class AddContact extends Component {
@@ -37,11 +38,10 @@ class AddContact extends Component {
 
   render() {
     return (
-      <div>
-        <form
-          className="col-md-8 m-auto new-contact-form"
-          onSubmit={this.handleClick}
-        >
+      <div className="col-md-8 pt-3 m-auto">
+        <Link to="/">Back to Contacts</Link>
+        <h4 className="pt-3">Please enter contact information...</h4>
+        <form className="new-contact-form pb-3" onSubmit={this.handleClick}>
           <input
             type="text"
             className="form-control form-field-top"
@@ -78,7 +78,7 @@ class AddContact extends Component {
           <input
             type="text"
             className="form-control form-field-bot"
-            placeholder="Image URL"
+            placeholder="Image URL (for best results use a square image)"
             value={this.state.image_url}
             onChange={e => this.setState({ image_url: e.target.value })}
           />
@@ -91,10 +91,13 @@ class AddContact extends Component {
             Submit
           </button>
         </form>
-        <Link to="/">Back to Contacts</Link>
       </div>
     );
   }
 }
+
+AddContact.propTypes = {
+  addContact: PropTypes.func.isRequired
+};
 
 export default AddContact;
