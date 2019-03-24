@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 //we will use a class component because Contact will be stateful
 export class Contact extends Component {
@@ -29,11 +29,6 @@ export class Contact extends Component {
         return (
             <div>
                 <ul className="list-group">
-
-                    {/* navigation with Link to */}
-                    {/* <Link to={`/contacts/${contact.id}`}><li className="list-group item shadow-sm bg-white rouded" style={contactNameStyle}><span style={initialsStyle}>{initials}</span>{contact.fname}{contact.lname}</li></Link> */}
-
-                    {/* navigation with Click event */}
                     <li className="list-group-item shadow-sm bg-white rounded" style={contactNameStyle} onClick={this.handleClick} ><span style={initialsStyle}>{initials} </span> {contact.fname} {contact.lname}</li>
                 </ul>
             </div>
@@ -68,5 +63,3 @@ Contact.propTypes = {
 //wrap the component in withRouter to give it access to this.props.history to allow routing
 export default withRouter(Contact);
 
-//for Link navigation instead of withRouter
-// export default Contact;

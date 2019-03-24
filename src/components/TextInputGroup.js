@@ -1,0 +1,45 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+//create a stateless functional component to make the form groups more DRY
+const TextInputGroup = ({ //destructure props
+    label,
+    name,
+    value,
+    placeholder,
+    type,
+    onChange
+}) => {
+  return (
+    <div className="form-group">
+        <label htmlFor={name}>{label}</label>
+        <input
+            type={type}
+            name={name}
+            className='form control form-control-md'
+            placeholder={placeholder}
+            value={value}
+            onChange = {onChange}
+          //  error = {errors.fname}
+            required
+        />
+        <div className="invalid-feedback">This is wrong</div>
+    </div>
+  )
+}
+//PropTypes
+TextInputGroup.propTypes = {
+    label: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired
+}
+
+//default PropTypes
+TextInputGroup.defaultProps = {
+    type: 'text'
+}
+
+export default TextInputGroup;
