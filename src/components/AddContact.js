@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import TextInputGroup from './TextInputGroup';
 import PropTypes from 'prop-types';
-import classnames from  'classnames';
 
 //we will use a class component because add contact will be stateful
 export class AddContact extends Component {
@@ -16,7 +15,6 @@ export class AddContact extends Component {
         image_url: '',
         errors: {}
     }
-    //addContact should also have access to Contacts state because it will need to add to it
 
     //AddContact should set state when changes to the input fields happen
     onChange = (e) => {
@@ -35,18 +33,27 @@ export class AddContact extends Component {
         //check for empty fields/errors in input
         if (this.state.fname === '') {
             this.setState({errors: { fname: 'First name is required'}});
-        }
+            //prevent form from submitting if the field is empty
+            return;
+        } 
+
         if (this.state.lname === '') {
             this.setState({errors: { lname: 'Last name is required'}});
+            return;
         }
-        if (this.state.email === '') {
-            this.setState({errors: { email: 'Email is required'}});
-        }
+
         if (this.state.phone_number === '') {
             this.setState({errors: { phone_number: 'Phone number is required'}});
+            return;
+        }    
+        if (this.state.email === '') {
+            this.setState({errors: { email: 'Email is required'}});
+            return;
         }
+
         if (this.state.image_url === '') {
-            this.setState({errors: { image_url: 'Image is required'}});
+            this.setState({errors: { image_url: 'Contact photo is required'}});
+            return;
         }
 
         //clear state after submit (or enter) is pressed
@@ -75,6 +82,7 @@ export class AddContact extends Component {
     }
     // After clicking "submit", the user should be re-routed back to the /contacts view where they'll see all their contact.
   render() {
+
       //destructure
     const { fname, lname, phone_number, email, image_url, errors } = this.state;
 
@@ -89,6 +97,7 @@ export class AddContact extends Component {
                         placeholder="Enter First Name"
                         value={fname}
                         onChange={this.onChange}
+                        error={errors.fname}
                     />
                     <TextInputGroup
                         label="Last Name"
@@ -96,6 +105,7 @@ export class AddContact extends Component {
                         placeholder="Enter Last Name"
                         value={lname}
                         onChange={this.onChange}
+                        error={errors.lname}
                     />
                     <TextInputGroup
                         label="Phone Number"
@@ -103,6 +113,7 @@ export class AddContact extends Component {
                         placeholder="Enter Phone Number"
                         value={phone_number}
                         onChange={this.onChange}
+                        error={errors.phone_number}
                     />
                     <TextInputGroup
                         label="Email"
@@ -111,6 +122,7 @@ export class AddContact extends Component {
                         placeholder="Enter email"
                         value={email}
                         onChange={this.onChange}
+                        error={errors.email}
                     />
                      <TextInputGroup
                         label="Photo"
@@ -119,6 +131,7 @@ export class AddContact extends Component {
                         placeholder="Enter image URL"
                         value={image_url}
                         onChange={this.onChange}
+                        error={errors.image_url}
                     />
         
                     <Link to="/contacts"><button className="btn-dark btn btn-sm">Back to Contacts</button></Link>
@@ -139,12 +152,7 @@ const formStyle = {
 
 //PropTypes
 AddContact.propTypes = {
-    addContact: PropTypes.func.isRequired,
-    fname: PropTypes.string.isRequired,
-    lname: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    phone_number: PropTypes.number.isRequired,
-    image_url: PropTypes.string.isRequired,
+    addContact: PropTypes.func.isRequired
 }
 
 //enable AddContact to redirect to contacts after form submission

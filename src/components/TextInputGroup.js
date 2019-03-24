@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from  'classnames';
 
 //create a stateless functional component to make the form groups more DRY
 const TextInputGroup = ({ //destructure props
@@ -8,7 +9,8 @@ const TextInputGroup = ({ //destructure props
     value,
     placeholder,
     type,
-    onChange
+    onChange,
+    error
 }) => {
   return (
     <div className="form-group">
@@ -16,14 +18,14 @@ const TextInputGroup = ({ //destructure props
         <input
             type={type}
             name={name}
-            className='form control form-control-md'
+            className={classnames('form-control form-control-md', {
+                'is-invalid': error
+            })}
             placeholder={placeholder}
             value={value}
             onChange = {onChange}
-          //  error = {errors.fname}
-            required
         />
-        <div className="invalid-feedback">This is wrong</div>
+        {error && <div className="invalid-feedback">{error}</div>}
     </div>
   )
 }
@@ -34,7 +36,8 @@ TextInputGroup.propTypes = {
     value: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    error: PropTypes.string
 }
 
 //default PropTypes
