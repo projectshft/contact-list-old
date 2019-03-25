@@ -21,7 +21,8 @@ export class ContactList extends Component {
 }
 
 ContactList.propTypes = {
-  contacts: PropTypes.array.isRequired
+  contacts: PropTypes.array.isRequired,
+  focusContact: PropTypes.func.isRequired
 };
 
 export default ContactList;

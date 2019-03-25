@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ContactList from './components/ContactList';
 import FocusContact from './components/FocusContact';
 import Header from './components/Header';
+import AddContact from './components/AddContact';
 import avatars from './avatars/avatars';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -47,6 +48,18 @@ class App extends Component {
     }
   };
 
+  addContact = (name, email, phone) => {
+    const newContact = {
+      id: randomId(),
+      avatar: avatars[randomNum(5) - 1],
+      name,
+      email,
+      phone,
+      isFocused: false
+    };
+    this.setState({ contacts: [...this.state.contacts, newContact] });
+  };
+
   render() {
     //deconstruct the state and pull out the contacts array
     const { contacts } = this.state;
@@ -60,7 +73,7 @@ class App extends Component {
             <Switch>
               <Route
                 exact
-                path="/"
+                path={['/', '/contacts']}
                 render={props => (
                   <ContactList
                     {...props}
@@ -70,16 +83,18 @@ class App extends Component {
                 )}
               />
               <Route
-                exact
                 path="/contact/:id"
                 render={props => (
                   <FocusContact {...props} contact={contacts[focusId]} />
                 )}
               />
+              <Route
+                path="/add-contact"
+                render={props => (
+                  <AddContact {...props} addContact={this.addContact} />
+                )}
+              />
             </Switch>
-
-            {/* <ContactList contacts={contacts} focusContact={this.focusContact} /> */}
-            {/* <FocusContact contact={contacts[0]} /> */}
           </div>
         </div>
       </Router>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -7,18 +8,18 @@ const Header = () => {
       style={{ height: '60px' }}
     >
       <div className="container-fluid mx-5">
-        <h2 style={{ color: '#fff' }}>Contact List</h2>
+        <h2 style={{ color: '#fff' }}>React Contact List</h2>
         <div>
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <a href="/" className="nav-link">
+              <Link to="/contacts" className="nav-link">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="/" className="nav-link">
+              <Link to="/add-contact" className="nav-link">
                 Add+
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

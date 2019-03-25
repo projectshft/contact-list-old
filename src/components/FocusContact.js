@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class FocusContact extends Component {
   containerStyle = () => {
@@ -17,6 +18,9 @@ class FocusContact extends Component {
 
     return (
       <div style={this.containerStyle()}>
+        <Link to="/contacts" style={{ marginTop: '-20px' }}>
+          Back
+        </Link>
         <img
           src={avatar}
           alt="avatar"
