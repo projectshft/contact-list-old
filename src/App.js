@@ -54,6 +54,7 @@ class App extends Component {
       image_url
     }
   
+    //set state and push new contact to duplicated state array using spread operator
     this.setState({ contacts:
       [...this.state.contacts, newContact]})
   }
@@ -69,7 +70,6 @@ class App extends Component {
               <Route exact path={["/contacts", "/"]} render= {() => <Contacts contacts={this.state.contacts} /> } />
               <Route path="/contacts/new" render={props => <AddContact addContact={this.addContact} /> }/>
               <Route path="/contacts/:contactId" render={routerProps => <ContactDetail routerProps={routerProps} contacts={this.state.contacts} />} />
-              {/* <Route path="/contacts/:contactId" render={props => <ContactDetail {...props} contacts={this.state.contacts} />} /> */}
             </Switch>
           </div>
         </div>

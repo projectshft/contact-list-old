@@ -18,14 +18,14 @@
     should hold all of the state of the contacts MOVED TO APP
     
 bugs/edgecases:
-    -detail won't show up correctly (look at structure of router)
+    -detail won't show up correctly (look at structure of router) FIXED
     -can't submit form on enter - FIXED
-    -can submit any gibberish as a name
+    -can submit any gibberish as a name kind of FIXED
     -form disappears on enter - FIXED
-    -input fields don't clear after submit
+    -input fields don't clear after submit FIXED
     -sort.() sorts the objects in the contacts array, not just name
-    -when submitting via Enter key, none of the html form required fields work
-    -add more proptypes
+    -when submitting via Enter key, none of the html form required fields work FIXED
+    -add more proptypes DONE
 
 */
 

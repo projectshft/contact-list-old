@@ -18,6 +18,7 @@ const TextInputGroup = ({ //destructure props
         <input
             type={type}
             name={name}
+            //use classnames module to allow conditional classnames
             className={classnames('form-control form-control-md', {
                 'is-invalid': error
             })}
@@ -25,6 +26,7 @@ const TextInputGroup = ({ //destructure props
             value={value}
             onChange = {onChange}
         />
+        {/* if there is an error, display the error, add invalid-feedback cllas, and don't allow moving to the next input field */}
         {error && <div className="invalid-feedback">{error}</div>}
     </div>
   )

@@ -54,9 +54,6 @@ Contact.propTypes = {
     contact: PropTypes.object.isRequired,
     // //handleclick must be a function
     // handleClick: PropTypes.func.isRequired,
-    // //firstname and last name must be strings
-    // fname: PropTypes.string.isRequired,
-    // lname: PropTypes.string.isRequired
 
 }
 
