@@ -101,6 +101,8 @@ class EditContact extends React.Component {
   }
 }
 
+// Confirms that the props passed to this component are of the expected type
+
 EditContact.propTypes = {
   contacts: PropTypes.arrayOf(PropTypes.object).isRequired,
   editContact: PropTypes.func.isRequired,

@@ -36,11 +36,13 @@ const ContactInfo = ({contacts, routerProps}) => {
         </div>
       </div>
       <div className='text-center'>
-      <Link to='/contacts'>Back To Contact List</Link>
+        <Link to='/contacts'>Back To Contact List</Link>
       </div>
     </div>
   )
 }
+
+// Confirms that the props passed to this component are of the expected type
 
 ContactInfo.propTypes = {
   contacts: PropTypes.arrayOf(PropTypes.object).isRequired,

@@ -17,7 +17,7 @@ class AddContact extends React.Component {
       imageURL: 'http://chittagongit.com//images/default-user-icon/default-user-icon-14.jpg'
     }
 
-    this.handleAddContactClick = this.handleAddContactClick.bind(this)
+    this.handleAddContactClick = this.handleAddContactClick.bind(this);
   }
 
   // Generates a random number to use as the ID for a new contact
@@ -101,6 +101,8 @@ class AddContact extends React.Component {
     )
   }
 }
+
+// Confirms that the props passed to this component are of the expected type
 
 AddContact.propTypes = {
   addContact: PropTypes.func.isRequired,
