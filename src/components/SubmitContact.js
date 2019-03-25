@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SubmitContact extends Component{
+class SubmitContact extends React.Component{
   constructor(){
     super()
     this.state= {
@@ -29,3 +29,5 @@ handleSubmit = (e)=>{
   newContact(newContactItem);
   contactDetails.push('/')
 };
+}
+export default SubmitContact;

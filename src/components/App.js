@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SubmitContact from './SubmitContact';
 import ContactItem from './ContactItem';
 import ContactList from './ContactList';
@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      contacts = [
+      contacts: [
         {
           "id": "1",
           "name": "Dean Smith",
@@ -32,13 +32,28 @@ newContact(contact){
   });
 }
 
-  render() {
-    return (
-      <div>
+render() {
+   return (
+     <BrowserRouter>
+       <Switch>
+         <Route exact path='/' render={() => (
+           <ContactList contacts={this.state.contacts} />
+         )} />
+         <Route path='/new' render={(props) => (
+           <SubmitContact newContact={this.newContact} contacts={this.state.contacts} {...props} />
+         )} />
 
-      </div>
-    );
-  }
-}
+         <Route path='/contact/:id' render={(props) => (
+           <ContactItem contacts={this.state.contacts}  {...props}/>
+         )} />
+
+
+       </Switch>
+     </BrowserRouter>
+   )
+ };
+
+};
+
 
 export default App;
