@@ -7,6 +7,10 @@ const ViewContact = ({ contactList, match: { params: { id } } }) => {
     return user.id === contactId;
   });
 
+  if (!contactFound) {
+    return <h1>Sorry, no contact was found</h1>;
+  }
+
   return (
     <div className="container">
       <Link to="/contact">Go Back</Link>
