@@ -6,7 +6,7 @@ class NewContact extends React.Component {
     constructor() {
         super()
 
-        let RandomNumberGenerator = Math.round(Math.random() * 100000000);
+        const RandomNumberGenerator = Math.round(Math.random() * 100000000);
 
         this.state = {
             id: RandomNumberGenerator,
