@@ -22,12 +22,13 @@ class App extends Component {
           "image_url": "",
           "phoneNumber": 9305091719,
           "email": "CoachWilliams@unc.edu"
-        }
+        },
       ]
     }
+    this.newContact = this.newContact.bind(this);
   }
-newContact(contact){
-  this.setState({contacts: this.state.contacts.concat([contact])}, ()=>{
+newContact(contactInfo){
+  this.setState({contacts: this.state.contacts.concat([contactInfo])},() =>{
     console.log("contacts added", this.state.contacts)
   });
 }
@@ -46,9 +47,7 @@ render() {
          <Route path='/contact/:id' render={(props) => (
            <ContactItem contacts={this.state.contacts}  {...props}/>
          )} />
-
-
-       </Switch>
+         </Switch>
      </BrowserRouter>
    )
  };

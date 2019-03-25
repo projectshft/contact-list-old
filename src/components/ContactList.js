@@ -8,8 +8,8 @@ import { Button } from 'reactstrap';
 const ContactList = ({ contacts }) => (
 
     <div>
-        <header style={{ margin: '1em auto', padding: "1em" }}>
-            <h3>Contact List</h3>
+        <header style={{ margin: 'auto', padding: "1em" }}>
+            <h3>Carson's Contacts</h3>
             <Link to="/new">
               <Button color="primary">Add Contact </Button>
             </Link>
