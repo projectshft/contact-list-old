@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import uuid from '../../node_modules/uuid';
+import uuid from 'uuid';
 
 class AddContact extends Component {
   state = {
