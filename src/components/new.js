@@ -1,40 +1,66 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-// Component to render input form and submit button
 
-// Input boxes for name, email, phone, photo
-// Submit button redirects to </contacts>
-// Pass input values as props to state at </app>
-
+// Component to render input form for adding new contact info
 class New extends React.Component {
 
-    submitEntry() {
-        console.log('Submit clicked!')
+    state = {
+        fullName: '',
+        email: ''
     }
-   
+
+    onSubmit = (e) => {
+        e.preventDefault();
+            //console.log(this.state.fullName, this.state.email)
+
+        this.props.addContact(this.state.fullName, this.state.email);
+        this.setState({ fullName: '' , email: ''});
+    }
+
+    onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+
+    // This doesn't work as intended
+    toContacts = (e) => {
+        <Link to={'/contacts'}></Link>
+    }
 
     render() {
         return (
-            <div>
+            <form onSubmit={this.onSubmit}>
                 <h2>Add a New Contact</h2>
   
-                <input 
+                <input style={{ flex: '10', padding: '5px' }}
                     type="text" 
-                    id="name" 
+                    name="fullName" 
                     placeholder="Full name" 
-                    //value={this.state.name} 
-                    onChange={event => this.setState({ name: event.target.value })}
+                    value={this.state.fullName}
+                    onChange={this.onChange}
+                />
+            
+                <input style={{ flex: '10', padding: '5px' }}
+                    type="text" 
+                    name="email" 
+                    placeholder="Email address" 
+                    value={this.state.email}
+                    onChange={this.onChange}
                 />
 
-                <button 
-                    onClick={this.submitEntry} 
-                    type="button">
-                    Submit
-                </button>
+                <input 
+                    type="submit"
+                    value="Submit"
+                    className="btn"
+                    style={{flex: 1}}
+                    onClick={this.toContacts}
+                />
+                       
+                    {/* How to embed link functionality into a submit button? */}
+                <Link to={'/contacts'}>Back to Contacts</Link>
             
-            </div>         
+            </form>         
         )
     }
 }
+
 
 export default New;
