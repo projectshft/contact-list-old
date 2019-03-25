@@ -11,46 +11,74 @@ class NewContact extends Component {
       name: '',
       email: '',
       phone: '',
-      imgUrl: '' 
+      imgUrl: '',
+      nameError: '',
+      emailError: '',
+      phoneError:'',
     }
 
+    //bind this to work with handleChange
+    this.handleChange = this.handleChange.bind(this)
     //bind this to work with handleContact Submit
     this.handleContactSubmit = this.handleContactSubmit.bind(this)
+  }
+
+  handleChange = e =>{
+
+  }
+
+  validate = () => {
+    let nameError= '';
+    let emailError= '';
+    let phoneError='';
+
+    if (this.state.name < 1) {
+      nameError = "Please enter a valid name"
+    }
+
+    if (!this.state.email.includes('@')) {
+      emailError = "Please enter a valid email"
+    }
+
+    if (this.state.phone.length != 10) {
+      phoneError = "Please enter a valid phone number"
+    }
+
+    if (phoneError || emailError || nameError) {
+      this.setState({ phoneError, nameError, emailError });
+      return false;
+    }
+
+    return true;
   }
   
   handleContactSubmit (e) {
     e.preventDefault();
 
     const { name, email, phone, imgUrl } = this.state
+    const isValid = this.validate();
 
-    const newContact = {
-      id: Math.round(Math.random() * 100000000),
-      name,
-      email,
-      phone,
-      imgUrl
-    }
+    if (isValid) {
+      const newContact = {
+        id: Math.round(Math.random() * 100000000),
+        name,
+        email,
+        phone,
+        imgUrl
+      }
 
-    //add new contact to state
+      //add new contact to state
     this.props.addContact(newContact)
 
     //automatically load contacts page
     this.props.history.push('/contacts');
-
-    //clear each field so it is emtpy on reload
-    // this.setState({
-    //   name: '',
-    //   email: '',
-    //   phone: '',
-    //   imgUrl: '' 
-    // })
+    }
 
   }
   
 
 
   render() {
-    const required = true;
 
     return (
       <div className="container">
@@ -63,10 +91,11 @@ class NewContact extends Component {
                 <input 
                   type="text"
                   name="name"
-                  required="required"
-                  className="form-control" placeholder="full name"
+                  className="form-control" 
+                  placeholder="full name"
                   onChange={event => this.setState({ name: event.target.value})}
                   />
+                  <div className="is-invalid" style={{color: "red"}}>{this.state.nameError}</div>
               </div>
 
               <div className="form-group">
@@ -77,6 +106,7 @@ class NewContact extends Component {
                   className="form-control" placeholder="email address"
                   onChange={event => this.setState({ email: event.target.value})}
                   />
+                  <div className="is-invalid" style={{color: "red"}}>{this.state.emailError}</div>
               </div>
 
               <div className="form-group">
@@ -87,6 +117,7 @@ class NewContact extends Component {
                   className="form-control" placeholder="phone number"
                   onChange={event => this.setState({ phone: event.target.value})}
                   />
+                  <div className="is-invalid" style={{color: "red"}}>{this.state.phoneError}</div>
               </div>
 
               <div className="form-group">

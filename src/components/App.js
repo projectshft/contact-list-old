@@ -18,7 +18,7 @@ class App extends React.Component {
     this.state = {
       contacts: [
         {
-          id: 1,
+          id: generateId(),
           name: 'Felicia',
           email: 'byefelicia@gmail.com',
           phone: '222-222-2222',
@@ -61,13 +61,14 @@ class App extends React.Component {
         },
         {
           id: generateId(),
-          name: "It's Britney Bitch",
+          name: "It's Britney",
           email: 'hitmebabyonemoretime@gmail.com',
           phone: '555-555-555',
           imgUrl: 'https://images-na.ssl-images-amazon.com/images/I/71c0cI9r2dL.png' 
         },
       ]
     }
+    //
     this.addContact = this.addContact.bind(this);
   }
 

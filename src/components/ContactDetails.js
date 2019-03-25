@@ -3,16 +3,11 @@ import React from 'react';
 import _ from 'lodash'
 
 const ContactDetails= ({routerProps, contacts}) => {
-  // const contact= this.props.contacts.find(c => c.id === routerProps.contactId)
-
-  // const contact = _.find(contacts, { id: 1 });
+  //find selected contact in the state
   const contact = _.find(contacts, { id: parseInt(routerProps.match.params.contactId) });
-  console.log(routerProps.match.params.contactId)
-  console.log(contact)
 
 
-
-  
+  //if no contact exists, display an error
   if (!contact) {
     return <div>Sorry, but that contact was not found</div>
   }
@@ -28,8 +23,8 @@ const ContactDetails= ({routerProps, contacts}) => {
         </h2>
       </div>
       <ul className="list-group list-group-flush">
-        <li className="list-group-item">Email: b@gmail.com</li>
-        <li className="list-group-item">Phone: 999-999-9999</li>
+        <li className="list-group-item">Email: {contact.email}</li>
+        <li className="list-group-item">Phone: {contact.phone}</li>
       </ul>
     </div>
   )
