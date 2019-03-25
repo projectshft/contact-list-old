@@ -4,6 +4,8 @@
    * ***************************/
 import React, { Component } from 'react';
 import Contact from './Contact';
+// Import Consumer from context.js
+// import { Consumer } from '../context';
 
 class ContactList extends Component {
   // // A constructor to build/hold the state.
@@ -70,6 +72,13 @@ class ContactList extends Component {
       <div>
         {/* The above div isn't necessary, since it's carrying no extra info/instructions. Can be replaced with:
         <React.Fragment> */}
+        <div className="row justify-content-center">
+          <h1 className="display-4 mb-3">
+            <strong>
+              <span className="text-dark">Contacts</span>
+            </strong>
+          </h1>
+        </div>
         {/* map through the contactList for  */}
         {contactList.map(contact => (
           // Render the following items for each contact.

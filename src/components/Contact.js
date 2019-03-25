@@ -39,8 +39,8 @@ class Contact extends Component {
   };
   render() {
     // Use destructuring to pull out data
-    // TODO: add image_url
-    const { name, id, email, phone } = this.props;
+
+    const { name, image_url, id, email, phone } = this.props;
 
     // In order for toggle on showContactInfo to work, use destructuring to take out necessary data from this.state:
     const { showContactInfo } = this.state;
@@ -86,7 +86,7 @@ class Contact extends Component {
         {/* Toggle view of contact info or not, based on boolean value of showContactInfo */}
         {showContactInfo ? (
           <ul className="list-group">
-            {/* <li className="list-group-item">{image_url}</li> */}
+            <li className="list-group-item">{image_url}</li>
             <li className="list-group-item">Email: {email}</li>
             <li className="list-group-item">Phone: {phone}</li>
             <li className="list-group-item">ID: {id}</li>
@@ -102,7 +102,7 @@ class Contact extends Component {
 // Doesn't have to be done this way. Can also be done in the class. See above, right above the render. For this way, just take the class name and do .propTypes.
 Contact.propTypes = {
   name: PropTypes.string.isRequired,
-  // image_url: PropTypes,
+  image_url: PropTypes,
   email: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
   id: PropTypes.number,

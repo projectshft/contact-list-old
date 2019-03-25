@@ -1,9 +1,101 @@
 import React, { Component } from 'react';
+// import { Link } from 'react-router-dom;';
 
 class AddContactForm extends Component {
   // Each field of input on form will be a part of state
 
-  state = { name: '', image_url: '', email: '', phone: '' };
+  state = {
+    name: '',
+    image_url: '',
+    email: '',
+    phone: '',
+    deleted: false,
+    errors: {}
+  };
+  // constructor() {
+  //   super();
+
+  //   this.state = {
+  //     name: '',
+  //     image_url: '',
+  //     email: '',
+  //     phone: '',
+  //     deleted: false,
+  //     errors: {}
+  //   };
+  //   this.handleClick = this.handleClick.bind(this);
+  // }
+
+  // handleClick() {
+  //   // Generate id for new contact
+  //   const generateId = () => Math.round(Math.random() * 100000000);
+
+  //   console.log(
+  //     "generateId has been invoked, and here's the proof: ",
+  //     generateId()
+  //   );
+
+  //   //  Create new contact from user input
+  //   const contact = {
+  //     name: this.state.name,
+  //     image: this.state.image,
+  //     email: this.state.email,
+  //     phone: this.state.phone,
+  //     deleted: false,
+  //     id: generateId()
+  //   };
+  // }
+  // Prevent default submitting of add-contact form
+  onSubmit = e => {
+    e.preventDefault();
+    console.log('State at contact-form submission is: ', this.state);
+
+    // Error Handling
+    // NOTE: image_url is left out of error handling and is not a required field.
+    const { name, image_url, email, phone } = this.state;
+    if (name === '') {
+      this.setState({ errors: { name: 'Name is required' } });
+      return;
+    }
+
+    if (email === '') {
+      this.setState({ errors: { email: 'Email is required' } });
+      return;
+    }
+
+    if (phone === '') {
+      this.setState({ errors: { phone: 'Phone is required' } });
+      return;
+    }
+
+    const newContact = {
+      name,
+      image_url,
+      email,
+      phone
+    };
+    // TODO: Add contact to ContactList
+
+    // Empty out the state of the add-contact form;
+    this.setState({
+      name: '',
+      image_url: '',
+      email: '',
+      phone: '',
+      errors: {}
+    });
+
+    this.props.history.push('/');
+  };
+
+  // Define handlers for form input fields)
+  onNameChange = e => this.setState({ name: e.target.value });
+  onImageChange = e => this.setState({ image_url: e.target.value });
+  onEmailChange = e => this.setState({ email: e.target.value });
+  onPhoneNumberChange = e => this.setState({ phone: e.target.value });
+
+  // Could implement the above more efficiently, with just one method, utilizing brackets:
+  // onChange = e => this.setState({ [e.target.value]: e.target.value });
   render() {
     // Destructure the data
     const { name, image_url, email, phone } = this.state;
@@ -15,7 +107,9 @@ class AddContactForm extends Component {
             <h5>Add Contact</h5>
           </div>
           <div className="card-body">
-            <form>
+            {/* Create form with submit-button handler */}
+            <form onSubmit={this.onSubmit.bind(this)}>
+              {/* <form onSubmit={this.onSubmit.bind(this, dispatch)}> */}
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input
@@ -25,6 +119,8 @@ class AddContactForm extends Component {
                   placeholder="Enter name"
                   // The use of value necessitates an event handler, "onChange" that will change the state value upon data entry.
                   value={name}
+                  onChange={this.onNameChange}
+                  // onChange={this.onChange}
                 />
               </div>
               <div className="form-group">
@@ -36,6 +132,8 @@ class AddContactForm extends Component {
                   className="form-control form-control-lg"
                   placeholder="Enter image url"
                   value={image_url}
+                  onChange={this.onImageChange}
+                  // onChange={this.onChange}
                 />
               </div>
               <div className="form-group">
@@ -47,6 +145,8 @@ class AddContactForm extends Component {
                   className="form-control form-control-lg"
                   placeholder="Enter email"
                   value={email}
+                  onChange={this.onEmailChange}
+                  // onChange={this.onChange}
                 />
               </div>
               <div className="form-group">
@@ -57,6 +157,8 @@ class AddContactForm extends Component {
                   className="form-control form-control-lg"
                   placeholder="Enter phone number"
                   value={phone}
+                  onChange={this.onPhoneNumberChange}
+                  // onChange={this.onChange}
                 />
               </div>
               <div className="row justify-content-center">
@@ -70,116 +172,3 @@ class AddContactForm extends Component {
   }
 }
 export default AddContactForm;
-
-// import { Consumer } from '../../context';
-// import TextInputGroup from '../layout/TextInputGroup';
-// import axios from 'axios';
-
-// class AddContact extends Component {
-//   state = {
-//     name: '',
-//     email: '',
-//     phone: '',
-//     errors: {}
-//   };
-
-//   onSubmit = async (dispatch, e) => {
-//     e.preventDefault();
-
-//     const { name, email, phone } = this.state;
-
-//     // Check For Errors
-//     if (name === '') {
-//       this.setState({ errors: { name: 'Name is required' } });
-//       return;
-//     }
-
-//     if (email === '') {
-//       this.setState({ errors: { email: 'Email is required' } });
-//       return;
-//     }
-
-//     if (phone === '') {
-//       this.setState({ errors: { phone: 'Phone is required' } });
-//       return;
-//     }
-
-//     const newContact = {
-//       name,
-//       email,
-//       phone
-//     };
-
-//     const res = await axios.post(
-//       'https://jsonplaceholder.typicode.com/users',
-//       newContact
-//     );
-
-//     dispatch({ type: 'ADD_CONTACT', payload: res.data });
-
-//     // Clear State
-//     this.setState({
-//       name: '',
-//       email: '',
-//       phone: '',
-//       errors: {}
-//     });
-
-//     this.props.history.push('/');
-//   };
-
-//   onChange = e => this.setState({ [e.target.name]: e.target.value });
-
-//   render() {
-//     const { name, email, phone, errors } = this.state;
-
-//     return (
-//       <Consumer>
-//         {value => {
-//           const { dispatch } = value;
-//           return (
-//             <div className="card mb-3">
-//               <div className="card-header">Add Contact</div>
-//               <div className="card-body">
-//                 <form onSubmit={this.onSubmit.bind(this, dispatch)}>
-//                   <TextInputGroup
-//                     label="Name"
-//                     name="name"
-//                     placeholder="Enter Name"
-//                     value={name}
-//                     onChange={this.onChange}
-//                     error={errors.name}
-//                   />
-//                   <TextInputGroup
-//                     label="Email"
-//                     name="email"
-//                     type="email"
-//                     placeholder="Enter Email"
-//                     value={email}
-//                     onChange={this.onChange}
-//                     error={errors.email}
-//                   />
-//                   <TextInputGroup
-//                     label="Phone"
-//                     name="phone"
-//                     placeholder="Enter Phone"
-//                     value={phone}
-//                     onChange={this.onChange}
-//                     error={errors.phone}
-//                   />
-//                   <input
-//                     type="submit"
-//                     value="Submit contact"
-//                     className="btn btn-info btn-block"
-//                   />
-//                 </form>
-//               </div>
-//             </div>
-//           );
-//         }}
-//       </Consumer>
-//     );
-//   }
-// }
-
-// export default AddContact;

@@ -1,12 +1,9 @@
 /************************
  * A Header for layout/design purposes. A functional component. No state.
  *************************/
-
-/************************
- * A Header for layout/design purposes. A functional component. No state.
- *************************/
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Header = props => {
   // Create a variable for branding
@@ -21,17 +18,15 @@ const Header = props => {
         <div>
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <a href="/" className="nav-link">
-                Home
-              </a>
-              {/* <Link to="/" className="nav-link">
-                <i className="fas fa-home" /> Home
-              </Link> */}
+              <Link to="/" className="nav-link">
+                {/* <i className="fas fa-arrow-circle-left" /> Back */}
+                <i className="fas fa-chevron-left" /> Back<span> </span>
+              </Link>
             </li>
             <li className="nav-item">
-              {/* <Link to="/contact/add" className="nav-link">
+              <Link to="/contact/add" className="nav-link">
                 <i className="fas fa-plus" /> Add contact
-              </Link> */}
+              </Link>
             </li>
           </ul>
         </div>
@@ -56,15 +51,3 @@ Header.propTypes = { branding: PropTypes.string.isRequired };
 // Now we have a PropType
 
 export default Header;
-
-//  import React from 'react';
-
-// const Header = props => {
-//   return (
-//     <div>
-//       <h1>{props.psTitle}</h1>
-//     </div>
-//   );
-// };
-
-// export default Header;
