@@ -4,22 +4,7 @@ import _ from 'lodash';
 // over time to reflect the current state of the application. When we first
 // load, it represents the initial state of our application.
 const STATE = {
-  contactList: [
-    {
-      id: 70219577,
-      name: "Albert Einstein",
-      image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/220px-Albert_Einstein_Head.jpg",
-      email: "aeinstein@example.com",
-      phone_number: "707-555-5555"
-    },
-    {
-      id: 70219534,
-      name: "Benas Benesky",
-      image_url: "https://vignette.wikia.nocookie.net/mrbean/images/4/4b/Mr_beans_holiday_ver2.jpg/revision/latest/scale-to-width-down/310?cb=20181130033425",
-      email: "benas@example.com",
-      phone_number: "030-203-20303"
-    }
-  ],
+  contactList: [],
 };
 
 let ON_UPDATE_CALLBACK;
