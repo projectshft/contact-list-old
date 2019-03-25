@@ -12,7 +12,11 @@ export class AddContact extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    if (this.state.name || this.state.phone || this.state.email === '') {
+    if (
+      this.state.name === '' ||
+      this.state.email === '' ||
+      this.state.phone === ''
+    ) {
       alert('All fields are required');
     } else {
       this.props.addContact(

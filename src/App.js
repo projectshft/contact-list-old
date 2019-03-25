@@ -17,35 +17,27 @@ class App extends Component {
         avatar: avatars[randomNum(5) - 1],
         name: 'Elinor Hurt',
         email: 'elinor.hurt@gmail.com',
-        phone: '7042130348',
-        isFocused: false
+        phone: '7042130348'
       },
       {
         id: 2,
         avatar: avatars[randomNum(5) - 1],
         name: 'Jane Williams',
         email: 'jane.williams@gmail.com',
-        phone: '9104897382',
-        isFocused: false
+        phone: '9104897382'
       },
       {
         id: 3,
         avatar: avatars[randomNum(5) - 1],
         name: 'Jackie Johnson',
         email: 'jackie.johnson@gmail.com',
-        phone: '9198024312',
-        isFocused: false
+        phone: '9198024312'
       }
-    ],
-    focusId: 0
+    ]
   };
 
   focusContact = id => {
-    for (let i = 0; i < this.state.contacts.length; i++) {
-      if (this.state.contacts[i].id === id) {
-        this.setState({ focusId: i });
-      }
-    }
+    //could never make the routing to the focusContact work... Would use this to delete and edit rather easily, but... never got there due to not figuring out the routing to focusContact
   };
 
   addContact = (name, email, phone) => {
@@ -63,7 +55,6 @@ class App extends Component {
   render() {
     //deconstruct the state and pull out the contacts array
     const { contacts } = this.state;
-    const { focusId } = this.state;
 
     return (
       <Router>
@@ -85,7 +76,7 @@ class App extends Component {
               <Route
                 path="/contact/:id"
                 render={props => (
-                  <FocusContact {...props} contact={contacts[focusId]} />
+                  <FocusContact {...props} contact={contacts[0]} />
                 )}
               />
               <Route
