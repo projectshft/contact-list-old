@@ -16,11 +16,11 @@ const ContactList = ({ contacts }) => (
         </header>
         <ul>
             {contacts.map((contact) =>
-                    <li key={contact.id}>
-                        <h4>
-                            <Link to={`/contact/${contact.id}`}>{contact.name}</Link>
-                        </h4>
-                    </li>
+                <li key={contact.id}>
+                  <h4>
+                    <Link to={`/contact/${contact.id}`}>{contact.name}</Link>
+                  </h4>
+                </li>
                 )
             }
         </ul>

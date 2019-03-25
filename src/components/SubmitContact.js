@@ -38,36 +38,32 @@ handleChange = (e) => {
       return (
           <div>
               <form onSubmit={e => this.handleSubmit(e)}>
-                  <label>Name:
-                      <input type='text' placeholder="Full Name" name="name" onChange={e => this.handleChange(e)} />
-                  </label>
+                <label>Name:
+                  <input type='text' placeholder="Full Name" name="name" onChange={e => this.handleChange(e)} />
+                </label>
 
                   <br />
 
-                  <label>Phone Number:
-                      <input type="text" placeholder="(123)123-1234" name="phoneNumber" onChange={e => this.handleChange(e)} />
-                  </label>
+                <label>Phone Number:
+                  <input type="text" placeholder="(123)123-1234" name="phoneNumber" onChange={e => this.handleChange(e)} />
+                </label>
 
                   <br />
 
-                  <label>Email:
-                      <input type="text" placeholder="Email Address" name="email" onChange={e => this.handleChange(e)} />
-                  </label>
+                <label>Email:
+                  <input type="text" placeholder="Email Address" name="email" onChange={e => this.handleChange(e)} />
+                </label>
 
                   <br />
 
                   <label>Image URL:
-                      <input type="text" name="image_url" onChange={e => this.handleChange(e)} />
+                    <input type="text" name="image_url" onChange={e => this.handleChange(e)} />
                   </label>
 
                   <br />
                   <button type="submit">Submit</button>
               </form>
-
-
-
-
-          </div>
+            </div>
       )
   }
 }

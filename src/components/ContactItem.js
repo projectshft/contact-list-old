@@ -17,11 +17,11 @@ const ContactItem = ({props, contacts, match})=>{
   }
   return(
     <div>
-      <h3>Name:{contact.name}</h3>
-      <h3>image_url:{contact.image_url}</h3>
-      <h3>phoneNumber:{contact.phoneNumber}</h3>
-      <h3>email:{contact.email}</h3>
-      <Link to='/'>Return</Link>
+    <h3>Name:{contact.name}</h3>
+    <h3>Profile Pic Url:{contact.image_url}</h3>
+    <h3>Phone Number:{contact.phoneNumber}</h3>
+    <h3>email:{contact.email}</h3>
+    <Link to='/'>Return</Link>
     </div>
   )
 }
