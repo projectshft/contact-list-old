@@ -34,7 +34,7 @@ class NewContact extends React.Component {
         if (newContact.name === '') {
           window.alert('我们用你的名字. Please Enter Your Name.');
         } else if (newContact.email === '') {
-          window.alert('이베일주소를 적어주세요. Please Enter Your Email.');
+          window.alert('이메일주소를 적어주세요. Please Enter Your Email.');
         } else if (newContact.phone_number === '') {
           window.alert('Please Enter Your número de teléfono');
         } else {
