@@ -3,6 +3,9 @@ import {Link} from 'react-router-dom';
 import Id from './id.js';
 import PropTypes from 'prop-types';
 
+// !!! RENAME TO "contacts-list.js"
+// Make "Add New Contact" link into "Add" button
+
 // Component to render list of names
 
 // Each name is clickable, and redirects user to </id>
@@ -12,38 +15,29 @@ class Contacts extends React.Component {
 
  
 
-    goToNew () {
-        return (
-           console.log('gotoNew clicked!')
-        )
-    }
-   
-
     render() {
         
         //console.log(this.props.contacts)
 
-        return this.props.contacts.map((person) => (
+        return (
 
            <div>
-                <ul>        
-                    <li key={person.id}>
-                    <Link to={`/contacts/${person.id}`}>Click to see detailed info for: {person.fullName}</Link>
-                    </li>      
+                <ul> 
+                    {this.props.contacts.map(person => (
+                        <li key={person.id}>
+                        <Link to={`/contacts/${person.id}`}>Click to see detailed info for: {person.fullName}</Link>
+                        </li>      
+                    ))}       
+                    
                 </ul>
 
 
-               <Link to={'/new'}>Add New Contact</Link>
+               <Link className="btn" to={'/new'}>Add New Contact</Link>
+               
 
-               <Id 
-                key={person.id} 
-                person={person} 
-                markComplete={this.props.markComplete}
-                deleteId={this.props.deleteId}
-                />
            </div> 
                 
-        ));
+        )
     }
 
 }

@@ -1,14 +1,23 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+// TODO:
+// !!! RENAME TO "add-new.js"
+// How to embed link functionality into a submit button
+// Add input fields for phone & image url
 
 // Component to render input form for adding new contact info
 class New extends React.Component {
 
-    state = {
+constructor(props) {
+    super(props);
+
+    this.state = {
         fullName: '',
         email: ''
     }
+}
+   
 
     onSubmit = (e) => {
         e.preventDefault();
@@ -54,8 +63,7 @@ class New extends React.Component {
                     onClick={this.toContacts}
                 />
                        
-                    {/* How to embed link functionality into a submit button? */}
-                <Link to={'/contacts'}>Back to Contacts</Link>
+                <Link onSubmit={this.onSubmit.bind(this)} className="btn" to={`/contacts`}>Back to Main</Link>
             
             </form>         
         )

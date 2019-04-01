@@ -8,18 +8,22 @@ import './App.css';
 
 class App extends React.Component {
 
+// Constructor function
+  constructor(props) {
+    super(props);
 
-  state = {
+    this.state = {
       contacts: [
         {
           id: 1,
-          fullName: 'Your full name',
-          email: 'address@email.com',
-          completed: false
+          fullName: 'First Last', // change to firstName, lastName
+          email: 'address@email.com', // add img key
+
         }
       ]
     }
-               
+  }
+          
   
 
   // Takes the id of the person whose checkbox was ticked
@@ -62,55 +66,54 @@ class App extends React.Component {
     
     return (
       <BrowserRouter>
-        <div className="App">
-          <div className="container">
+        <Switch>
+          <div className="App">
+            <div className="container">
 
-            <h1 style={headerStyle}>i.ROLO</h1>
+              <h1 style={headerStyle}>i.ROLO</h1>
 
-            <Route exact path="/" render={props => (
-              <React.Fragment>
-
-                <Contacts 
-                  contacts={this.state.contacts} 
-                  markComplete={this.markComplete}
-                  deleteId={this.deleteId}
-                />
-
-              </React.Fragment>
-            )} />
-        
-            <Route path="/contacts" render={props => (
-              <React.Fragment>
-
-                <Contacts 
-                  contacts={this.state.contacts} 
-                  markComplete={this.markComplete}
-                  deleteId={this.deleteId}
-                />
-
-              </React.Fragment>
-            )} />
-
-            <Route path="/new" render={props => (
-              <React.Fragment>
-     
-                <New addContact={this.addContact} />
-
-              </React.Fragment>
-            )} />
-
-            <Route path="/contacts/:id" render={props => (
-              <React.Fragment>
-
-                <Id />
-
-              </React.Fragment>
-            )} />
-
-            
+              <Route 
+                exact path="/" 
+                render={props => (
+                  <Contacts 
+                    contacts={this.state.contacts} 
+                  />  
+                )} 
+              />
           
+              <Route 
+                path="/contacts" 
+                render={props => (
+                  <Contacts 
+                    contacts={this.state.contacts} 
+                  />
+                )} 
+              />
+
+              <Route 
+                path="/new" 
+                render={props => (
+                  <New 
+                    contacts={this.state.contacts}
+                    addContact={this.addContact} 
+                  />
+                )} 
+              />
+
+              <Route 
+                path="/contacts/:id" 
+                render={props => (  
+                  <Id 
+                    key={this.state.id} 
+                    contacts={this.state.contacts} 
+                    routerProps={props}
+                  />
+                )} 
+              />
+    
+            </div>
           </div>
-        </div>
+        </Switch>
       </BrowserRouter> 
     );
   }
