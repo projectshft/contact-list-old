@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Id from './id.js';
 import PropTypes from 'prop-types';
 
 // !!! RENAME TO "contacts-list.js"
@@ -11,21 +10,21 @@ import PropTypes from 'prop-types';
 // Each name is clickable, and redirects user to </id>
 // Button to add new contact, and redirects user to </new>
 
-class Contacts extends React.Component {
+class ContactList extends React.Component {
 
- 
 
     render() {
-        
-        //console.log(this.props.contacts)
 
         return (
 
            <div>
+               <h4>Click to see contact info</h4>
                 <ul> 
                     {this.props.contacts.map(person => (
                         <li key={person.id}>
-                        <Link to={`/contacts/${person.id}`}>Click to see detailed info for: {person.fullName}</Link>
+                            <Link to={`/contacts/${person.id}`}>
+                                <h3>{person.lastName}, {person.firstName}</h3>
+                            </Link>
                         </li>      
                     ))}       
                     
@@ -43,7 +42,7 @@ class Contacts extends React.Component {
 }
 
 // Makes sure proptype passed from {App} is an array of objects
-Contacts.propTypes = {
+ContactList.propTypes = {
     contacts: PropTypes.array.isRequired
 }
 
@@ -52,4 +51,4 @@ const listStyle = {
     padding: '5px'
 }
 
-export default Contacts;
+export default ContactList;

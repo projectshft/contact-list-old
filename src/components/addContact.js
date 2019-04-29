@@ -1,30 +1,32 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-// TODO:
-// !!! RENAME TO "add-new.js"
-// How to embed link functionality into a submit button
-// Add input fields for phone & image url
 
 // Component to render input form for adding new contact info
-class New extends React.Component {
+class AddContact extends React.Component {
 
 constructor(props) {
     super(props);
 
     this.state = {
-        fullName: '',
-        email: ''
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        image: ''
     }
 }
    
 
     onSubmit = (e) => {
         e.preventDefault();
-            //console.log(this.state.fullName, this.state.email)
+        
+        if (!this.state.firstName || !this.state.lastName || !this.state.email || !this.state.phone) {
+            alert('Please complete form!')
+        }
 
-        this.props.addContact(this.state.fullName, this.state.email);
-        this.setState({ fullName: '' , email: ''});
+        this.props.addContact(this.state.firstName, this.state.lastName, this.state.email, this.state.phone, this.state.image);
+        this.setState({ firstName: '', lastName: '', email: '', phone: '', image: ''});
     }
 
     onChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -41,9 +43,17 @@ constructor(props) {
   
                 <input style={{ flex: '10', padding: '5px' }}
                     type="text" 
-                    name="fullName" 
-                    placeholder="Full name" 
-                    value={this.state.fullName}
+                    name="firstName" 
+                    placeholder="First name" 
+                    value={this.state.firstName}
+                    onChange={this.onChange}
+                />
+
+                <input style={{ flex: '10', padding: '5px' }}
+                    type="text" 
+                    name="lastName" 
+                    placeholder="Last name" 
+                    value={this.state.lastName}
                     onChange={this.onChange}
                 />
             
@@ -54,6 +64,15 @@ constructor(props) {
                     value={this.state.email}
                     onChange={this.onChange}
                 />
+
+                <input style={{ flex: '10', padding: '5px' }}
+                    type="text" 
+                    name="phone" 
+                    placeholder="Phone number" 
+                    value={this.state.phone}
+                    onChange={this.onChange}
+                />
+
 
                 <input 
                     type="submit"
@@ -71,4 +90,4 @@ constructor(props) {
 }
 
 
-export default New;
+export default AddContact;
