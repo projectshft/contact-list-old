@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import React from 'react';
 import _ from 'lodash';
-
+//implement jsx for contact items
 const ContactItem = ({props, contacts, match})=>{
   const contact= _.find(contacts, {id: parseInt(match.params.id, 10)});
 
@@ -16,6 +16,7 @@ const ContactItem = ({props, contacts, match})=>{
     )
   }
   return(
+    //return all contact keys
     <div>
     <h3>Name:{contact.name}</h3>
     <h3>Profile Pic Url:{contact.image_url}</h3>

@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 
-
+//contact list to render contact items
 const ContactList = ({ contacts }) => (
 
     <div>
         <header style={{ margin: 'auto', padding: "1em" }}>
             <h3>Carson's Contacts</h3>
+            //add contact button
             <Link to="/new">
               <Button color="primary">Add Contact </Button>
             </Link>

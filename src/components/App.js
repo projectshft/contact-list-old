@@ -4,20 +4,21 @@ import SubmitContact from './SubmitContact';
 import ContactItem from './ContactItem';
 import ContactList from './ContactList';
 
+//app component that holds the state
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       contacts: [
         {
-          "id": "1",
+          "id": 1,
           "name": "Dean Smith",
           "image_url": "",
           "phoneNumber": 3363174563,
           "email": "CoachSmith@unc.edu"
         },
         {
-          "id": "2",
+          "id": 2,
           "name": "Roy Williams",
           "image_url": "",
           "phoneNumber": 9305091719,
@@ -32,7 +33,7 @@ newContact(contactInfo){
     console.log("contacts added", this.state.contacts)
   });
 }
-
+//render paths
 render() {
    return (
      <BrowserRouter>

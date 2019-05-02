@@ -1,8 +1,9 @@
 import React from 'react';
-
+//submit contact should create a whole new contact from the form and add to contact list
 class SubmitContact extends React.Component{
   constructor(){
     super()
+    //new contact generated
     this.state= {
       id: Math.round(Math.random()*100000000),
       name: "",
@@ -12,7 +13,7 @@ class SubmitContact extends React.Component{
     }
     this.handleSubmit= this.handleSubmit.bind(this);
 }
-
+//implement handlesubmit function to pass the new contact item
 handleSubmit = (e)=>{
   e.preventDefault();
 
@@ -26,11 +27,10 @@ handleSubmit = (e)=>{
     phoneNumber: this.state.phoneNumber,
     email: this.state.email
   };
-  console.log(newContactItem);
   newContact(newContactItem);
   history.push('/')
 };
-
+//handle change to be able to click and change pages
 handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
       }
