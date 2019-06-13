@@ -11,7 +11,7 @@ const Header = props => {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-info mb-3">
       <div className="container">
-        {/* Use "/" for href because we will be using a router */}
+        {/* Use "/" for href because router will be used */}
         <a href="/" className="navbar-brand">
           {branding}
         </a>
@@ -19,21 +19,24 @@ const Header = props => {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link to="/" className="nav-link">
-                {/* <i className="fas fa-arrow-circle-left" /> Back */}
-                <i className="fas fa-chevron-left" /> Back<span> </span>
+                <i className="fas fa-home" /> Home
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/contact/add" className="nav-link">
-                <i className="fas fa-plus" /> Add contact
+                {' '}
+                <i className="fas fa-plus" /> Add
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/about/" className="nav-link">
+                {' '}
+                <i className="fas fa-question" /> About
               </Link>
             </li>
           </ul>
         </div>
       </div>
-      {/* <div>
-    <h1>{props.branding}</h1>
-    </div>*/}
     </nav>
   );
 };
@@ -41,13 +44,12 @@ const Header = props => {
 // Use defaultProps for practice.
 
 Header.defaultProps = { branding: 'Contact-List App' };
-// If the property "psTitle" were removed from the Header component in the App.js file, then "Contact-List App" would now be the default header. But anything we pass in is going to override that.
+// If the property "psTitle" were removed from the Header component in the App.js file, then "Contact-List App" would now be the default header. But anything passed in is going to override that.
 
 /*************************
  * TYPECHECKING
  *************************/
-// For PropTypes we want to validate the data that is coming in. So Take the PropTypes object and say it's a string, and that it (a string) is required.
+// For PropTypes validate the data that is coming in.
 Header.propTypes = { branding: PropTypes.string.isRequired };
-// Now we have a PropType
 
 export default Header;

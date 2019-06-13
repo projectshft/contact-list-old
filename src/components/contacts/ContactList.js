@@ -45,7 +45,14 @@ class ContactList extends Component {
         email: 'crock@gmail.com',
         phone: '1-800-fun-naay'
       }
-    ]
+    ],
+    all: function() {
+      return this.contactList;
+    },
+    get: function(id) {
+      const isContact = c => c.id === id;
+      return this.contactList.find(isContact);
+    }
   };
 
   // Define deleteContact
