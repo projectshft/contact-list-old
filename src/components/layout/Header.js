@@ -11,7 +11,7 @@ const Header = props => {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-info mb-3">
       <div className="container">
-        {/* Use "/" for href because router will be used */}
+        {/* Use "/" for href for routing */}
         <a href="/" className="navbar-brand">
           {branding}
         </a>
