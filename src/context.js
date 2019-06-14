@@ -33,6 +33,7 @@ const reducer = (state, action) => {
 
 // Create "store" for app-level state via Context
 export class Provider extends Component {
+  // Hard-code contacts for now
   state = {
     contacts: [
       {
