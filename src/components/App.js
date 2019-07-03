@@ -17,26 +17,26 @@ class App extends React.Component {
         {
           id: 0,
           name: "Kristina",
-          email: "kristinajbender@gmail.com",
+          email: "kjb@gmail.com",
           phone_number: "2524527933",
           image_url: "link"
         }
       ]
     }
 
-    // bind functions
+    // bind functions 
 
   }
 
   // declare functions 
-  
+
   render() {
     return (
       <div className="App">
-        <Link to="/">Contacts   </Link>
-        <Link to="/new">New Contact   </Link>
-        <Link to="/view">View Contact   </Link>
-        <Link to="/edit">Edit Contact </Link>
+        <Link to="/">-Contacts-   </Link>
+        <Link to="/new">-New Contact-   </Link>
+        <Link to="/view">-View Contact-   </Link>
+        <Link to="/edit">-Edit Contact-   </Link>
 
         <Switch>
           <Route exact path='/' component={Contacts} />
