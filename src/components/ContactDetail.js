@@ -3,7 +3,6 @@ import React from 'react'
 import _ from 'lodash'
 
 const ContactDetail = ({props, contacts}) => {
-  console.log(props);
   const contact = _.find(contacts, { id: parseInt(props.match.params.id, 10) });
 
   if (!contact) {
@@ -22,7 +21,7 @@ const ContactDetail = ({props, contacts}) => {
       <h2>Phone: {contact.phone_number}</h2>
       <h2>Email: {contact.email}</h2>
       <Link to='/contacts'>Back</Link> | 
-      <Link to='/contacts/:id/edit'>Edit</Link>
+      <Link to={`/contacts/${contact.id}/edit`}>Edit</Link>
     </div>
   )
 }
