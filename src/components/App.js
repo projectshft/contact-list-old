@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 class App extends Component {
   render() {
     return (
-      <div>sup</div>
+      <div>
+        <button className="btn btn-primary">hi</button>
+      </div>
     )
   }
 }
