@@ -2,7 +2,9 @@ import { Switch, Route, Link } from 'react-router-dom'
 import React from 'react'
 
 const ContactList = ({editContact, contacts}) => (
-  <div>
+  <div className='col-md-8 offset-md-2'>
+    <div className="jumbotron"><h1>Contacts!</h1></div>
+
     <ul>
       {
         contacts.map(c => (

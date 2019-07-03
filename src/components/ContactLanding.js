@@ -2,9 +2,10 @@ import { Switch, Route } from 'react-router-dom'
 import React from 'react';
 import ContactDetail from './ContactDetail';
 import AddContact from './AddContact';
+import EditContact from './EditContact';
 import ContactList from './ContactList';
 
-const ContactLanding = ({contacts, addContact}) => (
+const ContactLanding = ({contacts, addContact, editContact}) => (
   <Switch>    
     <Route path='/contacts/new' render={(props) => (
       <AddContact props={props} contacts={contacts} addContact={addContact} />

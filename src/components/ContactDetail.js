@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
+import _ from 'lodash'
 
 const ContactDetail = ({props, contacts}) => {
-  const contact = contacts.find(c => c.id === props.id);
+  console.log(props);
+  const contact = _.find(contacts, { id: parseInt(props.match.params.id, 10) });
 
   if (!contact) {
     return(
@@ -17,9 +19,9 @@ const ContactDetail = ({props, contacts}) => {
     <div className='contact-detail'>
       <img src={contact.image_url}></img>
       <h1>{contact.name}</h1>
-      <h2>Phone: {contact.number}</h2>
+      <h2>Phone: {contact.phone_number}</h2>
       <h2>Email: {contact.email}</h2>
-      <Link to='/contacts'>Back</Link>
+      <Link to='/contacts'>Back</Link> | 
       <Link to='/contacts/:id/edit'>Edit</Link>
     </div>
   )
