@@ -3,10 +3,18 @@ import { Link } from 'react-router-dom'
 
 class Contacts extends React.Component {
 
-  // constructor() {
-  //   super()
+  constructor() {
+    super()
 
-  // }
+    this.handleDelete = this.handleDelete.bind(this); 
+  }
+
+  handleDelete(event) {
+    event.preventDefault();
+    const thisId = event.target.value; 
+    this.props.deleteContact(thisId);
+  }
+
   render() {
 
     const contacts = this.props.contacts; 
@@ -15,6 +23,7 @@ class Contacts extends React.Component {
         <Link to={`/${contact.id}`}>
           {contact.name}
         </Link>
+        <button value={contact.id} onClick={this.handleDelete}>Delete</button>
       </li>
       )
     );
