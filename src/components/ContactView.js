@@ -18,7 +18,16 @@ class ContactView extends React.Component {
       <div>
         {contact.name}
       </div>
-      <button><Link to='/'>back</Link></button>
+      <div>
+        {contact.email}
+      </div>
+      <div>
+        {contact.phone_number}
+      </div>
+      <div>
+        {contact.image_url}
+      </div>
+      <button><Link to='/'>Back</Link></button>
       </div>
     )
   }

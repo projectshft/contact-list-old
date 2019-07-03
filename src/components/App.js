@@ -11,24 +11,33 @@ import ContactEdit from './ContactEdit';
 class App extends React.Component {
   constructor() {
     super()
-
+    const counter = 0;
     this.state = {
       contacts: [
         {
-          id: 0,
+          id: counter,
           name: "Kristina",
           email: "kjb@gmail.com",
           phone_number: "2524527933",
           image_url: "link"
         }
-      ]
+      ],
+      counter: counter
     }
 
     // bind functions 
-
+    this.addContact = this.addContact.bind(this);
   }
 
   // declare functions 
+  addContact(contact) {
+    const nextId = this.state.counter + 1;
+    contact.id = nextId;
+    this.setState({
+      contacts: this.state.contacts.concat([contact]),
+      counter: nextId
+    });
+  }
 
   render() {
     return (
@@ -47,7 +56,14 @@ class App extends React.Component {
               />
             )}
           />
-          <Route path='/new' component={ContactNew} />
+          <Route path='/new' 
+            render={(props) => 
+              <ContactNew
+                props={props}
+                addContact={this.addContact}
+              />
+            } 
+          />
           <Route path='/edit' component={ContactEdit} />
           <Route path='/:id'
             render={(props) =>

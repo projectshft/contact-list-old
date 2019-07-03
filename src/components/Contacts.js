@@ -12,7 +12,7 @@ class Contacts extends React.Component {
     const contacts = this.props.contacts; 
     const list = contacts.map((contact) => (
       <li key={contact.id}> 
-        <Link to={"/"+contact.id}>
+        <Link to={`/${contact.id}`}>
           {contact.name}
         </Link>
       </li>
@@ -27,7 +27,7 @@ class Contacts extends React.Component {
         <ul>
           {list}
         </ul>
-        <button><Link to='/new'>add contact</Link></button>
+        <button><Link to='/new'>Add Contact</Link></button>
       </div>
     )
   }
