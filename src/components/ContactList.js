@@ -7,7 +7,7 @@ const ContactList = ({editContact, contacts}) => (
       {
         contacts.map(c => (
           <li key={c.id}>
-            <Link to={`/contacts/${c.id}`}>{c.name}</Link>
+            <Link to={`/contacts/${c.id}`}>{c.name}</Link> <Link to={`/contacts/${c.id}/edit`}>Edit</Link>
           </li>
         ))
       }

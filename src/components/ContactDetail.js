@@ -25,4 +25,4 @@ const ContactDetail = ({props, contacts}) => {
   )
 }
 
-export default Player
+export default ContactDetail
