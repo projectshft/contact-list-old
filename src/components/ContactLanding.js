@@ -7,11 +7,11 @@ import ContactList from './ContactList';
 const ContactLanding = ({contacts, addContact}) => (
   <Switch>    
     <Route path='/contacts/new' render={(props) => (
-      <AddContact props={props} players={players} addContact={addContact} />
+      <AddContact props={props} contacts={contacts} addContact={addContact} />
     )}/>
   
     <Route path='/contacts/:id' render={(props) => (
-      <ContactDetail props={props} players={players} />
+      <ContactDetail props={props} contacts={contacts} />
     )}/>
     
     <Route path='/contacts' render={() => (
