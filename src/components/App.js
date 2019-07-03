@@ -9,9 +9,27 @@ import ContactEdit from './ContactEdit';
 
 
 class App extends React.Component {
+  constructor() {
+    super()
 
+    this.state = {
+      contacts : [
+        {
+          id: 0,
+          name: "Kristina",
+          email: "kristinajbender@gmail.com",
+          phone_number: "2524527933",
+          image_url: "link"
+        }
+      ]
+    }
 
+    // bind functions
 
+  }
+
+  // declare functions 
+  
   render() {
     return (
       <div className="App">
