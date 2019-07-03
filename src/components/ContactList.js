@@ -16,7 +16,14 @@ class ContactList extends Component {
       "name": "Albert Einstein",
       "image_url": "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
       "email": "aeinstein@example.com",
-      "phone_number": "15555555555"}
+      "phone_number": "15555555555"},
+
+      {"id": 70219578,
+      "name": "Kate Kremer",
+      "image_url": "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
+      "email": "kkremer@example.com",
+      "phone_number": "15555555556"},
+
       ]
     }
   }
@@ -29,17 +36,26 @@ render(){
     <div className="container">
       <div className="row">
         <div className="col-md-6">
-          <h1>Contacts</h1>
-          <ul className='list-unstyled'>
+          <h1 className='display-4'>Contacts</h1>
+          <table class='table table-hover'>
+            <thead>
+              <tr>
+                <th scope='col'></th>
+              </tr>
+            </thead>
+            <tbody>
             {
               this.state.contacts.map(contact => (
-                <li key={contact.id}>{contact.name}</li>
+                <tr key={contact.id}>
+                  <td>{contact.name}</td>
+                </tr>
               ))
             }
-          </ul>
+            </tbody>
+          </table>
         </div>
         <div className="col-md-6">
-          <button id="add-contact-button">Add Contact</button>
+          <button className='btn btn-light' id="add-contact-button">Add Contact</button>
           </div>
           </div>
         </div>
