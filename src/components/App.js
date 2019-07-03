@@ -1,7 +1,7 @@
 import { Switch, Route } from 'react-router-dom'
 import React from 'react'
 import Home from './Home'
-import ContactList from './ContactList'
+import ContactLanding from './ContactLanding'
 import AddContact from './AddContact'
 
 class App extends React.Component {
@@ -32,9 +32,9 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route path='/contacts' render={() => (
-            <ContactList editContact={this.editContact} contacts={this.state.contacts} />
+            <ContactLanding editContact={this.editContact} contacts={this.state.contacts} />
           )}/>
-          <Route path='/new' component={AddContact}/>
+          <Route path='contacts/new' component={AddContact}/>
         </Switch>
       </div>
     )
