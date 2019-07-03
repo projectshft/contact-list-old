@@ -10,8 +10,7 @@ class AddContact extends React.Component {
       name: '',
       image_url: '',
       email: '',
-      phone_number: '',
-      favorite: false
+      phone_number: ''
     }
 
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
