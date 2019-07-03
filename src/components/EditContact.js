@@ -7,10 +7,7 @@ class EditContact extends React.Component {
     super(props);
 
     this.state = {
-      name: '',
-      image_url: '',
-      email: '',
-      phone_number: ''
+      id: parseInt(this.props.props.match.params.id, 10)
     }
 
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this);
@@ -18,13 +15,11 @@ class EditContact extends React.Component {
   }
 
   handleSubmitContactClick () {
-    const newContact = {
-      name: this.state.name,
-      image_url: this.state.image_url,
-      email: this.state.email,
-      phone_number: this.state.phone_number
+    const newContact = {};
+    for (let [key, value] of Object.entries(this.state)) {
+      newContact[key] = value;
     };
-
+    console.log(newContact);
     this.props.editContact(newContact)
     this.props.props.history.push('/contacts')
   }
@@ -35,26 +30,26 @@ class EditContact extends React.Component {
       <div>
         <form>
         <label>Name</label>
-        <input type='text' className='form-control' value={contact.name} onChange={event =>
+        <input type='text' className='form-control' defaultValue={contact.name} onChange={event =>
           this.setState({ name: event.target.value })
         }/>
 
         <br/>
 
         <label>Phone Number</label>
-        <input type='text' className='form-control' value={contact.phone_number} onChange={event =>
+        <input type='text' className='form-control' defaultValue={contact.phone_number} onChange={event =>
           this.setState({ phone_number: event.target.value })
         }/>
 
         <br/>
 
         <label>Email</label>
-        <input type='text' className='form-control' value={contact.email} onChange={event =>
+        <input type='text' className='form-control' defaultValue={contact.email} onChange={event =>
           this.setState({ email: event.target.value })
         }/>
 
         <label>Image Url</label>
-        <input type='text' className='form-control' value={contact.image_url} onChange={event =>
+        <input type='text' className='form-control' defaultValue={contact.image_url} onChange={event =>
           this.setState({ image_url: event.target.value })
         }/>
 
