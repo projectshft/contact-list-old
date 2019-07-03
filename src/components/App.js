@@ -19,6 +19,11 @@ class App extends React.Component {
     this.setState({contacts: this.state.contacts.concat([contact])});
     console.log(this.state.contacts);
   }
+
+  editContact(contact){
+    this.setState({contacts: this.state.contacts.map((c) => c.id === contact.id ? Object.assign({},c,contact) : c)});
+    console.log(this.state.contacts);
+  }
   
 
   render() {
