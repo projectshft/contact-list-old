@@ -37,6 +37,10 @@ class App extends React.Component{
           <Route exact path='/' render={() => (
             <ContactList contacts={this.state.contacts}/>
           )}/>
+          <Route path='/:id' render={(props) =>(
+            <Contact props={props} contacts={this.state.contacts}/>
+          )}/>
+
         </Switch>
       </div>
     )

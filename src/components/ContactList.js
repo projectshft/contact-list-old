@@ -1,5 +1,5 @@
 import '../ContactList.css';
-import { Swtich, Route } from 'react-router-dom';
+import { Swtich, Route, Link } from 'react-router-dom';
 import React from 'react';
 import App from './App';
 //routing for Contact and Contact Form will be handled here so import those
@@ -13,7 +13,7 @@ const ContactList=({contacts})=>(
       <div className="row">
         <div className="col-md-6">
           <h1 className='display-4'>Contacts</h1>
-          <table class='table table-hover'>
+          <table className='table table-hover'>
             <thead>
               <tr>
                 <th scope='col'></th>
@@ -23,8 +23,9 @@ const ContactList=({contacts})=>(
             {
               contacts.map(contact => (
                 <tr key={contact.id}>
-                  <td>{contact.name}</td>
+                  <td><Link to={`/${contact.id}`}>{contact.name}</Link></td>
                 </tr>
+
               ))
             }
             </tbody>
@@ -35,6 +36,8 @@ const ContactList=({contacts})=>(
           </div>
           </div>
         </div>
+
+
 
   )
 
