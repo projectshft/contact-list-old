@@ -9,7 +9,11 @@ const ContactLanding = ({contacts, addContact}) => (
     <Route path='/contacts/new' render={(props) => (
       <AddContact props={props} contacts={contacts} addContact={addContact} />
     )}/>
-  
+
+    <Route path='/contacts/:id/edit' render={(props) => (
+      <EditContact props={props} contacts={contacts} editContact={editContact} />
+    )}/>
+
     <Route path='/contacts/:id' render={(props) => (
       <ContactDetail props={props} contacts={contacts} />
     )}/>
