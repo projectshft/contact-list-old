@@ -3,12 +3,12 @@ import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ContactList from './components/ContactList';
+import App from './components/App';
 
 
 
 ReactDOM.render((
   <BrowserRouter>
-    <ContactList />
+    <App />
   </BrowserRouter>
 ), document.getElementById('root'));
