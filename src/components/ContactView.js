@@ -6,9 +6,9 @@ class ContactView extends React.Component {
 
   render() {
 
+    const thisId = Number(this.props.props.match.params.id);
     const contacts = this.props.contacts; 
-    // hard code id value as placeholder 
-    const contact = contacts.find((contact) => { return contact.id === 0; });
+    const contact = contacts.find((contact) => { return contact.id === thisId; });
 
     return (
       <div>

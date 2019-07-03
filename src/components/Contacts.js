@@ -27,7 +27,7 @@ class Contacts extends React.Component {
         <ul>
           {list}
         </ul>
-        <button><Link to='/new'>add</Link></button>
+        <button><Link to='/new'>add contact</Link></button>
       </div>
     )
   }

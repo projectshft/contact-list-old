@@ -50,8 +50,9 @@ class App extends React.Component {
           <Route path='/new' component={ContactNew} />
           <Route path='/edit' component={ContactEdit} />
           <Route path='/:id'
-            render={() =>
+            render={(props) =>
               <ContactView
+                props={props}
                 contacts={this.state.contacts}
               />
             }
