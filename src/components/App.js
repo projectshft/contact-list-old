@@ -8,7 +8,22 @@ class App extends Component {
     super();
 
     this.state = {
-      contacts: []
+      contacts: [
+        {
+          id: 789432,
+          name: 'sir dog',
+          image: 'https://upload.wikimedia.org/wikipedia/en/1/13/Stick_figure.png',
+          email: 'sirdog@yahoo.com',
+          phoneNumber: '555-555-5555'
+        },
+        {
+          id: 123456,
+          name: 'blerb',
+          image: 'https://upload.wikimedia.org/wikipedia/en/1/13/Stick_figure.png',
+          email: 'blerberino@hotmail.com',
+          phoneNumber: '444-444-4444'
+        }
+      ]
     };
 
     this.addContact = this.addContact.bind(this);
