@@ -16,7 +16,10 @@ const Contact = ({props, contacts, editContact}) => {
 
   return (
     <div>
-      {currentContact.name}
+      <img src={currentContact.image} />
+      <h1>{currentContact.name}</h1>
+      <p>Email: {currentContact.email}</p>
+      <p>Phone number: {currentContact.phoneNumber}</p>
       <Link to='/contacts'>Back</Link>
     </div>
   );
