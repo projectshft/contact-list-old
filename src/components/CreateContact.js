@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
-
+//create a way to get a random number
 const generateId = () => Math.round(Math.random() * 100000000);
 
 class CreateContact extends React.Component {
   constructor() {
     super()
-
+//set different state values that user can change
     this.state = {
       id: '',
       name: '',
@@ -17,7 +17,7 @@ class CreateContact extends React.Component {
     }
   }
 
-
+//when submit button is clicked a contact is made from the user's input
   handleSubmit () {
     const newContact = {
       id: generateId(),
@@ -26,11 +26,12 @@ class CreateContact extends React.Component {
       email: this.state.email,
       phone_number: this.state.phone_number
     };
-
+//using the new contact as an argument for the apps addContact function
     this.props.addContact(newContact)
+//once the new contact is added the page then automatically goes back to /contacts 
     this.props.props.history.push('/contacts')
   }
-
+//rendering input forms for user to input values to create a new contact
   render () {
     return (
       <div>
@@ -56,7 +57,7 @@ class CreateContact extends React.Component {
             <input type='text' onChange={event => this.setState({phone_number:event.target.value})
           }/>
           <br />
-
+          //when submit button is clicked CreateContact's handleSubmit function
           <button type ='button' onClick={this.handleSubmit}>Submit</button>
 
         </form>
