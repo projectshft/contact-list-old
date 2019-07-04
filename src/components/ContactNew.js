@@ -1,4 +1,5 @@
 import React from 'react';
+import { sendEvent } from './State';
 
 class ContactNew extends React.Component {
   constructor() {
@@ -21,9 +22,17 @@ class ContactNew extends React.Component {
     this.setState({[event.target.id]: event.target.value});
   }
 
-  handleAdd(event) {
-    event.preventDefault();
-    this.props.addContact(this.state);
+  // handleAdd(event) {
+  //   event.preventDefault();
+  //   this.props.addContact(this.state);
+  //   this.props.props.history.push('/');
+  //   this.setState({name: '', email: '', phone_number: '', image_url: ''}); 
+  // }
+
+  handleAdd (e) {
+    e.preventDefault(); 
+    const newContact = this.state;
+    sendEvent('addContact', newContact);
     this.props.props.history.push('/');
     this.setState({name: '', email: '', phone_number: '', image_url: ''}); 
   }

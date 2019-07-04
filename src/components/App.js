@@ -27,26 +27,26 @@ class App extends React.Component {
     }
 
     // bind functions 
-    this.addContact = this.addContact.bind(this);
-    this.deleteContact = this.deleteContact.bind(this); 
+    //this.addContact = this.addContact.bind(this);
+    //this.deleteContact = this.deleteContact.bind(this); 
     this.editContact = this.editContact.bind(this);
   }
 
   // declare functions 
-  addContact(contact) {
-    const nextId = this.state.counter + 1;
-    contact.id = nextId;
-    this.setState({
-      contacts: this.state.contacts.concat([contact]),
-      counter: nextId
-    });
-  }
+  // addContact(contact) {
+  //   const nextId = this.state.counter + 1;
+  //   contact.id = nextId;
+  //   this.setState({
+  //     contacts: this.state.contacts.concat([contact]),
+  //     counter: nextId
+  //   });
+  // }
 
-  deleteContact(id) {
-    this.setState({contacts: this.state.contacts.filter(
-      contact => contact.id !== Number(id)
-    )}); 
-  }
+  // deleteContact(id) {
+  //   this.setState({contacts: this.state.contacts.filter(
+  //     contact => contact.id !== Number(id)
+  //   )}); 
+  // }
 
   editContact(contact) {
     this.setState({contacts: this.state.contacts.map(
@@ -70,8 +70,8 @@ class App extends React.Component {
             exact path='/'
             render={() => (
               <Contacts
-                contacts={this.state.contacts}
-                deleteContact={this.deleteContact}
+                contacts={this.props.contacts}
+                // deleteContact={this.deleteContact}
               />
             )}
           />
@@ -80,7 +80,7 @@ class App extends React.Component {
             render={(props) => 
               <ContactNew
                 props={props}
-                addContact={this.addContact}
+                // addContact={this.addContact}
               />
             } 
           />
