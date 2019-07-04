@@ -1,10 +1,14 @@
 import React from 'react';
-import Contact from './Contact';
+import { Link } from 'react-router-dom';
 
 const ContactsList = (props) => {
   const contactItems = props.contacts.map((contact) => {
     return (
-      <Contact contact={contact} />
+      <tr>
+        <td>
+          <Link to={`/contacts/${contact.id}`}>{contact.name}</Link>
+        </td>
+      </tr>
     )
   });
 

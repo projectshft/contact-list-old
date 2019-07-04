@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Root from './Root';
 import Rolodex from './Rolodex';
+import Contact from './Contact';
 
 class App extends Component {
   constructor() {
@@ -43,7 +44,10 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Root}/>
           <Route exact path='/contacts' render={() => (
-            <Rolodex contacts={this.state.contacts} addContact={this.addContact} editContact={this.editContact} />
+            <Rolodex contacts={this.state.contacts} addContact={this.addContact} />
+          )} />
+          <Route path='/contacts/:id' render={() => (
+            <Contact contacts={this.state.contacts} editContact={this.editContact} />
           )} />
         </Switch>
       </div>

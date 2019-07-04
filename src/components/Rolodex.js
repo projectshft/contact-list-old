@@ -1,14 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import Header from './Header';
 import ContactsList from './ContactsList';
+import Contact from './Contact';
 
-const Rolodex = (props) => (
-  <div>
-    <Header />
-    <ContactsList contacts={props.contacts} />
-    <Link to='/'>exit</Link>
-  </div>
+const Rolodex = ({contacts, addContact, editContact}) => (
+
+      <div>
+        <Header />
+        <ContactsList contacts={contacts} />
+        <Link to='/'>exit</Link>
+      </div>
+   
 );
 
 export default Rolodex;
