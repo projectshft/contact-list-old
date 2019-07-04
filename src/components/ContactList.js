@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
-import blank_contact from '../blank_profile_male.jpg';
+import PropTypes from 'prop-types';
+import ContactListItem from './ContactListItem'
 
-const ContactList = ({contacts}) => (
+const ContactList = ({contacts, removeContact}) => (
   <div className='col-md-8 offset-md-2'>
     <div className="jumbotron"><h1>Rolodex</h1></div>
     <div className='contacts-info'>
@@ -14,16 +15,16 @@ const ContactList = ({contacts}) => (
     
 
     <ul className='list-group'>
-      {
-        contacts.map(c => (
-          <li key={c.id} className='list-group-item'>
-            <img className="float-left" src={c.image_url === '' ? blank_contact: c.image_url} alt='contact related view'></img>
-            <Link to={`/contacts/${c.id}`} className='align-middle'><h4>{c.name}</h4></Link> <Link className='btn btn-outline-info btn-md float-right' to={`/contacts/${c.id}/edit`}>Edit</Link>
-          </li>
-        ))
-      }
+      {contacts.map(c =>
+          <ContactListItem contact={c} removeContact={removeContact} />
+        )}
     </ul>
   </div>
 )
+
+ContactList.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  removeContact: PropTypes.func.isRequired
+}
 
 export default ContactList

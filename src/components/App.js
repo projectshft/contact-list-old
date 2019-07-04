@@ -48,6 +48,7 @@ class App extends React.Component {
     
     this.addContact = this.addContact.bind(this);
     this.editContact = this.editContact.bind(this);
+    this.removeContact = this.removeContact.bind(this);
   }
   
   addContact (contact) {
@@ -57,10 +58,16 @@ class App extends React.Component {
   }
 
   editContact(contact){
-    this.setState(
-      {contacts:
+    this.setState({
+      contacts:
         this.state.contacts.map((c) => c.id === contact.id ? Object.assign({},c,contact) : c)
       })
+  }
+
+  removeContact(contactId) {
+    this.setState({
+      contacts: this.state.contacts.filter((c) => c.id !== contactId)
+    })
   }
   
   render() {
@@ -78,6 +85,7 @@ class App extends React.Component {
               <ContactLanding
                 addContact={this.addContact}
                 editContact={this.editContact}
+                removeContact={this.removeContact}
                 contacts={this.state.contacts}
               />
             )}

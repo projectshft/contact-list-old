@@ -6,7 +6,7 @@ import AddContact from './AddContact';
 import EditContact from './EditContact';
 import ContactList from './ContactList';
 
-const ContactLanding = ({contacts, addContact, editContact}) => (
+const ContactLanding = ({contacts, addContact, editContact, removeContact}) => (
   <Switch>    
     <Route path='/contacts/new' render={(props) => (
       <AddContact props={props} addContact={addContact} />
@@ -17,11 +17,11 @@ const ContactLanding = ({contacts, addContact, editContact}) => (
     )}/>
 
     <Route path='/contacts/:id' render={(props) => (
-      <ContactDetail props={props} contacts={contacts} />
+      <ContactDetail props={props} contacts={contacts}/>
     )}/>
     
     <Route path='/contacts' render={() => (
-      <ContactList contacts={contacts} />
+      <ContactList contacts={contacts}  removeContact={removeContact} />
     )}/>
   </Switch>
 )
@@ -30,6 +30,7 @@ ContactLanding.propTypes = {
   contacts: PropTypes.array.isRequired,
   addContact: PropTypes.func.isRequired,
   editContact: PropTypes.func.isRequired,
+  removeContact: PropTypes.func.isRequired
 };
 
 
