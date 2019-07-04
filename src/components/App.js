@@ -28,6 +28,7 @@ class App extends React.Component {
     // bind functions 
     this.addContact = this.addContact.bind(this);
     this.deleteContact = this.deleteContact.bind(this); 
+    this.editContact = this.editContact.bind(this);
   }
 
   // declare functions 
@@ -46,14 +47,23 @@ class App extends React.Component {
     )}); 
   }
 
+  editContact(contact) {
+    this.setState({contacts: this.state.contacts.map(
+      (el) => el.id === contact.id ? Object.assign({}, el, {name: contact.name}) : el 
+    )});
+  }
+
   render() {
     return (
       <div className="App">
+        <div className="row">
+          <div className="col">
         <Link to="/">-Contacts-   </Link>
         <Link to="/new">-New Contact-   </Link>
         {/* <Link to="/view">-View Contact-   </Link> */}
-        <Link to="/edit">-Edit Contact-   </Link>
-
+        {/* <Link to="/edit">-Edit Contact-   </Link> */}
+        </div>
+        </div>
         <Switch>
           <Route
             exact path='/'
@@ -64,7 +74,8 @@ class App extends React.Component {
               />
             )}
           />
-          <Route path='/new' 
+          <Route 
+            path='/new' 
             render={(props) => 
               <ContactNew
                 props={props}
@@ -72,14 +83,23 @@ class App extends React.Component {
               />
             } 
           />
-          <Route path='/edit' component={ContactEdit} />
-          <Route path='/:id'
+          <Route 
+            exact path='/:id'
             render={(props) =>
               <ContactView
                 props={props}
                 contacts={this.state.contacts}
               />
             }
+          />
+          <Route path='/:id/edit' 
+            render={(props) => 
+              <ContactEdit
+                props={props}
+                contacts={this.state.contacts}
+                editContact={this.editContact}
+              />
+            } 
           />
           
         </Switch>

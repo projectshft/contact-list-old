@@ -11,8 +11,14 @@ class Contacts extends React.Component {
 
   handleDelete(event) {
     event.preventDefault();
-    const thisId = event.target.value; 
-    this.props.deleteContact(thisId);
+    const thisId = Number(event.target.value); 
+    const contacts = this.props.contacts;
+    const contact = contacts.find((contact) => { return contact.id === thisId; });
+    const name = contact.name; 
+    if (window.confirm(`Delete ${name} from contacts?`)) { 
+      this.props.deleteContact(thisId);
+    }
+    //this.props.deleteContact(thisId);
   }
 
   render() {
@@ -23,17 +29,20 @@ class Contacts extends React.Component {
         <Link to={`/${contact.id}`}>
           {contact.name}
         </Link>
+        <Link to={`/${contact.id}/edit`}>
+          Edit
+        </Link>
         <button value={contact.id} onClick={this.handleDelete}>Delete</button>
       </li>
       )
     );
 
     return (
-      <div>
+      <div className="row">
         <div>
-          Contacts
+          <h2>Contacts</h2>
         </div>
-        <ul>
+        <ul className='col-md-4 list-group'>
           {list}
         </ul>
         <button><Link to='/new'>Add Contact</Link></button>
