@@ -32,7 +32,11 @@ class EditContact extends React.Component {
   render () {
     const contact = _.find(this.props.contacts, { id: parseInt(this.props.props.match.params.id, 10) });
     return (
-      <ContactForm handleFormChange={this.handleFormChange} handleSubmitContactClick={this.handleSubmitContactClick} contact={contact}/>
+      <ContactForm
+        handleFormChange={this.handleFormChange}
+        handleSubmitContactClick={this.handleSubmitContactClick}
+        contact={contact}
+      />
     )
   }
 }

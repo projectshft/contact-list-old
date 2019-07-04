@@ -33,5 +33,4 @@ ContactLanding.propTypes = {
   removeContact: PropTypes.func.isRequired
 };
 
-
 export default ContactLanding

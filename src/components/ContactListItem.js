@@ -16,7 +16,7 @@ const ContactListItem = ({contact, removeContact}) => (
       </button>
     </span>
   </li>
-);
+)
 
 ContactListItem.propTypes = {
   removeContact: PropTypes.func.isRequired

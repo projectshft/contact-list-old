@@ -12,8 +12,6 @@ const ContactList = ({contacts, removeContact}) => (
       </span>
       <Link className='btn btn-secondary btn-lg btn-block align-right' to={`/contacts/new`}>Add Contact</Link>
     </div>
-    
-
     <ul className='list-group'>
       {contacts.map(c =>
           <ContactListItem contact={c} removeContact={removeContact} />

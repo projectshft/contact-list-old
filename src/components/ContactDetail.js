@@ -17,7 +17,7 @@ const ContactDetail = ({props, contacts}) => {
   }
 
   return (
-    <div className='contact-detail'>
+    <div className='contact-detail col-md-8 offset-md-2'>
       <div className="card">
         <img className="card-img-top" src={contact.image_url === '' ? blank_contact: contact.image_url} alt="Contact card cap" />
         <div className="card-body">
@@ -25,7 +25,7 @@ const ContactDetail = ({props, contacts}) => {
           <p className="card-text">{contact.phone_number}<br></br>{contact.email}</p>
           <span>
             <Link to='/contacts' className="btn btn-primary">Back To Contacts</Link>| 
-            <Link  to={`/contacts/${contact.id}/edit`} className="btn btn-secondary">Edit</Link>
+            <Link to={`/contacts/${contact.id}/edit`} className="btn btn-secondary">Edit</Link>
           </span>
         </div>
       </div>
@@ -36,6 +36,5 @@ const ContactDetail = ({props, contacts}) => {
 ContactDetail.propTypes = {
   contacts: PropTypes.array.isRequired
 };
-
 
 export default ContactDetail
