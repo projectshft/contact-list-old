@@ -20,6 +20,7 @@ const Contact = ({props, contacts, editContact}) => {
       <h1>{currentContact.name}</h1>
       <p>Email: {currentContact.email}</p>
       <p>Phone number: {currentContact.phoneNumber}</p>
+      <Link to={`${props.match.path}/edit`}>Edit {currentContact.name}</Link><br/>
       <Link to='/contacts'>Back</Link>
     </div>
   );

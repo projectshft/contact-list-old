@@ -4,6 +4,7 @@ import Root from './Root';
 import Rolodex from './Rolodex';
 import Contact from './Contact';
 import NewContact from './NewContact';
+import EditContact from './EditContact';
 
 class App extends Component {
   constructor() {
@@ -33,7 +34,9 @@ class App extends Component {
     this.removeContact = this.removeContact.bind(this);
   }
 
-  addContact(newContact) { debugger;}
+  addContact(newContact) { 
+    this.setState({ contacts: this.state.contacts.concat([newContact]) });
+  }
 
   editContact(updatedContact) {}
 
@@ -50,7 +53,10 @@ class App extends Component {
           <Route exact path='/contacts/new' render={(props) => (
             <NewContact props={props} addContact={this.addContact} />
           )}/>
-          <Route exact path='/contacts/:id' render={(props) => (
+           <Route path='contacts/:id/edit' render={(props) => (
+            <EditContact props={props} contacts={this.state.contacts} editContact={this.editContact} />
+          )} />
+          <Route path='/contacts/:id' render={(props) => (
             <Contact props={props} contacts={this.state.contacts} editContact={this.editContact} />
           )} />
         </Switch>
