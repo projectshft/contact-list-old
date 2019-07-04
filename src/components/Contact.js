@@ -10,7 +10,7 @@ const Contact = ({props, contacts, editContact}) => {
     return (
       <div>
         <p>Sorry, contact was not found.</p>
-        <Link to='/roster'>Back</Link>
+        <Link to='/contacts'>Back</Link>
       </div>
     )
 

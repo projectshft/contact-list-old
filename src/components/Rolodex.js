@@ -4,10 +4,10 @@ import Header from './Header';
 import ContactsList from './ContactsList';
 import { PropTypes } from 'prop-types';
 
-const Rolodex = ({contacts, addContact}) => (
+const Rolodex = ({contacts}) => (
 
       <div>
-        <Header addContact={addContact} />
+        <Header />
         <ContactsList contacts={contacts} />
         <Link to='/'>exit</Link>
       </div>

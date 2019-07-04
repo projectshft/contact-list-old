@@ -1,11 +1,12 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Header = () => (
   <div className='container'>
     <div className='row'>
       <h1>Contacts</h1>
-      <button className='btn btn-primary'>Add Contact</button>
+      <Link to='/contacts/new'><button className='btn btn-primary'>Add Contact</button></Link>
     </div>
   </div>
 );
