@@ -16,14 +16,17 @@ const ContactDetail = ({props, contacts}) => {
 
   return (
     <div className='contact-detail'>
-      <img src={contact.image_url}></img>
-      <h1>{contact.name}</h1>
-      <h2>Phone: {contact.phone_number}</h2>
-      <h2>Email: {contact.email}</h2>
-      <Link to='/contacts'>Back</Link> | 
-      <Link to={`/contacts/${contact.id}/edit`}>Edit</Link>
+      <div className="card">
+        <img className="card-img-top" src={contact.image_url} alt="Card image cap" />
+        <div className="card-body">
+          <h5 className="card-title">{contact.name}</h5>
+          <p className="card-text">{contact.phone_number}<br></br>{contact.email}</p>
+          <span><a href='/contacts' className="btn btn-primary">Back</a>
+          <a href={`/contacts/${contact.id}/edit`} className="btn btn-secondary">Edit</a></span>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
 export default ContactDetail

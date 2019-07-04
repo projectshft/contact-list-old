@@ -1,10 +1,11 @@
 import { Switch, Route, Link } from 'react-router-dom'
 import React from 'react'
 
-const ContactList = ({editContact, contacts}) => (
+const ContactList = ({contacts}) => (
   <div className='col-md-8 offset-md-2'>
     <div className="jumbotron"><h1>Contacts!</h1></div>
 
+    <Link className='btn btn-secondary' to={`/contacts/new`}>Add Contact</Link>
     <ul>
       {
         contacts.map(c => (
