@@ -1,13 +1,10 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
-import _ from 'lodash'
 
 class ContactForm extends React.Component {
 
   constructor(props) {
     super(props);
-
-    // this.props.handleSubmitContactClick = this.props.handleSubmitContactClick.bind(this);
     console.log(props);
     
   }
