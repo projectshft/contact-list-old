@@ -18,8 +18,6 @@ class NewContact extends Component {
     this.handleCreateNewContactClick = this.handleCreateNewContactClick.bind(this);
   }
 
- 
-
   handleCreateNewContactClick() {
     //validate input first - will allow no image src
     if ( this.state.name === '' ||
@@ -30,6 +28,10 @@ class NewContact extends Component {
       return;
       //later add warning to user
     }
+
+    //set default image if one wasn't provided
+    if (this.state.image === '')
+      this.state.image = 'https://upload.wikimedia.org/wikipedia/en/1/13/Stick_figure.png';
     
     const newContact = {
       id: this.state.id,
