@@ -16,7 +16,7 @@ const Contact = ({props, contacts, editContact}) => {
 
   return (
     <div>
-      <img src={currentContact.image} />
+      <img src={currentContact.image} alt={`Contact id #${currentContact.id}`}/>
       <h1>{currentContact.name}</h1>
       <p>Email: {currentContact.email}</p>
       <p>Phone number: {currentContact.phoneNumber}</p>
