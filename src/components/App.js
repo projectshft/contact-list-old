@@ -8,6 +8,7 @@ import Contacts from './Contacts';
 class App extends React.Component {
   constructor () {
     super()
+//set preloaded contacts
     this.state = {
       contactList: [
         {
@@ -19,9 +20,10 @@ class App extends React.Component {
         }
       ]
   }
+  //bind the addContact's function 'this' to the App's this
   this.addContact = this.addContact.bind(this);
 }
-
+//takes in a contact from CreateContact component and then adds it to the array of contacts in the state
 addContact(contact) {
   this.setState({contactList: this.state.contactList.concat([contact])})
 }
@@ -31,6 +33,7 @@ addContact(contact) {
     return (
       <div>
         <Switch>
+        //setting rout for url to '/path
           <Route path='/contacts' render={() => (
             <Contacts addContact={this.addContact} contactList ={this.state.contactList} />
           )}/>
