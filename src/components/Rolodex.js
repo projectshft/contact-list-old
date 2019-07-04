@@ -7,7 +7,7 @@ import { PropTypes } from 'prop-types';
 const Rolodex = ({contacts, addContact}) => (
 
       <div>
-        <Header />
+        <Header addContact={addContact} />
         <ContactsList contacts={contacts} />
         <Link to='/'>exit</Link>
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 
 const Header = () => (
   <div className='container'>
@@ -8,5 +9,9 @@ const Header = () => (
     </div>
   </div>
 );
+
+Header.propTypes = {
+  addContact: PropTypes.func
+};
 
 export default Header;
