@@ -89,7 +89,7 @@ class App extends React.Component {
             render={(props) =>
               <ContactView
                 props={props}
-                contacts={this.state.contacts}
+                contacts={this.props.contacts}
               />
             }
           />

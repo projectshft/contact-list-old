@@ -9,6 +9,14 @@ body {
   margin-top: 20px;
 }
 
+/* .image-container-view {
+  display: inline-block;
+} */
+
+.img-view {
+  max-width: 200px;
+}
+
 .item img {
   max-width: 100px;
 }

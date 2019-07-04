@@ -15,6 +15,9 @@ class ContactView extends React.Component {
       <div>
         View Contact 
       </div>
+      <div className="img-container-view">
+        <img className="img-thumbnail img-view" src={contact.image_url} alt="" />
+      </div>
       <div>
         {contact.name}
       </div>
@@ -23,9 +26,6 @@ class ContactView extends React.Component {
       </div>
       <div>
         {contact.phone_number}
-      </div>
-      <div>
-        {contact.image_url}
       </div>
       <button><Link to='/'>Back</Link></button>
       </div>
