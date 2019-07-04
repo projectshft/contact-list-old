@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import React from 'react';
 import Contacts from './Contacts';
-import CreateContact from './CreateContact';
+
 
 
 
@@ -19,14 +19,21 @@ class App extends React.Component {
         }
       ]
   }
+  this.addContact = this.addContact.bind(this);
 }
 
-  render () {
+addContact() {
+  console.log(2);
+}
+
+
+  render() {
     return (
       <div>
         <Switch>
-          <Route exact path='/contacts' component={Contacts}/>
-          <Route exact path='/contacts/new' component={CreateContact} />
+          <Route path='/contacts' render={() => (
+            <Contacts addContact={this.addContact} contactList ={this.state.contactList} />
+          )}/>
         </Switch>
       </div>
     )
