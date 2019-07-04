@@ -5,7 +5,7 @@ import IndividualContact from './IndividualContact'
 import CreateContact from './CreateContact'
 
 
-const Contacts = (addContact, contactList) => (
+const Contacts = ({addContact, contactList}) => (
   <Switch>
     <Route path='/contacts/new' render={(props) => (
       <CreateContact props={props} contactList={contactList} addContact={addContact} />
