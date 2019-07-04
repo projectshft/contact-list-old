@@ -11,7 +11,7 @@ const ContactDetail = ({props, contacts}) => {
         <h1>Sorry, but that contact was not found</h1>
         <Link to='/contacts'>Back to My Contacts</Link>
       </div>
-      )
+    )
   }
 
   return (
@@ -21,8 +21,10 @@ const ContactDetail = ({props, contacts}) => {
         <div className="card-body">
           <h5 className="card-title">{contact.name}</h5>
           <p className="card-text">{contact.phone_number}<br></br>{contact.email}</p>
-          <span><Link to='/contacts' className="btn btn-primary">Back To Contacts</Link>
-          <Link  to={`/contacts/${contact.id}/edit`} className="btn btn-secondary">Edit</Link></span>
+          <span>
+            <Link to='/contacts' className="btn btn-primary">Back To Contacts</Link> | 
+            <Link  to={`/contacts/${contact.id}/edit`} className="btn btn-secondary">Edit</Link>
+          </span>
         </div>
       </div>
     </div>

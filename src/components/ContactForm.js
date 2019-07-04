@@ -5,12 +5,9 @@ class ContactForm extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(props);
-    
   }
 
   render () {
-
     return (
       <div>
         <form>
@@ -20,7 +17,8 @@ class ContactForm extends React.Component {
               defaultValue={this.props.contact ? this.props.contact.name : ''}
               onChange={event =>
                 this.props.handleFormChange({ name: event.target.value })
-            }/>
+              }
+            />
           </div>
           <div className="form-group">
             <label>Phone Number</label>
@@ -28,7 +26,8 @@ class ContactForm extends React.Component {
               defaultValue={this.props.contact? this.props.contact.phone_number : ''}
               onChange={event =>
                 this.props.handleFormChange({ phone_number: event.target.value })
-            }/>
+              }
+            />
           </div>
 
           <div className="form-group">
@@ -37,7 +36,8 @@ class ContactForm extends React.Component {
               defaultValue={this.props.contact? this.props.contact.email : ''}
               onChange={event =>
                 this.props.handleFormChange({ email: event.target.value })
-            }/>
+              }
+            />
           </div>
 
           <div className="form-group">
@@ -46,7 +46,8 @@ class ContactForm extends React.Component {
               defaultValue={this.props.contact? this.props.contact.image_url : ''}
               onChange={event =>
                 this.props.handleFormChange({ image_url: event.target.value })
-            }/>
+              }
+            />
           </div>
 
           <button type="button btn-primary" onClick={this.props.handleSubmitContactClick}>Submit</button>

@@ -10,7 +10,7 @@ class EditContact extends React.Component {
       id: parseInt(this.props.props.match.params.id, 10)
     }
 
-    this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this);
+    this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
     this.handleFormChange = this.handleFormChange.bind(this)
   }
 
@@ -23,7 +23,7 @@ class EditContact extends React.Component {
     for (let [key, value] of Object.entries(this.state)) {
       newContact[key] = value;
     };
-    console.log(newContact);
+    
     this.props.editContact(newContact)
     this.props.props.history.push('/contacts')
   }

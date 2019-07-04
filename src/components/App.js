@@ -44,28 +44,37 @@ class App extends React.Component {
   }
   
   addContact (contact) {
-    this.setState({contacts: this.state.contacts.concat([contact])});
-    
+    this.setState(
+      {contacts: this.state.contacts.concat([contact])}
+    );
   }
 
   editContact(contact){
-    this.setState({contacts: this.state.contacts.map((c) => c.id === contact.id ? Object.assign({},c,contact) : c)});
-    
+    this.setState(
+      {contacts:
+        this.state.contacts.map((c) => c.id === contact.id ? Object.assign({},c,contact) : c)
+      })
   }
   
-
   render() {
     return (
       <div className='container main-app'>
         <div className='row'>
         <Switch>
-          <Route exact path='/' render={() => (
-            <Redirect to='/contacts' />
-          )}/>
-          <Route path='/contacts' render={() => (
-            <ContactLanding addContact={this.addContact} editContact={this.editContact} contacts={this.state.contacts} />
-          )}/>
-          
+          <Route exact path='/'
+            render={() => (
+              <Redirect to='/contacts' />
+            )}
+          />
+          <Route path='/contacts'
+            render={() => (
+              <ContactLanding
+                addContact={this.addContact}
+                editContact={this.editContact}
+                contacts={this.state.contacts}
+              />
+            )}
+          />
         </Switch>
         </div>
       </div>

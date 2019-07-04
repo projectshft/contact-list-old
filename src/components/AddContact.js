@@ -20,7 +20,7 @@ class AddContact extends React.Component {
   generateId = () => Math.round(Math.random() * 100000000);
 
   handleFormChange (object){
-      this.setState(object)
+    this.setState(object)
   }
 
   handleSubmitContactClick () {
