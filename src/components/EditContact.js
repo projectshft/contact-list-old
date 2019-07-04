@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import ContactForm from './ContactForm'
 import _ from 'lodash'
 
@@ -35,5 +36,11 @@ class EditContact extends React.Component {
     )
   }
 }
+
+EditContact.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  editContact: PropTypes.func.isRequired
+};
+
 
 export default EditContact

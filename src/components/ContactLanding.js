@@ -1,5 +1,6 @@
 import { Switch, Route } from 'react-router-dom'
 import React from 'react';
+import PropTypes from 'prop-types';
 import ContactDetail from './ContactDetail';
 import AddContact from './AddContact';
 import EditContact from './EditContact';
@@ -8,7 +9,7 @@ import ContactList from './ContactList';
 const ContactLanding = ({contacts, addContact, editContact}) => (
   <Switch>    
     <Route path='/contacts/new' render={(props) => (
-      <AddContact props={props} contacts={contacts} addContact={addContact} />
+      <AddContact props={props} addContact={addContact} />
     )}/>
 
     <Route path='/contacts/:id/edit' render={(props) => (
@@ -24,5 +25,12 @@ const ContactLanding = ({contacts, addContact, editContact}) => (
     )}/>
   </Switch>
 )
+
+ContactLanding.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  addContact: PropTypes.func.isRequired,
+  editContact: PropTypes.func.isRequired,
+};
+
 
 export default ContactLanding

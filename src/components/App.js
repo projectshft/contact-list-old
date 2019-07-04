@@ -17,20 +17,27 @@ class App extends React.Component {
         },
         {
           id: 100000002,
+          name: 'River Tam',
+          image_url: 'https://vignette.wikia.nocookie.net/headhuntersholosuite/images/9/97/River_Tam_001.jpg',
+          email: 'river@serenity.space',
+          phone_number: '+1 888-888-8888'
+        },
+        {
+          id: 100000003,
           name: 'Aaron Hayslip',
           image_url: '',
           email: 'aaron@projectshift.io',
           phone_number: '+1 888-888-8888'
         },
         {
-          id: 100000003,
+          id: 100000004,
           name: 'Sterling Archer',
           image_url: 'https://cdn-images-1.medium.com/max/1200/0*MBbFTmYOojEXNhMI.png',
           email: 'sterling@isis.net',
           phone_number: '+1 271-000-6969'
         },
         {
-          id: 100000004,
+          id: 100000005,
           name: 'Rick Sanchez',
           image_url: 'https://cdn.vox-cdn.com/uploads/chorus_image/image/58089103/r_m_sauce.0.jpg',
           email: 'pickle@rick.rick',
