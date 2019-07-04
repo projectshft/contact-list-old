@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
+import ContactForm from './ContactForm'
 
 class AddContact extends React.Component {
   constructor () {
@@ -14,9 +15,14 @@ class AddContact extends React.Component {
     }
 
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
+    this.handleFormChange = this.handleFormChange.bind(this)
   }
 
-  generateId = () => Math.round(Math.random() * 100000000)
+  generateId = () => Math.round(Math.random() * 100000000);
+
+  handleFormChange (object){
+      this.setState(object)
+  }
 
   handleSubmitContactClick () {
     const newContact = {
@@ -34,37 +40,7 @@ class AddContact extends React.Component {
 
   render () {
     return (
-      <div>
-        <form>
-        <label>Name</label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ name: event.target.value })
-        }/>
-
-        <br/>
-
-        <label>Phone Number</label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ phone_number: event.target.value })
-        }/>
-
-        <br/>
-
-        <label>Email</label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ email: event.target.value })
-        }/>
-
-        <label>Image Url</label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ image_url: event.target.value })
-        }/>
-
-        <button type="button btn-primary" onClick={this.handleSubmitContactClick}>Submit</button>
-        </form>
-
-        <Link to='/contacts'>Back To Contacts</Link>
-      </div>
+      <ContactForm handleFormChange={this.handleFormChange} handleSubmitContactClick={this.handleSubmitContactClick} contact={null}/>
     )
   }
 }

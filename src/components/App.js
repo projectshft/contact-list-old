@@ -1,7 +1,6 @@
 import { Switch, Route, Redirect } from 'react-router-dom'
 import React from 'react'
 import ContactLanding from './ContactLanding'
-import AddContact from './AddContact'
 
 class App extends React.Component {
   constructor () {
@@ -18,10 +17,24 @@ class App extends React.Component {
         },
         {
           id: 100000002,
+          name: 'Aaron Hayslip',
+          image_url: '',
+          email: 'aaron@projectshift.io',
+          phone_number: '+1 888-888-8888'
+        },
+        {
+          id: 100000003,
           name: 'Sterling Archer',
           image_url: 'https://cdn-images-1.medium.com/max/1200/0*MBbFTmYOojEXNhMI.png',
           email: 'sterling@isis.net',
           phone_number: '+1 271-000-6969'
+        },
+        {
+          id: 100000004,
+          name: 'Rick Sanchez',
+          image_url: 'https://cdn.vox-cdn.com/uploads/chorus_image/image/58089103/r_m_sauce.0.jpg',
+          email: 'pickle@rick.rick',
+          phone_number: '+1 303-121-1337'
         }
       ]
     }
@@ -52,9 +65,7 @@ class App extends React.Component {
           <Route path='/contacts' render={() => (
             <ContactLanding addContact={this.addContact} editContact={this.editContact} contacts={this.state.contacts} />
           )}/>
-          <Route path='contacts/new' render={() => (
-            <AddContact contacts={this.state.contacts} addContact={this.addContact} />
-          )}/>
+          
         </Switch>
         </div>
       </div>

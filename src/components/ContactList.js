@@ -16,7 +16,7 @@ const ContactList = ({contacts}) => (
         contacts.map(c => (
           <li key={c.id} className='list-group-item'>
             <img className="float-left" src={c.image_url === '' ? blank_contact: c.image_url}></img>
-            <Link to={`/contacts/${c.id}`}>{c.name}</Link> <Link className='btn btn-outline-info btn-md float-right aligh-middle' to={`/contacts/${c.id}/edit`}>Edit</Link>
+            <Link to={`/contacts/${c.id}`} className='align-middle'><h4>{c.name}</h4></Link> <Link className='btn btn-outline-info btn-md float-right' to={`/contacts/${c.id}/edit`}>Edit</Link>
           </li>
         ))
       }

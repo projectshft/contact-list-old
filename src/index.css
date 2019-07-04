@@ -1,5 +1,11 @@
 .main-app{
   text-align: center;
+  background-color: lightcyan;
+  margin-top: 1%;
+}
+
+.jumbotron{
+  margin-top: 3%;
 }
 
 .contacts-info {
@@ -9,6 +15,8 @@
 .list-group-item {
   margin-bottom: 1%;
   border-radius: 1%;
+  vertical-align: center;
+  text-align: inherit;
 }
 
 .list-group-item img {
