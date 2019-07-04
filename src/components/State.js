@@ -14,6 +14,13 @@ const STATE = {
       email: "kitten@catmail.com",
       phone_number: "1234567890",
       image_url: "https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg"
+    }, 
+    {
+      id: 1,
+      name: "Peppermint Butler",
+      email: "pepbut@darkmail.com",
+      phone_number: "6666666666",
+      image_url: "https://vignette.wikia.nocookie.net/adventuretimewithfinnandjake/images/c/c9/Baby_Pep-But.jpg/revision/latest?cb=20180905195334"
     }
   ]
 };

@@ -63,15 +63,6 @@ class Contacts extends React.Component {
           <button><Link to='/new'>Add Contact</Link></button>
         </div>
         <div className="items-container">
-          <div className="item">
-            <div className="img-container">
-              <img alt="" className="img-thumbnail" src="https://vignette.wikia.nocookie.net/adventuretimewithfinnandjake/images/c/c9/Baby_Pep-But.jpg/revision/latest?cb=20180905195334" />
-            </div>
-            <div className="content-container">
-              <div className="item-name"> Peppermint Butler
-              </div>  <button>Edit</button> <button>Delete</button>
-            </div>
-          </div>
           {list}
         </div>
       </div>

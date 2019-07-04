@@ -9,10 +9,6 @@ body {
   margin-top: 20px;
 }
 
-/* .image-container-view {
-  display: inline-block;
-} */
-
 .img-view {
   max-width: 200px;
 }
@@ -46,4 +42,8 @@ body {
 .items-container {
   margin-top: 20px; 
   display: block;
+}
+
+button {
+  margin-right: 10px;
 }
