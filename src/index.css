@@ -1,7 +1,7 @@
 .main-app{
   text-align: center;
   background-color: lightcyan;
-  margin-top: 1%;
+  padding-top: 1%;
 }
 
 .jumbotron{
@@ -25,3 +25,10 @@
   border-radius: 50%;
   border: 1px solid lightseagreen;
 }
+
+.contact-form{
+  margin-bottom: 3%;
+  padding-top: 3%;
+  background-color: none;
+}
+

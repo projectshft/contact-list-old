@@ -3,11 +3,11 @@ import React from 'react'
 
 const ContactForm = ({handleFormChange, handleSubmitContactClick, contact}) => {
     return (
-      <div>
-        <form>
+      <div className='col-md-8 offset-md-2'>
+        <form className='contact-form'>
           <div className="form-group">
-            <label>Name</label>
-            <input type='text' className='form-control'
+            <label htmlFor='contactName' className='float-left'>Name</label>
+            <input type='text' className='form-control' id='contactName'
               defaultValue={contact ? contact.name : ''}
               onChange={event =>
                 handleFormChange({ name: event.target.value })
@@ -15,8 +15,8 @@ const ContactForm = ({handleFormChange, handleSubmitContactClick, contact}) => {
             />
           </div>
           <div className="form-group">
-            <label>Phone Number</label>
-            <input type='text' className='form-control'
+            <label htmlFor='contactPhoneNumber' className='float-left'>Phone Number</label>
+            <input type='text' className='form-control' id='contactPhoneNumber'
               defaultValue={contact? contact.phone_number : ''}
               onChange={event =>
                 handleFormChange({ phone_number: event.target.value })
@@ -25,8 +25,8 @@ const ContactForm = ({handleFormChange, handleSubmitContactClick, contact}) => {
           </div>
 
           <div className="form-group">
-            <label>Email</label>
-            <input type='text' className='form-control'
+            <label htmlFor='contactEmail' className='float-left'>Email</label>
+            <input type='text' className='form-control' id='contactEmail'
               defaultValue={contact? contact.email : ''}
               onChange={event =>
                 handleFormChange({ email: event.target.value })
@@ -35,8 +35,8 @@ const ContactForm = ({handleFormChange, handleSubmitContactClick, contact}) => {
           </div>
 
           <div className="form-group">
-            <label>Image Url</label>
-            <input type='text' className='form-control'
+            <label htmlFor='contactImageUrl' className='float-left'>Image Url</label>
+            <input type='text' className='form-control' id='contactImageUrl'
               defaultValue={contact? contact.image_url : ''}
               onChange={event =>
                 handleFormChange({ image_url: event.target.value })
@@ -44,13 +44,16 @@ const ContactForm = ({handleFormChange, handleSubmitContactClick, contact}) => {
             />
           </div>
 
-          <button type="button btn-primary" onClick={handleSubmitContactClick}>Submit</button>
+          <button className="btn btn-primary" onClick={handleSubmitContactClick}>
+            Submit
+          </button>
         </form>
 
-        <Link className='btn btn-secondary btn-lg' to='/contacts'>Back To Contacts</Link>
+        <Link className='btn btn-secondary btn-lg float-left' to='/contacts'>
+          Back To Contacts
+        </Link>
       </div>
     )
   }
-
 
 export default ContactForm
