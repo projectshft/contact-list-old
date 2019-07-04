@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #EAEBE7;
+  background-color: #E6E6FA; 
 }
 
 .container {
@@ -44,5 +44,6 @@ body {
 }
 
 .items-container {
+  margin-top: 20px; 
   display: block;
 }

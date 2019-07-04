@@ -71,7 +71,7 @@ const handleEvent = ({ name, data }, state) => {
   } else if (name === 'addContact') {
     console.log('add', data);
     data.id = generateId();
-    if (data.image_url === '') { data.image_url = "https://lh3.googleusercontent.com/a/default-user=s70-p-k-rw-no"; }
+    if (data.image_url === '') { data.image_url = "https://lh3.googleusercontent.com/a/default-user=s100-p-k-rw-no"; }
     state.contacts = state.contacts.concat([data])
   } else if (name === 'deleteContact') {
     console.log('delete', data);

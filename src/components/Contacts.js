@@ -59,6 +59,9 @@ class Contacts extends React.Component {
         <div className='page-title'>
           <h2>Contacts</h2>
         </div>
+        <div>
+          <button><Link to='/new'>Add Contact</Link></button>
+        </div>
         <div className="items-container">
           <div className="item">
             <div className="img-container">
@@ -70,9 +73,6 @@ class Contacts extends React.Component {
             </div>
           </div>
           {list}
-        </div>
-        <div>
-          <button><Link to='/new'>Add Contact</Link></button>
         </div>
       </div>
     )

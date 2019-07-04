@@ -1,4 +1,5 @@
 import React from 'react';
+import { sendEvent } from './State';
 
 class ContactEdit extends React.Component {
   constructor() {
@@ -15,7 +16,7 @@ class ContactEdit extends React.Component {
 
     // bind functions 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
     //this.handleFill = this.handleFill.bind(this); 
   }
 
@@ -23,11 +24,19 @@ class ContactEdit extends React.Component {
     this.setState({[event.target.id]: event.target.value});
   }
 
-  handleSubmit(event) {
+  handleEdit(event) {
     event.preventDefault();
-    console.log(this.state); 
-    this.props.editContact(this.state);
+    //console.log(this.state); 
+    //this.props.editContact(this.state);
+
+    const updatedContact = this.state;
+    sendEvent('editContact', updatedContact);
+
     this.props.props.history.push('/');
+
+    // sendEvent('editContact', updatedContact);
+
+
   }
 
   componentDidMount() {
@@ -44,7 +53,7 @@ class ContactEdit extends React.Component {
       <div>
         Edit Contact 
       </div>
-      <form onSubmit={this.handleSubmit} className="edit-form">
+      <form onSubmit={this.handleEdit} className="edit-form">
       <input type="text" id="name" value={this.state.name} onChange={this.handleChange} placeholder="Name" /> 
       <input type="text" id="email" value={this.state.email} onChange={this.handleChange} placeholder="Email"/> 
       <input type="text" id="phone_number" value={this.state.phone_number} onChange={this.handleChange} placeholder="Phone Number"/> 

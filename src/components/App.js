@@ -12,24 +12,24 @@ import ContactEdit from './ContactEdit';
 class App extends React.Component {
   constructor() {
     super()
-    const counter = 0;
+    // const counter = 0;
     this.state = {
       contacts: [
         {
-          id: counter,
+          id: 1,
           name: "Kristina",
           email: "kjb@gmail.com",
           phone_number: "2524527933",
           image_url: "link"
         }
-      ],
-      counter: counter
+      ]
+      // counter: counter
     }
 
     // bind functions 
     //this.addContact = this.addContact.bind(this);
     //this.deleteContact = this.deleteContact.bind(this); 
-    this.editContact = this.editContact.bind(this);
+    //this.editContact = this.editContact.bind(this);
   }
 
   // declare functions 
@@ -48,11 +48,11 @@ class App extends React.Component {
   //   )}); 
   // }
 
-  editContact(contact) {
-    this.setState({contacts: this.state.contacts.map(
-      (el) => el.id === contact.id ? Object.assign({}, el, {name: contact.name}) : el 
-    )});
-  }
+  // editContact(contact) {
+  //   this.setState({contacts: this.state.contacts.map(
+  //     (el) => el.id === contact.id ? Object.assign({}, el, {name: contact.name}) : el 
+  //   )});
+  // }
 
   render() {
     return (
@@ -97,8 +97,8 @@ class App extends React.Component {
             render={(props) => 
               <ContactEdit
                 props={props}
-                contacts={this.state.contacts}
-                editContact={this.editContact}
+                contacts={this.props.contacts}
+                // editContact={this.editContact}
               />
             } 
           />
