@@ -5,7 +5,7 @@ import { PropTypes } from 'prop-types';
 const ContactsList = (props) => {
   const contactItems = props.contacts.map((contact) => {
     return (
-      <tr>
+      <tr key={contact.id}>
         <td>
           <Link to={`/contacts/${contact.id}`}>{contact.name}</Link>
         </td>
