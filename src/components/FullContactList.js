@@ -13,6 +13,9 @@ const FullContactList = ({contactList}) => (
       ))
     }
   </ul>
+  <button>
+    <Link to ='/contacts/new'>Add Contact</Link>
+  </button>
 </div>
 
 )

@@ -63,6 +63,10 @@ class CreateContact extends React.Component {
 
         </form>
 
+        <button>
+          <Link to ='/contacts'>Back</Link>
+        </button>
+
       </div>
     )
   }

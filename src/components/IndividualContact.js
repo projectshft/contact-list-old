@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 const IndividualContact = ({props, contactList}) => {
   console.log(contactList);
@@ -11,13 +12,22 @@ const IndividualContact = ({props, contactList}) => {
 
 console.log(desiredContact);
   if (desiredContact.length == 0) {
-    return <div> Contact not found </div>
+    return
+    <div>
+      <h1> Contact not found</h1>
+      <button>
+        <Link to ='/contacts'>Back</Link>
+      </button>
+    </div>
   }
     //if url does lead to desired contact, render the properties of the contact
     return (
       <div>
+        <button>
+        <Link to ='/contacts/'>Back</Link>
+        </button>
         <h1>{desiredContact[0].name} </h1>
-        <img src='{desiredContact[0].image_url}' />
+        <img src={desiredContact[0].image_url} />
         <p> {desiredContact[0].email} </p>
         <p> {desiredContact[0].phone_number}</p>
       </div>
