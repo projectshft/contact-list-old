@@ -33,8 +33,9 @@ addContact(contact) {
     return (
       <div>
         <Switch>
-        //setting rout for url to '/path
+        //setting route for url to '/path
           <Route path='/contacts' render={() => (
+            //onnce the rout is set to /contacts the app goes to the Contacts component
             <Contacts addContact={this.addContact} contactList ={this.state.contactList} />
           )}/>
         </Switch>

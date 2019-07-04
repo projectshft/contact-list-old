@@ -15,6 +15,8 @@ class CreateContact extends React.Component {
       email: '',
       phone_number: ''
     }
+    //binding the 'this' in handlesubmit to the 'this' of the CreateContact Component
+  this.handleSubmit = this.handleSubmit.bind(this)
   }
 
 //when submit button is clicked a contact is made from the user's input
@@ -28,7 +30,7 @@ class CreateContact extends React.Component {
     };
 //using the new contact as an argument for the apps addContact function
     this.props.addContact(newContact)
-//once the new contact is added the page then automatically goes back to /contacts 
+//once the new contact is added the page then automatically goes back to /contacts
     this.props.props.history.push('/contacts')
   }
 //rendering input forms for user to input values to create a new contact
@@ -57,12 +59,10 @@ class CreateContact extends React.Component {
             <input type='text' onChange={event => this.setState({phone_number:event.target.value})
           }/>
           <br />
-          //when submit button is clicked CreateContact's handleSubmit function
           <button type ='button' onClick={this.handleSubmit}>Submit</button>
 
         </form>
 
-        <Link to ='/contacts'>Contacts</Link>
       </div>
     )
   }
