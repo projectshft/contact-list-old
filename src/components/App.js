@@ -33,7 +33,7 @@ class App extends Component {
     this.removeContact = this.removeContact.bind(this);
   }
 
-  addContact(newContact) {}
+  addContact(newContact) { debugger;}
 
   editContact(updatedContact) {}
 
@@ -47,8 +47,8 @@ class App extends Component {
           <Route exact path='/contacts' render={() => (
             <Rolodex contacts={this.state.contacts} />
           )} />
-          <Route exact path='/contacts/new' render={() => (
-            <NewContact addContact={this.addContact} />
+          <Route exact path='/contacts/new' render={(props) => (
+            <NewContact props={props} addContact={this.addContact} />
           )}/>
           <Route exact path='/contacts/:id' render={(props) => (
             <Contact props={props} contacts={this.state.contacts} editContact={this.editContact} />
