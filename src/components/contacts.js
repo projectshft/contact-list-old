@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom'
+import React from 'react';
+import FullContactList from './FullContactList'
+import IndividualContact from './IndividualContact'
 
 
-const Contacts = (props) => {
+const Contacts = () => {
   return (
-    <div>
-    Hello
-    </div>
-  )
+    <Switch>
+    <Route exact path = '/contacts' component = {FullContactList} />
+    <Route path = '/contacts/:id' component = {IndividualContact} />
+    </Switch>
+  );
 }
 export default Contacts

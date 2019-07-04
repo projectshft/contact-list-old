@@ -26,7 +26,7 @@ class App extends React.Component {
       <div>
         <Switch>
           <Route exact path='/contacts' component={Contacts}/>
-          <Route exact path='/contact/new' component={CreateContact} />
+          <Route exact path='/contacts/new' component={CreateContact} />
         </Switch>
       </div>
     )
