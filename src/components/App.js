@@ -40,7 +40,11 @@ class App extends Component {
 
   editContact(updatedContact) {}
 
-  removeContact(deletedContact) {}
+  removeContact(deletedContact) {debugger;
+    this.setState({ contacts: this.state.contacts.filter((contact) => {
+      return (contact === deletedContact) ? false : true;
+    }) });
+  }
   
   render() {
     return (
@@ -48,7 +52,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Root}/>
           <Route exact path='/contacts' render={() => (
-            <Rolodex contacts={this.state.contacts} />
+            <Rolodex contacts={this.state.contacts} removeContact={this.removeContact} />
           )} />
           <Route exact path='/contacts/new' render={(props) => (
             <NewContact props={props} addContact={this.addContact} />

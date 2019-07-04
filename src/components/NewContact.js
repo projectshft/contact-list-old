@@ -10,7 +10,7 @@ class NewContact extends Component {
     this.state = {
       id: generateId(),
       name: '',
-      image: '',
+      image: 'https://upload.wikimedia.org/wikipedia/en/1/13/Stick_figure.png',
       email: '',
       phoneNumber: ''
     };
@@ -28,10 +28,6 @@ class NewContact extends Component {
       return;
       //later add warning to user
     }
-
-    //set default image if one wasn't provided
-    if (this.state.image === '')
-      this.state.image = 'https://upload.wikimedia.org/wikipedia/en/1/13/Stick_figure.png';
     
     const newContact = {
       id: this.state.id,
