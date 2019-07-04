@@ -17,7 +17,7 @@ const ContactDetail = ({props, contacts}) => {
   return (
     <div className='contact-detail'>
       <div className="card">
-        <img className="card-img-top" src={contact.image_url} alt="Card image cap" />
+        <img className="card-img-top" src={contact.image_url} alt="Contact card cap" />
         <div className="card-body">
           <h5 className="card-title">{contact.name}</h5>
           <p className="card-text">{contact.phone_number}<br></br>{contact.email}</p>

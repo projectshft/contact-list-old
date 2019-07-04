@@ -1,4 +1,4 @@
-import { Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React from 'react';
 import blank_contact from '../blank_profile_male.jpg';
 
@@ -15,7 +15,7 @@ const ContactList = ({contacts}) => (
       {
         contacts.map(c => (
           <li key={c.id} className='list-group-item'>
-            <img className="float-left" src={c.image_url === '' ? blank_contact: c.image_url}></img>
+            <img className="float-left" src={c.image_url === '' ? blank_contact: c.image_url} alt='contact related view'></img>
             <Link to={`/contacts/${c.id}`} className='align-middle'><h4>{c.name}</h4></Link> <Link className='btn btn-outline-info btn-md float-right' to={`/contacts/${c.id}/edit`}>Edit</Link>
           </li>
         ))
