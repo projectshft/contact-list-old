@@ -12,7 +12,7 @@ const Contacts = ({addContact, contactList}) => (
       <CreateContact props={props} contactList={contactList} addContact={addContact} />
     )}/>
   //if route is contacts/(contact id) the invidual contact is rendered
-    <Route path='/contacts/:id' render={(props) => (
+    <Route path='/contacts/:key' render={(props) => (
       <IndividualContact props={props} contactList={contactList} />
     )}/>
 //if route is /contacts the full contact list is shown on the page

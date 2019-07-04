@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
 //create a way to get a random number
-const generateId = () => Math.round(Math.random() * 100000000);
+const generateKey = () => Math.round(Math.random() * 100000000);
 
 class CreateContact extends React.Component {
   constructor() {
     super()
 //set different state values that user can change
     this.state = {
-      id: '',
+      key: '',
       name: '',
       image_url: '',
       email: '',
@@ -22,7 +22,7 @@ class CreateContact extends React.Component {
 //when submit button is clicked a contact is made from the user's input
   handleSubmit () {
     const newContact = {
-      id: generateId(),
+      key: generateKey(),
       name: this.state.name,
       image_url: this.state.image_url,
       email: this.state.email,
