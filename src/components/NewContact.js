@@ -6,18 +6,37 @@ class NewContact extends Component {
   constructor() {
     super();
 
-    this.newContact = {
+    this.state = {
       id: 0,
       name: '',
+      image: '',
       email: '',
       phoneNumber: ''
     };
   }
 
   render() {
-    console.log('wtf');
     return (
-      <div>sup</div>
+      <div>
+        <form>
+          <label>Name</label>
+          <input type='text' className='form-control' onChange={event =>
+            this.setState({ name: event.target.value })
+          } />
+          <label>Email</label>
+          <input type='text' className='form-control' onChange={event =>
+            this.setState({ email: event.target.value })
+          } />
+          <label>Phone Number</label>
+          <input type='text' className='form-control' onChange={event =>
+            this.setState({ phoneNumber: event.target.value })
+          } />
+          <label>Image source</label>
+          <input type='text' className='form-control' onChange={event =>
+            this.setState({ image: event.target.value })
+          }/>
+        </form>
+      </div>
     )
   }
 }
