@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom'
-//import PropTypes from 'prop-types';
+import { sendEvent } from './State';
+import PropTypes from 'prop-types';
 //import './App.css';
 import Contacts from './Contacts';
 import ContactNew from './ContactNew';
@@ -108,5 +109,17 @@ class App extends React.Component {
     )
   }
 }
+
+App.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired, 
+      email: PropTypes.string.isRequired, 
+      phone_number: PropTypes.string.isRequired,
+      image_url: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired 
+};
 
 export default App;
