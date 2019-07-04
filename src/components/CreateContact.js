@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 //create a way to get a random number
 const generateKey = () => Math.round(Math.random() * 100000000);
 
 class CreateContact extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 //set different state values that user can change
     this.state = {
       key: '',
@@ -59,18 +60,30 @@ class CreateContact extends React.Component {
             <input type='text' onChange={event => this.setState({phone_number:event.target.value})
           }/>
           <br />
-          <button type ='button' onClick={this.handleSubmit}>Submit</button>
+          <button className = 'btn btn-primary' type ='button' onClick={this.handleSubmit}>Submit</button>
 
         </form>
 
-        <button>
-          <Link to ='/contacts'>Back</Link>
-        </button>
+        <Link to ='/contacts'>
+          <button className = 'btn btn-primary'>
+          <i class="fas fa-arrow-left"></i>
+            Back
+          </button>
+        </Link>
 
       </div>
     )
   }
 }
+
+// CreateContact.propTypes = {
+//   key: PropTypes.number.isRequired,
+//   name: PropTypes.string.isRequired,
+//   image_url: PropTypes.string,
+//   email: PropTypes.string,
+//   phone_number: PropTypes.number
+//
+// }
 
 
 export default CreateContact

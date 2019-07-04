@@ -1,6 +1,9 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import React from 'react';
 import Contacts from './Contacts';
+import PropTypes from 'prop-types'
+import './../App.css';
+
 
 
 
@@ -12,15 +15,20 @@ class App extends React.Component {
     this.state = {
       contactList: [
         { key: 1,
-          name: 'Pump',
-          image_url: 'https://pixel.nymag.com/imgs/daily/vulture/2017/11/27/27-lil-pump.w700.h700.jpg',
-          email: 'lilPump@gmail.com',
+          name: 'Derek Jeter',
+          image_url: 'https://securea.mlb.com/mlb/images/players/head_shot/116539.jpg',
+          email: 'Jeter76@gmail.com',
           phone_number: '305-274-2834'},
         { key: 2,
-          name: 'Sir PumperNickle Junior4',
-          image_url: 'https://pixel.nymag.com/imgs/daily/vulture/2017/11/27/27-lil-pump.w700.h700.jpg',
-          email: 'lilPump@gmail.com',
-          phone_number: '305-274-2834'}
+          name: 'Mariano Rivera',
+          image_url: 'http://a.espncdn.com/combiner/i?img=/i/headshots/mlb/players/full/3240.png&w=350&h=254',
+          email: 'mrivera@yahoo.com',
+          phone_number: '211-634-6810'},
+        { key: 3,
+          name: 'David Tyree',
+          image_url: 'http://media.nj.com/giants_impact/photo/10479457-large.jpg',
+          email: 'tyree@giants.com',
+          phone_number: '211-731-9151'}
       ]
   }
   //bind the addContact's function 'this' to the App's this
