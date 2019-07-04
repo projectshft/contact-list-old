@@ -1,10 +1,10 @@
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Header from './Header';
 import ContactsList from './ContactsList';
-import Contact from './Contact';
+import { PropTypes } from 'prop-types';
 
-const Rolodex = ({contacts, addContact, editContact}) => (
+const Rolodex = ({contacts, addContact}) => (
 
       <div>
         <Header />
@@ -13,5 +13,10 @@ const Rolodex = ({contacts, addContact, editContact}) => (
       </div>
    
 );
+
+Rolodex.propTypes = {
+  contacts: PropTypes.array,
+  addContact: PropTypes.func
+};
 
 export default Rolodex;
