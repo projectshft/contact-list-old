@@ -1,3 +1,19 @@
 .main-app{
   text-align: center;
 }
+
+.contacts-info {
+  margin-bottom: 3%;
+}
+
+.list-group-item {
+  margin-bottom: 1%;
+  border-radius: 1%;
+}
+
+.list-group-item img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid lightseagreen;
+}

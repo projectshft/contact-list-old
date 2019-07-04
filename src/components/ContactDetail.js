@@ -21,8 +21,8 @@ const ContactDetail = ({props, contacts}) => {
         <div className="card-body">
           <h5 className="card-title">{contact.name}</h5>
           <p className="card-text">{contact.phone_number}<br></br>{contact.email}</p>
-          <span><a href='/contacts' className="btn btn-primary">Back</a>
-          <a href={`/contacts/${contact.id}/edit`} className="btn btn-secondary">Edit</a></span>
+          <span><Link to='/contacts' className="btn btn-primary">Back To Contacts</Link>
+          <Link  to={`/contacts/${contact.id}/edit`} className="btn btn-secondary">Edit</Link></span>
         </div>
       </div>
     </div>
