@@ -7,21 +7,8 @@ class Contacts extends React.Component {
 
   constructor() {
     super()
-
     this.handleDelete = this.handleDelete.bind(this);
   }
-
-  // handleDelete(event) {
-  //   event.preventDefault();
-  //   const thisId = Number(event.target.value);
-  //   const contacts = this.props.contacts;
-  //   const contact = contacts.find((contact) => { return contact.id === thisId; });
-  //   const name = contact.name;
-  //   if (window.confirm(`Delete ${name} from contacts?`)) {
-  //     this.props.deleteContact(thisId);
-  //   }
-  //   //this.props.deleteContact(thisId);
-  // }
 
   handleDelete(e) {
     e.preventDefault();
@@ -32,7 +19,6 @@ class Contacts extends React.Component {
   }
 
   render() {
-
     const contacts = this.props.contacts;
     const list = contacts.map((contact) => (
       <div key={contact.id} className="item">
@@ -51,9 +37,8 @@ class Contacts extends React.Component {
           <button value={contact.id} onClick={this.handleDelete}>Delete</button>
         </div>
       </div>
-    )
-    );
-
+    ));
+    
     return (
       <div>
         <div className='page-title'>
@@ -68,7 +53,6 @@ class Contacts extends React.Component {
       </div>
     )
   }
-
 }
 
 Contacts.propTypes = {

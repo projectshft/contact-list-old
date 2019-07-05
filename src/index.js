@@ -6,12 +6,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import App from './components/App';
 
-// ReactDOM.render((
-//   <BrowserRouter basename="/contacts">
-//     <App />
-//   </BrowserRouter>
-// ), document.getElementById('root'));
-
 // Cache the element the app will be rendering to.
 const root = document.querySelector('#root');
 
@@ -19,10 +13,10 @@ const root = document.querySelector('#root');
 onUpdate((state) => {
   ReactDOM.render((
     <BrowserRouter basename="/contacts">
-    <App contacts={state.contacts}/>
+      <App contacts={state.contacts} />
     </BrowserRouter>
   ), root);
 });
 
 // Trigger the initial update so the app will render for the first time.
-forceUpdate();
+forceUpdate(); 
