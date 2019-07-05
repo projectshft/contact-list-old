@@ -24,11 +24,11 @@ const IndividualContact = ({props, contactList}) => {
       <div>
         <Link to ='/contacts'>
           <button className = 'btn btn-primary'>
-            <i class="fas fa-arrow-left"></i>
+            <i className="fas fa-arrow-left"></i>
             Back
           </button>
         </Link>
-        
+
         <h1>{desiredContact[0].name} </h1>
         <img src={desiredContact[0].image_url} />
         <p> {desiredContact[0].email} </p>

@@ -10,10 +10,12 @@ const FullContactList = ({contactList}) => (
       <i className="fas fa-plus"></i>
     </button>
   </Link>
+
   <ul>
     {
       contactList.map((contact) => (
         <li key={contact.key}>
+          <i className="fas fa-user"></i>
           <Link to ={`/contacts/${contact.key}`}>{contact.name}</Link>
         </li>
       ))

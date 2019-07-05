@@ -5,6 +5,7 @@ import IndividualContact from './IndividualContact'
 import CreateContact from './CreateContact'
 
 
+
 const Contacts = ({addContact, contactList}) => (
   <Switch>
   //if route is /contacts/new the from to create  a new contact is rendered
@@ -21,4 +22,6 @@ const Contacts = ({addContact, contactList}) => (
     )}/>
   </Switch>
 )
+
+
 export default Contacts

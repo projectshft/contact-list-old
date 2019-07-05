@@ -22,6 +22,16 @@ class CreateContact extends React.Component {
 
 //when submit button is clicked a contact is made from the user's input
   handleSubmit () {
+  //make sure user included a name
+    if (this.state.name == '') {
+      alert ('Please enter a contact name')
+      return;
+    }
+    //make sure user included either a phone number or email
+     if (this.state.phone_number == '' && this.state.email == ''  ) {
+      alert('Please enter an Email or Phone Number')
+      return;
+    }
     const newContact = {
       key: generateKey(),
       name: this.state.name,
@@ -29,6 +39,7 @@ class CreateContact extends React.Component {
       email: this.state.email,
       phone_number: this.state.phone_number
     };
+
 //using the new contact as an argument for the apps addContact function
     this.props.addContact(newContact)
 //once the new contact is added the page then automatically goes back to /contacts
@@ -66,7 +77,7 @@ class CreateContact extends React.Component {
 
         <Link to ='/contacts'>
           <button className = 'btn btn-primary'>
-          <i class="fas fa-arrow-left"></i>
+          <i className="fas fa-arrow-left"></i>
             Back
           </button>
         </Link>

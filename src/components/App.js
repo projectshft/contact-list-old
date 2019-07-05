@@ -55,4 +55,13 @@ addContact(contact) {
   }
 }
 
+// App.propTypes = {
+//   key: PropTypes.number.isRequired,
+//   name: PropTypes.string.isRequired,
+//   image_url: PropTypes.string,
+//   email: PropTypes.string,
+//   phone_number: PropTypes.number
+//
+// }
+
 export default App
