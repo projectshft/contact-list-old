@@ -16,7 +16,7 @@ const Rolodex = ({contacts, removeContact}) => (
 
 Rolodex.propTypes = {
   contacts: PropTypes.array,
-  addContact: PropTypes.func
+  removeContact: PropTypes.func
 };
 
 export default Rolodex;

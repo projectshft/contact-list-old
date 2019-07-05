@@ -32,7 +32,8 @@ const ContactsList = (props) => {
 };
 
 ContactsList.propTypes = {
-  contacts: PropTypes.array
+  contacts: PropTypes.array,
+  removeContact: PropTypes.func
 };
 
 export default ContactsList;

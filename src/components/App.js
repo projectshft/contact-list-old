@@ -54,7 +54,7 @@ class App extends Component {
           <Route exact path='/contacts' render={() => (
             <Rolodex contacts={this.state.contacts} removeContact={this.removeContact} />
           )} />
-          <Route exact path='/contacts/new' render={(props) => (
+          <Route path='/contacts/new' render={(props) => (
             <NewContact props={props} addContact={this.addContact} />
           )}/>
            <Route path='contacts/:id/edit' render={(props) => (

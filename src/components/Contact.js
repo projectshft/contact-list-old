@@ -27,6 +27,7 @@ const Contact = ({props, contacts, editContact}) => {
 };
 
 Contact.propTypes = {
+  props: PropTypes.object,
   contacts: PropTypes.array,
   editContact: PropTypes.func
 };
