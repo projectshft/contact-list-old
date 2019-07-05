@@ -34,8 +34,10 @@ class App extends React.Component {
   //bind the addContact's function 'this' to the App's this
   this.addContact = this.addContact.bind(this);
 }
+
 //takes in a contact from CreateContact component and then adds it to the array of contacts in the state
 addContact(contact) {
+
   this.setState({contactList: this.state.contactList.concat([contact])})
 }
 
@@ -55,13 +57,10 @@ addContact(contact) {
   }
 }
 
-// App.propTypes = {
-//   key: PropTypes.number.isRequired,
-//   name: PropTypes.string.isRequired,
-//   image_url: PropTypes.string,
-//   email: PropTypes.string,
-//   phone_number: PropTypes.number
-//
-// }
+Contacts.propTypes = {
+  contactList: PropTypes.array.isRequired,
+  addContact: PropTypes.func.isRequired
+
+}
 
 export default App

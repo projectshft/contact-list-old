@@ -51,24 +51,24 @@ class CreateContact extends React.Component {
       <div>
         <form>
           <label>Name</label>
-            <input type ='text' onChange={event => this.setState({name:event.target.value})
+            <input type ='text' className= 'form-control' onChange={event => this.setState({name:event.target.value})
           }/>
           <br />
 
           <label>Image</label>
-            <input placeholder="URL" type='text' onChange={event => this.setState({image_url:event.target.value})
+            <input placeholder="Insert URL" type='text' className= 'form-control' onChange={event => this.setState({image_url:event.target.value})
           }/>
           <br />
 
 
           <label>Email</label>
-            <input type='text' onChange={event => this.setState({email:event.target.value})
+            <input type='text' className= 'form-control' onChange={event => this.setState({email:event.target.value})
           }/>
           <br />
 
 
           <label>Phone Number</label>
-            <input type='text' onChange={event => this.setState({phone_number:event.target.value})
+            <input type='text' className= 'form-control' onChange={event => this.setState({phone_number:event.target.value})
           }/>
           <br />
           <button className = 'btn btn-primary' type ='button' onClick={this.handleSubmit}>Submit</button>
@@ -87,14 +87,11 @@ class CreateContact extends React.Component {
   }
 }
 
-// CreateContact.propTypes = {
-//   key: PropTypes.number.isRequired,
-//   name: PropTypes.string.isRequired,
-//   image_url: PropTypes.string,
-//   email: PropTypes.string,
-//   phone_number: PropTypes.number
-//
-// }
+// console.log(CreateContact);
+
+
+
+
 
 
 export default CreateContact

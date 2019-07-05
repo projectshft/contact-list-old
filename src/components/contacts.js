@@ -3,6 +3,8 @@ import React from 'react';
 import FullContactList from './FullContactList'
 import IndividualContact from './IndividualContact'
 import CreateContact from './CreateContact'
+import PropTypes from 'prop-types'
+
 
 
 
@@ -22,6 +24,19 @@ const Contacts = ({addContact, contactList}) => (
     )}/>
   </Switch>
 )
+
+CreateContact.propTypes = {
+  addContact: PropTypes.func.isRequired,
+  contactList: PropTypes.array.isRequired
+}
+
+IndividualContact.propTypes = {
+    contactList: PropTypes.array.isRequired
+}
+
+FullContactList.propTypes = {
+  contactList: PropTypes.array.isRequired
+}
 
 
 export default Contacts
