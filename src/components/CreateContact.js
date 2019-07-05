@@ -87,7 +87,6 @@ class CreateContact extends React.Component {
   }
 }
 
-// console.log(CreateContact);
 
 
 

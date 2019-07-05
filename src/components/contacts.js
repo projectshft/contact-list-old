@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 
 
 
-const Contacts = ({addContact, contactList}) => (
+const Contacts = ({addContact, contactList, deleteContact}) => (
   <Switch>
   //if route is /contacts/new the from to create  a new contact is rendered
     <Route path='/contacts/new' render={(props) => (
@@ -20,7 +20,7 @@ const Contacts = ({addContact, contactList}) => (
     )}/>
 //if route is /contacts the full contact list is shown on the page
     <Route path='/contacts' render={() => (
-      <FullContactList contactList={contactList} />
+      <FullContactList contactList={contactList} deleteContact ={deleteContact} />
     )}/>
   </Switch>
 )

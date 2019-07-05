@@ -40,6 +40,10 @@ addContact(contact) {
 
   this.setState({contactList: this.state.contactList.concat([contact])})
 }
+//delete the specfed contact 
+deleteContact() {
+  console.log('test delete in app')
+}
 
 
   render() {
@@ -49,7 +53,7 @@ addContact(contact) {
         //setting route for url to '/path
           <Route path='/contacts' render={() => (
             //onnce the rout is set to /contacts the app goes to the Contacts component
-            <Contacts addContact={this.addContact} contactList ={this.state.contactList} />
+            <Contacts addContact={this.addContact} contactList ={this.state.contactList} deleteContact = {this.deleteContact} />
           )}/>
         </Switch>
       </div>

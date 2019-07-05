@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
 
-const FullContactList = ({contactList}) => (
+class FullContactList extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleDelete() {
+    console.log('test delete in contact list')
+    console.log(this.props);
+    this.props.deleteContact();
+  }
+  render() {
+    return (
 <div>
+  <h1> Contacts </h1>
   <Link to ='/contacts/new'>
     <button className ='btn btn-primary'>
       Add Contact
@@ -13,16 +27,19 @@ const FullContactList = ({contactList}) => (
 
   <ul>
     {
-      contactList.map((contact) => (
+      this.props.contactList.map((contact) => (
         <li key={contact.key}>
           <i className="fas fa-user"></i>
           <Link to ={`/contacts/${contact.key}`}>{contact.name}</Link>
+          <i className="fas fa-trash-alt" onClick ={this.handleDelete}></i>
         </li>
       ))
     }
   </ul>
 </div>
-
 )
+}
+
+}
 
 export default FullContactList
