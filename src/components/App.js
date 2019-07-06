@@ -19,8 +19,8 @@ const SCOPES = "https://www.googleapis.com/auth/contacts.readonly";
 
 class App extends React.Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.handleClientLoad = this.handleClientLoad.bind(this);
     this.initClient = this.initClient.bind(this);
@@ -30,12 +30,20 @@ class App extends React.Component {
     this.listConnectionNames = this.listConnectionNames.bind(this);
     this.loadApi = this.loadApi.bind(this);
     this.addContact = this.addContact.bind(this);
+    //this.getContactById = this.getContactById.bind(this);
 
     this.state = {
       contacts: [],
       authBtnDisp: 'none',
       signOutBtnDisp: 'none'
     };
+  }
+
+  getContactById(contactId) {
+    //console.log(contactId);
+    const contact = this.props.contacts.find((contact) => { return contact.id === Number(contactId); });
+    //console.log(contact);
+    return contact; 
   }
 
   addContact(contact) {
@@ -188,8 +196,10 @@ class App extends React.Component {
             exact path='/:id'
             render={(props) =>
               <ContactView
-                props={props}
-                contacts={this.props.contacts}
+                // props={props}
+                contact={this.getContactById(Number(props.match.params.id))}
+                // contactId={props.match.params.id}
+                // contacts={this.props.contacts}
               />
             }
           />
