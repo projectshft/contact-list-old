@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 //routing for ContactList (index), Contact and Contact Form will be handled here so import those
 import Home from './Home'
 import ContactList from './ContactList'
-import Contact_Form from './Contact_Form';
+import ContactForm from './Contact_Form';
 import Contact from './Contact';
 
 class App extends React.Component{
@@ -12,17 +12,17 @@ class App extends React.Component{
 
     this.state = {
       contacts: [
-      {"id": 70219577,
-      "name": "Albert Einstein",
-      "image_url": "https://ichef.bbci.co.uk/news/660/media/images/82399000/jpg/_82399978_75952740.jpg",
-      "email": "aeinstein@example.com",
-      "phone_number": "15555555555"},
+      {id: 70219577,
+      name: "Albert Einstein",
+      image_url: "https://ichef.bbci.co.uk/news/660/media/images/82399000/jpg/_82399978_75952740.jpg",
+      email: "aeinstein@example.com",
+      phone_number: "15555555555"},
 
-      {"id": 70219578,
-      "name": "Kate Kremer",
-      "image_url": '',
-      "email": "kkremer@example.com",
-      "phone_number": "15555555556"},
+      {id: 70219578,
+      name: "Kate Kremer",
+      image_url: '',
+      email: "kkremer@example.com",
+      phone_number: "15555555556"},
 
       ]
   }
@@ -44,7 +44,7 @@ addContact(contact){
             <ContactList contacts={this.state.contacts}/>
             )}/>
           <Route exact path='/contacts/new' render={(props) =>(
-              <Contact_Form props={props} addContact={this.addContact} contacts={this.state.contacts}/>
+              <ContactForm props={props} addContact={this.addContact} contacts={this.state.contacts}/>
               )}/>
           <Route exact path='/contacts/:id' render={(props) =>(
               <Contact props={props} contacts={this.state.contacts}/>

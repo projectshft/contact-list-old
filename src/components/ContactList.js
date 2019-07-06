@@ -1,10 +1,7 @@
 import '../ContactList.css';
-import { Switch, Route, Link } from 'react-router-dom';
 import React from 'react';
-import App from './App';
 //routing for Contact and Contact Form will be handled here so import those
-import Contact from './Contact';
-import Contact_Form from './Contact_Form';
+import { Link } from 'react-router-dom';
 
 //pass in props from App.js
 const ContactList=({contacts})=>(
@@ -14,16 +11,12 @@ const ContactList=({contacts})=>(
         <div className="col-md-6">
           <h1 className='display-4'>Contacts</h1>
           <table className='table table-hover'>
-            <thead>
-              <tr>
-                <th scope='col'></th>
-              </tr>
-            </thead>
             <tbody>
             {
               contacts.map(contact => (
                 <tr key={contact.id}>
                   <td><Link to={`/contacts/${contact.id}`}>{contact.name}</Link></td>
+                  <td><img src={contact.image_url} className='img-fluid'/></td>
                 </tr>
 
               ))
@@ -44,5 +37,7 @@ const ContactList=({contacts})=>(
 
 
   )
+
+
 
 export default ContactList;

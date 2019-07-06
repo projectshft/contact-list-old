@@ -1,7 +1,10 @@
-import { Link } from 'react-router-dom'
-import React from 'react'
+import '../ContactForm.css';
+import { Link } from 'react-router-dom';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class Contact_Form extends React.Component {
+
+class ContactForm extends React.Component {
   constructor(){
     super()
 
@@ -35,8 +38,12 @@ class Contact_Form extends React.Component {
 
   render(){
     return (
-      <div>
-        <form>
+      <div className='container'>
+      <form>
+      <div className='row'>
+
+        <div className='form-group col-md-8'>
+        <h3>Add New Contact</h3>
         <label>Name</label>
         <input type='text' className='form-control'onChange={event =>
           this.setState({ name: event.target.value })
@@ -44,7 +51,7 @@ class Contact_Form extends React.Component {
 
         <br/>
 
-        <label>Image</label>
+        <label>Image Link</label>
         <input type='text' className='form-control'onChange={event =>
           this.setState({ image_url: event.target.value })
         }/>
@@ -64,12 +71,22 @@ class Contact_Form extends React.Component {
         }/>
 
         <button type="button" onClick={this.handleSubmitContact}>Submit</button>
-        </form>
 
+        </div>
+        </div>
+        </form>
         <Link to='/contacts'>Back</Link>
       </div>
+
     )
   }
 }
 
-export default Contact_Form
+ContactForm.propTypes = {
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string,
+  image_url: PropTypes.string,
+  phone_number: PropTypes.string
+}
+
+export default ContactForm

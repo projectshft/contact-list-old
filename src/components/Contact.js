@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
-import _ from 'lodash'
+import _ from 'lodash';
+
 
 const Contact = ({props, contacts}) => {
   const contact = _.find(contacts, {id: parseInt(props.match.params.id, 10) });
@@ -30,5 +31,9 @@ const Contact = ({props, contacts}) => {
 </div>
     )
 }
+
+
+
+
 
 export default Contact
