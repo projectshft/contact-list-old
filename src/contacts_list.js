@@ -1,9 +1,8 @@
 import React from 'react'
 
-const ContactsList = () => {
+const ContactsList = (props) => {
     return (
-        <h1>Hello World</h1>
-
+        <h1>Contacts   <button className="btn btn-primary" onClick={props.addContact}>Add Contact</button></h1>
     )
 }
 

@@ -11,19 +11,19 @@ class App extends Component {
       contacts: []
     }
 
-    this.addContacts = this.addContacts.bind(this)
+    this.addContact = this.addContact.bind(this)
 
   }
 
-  addContacts () {
-    console.log('click')
+  addContact () {
+    console.log('click me')
   }
 
   render () {
     return (
       <div>
         <Switch>
-          <Route exact path="/contacts" component={ContactsList} />
+    <Route exact path="/contacts" render={(props) => <ContactsList {...props} addContact={this.addContact} />}  />
           {/* <Route path="/contacts/:id" component={ContactView} /> */}
         </Switch>
       </div>
