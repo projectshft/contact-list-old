@@ -32,7 +32,8 @@ const ContactList=({contacts})=>(
           </table>
         </div>
         <div className="col-md-6">
-          <button className='btn btn-light' id="add-contact-button">Add Contact</button>
+          <button className='btn btn-light' id="add-contact-button">
+            <Link to='/contacts/new'>Add Contact</Link></button>
           </div>
           </div>
           <div>
