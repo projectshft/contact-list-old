@@ -8,11 +8,9 @@ class FullContactList extends React.Component {
 
     this.handleDelete = this.handleDelete.bind(this);
   }
-
-  handleDelete() {
-    console.log('test delete in contact list')
-    console.log(this.props);
-    this.props.deleteContact();
+//take in the key of the element user wants to delete and send it to the Apps deleteContact function
+  handleDelete(target) {
+    this.props.deleteContact(target);
   }
   render() {
     return (
@@ -31,7 +29,8 @@ class FullContactList extends React.Component {
         <li key={contact.key}>
           <i className="fas fa-user"></i>
           <Link to ={`/contacts/${contact.key}`}>{contact.name}</Link>
-          <i className="fas fa-trash-alt" onClick ={this.handleDelete}></i>
+          //when the trash can button is clicked take the key of the clicked on contact and pass it into a handler function
+          <i className="fas fa-trash-alt"  onClick ={() => {this.handleDelete(contact.key)}}></i>
         </li>
       ))
     }

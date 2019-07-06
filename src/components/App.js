@@ -31,8 +31,10 @@ class App extends React.Component {
           phone_number: '211-731-9151'}
       ]
   }
-  //bind the addContact's function 'this' to the App's this
-  this.addContact = this.addContact.bind(this);
+  //bind the addContact's and delteContact's function 'this' to the App's this
+  this.addContact = this.addContact.bind(this)
+  this.deleteContact = this.deleteContact.bind(this)
+
 }
 
 //takes in a contact from CreateContact component and then adds it to the array of contacts in the state
@@ -40,9 +42,20 @@ addContact(contact) {
 
   this.setState({contactList: this.state.contactList.concat([contact])})
 }
-//delete the specfed contact 
-deleteContact() {
-  console.log('test delete in app')
+//delete the specfed contact
+deleteContact(target) {
+  let newContact = [];
+  const currentList = this.state.contactList
+//find the contact in the list that has the same key as the clicked on contact and then add it to our new array
+  currentList.filter((contact) => {
+    if (contact.key !== target ) {
+      newContact.push(contact)
+    }
+  })
+  //update the state with a new ContactList that doesn't include the deleted contact
+    this.setState({
+    contactList: newContact
+  })
 }
 
 
