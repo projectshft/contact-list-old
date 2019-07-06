@@ -13,8 +13,8 @@ const ContactList = ({contacts, removeContact}) => (
       <Link className='btn btn-secondary btn-lg btn-block align-right' to={`/contacts/new`}>Add Contact</Link>
     </div>
     <ul className='list-group'>
-      {contacts.map(c =>
-          <ContactListItem contact={c} removeContact={removeContact} />
+      {contacts.map(contact =>
+          <ContactListItem contact={contact} removeContact={removeContact} />
         )}
     </ul>
   </div>

@@ -11,7 +11,9 @@ const ContactListItem = ({contact, removeContact}) => (
     <Link to={`/contacts/${contact.id}`} className='align-middle'><h4>{contact.name}</h4></Link>
     <span className='float-right'>
       <Link className='btn btn-outline-info btn-md' to={`/contacts/${contact.id}/edit`}>Edit</Link>|
-      <button className='btn btn-outline-danger btn-md' onClick={e => removeContact(contact.id)}>
+      <button className='btn btn-outline-danger btn-md'
+        onClick={e => removeContact(contact.id)}
+      >
         Delete
       </button>
     </span>
