@@ -46,4 +46,8 @@ body {
 
 button {
   margin-right: 10px;
+  line-height: 30px;
+  align-items: center;
+  vertical-align: middle; 
+  padding-top: 2px;
 }

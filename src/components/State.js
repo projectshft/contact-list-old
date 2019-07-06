@@ -6,7 +6,6 @@ import _ from 'lodash';
 const generateId = () => Math.round(Math.random() * 100000000)
 
 const STATE = {
-  name: 'n/a',
   contacts: [
     {
       id: 0,
@@ -14,7 +13,7 @@ const STATE = {
       email: "kitten@catmail.com",
       phone_number: "1234567890",
       image_url: "https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg"
-    }, 
+    },
     {
       id: 1,
       name: "Peppermint Butler",
@@ -54,11 +53,15 @@ const sendEvent = (name, data) => {
   const newState = STATE;
 
   // This modifies the state however it likes, or maybe even not at all!
-  handleEvent({
-    name,
-    data: data
-  }, newState);
-
+  console.log('event name:', name, 'event data: ', data);
+  handleEvent(
+    {
+      name,
+      data: data || null
+    },
+    newState
+  );
+  console.log('new state:', newState);
   // If the state was changed between the time we made the copy and after we
   // passed it to `handleEvent`, we know we need to notify any listener that
   // there was a change!
@@ -73,27 +76,53 @@ const sendEvent = (name, data) => {
 // NOTE: This is where you should add support for any new events you want to
 // handle!
 const handleEvent = ({ name, data }, state) => {
-  if (name === 'changeName') {
-    state.name = data;
-  } else if (name === 'addContact') {
-    console.log('add', data);
-    data.id = generateId();
-    if (data.image_url === '') { data.image_url = "https://lh3.googleusercontent.com/a/default-user=s100-p-k-rw-no"; }
-    state.contacts = state.contacts.concat([data])
-  } else if (name === 'deleteContact') {
-    console.log('delete', data);
-    state.contacts = state.contacts.filter(contact =>
-      contact.id !== Number(data)
-    )
-  } else if (name === 'editContact') {
-    console.log('edit', data);
-    state.contacts = state.contacts.map(contact =>
-      (contact.id === data.id) ? Object.assign({}, contact, data) : contact
-    )
-  } else {
-    // If we don't know what kind of event this is, alert the developer!
-    throw new Error(`Unrecognized event: ${name}`);
+  switch (name) {
+    case 'addContact': {
+      data.id = generateId();
+      if (data.image_url === '') {
+        data.image_url = "https://lh3.googleusercontent.com/a/default-user=s100-p-k-rw-no";
+      }
+      state.contacts = state.contacts.concat([data])
+      break;
+    }
+    case 'deleteContact': {
+      state.contacts = state.contacts.filter(contact =>
+        contact.id !== Number(data)
+      )
+      break;
+    }
+    case 'editContact': {
+      state.contacts = state.contacts.map(contact =>
+        (contact.id === data.id) ? Object.assign({}, contact, data) : contact
+      )
+      break;
+    }
+    default: {
+      throw new Error(`Unrecognized event: ${name}`);
+    }
   }
+
+  // if (name === 'changeName') {
+  //   state.name = data;
+  // } else if (name === 'addContact') {
+  //   console.log('add', data);
+  //   data.id = generateId();
+  //   if (data.image_url === '') { data.image_url = "https://lh3.googleusercontent.com/a/default-user=s100-p-k-rw-no"; }
+  //   state.contacts = state.contacts.concat([data])
+  // } else if (name === 'deleteContact') {
+  //   console.log('delete', data);
+  //   state.contacts = state.contacts.filter(contact =>
+  //     contact.id !== Number(data)
+  //   )
+  // } else if (name === 'editContact') {
+  //   console.log('edit', data);
+  //   state.contacts = state.contacts.map(contact =>
+  //     (contact.id === data.id) ? Object.assign({}, contact, data) : contact
+  //   )
+  // } else {
+  //   // If we don't know what kind of event this is, alert the developer!
+  //   throw new Error(`Unrecognized event: ${name}`);
+  // }
 };
 
 export {
