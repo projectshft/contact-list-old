@@ -4,7 +4,6 @@ import _ from 'lodash'
 
 const Contact = ({props, contacts}) => {
   const contact = _.find(contacts, {id: parseInt(props.match.params.id, 10) });
-  debugger
   if (!contact){
     return <div>The contact was not found <Link to='/contacts'>Back</Link> </div>
     }

@@ -26,10 +26,14 @@ class App extends React.Component{
 
       ]
   }
+
+  this.addContact = this.addContact.bind(this);
 }
 
   //addContact function will be how state is passed from Contact Form
-
+addContact(contact){
+  this.setState({contacts: this.state.contacts.concat([contact])});
+}
 //routing
   render(){
     return(
@@ -40,7 +44,7 @@ class App extends React.Component{
             <ContactList contacts={this.state.contacts}/>
             )}/>
           <Route exact path='/contacts/new' render={(props) =>(
-              <Contact_Form props={props} contacts={this.state.contacts}/>
+              <Contact_Form props={props} addContact={this.addContact} contacts={this.state.contacts}/>
               )}/>
           <Route exact path='/contacts/:id' render={(props) =>(
               <Contact props={props} contacts={this.state.contacts}/>
