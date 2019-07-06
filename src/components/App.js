@@ -1,9 +1,10 @@
 import { Switch, Route } from 'react-router-dom';
 import React, { Component } from 'react';
 //routing for ContactList (index), Contact and Contact Form will be handled here so import those
+import Home from './Home'
 import ContactList from './ContactList'
-import Contact from './Contact';
 import Contact_Form from './Contact_Form';
+import Contact from './Contact';
 
 class App extends React.Component{
   constructor(){
@@ -34,15 +35,14 @@ class App extends React.Component{
     return(
       <div>
         <Switch>
-          <Route exact path='/' render={() => (
+          <Route exact path='/' component={Home}/>
+          <Route exact path='/contacts' render={() => (
             <ContactList contacts={this.state.contacts}/>
-          )}/>
-          <Route path='/:id' render={(props) =>(
-            <Contact props={props} contacts={this.state.contacts}/>
-          )}/>
-          <Route path='/new' render={(props) => (
-            <Contact_Form props={props} contacts={this.state.contacts}/>
-          )}
+            )}/>
+          <Route path='/contacts/:id' render={(props) =>(
+              <Contact props={props} contacts={this.state.contacts}/>
+            )}/>
+
         </Switch>
       </div>
     )

@@ -1,5 +1,5 @@
 import '../ContactList.css';
-import { Swtich, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import React from 'react';
 import App from './App';
 //routing for Contact and Contact Form will be handled here so import those
@@ -23,7 +23,7 @@ const ContactList=({contacts})=>(
             {
               contacts.map(contact => (
                 <tr key={contact.id}>
-                  <td><Link to={`/${contact.id}`}>{contact.name}</Link></td>
+                  <td><Link to={`/contacts/${contact.id}`}>{contact.name}</Link></td>
                 </tr>
 
               ))
@@ -35,7 +35,10 @@ const ContactList=({contacts})=>(
           <button className='btn btn-light' id="add-contact-button">Add Contact</button>
           </div>
           </div>
-        </div>
+          <div>
+
+          </div>
+      </div>
 
 
 

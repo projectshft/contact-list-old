@@ -6,8 +6,7 @@ const Contact = ({props, contacts}) => {
   const contact = _.find(contacts, {id: parseInt(props.match.params.id, 10) });
 
   if (!contact){
-    debugger
-    return <div>The contact was not found <Link to='/'>Back</Link> </div>
+    return <div>The contact was not found <Link to='/contacts'>Back</Link> </div>
     }
     return(
       <div className='container'>
@@ -24,7 +23,7 @@ const Contact = ({props, contacts}) => {
           <li className='list-group-item'>{contact.email}</li>
           <li className='list-group-item'>{contact.phone_number}</li>
         </ul>
-        <Link to='/'>Back</Link>
+        <Link to='/contacts'>Back</Link>
         </div>
         </div>
         <div className='col-md-3'></div>
