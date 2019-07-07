@@ -23,7 +23,8 @@ class ContactForm extends React.Component {
     return Math.round(Math.random() * 100000000)
   }
 
-  handleSubmitContact(){
+  handleSubmitContact(e){
+
     const newContact = {
       id: this.generateId(),
       name: this.state.name,
@@ -32,24 +33,22 @@ class ContactForm extends React.Component {
       phone_number: this.state.phone_number
     };
 
-    if(this.state.name.length === 0){
-      alert('Name is a required field.')
-    } else {
       this.props.addContact(newContact)
       this.props.props.history.push('/contacts')
+
     }
-  }
+
 
   render(){
     return (
       <div className='container'>
-      <form>
+      <form onSubmit={e => {this.handleSubmitContact(e)}}>
       <div className='row'>
 
         <div className='form-group col-md-8'>
         <h3>Add New Contact</h3>
         <label>Name</label>
-        <input type='text' className='form-control'onChange={event =>
+        <input type='text' required className='form-control'onChange={event =>
           this.setState({ name: event.target.value })
         }/>
 
@@ -63,7 +62,7 @@ class ContactForm extends React.Component {
         <br/>
 
         <label>Email</label>
-        <input type='text' className='form-control'onChange={event =>
+        <input type='email' className='form-control'onChange={event =>
           this.setState({ email: event.target.value })
         }/>
 
@@ -74,7 +73,7 @@ class ContactForm extends React.Component {
           this.setState({ phone_number: event.target.value })
         }/>
 
-        <button type="button" onClick={this.handleSubmitContact}>Submit</button>
+        <button type="submit" value='Submit'>Submit</button>
 
         </div>
         </div>
