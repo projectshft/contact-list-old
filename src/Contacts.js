@@ -13,9 +13,11 @@ const Contacts = (props) => {
             </h1>
             
             <br/>
-            
+
             {props.contacts.map(c => (
-                <Link to={`/contacts/${c.id}`}>{c.name}</Link>
+                <div>
+                    <Link to={`/contacts/${c.id}`}>{c.name}</Link><br/>
+                </div>
             ))}
             <br/>
         </div>

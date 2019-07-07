@@ -1,8 +1,14 @@
+import {Link} from 'react-router-dom'
 import React from 'react'
 
-const ContactView = () => {
+const ContactView = (props) => {
+    const contact = props.getContactById(parseInt(props.match.params.id, 10))
+
     return (
-        <h1>Hello People</h1>
+        <div>
+        <h1>Hello {contact.name}</h1><br/>
+        <Link to="/contacts">Back</Link>
+        </div>
     )
 };
 
