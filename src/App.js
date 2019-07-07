@@ -1,4 +1,4 @@
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import React, { Component } from 'react';
 import Contacts from './Contacts';
 import ContactView from './contact_view';
@@ -31,7 +31,7 @@ class App extends Component {
 
   render () {
     return (
-      <div>
+      <div className="container">
         <Switch>
           <Route exact path="/contacts" render={(props) => <Contacts {...props} contacts={this.state.contacts}/>}  />
           <Route path="/contacts/new" render={(props) => <NewContact {...props} addContact={this.addContact} contacts={this.state.contacts} />} />

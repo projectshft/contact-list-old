@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import React from 'react'
 
@@ -25,28 +26,28 @@ const NewContact = props => {
     return (
         <div className="row">
             <form id="new-contact-form">
-                <label className="col-md-2">Name</label>
+                <label >Name</label>
                 <input type='text' className='form-control' onChange={event =>
                 newContact.name = event.target.value 
                 }/>
         
                 <br/>
         
-                <label className="col-md-2">Image</label>
+                <label>Image</label>
                 <input type='text' className='form-control' onChange={event =>
                 newContact.image = event.target.value 
                 }/>
         
                 <br/>
         
-                <label className="col-md-2">Email</label>
+                <label>Email</label>
                 <input type='text' className='form-control' onChange={event =>
                 newContact.email = event.target.value 
                 }/>
 
                 <br/>
 
-                <label className="col-md-2">Phone Number</label>
+                <label>Phone Number</label>
                 <input type='text' className='form-control'  onChange={event =>
                 newContact.phone_number = event.target.value 
                 }/>
@@ -60,6 +61,10 @@ const NewContact = props => {
         </div>
     )
     
+}
+
+NewContact.propTypes ={
+    addContact: PropTypes.func.isRequired
 }
 
 export default NewContact
