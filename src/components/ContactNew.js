@@ -14,6 +14,31 @@ class ContactNew extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleValidation = this.handleValidation.bind(this);
+  }
+
+  handleValidation() {
+    const errors = []; 
+    if (this.state.name === '') {
+      errors.push('You must enter a name.');
+    }
+    if (this.state.email !== '') {
+      let lastAtPos = this.state.email.lastIndexOf('@');
+      let lastDotPos = this.state.email.lastIndexOf('.');
+      if (!(lastAtPos < lastDotPos 
+        && lastAtPos > 0 
+        && this.state.email.indexOf('@@') === -1 
+        && lastDotPos > 2 
+        && (this.state.email.length - lastDotPos) > 2)) {
+          errors.push('If you include an email address, it must be valid.');
+      }
+    }
+    if (this.state.phone_number !== '') {
+      if(!this.state.phone_number.match(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/)) {
+        errors.push('If you include a phone number, it must be valid.')
+      }
+    }
+    return errors.join(' '); 
   }
 
   handleChange(event) {
@@ -22,6 +47,7 @@ class ContactNew extends React.Component {
 
   handleAdd(e) {
     e.preventDefault();
+    console.log(this.handleValidation());
     const newContact = this.state;
     sendEvent('addContact', newContact);
     this.props.history.push('/');
