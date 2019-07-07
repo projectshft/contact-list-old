@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Home from './Home'
 import ContactList from './ContactList'
 import ContactForm from './Contact_Form';
-import Contact from './Contact';
+import ContactDetail from './ContactDetail';
 
 class App extends React.Component{
   constructor(){
@@ -47,7 +47,7 @@ addContact(contact){
               <ContactForm props={props} addContact={this.addContact} contacts={this.state.contacts}/>
               )}/>
           <Route exact path='/contacts/:id' render={(props) =>(
-              <Contact props={props} contacts={this.state.contacts}/>
+              <ContactDetail props={props} contacts={this.state.contacts}/>
               )}/>
 
 
