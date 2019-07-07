@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
+import Header from './Header';
 
 const ContactsList = (props) => {
   const handleDeleteContactClick = (contact) => {
@@ -23,11 +24,15 @@ const ContactsList = (props) => {
   //TODO: add no contacts conditional
 
   return (
-    <table className='table table-hover'>
-      <tbody>
-        {contactItems}
-      </tbody>
-    </table>
+    <div>
+      <Header />
+      <table className='table table-hover'>
+        <tbody>
+          {contactItems}
+        </tbody>
+      </table>
+      <Link to='/'>exit</Link>
+    </div>
   )
 };
 

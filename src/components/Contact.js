@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import _ from 'lodash';
 import { PropTypes } from 'prop-types';
+import EditContact from './EditContact';
 
 const Contact = ({props, contacts, editContact}) => {
   const currentContact = _.find(contacts, { id: +props.match.params.id });
@@ -20,7 +21,7 @@ const Contact = ({props, contacts, editContact}) => {
       <h1>{currentContact.name}</h1>
       <p>Email: {currentContact.email}</p>
       <p>Phone number: {currentContact.phoneNumber}</p>
-      <Link to={`${props.match.path}/edit`}>Edit {currentContact.name}</Link><br/>
+      <Link to={`${props.match.url}/edit`}>Edit {currentContact.name}</Link><br/>
       <Link to='/contacts'>Back</Link>
     </div>
   );
@@ -33,3 +34,7 @@ Contact.propTypes = {
 };
 
 export default Contact;
+
+{/* <Route path='contacts/:id/edit' render={(props) => (
+            <EditContact props={props} contacts={this.state.contacts} editContact={this.editContact} />
+          )} /> */}
