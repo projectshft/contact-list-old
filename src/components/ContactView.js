@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'; 
 import PropTypes from 'prop-types';
 
 class ContactView extends React.Component {
@@ -15,13 +15,18 @@ class ContactView extends React.Component {
 
     return (
       <div>
-        <div>
-          View Contact
+        <div className='page-title'>
+          Contact Details
         </div>
+        <div>
+        <button className="btn btn-light"><Link to='/'>&laquo; Back to Contacts</Link></button>
+        </div>
+        <div className="item-view">
         <div className="img-container-view">
           <img className="img-thumbnail img-view" src={contact.image_url} alt="" />
         </div>
-        <div>
+        <div className="content-container-view">
+        <div className="name-view">
           {contact.name}
         </div>
         <div>
@@ -30,7 +35,8 @@ class ContactView extends React.Component {
         <div>
           {contact.phone_number}
         </div>
-        <button><Link to='/'>Back</Link></button>
+        </div> 
+        </div>
       </div>
     )
   }

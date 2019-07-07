@@ -12,7 +12,7 @@ const STATE = {
       name: "Kitten",
       email: "kitten@catmail.com",
       phone_number: "1234567890",
-      image_url: "https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg"
+      image_url: "http://images6.fanpop.com/image/photos/41400000/cute-kitties-cute-kittens-41456173-1600-1600.jpg"
     }
   ]
 };
@@ -87,6 +87,12 @@ const handleEvent = ({ name, data }, state) => {
     case 'editContact': {
       state.contacts = state.contacts.map(contact =>
         (contact.id === data.id) ? Object.assign({}, contact, data) : contact
+      )
+      break;
+    }
+    case 'setContactImgToDefault': {
+      state.contacts = state.contacts.map(contact =>
+        (contact.id === Number(data)) ? Object.assign({}, contact, {image_url: "https://lh3.googleusercontent.com/a/default-user=s100-p-k-rw-no"}) : contact
       )
       break;
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 //import { sendEvent } from './State';
 import PropTypes from 'prop-types';
 //import './App.css';
@@ -165,15 +165,9 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <div className="row">
-          <div className="col">
-            <Link to="/">-Contacts-   </Link>
-            <Link to="/new">-New Contact-   </Link>
-          </div>
-        </div>
-        <div>
-        <button id="authorize_button" style={{ display: authDisp }} onClick={this.handleAuthClick}> <img src="https://img.icons8.com/color/25/000000/google-logo.png" alt=""/> Sign in with Google </button>
-        <button id="signout_button" style={{ display: signOutDisp }} onClick={this.handleSignoutClick}> <img src="https://img.icons8.com/color/25/000000/google-logo.png" alt=""/> Sign out of Google </button>
+      <div>
+        <button className="btn btn-light" id="authorize_button" style={{ display: authDisp }} onClick={this.handleAuthClick}> <img src="https://img.icons8.com/color/25/000000/google-logo.png" alt=""/> Sign in with Google </button>
+        <button className="btn btn-light" id="signout_button" style={{ display: signOutDisp }} onClick={this.handleSignoutClick}> <img src="https://img.icons8.com/color/25/000000/google-logo.png" alt=""/> Sign out of Google </button>
       </div>
         <Switch>
           <Route
