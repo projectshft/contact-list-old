@@ -1,3 +1,4 @@
+//rendered when /contacts, has Contact as child component, provides link to add contact route
 import '../ContactList.css';
 import React from 'react';
 import { Route } from 'react-router-dom';

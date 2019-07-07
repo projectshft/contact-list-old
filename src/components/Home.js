@@ -1,8 +1,9 @@
+//rendered when '/', can directly navigate to both /contacts and /contacts/new
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAddressBook, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
-//home directs to contact list index, or directly to add a new contact 
+
 const Home = () => (
   <div className='card text-center'>
     <div className='card-header'>

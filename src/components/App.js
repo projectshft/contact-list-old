@@ -1,6 +1,6 @@
+//App holds state and routing
 import { Switch, Route } from 'react-router-dom';
 import React, { Component } from 'react';
-//routing for ContactList (index), Contact and Contact Form will be handled here so import those
 import Home from './Home'
 import ContactList from './ContactList'
 import ContactForm from './Contact_Form';

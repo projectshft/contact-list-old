@@ -1,3 +1,4 @@
+//component renders table row for each contact (in contact list)
 import React from 'react';
 import { Link } from 'react-router-dom';
 //each contact is own component when rendered into contact list to eventually make deletion and editing easier with key but I probably won't make it to the extensions :)

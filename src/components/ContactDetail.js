@@ -1,3 +1,4 @@
+//rendered when /contacts/:id displays detailed contact info
 import '../ContactDetail.css'
 import { Link } from 'react-router-dom';
 import React from 'react';

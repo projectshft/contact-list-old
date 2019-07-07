@@ -1,3 +1,4 @@
+//component renders when /contacts/new provides form to add new contact
 import '../ContactForm.css';
 import { Link } from 'react-router-dom';
 import React from 'react';
@@ -18,7 +19,7 @@ class ContactForm extends React.Component {
 
     this.handleSubmitContact = this.handleSubmitContact.bind(this)
   }
-//used to generate unique identifier for contacts
+//will need unique identifier for contacts
   generateId(){
     return Math.round(Math.random() * 100000000)
   }
