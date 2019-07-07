@@ -172,8 +172,8 @@ class App extends React.Component {
           </div>
         </div>
         <div>
-        <button id="authorize_button" style={{ display: authDisp }} onClick={this.handleAuthClick}> <img src="https://img.icons8.com/color/30/000000/google-logo.png" alt=""/> Sign in with Google </button>
-        <button id="signout_button" style={{ display: signOutDisp }} onClick={this.handleSignoutClick}> <img src="https://img.icons8.com/color/30/000000/google-logo.png" alt=""/> Sign out of Google </button>
+        <button id="authorize_button" style={{ display: authDisp }} onClick={this.handleAuthClick}> <img src="https://img.icons8.com/color/25/000000/google-logo.png" alt=""/> Sign in with Google </button>
+        <button id="signout_button" style={{ display: signOutDisp }} onClick={this.handleSignoutClick}> <img src="https://img.icons8.com/color/25/000000/google-logo.png" alt=""/> Sign out of Google </button>
       </div>
         <Switch>
           <Route
@@ -186,18 +186,18 @@ class App extends React.Component {
           />
           <Route
             path='/new'
-            render={(props) =>
-              <ContactNew
-                props={props}
-              />
-            }
+            component={ContactNew} // render={(props) =>
+            //   <ContactNew
+            //     {...props} //historyPush={props.history.push}
+            //   />
+            // }
           />
           <Route
             exact path='/:id'
             render={(props) =>
               <ContactView
                 // props={props}
-                contact={this.getContactById(Number(props.match.params.id))}
+                contact={this.getContactById(props.match.params.id)}
                 // contactId={props.match.params.id}
                 // contacts={this.props.contacts}
               />

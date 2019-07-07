@@ -24,7 +24,7 @@ class ContactNew extends React.Component {
     e.preventDefault();
     const newContact = this.state;
     sendEvent('addContact', newContact);
-    this.props.props.history.push('/');
+    this.props.history.push('/');
     this.setState({ name: '', email: '', phone_number: '', image_url: '' });
   }
 
