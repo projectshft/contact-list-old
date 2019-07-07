@@ -17,15 +17,19 @@ class App extends Component {
   }
 
   addContact (contact) {
-    this.setState({contacts: this.state.contacts.push(contact)})
+    this.setState({contacts: this.state.contacts.concat(contact)});
+  }
+
+  componentDidUpdate () {
+    console.log(this.state.contacts)
   }
 
   render () {
     return (
       <div>
         <Switch>
-          <Route exact path="/contacts" render={(props) => <Contacts {...props} addContact={this.addContact} contacts={this.state.contacts}/>}  />
-          <Route path="/contacts/new" render={(props) => <NewContact {...props} contacts={this.state.contacts} />} />
+          <Route exact path="/contacts" render={(props) => <Contacts {...props} contacts={this.state.contacts}/>}  />
+          <Route path="/contacts/new" render={(props) => <NewContact {...props} addContact={this.addContact} contacts={this.state.contacts} />} />
           <Route path="/contacts/:id" render={(props) => <ContactView {...props} /> } />
         </Switch>
       </div>

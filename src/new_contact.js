@@ -1,46 +1,56 @@
 import { Link } from 'react-router-dom'
-import React, { Component } from 'react'
+import React from 'react'
 
-class NewContact extends Component {
-    render() {
-        return (
-            <div className="row">
-                <form>
-                    <label className="col-md-2">Name</label>
-                    <input type='text' className='form-control'onChange={event =>
-                    this.setState({ name: event.target.value })
-                    }/>
-        
-                    <br/>
-        
-                    <label>Image</label>
-                    <input type='text' className='form-control'onChange={event =>
-                    this.setState({ number: parseInt(event.target.value, 10) })
-                    }/>
-        
-                    <br/>
-        
-                    <label>Email</label>
-                    <input type='text' className='form-control'onChange={event =>
-                    this.setState({ position: event.target.value })
-                    }/>
 
-                    <br/>
-
-                    <label>Phone Number</label>
-                    <input type='text' className='form-control'onChange={event =>
-                    this.setState({ number: parseInt(event.target.value, 10) })
-                    }/>
-        
-                    <br/>
-        
-                    <button type="button" onClick={this.handleSubmitPlayerClick}>Submit</button>
-                </form>
-        
-                <Link to='/roster'>Roster</Link>
-            </div>
-        )
+const NewContact = props => {
+    const newContact = {
+        name: '',
+        image: '',
+        email: '',
+        phone_number: ''
     }
+
+    const handleSubmitNewContactClick  = () => {
+        props.addContact(newContact);
+    }
+    
+    return (
+        <div className="row">
+            <form>
+                <label className="col-md-2">Name</label>
+                <input type='text' className='form-control'onChange={event =>
+                newContact.name = event.target.value 
+                }/>
+        
+                <br/>
+        
+                <label className="col-md-2">Image</label>
+                <input type='text' className='form-control'onChange={event =>
+                newContact.image = event.target.value 
+                }/>
+        
+                <br/>
+        
+                <label className="col-md-2">Email</label>
+                <input type='text' className='form-control'onChange={event =>
+                newContact.email = event.target.value 
+                }/>
+
+                <br/>
+
+                <label className="col-md-2">Phone Number</label>
+                <input type='text' className='form-control'onChange={event =>
+                newContact.phone_number = event.target.value 
+                }/>
+                    
+                <br/>
+        
+                <button type="button" onClick={handleSubmitNewContactClick}>Submit</button>
+            </form>
+        
+            <Link to='/contacts'>Back</Link>
+        </div>
+    )
     
 }
 
