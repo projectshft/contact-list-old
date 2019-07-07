@@ -20,7 +20,7 @@ class App extends React.Component{
 
       {id: 70219578,
       name: "Kate Kremer",
-      image_url: '',
+      image_url: 'https://media.licdn.com/dms/image/C4E03AQEWkvvpCM8w3A/profile-displayphoto-shrink_200_200/0?e=1567641600&v=beta&t=36k0yDFHr4JdznLRKW-hWziUXvhBssl7vVJ1SczAU4U',
       email: "kkremer@example.com",
       phone_number: "15555555556"},
 

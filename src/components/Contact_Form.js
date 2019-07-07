@@ -32,8 +32,12 @@ class ContactForm extends React.Component {
       phone_number: this.state.phone_number
     };
 
-    this.props.addContact(newContact)
-    this.props.props.history.push('/contacts')
+    if(this.state.name.length === 0){
+      alert('Name is a required field.')
+    } else {
+      this.props.addContact(newContact)
+      this.props.props.history.push('/contacts')
+    }
   }
 
   render(){

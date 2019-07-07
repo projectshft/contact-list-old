@@ -1,3 +1,4 @@
+import '../Contact.css'
 import { Link } from 'react-router-dom';
 import React from 'react';
 import _ from 'lodash';
@@ -13,8 +14,8 @@ const Contact = ({props, contacts}) => {
       <div className='row'>
       <div className='col-md-3'></div>
       <div className='col-md-6'>
-      <div className='card'>
-        <img className='card-img-top' src={contact.image_url}/>
+      <div className='card text-center'>
+        <img className='img-circle' src={contact.image_url}/>
 
         <div className='card-body'>
           <h4 className='card-title'>{contact.name}</h4>
