@@ -3,14 +3,19 @@ import React from 'react'
 import _ from 'lodash'
 
 const Contact = ({props, contacts}) => {
-  const contact = _.find(contacts, { id: parseInt(props.match.params.number, 10) });
+  const contact = _.find(contacts, { id: parseInt(props.match.params.id, 10) });
 
   if (!contact) {
-    return <div>Sorry, but the contact was not found</div>
+    return(
+      <div>
+        <h2>Sorry, but the contact was not found</h2>
+        <Link to='/roladex'>Back</Link>
+      </div>
+    )
   }
   return (
     <div>
-      <Link to="/contact-list">Back</Link>
+      <Link to="/roladex">Back</Link>
       <div>
         <img src={contact.image_URL}></img>
       </div>

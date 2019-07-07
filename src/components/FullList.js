@@ -3,12 +3,12 @@ import React from 'react'
 
 const FullList = ({contacts}) => (
   <div>
-    <Link to="/">Home</Link>
-    <h1>Contacts List <button>Add Contact</button></h1>
+    <Link to="/">Home</Link> <Link to="/roladex/new">Add Contact</Link>
+    <h1>Contacts List</h1>
     <ul>
-      {ContactAPI.all().map(p => (
-        <li key={p.id}>
-          <Link to={`/contact-list/${p.id}`}>{p.name}</Link>
+      {contacts.map(c => (
+        <li key={c.id}>
+          <Link to={`/roladex/${c.id}`}>{c.name}</Link>
         </li>
       ))}
     </ul>

@@ -1,12 +1,14 @@
 import { Switch, Route } from 'react-router-dom'
 import React from 'react'
 import Home from './Home'
-import ContactList from './Contact-List'
+import Roladex from './Roladex'
+import Contact from './Contact'
 
 class App extends React.Component {
   constructor () {
     super()
 
+    const generateId = () => Math.round(Math.random() * 100000000);
     this.state = {
       contacts: [
         {id: generateId(), name: 'Albert Einstein', image_URL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/220px-Albert_Einstein_Head.jpg', email: 'm.c.Squared@gmail.com', phoneNumber: '910-123-4567', quote: '"If you cant explain it simply, you dont understand it well enough."' },
@@ -27,8 +29,11 @@ class App extends React.Component {
       <div>
         <Switch>
           <Route exact path='/' component={Home}/>
-          <Route path='/Contact-List' render={() => (
-            <Roster addContact={this.addContact} contacts={this.state.contacts} />
+          <Route path='/roladex' render={() => (
+            <Roladex addContact={this.addContact} contacts={this.state.contacts} />
+          )}/>
+          <Route path='/roladex/:id' render={() => (
+            <Contact contacts={this.state.contacts} />
           )}/>
         </Switch>
       </div>
