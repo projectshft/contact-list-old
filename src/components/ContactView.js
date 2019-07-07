@@ -5,12 +5,8 @@ import PropTypes from 'prop-types';
 class ContactView extends React.Component {
 
   render() {
-    //console.log(this.props.contactId);
-    //console.log(this.props.contact); 
-    //console.log(this.props.getContactById(Number(this.props.contactId)));
-    // const thisId = Number(this.props.props.match.params.id);
-    // const contacts = this.props.contacts;
-    // const contact = contacts.find((contact) => { return contact.id === thisId; });
+    // Component receives only the contact that matches the params id. 
+    // Initialize 'contact' for ease of reference. 
     const contact = this.props.contact;
 
     return (

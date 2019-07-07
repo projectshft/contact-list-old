@@ -12,7 +12,7 @@ class Contacts extends React.Component {
   }
 
   // Use the onError function attribute to replace a broken image url with the default 
-  // (form validation in ContactNew/ContactEdit would be preferable but that's much trickier). 
+  // (form validation in ContactNew/ContactEdit would be preferable but that's trickier). 
   handleImageError(e){
     e.preventDefault(); 
     const thisId = e.target.dataset.id;

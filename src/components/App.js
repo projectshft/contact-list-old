@@ -180,20 +180,13 @@ class App extends React.Component {
           />
           <Route
             path='/new'
-            component={ContactNew} // render={(props) =>
-            //   <ContactNew
-            //     {...props} //historyPush={props.history.push}
-            //   />
-            // }
+            component={ContactNew} 
           />
           <Route
             exact path='/:id'
             render={(props) =>
-              <ContactView
-                // props={props}
+              <ContactView 
                 contact={this.getContactById(props.match.params.id)}
-                // contactId={props.match.params.id}
-                // contacts={this.props.contacts}
               />
             }
           />

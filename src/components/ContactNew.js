@@ -6,7 +6,7 @@ class ContactNew extends React.Component {
 
   constructor() {
     super()
-    // state for adding contacts 
+    // State for adding a contact (updated based on changes to values in controlled form). 
     this.state = {
       name: '',
       email: '',
@@ -18,6 +18,10 @@ class ContactNew extends React.Component {
     this.handleValidation = this.handleValidation.bind(this);
   }
 
+  // Check that a name is entered. Email and phone number aren't required, but if they're included, 
+  // they are checked. Image url isn't required, and if the field is left empty, a default image is
+  // assigned (if a submitted url is invalid, the issue is handled in Contacts). 
+  // This function creates an error message conveyed to the user via an alert in handleAdd. 
   handleValidation() {
     const errors = []; 
     if (this.state.name === '') {
@@ -42,6 +46,7 @@ class ContactNew extends React.Component {
     return errors.join(' '); 
   }
 
+  // Generalized function listens for changes in any of the input fields, updating state accordingly. 
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value });
   }
@@ -49,6 +54,8 @@ class ContactNew extends React.Component {
   handleAdd(e) {
     e.preventDefault();
     const error = this.handleValidation();
+    // If 'error' is an empty string, the new contact is added, the state is reset to defaults, 
+    // and the page redirects to the main Contacts page. 
     if (!error) {
       const newContact = this.state;
       sendEvent('addContact', newContact);
