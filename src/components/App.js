@@ -193,8 +193,8 @@ class App extends React.Component {
           <Route path='/:id/edit'
             render={(props) =>
               <ContactEdit
-                props={props}
-                contacts={this.props.contacts}
+                {...props}
+                contact={this.getContactById(props.match.params.id)}
               />
             }
           />

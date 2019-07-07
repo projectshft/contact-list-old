@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
 import { sendEvent } from './State';
+import PropTypes from 'prop-types';
 
 class ContactEdit extends React.Component {
 
   constructor() {
     super()
-    // state for updating contacts 
+    // State for updating the contact (with controlled form). 
     this.state = {
       id: 0,
       name: '',
@@ -18,22 +19,24 @@ class ContactEdit extends React.Component {
     this.handleEdit = this.handleEdit.bind(this);
   }
 
+  // Listen for changes to input values and update state accordingly. 
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value });
   }
 
+  // Handle edits to contact (save changes). Redirect to main page on submit. 
   handleEdit(event) {
     event.preventDefault();
     const updatedContact = this.state;
     sendEvent('editContact', updatedContact);
-    this.props.props.history.push('/');
+    this.props.history.push('/');
   }
 
+  // Component receives only the contact that matches the params id. 
+  // Set state with contact so form is pre-filled. 
   componentDidMount() {
-    const thisId = Number(this.props.props.match.params.id);
-    const contacts = this.props.contacts;
-    const contact = contacts.find((contact) => { return contact.id === thisId; });
-    this.setState({ id: contact.id, name: contact.name, email: contact.email, phone_number: contact.phone_number, image_url: contact.image_url });
+    const contact = this.props.contact; 
+    this.setState({...contact});  
   }
 
   render() {
@@ -56,5 +59,15 @@ class ContactEdit extends React.Component {
     )
   }
 }
+
+ContactEdit.propTypes = {
+  contact: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      phone_number: PropTypes.string.isRequired,
+      image_url: PropTypes.string.isRequired
+    }).isRequired
+};
 
 export default ContactEdit; 
