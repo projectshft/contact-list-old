@@ -36,7 +36,13 @@ class App extends Component {
   }
 
   editContact(updatedContact) {
-    debugger;
+    const newContactsList = this.state.contacts.map((contact) => {
+      if (contact.id === updatedContact.id)
+        return updatedContact;
+      return contact;
+    });
+
+    this.setState({ contacts: newContactsList });
   }
 
   removeContact(deletedContact) {debugger;
