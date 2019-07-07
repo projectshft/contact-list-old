@@ -12,6 +12,11 @@ class EditContact extends Component {
     
     //handle submission by calling app's edit contact function
     //needs to be bound
+    this.handleEditContactClick = this.handleEditContactClick.bind(this);
+  }
+
+  handleEditContactClick() {
+    console.log('gotem');
   }
 
   render() {
@@ -38,7 +43,7 @@ class EditContact extends Component {
           onChange={event =>
             this.setState({ image: event.target.value })
           }/>
-          <button type='button' className='btn btn-primary' onClick={this.handleCreateNewContactClick}>Edit Contact</button>
+          <button type='button' className='btn btn-primary' onClick={this.handleEditContactClick}>Edit Contact</button>
         </form>
         <Link to={`/contacts/${this.state.currentContact.id}`}>Cancel</Link>
       </div>
