@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom'
-import React from 'react'
-import _ from 'lodash'
+import { Link } from 'react-router-dom';
+import React from 'react';
+import _ from 'lodash';
+import PropTypes from 'prop-types';
 
 const Contact = ({props, contacts}) => {
   const contact = _.find(contacts, { id: parseInt(props.match.params.id, 10) });
@@ -29,6 +30,10 @@ const Contact = ({props, contacts}) => {
       Quote: {contact.quote}
     </div>
   )
+}
+
+Contact.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default Contact
