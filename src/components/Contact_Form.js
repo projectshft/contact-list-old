@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 class ContactForm extends React.Component {
   constructor(){
     super()
-
+    //has user input so needs to maintain its own state
     this.state = {
       id:0,
       name: '',
@@ -18,13 +18,12 @@ class ContactForm extends React.Component {
 
     this.handleSubmitContact = this.handleSubmitContact.bind(this)
   }
-
+//used to generate unique identifier for contacts
   generateId(){
     return Math.round(Math.random() * 100000000)
   }
 
   handleSubmitContact(e){
-
     const newContact = {
       id: this.generateId(),
       name: this.state.name,
@@ -32,55 +31,52 @@ class ContactForm extends React.Component {
       email: this.state.email,
       phone_number: this.state.phone_number
     };
-
+      //pass this new contact back up to App's state via addContact func
       this.props.addContact(newContact)
+      //return to contact list
       this.props.props.history.push('/contacts')
-
     }
 
 
   render(){
     return (
       <div className='container'>
-      <form onSubmit={e => {this.handleSubmitContact(e)}}>
-      <div className='row'>
-
-        <div className='form-group col-md-8'>
-        <h3>Add New Contact</h3>
-        <label>Name</label>
-        <input type='text' required className='form-control'onChange={event =>
-          this.setState({ name: event.target.value })
-        }/>
-
-        <br/>
-
-        <label>Image Link</label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ image_url: event.target.value })
-        }/>
+        <form onSubmit={e => {this.handleSubmitContact(e)}}>
+        <div className='row'>
+          <div className='form-group col-md-8'>
+          <h3>Add New Contact</h3>
+          <label>Name</label>
+          <input type='text' required className='form-control'onChange={event =>
+            this.setState({ name: event.target.value })
+            }/>
 
         <br/>
 
-        <label>Email</label>
-        <input type='email' className='form-control'onChange={event =>
-          this.setState({ email: event.target.value })
-        }/>
+          <label>Image Link</label>
+          <input type='text' className='form-control'onChange={event =>
+            this.setState({ image_url: event.target.value })
+            }/>
 
         <br/>
 
-        <label>Phone Number</label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ phone_number: event.target.value })
-        }/>
+          <label>Email</label>
+          <input type='email' className='form-control'onChange={event =>
+            this.setState({ email: event.target.value })
+            }/>
 
-        <button type="submit" value='Submit'>Submit</button>
+        <br/>
 
+          <label>Phone Number</label>
+          <input type='text' className='form-control'onChange={event =>
+            this.setState({ phone_number: event.target.value })
+            }/>
+
+          <button type="submit" value='Submit'>Submit</button>
+          </div>
         </div>
-        </div>
-        </form>
-        <Link to='/contacts'>Back</Link>
-      </div>
-
+      </form>
+      <Link to='/contacts'>Back to Contact List</Link>
+    </div>
     )
   }
 }
