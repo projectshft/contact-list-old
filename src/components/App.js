@@ -35,7 +35,9 @@ class App extends Component {
     this.setState({ contacts: this.state.contacts.concat([newContact]) });
   }
 
-  editContact(updatedContact) {}
+  editContact(updatedContact) {
+    debugger;
+  }
 
   removeContact(deletedContact) {debugger;
     this.setState({ contacts: this.state.contacts.filter((contact) => {

@@ -6,7 +6,7 @@ class NewContact extends Component {
   constructor() {
     super();
 
-    //go ahead and generate id on creation
+    //go ahead and generate id on creation and add default image
     this.state = {
       id: generateId(),
       name: '',

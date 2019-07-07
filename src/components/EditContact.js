@@ -17,7 +17,26 @@ class EditContact extends Component {
   }
 
   handleEditContactClick() {
-    
+    //validate input first - will allow no image src
+    if ( this.state.name === '' ||
+         this.state.email === '' ||
+         this.state.phoneNumber === '') {
+      //for now console log error and ignore click
+      console.log('enter a name, email, and phone number');
+      return;
+      //later add warning to user
+    }
+
+    const updatedContact = {
+      id: this.state.id,
+      name: this.state.name,
+      image: this.state.image,
+      email: this.state.email,
+      phoneNumber: this.state.phoneNumber
+    };
+
+    this.props.editContact(updatedContact);
+    this.props.props.history.push(`/contacts/${updatedContact.id}`);
   }
 
   render() {
