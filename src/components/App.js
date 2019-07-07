@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import React, { Component } from 'react';
 import Home from './Home'
 import ContactList from './ContactList'
-import ContactForm from './Contact_Form';
+import ContactForm from './ContactForm';
 import ContactDetail from './ContactDetail';
 
 class App extends React.Component{
