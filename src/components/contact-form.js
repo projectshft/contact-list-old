@@ -73,7 +73,6 @@ class ContactForm extends React.Component {
         <button type="button" onClick={this.handleSubmitContactClick}>Submit</button>
         </form>
 
-        //A link to go back to contacts
         <Link to='/contacts-list'>Contacts</Link>
       </div>
     )

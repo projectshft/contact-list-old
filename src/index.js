@@ -32,9 +32,9 @@ class App extends Component {
   }
 
   render() {
+    //Added in a header for easier navigation
     return (
       <div>
-      //Added in a header for easier navigation
       <Header />
       <Switch>
         <Route exact path='/' component={Home}/>
