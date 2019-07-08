@@ -11,8 +11,8 @@ const NewContact = ({props, addContact}) => (
 );
 
 NewContact.propTypes = {
-  props: PropTypes.object.isRequied,
-  addContact: PropTypes.func.isRequied
+  props: PropTypes.object,
+  addContact: PropTypes.func
 };
 
 export default NewContact;
