@@ -92,6 +92,7 @@ class ContactForm extends Component {
 
 }
 
+//chance of collisions pretty low
 const generateId = () => Math.round(Math.random() * 100000000);
 
 export default ContactForm;

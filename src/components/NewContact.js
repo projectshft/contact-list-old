@@ -10,13 +10,9 @@ const NewContact = ({props, addContact}) => (
   </div>
 );
 
-
-
 NewContact.propTypes = {
-  addContact: PropTypes.func
+  props: PropTypes.object.isRequied,
+  addContact: PropTypes.func.isRequied
 };
-
- //chance of collisions pretty low
-const generateId = () => Math.round(Math.random() * 100000000)
 
 export default NewContact;
