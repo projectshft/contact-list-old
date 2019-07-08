@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * ContactForm can handle all the logic that NewContact and EditContact are handling
@@ -59,7 +60,10 @@ class ContactForm extends Component {
       this.props.addContact(newOrUpdatedContact);
       this.props.props.history.push('/contacts');
     }
-    
+    else {
+      this.props.editContact(newOrUpdatedContact);
+      this.props.props.history.push(`/contacts/${newOrUpdatedContact.id}`);
+    }
   }
 
   render() {
@@ -94,5 +98,12 @@ class ContactForm extends Component {
 
 //chance of collisions pretty low
 const generateId = () => Math.round(Math.random() * 100000000);
+
+ContactForm.propTypes = {
+  addContact: PropTypes.func,
+  editContact: PropTypes.func,
+  contacts: PropTypes.array,
+  props: PropTypes.object
+};
 
 export default ContactForm;
