@@ -46,7 +46,7 @@ const sendEvent = (name, data) => {
   const newState = STATE;
 
   // This modifies the state however it likes, or maybe even not at all!
-  console.log('event name:', name, 'event data: ', data);
+  // console.log('event name:', name, 'event data: ', data);
   handleEvent(
     {
       name,
@@ -54,7 +54,7 @@ const sendEvent = (name, data) => {
     },
     newState
   );
-  console.log('new state:', newState);
+  // console.log('new state:', newState);
   // If the state was changed between the time we made the copy and after we
   // passed it to `handleEvent`, we know we need to notify any listener that
   // there was a change!
