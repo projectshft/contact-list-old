@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import { sendEvent } from './State';
 
 class ContactNew extends React.Component {
@@ -23,27 +23,27 @@ class ContactNew extends React.Component {
   // assigned (if a submitted url is invalid, the issue is handled in Contacts). 
   // This function creates an error message conveyed to the user via an alert in handleAdd. 
   handleValidation() {
-    const errors = []; 
+    const errors = [];
     if (this.state.name === '') {
       errors.push('You must enter a name.');
     }
     if (this.state.email !== '') {
       let lastAtPos = this.state.email.lastIndexOf('@');
       let lastDotPos = this.state.email.lastIndexOf('.');
-      if (!(lastAtPos < lastDotPos 
-        && lastAtPos > 0 
-        && this.state.email.indexOf('@@') === -1 
-        && lastDotPos > 2 
+      if (!(lastAtPos < lastDotPos
+        && lastAtPos > 0
+        && this.state.email.indexOf('@@') === -1
+        && lastDotPos > 2
         && (this.state.email.length - lastDotPos) > 2)) {
-          errors.push('If you include an email address, it must be valid.');
+        errors.push('If you include an email address, it must be valid.');
       }
     }
     if (this.state.phone_number !== '') {
-      if(!this.state.phone_number.match(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/)) {
+      if (!this.state.phone_number.match(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/)) {
         errors.push('If you include a phone number, it must be valid.')
       }
     }
-    return errors.join(' '); 
+    return errors.join(' ');
   }
 
   // Generalized function listens for changes in any of the input fields, updating state accordingly. 
@@ -62,7 +62,7 @@ class ContactNew extends React.Component {
       this.props.history.push('/');
       this.setState({ name: '', email: '', phone_number: '', image_url: '' });
     } else {
-      alert(error); 
+      alert(error);
     }
   }
 
@@ -73,7 +73,7 @@ class ContactNew extends React.Component {
           New Contact
         </div>
         <div>
-        <button className="btn btn-light"><Link to='/'>&laquo; Back to Contacts</Link></button>
+          <button className="btn btn-light"><Link to='/'>&laquo; Back to Contacts</Link></button>
         </div>
         <form onSubmit={this.handleAdd} className="input-form">
           <input className="form-control" type="text" id="name" value={this.state.name} onChange={this.handleChange} placeholder="Name" />

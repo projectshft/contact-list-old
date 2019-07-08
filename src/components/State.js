@@ -92,7 +92,7 @@ const handleEvent = ({ name, data }, state) => {
     }
     case 'setContactImgToDefault': {
       state.contacts = state.contacts.map(contact =>
-        (contact.id === Number(data)) ? Object.assign({}, contact, {image_url: "https://lh3.googleusercontent.com/a/default-user=s100-p-k-rw-no"}) : contact
+        (contact.id === Number(data)) ? Object.assign({}, contact, { image_url: "https://lh3.googleusercontent.com/a/default-user=s100-p-k-rw-no" }) : contact
       )
       break;
     }

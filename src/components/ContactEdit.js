@@ -26,6 +26,7 @@ class ContactEdit extends React.Component {
   }
 
   // Same function as in ContactNew (see comments there). 
+  // (Not very 'DRY', but eval coding time is finite.) 
   handleValidation() {
     const errors = [];
     if (this.state.name === '') {

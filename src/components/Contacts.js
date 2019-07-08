@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { sendEvent } from './State';
 
@@ -8,13 +8,13 @@ class Contacts extends React.Component {
   constructor() {
     super()
     this.handleDelete = this.handleDelete.bind(this);
-    this.handleImageError = this.handleImageError.bind(this); 
+    this.handleImageError = this.handleImageError.bind(this);
   }
 
   // Use the onError function attribute to replace a broken image url with the default 
   // (form validation in ContactNew/ContactEdit would be preferable but that's trickier). 
-  handleImageError(e){
-    e.preventDefault(); 
+  handleImageError(e) {
+    e.preventDefault();
     const thisId = e.target.dataset.id;
     sendEvent('setContactImgToDefault', thisId);
   }
@@ -23,14 +23,14 @@ class Contacts extends React.Component {
   // (specify contact name in message for better user experience). 
   handleDelete(e) {
     e.preventDefault();
-    const thisId = e.target.dataset.id; 
+    const thisId = e.target.dataset.id;
     if (window.confirm(`Delete ${e.target.dataset.name} from contacts?`)) {
       sendEvent('deleteContact', thisId);
     }
   }
 
   render() {
-    // Map each contact to a display item (with edit/delete buttons) and store as 'list'. 
+    // Map each contact to a display item (with view/edit links and delete button) and store as 'list'. 
     const contacts = this.props.contacts;
     const list = contacts.map((contact) => (
       <div key={contact.id} className="item">
@@ -42,12 +42,12 @@ class Contacts extends React.Component {
             {contact.name}
           </Link> </div>
           <div className="item-btns">
-          <button className="btn btn-light">
-            <Link to={`/${contact.id}/edit`}>
-              Edit
+            <button className="btn btn-light">
+              <Link to={`/${contact.id}/edit`}>
+                Edit
             </Link>
-          </button>
-          <button className="btn btn-light" data-id={contact.id} data-name={contact.name} onClick={this.handleDelete}>Delete</button>
+            </button>
+            <button className="btn btn-light" data-id={contact.id} data-name={contact.name} onClick={this.handleDelete}>Delete</button>
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@ class Contacts extends React.Component {
           {list}
         </div>
       </div>
-    )
+    );
   }
 }
 

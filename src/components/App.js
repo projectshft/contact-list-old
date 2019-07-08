@@ -1,6 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom'
-//import { sendEvent } from './State';
+import { Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //import './App.css';
 import Contacts from './Contacts';
@@ -16,6 +15,8 @@ const CLIENT_ID = '810205621073-0ndqorhakqv5tbvjmtelde3fnsqr4l3l.apps.googleuser
 const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/people/v1/rest"];
 const SCOPES = "https://www.googleapis.com/auth/contacts.readonly";
 
+// App manages all the Google Contacts API business and renders with routes for 
+// the other four components. 
 
 class App extends React.Component {
 
@@ -29,17 +30,20 @@ class App extends React.Component {
     this.handleSignoutClick = this.handleSignoutClick.bind(this);
     this.getGoogleContacts = this.getGoogleContacts.bind(this);
     this.loadApi = this.loadApi.bind(this);
-    //this.getContactById = this.getContactById.bind(this);
 
+    // State handles toggling of Google sign in/out buttons. 
     this.state = {
       authBtnDisp: 'none',
       signOutBtnDisp: 'none'
     };
   }
 
+  // Function used to select the contact corresponding to the ':id' for the ContactView and 
+  // ContactEdit routes on render (so the whole array of contacts isn't passed as a prop). 
+  // (I'm not sure if this is a terrible practice but it seems to work fine.) 
   getContactById(contactId) {
     const contact = this.props.contacts.find((contact) => { return contact.id === Number(contactId); });
-    return contact; 
+    return contact;
   }
 
   // On load, called to load the auth2 library and API client library.
@@ -65,6 +69,7 @@ class App extends React.Component {
     });
   }
 
+  // Update button displays and (if signed in) get Google Contacts. 
   updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
       this.setState({ authBtnDisp: 'none' });
@@ -86,6 +91,8 @@ class App extends React.Component {
     gapi.auth2.getAuthInstance().signOut();
   }
 
+  // For each connection, extract relevant values, create an object, and add the contact. 
+  // (Note: this function would really benefit from refactoring with an array method.) 
   getGoogleContacts() {
     gapi.client.people.people.connections.list({
       'resourceName': 'people/me',
@@ -112,7 +119,6 @@ class App extends React.Component {
           if (person.photos && person.photos.length > 0) {
             image_url = person.photos[0].url;
           }
-
           var personObject = {
             name: name,
             email: email,
@@ -127,6 +133,7 @@ class App extends React.Component {
     });
   }
 
+  // Appends script. 
   loadApi() {
     const script = document.createElement("script");
     script.src = "https://apis.google.com/js/api.js";
@@ -146,10 +153,10 @@ class App extends React.Component {
 
     return (
       <div className="App">
-      <div>
-        <button className="btn btn-light" id="authorize_button" style={{ display: authDisp }} onClick={this.handleAuthClick}> <img src="https://img.icons8.com/color/25/000000/google-logo.png" alt=""/> Sign in with Google </button>
-        <button className="btn btn-light" id="signout_button" style={{ display: signOutDisp }} onClick={this.handleSignoutClick}> <img src="https://img.icons8.com/color/25/000000/google-logo.png" alt=""/> Sign out of Google </button>
-      </div>
+        <div>
+          <button className="btn btn-light" id="authorize_button" style={{ display: authDisp }} onClick={this.handleAuthClick}> <img src="https://img.icons8.com/color/25/000000/google-logo.png" alt="" /> Sign in with Google </button>
+          <button className="btn btn-light" id="signout_button" style={{ display: signOutDisp }} onClick={this.handleSignoutClick}> <img src="https://img.icons8.com/color/25/000000/google-logo.png" alt="" /> Sign out of Google </button>
+        </div>
         <Switch>
           <Route
             exact path='/'
@@ -161,12 +168,12 @@ class App extends React.Component {
           />
           <Route
             path='/new'
-            component={ContactNew} 
+            component={ContactNew}
           />
           <Route
             exact path='/:id'
             render={(props) =>
-              <ContactView 
+              <ContactView
                 contact={this.getContactById(props.match.params.id)}
               />
             }
