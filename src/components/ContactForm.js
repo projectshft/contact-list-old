@@ -19,7 +19,8 @@ class ContactForm extends Component {
         name: '',
         image: 'https://upload.wikimedia.org/wikipedia/en/1/13/Stick_figure.png',
         email: '',
-        phoneNumber: ''
+        phoneNumber: '',
+        buttonText: 'Add Contact'
       };
     }
     else {
@@ -28,7 +29,8 @@ class ContactForm extends Component {
         name: this.props.contact.name,
         image: this.props.contact.image,
         email: this.props.contact.email,
-        phoneNumber: this.props.contact.phoneNumber
+        phoneNumber: this.props.contact.phoneNumber,
+        buttonText: 'Edit Contact'
       };
     }
 
@@ -83,7 +85,7 @@ class ContactForm extends Component {
         onChange={event =>
           this.setState({ image: event.target.value })
         }/>
-        <button type='button' className='btn btn-primary' onClick={this.handleClick}>Add Contact</button>
+        <button type='button' className='btn btn-primary' onClick={this.handleClick}>{this.state.buttonText}</button>
       </form>
     )
   }
