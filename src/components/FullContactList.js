@@ -29,7 +29,6 @@ class FullContactList extends React.Component {
         <li key={contact.key}>
           <i className="fas fa-user"></i>
           <Link to ={`/contacts/${contact.key}`}>{contact.name}</Link>
-          //when the trash can button is clicked take the key of the clicked on contact and pass it into a handler function
           <i className="fas fa-trash-alt"  onClick ={() => {this.handleDelete(contact.key)}}></i>
         </li>
       ))
