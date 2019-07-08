@@ -3,9 +3,12 @@ import React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 
+// show details of single contact that was clicked
+
+// match id of clicked contact with id in contacts to show correct contact info
 const Contact = ({props, contacts}) => {
   const contact = _.find(contacts, { id: parseInt(props.match.params.id, 10) });
-
+// if no id match, show error message and link back to contact list
   if (!contact) {
     return(
       <div>
@@ -32,6 +35,7 @@ const Contact = ({props, contacts}) => {
   )
 }
 
+// props passed in have to be of a certain type or error message is displayed
 Contact.propTypes = {
   contacts: PropTypes.arrayOf(PropTypes.object).isRequired
 }

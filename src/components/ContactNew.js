@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// add a new contact to the contact list
+
 class ContactNew extends React.Component {
   constructor () {
     super ()
@@ -17,9 +19,12 @@ class ContactNew extends React.Component {
 
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
   }
-
+// generate a random id to uniquely identify contacts
   generateId = () => Math.round(Math.random() * 100000000);
 
+/* after submit button is clicked, check to see if required fields have been filled,
+  if not, display error message. Create new object based on current state and pass that
+  object to the addContact func (in App.js). */
   handleSubmitContactClick () {
     if (this.state.name && this.state.email && this.state.phoneNumber){
 
@@ -39,6 +44,9 @@ class ContactNew extends React.Component {
   }
 }
 
+/* create form for new contact, button to submit contact, link back to
+  contact list. Component's state is updated based on user input.
+*/
   render () {
     return (
       <div>
@@ -85,6 +93,7 @@ class ContactNew extends React.Component {
   }
 }
 
+// props passed in have to be of a certain type or error message is displayed 
 ContactNew.propTypes = {
   addContact: PropTypes.func.isRequired,
 };
