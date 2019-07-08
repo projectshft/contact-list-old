@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import React from 'react'
-import ContactsList from './contacts-list'
+
 
 const Contacts = (props) => {
     return (
-        <div>
+        <div className="container">
             <div className="row">
-                <div className="col-md-3">  
+                <div className="col-sm-3 mr-5 pt-4">  
                     <h1>Contacts</h1>
                 </div>
-                <div className="col-md-3">
+                <div className="col-sm-4">
                     <Link to="/contacts/new">
-                        <button className="btn btn-primary btn-block" onClick={props.addContact}>Add Contact</button>
+                        <button className="btn btn-primary btn-lg btn3d" onClick={props.addContact}>Add Contact</button>
                     </Link>
                 </div>
             </div>
@@ -20,7 +20,7 @@ const Contacts = (props) => {
             
             {props.contacts.map(c => (
                 <div className="row">
-                    <div className="col-md-3 p-1">
+                    <div className="col-md-3 pt-1">
                     <Link to={`/contacts/${c.id}`}>{c.name}</Link><br/>
                     </div>
                 </div>
