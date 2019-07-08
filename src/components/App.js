@@ -27,27 +27,19 @@ class App extends React.Component {
     this.updateSigninStatus = this.updateSigninStatus.bind(this);
     this.handleAuthClick = this.handleAuthClick.bind(this);
     this.handleSignoutClick = this.handleSignoutClick.bind(this);
-    this.listConnectionNames = this.listConnectionNames.bind(this);
+    this.getGoogleContacts = this.getGoogleContacts.bind(this);
     this.loadApi = this.loadApi.bind(this);
-    this.addContact = this.addContact.bind(this);
     //this.getContactById = this.getContactById.bind(this);
 
     this.state = {
-      contacts: [],
       authBtnDisp: 'none',
       signOutBtnDisp: 'none'
     };
   }
 
   getContactById(contactId) {
-    //console.log(contactId);
     const contact = this.props.contacts.find((contact) => { return contact.id === Number(contactId); });
-    //console.log(contact);
     return contact; 
-  }
-
-  addContact(contact) {
-    this.setState({ contacts: this.state.contacts.concat([contact]) });
   }
 
   // On load, called to load the auth2 library and API client library.
@@ -62,9 +54,6 @@ class App extends React.Component {
       discoveryDocs: DISCOVERY_DOCS,
       scope: SCOPES
     }).then(() => {
-      //this.listConnectionNames();
-      //console.log(newContacts);
-
       // Listen for sign-in state changes.
       window.gapi.auth2.getAuthInstance().isSignedIn.listen(this.updateSigninStatus);
 
@@ -80,7 +69,7 @@ class App extends React.Component {
     if (isSignedIn) {
       this.setState({ authBtnDisp: 'none' });
       this.setState({ signOutBtnDisp: 'block' });
-      this.listConnectionNames();
+      this.getGoogleContacts();
     } else {
       this.setState({ authBtnDisp: 'block' });
       this.setState({ signOutBtnDisp: 'none' });
@@ -97,8 +86,7 @@ class App extends React.Component {
     gapi.auth2.getAuthInstance().signOut();
   }
 
-  listConnectionNames() {
-    const connectionsArray = [];
+  getGoogleContacts() {
     gapi.client.people.people.connections.list({
       'resourceName': 'people/me',
       // 'pageSize': 20,
@@ -131,19 +119,12 @@ class App extends React.Component {
             phone_number: phone_number,
             image_url: image_url
           };
-          connectionsArray.push(personObject);
-          this.addContact(personObject);
           sendEvent('addContact', personObject);
         }
       } else {
         console.log('No connections found.');
       }
-      //document.getElementById('array').innerHTML = JSON.stringify(connectionsArray);
-      console.log(connectionsArray);
-
     });
-    //this.setState({ contacts: connectionsArray }); //this.state.contacts.concat([connectionsArray])});
-    return connectionsArray;
   }
 
   loadApi() {
@@ -200,7 +181,7 @@ class App extends React.Component {
           />
         </Switch>
       </div>
-    )
+    );
   }
 }
 
