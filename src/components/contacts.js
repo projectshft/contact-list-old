@@ -5,9 +5,6 @@ import IndividualContact from './IndividualContact'
 import CreateContact from './CreateContact'
 import PropTypes from 'prop-types'
 
-
-
-
 const Contacts = ({addContact, contactList, deleteContact}) => (
   <Switch>
   //if route is /contacts/new the from to create  a new contact is rendered
