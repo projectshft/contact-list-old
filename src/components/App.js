@@ -38,6 +38,7 @@ class App extends Component {
     this.addContact = this.addContact.bind(this);
     this.editContact = this.editContact.bind(this);
     this.removeContact = this.removeContact.bind(this);
+    this.toggleDeleteConfirmation = this.toggleDeleteConfirmation.bind(this);
   }
 
   addContact(newContact) { 
@@ -52,7 +53,7 @@ class App extends Component {
     this.setState({ contacts: newContactsList });
   }
 
-  removeContact(deletedContact) {debugger;
+  removeContact(deletedContact) {
     this.setState({ contacts: this.state.contacts.filter((contact) => {
       return (contact === deletedContact) ? false : true;
     }) });
