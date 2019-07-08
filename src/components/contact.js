@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 import _ from 'lodash'
+import PropTypes from 'prop-types'
 
+// Matches all contacts to IDs
 const Contact = ({props, contacts}) => {
   const contact = _.find(contacts, { id: parseInt(props.match.params.id, 10) });
 
@@ -19,6 +21,16 @@ const Contact = ({props, contacts}) => {
       <Link to='/contacts-list'>Back</Link>
     </div>
   )
+}
+
+
+//Enforcing propTypes on my contacts
+Contact.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  image_url: PropTypes.string.isRequired,
+  phone_number: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
 }
 
 export default Contact

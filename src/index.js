@@ -7,16 +7,24 @@ import Home from './components/home';
 import PropTypes from 'prop-types';
 
 class App extends Component {
+
+
   constructor () {
     super()
 
+    //Putting in one dummy contact, using generateId() to create a unique identifier
     this.state = {
       contacts: [
-        { id: 1234555, name: 'Albert Einstein', image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/220px-Albert_Einstein_Head.jpg", email: 'albert_einstein@gmail.com', phone_number: "6904206969"}
+        { id: this.generateId(), name: 'Albert Einstein', image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/220px-Albert_Einstein_Head.jpg", email: 'albert_einstein@gmail.com', phone_number: "6904206969"}
       ]
     }
 
     this.addContact = this.addContact.bind(this);
+  }
+
+
+  generateId () {
+    return Math.round(Math.random() * 100000000)
   }
 
   addContact (contact) {
@@ -26,6 +34,7 @@ class App extends Component {
   render() {
     return (
       <div>
+      //Added in a header for easier navigation
       <Header />
       <Switch>
         <Route exact path='/' component={Home}/>
@@ -37,7 +46,7 @@ class App extends Component {
     )
   }
 }
-
+//Style to get rid of the bullet points in the header
 var ulStyle = {
   "list-style-type" : "none"
 };

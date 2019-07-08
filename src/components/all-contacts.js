@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 
+
+// Lists all the contacts in the main /contacts-list url
 const AllContacts = ({contacts}) => (
   <div>
     <ul>
