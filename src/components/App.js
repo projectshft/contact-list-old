@@ -7,23 +7,32 @@ class App extends Component {
   constructor() {
     super();
 
+    //hard coded values for testing
     this.state = {
       contacts: [
         {
-          id: 789432,
+          id: 78943201,
           name: 'sir dog',
           image: 'https://upload.wikimedia.org/wikipedia/en/1/13/Stick_figure.png',
           email: 'sirdog@yahoo.com',
           phoneNumber: '555-555-5555'
         },
         {
-          id: 123456,
+          id: 12345678,
           name: 'blerb',
           image: 'https://upload.wikimedia.org/wikipedia/en/1/13/Stick_figure.png',
           email: 'blerberino@hotmail.com',
           phoneNumber: '444-444-4444'
+        },
+        {
+          id: 87654321,
+          name: 'bobertina',
+          image: 'https://upload.wikimedia.org/wikipedia/en/1/13/Stick_figure.png',
+          email: 'tina@proton.com',
+          phoneNumber: '301-423-9999'
         }
-      ]
+      ],
+      showDeleteConfirmation: false
     };
 
     this.addContact = this.addContact.bind(this);
