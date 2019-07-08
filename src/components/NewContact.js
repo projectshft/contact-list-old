@@ -1,73 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
+import ContactForm from './ContactForm';
 
-class NewContact extends Component {
-  constructor() {
-    super();
+const NewContact = ({props, addContact}) => (
+  <div>
+    <ContactForm props={props} addContact={addContact}/>
+    <Link to='/contacts'>Cancel</Link>
+  </div>
+);
 
-    //go ahead and generate id on creation and add default image
-    this.state = {
-      id: generateId(),
-      name: '',
-      image: 'https://upload.wikimedia.org/wikipedia/en/1/13/Stick_figure.png',
-      email: '',
-      phoneNumber: ''
-    };
 
-    this.handleCreateNewContactClick = this.handleCreateNewContactClick.bind(this);
-  }
-
-  handleCreateNewContactClick() {
-    //validate input first - will allow no image src
-    if ( this.state.name === '' ||
-         this.state.email === '' ||
-         this.state.phoneNumber === '') {
-      //for now console log error and ignore click
-      console.log('enter a name, email, and phone number');
-      return;
-      //later add warning to user
-    }
-    
-    const newContact = {
-      id: this.state.id,
-      name: this.state.name,
-      image: this.state.image,
-      email: this.state.email,
-      phoneNumber: this.state.phoneNumber
-    };
-
-    this.props.addContact(newContact);
-    this.props.props.history.push('/contacts');
-  }
-
-  render() {
-    return (
-      <div>
-        <form>
-          <label>Name</label>
-          <input type='text' className='form-control' onChange={event =>
-            this.setState({ name: event.target.value })
-          } />
-          <label>Email</label>
-          <input type='text' className='form-control' onChange={event =>
-            this.setState({ email: event.target.value })
-          } />
-          <label>Phone Number</label>
-          <input type='text' className='form-control' onChange={event =>
-            this.setState({ phoneNumber: event.target.value })
-          } />
-          <label>Image source - you can leave this blank</label>
-          <input type='text' className='form-control' onChange={event =>
-            this.setState({ image: event.target.value })
-          }/>
-          <button type='button' className='btn btn-primary' onClick={this.handleCreateNewContactClick}>Create New Contact</button>
-        </form>
-        <Link to='/contacts'>Cancel</Link>
-      </div>
-    )
-  }
-}
 
 NewContact.propTypes = {
   addContact: PropTypes.func

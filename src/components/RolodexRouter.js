@@ -10,8 +10,8 @@ import Contact from './Contact';
 const RolodexRouter = ({contacts, addContact, editContact, removeContact}) => (
   <Switch>
     //new contact
-    <Route path='/contacts/new' render={() => (
-      <NewContact addContact={addContact}/>
+    <Route path='/contacts/new' render={(props) => (
+      <NewContact props={props} addContact={addContact}/>
     )}/>
 
     //edit contact
