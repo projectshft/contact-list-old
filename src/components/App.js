@@ -57,6 +57,12 @@ class App extends Component {
       return (contact === deletedContact) ? false : true;
     }) });
   }
+
+  toggleDeleteConfirmation() {
+    this.setState({
+      showDeleteConfirmation: !this.state.showDeleteConfirmation
+    });
+  }
   
   render() {
     return (
