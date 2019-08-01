@@ -27,7 +27,7 @@ const NewContact = props => {
     return (
         <div className="container">
             <div className="row mb-3">
-                <Link to='/contacts'>Back</Link>
+                <Link to='/'>Back</Link>
             </div>
             <div className="row">
                 <form id="new-contact-form">
@@ -58,8 +58,9 @@ const NewContact = props => {
                     }/>
                         
                     <br/>
-            
+                    <Link to="/">
                     <button type="button" onClick={handleSubmitNewContactClick}>Submit</button>
+                    </Link>
                 </form>
             
                 

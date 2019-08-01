@@ -3,12 +3,12 @@ import {Link} from 'react-router-dom'
 import React from 'react'
 
 const ContactView = (props) => {
-    const contact = props.getContactById(parseInt(props.match.params.id, 10))
+    const contact = props.getContactById(parseInt(props.id, 10))
 
     if (!contact) {
         return (
             <div>
-                <Link to="/contacts">Back</Link>
+                <Link to="/">Back</Link>
                 <h1>No Contacts Added Yet</h1><br/>
             </div>
         ) 
@@ -17,7 +17,7 @@ const ContactView = (props) => {
     return (
         <div className="container">
             <div className="row">
-                <Link to="/contacts">Back</Link>
+                <Link to="/">Back</Link>
             </div>
             <div className="row mb-4">
                 <div className="col-4">
