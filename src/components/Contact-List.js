@@ -7,3 +7,5 @@ class ContactList extends React.Component {
     return <div>TODO</div>;
   }
 }
+
+  export default ContactList;

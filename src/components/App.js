@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+import ContactForm from './Contact-Form';
+import ContactList from './Contact-List';
 
 class App extends Component {
   render() {
@@ -9,7 +10,7 @@ class App extends Component {
           <h1 className="App-title">Contact List</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          Modern day rolodex, edit <code>src/App.js</code> and save to reload.
         </p>
       </div>
     );

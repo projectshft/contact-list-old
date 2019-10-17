@@ -5,3 +5,5 @@ class Contact extends React.Component {
     return <div>TODO</div>;
   }
 }
+
+  export default Contact;
