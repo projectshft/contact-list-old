@@ -23,13 +23,24 @@ class App extends Component {
   }
 
   addContact(contact) {
-    this.setState({ posts: this.state.contacts.concat([contact]) });
+    this.setState(
+      { contacts: this.state.contacts.concat([contact]) },
+      this.callbackTest
+    );
+  }
+
+  callbackTest() {
+    console.log(this.state);
   }
 
   render = () => (
     <div>
       <Header />
-      <Main contacts={this.state.contacts} />
+      <Main
+        {...this.props}
+        contacts={this.state.contacts}
+        addContact={this.addContact}
+      />
     </div>
   );
 }
