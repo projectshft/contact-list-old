@@ -36,11 +36,8 @@ class App extends Component {
   render = () => (
     <div>
       <Header />
-      <Main
-        {...this.props}
-        contacts={this.state.contacts}
-        addContact={this.addContact}
-      />
+      {/* Passing contacts down to contact-list and contacts, and add contact down to contact-add-form */}
+      <Main contacts={this.state.contacts} addContact={this.addContact} />
     </div>
   );
 }

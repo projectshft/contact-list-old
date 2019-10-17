@@ -2,6 +2,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import React from "react";
 import ContactAddForm from "./contact-add-form";
 import ContactList from "./contact-list";
+import Contact from "./contact";
 
 const Main = ({ contacts, addContact }) => {
   return (
@@ -14,6 +15,10 @@ const Main = ({ contacts, addContact }) => {
           render={props => (
             <ContactAddForm props={props} addContact={addContact} />
           )}
+        />
+        <Route
+          path="/contacts/:id"
+          render={props => <Contact props={props} contacts={contacts} />}
         />
         <Route
           path="/contacts"
