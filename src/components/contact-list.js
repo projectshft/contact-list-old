@@ -1,5 +1,5 @@
 import React from "react";
-import Contact from "./contact";
+import ContactListItem from "./contact-list-item";
 
 const ContactList = props => {
   console.log(props);
@@ -7,7 +7,7 @@ const ContactList = props => {
     <div>
       <ul>
         {props.contacts.map(c => (
-          <Contact key={c.id} contactData={c} />
+          <ContactListItem key={c.id} contactData={c} />
         ))}
       </ul>
     </div>

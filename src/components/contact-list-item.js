@@ -1,6 +1,6 @@
 import React from "react";
 
-const Contact = props => {
+const ContactListItem = props => {
   return (
     <li>
       <span>
@@ -11,4 +11,4 @@ const Contact = props => {
   );
 };
 
-export default Contact;
+export default ContactListItem;
