@@ -1,16 +1,36 @@
+import { Switch, Route, Link, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 
 const App = () => (
   <div>
     <Header />
-    <ContactList />
+    <Main />
   </div>
 );
 
 const Header = () => (
   <header className="App-header">
     <h1 className="App-title">Contact List</h1>
+    {/* Only show the Add Contacts button if on the contacts list page */}
+    <Route
+      exact
+      path="/contacts"
+      render={() => {
+        return <Link to="/contacts/add">Add Contact</Link>;
+      }}
+    />
   </header>
+);
+
+const Main = () => (
+  <main>
+    <Switch>
+      <Redirect exact from="/" to="/contacts" />
+      {/* /contacts/add first since regular /contacts causes a match to contacts/add */}
+      <Route path="/contacts/add" component={ContactAddForm} />
+      <Route path="/contacts" component={ContactList} />
+    </Switch>
+  </main>
 );
 
 const ContactList = () => (
@@ -22,6 +42,10 @@ const ContactList = () => (
     </ul>
   </div>
 );
+
+const ContactAddForm = () => {
+  return <div>Add Form Goes Here</div>;
+};
 
 const Contact = props => {
   return (
