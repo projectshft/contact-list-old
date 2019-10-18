@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ContactListItem from './ContactListItem';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 class ContactList extends Component {
+
   render() {
     return (
       <div className="ContactList">
@@ -13,6 +14,7 @@ class ContactList extends Component {
             this.props.contacts.map(c => (
             <ContactListItem 
             name={c.name}
+            id={c.id}
             key={c.id} />
           ))}
         </ul>

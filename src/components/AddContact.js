@@ -19,7 +19,6 @@ class AddContact extends Component {
   handleClick= () => {
     const generateId = () => Math.round(Math.random() * 100000000);
     const contact = {
-      redirectToContacts: false,
       id: generateId(),
       name: this.state.name,
       email: this.state.email,

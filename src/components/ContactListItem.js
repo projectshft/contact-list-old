@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class ContactListItem extends Component {
   render() {
     return (
       <li className="ContactListItem">
-        <p>{this.props.name}</p>
+        <Link to={`/contacts/${this.props.id}`}>{this.props.name}</Link>
       </li>
     );
   }
