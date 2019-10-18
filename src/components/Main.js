@@ -10,11 +10,12 @@ class Main extends Component {
       <main>
         <Switch>
           <Redirect exact from="/" to="/contacts" />
-          <Route 
-            path="/contacts" 
-            render={() => (<ContactList contacts={this.props.contacts} />)} 
+          <Route exact path="/contacts" 
+            render={() => (<ContactList 
+              contacts={this.props.contacts} />)} 
           />
-          <Route path="/contacts/new" component={AddContact} />
+          <Route path="/contacts/new" render={() => (<AddContact
+              addContact={this.props.addContact} />)} />
         </Switch>
       </main>
     )

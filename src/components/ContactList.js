@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ContactListItem from './ContactListItem';
+import { Link } from 'react-router-dom'
 
 class ContactList extends Component {
   render() {
@@ -10,10 +11,12 @@ class ContactList extends Component {
           
           {//Loops through all contacts and adds each as an 'li' element
             this.props.contacts.map(c => (
-            <ContactListItem name={c.name} />
+            <ContactListItem 
+            name={c.name}
+            key={c.id} />
           ))}
         </ul>
-        <a href="/contacts/new" className="btn btn-primary">Add Contact</a>
+        <Link to="/contacts/new">Add New Contact Info</Link>
       </div>
     );
   }
