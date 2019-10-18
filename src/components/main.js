@@ -9,9 +9,9 @@ const Main = ({ contacts, addContact, deleteContact, editContact }) => {
     <main>
       <Switch>
         <Redirect exact from="/" to="/contacts" />
-        {/* /contacts/add first since regular /contacts causes a match to contacts/add */}
+        {/* /contacts/new first since regular /contacts causes a match to contacts/new */}
         <Route
-          path="/contacts/add"
+          path="/contacts/new"
           render={props => (
             <ContactForm props={props} addContact={addContact} />
           )}

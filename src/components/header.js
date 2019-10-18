@@ -10,7 +10,7 @@ const Header = () => (
         exact
         path="/contacts"
         render={() => {
-          return <Link to="/contacts/add">Add Contact</Link>;
+          return <Link to="/contacts/new">Add Contact</Link>;
         }}
       />
       <Route

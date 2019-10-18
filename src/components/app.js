@@ -9,16 +9,7 @@ class App extends Component {
     super();
 
     this.state = {
-      contacts: [
-        {
-          id: 70219577,
-          name: "Albert Einstein",
-          image_url:
-            "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
-          email: "aeinstein@example.com",
-          phone_number: "15555555555"
-        }
-      ]
+      contacts: []
     };
 
     this.addContact = this.addContact.bind(this);
@@ -28,6 +19,8 @@ class App extends Component {
 
   addContact(contact) {
     this.setState({ contacts: this.state.contacts.concat([contact]) });
+    console.log("contact added:");
+    console.log(contact);
   }
 
   //find use prev state and filter to return a new array with only non matching ids (should only be 1 less but random is luck)
@@ -35,6 +28,7 @@ class App extends Component {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== id)
     }));
+    console.log(`contact deleted: ${id}`);
   }
 
   //find contact and replace it
@@ -46,6 +40,8 @@ class App extends Component {
     //replace at oldContacts place and save
     updatedContacts[this.state.contacts.indexOf(oldContact)] = contact;
     this.setState({ contacts: updatedContacts });
+    console.log("contact edited:");
+    console.log(contact);
   }
 
   render = () => (
