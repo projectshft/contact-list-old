@@ -1,37 +1,51 @@
 import React, { Component } from "react";
+import _ from "lodash";
 
 class ContactForm extends Component {
   constructor(props) {
     super(props);
-    let isEdit = this.props.hasOwnProperty("contactData");
+
+    let contact;
+
+    //if we wer passed and edit content property we much be in edit mode, grab the contact from contacts
+    if (this.props.hasOwnProperty("editContact")) {
+      //url contains id from contact object, use that to grab viewed contact
+      contact = _.find(props.contacts, {
+        id: parseInt(props.props.match.params.id, 10)
+      });
+    }
 
     this.state = {
-      name: isEdit ? this.props.contactData.name : "",
-      email: isEdit ? this.props.contactData.name : "",
-      phone_number: isEdit ? this.props.contactData.name : ""
+      name: contact ? contact.name : "",
+      email: contact ? contact.email : "",
+      phone_number: contact ? contact.phone_number : "",
+      id: contact ? contact.id : Math.round(Math.random() * 100000000),
+      editMode: contact ? true : false
     };
 
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
-    const generateId = () => Math.round(Math.random() * 100000000);
-
     const contact = {
-      id: generateId(),
+      id: this.state.id,
       name: this.state.name,
       email: this.state.email,
       phone_number: this.state.phone_number
     };
 
-    this.props.addContact(contact);
+    if (!this.state.editMode) {
+      this.props.addContact(contact);
+    } else {
+      this.props.editContact(contact);
+    }
     this.props.props.history.push("/contacts");
   }
 
   render() {
     return (
       <form>
-        <h3>Add a New Contact</h3>
+        <h3> {this.state.editMode ? "Edit Contact" : "Add New Contact"}</h3>
 
         <div className="form-group">
           <input
@@ -67,7 +81,7 @@ class ContactForm extends Component {
           type="button"
           className="btn btn-primary add-contact"
         >
-          Add
+          {this.state.editMode ? "Save" : "Add"}
         </button>
       </form>
     );

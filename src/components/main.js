@@ -4,7 +4,7 @@ import ContactForm from "./contact-form";
 import ContactList from "./contact-list";
 import Contact from "./contact";
 
-const Main = ({ contacts, addContact, deleteContact }) => {
+const Main = ({ contacts, addContact, deleteContact, editContact }) => {
   return (
     <main>
       <Switch>
@@ -16,13 +16,17 @@ const Main = ({ contacts, addContact, deleteContact }) => {
             <ContactForm props={props} addContact={addContact} />
           )}
         />
-        {/* reuse contact form here since most of it is the same layout as the add form
+        {/* reuse contact form here since most of it is the same layout as the add form */}
         <Route
           path="/contacts/:id/edit"
           render={props => (
-            <ContactForm props={props} editContact={addContact} />
+            <ContactForm
+              props={props}
+              contacts={contacts}
+              editContact={editContact}
+            />
           )}
-        /> */}
+        />
         <Route
           path="/contacts/:id"
           render={props => <Contact props={props} contacts={contacts} />}

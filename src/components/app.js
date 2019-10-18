@@ -21,6 +21,7 @@ class App extends Component {
 
     this.addContact = this.addContact.bind(this);
     this.deleteContact = this.deleteContact.bind(this);
+    this.editContact = this.editContact.bind(this);
   }
 
   addContact(contact) {
@@ -34,6 +35,11 @@ class App extends Component {
     }));
   }
 
+  //find contact and replace it
+  editContact(contact) {
+    console.log("implement edit");
+  }
+
   render = () => (
     <div>
       <Header />
@@ -42,6 +48,7 @@ class App extends Component {
         contacts={this.state.contacts}
         addContact={this.addContact}
         deleteContact={this.deleteContact}
+        editContact={this.editContact}
       />
     </div>
   );
