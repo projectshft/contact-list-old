@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "./header";
 import Main from "./main";
+import _ from "lodash";
 
 class App extends Component {
   constructor() {
@@ -37,7 +38,13 @@ class App extends Component {
 
   //find contact and replace it
   editContact(contact) {
-    console.log("implement edit");
+    //find old contact
+    const oldContact = _.find(this.state.contacts, { id: contact.id });
+    //spread to create new contact list
+    const updatedContacts = [...this.state.contacts];
+    //replace at oldContacts place and save
+    updatedContacts[this.state.contacts.indexOf(oldContact)] = contact;
+    this.setState({ contacts: updatedContacts });
   }
 
   render = () => (
