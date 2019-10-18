@@ -1,21 +1,52 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route, Redirect } from 'react-router-dom'
+import React from 'react'
+import Header from './Header'
+import Contacts from './Contacts'
+import Schedule from './Schedule'
 
-class App extends Component {
+class App extends React.Component {
+  constructor () {
+    super()
+
+    this.state = {
+      contacts: [
+        { name: "Ben Blocker", id: 1},
+        { name: "Dave Defender", id: 2 },
+        { name: "Sam Sweeper", id: 3 },
+        { name: "Matt Midfielder", id: 4 },
+        { name: "William Winger", id: 5 },
+        { name: "Fillipe Forward", id: 6 }
+      ],
+
+      redirect: false
+    }
+    
+    this.addContact = this.addContact.bind(this);
+    
+  }
+  
+  addContact (contact) {
+    this.setState({contacts: this.state.contacts.concat([contact])});
+  }
+
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        
+        <Switch>
+          <Route exact path='/'>
+            <Redirect to='/contacts' />
+          </Route>
+          <Route path='/contacts' render={() => (
+            <Contacts props={this.props} addContact={this.addContact} contacts={this.state.contacts} />
+          )}/>
+          // <Route path='/schedule' component={Schedule}/>
+        </Switch>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
+
