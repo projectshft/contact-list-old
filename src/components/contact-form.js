@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 
-class ContactAddForm extends Component {
-  constructor() {
-    super();
+class ContactForm extends Component {
+  constructor(props) {
+    super(props);
+    let isEdit = this.props.hasOwnProperty("contactData");
+
     this.state = {
-      name: "",
-      email: "",
-      phone_number: ""
+      name: isEdit ? this.props.contactData.name : "",
+      email: isEdit ? this.props.contactData.name : "",
+      phone_number: isEdit ? this.props.contactData.name : ""
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -72,4 +74,4 @@ class ContactAddForm extends Component {
   }
 }
 
-export default ContactAddForm;
+export default ContactForm;

@@ -27,14 +27,11 @@ class App extends Component {
     this.setState({ contacts: this.state.contacts.concat([contact]) });
   }
 
+  //find use prev state and filter to return a new array with only non matching ids (should only be 1 less but random is luck)
   deleteContact(id) {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== id)
     }));
-  }
-
-  callbackTest() {
-    console.log(this.state);
   }
 
   render = () => (

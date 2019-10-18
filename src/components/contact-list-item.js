@@ -16,7 +16,17 @@ const ContactListItem = ({ contactData, deleteContact }) => {
           and it spaced them properly*/}
         <Link to={linkDest}>{contactData.name}</Link>{" "}
         {/* pass contactId from above to arrow function on click to keep this component functional */}
-        <button type="button" onClick={() => deleteContact(contactId)}>
+        <button
+          type="button"
+          onClick={() => {
+            if (
+              window.confirm(
+                `Are you sure you want to delete ${contactData.name}?`
+              )
+            )
+              deleteContact(contactId);
+          }}
+        >
           Delete
         </button>
       </span>
