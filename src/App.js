@@ -9,14 +9,14 @@ class App extends React.Component {
     super()
 
     this.state = {
-      contacts: JSON.parse(localStorage.contacts) || [],
+      contacts: localStorage.contacts ? JSON.parse(localStorage.contacts) : [],
 
       redirect: false
     }
     
     this.addContact = this.addContact.bind(this);
     this.setLocalStorage = this.setLocalStorage.bind(this);
-    
+    this.deleteContact = this.deleteContact.bind(this);
   }
 
   setLocalStorage() {
@@ -25,6 +25,10 @@ class App extends React.Component {
   
   addContact (contact) {
     this.setState({contacts: this.state.contacts.concat([contact])}, this.setLocalStorage);
+  }
+
+  deleteContact (contact) {
+    console.log(contact);
   }
 
 
@@ -37,7 +41,7 @@ class App extends React.Component {
             <Redirect to='/contacts' />
           </Route>
           <Route path='/contacts' render={() => (
-            <Contacts props={this.props} addContact={this.addContact} contacts={this.state.contacts} />
+            <Contacts props={this.props} addContact={this.addContact} contacts={this.state.contacts} deleteContact={this.deleteContact}/>
           )}/>
           // <Route path='/schedule' component={Schedule}/>
         </Switch>

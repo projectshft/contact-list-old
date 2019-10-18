@@ -51,7 +51,7 @@ class ContactNew extends React.Component {
             this.setState({ email: event.target.value })
           } />
 
-          <button type="button" className="btn btn-primary" onClick={this.handleSubmitContactClick}>Submit</button>
+          <button id="submit-contact-button"type="button" className="btn btn-primary" onClick={this.handleSubmitContactClick}>Submit</button>
         </form>
 
         <Link to='/contacts' id="return-to-contacts" onClick={this.props.toggleRedirect}>Contacts</Link>

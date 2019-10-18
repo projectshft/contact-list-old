@@ -50,12 +50,12 @@ class Contacts extends React.Component {
           <div>
             <span>
               
-              <h1>Contacts</h1>
+              <h2>Contacts</h2>
 
               <button id="add-contact-button" className="btn btn-primary" onClick={this.handleButtonClick} >Add Contact</button>
             </span>
 
-            <FullContactList contacts={this.props.contacts} />
+            <FullContactList contacts={this.props.contacts} deleteContact={this.props.deleteContact} />
           </div>
           )
         } }/>
