@@ -24,13 +24,18 @@ class App extends React.Component {
   }
   
   addContact (contact) {
-    this.setState({contacts: this.state.contacts.concat([contact])}, this.setLocalStorage);
+    // concatenate new contact onto contacts array
+    this.setState({contacts: this.state.contacts.concat([contact])},this.setLocalStorage);
   }
 
-  deleteContact (contact) {
-    console.log(contact);
+  deleteContact (contactIdx) {
+    let newContacts = [...this.state.contacts]; // make copy of the array
+    
+    if (contactIdx !== -1) {
+      newContacts.splice(contactIdx, 1); // remove contact
+      this.setState({contacts: newContacts}, this.setLocalStorage);
+    }
   }
-
 
   render() {
     return (
