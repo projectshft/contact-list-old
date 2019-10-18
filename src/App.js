@@ -6,7 +6,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-
 class App extends Component {
   constructor () {
     super() 
@@ -19,34 +18,34 @@ class App extends Component {
       ]
 
     } 
-    this.addContact = this.addContact.bind(this);
+    // this.addContact = this.addContact.bind(this);
    
   }
+   handleClick () {
+      this.addContact('george','716-898-6767','hello@gmail.com')
+  }
+  
+  addContact (name,number,email) {
+    const generateId = () => Math.round(Math.random() * 100000000);
+    const newContact = {
+      id: this.generateId,
+      name: name,
+      number: number,
+      email: email
+    }
+     
+    console.log(newContact)
     
-
-  addContact (contact) {
-      this.setState({ contacts: this.state.contacts.concat([contact]) });
+      // this.setState({ contacts: this.state.contacts.concat([contact]) });
   }
 
-  handleClick () {
-    this.setState({ routeToContactList: !this.state.routeToContactList });
-  }
+
+
   
   render() {
-    const routeToContactList = () => {
-      if (this.state.ContactList) {
-         return <Switch>
-                    <Route exact path="/contactslist" render={() => (
-                      <ContactList contactList={this.state.contacts} /> )}/>
-                </Switch>
-
-
-      
-      }
-    }
-  
   
     return (
+
       <div className="App">
        <header className="App-header">
         </header>
@@ -55,16 +54,24 @@ class App extends Component {
             <div className="col-8">
               <h1 className="App-title">Contact List</h1>
             </div>
-            <button onClick= {routeToContactList}type="button" className="btn btn-primary">Add New Contact</button>
+            <button onClick= {this.handleClick}type="button" className="btn btn-primary">Add New Contact</button>
           </div>
         </div>
+        <ContactList contacts={this.state.contacts} />
+        <Switch>
+          <Route exact path="/" component={ContactList} />
+          <Route
+            path="/contact/new"
+            render={props => (
+              <ContactList props={props} component={ContactList} />
+            )}
+          />
+          <Route path="/contact/new" component={NewContact} />
+          {/* <Route path="/contact/:number" component={ContactList} /> */}
+        </Switch>
       </div>
 
-
-
-      
-  
-      );
+    );
   }
   
 };

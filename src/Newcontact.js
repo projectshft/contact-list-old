@@ -1,4 +1,5 @@
 import React from 'react';
+ 
 
 const NewContact = (props) => {
     console.log(props)
