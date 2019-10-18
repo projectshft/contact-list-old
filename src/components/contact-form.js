@@ -20,7 +20,8 @@ class ContactForm extends Component {
       email: contact ? contact.email : "",
       phone_number: contact ? contact.phone_number : "",
       id: contact ? contact.id : Math.round(Math.random() * 100000000),
-      editMode: contact ? true : false
+      editMode: contact ? true : false,
+      errors: []
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -34,56 +35,94 @@ class ContactForm extends Component {
       phone_number: this.state.phone_number
     };
 
-    if (!this.state.editMode) {
-      this.props.addContact(contact);
-    } else {
-      this.props.editContact(contact);
+    //use the above contact to check for errors, returns number of errors
+    //do function calls if no errors
+    if (!this.determineErrors(contact)) {
+      if (!this.state.editMode) {
+        this.props.addContact(contact);
+      } else {
+        this.props.editContact(contact);
+      }
+      this.props.props.history.push("/contacts");
     }
-    this.props.props.history.push("/contacts");
+  }
+
+  determineErrors(contact) {
+    //check all required properties and add them to and error list
+    function isBlank(str) {
+      return !str || /^\s*$/.test(str);
+    }
+
+    let newErrors = [];
+
+    if (isBlank(contact.name)) {
+      newErrors.push("Name Cannot Be Blank");
+    }
+
+    if (isBlank(contact.email)) {
+      newErrors.push("Email Cannot Be Blank");
+    }
+
+    if (isBlank(contact.phone_number)) {
+      newErrors.push("Phone Number Cannot Be Blank");
+    }
+
+    //set error list to cause refresh of error list on page
+    this.setState({ errors: newErrors });
+
+    //return whether or not there are errors for use in click
+    return newErrors.length > 0;
   }
 
   render() {
     return (
-      <form>
-        <h3> {this.state.editMode ? "Edit Contact" : "Add New Contact"}</h3>
+      <div>
+        <form>
+          <h3> {this.state.editMode ? "Edit Contact" : "Add New Contact"}</h3>
 
-        <div className="form-group">
-          <input
-            className="form-control"
-            placeholder="Name"
-            value={this.state.name}
-            onChange={event => this.setState({ name: event.target.value })}
-          />
+          <div className="form-group">
+            Name:{" "}
+            <input
+              className="form-control"
+              placeholder="Name"
+              value={this.state.name}
+              onChange={event => this.setState({ name: event.target.value })}
+            />
+            <br />
+            Email:{" "}
+            <input
+              className="form-control"
+              placeholder="Email"
+              value={this.state.email}
+              onChange={event => this.setState({ email: event.target.value })}
+            />
+            <br />
+            Phone:{" "}
+            <input
+              className="form-control"
+              placeholder="Phone Number"
+              value={this.state.phone_number}
+              onChange={event =>
+                this.setState({ phone_number: event.target.value })
+              }
+            />
+          </div>
 
-          <br />
-
-          <input
-            className="form-control"
-            placeholder="Email"
-            value={this.state.email}
-            onChange={event => this.setState({ email: event.target.value })}
-          />
-
-          <br />
-
-          <input
-            className="form-control"
-            placeholder="Phone Number"
-            value={this.state.phone_number}
-            onChange={event =>
-              this.setState({ phone_number: event.target.value })
-            }
-          />
-        </div>
-
-        <button
-          onClick={this.handleClick}
-          type="button"
-          className="btn btn-primary add-contact"
-        >
-          {this.state.editMode ? "Save" : "Add"}
-        </button>
-      </form>
+          <button
+            onClick={this.handleClick}
+            type="button"
+            className="btn btn-primary add-contact"
+          >
+            {this.state.editMode ? "Save" : "Add"}
+          </button>
+        </form>
+        {/* display errors below */}
+        {this.state.errors.map((error, index) => (
+          <p key={index} className={"errorText"}>
+            {error}
+          </p>
+        ))}
+      </div>
     );
   }
 }
