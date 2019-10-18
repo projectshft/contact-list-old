@@ -7,7 +7,9 @@ class ContactList extends Component {
       <div className="ContactList">
         <h1>Contact List</h1>
         <ul>
-          {this.props.contacts.map(c => (
+          
+          {//Loops through all contacts and adds each as an 'li' element
+            this.props.contacts.map(c => (
             <ContactListItem name={c.name} />
           ))}
         </ul>

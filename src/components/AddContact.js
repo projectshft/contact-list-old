@@ -15,7 +15,7 @@ class AddContact extends Component {
         <h3>New Contact Info</h3>
         <Link to="/contacts">Back</Link>
         <div className="form-group row">
-          <div className="col-md-6">
+          <div className="col-md-4">
             <input
             className="form-control"
             placeholder="Full Name"
