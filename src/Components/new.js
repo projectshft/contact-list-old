@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 
 
 
-class App extends React.Component{
+class New extends React.Component{
   
     constructor(props) {
       super(props)
@@ -21,18 +21,11 @@ class App extends React.Component{
     
         return (
           <div>
-            <h1>hello world</h1>
+            <h1>New Contact info</h1>
           </div>
         );
       }
     }
 
 
-
-
-
-
-
-
-
-export default App;
+    export default New;
