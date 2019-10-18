@@ -5,9 +5,11 @@ const FullContactList = ({contacts}) => (
   <div>
     <ul className="list-group">
       {
-        contacts.map(p => (
-          <li className="list-group-item" key={p.id}>
-            <Link to={`/contacts/${p.id}`}>{p.name}</Link>
+        contacts.map(contact => (
+          <li className="list-group-item" key={contact.id}>
+            <Link to={`/contacts/${contact.id}`}>{contact.name}</Link>
+            <Link id='edit-link' to={`/contacts/${contact.id}`}>edit</Link>
+            <Link id='delete-link' to={``}>delete</Link>
           </li>
         ))
       }

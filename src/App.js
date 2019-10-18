@@ -9,24 +9,22 @@ class App extends React.Component {
     super()
 
     this.state = {
-      contacts: [
-        { name: "Ben Blocker", id: 1},
-        { name: "Dave Defender", id: 2 },
-        { name: "Sam Sweeper", id: 3 },
-        { name: "Matt Midfielder", id: 4 },
-        { name: "William Winger", id: 5 },
-        { name: "Fillipe Forward", id: 6 }
-      ],
+      contacts: JSON.parse(localStorage.contacts) || [],
 
       redirect: false
     }
     
     this.addContact = this.addContact.bind(this);
+    this.setLocalStorage = this.setLocalStorage.bind(this);
     
+  }
+
+  setLocalStorage() {
+    localStorage.contacts = JSON.stringify(this.state.contacts);
   }
   
   addContact (contact) {
-    this.setState({contacts: this.state.contacts.concat([contact])});
+    this.setState({contacts: this.state.contacts.concat([contact])}, this.setLocalStorage);
   }
 
 

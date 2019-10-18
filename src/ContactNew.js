@@ -1,22 +1,26 @@
-import { Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import React from 'react'
 
 class ContactNew extends React.Component {
-  constructor () {
-    super ()
+  constructor() {
+    super()
 
     this.state = {
       name: '',
       id: '',
+      phone: '',
+      email: ''
     }
 
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
   }
 
-  handleSubmitContactClick () {
+  handleSubmitContactClick() {
     const newContact = {
       name: this.state.name,
-      id: this.state.number,
+      email: this.state.email,
+      phone: this.state.phone,
+      id: Math.round(Math.random() * 100000000)
     };
 
     this.props.addContact(newContact);
@@ -24,33 +28,33 @@ class ContactNew extends React.Component {
     this.props.toggleRedirect();
   }
 
-  render () {
+  render() {
     return (
       <div>
-        <form>
-        <label>Name</label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ name: event.target.value })
-        }/>
+        <form id="contact-form">
+          <label>Name</label>
+          <input type='text' className='form-control' onChange={event =>
+            this.setState({ name: event.target.value })
+          } />
 
-        <br/>
+          <br />
 
-        <label>Number</label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ id: parseInt(event.target.value, 10) })
-        }/>
+          <label>Phone</label>
+          <input type='text' className='form-control' onChange={event =>
+            this.setState({ phone: event.target.value})
+          } />
 
-        <br/>
+          <br />
 
-        <label>Position</label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ position: event.target.value })
-        }/>
+          <label>email</label>
+          <input type='text' className='form-control' onChange={event =>
+            this.setState({ email: event.target.value })
+          } />
 
-        <button type="button" onClick={this.handleSubmitContactClick}>Submit</button>
+          <button type="button" className="btn btn-primary" onClick={this.handleSubmitContactClick}>Submit</button>
         </form>
 
-        <Link to='/contacts' onClick={this.props.toggleRedirect}>Contacts</Link>
+        <Link to='/contacts' id="return-to-contacts" onClick={this.props.toggleRedirect}>Contacts</Link>
       </div>
     )
   }
