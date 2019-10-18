@@ -1,19 +1,43 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ContactList from './contactlist'
 
 class App extends Component {
   constructor() {
     super()
 
-  this.state = {
-    contacts: [
-    { ID: 1, name: "Ben Blocker", imageURL: "G", email: 'test@123.com', phone: '123-456-7890' },
-    { ID: 2, name: "John Jacobs", imageURL: "G", email: 'test@123.com', phone: '123-456-7890' }
-  ],
-};
-console.log(this.state.contacts[0].name);
+    this.state = {
+      contacts: [
+        {
+          Id: 1,
+          name: "Ben Blocker",
+          imageURL: "G",
+          email: 'test@123.com',
+          phone: '123-456-7890'
+        }, {
+          Id: 2,
+          name: "John Jacobs",
+          imageURL: "G",
+          email: 'test@123.com',
+          phone: '123-456-7890'
+        }
+      ]
+    };
 
-}
+
+    const contactData = this.state.contacts.map(function(b, index) {
+      const contact = {
+        Id: b.Id,
+        name: b.name
+      }
+      console.log(contact.name)
+      // return contact
+      return (<div className="contact1">
+        {contact.name}
+      </div>);
+
+    });
+  }
 
 
   render() {
@@ -25,21 +49,15 @@ console.log(this.state.contacts[0].name);
             <hr/>
           </div>
           <button type="button" className="btn btn-primary">New Contact</button>
-
+        <ContactList contacts={this.state.contacts} />
           <hr/>
-        <div className="contacts-list">
-          <h1>Contact</h1>
-        <div className="contact1">
-        <h2>Name: { this.state.contacts[0].name } </h2>
-      <button type="button" className="btn btn-primary btn-sm">Edit</button>
-    <button type="button" className="btn btn-secondary btn-sm">Delete</button>
-        </div>
-        </div>
+          <div className="contacts">
+            <h1>Contact</h1>
+          </div>
         </div>
       </div>
     </div>);
   }
 }
-
 
 export default App;
