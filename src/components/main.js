@@ -4,7 +4,7 @@ import ContactAddForm from "./contact-add-form";
 import ContactList from "./contact-list";
 import Contact from "./contact";
 
-const Main = ({ contacts, addContact }) => {
+const Main = ({ contacts, addContact, deleteContact }) => {
   return (
     <main>
       <Switch>
@@ -22,7 +22,9 @@ const Main = ({ contacts, addContact }) => {
         />
         <Route
           path="/contacts"
-          render={() => <ContactList contacts={contacts} />}
+          render={() => (
+            <ContactList contacts={contacts} deleteContact={deleteContact} />
+          )}
         />
       </Switch>
     </main>

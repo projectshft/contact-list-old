@@ -20,13 +20,17 @@ class App extends Component {
     };
 
     this.addContact = this.addContact.bind(this);
+    this.deleteContact = this.deleteContact.bind(this);
   }
 
   addContact(contact) {
-    this.setState(
-      { contacts: this.state.contacts.concat([contact]) },
-      this.callbackTest
-    );
+    this.setState({ contacts: this.state.contacts.concat([contact]) });
+  }
+
+  deleteContact(id) {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id)
+    }));
   }
 
   callbackTest() {
@@ -37,7 +41,11 @@ class App extends Component {
     <div>
       <Header />
       {/* Passing contacts down to contact-list and contacts, and add contact down to contact-add-form */}
-      <Main contacts={this.state.contacts} addContact={this.addContact} />
+      <Main
+        contacts={this.state.contacts}
+        addContact={this.addContact}
+        deleteContact={this.deleteContact}
+      />
     </div>
   );
 }
