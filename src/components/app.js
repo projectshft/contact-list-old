@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./header";
 import Main from "./main";
 import _ from "lodash";
+import "../App.css";
 
 class App extends Component {
   constructor() {

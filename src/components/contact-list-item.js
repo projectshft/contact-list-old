@@ -18,7 +18,8 @@ const ContactListItem = ({ contactData, deleteContact }) => {
         <Link to={contactDest}>{contactData.name}</Link>{" "}
         <Link to={editDest}>Edit</Link>{" "}
         {/* pass contactId from above to arrow function on click to keep this component functional */}
-        <button
+        <a
+          href="#0"
           type="button"
           onClick={() => {
             if (
@@ -30,9 +31,8 @@ const ContactListItem = ({ contactData, deleteContact }) => {
           }}
         >
           Delete
-        </button>
+        </a>
       </span>
-      <hr />
     </li>
   );
 };
