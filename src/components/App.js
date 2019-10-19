@@ -50,7 +50,7 @@ class App extends Component {
           />
 
           <Route path="/contacts/:id" 
-          // component={ContactDetails}
+          // match allows the use of specified id param in ContactDetails component
             render={({ match }) => (<ContactDetails
               contacts={this.state.contacts}
               match={match} />)} 
