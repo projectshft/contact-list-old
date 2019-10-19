@@ -18,8 +18,7 @@ class Main extends Component {
             render={() => (<ContactList 
               contacts={this.props.contacts} />)} 
           />
-          <Route path="/contacts/new" render={() => (<AddContact
-              addContact={this.props.addContact} />)} />
+          <Route path="/contacts/new" render={() => (<AddContact addContact={this.props.addContact} />)} />
 
           <Route path="/contacts/:id" render={() => (<ContactDetails
               currentContact={this.props.currentContact} />)} />

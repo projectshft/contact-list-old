@@ -3,7 +3,6 @@ import ContactListItem from './ContactListItem';
 import { Link } from 'react-router-dom';
 
 class ContactList extends Component {
-
   render() {
     return (
       <div className="ContactList">
@@ -18,7 +17,9 @@ class ContactList extends Component {
             key={c.id} />
           ))}
         </ul>
-        <Link to="/contacts/new">Add New Contact Info</Link>
+        <Link to="/contacts/new">
+          <button type="button" className="btn btn-primary">Add New Contact</button>
+        </Link>
       </div>
     );
   }

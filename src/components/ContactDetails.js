@@ -5,7 +5,7 @@ class ContactDetails extends Component {
     return (
       <div className="ContactDetails">
         <h3>I am ContactDetails Component</h3>
-        <h3>{this.props.currentContact}sdfs</h3>
+        <h3>{this.props.currentContact}</h3>
       </div>
     );
   }

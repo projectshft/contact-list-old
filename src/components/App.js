@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom'
+import ContactList from './ContactList'
+import AddContact from './AddContact'
+import ContactDetails from './ContactDetails'
+
 import Main from './Main'
 
 class App extends Component {
@@ -24,16 +29,22 @@ class App extends Component {
   }
   
   render() {
+    if(this.state.currentContact) {
+      return ( <Redirect to= {`/contacts/${this.props.currentContact}`} /> )
+    }
     return (
-      <div className="App">
-        <Main 
-        contacts={this.state.contacts}
-        addContact={this.addContact} 
-        currentContact={this.state.currentContact}
-        setCurrentContact={this.setCurrentContact}
-        />
-      </div>
-    );
+        <Switch>
+          <Redirect exact from="/" to="/contacts" />
+          <Route exact path="/contacts" 
+            render={() => (<ContactList 
+              contacts={this.state.contacts} />)} 
+          />
+          <Route path="/contacts/new" render={() => (<AddContact addContact={this.addContact} />)} />
+
+          <Route path="/contacts/:id" render={() => (<ContactDetails
+              currentContact={this.state.currentContact} />)} />
+        </Switch>
+    )
   }
 }
 
