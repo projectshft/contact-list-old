@@ -7,8 +7,8 @@ class ContactList extends Component {
     return (
       <div className="ContactList">
         <h1>Contact List</h1>
+
         <ul>
-          
           {//Loops through all contacts and adds each as an 'li' element
             this.props.contacts.map(c => (
             <ContactListItem 
@@ -17,6 +17,7 @@ class ContactList extends Component {
             key={c.id} />
           ))}
         </ul>
+
         <Link to="/contacts/new">
           <button type="button" className="btn btn-primary">Add New Contact</button>
         </Link>

@@ -16,6 +16,7 @@ class AddContact extends Component {
     }
   }
 
+  // New contact logic. Generates a random ID for new contact and triggers the ContactList to render.
   handleClick= () => {
     const generateId = () => Math.round(Math.random() * 100000000);
     const contact = {
@@ -30,11 +31,13 @@ class AddContact extends Component {
   }
 
   render() {
-
+    // Triggered on "add contact" button click to redirect to contact list.
     if (this.state.redirectToContacts) {
       return ( <Redirect to="/contacts"/> )
     }
+
     return (
+      // Form logic saves all values to state. Only added into contact list if "add contact" button clicked
       <form>
         <h3>New Contact Info</h3>
         <Link to="/contacts">Back</Link>
