@@ -1,4 +1,5 @@
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -29,10 +30,7 @@ class App extends Component {
     }
     this.addNewContact = this.addNewContact.bind(this);
 
-    addNewContact(newContact)
-      this.setState({
-        contacts: this.state.contacts.concat([newContact])
-      });
+
 
 
     const contactData = this.state.contacts.map(function(b, index) {
@@ -40,15 +38,26 @@ class App extends Component {
         Id: b.Id,
         name: b.name
       }
-      console.log(contact.name)
+
+
+
       // return contact
       return (<div className="contact1">
         {contact.name}
       </div>);
 
     });
-  }
 
+
+}
+
+
+addNewContact(newContact) {
+  this.setState({
+    contacts: this.state.contacts.concat([newContact])
+  });
+  console.log(this.state.contacts)
+  }
   render() {
     return (<div className="container-fluid">
       <div className="row">
@@ -57,12 +66,16 @@ class App extends Component {
             <h1>Contact List</h1>
             <hr/>
           </div>
-          <button type="button" className="btn btn-primary">New Contact</button>
+          <Link to='/contacts/new'>
+          <button type="button" className="btn btn-primary">New Contact</button></Link>
 
           <Switch>
             <Route exact="exact" path="/" component={ContactList}/>
           {/* <Route path="/contactdetails" component={contactDetails} /> */}
             <Route path="/contacts/new" component={AddContact}/>
+          <Route path='/contactList' render={() => (
+          <ContactList addContact={this.addContact} contacts={this.state.contacts} />
+            )}/>
           </Switch>
 
           <br></br>
