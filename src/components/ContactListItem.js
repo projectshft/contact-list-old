@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class ContactListItem extends Component {
   render() {
@@ -10,6 +11,12 @@ class ContactListItem extends Component {
       </li>
     );
   }
+}
+
+
+// PROPTYPES work in progress
+ContactListItem.propTypes = {
+  name: PropTypes.string.isRequired
 }
 
 export default ContactListItem;
