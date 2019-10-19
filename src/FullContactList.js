@@ -16,9 +16,9 @@ class FullContactList extends React.Component {
               <li className="list-group-item" key={contact.id}>
                 <Link id="contact-name-list" to={`/contacts/${contact.id}`}>{contact.name}</Link>
                 <Link id='edit-link' to={`/contacts/${contact.id}/edit`}>edit</Link>
-                <Link id='delete-link' to={``} onClick={(e) => {
-                  let id = e.target.parentElement.firstChild.attributes[1].nodeValue.match(/\d+/)[0];
-                  let contactIdx = this.props.contacts.findIndex((contact) => contact.id === parseInt(id));
+                <Link contactid={contact.id} id='delete-link' to={''} onClick={(e) => {
+                  let contactid = e.target.attributes[0].value // grab contact id from target
+                  let contactIdx = this.props.contacts.findIndex((contact) => contact.id === parseInt(contactid, 10)); // get the index of this contact in contacts array
                   this.props.deleteContact(contactIdx);
 
                 }

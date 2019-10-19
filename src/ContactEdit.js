@@ -12,21 +12,17 @@ class ContactEdit extends React.Component {
   }
 
   handleSubmitContactClick() {
-    debugger;
     const editedContact = {
-      name: this.state.name,
+      name: this.state.name || "Can't recall the name now!",
       email: this.state.email,
       phone: this.state.phone,
       id: parseInt(this.props.props.match.params.id, 10)
     };
-    console.log(editedContact)
     this.props.editContact(_.findIndex(this.props.contacts, { id: parseInt(this.props.props.match.params.id, 10) }), editedContact);
     this.props.props.history.push('/contacts')
-    // this.props.toggleRedirect();
   }
 
   render() {
-    // debugger;
     return (
       <div>
         <form id="contact-form">
@@ -52,7 +48,7 @@ class ContactEdit extends React.Component {
           <button id="submit-contact-button"type="button" className="btn btn-primary" onClick={this.handleSubmitContactClick}>Submit</button>
         </form>
 
-        <Link to='/contacts' id="return-to-contacts" onClick={this.props.toggleRedirect}>Contacts</Link>
+        <Link to='/contacts' id="return-to-contacts" onClick={this.props.toggleRedirect}>Back</Link>
       </div>
     )
   }

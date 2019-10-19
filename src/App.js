@@ -1,8 +1,6 @@
 import { Switch, Route, Redirect } from 'react-router-dom'
 import React from 'react'
-import Header from './Header'
 import Contacts from './Contacts'
-import Schedule from './Schedule'
 
 class App extends React.Component {
   constructor () {
@@ -39,7 +37,6 @@ class App extends React.Component {
   }
 
   editContact (contactIdx, editedContact) {
-    debugger;
     let newContacts = [...this.state.contacts]; // make copy of the array
     
     if (contactIdx !== -1) {
@@ -59,7 +56,6 @@ class App extends React.Component {
           <Route path='/contacts' render={() => (
             <Contacts props={this.props} addContact={this.addContact} contacts={this.state.contacts} deleteContact={this.deleteContact} editContact={this.editContact}/>
           )}/>
-          // <Route path='/schedule' component={Schedule}/>
         </Switch>
       </div>
     )

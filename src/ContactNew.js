@@ -6,7 +6,7 @@ class ContactNew extends React.Component {
     super()
 
     this.state = {
-      name: '',
+      name: "Can't recall the name now!",
       id: '',
       phone: '',
       email: ''
@@ -33,8 +33,10 @@ class ContactNew extends React.Component {
       <div>
         <form id="contact-form">
           <label>Name</label>
-          <input type='text' className='form-control' onChange={event =>
-            this.setState({ name: event.target.value })
+          <input type='text' className='form-control' onChange={event => { 
+            const name = event.target.value 
+            this.setState({ name: name })
+          }
           } />
 
           <br />
