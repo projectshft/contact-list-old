@@ -50,8 +50,10 @@ class App extends Component {
           />
 
           <Route path="/contacts/:id" 
-            render={() => (<ContactDetails
-              currentContact={this.state.currentContact} />)} 
+          // component={ContactDetails}
+            render={({ match }) => (<ContactDetails
+              contacts={this.state.contacts}
+              match={match} />)} 
           />
         </Switch>
     )

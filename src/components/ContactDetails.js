@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
-// Bigtime work-in-progress :(
 class ContactDetails extends Component {
+
   render() {
+    const contacts = this.props.contacts;
+    const currentContactId = this.props.match.params.id;
     return (
       <div className="ContactDetails">
         <h3>I am ContactDetails Component</h3>
-        <h3>{this.props.currentContact}</h3>
+        <h3>My Id is {currentContactId}</h3>
       </div>
     );
   }
