@@ -17,6 +17,7 @@ class App extends React.Component {
     this.addContact = this.addContact.bind(this);
     this.setLocalStorage = this.setLocalStorage.bind(this);
     this.deleteContact = this.deleteContact.bind(this);
+    this.editContact = this.editContact.bind(this);
   }
 
   setLocalStorage() {
@@ -37,6 +38,16 @@ class App extends React.Component {
     }
   }
 
+  editContact (contactIdx, editedContact) {
+    debugger;
+    let newContacts = [...this.state.contacts]; // make copy of the array
+    
+    if (contactIdx !== -1) {
+      newContacts.splice(contactIdx, 1, editedContact); // remove contact
+      this.setState({contacts: newContacts}, this.setLocalStorage);
+    }
+  }
+
   render() {
     return (
       <div>
@@ -46,7 +57,7 @@ class App extends React.Component {
             <Redirect to='/contacts' />
           </Route>
           <Route path='/contacts' render={() => (
-            <Contacts props={this.props} addContact={this.addContact} contacts={this.state.contacts} deleteContact={this.deleteContact}/>
+            <Contacts props={this.props} addContact={this.addContact} contacts={this.state.contacts} deleteContact={this.deleteContact} editContact={this.editContact}/>
           )}/>
           // <Route path='/schedule' component={Schedule}/>
         </Switch>

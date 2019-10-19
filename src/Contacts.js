@@ -2,6 +2,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import React from 'react';
 import Contact from './Contact';
 import ContactNew from './ContactNew';
+import ContactEdit from './ContactEdit';
 import FullContactList from './FullContactList';
 
 class Contacts extends React.Component {
@@ -36,9 +37,15 @@ class Contacts extends React.Component {
           <ContactNew props={props} contacts={this.props.contacts} addContact={this.props.addContact} toggleRedirect={this.toggleRedirect}/>
         )} />
 
-        <Route path='/contacts/:id' render={(props) => (
+        <Route exact path='/contacts/:id' render={(props) => (
 
           <Contact props={props} contacts={this.props.contacts} />
+
+        )} />
+
+        <Route exact path='/contacts/:id/edit' render={(props) => (
+          
+          <ContactEdit editContact={this.props.editContact} props={props} contacts={this.props.contacts} />
 
         )} />
 
