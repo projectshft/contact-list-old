@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import _ from 'lodash'
 
+// responsible for editing contact
 class ContactEdit extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +12,7 @@ class ContactEdit extends React.Component {
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
   }
 
+  // upon submit button click, edit contact and set route back to /contacts
   handleSubmitContactClick() {
     const editedContact = {
       name: this.state.name || "Can't recall the name now!",

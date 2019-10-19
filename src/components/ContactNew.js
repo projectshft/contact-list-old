@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 
+
+// handles new contact creation
 class ContactNew extends React.Component {
   constructor() {
     super()
@@ -15,6 +17,7 @@ class ContactNew extends React.Component {
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
   }
 
+  // on submit click create contact, set path back to /contacts re-initialize redirect
   handleSubmitContactClick() {
     const newContact = {
       name: this.state.name,

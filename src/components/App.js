@@ -2,14 +2,13 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import React from 'react'
 import Contacts from './Contacts'
 
+// Main class - holds model state
 class App extends React.Component {
   constructor () {
     super()
 
     this.state = {
       contacts: localStorage.contacts ? JSON.parse(localStorage.contacts) : [],
-
-      redirect: false
     }
     
     this.addContact = this.addContact.bind(this);
@@ -18,15 +17,18 @@ class App extends React.Component {
     this.editContact = this.editContact.bind(this);
   }
 
+  // stores the state contacts in localStorage to persist
   setLocalStorage() {
     localStorage.contacts = JSON.stringify(this.state.contacts);
   }
   
+  // method to add a new contact
   addContact (contact) {
     // concatenate new contact onto contacts array
     this.setState({contacts: this.state.contacts.concat([contact])},this.setLocalStorage);
   }
 
+  // delete contact method
   deleteContact (contactIdx) {
     let newContacts = [...this.state.contacts]; // make copy of the array
     
@@ -36,6 +38,7 @@ class App extends React.Component {
     }
   }
 
+  // edit contact method
   editContact (contactIdx, editedContact) {
     let newContacts = [...this.state.contacts]; // make copy of the array
     
@@ -48,7 +51,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        
         <Switch>
           <Route exact path='/'>
             <Redirect to='/contacts' />

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import _ from 'lodash'
 
+// render the contact details page
 const Contact = ({ props, contacts }) => {
   const contact = _.find(contacts, { id: parseInt(props.match.params.id, 10) });
 
