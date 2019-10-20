@@ -21,6 +21,16 @@ class App extends Component {
   addContact = contact => {
     this.setState({ contacts: this.state.contacts.concat([contact])})
   }
+
+  // This deleteContactfunction is passed down into the ContactListItem component.
+  // Removes contact by first creating a copy of the current contacts in state
+  // Then filters out the ID of the contact clicked.
+  // Sets the state with the resulting contactsAfterDeletion array
+  deleteContact = contactID => {
+    const contactsCopy = [...this.state.contacts]
+    const contactsAfterDeletion = contactsCopy.filter(c => c.id !== contactID)
+    this.setState({contacts: contactsAfterDeletion})
+  }
   
   render() {
     //Switch/route logic and passing of props for inheritance
@@ -30,7 +40,8 @@ class App extends Component {
 
           <Route exact path="/contacts" 
             render={() => (<ContactList 
-              contacts={this.state.contacts} />)} 
+              contacts={this.state.contacts}
+              deleteContact={this.deleteContact} />)} 
           />
 
           <Route path="/contacts/new" 

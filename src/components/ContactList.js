@@ -13,6 +13,7 @@ class ContactList extends Component {
           {//Loops through all contacts and adds each as an 'li' element
             this.props.contacts.map(c => (
             <ContactListItem 
+            deleteContact={this.props.deleteContact}
             name={c.name}
             id={c.id}
             key={c.id} />
