@@ -14,11 +14,10 @@ const IndividualContact = props => {
                 {contact.name} 
              </h1>
                 <hr/>
-            <h3>Name: {contact.name}</h3>
-            <h3>Number: {contact.nunber}</h3>
-            <h3>Phone: {contact.phone}</h3>
+            <h3>Email: {contact.email}</h3>
+            <h3>Phone: {contact.number}</h3>
             <h3>Photo: {contact.imageUrl}</h3>
-            <Link to="/contact/:">Back</Link>
+            <Link to="/contactList">Back</Link>
         </div>
     );
 };

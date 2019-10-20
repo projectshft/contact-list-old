@@ -22,9 +22,6 @@ class App extends Component {
     // this.addContact = this.addContact.bind(this);
 
   }
-  handleClick = () => {
-    this.setState({redirect: true});
-  }
 
   addContact(name, email, imageUrl, number) {
     const generateId = () => Math.round(Math.random() * 100000000);
@@ -40,10 +37,6 @@ class App extends Component {
 
 
   render() {
-    if (this.state.redirect) {
-      return <Redirect to='/contacts/new' render={() => (<AddContact />)} />;
-    } 
-
     return (
 
       <Switch>
