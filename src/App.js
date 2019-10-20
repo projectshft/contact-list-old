@@ -1,5 +1,5 @@
+import { BrowserRouter, Switch, Route, Redirect, Link } from 'react-router-dom';
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import ContactList from './ContactList';
 import IndividualContact from './IndividualContact';
 import AddContact from './AddContact'
@@ -22,8 +22,8 @@ class App extends Component {
     // this.addContact = this.addContact.bind(this);
 
   }
-  handleClick() {
-    this.addContact();
+  handleClick = () => {
+    this.setState({redirect: true});
   }
 
   addContact(name, number, email) {
@@ -40,13 +40,15 @@ class App extends Component {
 
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect push to='/contacts/new' render={() => (<AddContact />)} />;
+    } 
+      
+    
 
     return (
 
       <Switch>
-
-        
-
         <Route exact path='/' render={() => (
           <div className="App">
             <header className="App-header">
@@ -56,22 +58,17 @@ class App extends Component {
                 <div className="col-8">
                   <h1 className="App-title">Contact List</h1>
                 </div>
-                <button onClick={this.handleClick()} type="button" className="btn btn-primary">Add New Contact</button>
+                <button onClick={this.handleClick} type="button" className="btn btn-primary">Add New Contact</button>
               </div>
             </div>
           </div>
         )} />
-        <Route path='/AddContact' render={() => (
+        <Route exact path= "contacts/new" render={() => (
           <AddContact />
         )} />
-
+        <Route path="/contactList" component={ContactList} />
       </Switch>
 
-
-
-
-
-      // </div>
 
     );
   }
@@ -79,19 +76,8 @@ class App extends Component {
 };
 
 
-{/* </div> */ }
-{/* <AddContact /> */ }
+
 
 export default App;
 
-{/* <Route exact path="/" component={ContactList} /> */ }
 
-{/* <Route path="/contact/:number" component={ContactList} /> */ }
-
-
-  // <Switch>
-  //   <Route exact path="/" component={App} />
-  //   <Route path="/AddContact" component={AddContact} />
-  //   <Route path="/contact/id:" component={IndividualContact} />
-  //   <Route path="/ContactList" component={ContactList} />
-  // </Switch>
