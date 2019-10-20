@@ -13,9 +13,9 @@ class App extends Component {
 
     this.state = {
       contacts: [
-        { id: 1, name: 'Tom Franks', number: '919-450-2551', email: 'tom@gmail.com' },
-        { id: 2, name: 'Betty Draper', number: '919-450-2111', email: 'betty@gmail.com' },
-        { id: 3, name: 'Barry Smith', number: '919-450-2431', email: 'barry@gmail.com' }
+        { id: 1, name: 'Tom Franks', number: '919-450-2551', email: 'tom@gmail.com', imageUrl: '' },
+        { id: 2, name: 'Betty Draper', number: '919-450-2111', email: 'betty@gmail.com', imageUrl: '' },
+        { id: 3, name: 'Barry Smith', number: '919-450-2431', email: 'barry@gmail.com', imageUrl: '' }
       ]
 
     }
@@ -26,14 +26,14 @@ class App extends Component {
     this.setState({redirect: true});
   }
 
-  addContact(name, number, email) {
+  addContact(name, email, imageUrl, number) {
     const generateId = () => Math.round(Math.random() * 100000000);
     const newContact = {
       id: generateId(),
       name: name,
-      number: number,
-      email: email
-
+      email: email,
+      imageUrl: imageUrl,
+      number: number
     }
     // this.setState({ contacts: this.state.contacts.concat([contact]) });
   }
@@ -41,10 +41,8 @@ class App extends Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect push to='/contacts/new' render={() => (<AddContact />)} />;
+      return <Redirect to='/contacts/new' render={() => (<AddContact />)} />;
     } 
-      
-    
 
     return (
 
@@ -58,12 +56,16 @@ class App extends Component {
                 <div className="col-8">
                   <h1 className="App-title">Contact List</h1>
                 </div>
-                <button onClick={this.handleClick} type="button" className="btn btn-primary">Add New Contact</button>
+                <Link to="/contacts/new">
+                  <button type="button" className="btn btn-primary"> 
+                    Add New Contact
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
         )} />
-        <Route exact path= "contacts/new" render={() => (
+        <Route exact path="/contacts/new" render={() => (
           <AddContact />
         )} />
         <Route path="/contactList" component={ContactList} />
