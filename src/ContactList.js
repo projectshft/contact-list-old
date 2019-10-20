@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import AddContact from './AddContact';
 import NewContact from './IndividualContact'

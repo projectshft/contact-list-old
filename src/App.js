@@ -19,20 +19,20 @@ class App extends Component {
       ]
 
     }
-    // this.addContact = this.addContact.bind(this);
+    this.addContact = this.addContact.bind(this);
 
   }
 
   addContact(name, email, imageUrl, number) {
     const generateId = () => Math.round(Math.random() * 100000000);
     const newContact = {
-      id: generateId(),
-      name: name,
-      email: email,
-      imageUrl: imageUrl,
-      number: number
+      id: this.state.contacts.id = generateId(),
+      name: this.state.contacts.name,
+      email: this.state.contacts.email,
+      imageUrl: this.state.contacts.imageUrl,
+      number: this.state.contacts.number
     }
-    // this.setState({ contacts: this.state.contacts.concat([contact]) });
+    this.setState({ contacts: this.state.contacts.concat([contact]) });
   }
 
 
@@ -40,7 +40,7 @@ class App extends Component {
     return (
 
       <Switch>
-        <Route exact path='/' render={() => (
+        <Route exact path={['/', '/contacts']} render={() => (
           <div className="App">
             <header className="App-header">
             </header>
@@ -48,20 +48,18 @@ class App extends Component {
               <div className="row">
                 <div className="col-8">
                   <h1 className="App-title">Contact List</h1>
+                  <ContactList contacts={this.state.contacts}></ContactList>
                 </div>
                 <Link to="/contacts/new">
-                  <button type="button" className="btn btn-primary"> 
+                  <button type="button" className="btn btn-primary">
                     Add New Contact
-                  </button>
+                 </button>
                 </Link>
               </div>
             </div>
           </div>
         )} />
-        <Route exact path="/contacts/new" render={() => (
-          <AddContact />
-        )} />
-        <Route path="/contactList" component={ContactList} />
+        <Route exact path="/contacts/new" render={() => (<AddContact />)} />
       </Switch>
 
 
