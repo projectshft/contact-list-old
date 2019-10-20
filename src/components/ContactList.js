@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ContactListItem from './ContactListItem';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class ContactList extends Component {
   render() {
@@ -24,6 +25,17 @@ class ContactList extends Component {
       </div>
     );
   }
+}
+
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.number.isRequired,
+    image: PropTypes.string
+  })
+  )
 }
 
 export default ContactList;

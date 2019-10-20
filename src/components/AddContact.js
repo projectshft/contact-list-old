@@ -23,7 +23,7 @@ class AddContact extends Component {
       id: generateId(),
       name: this.state.name,
       email: this.state.email,
-      phone: this.state.phone,
+      phone: parseInt(this.state.phone),
       image: this.state.image,
     }
     this.props.addContact(contact);
@@ -57,7 +57,8 @@ class AddContact extends Component {
             />
             <input
             className="form-control"
-            placeholder="Phone"
+            type="number"
+            placeholder="Phone(10 digits. I.E. 1234567777)"
             value={this.state.phone}
             onChange={event => this.setState({phone: event.target.value})}
             />

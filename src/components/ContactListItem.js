@@ -14,8 +14,8 @@ class ContactListItem extends Component {
 }
 
 
-// PROPTYPES work in progress
 ContactListItem.propTypes = {
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired
 }
 
