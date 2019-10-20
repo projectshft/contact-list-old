@@ -11,7 +11,7 @@ class App extends Component {
     this.state = {
       contacts: 
       [
-        {id: 123, name: 'Testnasasdasme', email: "testemail.gmail.com", phone: 5556667777, image: ''},
+        {id: 123, name: 'Testnasasdasme', email: "testemail.gmail.com", phone: 5556667777, image: 'https://cdn.pixabay.com/photo/2014/07/09/10/04/man-388104_960_720.jpg'},
         {id: 456, name: 'Othertsadaest name thing', email: "fake123.gmail.com", phone: 5553334444, image: 'https://tekrabuilders.com/wp-content/uploads/2018/12/male-placeholder-image-300x300.jpeg'}
       ]
     }

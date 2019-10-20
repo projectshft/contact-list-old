@@ -26,7 +26,7 @@ class ContactDetails extends Component {
         <Link to="/contacts">
           <button type="button" className="btn btn-primary btn-sm">Back to Contacts</button>
         </Link>
-        <img src={foundContactInfo[0].image} />
+        <img src={foundContactInfo[0].image} alt="Contact" />
         <h5>Name: {foundContactInfo[0].name}</h5> 
         <h5>Email: {foundContactInfo[0].email}</h5> 
         <h5>Phone: {foundContactInfo[0].phone}</h5> 
