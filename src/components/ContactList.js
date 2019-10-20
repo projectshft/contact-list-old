@@ -27,6 +27,7 @@ class ContactList extends Component {
   }
 }
 
+//Checks if contacts array passed down with correct types
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,

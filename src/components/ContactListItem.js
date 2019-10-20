@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class ContactListItem extends Component {
   render() {
-    //Each contact is created with a link to their contact details
+    //Each contact is created with a link to their own contact details page
     return (
       <li className="ContactListItem">
         <Link to={`/contacts/${this.props.id}`}>{this.props.name}</Link>

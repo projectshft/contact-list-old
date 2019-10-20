@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class ContactDetails extends Component {
 
@@ -8,7 +9,7 @@ class ContactDetails extends Component {
     const currentContactId = this.props.match.params.id;
 
     // Converts URL id to appropriate data type for comparison
-    // Checks contacts for specified ID and adds it if found
+    // Checks contacts for specified ID and sets it if found
     const foundContactInfo = contacts.filter(c => c.id === parseInt(currentContactId))
 
     // Returns error if no corresponding id found in the contact list
@@ -27,6 +28,18 @@ class ContactDetails extends Component {
       </div>
     );
   }
+}
+
+//Checks if contacts array passed down with correct types
+ContactDetails.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.number.isRequired,
+    image: PropTypes.string
+  })
+  )
 }
 
 export default ContactDetails;

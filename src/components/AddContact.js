@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types';
 import './AddContact.css'
 
 class AddContact extends Component {
   constructor () {
     super()
 
+    // AddContact opens with values/state initialized to empty
     this.state = {
       redirectToContacts: false,
       id: '',
@@ -76,5 +78,11 @@ class AddContact extends Component {
     )
   }
 }
+
+// Checks for addContact function passed down from App
+AddContact.propTypes = {
+  addContact: PropTypes.func
+}
+
 
 export default AddContact;
