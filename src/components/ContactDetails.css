@@ -1,0 +1,13 @@
+.ContactDetails h5 {
+  margin: 20px;
+}
+
+.ContactDetails button {
+  margin: 20px;
+}
+
+.ContactDetails img {
+  width: 100px;
+  display: block;
+  margin-left: 20px;
+}

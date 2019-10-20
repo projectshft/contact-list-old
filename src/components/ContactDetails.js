@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
+import './ContactDetails.css'
 
 class ContactDetails extends Component {
 
@@ -21,10 +23,13 @@ class ContactDetails extends Component {
 
     return (
       <div className="ContactDetails">
-        <h3>I am ContactDetails Component</h3>
-        <h3>My Id is {foundContactInfo[0].id}</h3> 
-        <h3>My Name is {foundContactInfo[0].name}</h3> 
-        <h3>My Email is {foundContactInfo[0].email}</h3> 
+        <Link to="/contacts">
+          <button type="button" className="btn btn-primary btn-sm">Back to Contacts</button>
+        </Link>
+        <img src={foundContactInfo[0].image} />
+        <h5>Name: {foundContactInfo[0].name}</h5> 
+        <h5>Email: {foundContactInfo[0].email}</h5> 
+        <h5>Phone: {foundContactInfo[0].phone}</h5> 
       </div>
     );
   }
