@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import ContactList from './ContactList';
-import NewContact from './Newcontact';
-import './App.css';
+import IndividualContact from './IndividualContact';
+import AddContact from './AddContact'
 import 'bootstrap/dist/css/bootstrap.css';
+import './App.css';
 
 
 class App extends Component {
-  constructor () {
-    super() 
+  constructor() {
+    super()
 
     this.state = {
       contacts: [
@@ -17,67 +18,80 @@ class App extends Component {
         { id: 3, name: 'Barry Smith', number: '919-450-2431', email: 'barry@gmail.com' }
       ]
 
-    } 
+    }
     // this.addContact = this.addContact.bind(this);
-   
+
   }
-   handleClick () {
-      this.addContact('george','716-898-6767','hello@gmail.com')
+  handleClick() {
+    this.addContact();
   }
-  
-  addContact (name,number,email) {
+
+  addContact(name, number, email) {
     const generateId = () => Math.round(Math.random() * 100000000);
     const newContact = {
-      id: this.generateId,
+      id: generateId(),
       name: name,
       number: number,
       email: email
+
     }
-     
-    console.log(newContact)
-    
-      // this.setState({ contacts: this.state.contacts.concat([contact]) });
+    // this.setState({ contacts: this.state.contacts.concat([contact]) });
   }
 
 
-
-  
   render() {
-  
+
     return (
 
-      <div className="App">
-       <header className="App-header">
-        </header>
-          <div className="App-intro"> 
-           <div className="row">
-            <div className="col-8">
-              <h1 className="App-title">Contact List</h1>
+      <Switch>
+
+        
+
+        <Route exact path='/' render={() => (
+          <div className="App">
+            <header className="App-header">
+            </header>
+            <div className="App-intro">
+              <div className="row">
+                <div className="col-8">
+                  <h1 className="App-title">Contact List</h1>
+                </div>
+                <button onClick={this.handleClick()} type="button" className="btn btn-primary">Add New Contact</button>
+              </div>
             </div>
-            <button onClick= {this.handleClick}type="button" className="btn btn-primary">Add New Contact</button>
           </div>
-        </div>
-        <ContactList contacts={this.state.contacts} />
-        <Switch>
-          <Route exact path="/" component={ContactList} />
-          <Route
-            path="/contact/new"
-            render={props => (
-              <ContactList props={props} component={ContactList} />
-            )}
-          />
-          <Route path="/contact/new" component={NewContact} />
-          {/* <Route path="/contact/:number" component={ContactList} /> */}
-        </Switch>
-      </div>
+        )} />
+        <Route path='/AddContact' render={() => (
+          <AddContact />
+        )} />
+
+      </Switch>
+
+
+
+
+
+      // </div>
 
     );
   }
-  
+
 };
 
 
-
-
+{/* </div> */ }
+{/* <AddContact /> */ }
 
 export default App;
+
+{/* <Route exact path="/" component={ContactList} /> */ }
+
+{/* <Route path="/contact/:number" component={ContactList} /> */ }
+
+
+  // <Switch>
+  //   <Route exact path="/" component={App} />
+  //   <Route path="/AddContact" component={AddContact} />
+  //   <Route path="/contact/id:" component={IndividualContact} />
+  //   <Route path="/ContactList" component={ContactList} />
+  // </Switch>

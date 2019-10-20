@@ -2,44 +2,46 @@ import React, { Component } from 'react';
 
 
 class AddContact extends Component {
-    constructor () {
-        super ()
+    constructor() {
+        super()
 
-            return (
 
-                    <div>
-                        <form>
-                            <div className="form-row">
-                                <div className="form-group col-md-6">
-                                    <label for="inputName">Name</label>
-                                    <input type="text" id="name" name="name" required minlength="4" maxlength="15" size="15" required/>
-                                </div>
-                            <div className="form-group">
-                                <label for="inputemail">Email</label>
-                                <input type="email" id="email"pattern=".+@globex.com" size="30" required />
+    }
+    render() {
+        return (
+            <div className="container">
+                <form>
+                    <div className="container">
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label for="inputName">Name</label>
+                            <input type="text" id="name" name="name" required minlength="8" maxlength="15" size="30" required />
+                        </div>
+                        </div>
+                        <div className="form-group">
+                            <label for="inputemail">E-mail</label>
+                            <input type="email" id="email" pattern="+@globex.com" size="30" required />
+                        </div>
+                        <div className="form-group">
+                            <label for="inputUrl">image Url</label>
+                            <input type="url" name="url" id="url" placeholder="" pattern="https://.*" size="30" />
+                        </div>
+                        <div className="form-group">
+                                <label for="inputPhone">Phone</label>
+                                <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="555-555-5555"required />
                             </div>
-                            <div className="form-group">
-                                <label for="inputUrl">image Url</label>
-                                <input type="url" name="url" id="url"placeholder="https://example.com"pattern="https://.*" size="30"required />
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group col-md-6">
-                                    <label for="inputPhone">Phone</label>
-                                <input type="tel" id="phone" name="phone"pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required />
-                                </div>
-                            </div>
-                            <button type="submit" className="btn btn-primary">Add Contact</button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <button type="submit" className="btn btn-primary">Add Contact</button>
+                </form>
+            </div>
 
-    
-     
 
-        
-             
-    );
-  }
-} 
+
+
+
+
+        )
+    }
+}
 
 export default AddContact
