@@ -27,9 +27,12 @@ class App extends Component {
   // Then filters out the ID of the contact clicked.
   // Sets the state with the resulting contactsAfterDeletion array
   deleteContact = contactID => {
-    const contactsCopy = [...this.state.contacts]
-    const contactsAfterDeletion = contactsCopy.filter(c => c.id !== contactID)
-    this.setState({contacts: contactsAfterDeletion})
+    const confirmDelete = window.confirm("Are you sure about this? There's no going back..")
+    if (confirmDelete) {
+      const contactsCopy = [...this.state.contacts]
+      const contactsAfterDeletion = contactsCopy.filter(c => c.id !== contactID)
+      this.setState({contacts: contactsAfterDeletion})
+    }
   }
   
   render() {
