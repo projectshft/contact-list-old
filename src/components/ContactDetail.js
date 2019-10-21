@@ -15,7 +15,7 @@ const ContactDetail = ({
   });
 
   if (!contact) {
-    return <div> Sorry, there is no record of this contact. <br>
+    return <div> This contact does not exist. <br>
     </br>
     <Link to="/contacts">
     <button className="btn - dark btn btn - sm">Back to Contacts</button></Link></div>
@@ -61,16 +61,6 @@ const ContactDetail = ({
     </div>
   )
 }
-
-// const contactStyle = {
-//   backgroundColor: '#b19999'
-// }
-//
-// const contactPhotoStyle = {
-//   'maxWidth': '200px',
-//   'maxHeight': '200px',
-//   'borderRadius': '50%',
-// }
 
 ContactDetail.propTypes = {
   contacts: PropTypes.array.isRequired,
