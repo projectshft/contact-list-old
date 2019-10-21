@@ -23,16 +23,16 @@ class App extends Component {
 
   }
 
-  addContact(name, email, imageUrl, number) {
+  addContact(contact) {
     const generateId = () => Math.round(Math.random() * 100000000);
     const newContact = {
-      id: this.state.contacts.id = generateId(),
-      name: this.state.contacts.name,
-      email: this.state.contacts.email,
-      imageUrl: this.state.contacts.imageUrl,
-      number: this.state.contacts.number
+      id: generateId(),
+      name: contact.name,
+      email: contact.email,
+      imageUrl: contact.imageUrl,
+      number: contact.number
     }
-    // this.setState({ contacts: this.state.contacts.concat([contact]) });
+    this.setState({ contacts: this.state.contacts.concat([newContact]) });
   }
 
 

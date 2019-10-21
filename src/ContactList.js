@@ -10,7 +10,7 @@ const ContactList = (props) => {
                 <ul className="list-group">
                         {props.contacts.map(contact => {
                         return (
-                            <li key={contact.id} className="list-group-item">{contact.name} {contact.number}<a id="delete" href="http://www.google.com">Delete</a><a id="edit" href="http://www.google.com">Edit-</a></li>
+                            <li key={contact.id} className="list-group-item">{contact.name}<a id="delete" href="http://www.google.com">Delete</a><a id="edit" href="http://www.google.com">Edit-</a></li>
                         )
                     })}
                 </ul>
