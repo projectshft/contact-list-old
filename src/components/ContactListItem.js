@@ -4,8 +4,12 @@ import PropTypes from 'prop-types';
 
 class ContactListItem extends Component {
 
-  handleClick = () => {
+  handleDeleteClick = () => {
     this.props.deleteContact(this.props.id)
+  }
+
+  handleEditClick = () => {
+    alert("Whoops. This feature never made it :(")
   }
 
   render() {
@@ -13,12 +17,12 @@ class ContactListItem extends Component {
     return (
       <li className="ContactListItem">
         <Link to={`/contacts/${this.props.id}`}>{this.props.name}</Link>
-        <button onClick={this.handleClick} type="button" className="btn btn-link">Delete</button>
+        <button onClick={this.handleEditClick} type="button" className="btn btn-link">Edit</button>
+        <button onClick={this.handleDeleteClick} type="button" className="btn btn-link">Delete</button>
       </li>
     );
   }
 }
-
 
 ContactListItem.propTypes = {
   id: PropTypes.number.isRequired,
