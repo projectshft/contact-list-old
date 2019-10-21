@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import React, {Component} from 'react';
 import App from './App';
 
+
 class AddContact extends Component {
   constructor() {
     super()
@@ -28,9 +29,20 @@ class AddContact extends Component {
       id: generateId()
     };
     console.log(newContact)
-    this.props.addNewContact(newContact)
-    this.props.props.contacts.push('/contactList')
-  }
+    return newContact
+
+    // this.props.addNewContact(newContact)
+    // this.props.props.history.push('/roster')
+    //return newContact;
+    // addNewContact(newContact)
+
+      }
+
+    // this.props.props.contacts.push('/App')
+    // this.state.contact.push(newContact);
+
+
+
 
 
 

@@ -52,12 +52,13 @@ class App extends Component {
 }
 
 
-addNewContact(newContact) {
-  this.setState({
-    contacts: this.state.contacts.concat([newContact])
-  });
-  console.log(this.state.contacts)
-  }
+addNewContact(contact) {
+    this.state.contacts.concat(contact)
+  };
+
+  addNewContact(newContact)
+// console.log(this.state.contacts)
+
   render() {
     return (<div className="container-fluid">
       <div className="row">
@@ -74,7 +75,7 @@ addNewContact(newContact) {
           {/* <Route path="/contactdetails" component={contactDetails} /> */}
             <Route path="/contacts/new" component={AddContact}/>
           <Route path='/contactList' render={() => (
-          <ContactList addContact={this.addContact} contacts={this.state.contacts} />
+          <ContactList addContact={this.addNewContact} contacts={this.state.contacts} />
             )}/>
           </Switch>
 
