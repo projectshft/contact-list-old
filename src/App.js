@@ -32,7 +32,7 @@ class App extends Component {
       imageUrl: this.state.contacts.imageUrl,
       number: this.state.contacts.number
     }
-    this.setState({ contacts: this.state.contacts.concat([contact]) });
+    // this.setState({ contacts: this.state.contacts.concat([contact]) });
   }
 
 
@@ -59,7 +59,7 @@ class App extends Component {
             </div>
           </div>
         )} />
-        <Route exact path="/contacts/new" render={() => (<AddContact />)} />
+        <Route exact path="/contacts/new" render={() => (<AddContact addContact={this.addContact} />)} />
       </Switch>
 
 
