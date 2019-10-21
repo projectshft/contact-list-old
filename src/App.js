@@ -6,7 +6,7 @@ import AddContact from './AddContact'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
-
+//Function that holds state and takes information from other components 
 class App extends Component {
   constructor() {
     super()
@@ -19,7 +19,9 @@ class App extends Component {
       ]
 
     }
+
     this.addContact = this.addContact.bind(this);
+    console.log(this.state.contacts)
 
   }
 
@@ -33,6 +35,7 @@ class App extends Component {
       number: contact.number
     }
     this.setState({ contacts: this.state.contacts.concat([newContact]) });
+    console.log(newContact)
   }
 
 
