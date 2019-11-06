@@ -6,14 +6,14 @@ const ContactDetail = ({props, contacts}) => {
   const contact = _.find(contacts, { id: parseInt(props.match.params.id, 10) });
 //makes sure the contact exists w/ the ID
   if (!contact) {
-    return <div>The contact youhas been deleted or edited</div>
+    return <div>The contact you choose has been deleted or edited</div>
   }
   return (
     <div>
-      <h1>{contact.name}</h1>
-      <h1>{contact.image}</h1>
-      <h1>{contact.email}</h1>
-      <h1>{contact.number}</h1>
+      <h3>{contact.name}</h3>
+      <h3>{contact.imgUrl}</h3>
+      <h3>{contact.email}</h3>
+      <h3>{contact.number}</h3>
       <Link to='/contacts'>Back</Link>
     </div>
   )

@@ -12,7 +12,7 @@ class App extends React.Component {
     this.state = {
       contacts: [
         //my contact to populate on load
-        { id:1000000000, name: "Patrick", image: "insertURL", email: "pcrawford94@gmail.com", number: "9194132003"},
+        { id:1000000000, name: "Patrick", imgUrl:"https://media.licdn.com/dms/image/C4E03AQHpEkQPqrVkWw/profile-displayphoto-shrink_200_200/0?e=1578528000&v=beta&t=Vo6fjMxNdUGva_HOrs9o8Ptlu-uVoj25pBJL6RwYd4s", email: "pcrawford94@gmail.com", number: "9194132003"},
       ]
     }
     

@@ -26,7 +26,7 @@ class ContactNew extends React.Component {
     const newContact = {
       id: this.generateId(),
       name: this.state.name,
-      image: this.state.image,
+      image: this.state.imgUrl,
       email: this.state.email,
       number: this.state.number,
     };
@@ -47,8 +47,8 @@ class ContactNew extends React.Component {
         <br/> <br/>
 
         <label>image</label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ image: event.target.value })
+        <input type='' className='form-control'onChange={event =>
+          this.setState({ imgURL: event.target.value })
         }/>
 
         <br/> <br/>
