@@ -7,7 +7,12 @@ const Home = () => (
     
       <button className='btn'>
           <Link to='/contacts/new'>Add Contact</Link></button>
+          <br></br>
+      <button className='btn'>
+          <Link to='/contacts/'>View List of Contacts</Link></button>
+          <br></br>
           </div>
+        
    
 )
 

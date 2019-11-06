@@ -20,6 +20,12 @@ const ListofContacts = ({contacts}) => (
         
           <button className='btn'>
             <Link to='/contacts/new'>Add Contact</Link></button>
+
+            <br>
+            </br>
+            
+            <button className='btn'>
+            <Link to='/'>Go Home</Link></button>
         </div>
      
     
