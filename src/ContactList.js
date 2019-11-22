@@ -1,4 +1,6 @@
+
 import React, { Component } from 'react';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import AddContact from './AddContact';
 import NewContact from './IndividualContact'
@@ -9,9 +11,9 @@ const ContactList = (props) => {
     return (
         <div className="contact-list">
             <ul className="list-group">
-                {props.contacts.map(contact => {
+                {props.contacts.map(function (contact) {
                     return (
-                        <li key={contact.id} className="list-group-item">{contact.name}<a id="delete" href="http://www.google.com">Delete</a><a id="edit" href="http://www.google.com">Edit-</a></li>
+                        <Link to={`/contacts/${contact.id}`} key={contact.id} className="list-group-item">{contact.name}<a id="delete" href="#">Delete</a><a id="edit" href="#">Edit-</a></Link>
                     )
                 })}
             </ul>
@@ -22,3 +24,5 @@ const ContactList = (props) => {
 
 
 export default ContactList
+
+

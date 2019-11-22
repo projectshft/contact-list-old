@@ -8,15 +8,14 @@ class AddContact extends Component {
         super(props)
 
         this.state = {
+
+
             name: null,
             email: null,
             imageUrl: null,
             number: null
         }
-
-
     }
-
 
     render() {
         const contact = {
@@ -35,17 +34,31 @@ class AddContact extends Component {
                                 <input onChange={(e) => { this.setState({ name: e.target.value }) }} value={this.state.name} type="text" id="name" name="name" required minlength="8" maxlength="15" size="30" required />
                             </div>
                         </div>
-                        <div className="form-group">
-                            <label for="inputemail">E-mail: </label>
-                            <input onChange={(e) => { this.setState({ email: e.target.value }) }} value={this.state.email} type="email" id="email" pattern="+@globex.com" size="30" required />
+                        <div className="form-row">
+                            <div className="form-group">
+                                <label for="inputemail">E-mail: </label>
+                                <input onChange={(e) => { this.setState({ email: e.target.value }) }} value={this.state.email} type="email" id="email" pattern="+@globex.com" size="30" required />
+                            </div>
                         </div>
-                        <div className="form-group">
-                            <label for="inputUrl">image Url: </label>
-                            <input onChange={(e) => { this.setState({ imageUrl: e.target.value }) }} value={this.state.imageUrl} type="url" name="url" id="url" placeholder="" pattern="https://.*" size="30" />
+                        <div className="form-row">
+                            <div className="form-row">
+                                <div className="form-row">
+                                    <div className="form-row">
+                                        <div className="form-row">
+                                            <div className="form-group">
+                                                <label for="inputUrl">Image Url: </label>
+                                                <input onChange={(e) => { this.setState({ imageUrl: e.target.value }) }} value={this.state.imageUrl} type="url" name="url" id="url" placeholder="" pattern="https://.*" height="42" width="42" size="30" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="form-group">
-                            <label for="inputPhone">Phone: </label>
-                            <input onChange={(e) => { this.setState({ number: e.target.value }) }} value={this.state.number} type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="ex. 555-555-5555" required />
+                        <div className="form-row">
+                            <div className="form-group">
+                                <label for="inputPhone">Phone: </label>
+                                <input onChange={(e) => { this.setState({ number: e.target.value }) }} value={this.state.number} type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="ex. 555-555-5555" size="30" required />
+                            </div>
                         </div>
                     </div>
                     <Link to="/contacts">

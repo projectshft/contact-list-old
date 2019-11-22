@@ -38,3 +38,7 @@
 .new-contact {
   padding-top: 5%;
 }
+
+.addButton {
+  float: center;
+}
