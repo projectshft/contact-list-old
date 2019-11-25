@@ -1,8 +1,7 @@
 import _ from 'lodash'
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+
 
 
 class IndividualContact extends Component {
@@ -11,9 +10,8 @@ class IndividualContact extends Component {
 
     }
 
-
-
-
+    //When the user clicks on one of the contacts on the contactlist, below will provide the contacts information that 
+    //was previously taken in the form 
     render() {
         const contact = _.find(this.props.contacts, { id: parseInt(this.props.props.match.params.id, 10) });
         if (!contact) {

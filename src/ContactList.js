@@ -1,11 +1,9 @@
 
-import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import AddContact from './AddContact';
-import NewContact from './IndividualContact'
 
-//Function that shows all items or contacts in state object
+//This shows all contacts in a list on the main page 
 
 const ContactList = (props) => {
     return (

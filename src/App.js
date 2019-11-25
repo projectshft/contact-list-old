@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route, Redirect, Link } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import ContactList from './ContactList';
 import IndividualContact from './IndividualContact';
@@ -11,6 +11,8 @@ class App extends Component {
   constructor() {
     super()
 
+    // This is where state lives. When new contact is added in the individual contact component
+    // they get added to this data structure by the addcontact function 
     this.state = {
       contacts: [
         { id: 1, name: 'Jerry Seinfeld', number: '919-450-2551', email: 'jerry@gmail.com', imageUrl: 'https://media1.giphy.com/media/e2QYPpUe8WmpG/giphy.gif' },
@@ -24,21 +26,13 @@ class App extends Component {
     this.addContact = this.addContact.bind(this);
 
   }
-
+  // When a new contact is added, this function validates the the input that comes in.
+  // From there is gets added to state 
   addContact(contact) {
     const generateId = () => Math.round(Math.random() * 100000000);
 
-    if (contact.name.length <= 10 || contact.name == '' || contact.name == null) {
-      return alert('Please enter a name')
-    }
-    if (contact.email <= 10 || contact.name == '' && !contact.email.includes('@')) {
-      return alert('Please enter a valid email address')
-    }
-    if (contact.number < 10 || contact.name == '') {
-      return alert('Please enter a valid phone number')
-    }
 
-    alert(contact.name)
+    // alert(contact.name)
     const newContact = {
       id: generateId(),
       name: contact.name,
@@ -47,7 +41,6 @@ class App extends Component {
       number: contact.number
     }
     this.setState({ contacts: this.state.contacts.concat([newContact]) });
-    console.log(newContact)
   }
 
 

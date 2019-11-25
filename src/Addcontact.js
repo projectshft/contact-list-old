@@ -1,4 +1,4 @@
-import { BrowserRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 
 
@@ -9,13 +9,26 @@ class AddContact extends Component {
 
         this.state = {
 
-
             name: null,
             email: null,
             imageUrl: null,
             number: null
         }
     }
+
+    // validateForm(contact) {
+    //     if (contact.name.length <= 10 || contact.name == '' || contact.name == null || !contact.name) {
+    //         return alert('Please enter a name')
+    //     }
+    //     if (contact.email <= 10 || contact.name == '' && !contact.email.includes('@')) {
+    //         return alert('Please enter a valid email address')
+    //     }
+    //     if (contact.number < 10 || contact.name == '') {
+    //         return alert('Please enter a valid phone number')
+    //     }
+
+    //     this.props.addContact(contact)
+    // }
 
     render() {
         const contact = {
@@ -64,11 +77,10 @@ class AddContact extends Component {
                     <Link to="/contacts">
                         <button onClick={() => this.props.addContact(contact)} type="button" className="btn btn-primary">
                             Add Contact
-                        </button>
+                        </ button>
                     </Link>
                 </form>
             </div>
-
 
 
         )
