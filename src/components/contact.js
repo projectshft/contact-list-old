@@ -3,7 +3,7 @@ import React from 'react'
 import _ from 'lodash'
 
 const Contact = ({props, contacts}) => {
-  const contact = _.find(contacts, { id: parseInt(props.match.params.number) });
+  const contact = _.find(contacts, { contactId: parseInt(props.match.params.id) });
 
   if (!contact) {
     return <div>There is no one by that name in the contact list.</div>

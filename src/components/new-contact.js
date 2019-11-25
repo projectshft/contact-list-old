@@ -9,27 +9,34 @@ class NewContact extends React.Component {
       name: '',
       email: '',
       phoneNumber: '',
-      id: ''
+      contactId: 0
     }
 
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this);
   }
 
-  handleSubmitContactClick (contactId) {
+  handleSubmitContactClick () {
+    //idIndex lets generateID always use the newest contactId to generate the next one
+    let idIndex = this.props.contacts.length-1
+    let newContactId = this.props.generateId(this.props.contacts[idIndex].contactId)
+
     const newContact = {
       name: this.state.name,
       email: this.state.email,
       phoneNumber: parseInt(this.state.phoneNumber),
-      id: contactId
+      contactId: newContactId
     };
-
+    
+    //Edge case handling
+    if (newContact.name === ''  || newContact.email === '' || newContact.phoneNumber === '') {
+      return alert('The contact form must be fully completed')
+    } else if (!newContact.email.includes('@')){
+      return alert('Invalid email address')
+    }
+    //pushes new contact into state
     this.props.addContact(newContact)
+    //redirects back to root homepage
     this.props.props.history.push('/')
-  }
-
-  generateId () {
-    let contactId = 2;
-    return contactId
   }
 
   render () {
@@ -58,7 +65,7 @@ class NewContact extends React.Component {
           <button type="button" onClick={this.handleSubmitContactClick}>Submit</button>
         </form>
 
-        <Link to='/'>Contacts</Link>
+        <Link to='/'>Back to Contacts List</Link>
       </div>
     )
   }

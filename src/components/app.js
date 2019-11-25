@@ -15,15 +15,21 @@ class App extends Component {
             {name: 'Chris Whatley',
              email: 'chris.whatley87@gmail.com',
              phoneNumber: 2162689375,
-             id:1}
+             contactId: 1 }
         ]
     }
     this.addContact = this.addContact.bind(this);
   }
-
+//concatenates the new contact onto the contacts array in state
   addContact (contact) {
     this.setState({ contacts: this.state.contacts.concat([contact])})
-  }  
+  }
+//simply increases contactId by 1
+  generateId (contactId) {
+    console.log(contactId);
+    contactId ++;
+    return contactId
+  }
 
 render() {
     return (
@@ -37,8 +43,8 @@ render() {
             <Contact props={props} contacts={this.state.contacts}/>
           )}/>
 
-          <Route path='/contacts/new' render={(props) => (
-            <NewContact props={props} addContact= {this.addContact}/>
+          <Route path='/contact/new' render={(props) => (
+            <NewContact props={props} contacts= {this.state.contacts} generateId={this.generateId} addContact= {this.addContact}/>
            )}/>
         </Switch>
       </div>
