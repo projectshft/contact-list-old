@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './app';
-import New from './Components/new';
-import Contact from './Components/contact';
+import App from './App';
+import New from './new';
+import Contact from './contact';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
