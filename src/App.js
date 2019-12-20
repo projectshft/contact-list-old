@@ -44,3 +44,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+//why is it all rendering on same page when I have the switch statement?
