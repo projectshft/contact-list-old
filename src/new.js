@@ -1,25 +1,22 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-// class New extends React.Component{
+class New extends React.Component {
+  constructor(props) {
+    super(props);
 
-//     constructor(props) {
-//       super(props)
+    this.state = {
+      newContact: "",
+      contacts: []
+    };
+  }
+  render() {
+    return (
+      <div>
+        <h1>New Contact info</h1>
+      </div>
+    );
+  }
+}
 
-//       this.state = {
-//         newContact: "",
-//         contacts: []
-//       };
-//     }
-//     render() {
-
-//         return (
-//           <div>
-//             <h1>New Contact info</h1>
-//           </div>
-
-//         );
-//       }
-//     }
-
-//     export default New;
+export default New;
