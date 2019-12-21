@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import New from "./new";
-import List from "./list";
+
 import Contact from "./contact";
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -29,13 +29,8 @@ class App extends React.Component {
           <button>Add Contact</button>
           <Switch>
             <Route exact path="/contact" component={New} />
-            <Route
-              path="/contact/new"
-              render={props => {
-                <New contact={this.state.contact} />;
-              }}
-            />
-            <Route path="/contact/:id" component={Contact} />
+            <Route exact path="/" component={App} />
+            <Route path="/contact" component={Contact} />
           </Switch>
         </div>
       </BrowserRouter>

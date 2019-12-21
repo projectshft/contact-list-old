@@ -1,7 +1,17 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-// class Contact extends React.Component{
+class Contact extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Contact by ID</h1>
+      </div>
+    );
+  }
+}
+
+export default Contact;
 
 //     constructor(props) {
 //       super(props)
