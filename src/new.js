@@ -23,6 +23,7 @@ class New extends React.Component {
           <input name="email" placeholder="Email Address" />
           <input name="phone_number" placeholder="Phone Number" />
         </form>
+        <button>Submit New Contact</button>
       </div>
     );
   }

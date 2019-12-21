@@ -6,6 +6,7 @@ class Contact extends React.Component {
     return (
       <div>
         <h1>Contact by ID</h1>
+        <button>Back to Contact List</button>
       </div>
     );
   }
