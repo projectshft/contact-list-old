@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Link } from "react-router-dom";
 
 class Home extends React.Component {
   constructor(props) {
@@ -14,7 +15,13 @@ class Home extends React.Component {
       <div>
         <h1>Contact List</h1>
         <div>{this.state.contacts}</div>
-        <button>Add New Contact</button>
+        <Link to={`/newcontact`}>
+          <button>Add New Contact</button>
+        </Link>
+
+        <Link to={`/contact`}>
+          <button>Contact ID</button>
+        </Link>
       </div>
     );
   }
