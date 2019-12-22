@@ -7,7 +7,7 @@ class Home extends React.Component {
     super(props);
 
     this.state = {
-      contacts: ["bob", "mary", "jim"]
+      contacts: props.contacts
     };
   }
   render() {
@@ -28,3 +28,4 @@ class Home extends React.Component {
 }
 
 export default Home;
+//map id key to individual contact?
