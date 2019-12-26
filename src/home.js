@@ -1,20 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
+import New from "./new";
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      contacts: props.contacts
-    };
-  }
   render() {
+    const { contacts } = this.props;
     return (
       <div>
         <h1>Contact List</h1>
-        <div>{this.state.contacts}</div>
+        <div>{this.props.contacts}</div>
+
         <Link to={`/newcontact`}>
           <button>Add New Contact</button>
         </Link>

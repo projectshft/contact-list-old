@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
-import Home from "./home";
+
 // import PropTypes from "prop-types";
 
 class New extends React.Component {
@@ -9,24 +9,26 @@ class New extends React.Component {
     super();
 
     this.state = {
-      name: null,
-      image_url: null,
-      email: null,
-      phone_number: null
+      name: "",
+      image_url: "",
+      email: "",
+      phone_number: ""
     };
 
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
+    const generateId = () => Math.round(Math.random() * 100000000);
     const contact = {
+      id: generateId(),
       name: this.state.name,
       image_url: this.state.image_url,
       email: this.state.email,
       phone_number: this.state.phone_number
     };
 
-    // this.props.addContact(contact);
+    this.props.addContact(contact);
   }
 
   render() {
