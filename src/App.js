@@ -12,6 +12,7 @@ class App extends React.Component {
     this.state = {
       contacts: []
     };
+    this.addContact = this.addContact.bind(this);
   }
 
   addContact(contact) {
