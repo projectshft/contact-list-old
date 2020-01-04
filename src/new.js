@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 // import PropTypes from "prop-types";
 
-class New extends React.Component {
+class NewContact extends React.Component {
   constructor() {
     super();
 
@@ -64,7 +64,7 @@ class New extends React.Component {
           />
         </form>
 
-        <Link to={`/home`}>
+        <Link to={`/`}>
           <button onClick={this.handleClick}>Submit New Contact</button>
         </Link>
       </div>
@@ -79,7 +79,7 @@ class New extends React.Component {
 //   phone_number: React.PropTypes.number
 // };
 
-export default New;
+export default NewContact;
 
 //grab input fields and change new contact's state, then push that to contacts list's state.
 //prop types validate fields

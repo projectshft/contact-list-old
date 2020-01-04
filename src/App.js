@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import New from "./new";
+import NewContact from "./new";
 import Home from "./home";
+import ContactList from "./contactlist";
 import Contact from "./contact";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import ContactDetail from "./ContactDetail";
+import ContactListItem from "./contactlistitem";
+
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 class App extends React.Component {
   constructor() {
@@ -25,19 +29,23 @@ class App extends React.Component {
           <Switch>
             <Route
               exact
-              path="/newcontact"
-              render={() => <New addContact={this.addContact} />}
+              path="/contacts/new"
+              render={() => <NewContact addContact={this.addContact} />}
             />
             <Route
               exact
-              path="/home"
+              path="/"
               render={() => <Home contacts={this.state.contacts} />}
             />
-
             <Route
-              path="/contact"
-              render={() => <Contact contacts={this.state.contacts} />}
+              path="/contacts/:id"
+              render={() => <ContactDetail contacts={this.state.contacts} />}
             />
+            <Route
+              path="/contacts"
+              render={() => <ContactList contacts={this.state.contacts} />}
+            />
+            <Redirect to="/" />
           </Switch>
         </div>
       </BrowserRouter>

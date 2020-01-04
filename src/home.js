@@ -1,7 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
-import New from "./new";
+import Contact from "./contact";
+import ContactList from "./contactlist";
+import ContactDetail from "./ContactDetail";
+import ContactListItem from "./contactlistitem";
 
 class Home extends React.Component {
   render() {
@@ -9,14 +12,10 @@ class Home extends React.Component {
     return (
       <div>
         <h1>Contact List</h1>
-        <div>{this.props.contacts}</div>
+        <Contact />
 
-        <Link to={`/newcontact`}>
+        <Link to={`/contacts/new`}>
           <button>Add New Contact</button>
-        </Link>
-
-        <Link to={`/contact`}>
-          <button>Contact ID</button>
         </Link>
       </div>
     );
@@ -24,4 +23,3 @@ class Home extends React.Component {
 }
 
 export default Home;
-//map id key to individual contact?
