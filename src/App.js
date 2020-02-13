@@ -1,7 +1,8 @@
-import React, {Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
 import './App.css';
 import Contacts from './components/contacts';
+import ContactList from './components/contactList'
 
 const generateId = () => Math.round(Math.random() * 100000000);
 
@@ -13,7 +14,7 @@ class App extends React.Component {
     contacts: [
       { id: generateId(), name: "Rachel", image_url: "", email:'', phone:''},
       { id: generateId(), name: "Hannah", image_url: "", email:'', phone:'' },
-      { id: generateId(), name: "Katy", image_url: "", email:'', phone:'' },
+      { id: generateId(), name: "Katy", image_url: "", email:'', phone:'' }
     ]
   }
 
@@ -40,12 +41,18 @@ class App extends React.Component {
   render() {
 
     return (
+
       <div>
-        <Switch>
-          <Route exact path='/' component={Contacts}/>
-          <Route path = '/contacts' component = {Contacts}/>
+          <Switch>
+          <Route exact path = '/' render={() => (
+            <Contacts updateContact={this.updateContact} addContact={this.addContact} contacts={this.state.contacts}/>
+          )}/>
+            <Route path = '/contacts' render={() => (
+              <ContactList contacts={this.state.contacts}/>
+            )}/>
         </Switch>
       </div>
+
     )
   }
 }

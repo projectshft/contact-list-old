@@ -1,28 +1,29 @@
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Link } from 'react-router-dom'
 import React from 'react';
-import Contact from './contact';
+import ContactInformation from './contactInformation';
 import ContactNew from './contactNew';
 import ContactEdit from './contactEdit';
+import ContactList from './contactList'
 
 const Contacts = ({contacts, addContact, updateContact}) => (
 
   <Switch>
   <div>
     <h1>Contact List</h1>
-    <button> Add to Contacts </button>
-  </div>
+     <Link to ='/contacts/new'><button type="button" onClick={this.addContact}> Add to Contacts </button> </Link>
+
       <Route path='/contacts/new' render={(routerProps) => (
-        <ContactNew history={routerProps.history} contacts={contacts} addContact={addContact} />
+        <ContactNew  history = {routerProps.history} contacts={contacts} addContact={addContact} />
       )}/>
 
-      <Route path='/contacts/:number/edit' render={(routerProps) => (
-        <ContactEdit history={routerProps.history} contactId={parseInt(routerProps.match.params.number, 10)} contacts={contacts} updateContact={updateContact} />
+      <Route path='/contacts/:id/edit' render={(routerProps) => (
+        <ContactEdit history={routerProps.history} contactId={parseInt(routerProps.match.params.id, 10)} contacts={contacts} updateContact={updateContact} />
       )}/>
 
-      <Route path='/contacts/:number' render={(routerProps) => (
-        <Contact contactId={parseInt(routerProps.match.params.number, 10)} contacts={contacts} />
+      <Route path='/contacts/:id' render={(routerProps) => (
+        <ContactInformation history = {routerProps.history} contactId={parseInt(routerProps.match.params.id, 10)} contacts={contacts} />
       )}/>
-
+</div>
     </Switch>
 
 )

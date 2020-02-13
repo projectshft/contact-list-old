@@ -1,28 +1,34 @@
-import { Link } from 'react-router-dom'
+import { Link, Component } from 'react-router-dom'
 import React from 'react'
+
+const generateId = () => Math.round(Math.random() * 100000000);
 
 class ContactNew extends React.Component {
   constructor () {
     super ()
 
     this.state = {
+      id: generateId(),
       name: '',
-      number: '',
-      position: ''
+      image_url: '',
+      email: '',
+      phone: ''
     }
 
-    this.handleSubmitPlayerClick = this.handleSubmitPlayerClick.bind(this)
+    this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
   }
 
-  handleSubmitPlayerClick () {
-    const newPlayer = {
+  handleSubmitContactClick () {
+    const newContact = {
+      id: this.state.id,
       name: this.state.name,
-      number: this.state.number,
-      position: this.state.position
+      image_url: this.state.image_url,
+      email: this.state.email,
+      phone: this.state.phone
     };
 
-    this.props.addPlayer(newPlayer)
-    this.props.history.push('/roster')
+    this.props.addContact(newContact)
+    this.props.history.push('/contacts')
   }
 
   render () {
@@ -36,22 +42,31 @@ class ContactNew extends React.Component {
 
         <br/>
 
-        <label>Number</label>
+        <label>Image_url</label>
         <input type='text' className='form-control'onChange={event =>
-          this.setState({ number: parseInt(event.target.value, 10) })
+          this.setState({ image_url: event.target.value })
         }/>
 
         <br/>
 
-        <label>Position</label>
+        <label>Email</label>
         <input type='text' className='form-control'onChange={event =>
-          this.setState({ position: event.target.value })
+          this.setState({ email: event.target.value })
         }/>
 
-        <button type="button" onClick={this.handleSubmitPlayerClick}>Submit</button>
+        <br/>
+
+        <label>Phone Number</label>
+        <input type='text' className='form-control'onChange={event =>
+          this.setState({ phone: parseInt(event.target.value, 10) })
+        }/>
+
+        <br/>
+
+        <button type="button" onClick={this.handleSubmitContactClick}>Submit</button>
         </form>
 
-        <Link to='/roster'>Roster</Link>
+        <Link to='/contacts'>Contact List</Link>
       </div>
     )
   }
