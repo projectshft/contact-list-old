@@ -1,34 +1,49 @@
-import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Switch, Route, Link } from 'react-router-dom'
 import Contacts from './Contacts'
-import Contact from './Contact'
-import NewContact from './NewContact'
-import UpdateContactInfo from './UpdateContactInfo'
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
+export default function App(props) {
+
+
+  return (
+    <section>
         <Switch>
           <Route exact path="/contacts">
               <Contacts />
           </Route>
-          <Route path="/contacts/add">
-              <NewContact />
-          </Route>
-          <Route path="/contacts/update">
-              <UpdateContactInfo />
-          </Route>
-          <Route path="/contacts/1">
-              <Contact />
-          </Route>
+
           <Route path="/">
               <Contacts />
           </Route>
         </Switch>
-      </div>
-    )
-  }
-}
+    </section>
+  )
+};
 
-export default App;
+// class App extends React.Component {
+//   render() {
+//     return (
+//       <div>
+//         <Switch>
+//           <Route exact path="/contacts">
+//               <Contacts />
+//           </Route>
+//           <Route path="/contacts/add">
+//               <NewContact />
+//           </Route>
+//           <Route path="/contacts/update">
+//               <UpdateContactInfo />
+//           </Route>
+//           <Route path="/contacts/1">
+//               <Contact />
+//           </Route>
+//           <Route path="/">
+//               <Contacts />
+//           </Route>
+//         </Switch>
+//       </div>
+//     )
+//   }
+// }
+
+// export default App;
