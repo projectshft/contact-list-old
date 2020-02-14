@@ -6,11 +6,11 @@ import FullContactList from './FullContactList';
 
 const ContactList = ({contacts, addContact}) => (
     <Switch>    
-    <Route path='/contactList/new' render={(routerProps) => (
+    <Route path='/contacts/new' render={(routerProps) => (
       <NewContact history={routerProps.history} contacts={contacts} addContact={addContact} />
     )}/>
   
-    <Route path='/contactList/:id' render={(routerProps) => (
+    <Route path='/contacts/:id' render={(routerProps) => (
       <IndividualContact contactId={parseInt(routerProps.match.params.number, 10)} contacts={contacts} />
     )}/>
     

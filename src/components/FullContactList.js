@@ -7,7 +7,7 @@ const FullContactList = ({contacts}) => (
       {
         contacts.map(c => (
           <li key={c.id}>
-            <Link to={`/roster/${c.id}`}>{c.name}</Link>
+            <Link to={`/contacts/${c.id}`}>{c.name}</Link>
           </li>
         ))
       }

@@ -10,7 +10,7 @@ class App extends React.Component {
     this.state = {
       contacts: [
         {id:'1', name: 'JoA', phoneNumber: '910-101-0101', email: 'gmail.com', img_ur: ''},
-        {id:'1', name: 'Chip', phoneNumber: '910-101-0101', email: 'gmail.com', img_ur: ''}
+        {id:'2', name: 'Chip', phoneNumber: '910-101-0101', email: 'gmail.com', img_ur: ''}
       ]
     }
     
@@ -18,8 +18,8 @@ class App extends React.Component {
   
   }
 
-  addContact (){
-    this.setState({contacts: this.state.contact([contact])})
+  addContact (contact){
+    this.setState({contacts: this.state.contacts.concat([contact])});
   }
 
   render() {
