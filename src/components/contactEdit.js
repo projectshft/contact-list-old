@@ -1,46 +1,55 @@
 import { Link, Component } from 'react-router-dom'
 import React from 'react'
 
+
 class ContactEdit extends React.Component {
   constructor (props) {
     super (props)
 
     this.state = {
+      id: null,
       name: '',
       image_url: '',
       email: '',
-      number:''
+      phone:''
     }
 
-    // this.handleSubmitPlayerClick = this.handleSubmitPlayerClick.bind(this)
+    this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
   }
 
-  // componentDidMount () {
-  //   const findPlayerByNumber = (number) => {
-  //     return this.props.players.filter((player) => {
-  //       return player.number === number
-  //     });
-  //   };
-  //
-  //   const currentPlayer = findPlayerByNumber(this.props.playerId)[0];
-  //
-  //   this.setState({
-  //     name: currentPlayer.name,
-  //     number: currentPlayer.number,
-  //     position: currentPlayer.position
-  //   })
-  // }
-  //
-  // handleSubmitPlayerClick () {
-  //   const newPlayer = {
-  //     name: this.state.name,
-  //     number: this.state.number,
-  //     position: this.state.position
-  //   };
-  //
-  //   this.props.updatePlayer(newPlayer)
-  //   this.props.history.push('/contacts')
-  // }
+  componentDidMount () {
+      const findContactById = (id) => {
+      return this.props.contacts.filter((contact) => {
+        return contact.id === id
+      });
+    };
+    debugger;
+
+    const currentContact = findContactById(this.props.contactId)[0];
+
+
+    this.setState({
+      id: currentContact.id,
+      name: currentContact.name,
+      image_url: currentContact.image_url,
+      email: currentContact.email,
+      phone: currentContact.phone
+
+    })
+  }
+
+  handleSubmitContactClick () {
+    const newContact = {
+      id: this.state.id,
+      name: this.state.name,
+      image_url: this.state.image_url,
+      email: this.state.email,
+      phone: this.state.phone
+    };
+
+    this.props.updateContact(newContact)
+    this.props.history.push('/contacts')
+  }
 
   render () {
     return (
@@ -67,14 +76,14 @@ class ContactEdit extends React.Component {
         <br/>
 
         <label>Phone Number </label>
-        <input type='text' value={this.state.number} className='form-control'onChange={event =>
-          this.setState({ number: parseInt(event.target.value, 10) })
+        <input type='text' value={this.state.phone} className='form-control'onChange={event =>
+          this.setState({ phone: parseInt(event.target.value, 10) })
         }/>
 
         <br/>
 
 
-        <button type="button" onClick={this.handleSubmitPlayerClick}>Submit</button>
+        <button type="button" className = "btn-primary" onClick={this.handleSubmitPlayerClick}>Submit</button>
         </form>
 
         <Link to='/contacts'>Contact List</Link>

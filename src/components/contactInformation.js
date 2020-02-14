@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import _ from 'lodash'
 
+debugger;
 const ContactInformation = ({contactId, contacts}) => {
-   const contact = contacts.filter(contact => contact.id === contactId );//filter or find method
-  debugger;
+
+  const contact = _.find(contacts, { id: contactId });
 
 
   if (!contact) {
@@ -14,7 +15,7 @@ const ContactInformation = ({contactId, contacts}) => {
 
     <div>
       <h1>{contact.name}</h1>
-      <image>{contact.image_url}</image>
+      <img src = {contact.image_url}></img>
       <h4>{contact.email}</h4>
       <h4>{contact.phone}</h4>
       <div><Link to='/contacts'>Back To Contact List</Link></div>

@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import React from 'react';
+import { Switch, Route} from 'react-router-dom';
 import './App.css';
-import Contacts from './components/contacts';
+import Home from './components/home';
 import ContactList from './components/contactList'
 
-const generateId = () => Math.round(Math.random() * 100000000);
 
 class App extends React.Component {
   constructor () {
     super()
-
+    const generateId = () => Math.round(Math.random() * 100000000);
     this.state = {
     contacts: [
-      { id: generateId(), name: "Rachel", image_url: "", email:'', phone:''},
-      { id: generateId(), name: "Hannah", image_url: "", email:'', phone:'' },
-      { id: generateId(), name: "Katy", image_url: "", email:'', phone:'' }
+      { id: generateId(), name: "Rachel", image_url: "", email:'rfischoff@gmail.com', phone:'919.225.655'},
+      { id: generateId(), name: "Katy", image_url: "", email:'katygrahamm@gmail.com', phone:'858.218.4605' },
+      { id: generateId(), name: "Hannah", image_url: "", email:'', phone:'' }
     ]
   }
 
@@ -41,17 +40,16 @@ class App extends React.Component {
   render() {
 
     return (
-
       <div>
-          <Switch>
-          <Route exact path = '/' render={() => (
-            <Contacts updateContact={this.updateContact} addContact={this.addContact} contacts={this.state.contacts}/>
-          )}/>
+        <Switch>
+            <Route exact path = '/' component={Home}/>
             <Route path = '/contacts' render={() => (
-              <ContactList contacts={this.state.contacts}/>
+              <ContactList contacts={this.state.contacts} updateContact={this.updateContact} addContact={this.addContact} />
             )}/>
-        </Switch>
-      </div>
+            {/*<Route path="404" component={NotFound} />*/}
+            {/*<Route path="*" component={NotFound} />*/}
+          </Switch>
+        </div>
 
     )
   }

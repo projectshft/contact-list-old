@@ -1,11 +1,13 @@
 import { Link, Component } from 'react-router-dom'
 import React from 'react'
 
-const generateId = () => Math.round(Math.random() * 100000000);
+
 
 class ContactNew extends React.Component {
   constructor () {
     super ()
+
+    const generateId = () => Math.round(Math.random() * 100000000);
 
     this.state = {
       id: generateId(),
@@ -63,7 +65,7 @@ class ContactNew extends React.Component {
 
         <br/>
 
-        <button type="button" onClick={this.handleSubmitContactClick}>Submit</button>
+        <button type="button" className="btn btn-primary" onClick={this.handleSubmitContactClick}>Submit</button>
         </form>
 
         <Link to='/contacts'>Contact List</Link>
