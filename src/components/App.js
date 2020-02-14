@@ -4,15 +4,15 @@ import Home from './Home'
 import Contacts from './Contacts'
 
 class App extends Component {
-  // constructor () {
-  //   super()
+  constructor () {
+    super()
 
-  //   this.state = {
-  //     people: [
-  //       { id: 1, name: "Ben Joyce" , imgURL: "www.https:", email: "bmjoyce@ncsu.edu", phone_number: '3364550205' }
-  //     ]
-  //   }
-  // }
+    this.state = {
+      people: [
+        { id: 1, name: "Ben Joyce" , imgURL: "www.https:", email: "bmjoyce@ncsu.edu", phone_number: '3364550205' }
+      ]
+    }
+  }
 
   
   
