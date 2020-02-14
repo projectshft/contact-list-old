@@ -6,12 +6,17 @@ const ContactList = ({contacts}) => (
       <ul>
         {
           contacts.map(c => (
-            <li key={c.number}>
-              <Link to={`/contacts/${c.number}`}>{c.name}</Link>
+            <li key={c.id}>
+              <Link to={`/contacts/${c.id}`}>{c.name}</Link>
+              <div>
+                <Link to={`/contacts/:${c.id}/update`}>Edit</Link>
+
+              </div>
             </li>
           ))
         }
       </ul>
+      <div><Link to='/contacts/add'>Add New Contact</Link></div>
   </div>
 )
 

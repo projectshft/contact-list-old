@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom'
 
 export default function NewContact(props, contacts) {
 
-	const [contact, setContactDetails] = useState({name: '', phone: '', email: '', photo: ''});
+	const generateId = () => Math.floor(Math.random()*100000)
+
+	const [contact, setContactDetails] = useState({id: generateId(), name: '', phone: '', email: '', photo: ''});
+
 
 	const handleSubmit = (e) => {
 		e.preventDefault()

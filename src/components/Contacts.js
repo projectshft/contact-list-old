@@ -8,8 +8,8 @@ import ContactList from './ContactList'
 export default function Contacts(props) {
 
   	let sample = [
-        {  name: "Ben Blocker", phone: "444-333-2211", email: "test@gmail.com", photo: " empty " },
-        { name: "Tim Smith", phone: "444-333-2211", email: "test@gmail.com", photo: " empty " },
+        {  id: 1, name: "Ben Blocker", phone: "444-333-2211", email: "test@gmail.com", photo: " empty " },
+        { id: 2, name: "Tim Smith", phone: "444-333-2211", email: "test@gmail.com", photo: " empty " },
      ]
 	const [contacts, setContacts] = useState(sample);
   // const [name, setName] = useState('Mary')
@@ -42,10 +42,10 @@ export default function Contacts(props) {
 	      <Route path="/contacts/add" render={(routerProps) => (
 			<NewContact  contacts={contacts} />
 			)}/>
-	      <Route path="/contacts/update">
-	          <UpdateContactInfo />
-	      </Route>
-	      <Route path="/contacts/2">
+	      <Route path="/contacts/:id/update" render={(routerProps) => (
+      <UpdateContactInfo  contacts={contacts} />
+      )}/>
+	      <Route path="/contacts/:id">
 	          <Contact />
 	      </Route>
 	      <Route path='/contacts' render={() => (
