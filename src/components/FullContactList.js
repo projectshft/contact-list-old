@@ -3,6 +3,8 @@ import React from 'react'
 
 const FullContactList = ({contacts}) => (
   <div>
+    <h1>Contact List</h1>
+    <button><Link to='/contacts/new'>Add Contact</Link></button>
     <ul>
       {
         contacts.map(c => (

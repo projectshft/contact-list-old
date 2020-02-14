@@ -24,12 +24,13 @@ class NewContact extends React.Component {
     const newContact = {
       id: generateId(),
       name: this.state.name,
-      number: this.state.number,
-      position: this.state.position,
+      phoneNumber: this.state.phoneNumber,
+      email: this.state.email,
       img_url: this.state.img_url,
     };
-
+    
     this.props.addContact(newContact)
+
     this.props.history.push('/contacts')
   }
 

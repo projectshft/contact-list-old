@@ -2,6 +2,7 @@ import { Switch, Route } from 'react-router-dom';
 import React from 'react';
 import Home from './Home';
 import ContactList from './ContactList';
+import './App.css'
 
 class App extends React.Component {
   constructor () {
@@ -14,7 +15,8 @@ class App extends React.Component {
     this.addContact = this.addContact.bind(this)
   
   }
-
+  
+  // this.state.contacts.concat([contact])
   addContact (contact){
     this.setState({contacts: this.state.contacts.concat([contact])});
   }
