@@ -1,8 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from 'react-dom'
+import React from 'react'
+import Home from './Home'
+import Contacts from './Contacts'
 
 class App extends Component {
+  // constructor () {
+  //   super()
+
+  //   this.state = {
+  //     people: [
+  //       { id: 1, name: "Ben Joyce" , imgURL: "www.https:", email: "bmjoyce@ncsu.edu", phone_number: '3364550205' }
+  //     ]
+  //   }
+  // }
+
+  
+  
+  
+  
+  
+  
+  
+  
   render() {
     return (
       <div className="App">
