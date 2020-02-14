@@ -1,8 +1,11 @@
 import React from 'react';
+import { link } from 'react-router-dom';
 
 const Home = () => (
     <div>
-        <h1>Welcome to Our Team Page!</h1>
+        <h1>Welcome to the Contact-List App</h1>
+        <Link to='./contacts'>View Contacts</Link>
+        
     </div>
 )
 
