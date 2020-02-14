@@ -16,9 +16,13 @@ class NewContact extends React.Component {
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
   }
 
+  
+
   handleSubmitContactClick () {
+    const generateId = () => Math.round(Math.random() * 100000000);
 
     const newContact = {
+      id: generateId(),
       name: this.state.name,
       number: this.state.number,
       position: this.state.position,

@@ -3,7 +3,9 @@ import React from 'react'
 import _ from 'lodash'
 
 const IndividualContact = ({contactId, contacts}) => {
+
   const contact = _.find(contacts, { id: contactId });
+  console.log(contact)
 
   if (!contact) {
     return <div>Sorry, but the contact was not found</div>

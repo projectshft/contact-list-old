@@ -8,10 +8,7 @@ class App extends React.Component {
     super()
 
     this.state = {
-      contacts: [
-        {id:'1', name: 'JoA', phoneNumber: '910-101-0101', email: 'gmail.com', img_ur: ''},
-        {id:'2', name: 'Chip', phoneNumber: '910-101-0101', email: 'gmail.com', img_ur: ''}
-      ]
+      contacts: []
     }
     
     this.addContact = this.addContact.bind(this)
