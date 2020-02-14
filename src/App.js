@@ -21,6 +21,7 @@ class App extends React.Component {
 
     this.addContact = this.addContact.bind(this);
     this.updateContact = this.updateContact.bind(this);
+    this.deleteContact = this.deleteContact.bind(this);
   }
 
   addContact (contact) {
@@ -39,6 +40,17 @@ class App extends React.Component {
     this.setState({contacts: newContacts});
   }
 
+  deleteContact (contactId) {
+
+    console.log('i click!');
+      // const filteredArray = this.state.contacts.filter(item => item !== e.target.value)
+      //  this.setState({contacts: filteredArray});
+
+    const items = this.state.contacts.filter(item => item.id !== contactId);
+    this.setState({ contacts: items });
+         }
+
+
   render() {
 
     return (
@@ -46,10 +58,9 @@ class App extends React.Component {
         <Switch>
             <Route exact path = '/' component={Home}/>
             <Route path = '/contacts' render={() => (
-              <ContactList contacts={this.state.contacts} updateContact={this.updateContact} addContact={this.addContact} />
+              <ContactList contacts={this.state.contacts} updateContact={this.updateContact} addContact={this.addContact} deleteContact={this.deleteContact} />
             )}/>
-            {/*<Route path="404" component={NotFound} />*/}
-            {/*<Route path="*" component={NotFound} />*/}
+
           </Switch>
         </div>
 
@@ -58,3 +69,6 @@ class App extends React.Component {
 }
 
 export default App
+
+// {<Route path="404" component={NotFound} />}
+// {<Route path="*" component={NotFound} />}

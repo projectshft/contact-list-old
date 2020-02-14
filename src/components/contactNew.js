@@ -68,6 +68,8 @@ class ContactNew extends React.Component {
         <button type="button" className="btn btn-primary" onClick={this.handleSubmitContactClick}>Submit</button>
         </form>
 
+        <br/>
+
         <Link to='/contacts'>Back to Contact List</Link>
       </div>
     )

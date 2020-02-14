@@ -24,9 +24,7 @@ class ContactEdit extends React.Component {
       });
     };
 
-
     const currentContact = findContactById(this.props.contactId)[0];
-    console.log(currentContact);
 
     this.setState({
       name: currentContact.name,
@@ -85,6 +83,8 @@ class ContactEdit extends React.Component {
 
         <button type="button" className = "btn-primary" onClick={this.handleSubmitContactClick}>Submit</button>
         </form>
+
+        <br/>
 
         <Link to='/contacts'>Back to Contact List</Link>
       </div>

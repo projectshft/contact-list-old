@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import React from 'react';
 
 
-const Contacts = ({contacts, addContact, updateContact}) => (
+const Contacts = ({contacts, addContact, updateContact, deleteContact}) => (
 
 
   <div className = "text-center">
@@ -11,8 +11,8 @@ const Contacts = ({contacts, addContact, updateContact}) => (
     {contacts.map(c => (
       <div key={c.id} >
         <Link to={`/contacts/${c.id}`}>{c.name}</Link>
-        <a href='#delete'> Delete </a>
-        <a><Link to={`/contacts/${c.id}/edit`}>Edit</Link></a>
+        <a href = "#" onClick={function(e) {deleteContact(c.id)}} > Delete </a>
+        <a><Link to={`/contacts/${c.id}/edit`}> Edit </Link></a>
       </div>
 
     ))}
@@ -21,5 +21,6 @@ const Contacts = ({contacts, addContact, updateContact}) => (
     </div>
 
 )
+//onClick={function(e) {deleteContact(e)}
 
 export default Contacts

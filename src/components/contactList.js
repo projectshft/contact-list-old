@@ -7,7 +7,7 @@ import ContactEdit from './contactEdit'
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-const ContactList = ({contacts, addContact, updateContact}) => (
+const ContactList = ({contacts, addContact, updateContact, deleteContact}) => (
 
 
     <Switch>
@@ -25,7 +25,7 @@ const ContactList = ({contacts, addContact, updateContact}) => (
           )}/>
 
           <Route path ='/contacts' render={() => (
-            <Contacts contacts ={contacts} />
+            <Contacts contacts ={contacts} deleteContact={deleteContact} />
           )}/>
 
       </Switch>
