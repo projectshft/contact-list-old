@@ -16,15 +16,13 @@ const ContactList = ({contacts, addContact, updateContact}) => (
           <ContactNew history = {routerProps.history} contacts={contacts} addContact={addContact} />
           )}/>
 
-
-        <Route path='/contacts/:id' render={(routerProps) => (
-          <ContactInformation contactId={parseInt(routerProps.match.params.id, 10)} contacts={contacts} />
-          )}/>
-
           <Route path='/contacts/:id/edit' render={(routerProps) => (
-              <ContactEdit history={routerProps.history} contactId={parseInt(routerProps.match.params.id, 10)} contacts={contacts} updateContact={updateContact} />
+              <ContactEdit history={routerProps.history} contactId={(routerProps.match.params.id)} contacts={contacts} updateContact={updateContact} />
               )}/>
 
+        <Route path='/contacts/:id' render={(routerProps) => (
+          <ContactInformation contactId={(routerProps.match.params.id)} contacts={contacts} />
+          )}/>
 
           <Route path ='/contacts' render={() => (
             <Contacts contacts ={contacts} />

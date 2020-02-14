@@ -1,5 +1,6 @@
-import { Link, Component } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import React from 'react'
+import uuid from 'uuid/v4'
 
 
 class ContactEdit extends React.Component {
@@ -7,7 +8,6 @@ class ContactEdit extends React.Component {
     super (props)
 
     this.state = {
-      id: null,
       name: '',
       image_url: '',
       email: '',
@@ -23,28 +23,28 @@ class ContactEdit extends React.Component {
         return contact.id === id
       });
     };
-    debugger;
+
 
     const currentContact = findContactById(this.props.contactId)[0];
-
+    console.log(currentContact);
 
     this.setState({
-      id: currentContact.id,
       name: currentContact.name,
       image_url: currentContact.image_url,
       email: currentContact.email,
-      phone: currentContact.phone
+      phone: currentContact.phone,
+      id: currentContact.id
 
     })
   }
 
   handleSubmitContactClick () {
     const newContact = {
-      id: this.state.id,
       name: this.state.name,
       image_url: this.state.image_url,
       email: this.state.email,
-      phone: this.state.phone
+      phone: this.state.phone,
+      id: this.state.id
     };
 
     this.props.updateContact(newContact)
@@ -83,10 +83,10 @@ class ContactEdit extends React.Component {
         <br/>
 
 
-        <button type="button" className = "btn-primary" onClick={this.handleSubmitPlayerClick}>Submit</button>
+        <button type="button" className = "btn-primary" onClick={this.handleSubmitContactClick}>Submit</button>
         </form>
 
-        <Link to='/contacts'>Contact List</Link>
+        <Link to='/contacts'>Back to Contact List</Link>
       </div>
     )
   }

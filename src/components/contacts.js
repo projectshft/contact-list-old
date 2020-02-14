@@ -12,7 +12,7 @@ const Contacts = ({contacts, addContact, updateContact}) => (
       <div key={c.id} >
         <Link to={`/contacts/${c.id}`}>{c.name}</Link>
         <a href='#delete'> Delete </a>
-        <div><Link to={`/contacts/${contacts.id}/edit`}>Edit</Link></div>
+        <a><Link to={`/contacts/${c.id}/edit`}>Edit</Link></a>
       </div>
 
     ))}

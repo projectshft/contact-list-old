@@ -1,19 +1,21 @@
 import React from 'react';
 import { Switch, Route} from 'react-router-dom';
-import './App.css';
 import Home from './components/home';
 import ContactList from './components/contactList'
+import uuid from 'uuid/v4'
 
 
 class App extends React.Component {
   constructor () {
     super()
-    const generateId = () => Math.round(Math.random() * 100000000);
+
+    // const generateId = () => Math.round(Math.random() * 100000000);
+
     this.state = {
     contacts: [
-      { id: generateId(), name: "Rachel", image_url: "", email:'rfischoff@gmail.com', phone:'919.225.655'},
-      { id: generateId(), name: "Katy", image_url: "", email:'katygrahamm@gmail.com', phone:'858.218.4605' },
-      { id: generateId(), name: "Hannah", image_url: "", email:'', phone:'' }
+      { id: uuid(), name: "Rachel", image_url: "", email:'rfischoff@gmail.com', phone:'919.225.655'},
+      { id: uuid(), name: "Katy", image_url: "", email:'katygrahamm@gmail.com', phone:'858.218.4605' },
+      { id: uuid(), name: "Paul", image_url: "", email:'paulwwstrom@gmail.com', phone:'214.642.1596' }
     ]
   }
 

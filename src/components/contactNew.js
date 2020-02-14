@@ -1,16 +1,16 @@
 import { Link, Component } from 'react-router-dom'
 import React from 'react'
-
+import uuid from 'uuid/v4'
 
 
 class ContactNew extends React.Component {
   constructor () {
     super ()
 
-    const generateId = () => Math.round(Math.random() * 100000000);
+    // const generateId = () => Math.round(Math.random() * 100000000);
 
     this.state = {
-      id: generateId(),
+      id: uuid(),
       name: '',
       image_url: '',
       email: '',
@@ -68,7 +68,7 @@ class ContactNew extends React.Component {
         <button type="button" className="btn btn-primary" onClick={this.handleSubmitContactClick}>Submit</button>
         </form>
 
-        <Link to='/contacts'>Contact List</Link>
+        <Link to='/contacts'>Back to Contact List</Link>
       </div>
     )
   }
