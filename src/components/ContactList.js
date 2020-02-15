@@ -11,6 +11,7 @@ export default function ContactList(props) {
         { props.contacts.map(contact => {
           return (
             <ContactDetail
+              key={contact.id}
               contactId={contact.id} 
               contacts={props.contacts}
             />

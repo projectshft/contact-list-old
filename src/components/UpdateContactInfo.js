@@ -4,15 +4,13 @@ import { Link } from 'react-router-dom'
 
 export default function UpdateContactInfo(props) {
 
-	const generateId = () => Math.floor(Math.random()*100000)
-
 	const [contact, setContactDetails] = useState({});
 	console.log(props.contactId)
 	useEffect(() => {
 		const findContactById = (id) => {
 		  		return props.contacts.filter((contact) => {
 		  			console.log('Current Contact from find : ', contact)
-		    return parseInt(contact.id) === parseInt(id)
+		    return contact.id === id
 		  });
 		};
 
@@ -26,24 +24,12 @@ export default function UpdateContactInfo(props) {
 	
 	console.log('Contact info: ', contact)
 
-	const updateContact = contact => {
-		const newContacts = props.contacts.map((c) => {
-			if (contact.id == c.id) {
-				c = contact;
-			}
-			console.log(c)
-			return c;
-		})
-
-		const [contacts, setContacts] = useState(newContacts);
-	}
-
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		console.log('submit clicked')
 		console.log('from handleSubmit contact: ', contact)
 		if (!contact) return;
-		updateContact(contact)
+		props.updateContacts(contact)
 		props.history.push('/contacts')
 	}
 
