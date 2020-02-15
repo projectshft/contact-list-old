@@ -7,8 +7,39 @@ body {
 .contact-image {
   height: 250px;
   width: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 #root {
   margin: 25px;
+}
+
+.btn {
+  margin-left: 15px;
+}
+
+.contact-list-button {
+  float: right;
+}
+
+.header {
+  text-align: center;
+}
+
+.add-contact {
+  left-margin: 25%;
+}
+
+.contact-row{
+  border: solid;
+  border-width: 2px;
+  border-color: gray;
+  padding: 5px;
+}
+
+.row {
+  margin-bottom: 15px;
+  margin-left: 15px;
+  clear: both;
 }

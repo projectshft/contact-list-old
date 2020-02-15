@@ -1,9 +1,10 @@
 import { Switch, Route } from 'react-router-dom'
-import React, { Component } from 'react';
+import React from 'react';
 import AllContacts from "./AllContacts.js"
 import EditContact from "./EditContact.js"
 import NewContact from "./NewContact.js"
 import Contact from "./Contact.js"
+import PropTypes from 'prop-types';
 
 
 const Contacts = ({addContact, editContact, contacts, deleteContact}) => (
@@ -36,5 +37,12 @@ const Contacts = ({addContact, editContact, contacts, deleteContact}) => (
     )}/>
   </Switch>
 )
+
+Contacts.propTypes = {
+  addContact: PropTypes.func.isRequired,
+  editContact: PropTypes.func.isRequired,
+  deleteContact: PropTypes.func.isRequired,
+  contacts: PropTypes.array.isRequired
+}
 
 export default Contacts;
