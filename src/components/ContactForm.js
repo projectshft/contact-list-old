@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import PropTypes from 'prop-types';
 
+//setting up table for Contact Form
+
 const ContactForm = ({handleFormChange, handleSubmitContactClick, contact}) => {
   return (
     <div className='col-md-8 offset-md-2'>

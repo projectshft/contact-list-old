@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ContactListItem from './ContactListItem'
 
+// Calculate number of Contacts.  Add main title and buttons
 const ContactList = ({contacts, removeContact}) => (
   <div className='col-md-8 offset-md-2'>
     <div className="section-title text-center border-bottom"><h1>Jay's Super Duper Contacts</h1></div>

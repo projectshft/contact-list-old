@@ -70,6 +70,8 @@ class App extends React.Component {
     })
   }
   
+//switch to determine paths and what gets rendered
+
   render() {
     return (
       <div className='container main-app'>

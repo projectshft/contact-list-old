@@ -6,6 +6,8 @@ import AddContact from './AddContact';
 import EditContact from './EditContact';
 import ContactList from './ContactList';
 
+//Switch for routing 
+
 const ContactLanding = ({contacts, addContact, editContact, removeContact}) => (
   <Switch>    
     <Route path='/contacts/new' render={(props) => (

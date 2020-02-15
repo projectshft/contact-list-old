@@ -1,8 +1,11 @@
+//rendered when Edit Button is clicked
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import ContactForm from './ContactForm'
 import _ from 'lodash'
 
+//pass in props 
 class EditContact extends React.Component {
   constructor (props) {
     super(props);
