@@ -2,8 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const ContactList = ({contacts}) => (
-  <div>
-      <ul>
+  <div className="ui container items">
         {
           contacts.map(c => (
             <li key={c.id}>
@@ -15,7 +14,6 @@ const ContactList = ({contacts}) => (
             </li>
           ))
         }
-      </ul>
       <div><Link to='/contacts/add'>Add New Contact</Link></div>
   </div>
 )

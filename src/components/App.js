@@ -4,19 +4,10 @@ import Contacts from './Contacts'
 
 export default function App(props) {
 
-
   return (
-    <section>
-        <Switch>
-          <Route exact path="/contacts">
-              <Contacts />
-          </Route>
-
-          <Route path="/">
-              <Contacts />
-          </Route>
-        </Switch>
-    </section>
+    <div>
+      <Route path="/" component={Contacts}></Route>
+    </div>
   )
 };
 

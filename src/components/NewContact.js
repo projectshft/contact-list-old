@@ -1,30 +1,31 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import faker from 'faker'
 
-export default function NewContact(props, contacts) {
-
+export default function NewContact(props) {
+	//need to generate unique id's for the contact record
 	const generateId = () => Math.floor(Math.random()*100000)
-
+	//set the state for contact
 	const [contact, setContactDetails] = useState({id: generateId(), name: '', phone: '', email: '', photo: ''});
 
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		console.log('submit clicked')
-		console.log('from handleSubmit contact: ', contact)
+
 		if (!contact) return;
 		addContact(contact)
+		props.history.push('/contacts')
 	}
 
 	const handleInputChange = e => {
         const {name, value} = e.target
+        //populate contact object with data from the form input fields
         setContactDetails({...contact, [name]: value})   
     }
 
 	const addContact = contact => {
-		console.log('from addContact: ', contact)
 		props.contacts.push(contact);
-		console.log('contacts array after added contact: ', props.contacts)
 	};
 
 	return (
@@ -35,8 +36,9 @@ export default function NewContact(props, contacts) {
 				type="text"
 				name="name"
 				className="input"
-
+				placeholder="Enter Name"
 				onChange={handleInputChange}
+				required
 			/>
 
 	        <br/>
@@ -45,9 +47,9 @@ export default function NewContact(props, contacts) {
 			<input
 				type="text"
 				name="phone"
-				className="input"
-
+				placeholder="Enter phone number"
 				onChange={handleInputChange}
+				required
 			/>
 
 	        <br/>
@@ -57,8 +59,9 @@ export default function NewContact(props, contacts) {
 				type="text"
 				name="email"
 				className="input"
-
+				placeholder="Enter Email Address"
 				onChange={handleInputChange}
+				required
 			/>
 
 	        <label>Photo</label>
@@ -66,8 +69,9 @@ export default function NewContact(props, contacts) {
 				type="text"
 				name="photo"
 				className="input"
-
+				placeholder="Add a picture"
 				onChange={handleInputChange}
+				required
 			/>
 	        <button type="submit" >Submit</button>
         </form>
@@ -78,7 +82,10 @@ export default function NewContact(props, contacts) {
 
   );
 
+};
 
+NewContact.propTypes = {
+	contact: PropTypes.object
 };
 
 
