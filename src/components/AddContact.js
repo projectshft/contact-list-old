@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import uuid from 'react-uuid'
 
-class PlayerNew extends React.Component {
+class NewContact extends React.Component {
   constructor() {
     super()
 
@@ -14,10 +14,10 @@ class PlayerNew extends React.Component {
       picture: ''
     }
 
-    this.handleSubmitPlayerClick = this.handleSubmitPlayerClick.bind(this)
+    this.handleSubmitNewContact = this.handleSubmitNewContact.bind(this)
   }
 
-  handleSubmitPlayerClick() {
+  handleSubmitNewContact() {
     const newContact = {
       id: uuid(),
       name: this.state.name,
@@ -61,7 +61,7 @@ class PlayerNew extends React.Component {
             this.setState({ picture: event.target.value })
           } />
 
-          <button type="button" onClick={this.handleSubmitPlayerClick}>Submit</button>
+          <button type="button" onClick={this.handleSubmitNewContact}>Submit</button>
         </form>
 
         <Link to='/'>Home</Link>
@@ -70,5 +70,5 @@ class PlayerNew extends React.Component {
   }
 }
 
-export default PlayerNew
+export default NewContact
 

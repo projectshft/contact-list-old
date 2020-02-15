@@ -13,7 +13,7 @@ const Contact = ({ contactId, contacts }) => {
 
     return (
         <div>
-            <h1>{contact.name} (phone number: {contact.phone})</h1>
+            <h1>{contact.name} <br/>(phone number: {contact.phone})</h1>
             <h2>Email: {contact.email}</h2>
             <Link to='/'>Back</Link>
         </div>
