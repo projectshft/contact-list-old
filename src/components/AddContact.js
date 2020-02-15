@@ -1,64 +1,74 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
+import uuid from 'react-uuid'
 
-class ContactNew extends React.Component {
-  constructor () {
-    super ()
+class PlayerNew extends React.Component {
+  constructor() {
+    super()
 
     this.state = {
-        id: '', 
-        name: '', 
-        phone: '', 
-        email: '', 
-        picture: ''
+      id: '',
+      name: '',
+      phone: '',
+      email: '',
+      picture: ''
     }
 
     this.handleSubmitPlayerClick = this.handleSubmitPlayerClick.bind(this)
   }
 
-  handleSubmitPlayerClick () {
-    const newPlayer = {
-        id: this.state.id,
-        name: this.state.name,
-        phone: this.state.phone,
-        email: this.state.email,
-        picture: this.state.picture
+  handleSubmitPlayerClick() {
+    const newContact = {
+      id: uuid(),
+      name: this.state.name,
+      number: this.state.number,
+      email: this.state.email,
+      picture: this.state.picture
     };
 
-    this.props.addContact(newPlayer)
-    this.props.history.push('/roster')
+    this.props.addContact(newContact)
+    console.log(newContact)
+    this.props.history.push('/')
   }
 
-  render () {
+  render() {
     return (
       <div>
         <form>
-        <label>Name</label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ name: event.target.value })
-        }/>
+          <label>Name</label>
+          <input type='text' className='form-control' onChange={event =>
+            this.setState({ name: event.target.value })
+          } />
 
-        <br/>
+          <br />
 
-        <label>Phone</label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ phone: parseInt(event.target.value, 10) })
-        }/>
+          <label>Number</label>
+          <input type='text' className='form-control' onChange={event =>
+            this.setState({ number: parseInt(event.target.value, 10) })
+          } />
 
-        <br/>
+          <br />
 
-        <label>email</label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ email: event.target.value })
-        }/>
+          <label>email</label>
+          <input type='text' className='form-control' onChange={event =>
+            this.setState({ email: event.target.value })
+          } />
 
-        <button type="button" onClick={this.handleSubmitPlayerClick}>Submit</button>
+          <br />
+
+          <label>Picture</label>
+          <input type='text' className='form-control' onChange={event =>
+            this.setState({ picture: event.target.value })
+          } />
+
+          <button type="button" onClick={this.handleSubmitPlayerClick}>Submit</button>
         </form>
 
-        <Link to='/'>sending new conatct</Link>
+        <Link to='/'>Home</Link>
       </div>
     )
   }
 }
 
-export default ContactNew
+export default PlayerNew
+
