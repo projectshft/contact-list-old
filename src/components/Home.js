@@ -17,12 +17,13 @@ const Home = ({ contacts, deleteContact }) => {
                     {
                         contacts.map(p => (
                             <ul className="d-flex justify-content-center " key={p.id}>
-                                <div className="card col-5">
-                                    <div className="card-body">
+                                <div className="card col-7 ">
+                                    <div className="card-body d-inline-block ">
                                         name -   <Link to={`/Contact/${p.id}`}>{p.name}</Link>,
-                                        <button className="btn badge-success m-2 justify-content-lg-end">edit</button>
-                                        <button className="btn badge-warning m-2 " onClick={() => deleteContact(p.id)}>delete</button>
-
+                                        <div className="d-inline-block float-right">
+                                            <button className="btn-sm badge-success m-2 justify-content-lg-end">edit</button>
+                                            <button className="btn-sm badge-warning m-2 justify-content-lg-end" onClick={() => deleteContact(p.id)}>delete</button>
+                                        </div>
                                     </div>
                                 </div>
                             </ul>

@@ -37,8 +37,12 @@ class App extends React.Component {
   deleteContact(contactId) {
     console.log( 'deleted clicked ', contactId)
     const contacts = this.state.contacts.filter(c => c.id !== contactId);
-    console.log(contacts)
-    this.setState({ contacts: contacts});
+    const contactToDelete = window.confirm(`please confirm deletion of this contact`);
+    if (!contactToDelete) {
+      return
+    } else {    
+      this.setState({ contacts: contacts});
+    }
   }
 
   render() {
