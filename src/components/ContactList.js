@@ -1,21 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ContactDetail from './ContactDetail'
 
-const ContactList = ({contacts}) => (
-  <div className="ui container items">
-        {
-          contacts.map(c => (
-            <li key={c.id}>
-              <Link to={`/contacts/${c.id}`}>{c.name}</Link>
-              <div>
-                <Link to={`/contacts/:${c.id}/update`}>Edit</Link>
+export default function ContactList(props) {
 
-              </div>
-            </li>
-          ))
-        }
-      <div><Link to='/contacts/add'>Add New Contact</Link></div>
-  </div>
-)
+  return (
 
-export default ContactList
+      <div className="ui container items">
+
+        { props.contacts.map(contact => {
+          return (
+            <ContactDetail
+              contactId={contact.id} 
+              contacts={props.contacts}
+            />
+          )
+        })}   
+            
+          <div><Link to='/contacts/add'>Add New Contact</Link></div>
+      </div>
+  )
+}
