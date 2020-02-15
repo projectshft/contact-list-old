@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 import uuid from 'uuid/v4'
+import PropTypes from 'prop-types';
 
 
 class ContactEdit extends React.Component {
@@ -90,6 +91,11 @@ class ContactEdit extends React.Component {
       </div>
     )
   }
+
+}
+
+ContactEdit.propTypes = {
+contacts: PropTypes.array.isRequired,
 }
 
 export default ContactEdit

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import _ from 'lodash'
 import uuid from 'uuid/v4'
+import PropTypes from 'prop-types';
 
 const ContactInformation = ({contactId, contacts}) => {
 
@@ -24,3 +25,8 @@ const ContactInformation = ({contactId, contacts}) => {
 }
 
 export default ContactInformation
+
+ContactInformation.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  contactId: PropTypes.string.isRequired
+}

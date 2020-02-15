@@ -1,15 +1,14 @@
 import React from 'react';
 import { Switch, Route} from 'react-router-dom';
 import Home from './components/home';
-import ContactList from './components/contactList'
+import ContactsList from './components/contactsList'
 import uuid from 'uuid/v4'
+
 
 
 class App extends React.Component {
   constructor () {
     super()
-
-    // const generateId = () => Math.round(Math.random() * 100000000);
 
     this.state = {
     contacts: [
@@ -58,7 +57,7 @@ class App extends React.Component {
         <Switch>
             <Route exact path = '/' component={Home}/>
             <Route path = '/contacts' render={() => (
-              <ContactList contacts={this.state.contacts} updateContact={this.updateContact} addContact={this.addContact} deleteContact={this.deleteContact} />
+              <ContactsList contacts={this.state.contacts} updateContact={this.updateContact} addContact={this.addContact} deleteContact={this.deleteContact} />
             )}/>
 
           </Switch>
@@ -70,5 +69,7 @@ class App extends React.Component {
 
 export default App
 
-// {<Route path="404" component={NotFound} />}
-// {<Route path="*" component={NotFound} />}
+// size: PropTypes.oneOfType([
+//   PropTypes.string,
+//   PropTypes.number
+// ]),

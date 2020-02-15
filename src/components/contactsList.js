@@ -5,9 +5,10 @@ import ContactNew from './contactNew'
 import ContactInformation from './contactInformation'
 import ContactEdit from './contactEdit'
 import 'bootstrap/dist/css/bootstrap.css';
+import PropTypes from 'prop-types';
 
 
-const ContactList = ({contacts, addContact, updateContact, deleteContact}) => (
+const ContactsList = ({contacts, addContact, updateContact, deleteContact}) => (
 
 
     <Switch>
@@ -32,4 +33,11 @@ const ContactList = ({contacts, addContact, updateContact, deleteContact}) => (
 
 )
 
-export default ContactList
+export default ContactsList
+
+ContactsList.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  addContact: PropTypes.func.isRequired,
+  updateContact: PropTypes.func.isRequired,
+  deleteContact: PropTypes.func.isRequired
+}

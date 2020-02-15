@@ -1,13 +1,12 @@
 import { Link, Component } from 'react-router-dom'
 import React from 'react'
 import uuid from 'uuid/v4'
+import PropTypes from 'prop-types';
 
 
 class ContactNew extends React.Component {
   constructor () {
     super ()
-
-    // const generateId = () => Math.round(Math.random() * 100000000);
 
     this.state = {
       id: uuid(),
@@ -52,7 +51,7 @@ class ContactNew extends React.Component {
         <br/>
 
         <label>Email</label>
-        <input type='text' className='form-control'onChange={event =>
+        <input type='email' className='form-control'onChange={event =>
           this.setState({ email: event.target.value })
         }/>
 
@@ -77,3 +76,10 @@ class ContactNew extends React.Component {
 }
 
 export default ContactNew
+
+// ContactNew.propTypes = {
+//   contacts: PropTypes.array.isRequired,
+//   addContact: PropTypes.func.isRequired,
+//   updateContact: PropTypes.func.isRequired,
+//   deleteContact: PropTypes.func.isRequired
+// }

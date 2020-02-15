@@ -1,6 +1,15 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
+  background: url("https://en.wikipedia.org/wiki/Rolodex#/media/File:Rolodex.agr.jpg");
+}
+
+/* .addcontact{
+  float:right;
+} */
+
+.contacttitle{
+  font-size: 24pt;
 }
