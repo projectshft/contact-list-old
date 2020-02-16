@@ -33,7 +33,6 @@ export default function NewContact(props) {
 	return (
       <div>
         <form onSubmit={handleSubmit}>
-	        <label>Name</label>
 			<input
 				type="text"
 				name="name"
@@ -42,21 +41,17 @@ export default function NewContact(props) {
 				onChange={handleInputChange}
 				required
 			/>
-
 	        <br/>
-	        <label>Phone</label>
 			<input
 				type="text"
 				name="phone"
 				className='new-contact'
-				placeholder="Enter 10 digits phone number"
+				placeholder="Enter phone number"
 				onChange={handleInputChange}
 				pattern="^\d{3}\d{3}\d{4}$"
 				required
 			/>
 	        <br/>
-
-	        <label>Email</label>
 			<input
 				type="text"
 				name="email"
@@ -66,8 +61,6 @@ export default function NewContact(props) {
 				pattern="^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$"
 				required
 			/>
-
-	        <label>Photo</label>
 			<input
 				type="text"
 				name="photo"

@@ -47,7 +47,7 @@ export default function UpdateContactInfo(props) {
 			<input
 				type="text"
 				name="name"
-				className="input"
+				className='new-contact'
 				value={contact.name}
 				onChange={handleInputChange}
 				required
@@ -59,6 +59,7 @@ export default function UpdateContactInfo(props) {
 			<input
 				type="text"
 				name="phone"
+				className='new-contact'
 				value={contact.phone}
 				onChange={handleInputChange}
 				required
@@ -70,7 +71,7 @@ export default function UpdateContactInfo(props) {
 			<input
 				type="text"
 				name="email"
-				className="input"
+				className='new-contact'
 				value={contact.email}
 				onChange={handleInputChange}
 				required
@@ -80,7 +81,7 @@ export default function UpdateContactInfo(props) {
 			<input
 				type="text"
 				name="photo"
-				className="input"
+				className='new-contact'
 				value={contact.photo}
 				onChange={handleInputChange}
 				required
@@ -93,6 +94,15 @@ export default function UpdateContactInfo(props) {
   )
 
 }
+
+	// UpdateContactInfo.propTypes = {
+	// 	name: PropTypes.string.isRequired,
+	// 	phone: PropTypes.string.isRequired,
+	// 	email: PropTypes.string.isRequired,
+	// 	photo: PropTypes.string.isRequired,
+	// 	handleInputChange: PropTypes.func.isRequired,
+	// 	handleSubmit: PropTypes.func.isRequired
+	// };
 // class UpdateContactInfo extends React.Component {
 //   render() {
 //     return (

@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { Switch, Route, Link } from 'react-router-dom'
+import 'typeface-roboto';
 import Contacts from './Contacts'
+import ContactList from './ContactList'
 
 export default function App(props) {
 
   return (
-    <div className="App">>
+    <div className="App">
     <Switch>
-      <Route path="/contacts" component={Contacts}></Route>
+      <Route path="/" render={() => (
+  			<Contacts/>
+  			)}/>
       </Switch>
     </div>
   )

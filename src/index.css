@@ -74,3 +74,11 @@ body {
   align-items: flex-start;
   padding-left: 35px;
 }
+
+#addBtn {
+  margin: 0px 0px 10px 0px;
+}
+
+input {
+  margin-top: 15px;
+}
