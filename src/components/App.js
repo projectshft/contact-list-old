@@ -9,7 +9,9 @@ export default function App(props) {
   return (
     <div className="App">
     <Switch>
-      <Route path="/" component={Contacts}></Route>
+      <Route path="/" render={() => (
+            <Contacts  />
+          )}/>
       </Switch>
     </div>
   )

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import faker from 'faker'
 import _ from 'lodash'
+import $ from 'jquery'
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
@@ -13,7 +14,7 @@ export default function ContactDetail(props) {
 
 	const contact = _.find(props.contacts, { id: props.contactId });
 
-	console.log(contact)
+	//console.log(contact)
 	//need to replace blank with + to pass 
 	//the string to the API to create an avanar with initials of the contact
 	const replacedStr = (name, character) => {
@@ -30,7 +31,7 @@ export default function ContactDetail(props) {
 	  },
 	}));
 
-	const classes = useStyles();
+	const classes = useStyles()
 
     return (
     	<div>
@@ -48,17 +49,14 @@ export default function ContactDetail(props) {
 				</div>
 				<div>
 				<ButtonGroup size="small" aria-label="small outlined button group">
-					<Link to={`/contacts/${contact.id}/update`}>
+					<Link to={`/contacts/${contact.id}/update`} style={{ textDecoration: 'none'}}>
 						<Button>Edit</Button>
-					</Link>
-					<Link to={`/contacts/${contact.id}/`}>
-						<Button>Delete</Button>
 					</Link>
 				</ButtonGroup>
 				</div>
 			</div>
 			<Link to='/contacts' style={{ textDecoration: 'none' }}>
-				<Button variant="outlined" className="backToList" style={{ marginTop: '10px'}} disableElevation >Back</Button>
+				<Button variant="outlined" className="backToList" style={{ marginTop: '10px'}} >Back</Button>
 			</Link>
 		</div>
     )

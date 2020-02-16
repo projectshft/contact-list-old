@@ -29,7 +29,7 @@ export default function UpdateContactInfo(props) {
 		console.log('submit clicked')
 		console.log('from handleSubmit contact: ', contact)
 		if (!contact) return;
-		props.updateContacts(contact)
+		props.updateContact(contact)
 		props.history.push('/contacts')
 	}
 

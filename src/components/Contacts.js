@@ -19,7 +19,8 @@ export default function Contacts(props) {
 
 	const [contacts, setContacts] = useState(sample);
 
-  const updateContacts = contact => {
+  //update contact just edited and passed to updateContacts function from update page
+  const updateContact = contact => {
     const newContacts = contacts.map((c) => {
       if (contact.id == c.id) {
         c = contact;
@@ -29,22 +30,30 @@ export default function Contacts(props) {
     })
     setContacts(newContacts);
   }
+    //remove contact passed to the deleteContact by checking the id first from the contacts list 
+  const deleteContact = id => {
+    const newContacts = contacts.filter(item => item.id !== id);
+    setContacts(newContacts);
+  }
 
 	return (
   	<div>
 
   	    <Switch>
+          <Route exact path='/' render={() => (
+        <ContactList contacts={contacts} deleteContact={deleteContact}/>
+        )}/>
   	      <Route path="/contacts/add" render={(routerProps) => (
   			<NewContact  contacts={contacts} history={routerProps.history} />
   			)}/>
   	      <Route path="/contacts/:id/update" render={(routerProps) => (
-        <UpdateContactInfo  contacts={contacts} contactId={routerProps.match.params.id} updateContacts={updateContacts} history={routerProps.history} />
+        <UpdateContactInfo  contacts={contacts} contactId={routerProps.match.params.id} updateContact={updateContact} history={routerProps.history} />
         )}/>
   	      <Route path="/contacts/:id" render={(routerProps) => (
-            <ContactDetail  contactId={routerProps.match.params.id} contacts={contacts} />
+            <ContactDetail  contactId={routerProps.match.params.id} contacts={contacts} deleteContact={deleteContact} history={routerProps.history} />
             )}/>
   	      <Route path='/contacts' render={() => (
-  			<ContactList contacts={contacts} />
+  			<ContactList contacts={contacts} deleteContact={deleteContact}/>
   			)}/>
   	    </Switch>
 
