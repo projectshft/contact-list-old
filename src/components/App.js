@@ -1,20 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from 'react-router-dom'
+import React from 'react';
 
-class App extends Component {
+
+class App extends React.Component {
+  constructor () {
+    super()
+
+    this.state = {
+      contacts: [
+          { name: 'Pam Halpert', phone: 8582164505, email: 'pamhalpert@dundermifflin.com', image: 'https://images-cdn.9gag.com/photo/azXy2QK_460s.jpg', key: 88199}
+        ]
+      }
+    }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route path='/contacts' render={() => (
+            <ContactsList addContact={this.addContact} contacts={this.state.contacts} updateContact={this.updateContact} removeContact={this.removeContact}/>
+          )}/>
+        </Switch>
       </div>
-    );
+    )
   }
 }
 
