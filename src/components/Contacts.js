@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import React from 'react';
+import PropTypes from 'prop-types'
 
 const Contacts = ({contacts, addContact, updateContact, removeContact}) => (
     <div className="text-center">
@@ -26,5 +27,18 @@ const Contacts = ({contacts, addContact, updateContact, removeContact}) => (
       <Link to='./contacts/new'><button type="button" className="btn btn-info">Add Contact</button></Link>
     </div>
   )
+
+  Contacts.propTypes = {
+    conact: PropTypes.shape({
+      key: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      phone: PropTypes.number.isRequired,
+      email: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired
+    }),
+    contacts: PropTypes.array.isRequired,
+    removeContact: PropTypes.func.isRequired,
+    contactKey: PropTypes.number
+  };
 
 export default Contacts

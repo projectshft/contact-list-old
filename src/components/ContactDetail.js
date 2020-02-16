@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 import _ from 'lodash'
+import PropTypes from 'prop-types'
 
 const ContactDetail = ({contactKey, contacts}) => {
   const contact = _.find(contacts, { key: contactKey });
@@ -29,5 +30,18 @@ console.log(contact)
     </div>
   )
 }
+
+ContactDetail.propTypes = {
+  conact: PropTypes.shape({
+    key: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    phone: PropTypes.number.isRequired,
+    email: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired
+  }),
+  contacts: PropTypes.array.isRequired,
+  contactKey: PropTypes.number
+};
+
 
 export default ContactDetail

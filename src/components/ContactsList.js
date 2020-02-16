@@ -30,4 +30,19 @@ const ContactsList = ({contacts, addContact, updateContact, removeContact}) => (
 
 )
 
+ContactsList.propTypes = {
+  conact: PropTypes.shape({
+    key: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    phone: PropTypes.number.isRequired,
+    email: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired
+  }),
+  contacts: PropTypes.array.isRequired,
+  addContact: PropTypes.func.isRequired,
+  updateContact: PropTypes.func.isRequired,
+  removeContact: PropTypes.func.isRequired,
+  contactKey: PropTypes.number
+};
+
 export default ContactsList

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import React from 'react';
+import PropTypes from 'prop-types'
 
 class NewContact extends React.Component {
   constructor () {
@@ -62,5 +63,18 @@ class NewContact extends React.Component {
     )
   }
 }
+
+NewContact.propTypes = {
+  conact: PropTypes.shape({
+    key: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    phone: PropTypes.number.isRequired,
+    email: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired
+  }),
+  contacts: PropTypes.array.isRequired,
+  addContact: PropTypes.func.isRequired,
+  contactKey: PropTypes.number
+};
 
 export default NewContact
