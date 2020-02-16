@@ -6,9 +6,9 @@ body {
   background: url("https://en.wikipedia.org/wiki/Rolodex#/media/File:Rolodex.agr.jpg");
 }
 
-/* .addcontact{
-  float:right;
-} */
+.form{
+  margin-top:30px;
+}
 
 .contacttitle{
   font-size: 24pt;

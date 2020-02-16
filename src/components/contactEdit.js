@@ -52,44 +52,51 @@ class ContactEdit extends React.Component {
 
   render () {
     return (
-      <div>
-        <form>
-        <label>Name</label>
-        <input type='text' value={this.state.name} className='form-control'onChange={event =>
-          this.setState({ name: event.target.value })
-        }/>
-
-        <br/>
-
-        <label>Image_url</label>
-        <input type='text' value={this.state.image_url} className='form-control'onChange={event =>
-          this.setState({ image_url: event.target.value})
-        }/>
-
-        <br/>
-
-        <label>Email</label>
-        <input type='text' value={this.state.email} className='form-control'onChange={event =>
-          this.setState({ email: event.target.value })
-        }/>
-        <br/>
-
-        <label>Phone Number </label>
-        <input type='text' value={this.state.phone} className='form-control'onChange={event =>
-          this.setState({ phone: parseInt(event.target.value, 10) })
-        }/>
-
-        <br/>
+    <div>
+      <form className="col-md-8 needs-validation" onSubmit={this.handleSubmitContactClick}>
 
 
-        <button type="button" className = "btn-primary" onClick={this.handleSubmitContactClick}>Submit</button>
-        </form>
+      <label>Name</label>
+      <input required type='text' className='form-control'value={this.state.name} onChange={event =>
+        this.setState({ name: event.target.value })
+      }/>
 
-        <br/>
+      <br/>
 
-        <Link to='/contacts'>Back to Contact List</Link>
-      </div>
-    )
+      <label>Image_url</label>
+      <input required type='text' className='form-control'onChange={event =>
+        this.setState({ image_url: event.target.value })
+      }/>
+
+      <br/>
+
+      <label>Email</label>
+      <input required type='email' className='form-control'onChange={event =>
+        this.setState({ email: event.target.value })
+      }/>
+
+      <br/>
+
+      <label>Phone Number</label>
+      <input required type='text' pattern="[0-9]*" className='form-control' onChange={event =>
+        this.setState({ phone: event.target.value })
+      }/>
+      <small id="phoneHelp" className="form-text text-muted">
+                Please enter numerical values
+                </small>
+
+
+      <br/>
+
+      <button type="submit" className="btn btn-primary">Submit</button>
+      </form>
+
+      <br/>
+
+      <Link to='/contacts'>Back to Contact List</Link>
+    </div>
+
+  )
   }
 
 }
