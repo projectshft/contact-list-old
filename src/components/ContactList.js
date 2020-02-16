@@ -1,22 +1,24 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 
-const ContactList = ({contacts}) => (
+const ContactList = ({contacts, deleteContact}) => (
   <div>
-    <ul>
+    <table>
+    <tbody>
       {
         contacts.map(c => (
-          <li key={c.id}>
-            <Link to={`/contact/${c.id}`}>{c.name }</Link>
+          <tr key={c.id}>
+            <td><Link to={`/contact/${c.id}`}>{c.name }</Link></td>
          
-            <button className='edit'>Edit</button>
+            <td><Link to ={`/contact/${c.id}/edit`}><button>Edit</button></Link></td>
             
-            <button className='delete'>Delete</button>
+            <td><button onClick={() => deleteContact(c.id)}>Delete</button></td>
             
-          </li>
+          </tr>
         ))
       }
-    </ul>
+    </tbody>
+    </table>
   </div>
 )
 

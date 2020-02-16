@@ -13,7 +13,7 @@ const Contact = ({contactId, contacts}) => {
       <h1>{contact.name}</h1>
       <h2>Phone Number: {contact.phone}</h2>
       <h2>Email: {contact.email}</h2>
-      <h2>Image: <img src={contact.url}></img></h2>
+      <div><h2>Image: </h2><img src={contact.imageURL} width='300px' height='300px' alt='profile pic'></img></div>
       <Link to='/contact'>Back</Link>
     </div>
   )

@@ -8,9 +8,9 @@ class ContactNew extends React.Component {
     this.state = {
       id: '',
       name: '',
-      phone: '',
-      email: '',
-      imageURL: ''
+      phone: 'N/A',
+      email: 'N/A',
+      imageURL: 'https://avatarfiles.alphacoders.com/151/151212.jpg'
     }
 
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
@@ -33,35 +33,40 @@ class ContactNew extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='row'>
         <form>
-        <label>Name</label>
-        <input type='text' className='form-control'onChange={event =>
+        <label >Name:</label>
+        <input className='form-control' type='text' onChange={event =>
           this.setState({ name: event.target.value })
         }/>
 
         <br/>
 
-        <label>Phone Number</label>
+        <label>Phone Number:</label>
         <input type='text' className='form-control'onChange={event =>
           this.setState({ phone: parseInt(event.target.value, 10) })
         }/>
 
         <br/>
 
-        <label>Email</label>
+        <label>Email:</label>
         <input type='text' className='form-control'onChange={event =>
           this.setState({ email: event.target.value })
         }/>
 
-        <label>Image URL</label>
+        <label>Image URL:</label>
         <input type='text' className='form-control'onChange={event =>
           this.setState({ imageURL: event.target.value })
         }/>
+        <br></br>
 
         <button type="button" onClick={this.handleSubmitContactClick}>Submit</button>
-        </form>
+
+        <br></br>
+        <br></br>
+    
         <Link to='/contact'>Back</Link>
+        </form>
       </div>
     )
   }
