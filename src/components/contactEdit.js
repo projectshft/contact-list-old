@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
-import uuid from 'uuid/v4'
 import PropTypes from 'prop-types';
 
 
@@ -64,21 +63,21 @@ class ContactEdit extends React.Component {
       <br/>
 
       <label>Image_url</label>
-      <input required type='text' className='form-control'onChange={event =>
+      <input required type='text' className='form-control' value={this.state.image_url} onChange={event =>
         this.setState({ image_url: event.target.value })
       }/>
 
       <br/>
 
       <label>Email</label>
-      <input required type='email' className='form-control'onChange={event =>
+      <input required type='email' className='form-control' value={this.state.email} onChange={event =>
         this.setState({ email: event.target.value })
       }/>
 
       <br/>
 
       <label>Phone Number</label>
-      <input required type='text' pattern="[0-9]*" className='form-control' onChange={event =>
+      <input required type='text' pattern="[0-9]*" className='form-control' value={this.state.phone}onChange={event =>
         this.setState({ phone: event.target.value })
       }/>
       <small id="phoneHelp" className="form-text text-muted">

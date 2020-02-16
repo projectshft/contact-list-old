@@ -1,9 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Source Sans Pro', sans-serif;
-  text-align: center;
-  background: url("https://en.wikipedia.org/wiki/Rolodex#/media/File:Rolodex.agr.jpg");
+  font-family: 'Lato', sans-serif;
 }
 
 .form{
@@ -12,4 +10,9 @@ body {
 
 .contacttitle{
   font-size: 24pt;
+}
+
+.contactimage{
+  height: auto;
+  width: auto;
 }

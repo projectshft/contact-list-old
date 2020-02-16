@@ -4,17 +4,16 @@ import Home from './components/home';
 import ContactsList from './components/contactsList'
 import uuid from 'uuid/v4'
 
-
-
+//the main App comoponent with state
 class App extends React.Component {
   constructor () {
     super()
 
     this.state = {
     contacts: [
-      { id: uuid(), name: "Rachel", image_url: "", email:'rfischoff@gmail.com', phone:'919.225.655'},
-      { id: uuid(), name: "Katy", image_url: "", email:'katygrahamm@gmail.com', phone:'858.218.4605' },
-      { id: uuid(), name: "Paul", image_url: "", email:'paulwwstrom@gmail.com', phone:'214.642.1596' }
+      { id: uuid(), name: "Bette Porter", image_url: "https://d.newsweek.com/en/full/1551134/where-are-l-word-original-cast-members-now.webp?w=737&f=5ead8c86e76979240be7c1028060e955", email:'bette_porter@gmail.com', phone:'5555555555'},
+      { id: uuid(), name: "Alice Pieszecki", image_url: "http://cdn03.cdn.justjared.com/wp-content/uploads/2019/12/lword-sonep/the-l-word-generation-q-cast-celebrate-season-premiere-22.jpg", email:'Alice@AlicePieszecki.com', phone:'8582184605' },
+      { id: uuid(), name: "Shane McCuthcheon", image_url: "http://cdn04.cdn.justjared.com/wp-content/uploads/2019/12/lword-sonep/the-l-word-generation-q-cast-celebrate-season-premiere-19.jpg", email:'thebestinLA@gmail.com', phone:'2146421596' }
     ]
   }
 
@@ -29,9 +28,8 @@ class App extends React.Component {
 
   updateContact (contact) {
     const newContacts = this.state.contacts.map((c) => {
-      if (contact.id === c.id) {
-        c = contact;
-      }
+      if (contact.id === c.id)
+      {c = contact;}
 
       return c;
     });
@@ -41,13 +39,9 @@ class App extends React.Component {
 
   deleteContact (contactId) {
 
-    console.log('i click!');
-      // const filteredArray = this.state.contacts.filter(item => item !== e.target.value)
-      //  this.setState({contacts: filteredArray});
-
     const items = this.state.contacts.filter(item => item.id !== contactId);
     this.setState({ contacts: items });
-         }
+    }
 
 
   render() {
@@ -68,8 +62,3 @@ class App extends React.Component {
 }
 
 export default App
-
-// size: PropTypes.oneOfType([
-//   PropTypes.string,
-//   PropTypes.number
-// ]),

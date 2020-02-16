@@ -2,7 +2,7 @@ import { Switch, Route } from 'react-router-dom'
 import React from 'react';
 import Contacts from './contacts'
 import ContactNew from './contactNew'
-import ContactInformation from './contactInformation'
+import ContactDetail from './contactDetail'
 import ContactEdit from './contactEdit'
 import 'bootstrap/dist/css/bootstrap.css';
 import PropTypes from 'prop-types';
@@ -22,11 +22,11 @@ const ContactsList = ({contacts, addContact, updateContact, deleteContact}) => (
               )}/>
 
         <Route path='/contacts/:id' render={(routerProps) => (
-          <ContactInformation contactId={(routerProps.match.params.id)} contacts={contacts} />
+          <ContactDetail contactId={(routerProps.match.params.id)} contacts={contacts} />
           )}/>
 
           <Route path ='/contacts' render={() => (
-            <Contacts contacts ={contacts} deleteContact={deleteContact} />
+            <Contacts contacts ={contacts} deleteContact={deleteContact} addContact={addContact} updateContact={updateContact} />
           )}/>
 
       </Switch>
