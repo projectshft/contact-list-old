@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import Button from '@material-ui/core/Button'
 
 
 export default function UpdateContactInfo(props) {
 
 	const [contact, setContactDetails] = useState({});
-	console.log(props.contactId)
 	useEffect(() => {
 		const findContactById = (id) => {
 		  		return props.contacts.filter((contact) => {
@@ -13,22 +14,17 @@ export default function UpdateContactInfo(props) {
 		    return contact.id === id
 		  });
 		};
-
+		//got the contact to edit and set the state to the contact
 		const currentContact = findContactById(props.contactId)[0];
-		console.log('Current Contact after find: ', currentContact)
 		setContactDetails(currentContact);
 
 		
-	}, [contact]);
+	}, [0]);
 
-	
-	console.log('Contact info: ', contact)
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		console.log('submit clicked')
-		console.log('from handleSubmit contact: ', contact)
-		if (!contact) return;
+		//update contact info and return to list of contacts page
 		props.updateContact(contact)
 		props.history.push('/contacts')
 	}
@@ -41,68 +37,62 @@ export default function UpdateContactInfo(props) {
 
   return (
   	<div>
-  	Update Contact Form
+  	    <Link to='/contacts' style={{ textDecoration: 'none' }}>
+      		<Button variant="outlined" style={{ marginTop: '10px', float: 'right'}}>Back</Button>
+      	</Link>
         <form onSubmit={handleSubmit}>
-	        <label>Name</label>
 			<input
 				type="text"
 				name="name"
 				className='new-contact'
-				value={contact.name}
+				placeholder={contact.name}
 				onChange={handleInputChange}
-				required
 			/>
 
 	        <br/>
 
-	        <label>Phone</label>
 			<input
 				type="text"
 				name="phone"
 				className='new-contact'
-				value={contact.phone}
+				placeholder={contact.phone}
 				onChange={handleInputChange}
-				required
 			/>
 
 	        <br/>
 
-	        <label>Email</label>
 			<input
 				type="text"
 				name="email"
 				className='new-contact'
-				value={contact.email}
+				placeholder={contact.email}
 				onChange={handleInputChange}
-				required
 			/>
 
-	        <label>Photo</label>
 			<input
 				type="text"
 				name="photo"
 				className='new-contact'
-				value={contact.photo}
+				placeholder='image'
 				onChange={handleInputChange}
-				required
 			/>
-	        <button type="submit" >Submit</button>
+	        <Button variant="outlined" type="submit" style={{ marginTop: '10px'}}>Update</Button>
         </form>
-
-        <Link to='/contacts'><button>Back</button></Link>
   	</div>
   )
 
+	UpdateContactInfo.propTypes = {
+		name: PropTypes.string.isRequired,
+		phone: PropTypes.string.isRequired,
+		email: PropTypes.string.isRequired,
+		photo: PropTypes.string.isRequired,
+		handleInputChange: PropTypes.func.isRequired,
+		handleSubmit: PropTypes.func.isRequired
+	};
+
 }
 
-	// UpdateContactInfo.propTypes = {
-	// 	name: PropTypes.string.isRequired,
-	// 	phone: PropTypes.string.isRequired,
-	// 	email: PropTypes.string.isRequired,
-	// 	photo: PropTypes.string.isRequired,
-	// 	handleInputChange: PropTypes.func.isRequired,
-	// 	handleSubmit: PropTypes.func.isRequired
-	// };
+
 // class UpdateContactInfo extends React.Component {
 //   render() {
 //     return (

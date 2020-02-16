@@ -15,7 +15,7 @@ export default function NewContact(props) {
 		e.preventDefault()
 
 		if (!contact) return;
-
+		//add new contact and return to the list of contacts page
 		addContact(contact)
 		props.history.push('/contacts')
 	}
