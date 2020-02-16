@@ -4,8 +4,8 @@ import AllContacts from './AllContacts';
 import _ from 'lodash'
 import App from '../App';
 
-const Home = ({ contacts, deleteContact }) => {
-   
+const Home = ({ contacts, deleteContact, editContact }) => {
+
     return (
         <div>
             <div className="d-flex align-items-center justify-content-center ">
@@ -17,12 +17,14 @@ const Home = ({ contacts, deleteContact }) => {
                     {
                         contacts.map(p => (
                             <ul className="d-flex justify-content-center " key={p.id}>
-                                <div className="card col-7 ">
+                                <div className="card shadow col-6 m-2"  >
                                     <div className="card-body d-inline-block ">
-                                        name -   <Link to={`/Contact/${p.id}`}>{p.name}</Link>,
-                                        <div className="d-inline-block float-right">
-                                            <button className="btn-sm badge-success m-2 justify-content-lg-end">edit</button>
-                                            <button className="btn-sm badge-warning m-2 justify-content-lg-end" onClick={() => deleteContact(p.id)}>delete</button>
+                                        <Link to={`/Contact/${p.id}`} style={{ color: '#000000' }}><img className='' src={p.picture} /> - {p.name}</Link>
+                                            <div className="d-inline-block float-right">
+                                            <Link to={`/edit/${p.id}`}>
+                                                <button className="btn-sm btn-outline-success m-2 justify-content-lg-end font-weight-bold" onClick={() => editContact(p.id)} >Edit</button>
+                                            </Link>
+                                            <button className="btn-sm btn-outline-danger m-2 justify-content-lg-end font-weight-bold" onClick={() => deleteContact(p.id)}>Delete</button>
                                         </div>
                                     </div>
                                 </div>

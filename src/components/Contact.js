@@ -8,16 +8,18 @@ const Contact = ({ contactId, contacts }) => {
     console.log(contact)
 
       if (!contact) {
-        return <div>this contact was not found</div>
+        return <div>this contact was not found !</div>
       }
 
     return (
-        <div>
-            <h1>{contact.name} <br/>(phone number: {contact.phone})</h1>
-            <h2>Email: {contact.email}</h2>
+        <div className="card shadow col-7 bg-black rounded m-2">
+            <h4>Name:  {contact.name} <br/>phone number: {contact.phone}</h4>
+            <h4>Email: {contact.email}</h4><br/>
+            <h4>Picture: <img src={contact.picture} width="120" height="120" /></h4>
             <Link to='/'>Back</Link>
         </div>
     )
 }
+
 
 export default Contact;
