@@ -33,7 +33,7 @@ class NewContact extends React.Component {
       alert('Please enter a valid email')
     } else if (this.state.email === '') {
       alert('Email is a required field')
-    } else if (isNaN(this.state.phone) || this.state.phone.toString().length != 10) {
+    } else if (isNaN(this.state.phone) || this.state.phone.toString().length !== 10) {
       alert('Please enter a valid phone number')
     } else if (this.state.phone === ''){
       alert('Phone number is a required field')
@@ -70,7 +70,7 @@ class NewContact extends React.Component {
             this.setState({ image: event.target.value })}/>
           <br></br>
 
-          <button type="button" type="submit" className="btn btn-info" onClick={this.handleSubmitContactClick}>Submit</button>
+          <button type="button" className="btn btn-info" onClick={this.handleSubmitContactClick}>Submit</button>
           <br></br>
           <Link to='/contacts' className="text-info">Back to Contacts</Link>
       </form>
@@ -80,7 +80,7 @@ class NewContact extends React.Component {
 }
 
 NewContact.propTypes = {
-  conact: PropTypes.shape({
+  contact: PropTypes.shape({
     key: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     phone: PropTypes.number.isRequired,

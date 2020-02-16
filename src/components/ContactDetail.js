@@ -32,7 +32,7 @@ console.log(contact)
 }
 
 ContactDetail.propTypes = {
-  conact: PropTypes.shape({
+  contact: PropTypes.shape({
     key: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     phone: PropTypes.number.isRequired,

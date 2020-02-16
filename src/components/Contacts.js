@@ -29,7 +29,7 @@ const Contacts = ({contacts, addContact, updateContact, removeContact}) => (
   )
 
   Contacts.propTypes = {
-    conact: PropTypes.shape({
+    contact: PropTypes.shape({
       key: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       phone: PropTypes.number.isRequired,

@@ -2,8 +2,6 @@ import { Switch, Route } from 'react-router-dom'
 import React from 'react';
 import Home from './Home.js'
 import ContactsList from './ContactsList.js'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import AppCSS from '../App.css';
 
 
 class App extends React.Component {
