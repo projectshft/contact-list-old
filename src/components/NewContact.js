@@ -25,8 +25,23 @@ class NewContact extends React.Component {
       image: this.state.image
     };
 
-    this.props.addContact(newContact)
-    this.props.history.push('/contacts')
+    if(this.state.name ==='') {
+      alert('Name is a required field')
+    } else if(!isNaN(this.state.name)) {
+      alert('Name cannot be a number')
+    } else if (!this.state.email.includes('@')){
+      alert('Please enter a valid email')
+    } else if (this.state.email === '') {
+      alert('Email is a required field')
+    } else if (isNaN(this.state.phone) || this.state.phone.toString().length != 10) {
+      alert('Please enter a valid phone number')
+    } else if (this.state.phone === ''){
+      alert('Phone number is a required field')
+    } else {
+
+      this.props.addContact(newContact)
+      this.props.history.push('/contacts')
+    }
   }
 
   render() {

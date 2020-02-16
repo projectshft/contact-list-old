@@ -20,6 +20,9 @@ class App extends React.Component {
           { name: 'Phyllis Vance', phone: 9191107384, email: 'phyllisvance@dundermifflin.com', image: 'https://peopledotcom.files.wordpress.com/2019/10/phyllis-smith.jpg?w=2700&h=1800', key: 88195}
         ]
       }
+      this.addContact = this.addContact.bind(this)
+      this.updateContact = this.updateContact.bind(this)
+      this.removeContact = this.removeContact.bind(this)
     }
 
   addContact (contact) {
