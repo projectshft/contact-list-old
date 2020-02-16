@@ -17,15 +17,21 @@ class ContactEdit extends React.Component {
     this.componentDidMount = this.componentDidMount.bind(this)
   }
 
+  // To prevent any side effects in the constructor, use the componentDidMount function
   componentDidMount () {
+    // Find the contact key by creating a function that takes in key
     const findContactByKey = (key) => {
+      // The function returns the filter method on the contacts array
       return this.props.contacts.filter((contact) => {
+        // Filter out and return the contact key that matches the key passed in
         return contact.key === key
       });
     };
-
+    // Set the current contact to the invoked findContactByKey function and pass in
+    // the contactKey of the first indexed item in the contacts array
     const currentContact = findContactByKey(this.props.contactKey)[0];
 
+    // Set the state to the currentContact's information
     this.setState({
       name: currentContact.name,
       phone: currentContact.phone,
@@ -36,6 +42,7 @@ class ContactEdit extends React.Component {
   }
 
   handleSubmitContactClick () {
+    // Function will be invoked on submit button click
     const newContact = {
       name: this.state.name,
       phone: this.state.phone,
@@ -44,6 +51,7 @@ class ContactEdit extends React.Component {
       key: this.state.key
     };
 
+    // Check the validity of the input and empty fields
     if(this.state.name ==='') {
       alert('Name is a required field')
     } else if(!isNaN(this.state.name)) {
@@ -57,7 +65,9 @@ class ContactEdit extends React.Component {
     } else if (this.state.phone === ''){
       alert('Phone number is a required field')
     } else {
+      // If the input is valid invoke the update contact function and pass in the new contact
       this.props.updateContact(newContact)
+      // Bring the user back to the contacts page on submit
       this.props.history.push('/contacts')
     }
   }
@@ -103,6 +113,7 @@ class ContactEdit extends React.Component {
   }
 }
 
+// Add proptypes to benefit myself and other devs working on this code in the future
 ContactEdit.propTypes = {
   contact: PropTypes.shape({
     key: PropTypes.number.isRequired,

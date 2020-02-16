@@ -17,14 +17,14 @@ class NewContact extends React.Component {
   }
 
   handleSubmitContactClick () {
-
+    // Function will be invoked on submit button click
     const newContact = {
       name: this.state.name,
       phone: this.state.phone,
       email: this.state.email,
       image: this.state.image
     };
-
+    // Check the validity of the input and empty fields
     if(this.state.name ==='') {
       alert('Name is a required field')
     } else if(!isNaN(this.state.name)) {
@@ -38,8 +38,9 @@ class NewContact extends React.Component {
     } else if (this.state.phone === ''){
       alert('Phone number is a required field')
     } else {
-
+      // If the input is valid invoke the add contact function and pass in the new contact
       this.props.addContact(newContact)
+      // Bring the user back to the contacts page on submit
       this.props.history.push('/contacts')
     }
   }
@@ -79,6 +80,7 @@ class NewContact extends React.Component {
   }
 }
 
+// Add proptypes to benefit myself and other devs working on this code in the future
 NewContact.propTypes = {
   contact: PropTypes.shape({
     key: PropTypes.number.isRequired,
