@@ -12,6 +12,33 @@ class App extends React.Component {
         ]
       }
     }
+    addContact (contact) {
+    const generateKey = () => Math.round(Math.random() * 100000000)
+    contact['key'] = generateKey();
+    this.setState({contacts: this.state.contacts.concat([contact])});
+  }
+
+  updateContact (contact) {
+    const newContacts = this.state.contacts.map((c) => {
+      if (contact.key === c.key) {
+        c = contact;
+      }
+
+   return c;
+  });
+
+    this.setState({contacts: newContacts});
+  }
+
+  removeContact(key) {
+    const removeContact = this.state.contacts.filter((c) => {
+      if(c.key !== key) {
+        return c
+      }
+    })
+    this.setState({contacts: removeContact})
+  }
+  
   render() {
     return (
       <div>
