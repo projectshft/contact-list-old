@@ -1,6 +1,9 @@
-import { Link } from 'react-router-dom';
-import React from 'react';
-import PropTypes from 'prop-types';
+1. need to proptype each section for contacts = object
+2. Need to figure out edge cases....no empty fields and letters vs numbers. This should help:
+    https://stackoverflow.com/questions/41296668/reactjs-form-input-validation
+3. Figure out how to do css and bootstrap on react
+
+
 
 class NewContact extends React.Component {
   constructor () {
@@ -17,13 +20,15 @@ class NewContact extends React.Component {
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
   }
 
+  
+
   handleSubmitContactClick () {
     const contact = this.state
-    if(!contact.name || !contact.phoneNumber || !contact.email || !contact.img_url){
-      //what is empty
-
-    } else {
+    if(contact.name || contact.phoneNumber || contact.email || contact.img_url === ""){
+      console.log("empty")
+    } else if(contact.name || contact.phoneNumber || contact.email || contact.img_url !== "") {
       const generateId = () => Math.round(Math.random() * 100000000);
+    
       const newContact = {
         id: generateId(),
         name: this.state.name,
@@ -33,10 +38,12 @@ class NewContact extends React.Component {
       };
     
       this.props.addContact(newContact)
+      console.log('are we pushing back?')
       this.props.history.push('/contacts')
     }
   }
-    
+
+
 
   render () {
     return (
@@ -45,15 +52,15 @@ class NewContact extends React.Component {
           <div className="form-group">
             <label>Name</label>
             <input type="text" className="form-control" placeholder="Contact's Name" onChange={event =>
-            this.setState({ name: event.target.value })
-            } required/>
+              this.setState({ name: event.target.value })
+            }/>
           </div>
 
         <div className="form-group">
           <label>Phone Number</label>
           <input type="text" className="form-control" placeholder="Contact's Phone Number" onChange={event =>
             this.setState({ phoneNumber: event.target.value })
-          } required/>
+          }/>
         </div>
 
         <div className="form-group">
@@ -67,7 +74,7 @@ class NewContact extends React.Component {
         <label>Photo</label>
           <input type="text" className="form-control" placeholder="Contact's Photo" onChange={event =>
             this.setState({ img_url: event.target.value })
-          } required/>
+          }/>
         </div>
 
         <button type="submit" className="btn btn-primary" onClick={this.handleSubmitContactClick}>Submit</button>
