@@ -13,9 +13,6 @@ const ContactDetail = ({contactKey, contacts}) => {
     return <div>Sorry, but this contact doesn't exist</div>
   }
 
-// Check to ensure that the right contact is being clicked
-console.log(contact)
-
   // Render all of the clicked contact's information to the page
   return (
     <div className="col-md-7 offset-md-4">
