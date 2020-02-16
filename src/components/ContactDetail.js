@@ -29,3 +29,5 @@ console.log(contact)
     </div>
   )
 }
+
+export default ContactDetail

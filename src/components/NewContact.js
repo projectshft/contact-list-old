@@ -27,7 +27,6 @@ class NewContact extends React.Component {
     this.props.addContact(newContact)
     this.props.history.push('/contacts')
   }
-}
 
   render() {
     return (
@@ -63,3 +62,5 @@ class NewContact extends React.Component {
     )
   }
 }
+
+export default NewContact

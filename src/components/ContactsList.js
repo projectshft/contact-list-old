@@ -1,6 +1,10 @@
 import { Switch, Route } from 'react-router-dom'
 import React from 'react';
 import Contacts from './Contacts.js';
+import NewContact from './NewContact.js'
+import ContactDetail from './ContactDetail.js'
+import ContactEdit from './ContactEdit.js'
+import PropTypes from 'prop-types'
 
 const ContactsList = ({contacts, addContact, updateContact, removeContact}) => (
 
@@ -25,3 +29,5 @@ const ContactsList = ({contacts, addContact, updateContact, removeContact}) => (
  </Switch>
 
 )
+
+export default ContactsList
