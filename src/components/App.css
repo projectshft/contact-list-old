@@ -1,7 +1,12 @@
 .App {
   text-align: center;
+  display: inline-block;
 }
 
-p {
-  style: inline;
+.edit-tag {
+  font-size: small;
+}
+
+.delete-tag {
+  font-size: small;
 }

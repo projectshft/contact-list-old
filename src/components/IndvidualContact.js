@@ -15,6 +15,7 @@ const IndividualContact = ({contactId, contacts}) => {
       <h1>{contact.name}</h1>
       <h2>Phone Number: {contact.phoneNumber}</h2>
       <h2>Email: {contact.email}</h2>
+      <br />
       <img src={contact.img_url} />
       <br />
       <Link to='/contacts'>Back</Link>

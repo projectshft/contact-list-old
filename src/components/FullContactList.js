@@ -16,11 +16,11 @@ const FullContactList = ({contacts}) => (
       <div className="col-md-11 offset-md-1 d-flex mx-auto">
         <span>
         {contacts.map(c => (
-          <p className="text-capitalize contact" key={c.id}>
+          <h4 className="text-capitalize contact" key={c.id}>
             <Link to={`/contacts/${c.id}`}>{c.name}</Link>
-            <a className="mx-2">Edit</a>
-            <a>Remove</a>
-          </p>
+            <a className="mx-2 edit-tag">Edit</a>
+            <a className="delete-tag">Remove</a>
+          </h4>
         ))
         }
         </span>
