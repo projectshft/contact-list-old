@@ -30,7 +30,7 @@ class ContactEdit extends React.Component {
     // Set the current contact to the invoked findContactByKey function and pass in
     // the contactKey of the first indexed item in the contacts array
     const currentContact = findContactByKey(this.props.contactKey)[0];
-
+    console.log(currentContact)
     // Set the state to the currentContact's information
     this.setState({
       name: currentContact.name,
