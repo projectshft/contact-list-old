@@ -14,14 +14,15 @@ export default function ContactDetail(props) {
 
 	const contact = _.find(props.contacts, { id: props.contactId });
 
-	//console.log(contact)
 	//need to replace blank with + to pass 
-	//the string to the API to create an avanar with initials of the contact
+	//the string to the API to create an avatar with initials of the contact
 	const replacedStr = (name, character) => {
 		  return name.replace(/\s+/g, character);
 	}
-	let strNew = replacedStr(contact.name, '+');
 
+	let strNew = replacedStr(contact.name, '+');
+	
+	//use material-ui to style components
 	const useStyles = makeStyles(theme => ({
 	  margin: {
 	    margin: theme.spacing(1),

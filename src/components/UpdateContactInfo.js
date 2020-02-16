@@ -57,6 +57,7 @@ export default function UpdateContactInfo(props) {
 				className='new-contact'
 				placeholder={contact.phone}
 				onChange={handleInputChange}
+				pattern="^\d{3}\d{3}\d{4}$"
 			/>
 
 	        <br/>
@@ -67,6 +68,7 @@ export default function UpdateContactInfo(props) {
 				className='new-contact'
 				placeholder={contact.email}
 				onChange={handleInputChange}
+				pattern="^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$"
 			/>
 
 			<input

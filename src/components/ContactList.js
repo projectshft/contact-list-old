@@ -51,8 +51,8 @@ export default function ContactList(props) {
       { props.contacts.map(contact => {
           return (
             <Grid container spacing={3}>
-              <Grid item xs={10}>
-                <Paper className={classes.paper}>
+              <Grid item xs={11}>
+
                   <div className="contact-list">
                     <ContactDetail
                       key={contact.id}
@@ -60,10 +60,10 @@ export default function ContactList(props) {
                       contacts={props.contacts}
                     /> 
                   </div>
-                </Paper>
+
               </Grid>
-              <Grid item xs={2}>
-                <Button onClick={() => props.deleteContact(contact.id)} style={{ marginTop: '25px' }}>Delete</Button>
+              <Grid item xs={1}>
+                <Button onClick={() => props.deleteContact(contact.id)} style={{ marginTop: '16px' }}>Delete</Button>
               </Grid>
             </Grid>
           )

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Switch, Route, Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import faker from 'faker'
 import Button from '@material-ui/core/Button';
 import ContactDetail from './ContactDetail'
 import NewContact from './NewContact'
@@ -11,10 +10,9 @@ const uuidv4 = require('uuid/v4');
 
 export default function Contacts(props) {
   //sample data to start set to contacts
-  let image = faker.image.avatar();
   let sample = [
-      { id: uuidv4(), name: "Ben Blocker", phone: "444-333-2211", email: "test@gmail.com", photo: {image} },
-      { id: uuidv4(), name: "Tim Smith", phone: "444-333-2211", email: "test@gmail.com", photo: {image} },
+      { id: uuidv4(), name: "Ben Blocker", phone: "4443332211", email: "test@gmail.com", photo: 'image1' },
+      { id: uuidv4(), name: "Tim Smith", phone: "5557774422", email: "test2@gmail.com", photo: 'image2' },
    ]
 
 	const [contacts, setContacts] = useState(sample);
@@ -62,7 +60,8 @@ export default function Contacts(props) {
 
   Contacts.propTypes = {
     contacts: PropTypes.array.IsRequired,
-    updateContacts: PropTypes.func.IsRequired
+    updateContact: PropTypes.func.IsRequired,
+    deleteContact: PropTypes.func.IsRequired
   };
 };
 

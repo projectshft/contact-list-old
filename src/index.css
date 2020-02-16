@@ -11,16 +11,6 @@ body {
   padding-top: 50px;
 }
 
-.search-bar {
-  height: 35px;
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 18px;
-  padding: 0 10px;
-  box-sizing: border-box;
-}
-
 .new-contact {
   height: 35px;
   width: 100%;
@@ -37,7 +27,6 @@ body {
 
 .contact {
   list-style-type: none;
-  display: flex;
   display: flex;
   padding: 15px 0;
   border-bottom: 1px solid #ddd;
