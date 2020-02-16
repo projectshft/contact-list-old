@@ -47,8 +47,17 @@ body {
   border-top: 1px solid #ddd;
 }
 
-.contact h2 {
-  margin-top: 0;
+#contact-label {
+  margin: 0px 150px 0px 0px;
+}
+
+p {
+  line-height: .05em;
+}
+
+.inline { 
+  display: inline-block; 
+  margin:10px;
 }
 
 .contact .image-cropper {

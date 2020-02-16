@@ -3,7 +3,6 @@ import { Switch, Route, Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import faker from 'faker'
 import Button from '@material-ui/core/Button';
-import $ from 'jquery'
 import ContactDetail from './ContactDetail'
 import NewContact from './NewContact'
 import UpdateContactInfo from './UpdateContactInfo'
@@ -14,7 +13,7 @@ export default function Contacts(props) {
   //sample data to start set to contacts
   let image = faker.image.avatar();
   let sample = [
-      {  id: uuidv4(), name: "Ben Blocker", phone: "444-333-2211", email: "test@gmail.com", photo: {image} },
+      { id: uuidv4(), name: "Ben Blocker", phone: "444-333-2211", email: "test@gmail.com", photo: {image} },
       { id: uuidv4(), name: "Tim Smith", phone: "444-333-2211", email: "test@gmail.com", photo: {image} },
    ]
 
@@ -31,29 +30,8 @@ export default function Contacts(props) {
     setContacts(newContacts);
   }
 
-    useEffect(() => {
-    //hide back button on the list
-    $('.backToList').hide()
-  }, [])
-
 	return (
   	<div>
-
-    <div>
-    <h2>Contacts</h2>
-    <div id="addBtn"><Link to='/contacts/add'> <Button variant="outlined">Add Contact</Button></Link></div>
-      <div className="contact-list">
-        { contacts.map(contact => {
-          return (
-            <ContactDetail
-              key={contact.id}
-              contactId={contact.id} 
-              contacts={contacts}
-            />
-          )
-        })}   
-      </div>
-    </div>
 
   	    <Switch>
   	      <Route path="/contacts/add" render={(routerProps) => (

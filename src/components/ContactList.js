@@ -16,8 +16,10 @@ export default function ContactList(props) {
 
   return (
     <div>
-    <h2>Contacts</h2>
-    <div id="addBtn"><Link to='/contacts/add'> <Button variant="outlined">Add Contact</Button></Link></div>
+      <div className="contact-title">
+        <h2 id="contact-label" className="inline">Contacts</h2>
+        <div id="addBtn" className="inline"><Link to='/contacts/add' style={{ textDecoration: 'none' }}> <Button variant="outlined">Add Contact</Button></Link></div>
+      </div>
       <div className="contact-list">
         { props.contacts.map(contact => {
           return (
