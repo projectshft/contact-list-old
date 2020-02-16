@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
 
 const uuidv4 = require('uuid/v4')
 
@@ -32,6 +33,9 @@ export default function NewContact(props) {
 
 	return (
       <div>
+      	<Link to='/contacts' style={{ textDecoration: 'none' }}>
+      		<Button variant="outlined" style={{ marginTop: '10px', float: 'right'}}>Back</Button>
+      	</Link>
         <form onSubmit={handleSubmit}>
 			<input
 				type="text"
@@ -69,10 +73,8 @@ export default function NewContact(props) {
 				onChange={handleInputChange}
 				required
 			/>
-	        <button type="submit" >Submit</button>
+	        <Button variant="outlined" type="submit" style={{ marginTop: '10px'}}>Submit</Button>
         </form>
-
-        <Link to='/contacts'><button>Back</button></Link>
       </div>
   	);
 
