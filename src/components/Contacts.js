@@ -48,10 +48,11 @@ export default function Contacts(props) {
 
   	</div>
 	)
-};
 
-Contacts.propTypes = {
-  contacts: PropTypes.array
+  Contacts.propTypes = {
+    contacts: PropTypes.array.IsRequired,
+    updateContacts: PropTypes.func.IsRequired
+  };
 };
 
 // class Contacts extends React.Component {

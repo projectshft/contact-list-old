@@ -41,6 +41,7 @@ export default function UpdateContactInfo(props) {
 
   return (
   	<div>
+  	Update Contact Form
         <form onSubmit={handleSubmit}>
 	        <label>Name</label>
 			<input
@@ -87,7 +88,7 @@ export default function UpdateContactInfo(props) {
 	        <button type="submit" >Submit</button>
         </form>
 
-        <Link to='/contacts'>Contact List</Link>
+        <Link to='/contacts'><button>Back</button></Link>
   	</div>
   )
 

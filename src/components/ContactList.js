@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import ContactDetail from './ContactDetail'
 
 export default function ContactList(props) {
 
   return (
 
-      <div className="ui container items">
-
+      <div className="contact-list">
+Contacts List
         { props.contacts.map(contact => {
           return (
             <ContactDetail
@@ -18,7 +19,11 @@ export default function ContactList(props) {
           )
         })}   
             
-          <div><Link to='/contacts/add'>Add New Contact</Link></div>
+          <div><button><Link to='/contacts/add'>Add Contact</Link></button></div>
       </div>
   )
+
+  ContactList.propTypes = {
+    contact: PropTypes.object.IsRequired
+  };
 }

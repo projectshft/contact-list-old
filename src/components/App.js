@@ -5,8 +5,10 @@ import Contacts from './Contacts'
 export default function App(props) {
 
   return (
-    <div>
-      <Route path="/" component={Contacts}></Route>
+    <div className="App">>
+    <Switch>
+      <Route path="/contacts" component={Contacts}></Route>
+      </Switch>
     </div>
   )
 };

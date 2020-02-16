@@ -17,26 +17,29 @@ export default function ContactDetail(props) {
 	let strNew = replacedStr(contact.name, '+');
 
     return (
-		<div className="comment" id={contact.id}>
-			<div className="ui tiny image">
+		<div className="contact" id={contact.id}>
+			<div className="image-cropper">
 				<Link to={`/contacts/${contact.id}`}>
 					{/*<img alt="avatar" src={faker.image.avatar()} />*/}
 					<img src={`https://ui-avatars.com/api/?rounded=true&name=${strNew}`} />
 				</Link>
 			</div>
-			<div className="content">
+			<div className="contact-info">
 			  <Link to={`/contacts/${contact.id}`}>{contact.name}</Link>
 	                <div>
-	                  <Link to={`/contacts/${contact.id}/update`}>Edit</Link>
+	                  <Link to={`/contacts/${contact.id}/update`}><button>Edit</button></Link>
+	                  <Link to={`/contacts/${contact.id}/`}><button>Delete</button></Link>
 	                </div>
-			  <p>{contact.email}</p>
+			  <h3>{contact.email}</h3>
 			  <p>{contact.phone}</p>
 
 			</div>
+			<Link to='/contacts'><button>Back</button></Link>
 		</div>
     )
+
+	ContactDetail.propTypes = {
+	  contact: PropTypes.object.IsRequired
+	};
 }
 
-ContactDetail.propTypes = {
-  contact: PropTypes.object
-};
