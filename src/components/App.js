@@ -1,5 +1,9 @@
 import { Switch, Route } from 'react-router-dom'
 import React from 'react';
+import Home from './Home.js'
+import ContactsList from './ContactsList.js'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import AppCSS from '../App.css';
 
 
 class App extends React.Component {
@@ -12,7 +16,8 @@ class App extends React.Component {
         ]
       }
     }
-    addContact (contact) {
+
+  addContact (contact) {
     const generateKey = () => Math.round(Math.random() * 100000000)
     contact['key'] = generateKey();
     this.setState({contacts: this.state.contacts.concat([contact])});
@@ -38,7 +43,7 @@ class App extends React.Component {
     })
     this.setState({contacts: removeContact})
   }
-  
+
   render() {
     return (
       <div>
