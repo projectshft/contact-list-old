@@ -12,15 +12,15 @@ const Contacts = ({contacts, addContact, updateContact, removeContact}) => (
         <tbody>
           <tr>
             <td className="text-left">
-               {
-                // Map all of the contacts in the array to render the list of Contacts
+               {/* Map all of the contacts in the array to render the list of Contacts */}
+                {
                 contacts.map(c => (
                   <div className="contact-div" key={c.key}>
-                    // Create a link to the contact detail using the unique key for each contact name
+                    {/* Create a link to the contact detail using the unique key for each contact name */}
                     <Link to={`/contacts/${c.key}`} className="text-info contact-name">{c.name}</Link>
-                    // Create a remove button that confirms the user's decision and then invokes the removeContact function
+                    {/* Create a remove button that confirms the user's decision and then invokes the removeContact function */}
                     <span><button type="button" className="btn btn-info btn-sm" onClick={(e)=> {if(window.confirm('Are you sure you want to delete?')){removeContact(c.key)}}}>Remove</button></span>
-                    // Create a link that will take the user to the contact edit page
+                    {/* Create a link that will take the user to the contact edit page */}
                     <span><Link to={`/contacts/edit/${c.key}`} className="text-info">Edit</Link></span>
                   </div>
                   ))
@@ -29,7 +29,7 @@ const Contacts = ({contacts, addContact, updateContact, removeContact}) => (
             </tr>
           </tbody>
         </table>
-      // Create a link that will take the user to the new contact page
+       {/* Create a link that will take the user to the new contact page */}
       <Link to='./contacts/new'><button type="button" className="btn btn-info">Add Contact</button></Link>
     </div>
   )

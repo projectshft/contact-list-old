@@ -9,19 +9,19 @@ import PropTypes from 'prop-types'
 const ContactsList = ({contacts, addContact, updateContact, removeContact}) => (
 
  <Switch>
-    // Route path to the new contact page where users can add contacts
+    {/* Route path to the new contact page where users can add contacts */}
     <Route path='/contacts/new' render={(routerProps) => (
       <NewContact history={routerProps.history} contacts={contacts} addContact={addContact} removeContact={removeContact}/>
     )}/>
-    // Route path to the edit contacts page where users can edit contacts
+    {/* Route path to the edit contacts page where users can edit contacts */}
     <Route path='/contacts/edit/:key' render={(routerProps) => (
       <ContactEdit history={routerProps.history} contactKey={parseInt(routerProps.match.params.key, 10)} contacts={contacts} updateContact={updateContact}/>
     )}/>
-    // Route path to the contact detail page where users can see the contacts details
+    {/* Route path to the contact detail page where users can see the contacts details */}
     <Route path='/contacts/:key' render={(routerProps) => (
       <ContactDetail contactKey={parseInt(routerProps.match.params.key, 10)} contacts={contacts} />
     )}/>
-    // Route path to contacts where all of the contacts will be rendered
+    {/* Route path to contacts where all of the contacts will be rendered */}
     <Route path='/contacts' render={() => (
       <Contacts contacts={contacts} removeContact={removeContact}/>
     )}/>

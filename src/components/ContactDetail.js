@@ -28,10 +28,10 @@ console.log(contact)
       <h4>{contact.email}</h4>
       <div>
         <br></br>
-        // Include a link to the edit page
+        {/* Include a link to the edit page */}
         <Link to={`/contacts/edit/${contact.key}`}><button type="button" className="btn btn-info">Edit</button></Link>
         <br></br>
-        // Include a link back to the contacts page
+        {/* Include a link back to the contacts page */}
         <Link to='/contacts' className="text-info">Back to Contacts</Link>
         </div>
     </div>

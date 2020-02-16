@@ -2,6 +2,8 @@ import { Switch, Route } from 'react-router-dom'
 import React from 'react';
 import Home from './Home.js'
 import ContactsList from './ContactsList.js'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import AppCSS from '../App.css';
 
 class App extends React.Component {
   constructor () {
@@ -40,9 +42,9 @@ class App extends React.Component {
         // If the key of the contact being passed in matches one of the contact's keys
         // in the array, save the updated contact
         c = contact;
-        // Return all of the new contacts
-        return c;
-    }
+      }
+    // Return all of the new contacts
+    return c;
   });
     // Set the state to the new contacts array
     this.setState({contacts: newContacts});
@@ -56,7 +58,7 @@ class App extends React.Component {
         // Return all of the contacts that do not match the key being passed in
         return c
       }
-    })
+    });
     // Set the state to the filtered array that does not contain the removed contact
     this.setState({contacts: removeContact})
   }
@@ -65,9 +67,9 @@ class App extends React.Component {
     return (
       <div>
         <Switch>
-          // Create a route to home that re-directs to the Contacts component
+          {/* Create a route to home that re-directs to the Contacts component */}
           <Route exact path='/' component={Home}/>
-          // Create a route that links Contacts to the ContactsList component
+          {/* Create a route that links Contacts to the ContactsList component */}
           <Route path='/contacts' render={() => (
             <ContactsList addContact={this.addContact} contacts={this.state.contacts} updateContact={this.updateContact} removeContact={this.removeContact}/>
           )}/>
