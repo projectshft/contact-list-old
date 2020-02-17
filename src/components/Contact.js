@@ -17,7 +17,7 @@ const Contact = ({ contactId, contacts }) => {
                         <h5><a className="font-weight-normal">Name: </a> {contact.name} <br /><a className="font-weight-normal">phone: </a> {contact.phone}</h5>
                         <h5><a className="font-weight-normal">Email:</a> {contact.email}</h5><br />
                     </div>
-                    <img className="m-2" src={contact.picture} width="120" height="120" />
+                    <img className="m-2" src={contact.picture} alt="" width="120" height="120" />
                 </div>
                 <Link to='/'>Back</Link>
                 <div className="col">
@@ -30,3 +30,9 @@ const Contact = ({ contactId, contacts }) => {
 
 
 export default Contact;
+
+// Contacts.propTypes = {
+//     name: PropTypes.string.isRequired,
+//     phone: PropTypes.number.isRequired,
+//     email: PropTypes.string.isRequired
+//   };

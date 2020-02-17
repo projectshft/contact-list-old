@@ -24,7 +24,7 @@ class NewContact extends React.Component {
         fetch(`https://randomuser.me/api/?inc=picture`)
             .then(res => res.json())
             .then(data => {
-                this.state.picture = data.results[0].picture.medium
+               // this.state.picture = data.results[0].picture.medium
                 this.setState({ picture: data.results[0].picture.medium })
             })
 
@@ -54,10 +54,10 @@ class NewContact extends React.Component {
         // check for validity of entries display error to user if any
         if (newContact.name.length < 2) {
             return window.confirm('name must be longet then 2 characters')
-        } else if (phoneNumberValidation.test(phoneNumberEntry) != true) {
+        } else if (phoneNumberValidation.test(phoneNumberEntry) !== true) {
             return window.confirm('phone number must contains 9 numbers with spaces or dash example:  xxx-xxx-xxxx')
             //email can be left empty or it will have to contain @ and . 
-        } else if ((emailValidation.test(emailEntry) != true) && (emailEntry != '')) {
+        } else if ((emailValidation.test(emailEntry) !== true) && (emailEntry !== '')) {
             return window.confirm('not a valid e-mail')
         } else if (newContact.picture === '') {
             return this.setState({ picture: "https://randomuser.me/api/portraits/lego/7.jpg" })
@@ -74,19 +74,19 @@ class NewContact extends React.Component {
                 <div className="row d-flex justify-content-center">
                     <form className="col-8 justify-content-center">
                         <label>Name</label>
-                        <input type='text' className='form-control' onChange={event =>
+                        <input type='text' className='form-control' placeholder="name is required" onChange={event =>
                             this.setState({ name: event.target.value })
                         } />
 
                         <br />
 
                         <label>Number</label>
-                        <input type='text' className='form-control' onChange={event =>
+                        <input type='text' className='form-control' placeholder="pnone number is required" onChange={event =>
                             this.setState({ phone: event.target.value })
                         } />
                         <br />
                         <label>email</label>
-                        <input type='text' className='form-control' onChange={event =>
+                        <input type='text' className='form-control' placeholder="this might be left blank" onChange={event =>
                             this.setState({ email: event.target.value })
                         } />
                         <br />

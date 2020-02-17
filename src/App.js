@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import uuid from 'react-uuid'
 
 import Home from "./components/Home";
@@ -8,6 +8,7 @@ import Edit from "./components/edit";
 import Error from "./components/error";
 import AddContact from "./components/AddContact";
 
+// there are not as many comments here in the code. I have used diagram drawed on the paper. 
 
 class App extends React.Component {
   constructor() {

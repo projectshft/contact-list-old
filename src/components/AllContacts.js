@@ -16,3 +16,9 @@ const AllContacts = ({ contacts }) => (
 )
 
 export default AllContacts
+
+AllContacts.propTypes = {
+    name: PropTypes.string.isRequired,
+    phone: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired
+  };
