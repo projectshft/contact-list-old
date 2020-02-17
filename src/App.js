@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
-import ReactDOM from 'react-dom';
 import uuid from 'react-uuid'
-import axios from 'axios';
 
 import Home from "./components/Home";
 import Contact from "./components/Contact";
 import Edit from "./components/edit";
 import Error from "./components/error";
-import Navigation from "./components/Navigation";
 import AddContact from "./components/AddContact";
 
 
@@ -18,17 +15,16 @@ class App extends React.Component {
 
     this.state = {
       contacts: [
-        { id: uuid(), name: "Ben ", phone: "111-111-1111", email: "", picture: "https://randomuser.me/api/portraits/med/men/81.jpg" },
-        { id: uuid(), name: "Sara ", phone: "111-111-1111", email: "", picture: "https://randomuser.me/api/portraits/med/women/11.jpg" },
-        { id: uuid(), name: "Sam ", phone: "111-111-1111", email: "", picture: "https://randomuser.me/api/portraits/med/men/22.jpg" },
-        { id: uuid(), name: "Alice ", phone: "111-111-1111", email: "", picture: "https://randomuser.me/api/portraits/med/women/66.jpg" }
+        { id: uuid(), name: "Ben Clayton", phone: "344-567-7890", email: "bdthomas@att.net", picture: "https://randomuser.me/api/portraits/med/men/81.jpg" },
+        { id: uuid(), name: "Sara Robins", phone: "123-732-4563", email: "blixem@live.com", picture: "https://randomuser.me/api/portraits/med/women/11.jpg" },
+        { id: uuid(), name: "Sam Peterson", phone: "321-618-4566", email: "cyrus@optonline.net", picture: "https://randomuser.me/api/portraits/med/men/22.jpg" },
+        { id: uuid(), name: "Alice Davison", phone: "334-867-8899", email: "parasite@verizon.net", picture: "https://randomuser.me/api/portraits/med/women/66.jpg" }
       ]
     }
 
     this.addContact = this.addContact.bind(this);
     this.deleteContact = this.deleteContact.bind(this);
-    this.editContact = this.editContact.bind(this);
-    
+    this.editContact = this.editContact.bind(this);  
   }
 
   addContact(newContact) {
@@ -36,7 +32,7 @@ class App extends React.Component {
   }
 
   deleteContact(contactId) {
-    console.log('deleted clicked ', contactId)
+    // find contact with matching ID to delete
     const contacts = this.state.contacts.filter(c => c.id !== contactId);
     const contactToDelete = window.confirm(`please confirm deletion of this contact`);
     if (!contactToDelete) {
@@ -45,9 +41,7 @@ class App extends React.Component {
       this.setState({ contacts: contacts });
     }
   }
-
-  
-
+  // edit function for contact edit
   editContact(contactId) {
     console.log('edit clicked')
   }
@@ -56,16 +50,15 @@ class App extends React.Component {
     console.log(this.state.contacts)
     return (
       <div>
-        <Navigation />
-
+        {/* <!–– passing props inside in render function     also set error message for nonexisting rout--> */}
         <Switch>
           <Route exact path="/" render={(routeProps) => (
             <Home addContact={this.addContact} editContact={this.editContact} contacts={this.state.contacts} deleteContact={this.deleteContact} contactId={routeProps.match.params.id} />
           )} />
-          <Route path="/Contact/:id" render={(routeProps) => (console.log(routeProps.match.params.id),
+          <Route path="/Contact/:id" render={(routeProps) => (
             <Contact history={routeProps.history} contacts={this.state.contacts} contactId={routeProps.match.params.id} />
           )} />
-          <Route path="/edit/:id" render={(routeProps) => (console.log(routeProps.match.params.id),
+          <Route path="/edit/:id" render={(routeProps) => (
             <Edit history={routeProps.history} contacts={this.state.contacts} editContact={this.editContact} contactId={routeProps.match.params.id} />
           )} />
           <Route path="/AddContact" render={(routeProps) => (
