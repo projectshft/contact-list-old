@@ -3,7 +3,7 @@ import React from 'react'
 import uuid from 'uuid/v4'
 import PropTypes from 'prop-types'
 
-
+//The component ContactNew allows the user to add a contact with a name, image, email, and phone number.
 class ContactNew extends React.Component {
   constructor () {
     super ()
@@ -37,42 +37,44 @@ class ContactNew extends React.Component {
   render () {
     return (
       <div>
-      {/* the form needs validation and then submits once the required inputs are filled*/}
+        {/* the form needs validation and then submits once the required inputs are filled*/}
         <form className="col-md-8 needs-validation" onSubmit={this.handleSubmitContactClick}>
 
 
-        <label>Name</label>
-        <input required type='text' className='form-control'value={this.state.name} onChange={event =>
-          this.setState({ name: event.target.value })
-        }/>
+          <label>Name</label>
+          <input required type='text' className='form-control' value={this.state.name} onChange={event =>
+            this.setState({ name: event.target.value })
+          }/>
 
-        <br/>
+          <br/>
 
-        <label>Image_url</label>
-        <input required type='url' className='form-control'onChange={event =>
-          this.setState({ image_url: event.target.value })
-        }/>
+          <label>Image_url</label>
+          {/* the type of input required for an url address*/}
+          <input required type='url' className='form-control'onChange={event =>
+            this.setState({ image_url: event.target.value })
+          }/>
 
-        <br/>
+          <br/>
+          {/* the type of input required for an email address*/}
+          <label>Email</label>
+          <input required type='email' className='form-control'onChange={event =>
+            this.setState({ email: event.target.value })
+          }/>
 
-        <label>Email</label>
-        <input required type='email' className='form-control'onChange={event =>
-          this.setState({ email: event.target.value })
-        }/>
+          <br/>
 
-        <br/>
-
-        <label>Phone Number</label>
-        <input required type='tel' pattern="[0-9]*" className='form-control' onChange={event =>
-          this.setState({ phone: event.target.value })
-        }/>
-        <small id="phoneHelp" className="form-text text-muted">
+          <label>Phone Number</label>
+          {/* the type of input required a phone number*/}
+          <input required type='tel' pattern="[0-9]*" className='form-control' onChange={event =>
+            this.setState({ phone: event.target.value })
+          }/>
+          <small id="phoneHelp" className="form-text text-muted">
           Please enter numerical values</small>
 
 
-        <br/>
+          <br/>
 
-        <button type="submit" className="btn btn-primary">Submit</button>
+          <button type="submit" className="btn btn-primary">Submit</button>
         </form>
 
         <br/>

@@ -17,7 +17,7 @@ class ContactEdit extends React.Component {
 
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
   }
-//TODO fix the error when you reload the page with this function
+  //TODO fix the error when you reload the page with this function
   componentDidMount () {
       const findContactById = (id) => {
       return this.props.contacts.filter((contact) => {
@@ -36,8 +36,8 @@ class ContactEdit extends React.Component {
 
     })
   }
-//when you submit the updated input fileds and click the button the update contact
-//is added to the contacts array through the props and the router props
+  //when you submit the updated input fileds and click the button the update contact
+  //is added to the contacts array through the props and the router props
   handleSubmitContactClick () {
     const newContact = {
       name: this.state.name,
@@ -65,13 +65,15 @@ class ContactEdit extends React.Component {
 
       <br/>
 
+      {/* the type of input required for an url address*/}
       <label>Image_url</label>
-      <input required type='text' className='form-control' value={this.state.image_url} onChange={event =>
+      <input required type='url' className='form-control' value={this.state.image_url} onChange={event =>
         this.setState({ image_url: event.target.value })
       }/>
 
       <br/>
 
+      {/* the type of input required for an email address*/}
       <label>Email</label>
       <input required type='email' className='form-control' value={this.state.email} onChange={event =>
         this.setState({ email: event.target.value })
@@ -79,13 +81,14 @@ class ContactEdit extends React.Component {
 
       <br/>
 
+      {/* the type of input required a phone number*/}
       <label>Phone Number</label>
-      <input required type='text' pattern="[0-9]*" className='form-control' value={this.state.phone}onChange={event =>
+      <input required type='tel' pattern="[0-9]*" className='form-control' value={this.state.phone}onChange={event =>
         this.setState({ phone: event.target.value })
       }/>
       <small id="phoneHelp" className="form-text text-muted">
-                Please enter numerical values
-                </small>
+      Please enter numerical values
+      </small>
 
 
       <br/>
@@ -94,7 +97,7 @@ class ContactEdit extends React.Component {
       </form>
 
       <br/>
-
+      {/* links back to the contacts list */}
       <Link to='/contacts'>Back to Contact List</Link>
     </div>
 
@@ -102,7 +105,7 @@ class ContactEdit extends React.Component {
   }
 
 }
-//
+//PropTypes required
 ContactEdit.propTypes = {
 contacts: PropTypes.array.isRequired,
 contact: PropTypes.shape({
@@ -112,7 +115,7 @@ contact: PropTypes.shape({
   email: PropTypes.string.isRequired,
   phone: PropTypes.number.isRequired
 }),
-updateContact: PropTypes.func.isReuired
+updateContact: PropTypes.func.isRequired
 }
 
 export default ContactEdit
