@@ -1,6 +1,6 @@
 import { Switch, Route } from 'react-router-dom'
 import React from 'react';
-import IndividualContact from './IndvidualContact';
+import IndividualContactDisplay from './IndvidualContactDisplay';
 import NewContact from './NewContact';
 import FullContactList from './FullContactList';
 
@@ -11,7 +11,7 @@ const ContactList = ({contacts, addContact}) => (
     )}/>
   
     <Route path='/contacts/:id' render={(routerProps) => (
-      <IndividualContact contactId={parseInt(routerProps.match.params.id, 10)} contacts={contacts} />
+      <IndividualContactDisplay contactId={parseInt(routerProps.match.params.id, 10)} contacts={contacts} />
     )}/>
     
     <Route path='/contacts' render={() => (

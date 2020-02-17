@@ -3,10 +3,14 @@
   display: inline-block;
 }
 
-.edit-tag {
+.edit-contact {
   font-size: small;
 }
 
-.delete-tag {
+.remove-contact {
   font-size: small;
+}
+
+.contact {
+  color: black;
 }

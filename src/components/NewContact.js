@@ -19,11 +19,14 @@ class NewContact extends React.Component {
 
   handleSubmitContactClick () {
     const contact = this.state
-    if(!contact.name || !contact.phoneNumber || !contact.email || !contact.img_url){
-      //what is empty
 
-    } else {
+    if(!contact.name || !contact.phoneNumber || !contact.email || !contact.img_url){
+      //If empty input form will alert of an empty field.
+      alert('All fields are required.')
+    }else{
+      //generate id number for key and for selecting contact for individual contact display
       const generateId = () => Math.round(Math.random() * 100000000);
+
       const newContact = {
         id: generateId(),
         name: this.state.name,
@@ -31,8 +34,11 @@ class NewContact extends React.Component {
         email: this.state.email,
         img_url: this.state.img_url,
       };
-    
+      
+      //Sending newContact to App.js to put contact inside of state
       this.props.addContact(newContact)
+
+      //Sending user back to Contacts page
       this.props.history.push('/contacts')
     }
   }

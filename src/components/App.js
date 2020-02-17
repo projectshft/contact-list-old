@@ -2,7 +2,7 @@ import { Switch, Route } from 'react-router-dom';
 import React from 'react';
 import Home from './Home';
 import ContactList from './ContactList';
-import './App.css'
+import './App.css';
 
 class App extends React.Component {
   constructor () {
@@ -16,7 +16,6 @@ class App extends React.Component {
   
   }
   
-  // this.state.contacts.concat([contact])
   addContact (contact){
     this.setState({contacts: this.state.contacts.concat([contact])});
   }
@@ -34,5 +33,6 @@ class App extends React.Component {
     );
   }
 }
+
 
 export default App;
