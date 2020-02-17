@@ -15,9 +15,10 @@ export default function Contacts(props) {
       { id: uuidv4(), name: "Tim Smith", phone: "5557774422", email: "test2@gmail.com", photo: 'image2' },
    ]
 
+   //set sample data as default contacts list
 	const [contacts, setContacts] = useState(sample);
 
-  //update contact just edited and passed to updateContacts function from update page
+  //will update contact just edited and passed to updateContacts function from update page
   const updateContact = contact => {
     const newContacts = contacts.map((c) => {
       if (contact.id == c.id) {
@@ -28,7 +29,8 @@ export default function Contacts(props) {
     })
     setContacts(newContacts);
   }
-    //remove contact passed to the deleteContact by checking the id first from the contacts list 
+  
+  //remove contact passed to the deleteContact by checking the id first from the contacts list 
   const deleteContact = id => {
     const newContacts = contacts.filter(item => item.id !== id);
     setContacts(newContacts);

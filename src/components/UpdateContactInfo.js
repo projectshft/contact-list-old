@@ -16,9 +16,7 @@ export default function UpdateContactInfo(props) {
 		};
 		//got the contact to edit and set the state to the contact
 		const currentContact = findContactById(props.contactId)[0];
-		setContactDetails(currentContact);
-
-		
+		setContactDetails(currentContact);	
 	}, [0]);
 
 
@@ -29,6 +27,7 @@ export default function UpdateContactInfo(props) {
 		props.history.push('/contacts')
 	}
 
+	//changes to the field forms captured and the contact object set with new data
 	const handleInputChange = e => {
         const {name, value} = e.target
         setContactDetails({...contact, [name]: value})   

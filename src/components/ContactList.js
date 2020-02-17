@@ -14,10 +14,11 @@ import ContactDetail from './ContactDetail'
 export default function ContactList(props) {
 
   useEffect(() => {
-    //hide back button on the list
+    //hide contact detail component back button on the list
     $('.backToList').hide()
-  }, [])
+  })
 
+  //material-ui setup
   const useStyles = makeStyles(theme => ({
     container: {
       display: 'grid',

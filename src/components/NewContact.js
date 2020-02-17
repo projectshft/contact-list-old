@@ -50,7 +50,7 @@ export default function NewContact(props) {
 				type="text"
 				name="phone"
 				className='new-contact'
-				placeholder="Enter phone number"
+				placeholder="Enter 10 digits phone number"
 				onChange={handleInputChange}
 				pattern="^\d{3}\d{3}\d{4}$"
 				required

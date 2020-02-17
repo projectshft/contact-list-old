@@ -6,8 +6,6 @@ import _ from 'lodash'
 import $ from 'jquery'
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
-import DeleteIcon from '@material-ui/icons/Delete'
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 export default function ContactDetail(props) {
@@ -22,6 +20,18 @@ export default function ContactDetail(props) {
 	}
 
 	let strName = replacedStr(contact.name, '+');
+
+	//phone input set to 10 digits, will format phone number to display on contact list and detail view
+	let formatedPhone = (str) => {
+		//Check if the input is of correct length just in case :)
+		let match = str.match(/^(\d{3})(\d{3})(\d{4})$/);
+
+		if (match) {
+			return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+		};
+
+		return null
+	}
 
 	//use material-ui to style components
 	const useStyles = makeStyles(theme => ({
@@ -46,8 +56,8 @@ export default function ContactDetail(props) {
 				</div>
 				<div className="contact-info">
 				  <Link to={`/contacts/${contact.id}`} style={{ textDecoration: 'none', fontSize: '20px' }}>{contact.name}</Link>
-				  <p>Email: {contact.email}</p>
-				  <p>Phone: {contact.phone}</p>
+				  <p className="info-small">Email: {contact.email}</p>
+				  <p className="info-small">Phone: {formatedPhone(contact.phone)}</p>
 				</div>
 				<div>
 				<ButtonGroup size="small" aria-label="small outlined button group">
