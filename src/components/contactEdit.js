@@ -2,12 +2,13 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import PropTypes from 'prop-types';
 
-
+//Contact Edit allows to edit the and update the Contact Information
 class ContactEdit extends React.Component {
   constructor (props) {
     super (props)
 
     this.state = {
+      id: '',
       name: '',
       image_url: '',
       email: '',
@@ -16,7 +17,7 @@ class ContactEdit extends React.Component {
 
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
   }
-
+//TODO fix the error when you reload the page with this function
   componentDidMount () {
       const findContactById = (id) => {
       return this.props.contacts.filter((contact) => {
@@ -27,15 +28,16 @@ class ContactEdit extends React.Component {
     const currentContact = findContactById(this.props.contactId)[0];
 
     this.setState({
+      id: currentContact.id,
       name: currentContact.name,
       image_url: currentContact.image_url,
       email: currentContact.email,
-      phone: currentContact.phone,
-      id: currentContact.id
+      phone: currentContact.phone
 
     })
   }
-
+//when you submit the updated input fileds and click the button the update contact
+//is added to the contacts array through the props and the router props
   handleSubmitContactClick () {
     const newContact = {
       name: this.state.name,
@@ -52,6 +54,7 @@ class ContactEdit extends React.Component {
   render () {
     return (
     <div>
+    {/* the form needs validation and then submits once the required inputs are filled*/}
       <form className="col-md-8 needs-validation" onSubmit={this.handleSubmitContactClick}>
 
 
@@ -99,9 +102,17 @@ class ContactEdit extends React.Component {
   }
 
 }
-
+//
 ContactEdit.propTypes = {
 contacts: PropTypes.array.isRequired,
+contact: PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  image_url: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  phone: PropTypes.number.isRequired
+}),
+updateContact: PropTypes.func.isReuired
 }
 
 export default ContactEdit

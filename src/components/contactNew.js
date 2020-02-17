@@ -9,6 +9,7 @@ class ContactNew extends React.Component {
     super ()
 
     this.state = {
+      //each time a new contact is created you generate a new id
       id: uuid(),
       name: '',
       image_url: '',
@@ -18,7 +19,8 @@ class ContactNew extends React.Component {
 
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
   }
-
+  //when you submit the  input fileds and click the button the contact
+  //is added to the contacts array through the props and the router props
   handleSubmitContactClick () {
     const newContact = {
       id: this.state.id,
@@ -35,6 +37,7 @@ class ContactNew extends React.Component {
   render () {
     return (
       <div>
+      {/* the form needs validation and then submits once the required inputs are filled*/}
         <form className="col-md-8 needs-validation" onSubmit={this.handleSubmitContactClick}>
 
 
@@ -73,16 +76,26 @@ class ContactNew extends React.Component {
         </form>
 
         <br/>
-
+        {/* links back to the contacts list */}
         <Link to='/contacts'>Back to Contact List</Link>
       </div>
     )
   }
 }
 
-export default ContactNew
 
+//PropTypes required
 ContactNew.propTypes = {
-  contacts: PropTypes.array.isRequired
+  contacts: PropTypes.array.isRequired,
+  contact: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    image_url: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.number.isRequired
+  })
 
 }
+
+
+export default ContactNew
