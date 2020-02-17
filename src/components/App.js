@@ -4,7 +4,6 @@ import uuid from 'uuid';
 
 import Home from './Home';
 import Contacts from './Contacts';
-import Contact from './Contact';
 
 class App extends Component {
   constructor() {
@@ -20,12 +19,12 @@ class App extends Component {
       ]
     }
 
-    // this.addContact = this.addContact.bind(this);
+    this.addContact = this.addContact.bind(this);
   }
 
-  // addContact: (contact) {
-  //   this.setState({})
-  // }
+  addContact (contact) {
+    this.setState({people: this.state.people.concat([contact])})
+  }
 
 
   render() {
@@ -34,7 +33,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/contacts' render={ () => (
-            <Contacts people={this.state.people} />
+            <Contacts people={this.state.people} addContact={this.addContact} />
           )} />
           
         </Switch>

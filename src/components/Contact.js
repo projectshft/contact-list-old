@@ -17,7 +17,6 @@ const Contact = ({ contactID, people }) => {
             <h2>Phone Number: {person.phone_number}</h2>
             <h2>Email: {person.email}</h2>
             <div><Link to='/contacts'>Back</Link></div>
-            <div><Link to={`/roster/${person.id}/edit`}>Edit</Link></div>
         </div>
     )
 }

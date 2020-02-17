@@ -5,10 +5,10 @@ const AllContacts = ({people}) => (
   <div className="d-flex" >
     <ul className="list-inline mx-auto justify-content-center">
       {
-        people.map(p => (
+        people.map(person => (
             // adding the key p.id allows us to view their unique contact page 
-          <li key={p.id}>
-            <Link to={`/contacts/${p.id}`}>{p.name}</Link>
+          <li key={person.id}>
+            <Link to={`/contacts/:${person.id}`}>{person.name}</Link>
           </li>
         ))
       }
