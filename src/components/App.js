@@ -1,9 +1,10 @@
 import { Switch, Route } from 'react-router-dom';
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import uuid from 'uuid';
 
-import Home from './Home'
-import Contacts from './Contacts'
+import Home from './Home';
+import Contacts from './Contacts';
+import Contact from './Contact';
 
 class App extends Component {
   constructor() {
