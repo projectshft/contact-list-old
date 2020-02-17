@@ -1,11 +1,14 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
-import { link } from 'react-router-dom';
+
 
 const Home = () => (
     <div>
-        <h1>Welcome to the Contact-List App</h1>
-        <Link to='./contacts'>View Contacts</Link>
-        
+        <h1 className="text-center">Welcome to the Contact-List App</h1>
+        <div className="text-center">
+            <Link to='/contacts'>View Contacts</Link>
+        </div>
+
     </div>
 )
 

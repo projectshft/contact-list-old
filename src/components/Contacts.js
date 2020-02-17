@@ -1,8 +1,12 @@
-import React from 'react'
-// import { Switch, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import React from 'react';
+
 
 const Contacts = () => (
-    <h1>Contacts</h1>
+    <div>
+        <Link to="/" >Home</Link>
+        <h1 className="text-center" >Contacts</h1>
+    </div>
 )
 
 export default Contacts

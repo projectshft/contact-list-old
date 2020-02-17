@@ -1,5 +1,5 @@
+import { Switch, Route } from 'react-router-dom';
 import React, { Component } from 'react'
-import { Switch, Route} from 'react-router-dom';
 import Home from './Home'
 import Contacts from './Contacts'
 
@@ -26,9 +26,8 @@ class App extends Component {
       <div>
         <Switch>
           <Route exact path='/' component={Home} />
-          {/* <Route path='/contacts' render={() => (
-            <Roster addPlayer={this.addPlayer} players={this.state.players} />
-          )} /> */}
+          <Route path='/contacts' component={Contacts} />
+          
         </Switch>
       </div>
     );
