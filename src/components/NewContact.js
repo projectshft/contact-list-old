@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 //The NewContact component creates a form for the user
 //To add a new contact's information to the contacts list
@@ -49,15 +50,15 @@ class NewContact extends Component {
       alert("The name field cannot be longer than 30 characters!")
       return true
     //Check to see if the user entered a ten digit phone number
-    } else if (editedContact.phone.length > 11 || editedContact.phone.length < 10) {
+  } else if (newContact.phone.length > 11 || newContact.phone.length < 10) {
       alert("Please enter a 10 digit phone number")
       return true
     //Call validEmail to ensure the user entered a valid email address
-    } else if (!validEmail(editedContact.email)) {
+  } else if (!validEmail(newContact.email)) {
       alert ("Please enter a valid email!")
       return true
     //Make sure the user did not sumbit an empty image url
-    } else if (editedContact.imageURL.length == 0) {
+  } else if (newContact.imageURL.length == 0) {
       alert("Please enter a image url")
       return true
     }
@@ -119,8 +120,9 @@ class NewContact extends Component {
 }
 
 //Set prototypes for NewContact
-EditContact.propTypes = {
-  contactId: PropTypes.string
+NewContact.propTypes = {
+  contactId: PropTypes.string,
+  addContact: PropTypes.func
 }
 
 export default NewContact;

@@ -92,7 +92,7 @@ render() {
         <div className="col col-sm-3"></div>
         <div className="col col-sm-8 col-md-6">
           {/* Create submission form filled with the contacts existing */}
-          {/* name, phone number, email and image url
+          {/* name, phone number, email and image url */}
           <h2>Edit Contact</h2>
           <form className="form-group">
             {/* An input field for the contact's name */}
