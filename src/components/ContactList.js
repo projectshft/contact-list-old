@@ -44,7 +44,7 @@ export default function ContactList(props) {
         <h2 id="contact-label" className="inline">Contacts</h2>
         <div id="addBtn" className="inline">
           <Link to='/contacts/add' style={{ textDecoration: 'none' }}>
-            <Button variant="outlined" style={{ marginRight: '50px' }}>Add Contact</Button>
+            <Button variant="outlined" >Add Contact</Button>
           </Link>
         </div>
       </div>

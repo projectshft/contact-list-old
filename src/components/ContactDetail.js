@@ -14,14 +14,15 @@ export default function ContactDetail(props) {
 
 	const contact = _.find(props.contacts, { id: props.contactId });
 
-	//need to replace blank with + to pass 
+	//use ui-avatars to create an avatar instead of faker images
+	//need to replace blank with '+'' to pass 
 	//the string to the API to create an avatar with initials of the contact
 	const replacedStr = (name, character) => {
 		  return name.replace(/\s+/g, character);
 	}
 
-	let strNew = replacedStr(contact.name, '+');
-	
+	let strName = replacedStr(contact.name, '+');
+
 	//use material-ui to style components
 	const useStyles = makeStyles(theme => ({
 	  margin: {
@@ -40,7 +41,7 @@ export default function ContactDetail(props) {
 				<div className="image-cropper">
 					<Link to={`/contacts/${contact.id}`} >
 						{/*<img alt="avatar" src={faker.image.avatar()} />*/}
-						<img src={`https://ui-avatars.com/api/?rounded=true&name=${strNew}`} />
+						<img src={`https://ui-avatars.com/api/?rounded=true&name=${strName}`} />
 					</Link>
 				</div>
 				<div className="contact-info">
