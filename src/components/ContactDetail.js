@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ContactDetail = (props) => {
+const ContactDetail = ({ contacts }) => {
 
     return (
         

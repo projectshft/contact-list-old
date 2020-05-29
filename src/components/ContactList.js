@@ -3,7 +3,7 @@ import ContactDetail from './ContactDetail';
 import { Link } from 'react-router-dom';
 
 // list of contacts shown on home page
-const ContactList = (props) => {
+const ContactList = ({ contacts }) => {
 
     return(
         <h1>Contact list</h1>

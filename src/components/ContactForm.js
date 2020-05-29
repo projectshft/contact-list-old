@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const AddContact = () => {
+const ContactForm = ({ createNew }) => {
 
     return (
         <div className="add-contact-form">
@@ -27,5 +27,5 @@ const AddContact = () => {
     )
 }
 
-export default AddContact;
+export default ContactForm;
 

@@ -2,7 +2,7 @@ import { Switch, Route } from 'react-router-dom';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Home from './Home';
-import AddContact from './AddContact';
+import ContactForm from './ContactForm';
 // import Header from './Header';
 
 class App extends React.Component {
@@ -10,7 +10,11 @@ class App extends React.Component {
     super()
 
     this.state = {
+
+      //to hold all data for contact list and details
       contacts: [
+
+        // default contacts to display
         {
           id: 123,
           name: "Jane Eyre",
@@ -38,14 +42,33 @@ class App extends React.Component {
     }
   }
 
+  // create new contact with input from contact form
+  addContact = (id, name, email, phone, image) => {
+
+  }
+
   render() {
     return (
       <div>
         {/* <Header /> */}
+
+        {/* to direct which component to display based on url entered */}
         <Switch>
-          <Route exact path={[ '/', '/contacts' ]} component={ Home } />
-          <Route path='/contacts/new' component={ AddContact } />
-          {/* <Route path='/contacts/:id' component={ ContactDetail }/> */}
+          
+          {/* navigate to home from either path // pass contacts to render in list on home page*/}
+          <Route exact path={[ '/', '/contacts' ]} render={() => (
+              <Home contacts={ this.state.contacts } />   
+            )} /> 
+
+          {/* pass function to add new contacts to app state through contact form */}
+          <Route path='/contacts/new' render={() => (
+            <ContactForm createNew={ addContact } />
+          )} />
+
+          {/* navigate to contact details by matching number in url path to contact id */}
+          <Route path='/contacts/:id' render={(routerProps) => (
+      <ContactDetail contactId={parseInt(routerProps.match.params.id, 10)} contacts={this.state.contacts} />
+    )}/>
         </Switch>
       </div>
     )
