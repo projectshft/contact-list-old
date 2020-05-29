@@ -10,13 +10,29 @@ class App extends React.Component {
     super()
 
     this.state = {
-      "contacts": [
+      contacts: [
         {
-          "id": 70219577,
-          "name": "Albert Einstein",
-          "image_url": "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
-          "email": "aeinstein@example.com",
-          "phone_number": "15555555555"
+          id: 123,
+          name: "Jane Eyre",
+          email: "lonelyorphan@lowoodschool.edu",
+          phone: "12865559830",
+          image: "./images/jane_eyre.jpg"
+        },
+
+        {
+          id: 456,
+          name: "Edward Rochester",
+          email: "sirmoody@thornfield.com",
+          phone: "16765552548",
+          image: "./images/mr_rochester.jpg"
+        },
+
+        {
+          id: 789,
+          name: "Bertha Mason",
+          email: "crazywife@theattic.net",
+          phone: "12375559372",
+          image: "./images/mrs_rochester.jpg"
         }
       ]
     }
@@ -35,5 +51,7 @@ class App extends React.Component {
     )
   }
 }
+
+
 
 export default App
