@@ -7,7 +7,7 @@ class Contacts extends Component {
   render() {
     return (
       <Switch>
-        <Route path='/contacts' component={ContactList} />
+        <Route path='/contacts' component={() => <ContactList contacts={this.state} />} />
         <Route path='/contacts/:key' component={Contact} />
       </Switch>
     );

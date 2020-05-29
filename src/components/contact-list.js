@@ -2,6 +2,10 @@ import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 
 class ContactList extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   render() {
     return (
       <div>
@@ -9,6 +13,8 @@ class ContactList extends Component {
         <Link to='/contacts/new'>
           <button type='button'>Add New Contact</button>
         </Link>
+        <ul>
+        </ul>
       </div>
     )
   }
