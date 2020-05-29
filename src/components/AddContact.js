@@ -9,13 +9,13 @@ const AddContact = () => {
 
             <form>
 
-                <input id="input-name"/>
+                <input id="input-name" placeholder="name" />
 
-                <input id="input-email"/>
+                <input id="input-email" placeholder="email address" />
 
-                <input id="input-phone"/>
+                <input id="input-phone" placeholder="phone number" />
 
-                <input id="input-image"/>
+                <input id="input-image" placeholder="image URL" />
 
                 <button id="submit-contact" type="text">Add</button>
 

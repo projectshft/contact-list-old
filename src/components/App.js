@@ -1,8 +1,9 @@
-import { Switch, Route } from 'react-router-dom'
-import React from 'react'
-import Home from './Home'
-import AddContact from './AddContact'
-// import Header from './Header'
+import { Switch, Route } from 'react-router-dom';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Home from './Home';
+import AddContact from './AddContact';
+// import Header from './Header';
 
 class App extends React.Component {
   constructor () {
