@@ -15,4 +15,4 @@ const FullContactList = ({contacts}) => (
   </div>
 )
 
-export default FullRoster
+export default FullContactList

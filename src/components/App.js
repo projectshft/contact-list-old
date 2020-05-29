@@ -31,8 +31,12 @@ class App extends React.Component {
     return (
       <div>
         <Switch>
-          <Route exact path="/" component={Contact} />
-          <Route exact path="/contacts" component={Contact} />
+          <Route path='/contacts' render={() => (
+            <Contact contacts={this.state.contacts} />
+          )}/>
+          <Route path='/contacts' render={() => (
+            <Contact contacts={this.state.contacts} />
+          )}/>
         </Switch>
       </div>
     );
