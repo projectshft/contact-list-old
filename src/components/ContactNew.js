@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 class ContactNew extends Component {
-  
+  constructor() {
+    super()
+  }
   
   
     render() {
@@ -10,3 +12,5 @@ class ContactNew extends Component {
       );
     }
 }
+
+export default ContactNew;
