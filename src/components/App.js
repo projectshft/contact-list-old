@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Home from './Home';
 import ContactForm from './ContactForm';
+import ContactDetail from './ContactDetail';
 // import Header from './Header';
 
 class App extends React.Component {
@@ -40,11 +41,18 @@ class App extends React.Component {
         }
       ]
     }
+
+    //bind addContact to App component
+    this.addContact = this.addContact.bind(this);
   }
-
+  
   // create new contact with input from contact form
-  addContact = (id, name, email, phone, image) => {
+  addContact = () => {
+    console.log('adding contact')
 
+    // this.setState({ contacts: this.state.contacts.concat(newContact) });
+
+    // console.log(this.state)
   }
 
   render() {
@@ -62,7 +70,7 @@ class App extends React.Component {
 
           {/* pass function to add new contacts to app state through contact form */}
           <Route path='/contacts/new' render={() => (
-            <ContactForm createNew={ addContact } />
+            <ContactForm createNew={ this.addContact } />
           )} />
 
           {/* navigate to contact details by matching number in url path to contact id */}
