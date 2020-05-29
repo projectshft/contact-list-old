@@ -11,7 +11,7 @@ class ContactList extends Component {
       <div>
         <h1>Contacts</h1>
         <Link to='/contacts/new'>
-          <button type='button'>Add New Contact</button>
+          <button type='button' className='btn btn-primary'>Add New Contact</button>
         </Link>
         <ul>
         </ul>
