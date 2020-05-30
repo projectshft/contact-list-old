@@ -1,6 +1,6 @@
 import { Switch, Route } from 'react-router-dom'
 import React from 'react'
-import FullContacts from './FullContactsList'
+import FullContactsList from './FullContactsList'
 import Contact from './Contact'
 
 class App extends React.Component {
