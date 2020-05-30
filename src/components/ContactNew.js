@@ -16,15 +16,16 @@ class ContactNew extends React.Component {
   };
   
   handleSubmitNewContact () {
+    //create a random number to automatically add an ID value to the "id" key
     const generateId = () => Math.round(Math.random() * 100000000)
-
+    // creating a object based on the user's values from the form input
     const newContact = {
       id: generateId(),
       name: this.state.name,
       phoneNumber: this.state.phoneNumber,
       email: this.state.email
     }
-
+    //passing the newContact object as a parameter up to the addContact function in App component
     this.props.addContact(newContact);
     this.props.history.push('/contacts');
   };

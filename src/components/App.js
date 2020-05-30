@@ -47,7 +47,7 @@ class App extends React.Component {
           )}/>
           <Route path='/contacts' render={() => (
             // passing addContact function and this.state to the Contact component
-            <Contact addContact={this.addContact} contacts={this.state.contacts} />
+            <Contact  addContact={this.addContact} contacts={this.state.contacts} />
           )}/>
         </Switch>
       </div>
