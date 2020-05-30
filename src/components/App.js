@@ -10,15 +10,18 @@ class App extends React.Component {
 
     this.state = {
       contacts: [
-        { name: "Made up", 
+        { id: 1,
+          name: "Made up", 
           phoneNumber: "812-456-6789", 
           email: "madeup@gmail.com" 
         },
-        { name: "Made up2", 
+        { id: 2,
+          name: "Made up2", 
         phoneNumber: "812-456-6789", 
         email: "madeup@gmail.com" 
         },
-        { name: "Made up3", 
+        { id: 3,
+          name: "Made up3", 
         phoneNumber: "812-456-6789", 
         email: "madeup@gmail.com" 
         },
@@ -31,7 +34,7 @@ class App extends React.Component {
     return (
       <div>
         <Switch>
-          <Route path='/contacts' render={() => (
+          <Route exact path='/' render={() => (
             <Contact contacts={this.state.contacts} />
           )}/>
           <Route path='/contacts' render={() => (

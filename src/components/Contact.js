@@ -1,25 +1,21 @@
 import { Switch, Route, Link } from 'react-router-dom'
-import React, { Component } from 'react';
+import React from 'react';
 import FullContactList from './FullContactList.js'
 
-class Contact extends Component {
-  constructor() {
-    super()
-  }
+const Contact = ({contacts}) => (
+  <div>
+    <Switch>
     
-  
-  
-    render() {
-      return (
-        <div>
-          <Switch>
-          <Route path='/contacts' render={() => (
-            <FullContactList contacts={contacts} />
-          )}/>
-          </Switch>
-        </div>
-      );
-    }
-}
+    <Route path='/contacts/:number' render={(routerProps) => (
+      <ContactInfo contactId={parseInt(routerProps.match.params.id, 10)} contacts={contacts} />
+    )}/>
+
+    <Route path='/contacts' render={() => (
+      <FullContactList contacts={contacts} />
+    )}/>
+    </Switch>
+  </div>
+    
+)
 
 export default Contact;

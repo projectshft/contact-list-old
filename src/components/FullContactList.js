@@ -3,15 +3,16 @@ import React from 'react'
 
 const FullContactList = ({contacts}) => (
   <div>
-    <ul>
+    <table>
       {
         contacts.map(contact => (
-          <li key={contact.number}>
+          <tr key={contact.number}>
             <Link to={`/contact/${contact.number}`}>{contact.name}</Link>
-          </li>
+          </tr>
         ))
       }
-    </ul>
+    </table>
+
   </div>
 )
 
