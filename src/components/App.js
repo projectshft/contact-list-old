@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import React, { Component } from 'react';
 import '../index.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -10,6 +10,7 @@ import georgeImg from './georgebluth.jpg'
 import lucilleImg from './lucillebluth.jpg'
 import busterImg from './busterbluth.jpg'
 import gobImg from './gobbluth.jpg'
+import PropTypes from 'prop-types';
 
 
 
@@ -40,9 +41,11 @@ class App extends Component {
     return (
       <div>
         <Switch>
+         
           <Route exact path="/contact" render={() => (
             <ContactsList contacts={this.state.contacts} />
           )} />
+         
 {/* Do I need to send contacts as props to NewContactForm? I really just want push up the data object created there */}
           <Route exact path="/contact/new" render={(routerProps) => (
             <NewContactForm addContact={this.addContact} contacts={this.state.contacts} history={routerProps.history} />
@@ -52,10 +55,16 @@ class App extends Component {
             <ContactInfo contactId={parseInt(routerProps.match.params.id, 10)} contacts={this.state.contacts} />
 
           )} />
+           <Redirect from="/" to="/contact" />
         </Switch>
       </div>
     )
   }
+}
+
+//Prop validation is important both to document the kinds of props a component is supposed to receive, and to ensure you don't accidentally give a component the wrong kind of prop.
+App.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.shape(NewContactForm.propTypes)).isRequired
 }
 
 

@@ -9,7 +9,7 @@ import App from './components/App'
 
 
 
-//Here we're giving the App component routing capability by wrapping in a BrowserRouter Component
+//Here we're giving the App component routing capability by wrapping in a BrowserRouter Component. It will allow us to switch in the child components
 ReactDOM.render(
   <BrowserRouter>
     <App />
