@@ -5,7 +5,7 @@ import _ from 'lodash';
 const ContactInfo = ({contactId, contacts}) => {
   //Matching the id parameter in the state to the router contact id
   const contact = _.find(contacts, { id: contactId });
-  //sending alert to user if they go to the route that does not exist
+  //sending message to user if they go to the route(contact) that does not exist
   if (!contact) {
     return <div>The contact was not found in the directory.</div>
   }

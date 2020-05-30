@@ -7,7 +7,6 @@ import ContactInfo from './ContactInfo.js'
 const Contact = ({contacts}) => (
   <div>
     <Switch>
-
     {/* creating a route for each contact to link to it's respective ContactInfo */}
     <Route path='/contacts/:id' render={(routerProps) => (
       <ContactInfo contactId={parseInt(routerProps.match.params.id, 10)} contacts={contacts} />
@@ -16,8 +15,12 @@ const Contact = ({contacts}) => (
 
     {/* rendering the full contact list in App.js */}
     <Route path='/contacts' render={() => (
-      //passing contacts props to FullContact List
-      <FullContactList contacts={contacts} />
+      <div>
+        <h1>Contact Info</h1>
+        {/* passing contacts props to FullContact List */}
+        <FullContactList contacts={contacts} />
+      </div>
+
     )}/>
     </Switch>
   </div>

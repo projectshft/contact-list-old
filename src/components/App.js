@@ -27,6 +27,12 @@ class App extends React.Component {
         },
       ]
     }
+    
+    this.addContact = this.addContact.bind(this);
+  }
+
+  addContact (contact) {
+    this.setState({contacts: this.state.contacts.concat([contact])})
   }
 
   
@@ -40,8 +46,8 @@ class App extends React.Component {
             <Contact contacts={this.state.contacts} />
           )}/>
           <Route path='/contacts' render={() => (
-            // passing this.state to the Contact component
-            <Contact contacts={this.state.contacts} />
+            // passing addContact function and this.state to the Contact component
+            <Contact addContact={this.addContact} contacts={this.state.contacts} />
           )}/>
         </Switch>
       </div>
