@@ -21,8 +21,6 @@ class ContactForm extends React.Component {
 
     handleClick() {
         console.log('handling click')
-        this.props.history.push('/')
-        /*
         
         //create random id for new contact
         const generateId = () => Math.round(Math.random() * 100000000)
@@ -36,9 +34,6 @@ class ContactForm extends React.Component {
             image: this.state.image
         }
 
-       
-        
-
         //check if all fields have been filled out
         if (newContact.name && newContact.email && newContact.phone && newContact.image) {
             console.log('fields completed')
@@ -47,12 +42,11 @@ class ContactForm extends React.Component {
             this.props.createNew(newContact);
 
             //return to home screen
-            // this.props.history.push('/')
+            this.props.history.push('/')
 
         } else {
             alert("Please fill out all required fields");
         }
-        */
     }
 
     render() {
@@ -95,7 +89,7 @@ class ContactForm extends React.Component {
                         placeholder="image URL"
                         required />
 
-                    <button id="submit-contact" type="text" onClick={this.handleClick}>Add</button>
+                    <button id="submit-contact" type="button" onClick={this.handleClick}>Add</button>
 
                 </form>
 

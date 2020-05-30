@@ -51,8 +51,7 @@ class App extends React.Component {
     console.log('adding contact')
        
     this.setState({ contacts: this.state.contacts.concat([newContact]) });
-
-    console.log(this.state)
+    
   }
 
   render() {
