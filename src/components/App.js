@@ -22,7 +22,7 @@ class App extends React.Component {
         },
         { id: 3,
           name: "Made up3", 
-          phoneNumber: "812-456-6789", 
+          phoneNumber: "812-456-6789",
           email: "madeup@gmail.com" 
         },
       ]
@@ -43,7 +43,7 @@ class App extends React.Component {
         and the /contacts route */}
         <Switch>
           <Route exact path='/' render={() => (
-            <Contact contacts={this.state.contacts} />
+            <Contact addContact={this.addContact} contacts={this.state.contacts} />
           )}/>
           <Route path='/contacts' render={() => (
             // passing addContact function and this.state to the Contact component
