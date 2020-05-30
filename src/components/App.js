@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import React from 'react'
 import FullContactsList from './FullContactsList'
 import Contact from './Contact'
@@ -39,15 +39,17 @@ class App extends React.Component {
     return Math.round(Math.random() * 100000000);
   }
 
+  addContact (contact) {
+    this.setState({contacts: this.state.contacts.concat([contact])});
+  }
+
   render() {
     console.log(this.state.contacts);
     return (
       <div>
-        <Switch>
-          <Route path='/contacts' render={() => (
-            <Contact contacts={this.state.contacts} />
-          )}/>
-        </Switch>
+        <Route path='/' render={() => (
+          <Contact contacts={this.state.contacts} addContact={this.addContact}/>
+        )}/>
       </div>
     )
   }
