@@ -1,6 +1,8 @@
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
+
 
 
 const ContactsList = () => {
@@ -45,7 +47,7 @@ const Contact = props => {
   const contact = ContactsAPI.get(parseInt(props.match.params.id, 10));
   return (
     <div>
-      <img src='{player.image}' width="250" height="300"></img>
+      <img src={contact.image} width="250" height="250"></img>
       <h2>
         {contact.name}
       </h2>
@@ -56,28 +58,79 @@ const Contact = props => {
   );
 };
 
-const AddContact = () => {
+
+class AddContact extends React.Component {
+  constructor () {
+    super ()
+
+    this.state = {
+      name: '',
+      email: '',
+      phone: '',
+      image: ''
+    }
+
+    this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
+  }
+
+  handleSubmitContactClick () {
+    const newContact = {
+      name: this.state.name,
+      email: this.state.email,
+      phone: this.state.phone,
+      image: this.state.image
+    };
+
+    this.props.addContact(newContact)
+    this.props.history.push('/')
+  }
+
+  render () {
   return (
+    <div>
     <form>
       <label>
         Name:
         <input type="text" name="name" />
       </label>
-      <input type="submit" value="Submit" />
+      <br></br><br></br>
+      <label>
+        Email:
+        <input type="text" email="email" />
+      </label>
+      <br></br><br></br>
+      <label>
+        Phone:
+        <input type="text" phone="phone" />
+      </label>
+      <br></br><br></br>
+      <label>
+        Image URL:
+        <input type="text" image="imageUrl" />
+      </label>
+      <button type="button" onClick={this.handleSubmitContactClick}>Submit</button>
+      <Link to="/">Back</Link>
     </form>
+    </div>
   )
+}
 };
 
 
-const App = () => (
-  <div>
-    <Switch>
-    <Route exact path="/" component={ContactsList} />
-    <Route path="/contact/addcontact" component={AddContact} />
-    <Route path="/contact/:id" component={Contact} />
-    </Switch>
-  </div>
-);
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Switch>
+        <Route exact path="/" component={ContactsList} />
+        <Route path="/contact/addcontact" component={AddContact} />
+        <Route path="/contact/:id" component={Contact} />
+        </Switch>
+      </div>
+    );
+  }
+}
+
 
 
 

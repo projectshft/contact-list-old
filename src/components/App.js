@@ -30,11 +30,11 @@ class App extends React.Component {
     return (
       <div>
         <Switch>
-          <Route exact path='/' component={Home}/>
+          <Route exact path='/' render={Home}/>
           <Route path='/roster' render={() => (
             <Roster addPlayer={this.addPlayer} players={this.state.players} />
           )}/>
-          <Route path='/schedule' component={Schedule}/>
+          <Route path='/schedule' render={Schedule}/>
         </Switch>
       </div>
     )
