@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-class ContactInfo extends Component {
+const ContactInfo = (props) => {
 
-    render() {
+
+      console.log(props.contact.id)
       return (
-        <div className="contact">
-            <p>Individual contact info here</p>
-            <Link to="/">Back</Link>
-        </div>
+        <li>
+          <span>{props.contact.name} - {props.contact.phone}  </span>
+        </li>
 
       )
     }
 
 
-}
+
 export default ContactInfo;
