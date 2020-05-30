@@ -7,7 +7,7 @@ import Contact from './Contact'
 class App extends React.Component {
   constructor() {
     super()
-
+    //state to hold all of the App's contacts
     this.state = {
       contacts: [
         { id: 1,
@@ -17,13 +17,13 @@ class App extends React.Component {
         },
         { id: 2,
           name: "Made up2", 
-        phoneNumber: "812-456-6789", 
-        email: "madeup@gmail.com" 
+          phoneNumber: "812-456-6789", 
+         email: "madeup@gmail.com" 
         },
         { id: 3,
           name: "Made up3", 
-        phoneNumber: "812-456-6789", 
-        email: "madeup@gmail.com" 
+          phoneNumber: "812-456-6789", 
+          email: "madeup@gmail.com" 
         },
       ]
     }
@@ -33,11 +33,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        {/* Routing exact path of the list of contacts to be the home page
+        and the /contacts route */}
         <Switch>
           <Route exact path='/' render={() => (
             <Contact contacts={this.state.contacts} />
           )}/>
           <Route path='/contacts' render={() => (
+            // passing this.state to the Contact component
             <Contact contacts={this.state.contacts} />
           )}/>
         </Switch>
