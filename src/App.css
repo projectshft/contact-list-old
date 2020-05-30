@@ -1,7 +1,20 @@
-.bob {
-  display: inline;
+.edit {
+  margin-left: 10px;
 }
 
-.button {
-  display: inline;
+.delete {
+  margin-left: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding-left: 0;
+}
+
+.customer-list {
+  color: black;
+  font-size: 1.3em;
 }
