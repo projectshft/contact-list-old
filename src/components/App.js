@@ -1,5 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
-import React from 'react';
+import React, { Component } from 'react';
 import Home from './Home';
 import ContactForm from './ContactForm';
 import ContactDetail from './ContactDetail';
@@ -8,7 +8,7 @@ import JaneImage from '../images/jane_eyre.jpg'
 import RochesterImage from '../images/mr_rochester.jpg'
 import BerthaImage from '../images/mrs_rochester.jpg'
 
-class App extends React.Component {
+class App extends Component {
   constructor () {
     super()
 

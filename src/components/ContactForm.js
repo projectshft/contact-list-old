@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'
+import { Form, Row, Col, Button } from 'react-bootstrap'
+import '../ContactForm.css'
 
-
-class ContactForm extends React.Component {
+class ContactForm extends Component {
 
     constructor(props) {
         super(props)
@@ -23,7 +24,7 @@ class ContactForm extends React.Component {
     //create new contact and add to contacts array on App state
     createContact() {
         console.log('handling click')
-        
+
         //create random id for new contact
         const generateId = () => Math.round(Math.random() * 100000000)
 
@@ -54,48 +55,89 @@ class ContactForm extends React.Component {
     render() {
         return (
             <div className="add-contact-form">
-                <h2>Add Contact</h2>
+                <header>
+                    <h1>Add Contact</h1>
+                </header>
 
-                <form>
 
-                    <input id="input-name"
-                        value={this.state.name}
-                        onChange={event => {
-                            this.setState({ name: event.target.value })
-                        }}
-                        placeholder="name"
-                        required />
+                <Form>
 
-                    <input id="input-email"
-                        value={this.state.email}
-                        onChange={event => {
-                            this.setState({ email: event.target.value })
-                        }}
-                        placeholder="email address"
-                        required />
+                    {/* Name Input */}
+                    <Form.Group as={Row} controlId="input-name">
+                        <Form.Label column sm={2}>Contact Name: </Form.Label>
+                        <Col sm={10}>
 
-                    <input id="input-phone"
-                        value={this.state.phone}
-                        onChange={event => {
-                            this.setState({ phone: event.target.value })
-                        }}
-                        placeholder="phone number"
-                        required />
+                            <Form.Control
+                                value={this.state.name}
+                                onChange={event => {
+                                    this.setState({ name: event.target.value })
+                                }}
+                                placeholder="John Doe"
+                                required />
+                        </Col>
+                    </Form.Group>
 
-                    <input id="input-image"
-                        value={this.state.image}
-                        onChange={event => {
-                            this.setState({ image: event.target.value })
-                        }}
-                        placeholder="image URL"
-                        required />
+                    {/* Email Input */}
+                    <Form.Group as={Row} controlId="input-name">
+                        <Form.Label column sm={2}>Email Address: </Form.Label>
+                        <Col sm={10}>
 
-                    <button id="submit-contact" type="button" onClick={this.createContact}>Add</button>
+                            <Form.Control
+                                value={this.state.email}
+                                onChange={event => {
+                                    this.setState({ email: event.target.value })
+                                }}
+                                placeholder="jdoe@gmail.com"
+                                required />
+                        </Col>
+                    </Form.Group>
 
-                </form>
+                    {/* Phone Number Input */}
+                    <Form.Group as={Row} controlId="input-name">
+                        <Form.Label column sm={2}>Phone Number: </Form.Label>
+                        <Col sm={10}>
 
-                <Link to="/contacts">Back</Link>
+                            <Form.Control
+                                value={this.state.phone}
+                                onChange={event => {
+                                    this.setState({ phone: event.target.value })
+                                }}
+                                placeholder="1 (234) 555-6789"
+                                required />
+                        </Col>
+                    </Form.Group>
 
+
+                    {/* Image Url Input */}
+                    <Form.Group as={Row} controlId="input-name">
+                        <Form.Label column sm={2}>Image URL: </Form.Label>
+                        <Col sm={10}>
+
+                            <Form.Control
+                                value={this.state.image}
+                                onChange={event => {
+                                    this.setState({ image: event.target.value })
+                                }}
+                                placeholder="https://www.website.com/contact_image.jpg"
+                                required />
+                        </Col>
+                    </Form.Group>
+
+                    {/* Submit Button */}
+                    <Form.Group as={Row}>
+                        <Col sm={{ span: 10, offset: 2 }}>
+
+                            <Button id="submit-contact" type="button" onClick={this.createContact}>Add New Contact</Button>
+
+                        </Col>
+                    </Form.Group>
+
+                </Form>
+
+                {/* Back Link */}
+                <div className="back-link">
+                    <Link to="/contacts">Back</Link>
+                </div>
             </div>
         )
     }
