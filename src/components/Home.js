@@ -18,3 +18,22 @@ const Home = () => {
 }
 
 export default Home;
+
+/*
+const Roster = ({players, addPlayer}) => (
+  <Switch>    
+    <Route path='/roster/new' render={(routerProps) => (
+      <PlayerNew history={routerProps.history} players={players} addPlayer={addPlayer} />
+    )}/>
+  
+    <Route path='/roster/:number' render={(routerProps) => (
+      <Player playerId={parseInt(routerProps.match.params.number, 10)} players={players} />
+    )}/>
+    
+    <Route path='/roster' render={() => (
+      <FullRoster players={players} />
+    )}/>
+  </Switch>
+)
+
+*/

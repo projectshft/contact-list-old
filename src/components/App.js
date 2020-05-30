@@ -47,12 +47,12 @@ class App extends React.Component {
   }
   
   // create new contact with input from contact form
-  addContact = () => {
+  addContact = (newContact) => {
     console.log('adding contact')
+       
+    this.setState({ contacts: this.state.contacts.concat([newContact]) });
 
-    // this.setState({ contacts: this.state.contacts.concat(newContact) });
-
-    // console.log(this.state)
+    console.log(this.state)
   }
 
   render() {
@@ -69,8 +69,8 @@ class App extends React.Component {
             )} /> 
 
           {/* pass function to add new contacts to app state through contact form */}
-          <Route path='/contacts/new' render={() => (
-            <ContactForm createNew={ this.addContact } />
+          <Route path='/contacts/new' render={(routerProps) => (
+            <ContactForm createNew={ this.addContact } history={routerProps.history} />
           )} />
 
           {/* navigate to contact details by matching number in url path to contact id */}
