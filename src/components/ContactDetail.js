@@ -1,7 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import _ from 'lodash'
 
-const ContactDetail = ({ contacts }) => {
+const ContactDetail = (props) => {
+
+    //find contact whose id matches id in url
+    const contact = _.find(props.contacts, { id: props.contactId });
 
     return (
         
@@ -9,14 +13,14 @@ const ContactDetail = ({ contacts }) => {
 
             <h2>Contact Details</h2>
            
-            {/* <img src={props.contact.imageUrl} alt="{name}"/>
+            <img className="detail-image" src={contact.image} alt={contact.name}/>
 
-            <h2>{props.contact.name}</h2>
+            <h2>{contact.name}</h2>
 
-            <p>{props.contact.email}</p>
+            <p>{contact.email}</p>
 
-            <p>{props.contact.phone}</p>
-             */}
+            <p>{contact.phone}</p>
+            
 
              <Link to="/contacts">Back</Link>
         </div>
@@ -24,3 +28,4 @@ const ContactDetail = ({ contacts }) => {
 }
 
 export default ContactDetail;
+

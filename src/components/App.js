@@ -5,6 +5,9 @@ import Home from './Home';
 import ContactForm from './ContactForm';
 import ContactDetail from './ContactDetail';
 // import Header from './Header';
+import JaneImage from '../images/jane_eyre.jpg'
+import RochesterImage from '../images/mr_rochester.jpg'
+import BerthaImage from '../images/mrs_rochester.jpg'
 
 class App extends React.Component {
   constructor () {
@@ -21,7 +24,7 @@ class App extends React.Component {
           name: "Jane Eyre",
           email: "lonelyorphan@lowoodschool.edu",
           phone: "12865559830",
-          image: "./images/jane_eyre.jpg"
+          image: JaneImage
         },
 
         {
@@ -29,7 +32,7 @@ class App extends React.Component {
           name: "Edward Rochester",
           email: "sirmoody@thornfield.com",
           phone: "16765552548",
-          image: "./images/mr_rochester.jpg"
+          image: RochesterImage
         },
 
         {
@@ -37,7 +40,7 @@ class App extends React.Component {
           name: "Bertha Mason",
           email: "crazywife@theattic.net",
           phone: "12375559372",
-          image: "./images/mrs_rochester.jpg"
+          image: BerthaImage
         }
       ]
     }
@@ -76,6 +79,7 @@ class App extends React.Component {
           <Route path='/contacts/:id' render={(routerProps) => (
       <ContactDetail contactId={parseInt(routerProps.match.params.id, 10)} contacts={this.state.contacts} />
     )}/>
+
         </Switch>
       </div>
     )
