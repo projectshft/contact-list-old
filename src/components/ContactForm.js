@@ -8,6 +8,7 @@ class ContactForm extends React.Component {
     constructor(props) {
         super(props)
 
+        //to hold data from form input
         this.state = {
             name: '',
             email: '',
@@ -19,7 +20,8 @@ class ContactForm extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick() {
+    //create new contact and add to contacts array on App state
+    createContact() {
         console.log('handling click')
         
         //create random id for new contact
@@ -39,7 +41,7 @@ class ContactForm extends React.Component {
             console.log('fields completed')
 
             //add input value to contacts in App
-            this.props.createNew(newContact);
+            this.props.addNew(newContact);
 
             //return to home screen
             this.props.history.push('/')
@@ -83,13 +85,12 @@ class ContactForm extends React.Component {
                     <input id="input-image"
                         value={this.state.image}
                         onChange={event => {
-                            console.log(this.state)
                             this.setState({ image: event.target.value })
                         }}
                         placeholder="image URL"
                         required />
 
-                    <button id="submit-contact" type="button" onClick={this.handleClick}>Add</button>
+                    <button id="submit-contact" type="button" onClick={this.createContact}>Add</button>
 
                 </form>
 

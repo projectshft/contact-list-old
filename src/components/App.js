@@ -69,7 +69,7 @@ class App extends React.Component {
 
           {/* pass function to add new contacts to app state through contact form */}
           <Route path='/contacts/new' render={(routerProps) => (
-            <ContactForm createNew={ this.addContact } history={routerProps.history} />
+            <ContactForm addNew={ this.addContact } history={routerProps.history} />
           )} />
 
           {/* navigate to contact details by matching number in url path to contact id */}
