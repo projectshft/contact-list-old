@@ -1,6 +1,6 @@
 import { Switch, Route } from 'react-router-dom'
 import React from 'react'
-import ContactInner from './ContactInfo'
+import ContactInfo from './ContactInfo'
 import FullContactsList from './FullContactsList'
 
 const Contact = ({contacts}) => (
