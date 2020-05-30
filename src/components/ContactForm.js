@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 
-
 class ContactForm extends React.Component {
 
     constructor(props) {
@@ -17,7 +16,7 @@ class ContactForm extends React.Component {
         }
 
         //bind handleClick to contact form
-        this.handleClick = this.handleClick.bind(this);
+        this.createContact = this.createContact.bind(this);
     }
 
     //create new contact and add to contacts array on App state
@@ -100,6 +99,8 @@ class ContactForm extends React.Component {
         )
     }
 }
+
+
 
 //set types for properties
 
