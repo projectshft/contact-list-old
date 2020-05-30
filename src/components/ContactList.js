@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'
 
 // list of contacts shown on home page
 const ContactList = (props) => {
@@ -25,5 +26,13 @@ const ContactList = (props) => {
         </div>
     )
 }
+
+//set prop types
+ContactList.propTypes = {contacts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    phone: PropTypes.string,
+    image: PropTypes.string
+}))}
 
 export default ContactList;

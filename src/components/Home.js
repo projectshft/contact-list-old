@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ContactList from './ContactList';
+import PropTypes from 'prop-types'
 
 const Home = (props) => {
     return (
@@ -17,4 +18,14 @@ const Home = (props) => {
     )
 }
 
+//set prop types
+Home.propTypes = {contacts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    email: PropTypes.string,
+    phone: PropTypes.string,
+    image: PropTypes.string
+}))}
+
 export default Home;
+

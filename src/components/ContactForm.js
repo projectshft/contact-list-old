@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'
 
 
 class ContactForm extends React.Component {
@@ -100,10 +101,10 @@ class ContactForm extends React.Component {
     }
 }
 
-
-
-//set types for properties
-
+//set prop types
+ContactForm.propTypes = {
+    addNew: PropTypes.func.isRequired
+}
 
 export default ContactForm;
 

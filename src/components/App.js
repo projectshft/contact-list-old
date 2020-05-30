@@ -1,6 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
 import React from 'react';
-import PropTypes from 'prop-types';
 import Home from './Home';
 import ContactForm from './ContactForm';
 import ContactDetail from './ContactDetail';
@@ -17,7 +16,6 @@ class App extends React.Component {
 
       //to hold all data for contact list and details
       contacts: [
-
         // default contacts to display
         {
           id: 123,
@@ -49,12 +47,11 @@ class App extends React.Component {
     this.addContact = this.addContact.bind(this);
   }
   
-  // create new contact with input from contact form
+  // add new contact to app state with contact form input
   addContact = (newContact) => {
     console.log('adding contact')
        
     this.setState({ contacts: this.state.contacts.concat([newContact]) });
-    
   }
 
   render() {
@@ -85,7 +82,5 @@ class App extends React.Component {
     )
   }
 }
-
-
 
 export default App
