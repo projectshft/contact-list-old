@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
+import '../ContactDetail.css'
 
 const ContactDetail = (props) => {
 
