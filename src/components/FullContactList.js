@@ -6,8 +6,8 @@ const FullContactList = ({contacts}) => (
     <table>
       {
         contacts.map(contact => (
-          <tr key={contact.number}>
-            <Link to={`/contact/${contact.number}`}>{contact.name}</Link>
+          <tr key={contact.id}>
+            <Link to={`/contact/${contact.id}`}>{contact.name}</Link>
           </tr>
         ))
       }

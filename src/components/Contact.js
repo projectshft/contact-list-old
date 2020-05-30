@@ -1,6 +1,7 @@
 import { Switch, Route, Link } from 'react-router-dom'
 import React from 'react';
 import FullContactList from './FullContactList.js'
+import ContactInfo from './ContactInfo.js'
 
 const Contact = ({contacts}) => (
   <div>
