@@ -18,7 +18,7 @@ class App extends React.Component {
         { id: 2,
           name: "Made up2", 
           phoneNumber: "812-456-6789", 
-         email: "madeup@gmail.com" 
+          email: "madeup@gmail.com" 
         },
         { id: 3,
           name: "Made up3", 
