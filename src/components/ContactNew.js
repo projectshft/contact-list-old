@@ -18,7 +18,7 @@ class ContactNew extends React.Component {
   
   handleSubmitNewContact () {
     if (this.state.name === '' || this.state.phoneNumber === '' || this.state.email === '') {
-      return alert('Please complete all fields and then hit submit')
+      return alert('Please complete all fields and then click submit')
     }
     
     //create a random number to automatically add an ID value to the "id" key
