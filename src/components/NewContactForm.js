@@ -51,20 +51,25 @@ class NewContactForm extends Component {
   }
 
   //this function is used to handle the file that is uploaded by the user. It is triggered when the user selects a file. We instantiate a new File reader and grab the target of the event (the file, which will be in the target's files array at the zero index). We'll check that the file exists and use the reader to transform the file into data that we can store and display
-  handleFile = event => {
-
-    const reader = new FileReader();
+  handleFileUpload = event => {
     const file = event.target.files[0];
-    reader.onloadend = () => {
-      this.setState({
-        file,
-        img: reader.result
-      })
+  
+    if (file.type == 'image/jpeg' || file.type == 'image/png') {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        this.setState({
+          file,
+          img: reader.result
+        })
+      }
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    } else {
+      event.target.value = '';
+      window.alert('Please upload a .jpg or .png image')
     }
 
-    if (file) {
-      reader.readAsDataURL(file);
-    }
 
   }
 
@@ -90,19 +95,9 @@ class NewContactForm extends Component {
     }
   }  
 
-  //This function will check if the name and email fields are filled out correctly. The name and email fields are required, and the email must be in the correct format. If these validation checks fail, we'll prevent the link from taking us back to the '/contact' page and we'll alert the user to the requirements. If the fields are filled out correctly, we are good to use our addContact prop (that we passed down from App) to add the newContact to our contacts array and return to the '/contact' page. 
+  //This function will check if the name, phone, and email fields are filled out correctly. The phone must be a 7 or 10 digit entry and will be saved on the new contact object with dashes (eg 555-123-4567). The email must be in correct email format. An image must be uploaded. If any of these validation checks fail, we'll prevent the link from taking us back to the '/contact' page and we'll alert the user to the requirements. If the fields are filled out correctly, we are good to use our addContact prop (that we passed down from App) to add the newContact to our contacts array and return to the '/contact' page. 
   handleFormSubmission = event => {
     const newContact = Object.assign({}, this.state)
-
-    // this.validateEmailInput(newContact)
-    // this.validatePhoneInput(newContact)
-
-    // if (!this.validatePhoneNumber(newContact)) {
-    //   event.preventDefault();
-    //   window.alert('Please enter a valid phone number')
-    // }
-
-    
 
 
     if (!this.validateEmailInput(newContact.email)) {
@@ -152,7 +147,7 @@ class NewContactForm extends Component {
           <div className="form-group row">
             <label className="col-md-1">Picture: </label>
             <input type="file" className="col-md-3"
-              onChange={this.handleFile}
+              onChange={this.handleFileUpload}
             />
           </div>
           <div className="form-group row">
