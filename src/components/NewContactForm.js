@@ -17,11 +17,12 @@ class NewContactForm extends React.Component {
     this.handleBackButton = this.handleBackButton.bind(this);
   }
 
-  handleSubmitContact() {
+  handleSubmitContact(event) {
     const generateId = () => Math.round(Math.random() * 100000000);
 
     // construct a new obj to pass
     console.log("click");
+
     const newContact = {
       id: generateId(),
       first_name: this.state.first_name,
@@ -34,6 +35,19 @@ class NewContactForm extends React.Component {
     console.log("The current props (before adding) are ", this.props);
 
     this.props.addContact(newContact);
+
+    // we want to prevent the browser from clearing inputs before React handles them
+    event.preventDefault();
+
+    // clear the form in case the user wants to input another
+    this.setState({
+      id: "",
+      first_name: "",
+      last_name: "",
+      image_url: "",
+      email: "",
+      phone_number: "",
+    });
   }
 
   handleBackButton() {
@@ -43,10 +57,11 @@ class NewContactForm extends React.Component {
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmitContact}>
           <label>First Name</label>
           <input
             type="text"
+            value={this.state.first_name}
             onChange={(event) =>
               this.setState({ first_name: event.target.value })
             }
@@ -55,6 +70,7 @@ class NewContactForm extends React.Component {
           <label>Last Name</label>
           <input
             type="text"
+            value={this.state.last_name}
             onChange={(event) =>
               this.setState({ last_name: event.target.value })
             }
@@ -63,12 +79,14 @@ class NewContactForm extends React.Component {
           <label>Email Address</label>
           <input
             type="text"
+            value={this.state.email}
             onChange={(event) => this.setState({ email: event.target.value })}
           />
 
           <label>Phone Number</label>
           <input
             type="text"
+            value={this.state.phone_number}
             onChange={(event) =>
               this.setState({ phone_number: event.target.value })
             }
@@ -77,14 +95,13 @@ class NewContactForm extends React.Component {
           <label>Image URL</label>
           <input
             type="text"
+            value={this.state.image_url}
             onChange={(event) =>
               this.setState({ image_url: event.target.value })
             }
           />
 
-          <button type="button" onClick={this.handleSubmitContact}>
-            Submit
-          </button>
+          <button type="submit">Submit</button>
 
           <button type="button" onClick={this.handleBackButton}>
             Back
