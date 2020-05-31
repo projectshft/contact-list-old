@@ -11,7 +11,7 @@ class ContactNew extends Component {
       name: '',
       image_url: '',
       email: '',
-      phone_number: "15555555555"
+      phone_number: '',
     }
 
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
@@ -22,8 +22,8 @@ class ContactNew extends Component {
     id: this.generateId(),
     name: this.state.name,
     image_url: this.state.image_url,
-    number: this.state.email,
-    position: this.state.phone_number
+    email: this.state.email,
+    phone_number: this.state.phone_number
   }
 
     console.log(this.props)
@@ -49,7 +49,7 @@ class ContactNew extends Component {
           <br/>
 
           <input type="text" className="form-control" placeholder="Ex: ##########"
-          onChange={event => this.setState({ phone: event.target.value })
+          onChange={event => this.setState({ phone_number: event.target.value })
         }/>
 
           <br/>
