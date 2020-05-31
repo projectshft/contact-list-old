@@ -6,6 +6,8 @@ import Contacts from './Contacts';
 import PropTypes from 'prop-types';
 
 //Inherits contacts and addContacts from parent comonent App.
+//routerProps.history sends the memory history to all routes
+//routerProps.match matches the url path based on the provided parameters (id)
 const ContactRoutes = ({contacts, addContact, deleteContact}) => (
   <Switch>{/*Path to NewContent passing past properties */}
     <Route path='/contacts/new' render={(routerProps) => (

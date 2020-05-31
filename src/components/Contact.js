@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
-import _ from 'lodash'
+import _ from 'lodash'//used for navigating in arrays and objects
 import PropTypes from 'prop-types';
 
+// Contact ID and contacts are passed as params from parent component.
+
 const Contact = ({contactId, contacts}) => {
-console.log(contacts)
+// console.log(contacts)
+//lodash _ makes navigating inside arrays easier. _.find is able to find the object in the array that matches the provided id
+//used instead of iterating through contacts
   const contact = _.find(contacts, { id: contactId });
 
-  console.log(contact)
+  // console.log(contact)
   if (!contact) {
     return <div>That contact was not found, please try again.</div>
   }
