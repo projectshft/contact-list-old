@@ -14,6 +14,7 @@ const Contacts = () => (
         </li>
       ))}
     </ul>
+    <Link to={'/new-contact-form'}>New Contact</Link>
   </div>
 );
 

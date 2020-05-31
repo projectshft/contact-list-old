@@ -24,7 +24,7 @@ class NewContactForm extends Component {
 
         </div>
 
-        <button type="button" className="btn btn-primary add-post">Post</button>
+        <button type="button" className="btn btn-primary add-post">Create New Contact</button>
       </form>
     );
   }
