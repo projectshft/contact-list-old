@@ -1,10 +1,8 @@
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import React, { Component } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import AllContacts from './AllContacts';
-import Contact from './Contact';
-import NewContactForm from './NewContactForm'
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import Contacts from './Contacts';
 
 
 class App extends React.Component {
@@ -37,11 +35,12 @@ class App extends React.Component {
       return (
       <div>
         <Switch>
-          <Route exact path="/" component={AllContacts} />
+          <Route exact path="/" render={() => (
+            <Contacts addContact={this.addContact} contacts={this.state.contacts} />
+          )} /> />
           <Route path="/contacts" render={() => (
-            <Roster addContact={this.addContact} players={this.state.contacts} />
+            <Contacts addContact={this.addContact} contacts={this.state.contacts} />
           )} />
-          <Route path='/new-contact-form' component={NewContactForm} />
         </Switch>
       </div>
     )

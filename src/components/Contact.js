@@ -1,12 +1,12 @@
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import React, { Component } from 'react';
+import _ from 'lodash'
 import ReactDOM from 'react-dom';
-import ContactsAPI from './ContactsAPI'
 
-const Contact = props => {
-  console.log(props);
-  const contact = ContactsAPI.get(parseInt(props.match.params.id, 10));
- 
+const Contact = ({contactId, contacts}) => {
+
+  const contact = _.find(contacts, {id: contactId});
+
   if (!contact) {
     return (
       <div>
