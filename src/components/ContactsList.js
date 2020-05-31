@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import '../index.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import PropTypes from 'prop-types';
 
 
 
-//this is the list of contacts that is accepting the contacts props from App (which is the state holding our data). We'll iterate through our contacts (props) and create a list of contacts that links to a contact info page if the contact is clicked. The Link tag assigns the route based on the id of the contact
+//this component is rendering the list of contacts that is stored in our state (in App). We'll iterate through our contacts (props) and create a list of contacts that links to a contact info page if the contact is clicked. A key will be assigned to each list item to help React with identification between re-renders. The Link tag assigns the route based on the id of the contact. We will use destructuring for the props to avoid using {props.contacts}
 const ContactsList = ({contacts}) => (
       <div>
         <div className="row heading">
@@ -31,6 +32,9 @@ const ContactsList = ({contacts}) => (
       </div>
     )
 
-
+//we want to validate that our incoming props (the contacts array) is an array of objects
+ContactsList.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.object).isRequired
+}
 
 export default ContactsList

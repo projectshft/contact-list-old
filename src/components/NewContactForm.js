@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
-
 import '../index.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import PropTypes from 'prop-types';
 
 
 
-//this component will show a form to fill out using input fields (name, phone, email) and upload an image from the user's computer. The data will be stored in a temp state and use the 'addContact' prop that was passed down from the main App. The is the way we will add a new user to our global state
+//this component will show a form to fill out using input fields (name, phone, email) and upload an image from the user's computer. The data will be stored in a local state and use the 'addContact' prop that was passed down from the main App to add the newContact to the 'global' state in App. 
 class NewContactForm extends Component {
   constructor(props) {
     super(props)
+
     //this will generate a new id every time the contact form component is instantiated, automatically assigning our temp state here the id that is randomly generated
     const newId = this.generateId();
 
@@ -22,21 +23,6 @@ class NewContactForm extends Component {
       img: null
     }
 
-    //this.handleSubmitClick = this.handleSubmitClick.bind(this)
-    //this.generateId = this.generateId.bind(this)
-
-
-  }
-  //when the Submit button is clicked, we create a new object based on our state and using the prop function addContact (passed down from App), we add the new contact to our state in that component
-  //because we're using arrow functions, we don't need to bind 'this' to the function to tie it to this component
-  submitButtonHandler = () => {
-    const newContact = Object.assign({}, this.state)
-    console.log(this.state)
-    console.log(newContact)
-    //we passed in the add contact function as a prop when we instantiated the form
-    this.props.addContact(newContact);
-    //we passed in the history prop when we instantiated the form
-    this.props.history.push('/contact')
   }
 
   //this will generate a new id every time the 'Add contact' button is clicked, which instantiates a new contact form component
@@ -44,7 +30,7 @@ class NewContactForm extends Component {
     return Math.round(Math.random() * 100000000)
   }
 
-//this event handler will be triggered every time a user types in the input fields. We can update the name, phone and email properties of the state in one generalized function by using the event's own properties. 
+  //this event handler will be triggered every time a user makes a keypress in the input fields. We can update the name, phone and email properties of the state in one generalized function by using the event's own properties. 
   handleInput = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -52,9 +38,22 @@ class NewContactForm extends Component {
     console.log(this.state);
   }
 
+  //this function will validate the email address provided, eg, checking for an @ symbol and correct extension
+  validateEmailInput = email => {
+
+    const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+
+    if (validEmailRegex.test(email)) {
+      return true;
+    } else {
+      return false;
+    }
+
+  }
+
   //this function is used to handle the file that is uploaded by the user. It is triggered when the user selects a file. We instantiate a new File reader and grab the target of the event (the file, which will be in the target's files array at the zero index). We'll check that the file exists and use the reader to transform the file into data that we can store and display
   handleFile = event => {
-  
+
     const reader = new FileReader();
     const file = event.target.files[0];
     reader.onloadend = () => {
@@ -69,6 +68,27 @@ class NewContactForm extends Component {
     }
 
   }
+
+  //This function will check if the name and email fields are filled out correctly. The name and email fields are required, and the email must be in the correct format. If these validation checks fail, we'll prevent the link from taking us back to the '/contact' page and we'll alert the user to the requirements. If the fields are filled out correctly, we are good to use our addContact prop (that we passed down from App) to add the newContact to our contacts array and return to the '/contact' page. 
+  handleFormSubmission = event => {
+    const newContact = Object.assign({}, this.state)
+  
+
+    if (!this.validateEmailInput(newContact.email)) {
+      event.preventDefault();
+      window.alert('Please enter a valid email')
+
+    } else if (!newContact.name) {
+      event.preventDefault();
+      window.alert('A name must be provided to create a contact')
+
+    } else {
+      this.props.addContact(newContact);
+      this.props.history.push('/contact')
+    }
+
+  }
+
 
   render() {
     return (
@@ -96,7 +116,7 @@ class NewContactForm extends Component {
             />
           </div>
           <div className="form-group row">
-            <button type="button" className="col-md-1 offset-md-1" onClick={this.submitButtonHandler}><Link to="/contact">Submit</Link></button>
+            <button type="button" className="col-md-1 offset-md-1"><Link onClick={event => this.handleFormSubmission(event)} to="/contact">Submit</Link></button>
             <button className="col-md-1 offset-md-1"><Link to="/contact">Cancel</Link></button>
           </div>
         </form>
@@ -107,5 +127,10 @@ class NewContactForm extends Component {
 
 }
 
+//we want to validate that the props we're receiving from App are the types we expect
+NewContactForm.propTypes = {
+  addContact: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
+}
 
 export default NewContactForm

@@ -10,13 +10,12 @@ import georgeImg from './georgebluth.jpg'
 import lucilleImg from './lucillebluth.jpg'
 import busterImg from './busterbluth.jpg'
 import gobImg from './gobbluth.jpg'
-import PropTypes from 'prop-types';
 
 
 
 class App extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       contacts: [
@@ -25,15 +24,13 @@ class App extends Component {
         { id: 3, name: 'Lucille Bluth', phone: "555-246-9667", email: 'lucillebluth@gmail.com', img: new URL (lucilleImg) },
         { id: 4, name: 'Buster Bluth', phone: "555-246-3455", email: 'busterbluth@gmail.com', img: new URL (busterImg) },
         { id: 5, name: 'Gob Bluth', phone: "555-312-5742", email: 'gobbluth@gmail.com', img: new URL (gobImg) },
-      ]
+     ]
     }
 
 
-    this.addContact = this.addContact.bind(this);
-
   }
 //this function will be a prop that is passed down to the new contact form component. We make sure to use setState and concat to adhere to React's functionality for determining change in state and its state immutability requirements, respectively
-  addContact(contact) {
+  addContact = contact => {
     this.setState({ contacts: this.state.contacts.concat([contact]) })
   }
 
@@ -41,20 +38,18 @@ class App extends Component {
     return (
       <div>
         <Switch>
-         
           <Route exact path="/contact" render={() => (
             <ContactsList contacts={this.state.contacts} />
           )} />
          
-{/* Do I need to send contacts as props to NewContactForm? I really just want push up the data object created there */}
           <Route exact path="/contact/new" render={(routerProps) => (
-            <NewContactForm addContact={this.addContact} contacts={this.state.contacts} history={routerProps.history} />
+            <NewContactForm addContact={this.addContact} history={routerProps.history} />
           )} />
 
           <Route exact path="/contact/:id" render={(routerProps) => (
             <ContactInfo contactId={parseInt(routerProps.match.params.id, 10)} contacts={this.state.contacts} />
-
           )} />
+
            <Redirect from="/" to="/contact" />
         </Switch>
       </div>
@@ -62,10 +57,6 @@ class App extends Component {
   }
 }
 
-//Prop validation is important both to document the kinds of props a component is supposed to receive, and to ensure you don't accidentally give a component the wrong kind of prop.
-// App.propTypes = {
-//   contacts: PropTypes.arrayOf(PropTypes.shape(NewContactForm.propTypes)).isRequired
-// }
 
 
 export default App 
