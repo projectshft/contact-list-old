@@ -1,6 +1,7 @@
 import { Switch, Route } from 'react-router-dom'
 import React from 'react';
 import Contact from './Contact'
+import PropTypes from 'prop-types'
 import 'bootstrap/dist/css/bootstrap.css';
 import '../css/App.css'
 
@@ -46,7 +47,7 @@ class App extends React.Component {
     
     this.addContact = this.addContact.bind(this);
   }
-
+  //adding the contact based on input from ContactNew component when a users adds a new contact
   addContact (contact) {
     this.setState({contacts: this.state.contacts.concat([contact])})
   }
@@ -66,6 +67,15 @@ class App extends React.Component {
       </div>
     );
   }
+}
+
+//PropType validation for App component
+App.PropTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  profileImage: PropTypes.string,
+  phoneNumber: PropTypes.number.isRequired,
+  email: PropTypes.string.isRequired
 }
 
 export default App;

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import React from 'react';
+import PropTypes from 'prop-types'
 import 'bootstrap/dist/css/bootstrap.css';
 
 class ContactNew extends React.Component {
@@ -97,6 +98,15 @@ class ContactNew extends React.Component {
       </div>
     );
   }
+}
+
+//PropType validation for App component
+ContactNew.PropTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  profileImage: PropTypes.string,
+  phoneNumber: PropTypes.number.isRequired,
+  email: PropTypes.string.isRequired
 }
 
 export default ContactNew;

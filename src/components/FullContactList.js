@@ -3,6 +3,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import '../css/FullContactList.css'
 
+
 const FullContactList = ({contacts}) => (
   <div>
         {
