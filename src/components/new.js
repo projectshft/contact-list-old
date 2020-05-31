@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 class New extends Component {
@@ -9,7 +9,7 @@ class New extends Component {
       name: '',
       email: '',
       image: '',
-      phone: '',
+      phone: 0,
       key: 0
     }
 
@@ -25,9 +25,7 @@ class New extends Component {
         <input type='text' placeholder='Email' ref={(c) => this.email = c} />
         <input type='text' placeholder='Image' ref={(c) => this.image = c} />
         <input type='text' placeholder='Phone #' ref={(c) => this.phone = c} />
-        <Link to='/contacts'>
-          <button onClick={event => this.setNewState()} type='button'>Submit</button>
-        </Link>
+        <button onClick={event => this.setNewState()} type='button'>Submit</button>
       </div>
     )
   }
@@ -40,14 +38,35 @@ class New extends Component {
     this.setState({email: this.email.value})
     this.setState({image: this.image.value})
     this.setState({phone: this.phone.value})
-    this.setState({key: generateId()})
-    this.sendAppState()
+    // after all states have been set, run sendAppState()
+    this.setState({key: generateId()}, () => {this.sendAppState()})
   }
 
   sendAppState() {
+    // send App the state as an object
     this.props.addContact(this.state);
+    // then reroute back to contacts page
+    console.log(this.context)
   }
 
+}
+
+New.propTypes = {
+  // name must be a string and is required, etc.
+  name: PropTypes.string,
+  email: PropTypes.string,
+  image: PropTypes.string,
+  phone: PropTypes.number,
+  key: PropTypes.number
+}
+
+New.defaultProps = {
+  // name must be a string and is required, etc.
+  name: 'N/A',
+  email: 'N/A',
+  image: 'N/A',
+  phone: 0,
+  key: 0
 }
 
 export default New

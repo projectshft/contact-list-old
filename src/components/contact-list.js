@@ -1,12 +1,8 @@
 import { Link } from 'react-router-dom';
-import React, { Component } from 'react';
+import React from 'react';
 
-class ContactList extends Component {
-  constructor(props) {
-    super(props)
-  }
+const ContactList = (props) => {
 
-  render() {
     return (
       <div>
         <h1>Contacts</h1>
@@ -14,15 +10,16 @@ class ContactList extends Component {
           <button type='button' className='btn btn-primary'>Add New Contact</button>
         </Link>
         <ul>
-          {this.props.contacts.map(contact => (
+          {props.contacts.map(contact => (
             <li key={contact.key}>
-              <Link to='/contacts/${contact.key}' className='customer-list'>{contact.name}</Link><a href='#' className="edit">edit</a><a href='#' className="delete">delete</a>
+              <Link to={`/contacts/${contact.key}`} className='customer-list'>{contact.name}</Link>
+              <a href='https://bit.ly/3dmg35E' className="edit">edit</a>
+              <a href='https://bit.ly/2ZUjixx' className="delete">delete</a>
             </li>
           ))}
         </ul>
       </div>
     )
-  }
 }
 
 export default ContactList
