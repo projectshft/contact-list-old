@@ -6,7 +6,12 @@ import PropTypes from 'prop-types';
 
 
 
-//this component is rendering the list of contacts that is stored in our state (in App). We'll iterate through our contacts (props) and create a list of contacts that links to a contact info page if the contact is clicked. A key will be assigned to each list item to help React with identification between re-renders. The Link tag assigns the route based on the id of the contact. We will use destructuring for the props to avoid using {props.contacts}
+/*  this component will render the list of contacts that is stored in our state (in
+   App). We'll iterate through our contacts (props) and create a list of contacts
+   that links to a contact info page if the contact is clicked. A key will be
+   assigned to each list item to help React with identification between re-renders.
+   The Link tag assigns the route based on the id of the contact. We will use
+   destructuring for the props to avoid using {props.contacts}  */
 const ContactsList = ({contacts}) => (
       <div>
         <div className="row heading">
@@ -22,8 +27,9 @@ const ContactsList = ({contacts}) => (
             <ul>
               {contacts.map(contact => (
                 <li key={contact.id}>
-                  <p className="contact-name"><Link to={`/contact/${contact.id}`}>{contact.name}</Link></p>
-                  <a><p>edit</p></a><a><p>delete</p></a>
+                  <p className="contact-link"><Link to={`/contact/${contact.id}`}>{contact.name}</Link></p>
+                  <p className="edit-link"><Link to={`/contact/${contact.id}/edit`}>Edit</Link></p>
+                  <p className="delete-link"><Link>Delete</Link></p>
                 </li>
               ))}
             </ul>

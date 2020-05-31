@@ -29,7 +29,10 @@ class App extends Component {
 
 
   }
-//this function will be a prop that is passed down to the new contact form component. We make sure to use setState and concat to adhere to React's functionality for determining change in state and its state immutability requirements, respectively
+/* this function will be a prop that is passed down to the new contact form
+ component. We make sure to use setState and concat to adhere to React's
+ functionality for determining change in state and its state immutability
+ requirements, respectively  */
   addContact = contact => {
     this.setState({ contacts: this.state.contacts.concat([contact]) })
   }

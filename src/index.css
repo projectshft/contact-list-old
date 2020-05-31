@@ -33,8 +33,9 @@ img {
   height: 225px;
 }
 
-.contact-name {
+.contact-link {
   width: 200px;
+  color: black;
 }
 
 
@@ -42,6 +43,7 @@ li p {
   display: inline-block;
   text-align: left;
   width: 50px;
+  color: rgb(31, 31, 73);
 }
 
 
