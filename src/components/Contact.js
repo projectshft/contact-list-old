@@ -21,7 +21,7 @@ const Contact = ({contacts, addContact}) => (
       )}/>
 
       {/* rendering the full contact list in App.js */}
-      <Route path='/contacts' render={() => (
+      <Route path={['/', '/contacts']} render={() => (
         <div className ="row">
           <div className="col-md-6 offset-3 mt-5">
             <div className="row mb-4">

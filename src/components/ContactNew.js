@@ -18,6 +18,7 @@ class ContactNew extends React.Component {
     this.handleSubmitNewContact = this.handleSubmitNewContact.bind(this);
   };
   
+  //function to pass all user input from the form to App component
   handleSubmitNewContact () {
     //check to see if all fields are filled in by the user
     if (this.state.name === '' || this.state.phoneNumber === '' || this.state.email === '') {
