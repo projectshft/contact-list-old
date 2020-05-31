@@ -7,22 +7,45 @@ import NewContactForm from './NewContactForm'
 import ReactDOM from 'react-dom';
 
 
-const App = () => (
-  <div>
-    <Main />
-  </div>
-);
+class App extends React.Component {
+  constructor () {
+    super()
 
-const Main = () => (
-  <main>
-    <Switch>
-      <Route exact path="/" component={AllContacts} />
-      <Route path="/contacts" component={AllContacts} />
-      <Route path="/contact/:id" component={Contact} />
-      <Route path='/new-contact-form' component={NewContactForm} />
-    </Switch>
-  </main>
-);
+    this.state = {
+      contacts: [
+        {
+          id: 70219574,
+          name: "Albert Einstein I",
+          image_url: "https://upload.wikimedia.org/wikipedia/en/thumb/8/86/Einstein_tongue.jpg/220px-Einstein_tongue.jpg",
+          email: "aeinstein1@example.com",
+          phone_number: "15555555555"
+        }
+      ]
+    }
+
+    this.addContact = this.addContact.bind(this);
+  }
+
+    addContact (contact) {
+          this.setState({contacts: this.state.contacts.concat([contact])});
+    }
+    // const isContact = contact => contact.id === id;
+    // return this.contacts.find(isContact);
 
 
-export default App;
+    render() {
+      return (
+      <div>
+        <Switch>
+          <Route exact path="/" component={AllContacts} />
+          <Route path="/contacts" render={() => (
+            <Roster addContact={this.addContact} players={this.state.contacts} />
+          )} />
+          <Route path='/new-contact-form' component={NewContactForm} />
+        </Switch>
+      </div>
+    )
+  }
+}
+
+export default App
