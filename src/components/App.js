@@ -15,7 +15,7 @@ class App extends React.Component {
           name: "Sauron of Mordor",
           profileImage: '/images/Sauron.png',
           phoneNumber: "667-666-6655", 
-          email: "lordofevil@comcast.net" 
+          email: "THE_Lord_of_Evil@comcast.net" 
         },
         { id: 2,
           name: "Balrog of Moria", 
@@ -27,13 +27,13 @@ class App extends React.Component {
           name: "Gandalf the Grey", 
           profileImage: '/images/Gandalf_the_Grey.png',
           phoneNumber: "812-456-6788", 
-          email: "calltheeagles99@wizardry.com" 
+          email: "CallTheEagles99@wizardry.com" 
         },
         { id: 4,
           name: "Peregrin Took", 
           profileImage: '/images/Pippin.png',
           phoneNumber: "242-456-9769",
-          email: "foolofatook@gmail.com" 
+          email: "FoolofaTook@gmail.com" 
         },
         { id: 5,
           name: "Aragorn Elessar", 

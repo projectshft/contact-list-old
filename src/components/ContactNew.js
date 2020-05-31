@@ -10,7 +10,7 @@ class ContactNew extends React.Component {
       id: null,
       profileImage: '',
       name: '',
-      phoneNumber: '',
+      phoneNumber: null,
       email: ''
     }
 
@@ -26,7 +26,7 @@ class ContactNew extends React.Component {
     if (isNaN(this.state.phoneNumber)) {
       return alert('Please enter a valid phone number')
     }
-    
+
     //create a random number to automatically add an ID value to the "id" key
     const generateId = () => Math.round(Math.random() * 100000000)
     // creating a object based on the user's values from the form input
@@ -37,6 +37,12 @@ class ContactNew extends React.Component {
       phoneNumber: this.state.phoneNumber,
       email: this.state.email
     }
+
+    //add a default Profile Image if the user did not submit a link to an image
+    if (newContact.profileImage === '') {
+      newContact.profileImage = '/images/unknown-image.png'
+    }
+
     //passing the newContact object as a parameter up to the addContact function in App component
     this.props.addContact(newContact);
     this.props.history.push('/contacts');
@@ -60,19 +66,21 @@ class ContactNew extends React.Component {
             <br/>
 
             <label><strong>Phone Number</strong></label>
-            {/* changing the phone number input to a text to add to the state */}
+            {/* changing the phone number input to an integer to add to the state */}
             <input type='text' className='form-control' onChange={event => this.setState({ phoneNumber: parseInt(event.target.value, 10) })
             }/>
 
             <br/>
 
             <label><strong>Email</strong></label>
+            {/* updating the state with the value of the input */}
             <input type='text' className='form-control' onChange={event => this.setState({ email: event.target.value })
             }/>
 
             <br/>
 
             <label><strong>Profile Image</strong></label>
+            {/* updating the state with the value of the input */}
             <input type='text' className='form-control' onChange={event => this.setState({ profileImage: event.target.value })
             }/>
 
