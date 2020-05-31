@@ -17,8 +17,13 @@ class ContactNew extends React.Component {
   };
   
   handleSubmitNewContact () {
+    //check to see if all fields are filled in by the user
     if (this.state.name === '' || this.state.phoneNumber === '' || this.state.email === '') {
       return alert('Please complete all fields and then click submit')
+    }
+    //check to see if the phone number is a number
+    if (isNaN(this.state.phoneNumber)) {
+      return alert('Please enter a valid phone number')
     }
     
     //create a random number to automatically add an ID value to the "id" key
@@ -70,8 +75,8 @@ class ContactNew extends React.Component {
           </form>
           
           <br/>
-
-          <a class="btn btn-primary btn-primary"><Link className="text-white" to='/contacts'>Back to Contact List</Link></a>
+          {/* button to go back to contact list */}
+          <a className="btn btn-primary btn-primary"><Link className="text-white" to='/contacts'>Back to Contact List</Link></a>
         </div>
       </div>
     );

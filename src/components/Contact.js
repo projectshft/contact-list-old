@@ -30,7 +30,7 @@ const Contact = ({contacts, addContact}) => (
               </div>
               <div className="col-md-6 text-left pt-2 pl-0">
                 {/* Adding a button to link to the ContactNew component */}
-                <button className="mt-1"><Link to='/contacts/new'>Add a Contact</Link></button>
+                <button className="btn btn-primary"><Link className="text-white" to='/contacts/new'>Add a Contact</Link></button>
               </div>
             </div>
 

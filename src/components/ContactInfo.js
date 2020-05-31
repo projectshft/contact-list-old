@@ -23,7 +23,7 @@ const ContactInfo = ({contactId, contacts}) => {
         <h3 className="number mb-4">Phone Number: {contact.phoneNumber}</h3>
         <h3 className="email mb-4">Email: {contact.email}</h3>
         
-        <a class="btn btn-primary btn-primary"><Link className="text-white" to='/contacts'>Back to Contact List</Link></a>
+        <a className="btn btn-primary btn-primary"><Link className="text-white" to='/contacts'>Back to Contact List</Link></a>
       </div>
 
       {/* setting up a link for the user to go back to the full contact list */}
