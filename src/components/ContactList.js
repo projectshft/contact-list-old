@@ -8,6 +8,12 @@ import '../css/ContactList.css'
 // list of contacts shown on home page
 const ContactList = (props) => {
 
+    const confirmDelete = (contactId) => {
+        if (window.confirm("Are you sure you want to remove this contact?")) {
+            props.deleteContact(contactId)
+        }
+    }
+
     // display each contact name and link it to contact details, with links also to edit and delete
     const listedContacts = props.contacts.map((contact) => {
         return (
@@ -39,7 +45,7 @@ const ContactList = (props) => {
                         className="delete-link"
                         onClick={event => {
                             //use contact id to delete contact from app state with passed function 
-                            props.deleteContact(contact.id);
+                            confirmDelete(contact.id);
                         }}> delete</Link>
 
                     <hr />
