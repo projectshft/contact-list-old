@@ -1,32 +1,42 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 //Contacts inherits contacts parameter from parent component. Maps each contact to an li that links to its individual page
 //adds edit and delete buttons to each item (non-functinal at the moment)
 const Contacts = ({contacts, deleteContact}) => (
-  <div>
-  <h1>Contacts</h1>
-    <ul>
+  <div className="card">
+
+    <ul className="list-group">
+    <li className="list-group-item">
+      <h1>Contacts</h1>
+    </li>
       {
         contacts.map(contact => (
-          <li key={contact.id}>
+          <li key={contact.id} className="list-group-item d-flex justify-content-between align-items-center">
             <Link to={`/contacts/${contact.id}`}>{contact.name} </Link>
-            <button className="btn-primary">Edit</button>
-            <button onClick={() => deleteContact(contact.id)} className=" btn-primary">Delete</button>
+            <div>
+              <button className="btn btn-light">Edit</button>
+              <div className="divider"></div>
+              <button onClick={() => deleteContact(contact.id)} className="btn btn-light">Delete</button>
+            </div>
           </li>
 
         ))
       }
+      <li className="list-group-item">
+        <Link to='/contacts/new'>
+        <button className="btn btn-primary">Add Contact</button>
+        </Link>
+      </li>
     </ul>
-    <Link to='/contacts/new'>Add Contact</Link>
+
   </div>
 )
 
-// Contacts.propTypes = {
-//   contacts: PropTypes.string,
-//   image_url: PropTypes.string,
-//   email: PropTypes.string,
-// }
+Contacts.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  deleteContact: PropTypes.func.isRequired
+}
 
 
 export default Contacts

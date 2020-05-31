@@ -16,13 +16,27 @@ console.log(contacts)
 
   return (
     <div className="contact-view">
-      <img src={contact.image_url} alt={contact.name} width="300" height="400"></img>
-      <h1>{contact.name}</h1>
-
-      <h2>email: {contact.email}</h2>
-      <h2>Phone Number: {contact.phone_number}</h2>
-
-      <Link to='/contacts'>Back</Link>
+      <div className="card">
+      <div className="row">
+        <div className="image-container col-sm-6">
+          <img src={contact.image_url} alt={contact.name} height="200" width="300" className="img-thumbnail"></img>
+        </div>
+        <div className="col-sm-6">
+          <div className="card-body-right">
+          <h1 className="card-title">{contact.name}</h1>
+            <br/>
+          <h3>{contact.email}</h3>
+            <br/>
+          <h3>{contact.phone_number}</h3>
+            <br/>
+          <Link to='/contacts'>
+            <button className="btn btn-primary">Back</button>
+          </Link>
+          </div>
+        </div>
+      </div>
+        <br/>
+      </div>
     </div>
   )
 }
@@ -30,8 +44,9 @@ console.log(contacts)
 // tried name: but kept return undefined even if it was defined
 //checks that the properties of Contact are there as both are required
 Contact.propTypes = {
-  contactId: PropTypes.number.isRequired,
-  contacts: PropTypes.array.isRequired,
+  contactId: PropTypes.number,
+  contacts: PropTypes.array,
+  // contact: PropTypes.object.isRequired
 
 }
 

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 
-
 class NewContact extends React.Component {
   constructor () {
     super ()
@@ -29,42 +28,43 @@ class NewContact extends React.Component {
       phone_number: this.state.phone_number,
     };
 
-//addContact is passed down from App component. This adds all inew input info to the main state.
-    this.props.addContact(newContact)
-    // console.log(generateId())
-    // console.log(newContact)
-  }
+    //sets the condition that the name and email fields need to be filled in order for the contact to be added
+    if (this.state.name === '' && this.state.email === ''){
+      alert('Please enter a vaild name and email for your contact')
+    } else {
+      //addContact is passed down from App component. This adds the newContact state to the main state.
+          this.props.addContact(newContact)
+          // console.log(generateId())
+          // console.log(newContact)
 
+    }
+
+  }
+ //render collects the values of each input and sets them to NewContacts state
   render () {
     return (
-      <div>
-        <form>
-        <label>Name </label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ name: event.target.value })
-        }/>
+      <div className="card">
+        <form className="text-center border border-light p-5" action="#!">
+          <p className="h4 mb-4">Add Contact</p>
 
-        <br/>
+          <input type="name" className="form-control mb-4" placeholder="Name" onChange={event =>
+            this.setState({ name: event.target.value })
+          }/>
 
+            <br/>
+          <input type="email" className="form-control mb-4" placeholder="Email Address" onChange={event =>
+            this.setState({ email: event.target.value })
+          }/>
 
-        <label>Email Address </label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ email: event.target.value })
-        }/>
+            <br/>
+          <input type="phone" className="form-control mb-4" placeholder="Phone Number" onChange={event =>
+            this.setState({ phone_number: event.target.value })
+          }/>
 
-        <br/>
-
-        <label>Phone Number </label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ phone_number: event.target.value })
-        }/>
-
-        <br/>
-
-        <label>Image URL </label>
-        <input type='text' className='form-control'onChange={event =>
-          this.setState({ image_url: event.target.value })
-        }/>
+            <br/>
+          <input type="text" className="form-control mb-4" placeholder="Image URL" onChange={event =>
+            this.setState({ image_url: event.target.value })
+          }/>
 
         <Link to='/contacts'>
           <button type="button" className="btn btn-primary" onClick={this.handleAddContactClick}>Submit</button>

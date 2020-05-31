@@ -3,7 +3,7 @@ import React from 'react';
 import Contact from './Contact';
 import NewContact from './NewContact';
 import Contacts from './Contacts';
-
+import PropTypes from 'prop-types';
 
 //Inherits contacts and addContacts from parent comonent App.
 const ContactRoutes = ({contacts, addContact, deleteContact}) => (
@@ -22,8 +22,16 @@ const ContactRoutes = ({contacts, addContact, deleteContact}) => (
     <Route path='/contacts' render={() => (
       <Contacts contacts={contacts} deleteContact={deleteContact}/>
     )}/>
+    <Route path='/' render={() => (
+      <Contacts contacts={contacts} deleteContact={deleteContact}/>
+    )}/>
   </Switch>
 )
 
+ContactRoutes.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  addContact: PropTypes.func.isRequired,
+  deleteContact: PropTypes.func.isRequired,
+}
 
 export default ContactRoutes;

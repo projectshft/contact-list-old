@@ -1,7 +1,7 @@
-import { Switch, Route } from 'react-router-dom'
-import React from 'react'
-import Home from './Home'
-import ContactRoutes from './ContactRoutes'
+import { Switch, Route } from 'react-router-dom';
+import React from 'react';
+import ContactRoutes from './ContactRoutes';
+import Contacts from './Contacts';
 
 
 
@@ -39,19 +39,29 @@ class App extends React.Component {
     //returns a route to the two main pages, home and ContacteRouts (where the contact information is passed down and handled)
     //The ContactRoute component inherits the contacts state and the addContacts function as parameters
     return (
+
+
       <div className="row" id="main">
         <div className="col-md-8 offset-md-2">
-          <Switch>
-            <Route exact path='/' component={Home}/>
-            <Route path='/contacts' render={() => (
-              <ContactRoutes addContact={this.addContact} deleteContact={this.deleteContact} contacts={this.state.contacts} />
-            )}/>
+          <div className="container">
 
-          </Switch>
+            <br/>
+
+            <Switch>
+              <Route exact path='/' render={() => (
+                <ContactRoutes addContact={this.addContact} deleteContact={this.deleteContact} contacts={this.state.contacts} />
+              )}/>
+              <Route path='/contacts' render={() => (
+                <ContactRoutes addContact={this.addContact} deleteContact={this.deleteContact} contacts={this.state.contacts} />
+              )}/>
+
+            </Switch>
+          </div>
         </div>
       </div>
     )
   }
 }
+
 
 export default App
