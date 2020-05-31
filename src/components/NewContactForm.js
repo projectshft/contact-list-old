@@ -16,11 +16,11 @@ class NewContactForm extends Component {
 
     //this is the state/data holder for our form, that is updated when the user interacts with the page (entering text in the fields, or uploading an image from their computer). The state is set using setState in our onChange handlers and the fileToURL handler
     this.state = {
-      id: newId,
-      name: '',
-      phone: '',
-      email: '',
-      img: null
+        id: newId,
+        name: '',
+        phone: '',
+        email: '',
+        img: null
     }
 
   }
@@ -35,7 +35,6 @@ class NewContactForm extends Component {
     this.setState({
       [event.target.name]: event.target.value
     })
-    console.log(this.state);
   }
 
   //this function will validate the email address provided, eg, checking for an @ symbol and correct extension
@@ -69,20 +68,61 @@ class NewContactForm extends Component {
 
   }
 
+  validatePhoneInput = (phoneNumber, contact) => {
+     
+     if (!isNaN(phoneNumber)) {
+      if (phoneNumber.length === 7) {
+        // console.log(phone)
+        let newPhone = phoneNumber.slice(0, 3) + '-' + phoneNumber.slice(-4);
+        // console.log(newPhone);
+        contact.phone = newPhone;
+        return true;
+      } else if (phoneNumber.length === 10) {
+        let newPhone = phoneNumber.slice(0, 3) + '-' + phoneNumber.slice(3, 6) + '-' + phoneNumber.slice(-4);
+        // console.log(newPhone);
+        contact.phone = newPhone;
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }  
+
   //This function will check if the name and email fields are filled out correctly. The name and email fields are required, and the email must be in the correct format. If these validation checks fail, we'll prevent the link from taking us back to the '/contact' page and we'll alert the user to the requirements. If the fields are filled out correctly, we are good to use our addContact prop (that we passed down from App) to add the newContact to our contacts array and return to the '/contact' page. 
   handleFormSubmission = event => {
     const newContact = Object.assign({}, this.state)
-  
+
+    // this.validateEmailInput(newContact)
+    // this.validatePhoneInput(newContact)
+
+    // if (!this.validatePhoneNumber(newContact)) {
+    //   event.preventDefault();
+    //   window.alert('Please enter a valid phone number')
+    // }
+
+    
+
 
     if (!this.validateEmailInput(newContact.email)) {
       event.preventDefault();
-      window.alert('Please enter a valid email')
+      window.alert('A valid email must be provided to create a contact')
 
     } else if (!newContact.name) {
       event.preventDefault();
       window.alert('A name must be provided to create a contact')
 
-    } else {
+    } else if (!this.validatePhoneInput(newContact.phone, newContact)) {
+      event.preventDefault();
+      window.alert('A valid phone must be provided to create a contact')
+
+    } else if (!newContact.img) {
+      event.preventDefault();
+      window.alert('An image must be uploaded to create a contact')
+    
+    } else { 
+      console.log(newContact)
       this.props.addContact(newContact);
       this.props.history.push('/contact')
     }
