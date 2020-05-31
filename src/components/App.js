@@ -63,9 +63,9 @@ class App extends Component {
 }
 
 //Prop validation is important both to document the kinds of props a component is supposed to receive, and to ensure you don't accidentally give a component the wrong kind of prop.
-App.propTypes = {
-  contacts: PropTypes.arrayOf(PropTypes.shape(NewContactForm.propTypes)).isRequired
-}
+// App.propTypes = {
+//   contacts: PropTypes.arrayOf(PropTypes.shape(NewContactForm.propTypes)).isRequired
+// }
 
 
 export default App 
