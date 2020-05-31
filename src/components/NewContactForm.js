@@ -14,6 +14,7 @@ class NewContactForm extends React.Component {
     };
 
     this.handleSubmitContact = this.handleSubmitContact.bind(this);
+    this.handleBackButton = this.handleBackButton.bind(this);
   }
 
   handleSubmitContact() {
@@ -33,6 +34,9 @@ class NewContactForm extends React.Component {
     console.log("The current props (before adding) are ", this.props);
 
     this.props.addContact(newContact);
+  }
+
+  handleBackButton() {
     this.props.history.push("/");
   }
 
@@ -80,6 +84,10 @@ class NewContactForm extends React.Component {
 
           <button type="button" onClick={this.handleSubmitContact}>
             Submit
+          </button>
+
+          <button type="button" onClick={this.handleBackButton}>
+            Back
           </button>
         </form>
       </div>
