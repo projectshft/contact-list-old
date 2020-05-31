@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import _ from 'lodash';
+import 'bootstrap/dist/css/bootstrap.css';
+import '../css/ContactInfo.css'
+
 
 const ContactInfo = ({contactId, contacts}) => {
   //Matching the id parameter in the state to the router contact id
@@ -11,12 +14,20 @@ const ContactInfo = ({contactId, contacts}) => {
   }
   return (
     //rendering all of the data in the contacts props
-    <div>
-      <h1>{contact.name}</h1>
-      <h2>Phone Number: {contact.phoneNumber}</h2>
-      <h2>Email: {contact.email}</h2>
+    <div className="row">
+      <div className="col-md-3 offset-md-2 mt-5">
+        <img className="w-100" src={contact.profileImage}></img>
+      </div> 
+      <div className="col-md-4 text-left mt-5 contact-details">
+        <h1 className="name mb-4">{contact.name}</h1>
+        <h3 className="number mb-4">Phone Number: {contact.phoneNumber}</h3>
+        <h3 className="email mb-4">Email: {contact.email}</h3>
+        
+        <a class="btn btn-primary btn-primary"><Link className="text-white" to='/contacts'>Back to Contact List</Link></a>
+      </div>
+
       {/* setting up a link for the user to go back to the full contact list */}
-      <Link to='/contacts'>Back</Link>
+      
     </div>
   )
 }

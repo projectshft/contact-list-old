@@ -3,6 +3,7 @@ import React from 'react';
 import FullContactList from './FullContactList.js'
 import ContactInfo from './ContactInfo.js'
 import ContactNew from './ContactNew.js';
+import 'bootstrap/dist/css/bootstrap.css';
 
 //component for rendering all contacts in the app's list of contacts
 const Contact = ({contacts, addContact}) => (
@@ -21,7 +22,7 @@ const Contact = ({contacts, addContact}) => (
 
       {/* rendering the full contact list in App.js */}
       <Route path='/contacts' render={() => (
-        <div>
+        <div className="page-header">
           <h1>Contact Info</h1>
           {/* Adding a button to link to the ContactNew component */}
           <button><Link to='/contacts/new'>Add a Contact</Link></button>

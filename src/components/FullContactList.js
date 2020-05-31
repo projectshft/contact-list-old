@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
+import 'bootstrap/dist/css/bootstrap.css';
 
 const FullContactList = ({contacts}) => (
   <div>

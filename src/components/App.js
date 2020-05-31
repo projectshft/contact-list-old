@@ -1,8 +1,9 @@
 import { Switch, Route } from 'react-router-dom'
 import React from 'react';
 import Contact from './Contact'
+import 'bootstrap/dist/css/bootstrap.css';
+import '../css/App.css'
 
-//import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -11,19 +12,34 @@ class App extends React.Component {
     this.state = {
       contacts: [
         { id: 1,
-          name: "Made up", 
-          phoneNumber: "812-456-6789", 
-          email: "madeup@gmail.com" 
+          name: "Sauron of Mordor",
+          profileImage: '/images/Sauron.png',
+          phoneNumber: "667-666-6655", 
+          email: "lordofevil@comcast.net" 
         },
         { id: 2,
-          name: "Made up2", 
-          phoneNumber: "812-456-6789", 
-          email: "madeup@gmail.com" 
+          name: "Balrog of Moria", 
+          profileImage: '/images/balrog.png',
+          phoneNumber: "666-666-6666", 
+          email: "moria@comcast.net" 
         },
         { id: 3,
-          name: "Made up3", 
-          phoneNumber: "812-456-6789",
-          email: "madeup@gmail.com" 
+          name: "Gandalf the Grey", 
+          profileImage: '/images/Gandalf_the_Grey.png',
+          phoneNumber: "812-456-6788", 
+          email: "calltheeagles99@wizardry.com" 
+        },
+        { id: 4,
+          name: "Peregrin Took", 
+          profileImage: '/images/Pippin.png',
+          phoneNumber: "242-456-9769",
+          email: "foolofatook@gmail.com" 
+        },
+        { id: 5,
+          name: "Aragorn Elessar", 
+          profileImage: '/images/Aragorn.png',
+          phoneNumber: "902-486-9769",
+          email: "king@gondor.gov" 
         },
       ]
     }
