@@ -32,7 +32,7 @@ const Home = (props) => {
             <Row>
                 <Col>
 
-                    <ContactList contacts={props.contacts} />
+                    <ContactList contacts={props.contacts} deleteContact={props.deleteContact} />
 
                 </Col>
             </Row>
@@ -44,12 +44,14 @@ const Home = (props) => {
 //set prop types
 Home.propTypes = {
     contacts: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number,
-        name: PropTypes.string,
-        email: PropTypes.string,
-        phone: PropTypes.string,
-        image: PropTypes.string
-    }))
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired
+    })),
+
+    deleteContact: PropTypes.func
 }
 
 export default Home;

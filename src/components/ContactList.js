@@ -4,10 +4,11 @@ import PropTypes from 'prop-types'
 import { Row, Col, Container } from 'react-bootstrap'
 import '../css/ContactList.css'
 
-// list of contacts shown on home page
-const ContactList = (props) => {
 
-    // display each contact name and link to view contact details, with links also to edit and delete
+// list of contacts shown on home page
+    const ContactList = (props) => {
+
+    // display each contact name and link it to contact details, with links also to edit and delete
     const listedContacts = props.contacts.map((contact) => {
         return (
             <Row key={contact.id} className="contact">
@@ -15,26 +16,30 @@ const ContactList = (props) => {
                 {/* Contact Name */}
                 <Col className="contact-name" md={5}>
                     <Link to={`/contacts/${contact.id}`} className="contact-link">{contact.name} </Link>
-                    <hr/>
+                    <hr />
                 </Col>
-                
+
                 {/* Spacer */}
                 <Col className="spacer-col" md={3}>
-                <span className="spacer">- - - - - -</span>
-                <hr/>
+                    <span className="spacer">- - - - - -</span>
+                    <hr />
                 </Col>
-                
+
                 {/* Edit & Remove Links */}
                 <Col md={4}>
                     <Link to="" className="edit-link"> edit</Link>
 
-                    <Link to="" className="delete-link"> delete</Link>
-                    <hr/>
-                </Col>
-                
-            </Row>
+                    <Link to=""
+                        className="delete-link"
+                        onClick={event => {
+                            //use contact id to delete contact from app state with passed function 
+                            props.deleteContact(contact.id);
+                        }}> delete</Link>
 
-            
+                    <hr />
+                </Col>
+
+            </Row>
         )
     });
 
@@ -56,11 +61,13 @@ const ContactList = (props) => {
 //set prop types
 ContactList.propTypes = {
     contacts: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number,
-        name: PropTypes.string,
-        phone: PropTypes.string,
-        image: PropTypes.string
-    }))
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired
+    })),
+
+    deleteContact: PropTypes.func
 }
 
 export default ContactList;
