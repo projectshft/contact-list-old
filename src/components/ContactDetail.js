@@ -16,8 +16,10 @@ const ContactDetail = (props) => {
         <Container fluid className="contact-detail">
             <Row>
                 {/* Contact Image  */}
-                <Col className="detail-image" md={6}>
-                    <img src={contact.image} alt={contact.name} />
+                <Col className="detail-image-col" md={6}>
+                    <div className="detail-image">
+                        <img src={contact.image} alt={contact.name} />
+                    </div>
                 </Col>
 
                 {/* Contact Info */}

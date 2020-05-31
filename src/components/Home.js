@@ -35,8 +35,8 @@ const Home = (props) => {
                     <ContactList contacts={props.contacts} deleteContact={props.deleteContact} />
 
                 </Col>
+                
             </Row>
-
         </Container>
     )
 }
