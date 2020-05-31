@@ -1,0 +1,36 @@
+.img_container {
+  display: inline-block;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border: 5px solid black;
+}
+
+.profile_img {
+  display: inline;
+  margin: 0 auto;
+  margin-left: -25%;
+  height: 100%;
+  width: auto;
+}
+
+.info-container {
+  text-align: center;
+  border: solid black 5px;
+  border-radius: 10%;
+  margin-top: 5%;
+  padding-bottom: 5%;
+}
+
+.back-link {
+  color: white;
+}
+
+.contacts-container {
+  margin-top: 5%;
+  text-align: center;
+  border-radius: 5%;
+  border: solid black 5px;
+  padding-bottom: 5%;
+}

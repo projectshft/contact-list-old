@@ -1,24 +1,29 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
+import '../style.css'
 
 const FullContactsList = ({contacts}) => (
-  <div>
-    <h1>Contacts</h1>
-    <Link to={'/contacts/new'}>
-      <button type="button" className="btn btn-primary">Add Contact</button>
-    </Link>
-    <ul>
-      {
-        contacts.map(contact => (
-          <li key={contact.id}>
-            <Link to={`/contacts/${contact.id}`}>{contact.name}</Link>
-            <span>  edit  </span>
-            <span>  delete  </span>
-          </li>
-        ))
-      }
-    </ul>
+  <div className="row ">
+    <div className="col-md-3 offset-md-5 contacts-container">
+      <h1>Contacts</h1>
+      <br/>
+      <ul className="list-group">
+        {
+          contacts.map(contact => (
+            <li className="list-group-item" key={contact.id}>
+              <Link to={`/contacts/${contact.id}`}>{contact.name}</Link>
+              <span>  edit  </span>
+              <span>  delete  </span>
+            </li>
+          ))
+        }
+      </ul>
+      <br/>
+      <Link to={'/contacts/new'}>
+        <button type="button" className="btn btn-primary">Add Contact</button>
+      </Link>
+    </div>
   </div>
 )
 

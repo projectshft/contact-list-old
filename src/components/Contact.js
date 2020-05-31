@@ -11,7 +11,7 @@ const Contact = ({contacts, addContact}) => (
       <ContactNew history={routerProps.history} contacts={contacts} addContact={addContact} />
     )}/>
 
-    
+
     <Route path='/contacts/:id' render={(routerProps) => (
       <ContactInfo contactId={parseInt(routerProps.match.params.id, 10)} contacts={contacts} />
     )}/>

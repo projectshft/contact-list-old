@@ -33,6 +33,8 @@ class App extends React.Component {
       ]
     }
 
+    this.addContact = this.addContact.bind(this)
+
   }
 
   generateId() {
@@ -40,7 +42,7 @@ class App extends React.Component {
   }
 
   addContact (contact) {
-    this.setState({contacts: this.state.contacts.concat([contact])});
+    this.setState({"contacts": this.state.contacts.concat([contact])});
   }
 
   render() {
