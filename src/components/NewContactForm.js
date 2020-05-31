@@ -30,14 +30,9 @@ class NewContactForm extends Component {
   //when the Submit button is clicked, we create a new object based on our state and using the prop function addContact (passed down from App), we add the new contact to our state in that component
   //because we're using arrow functions, we don't need to bind 'this' to the function to tie it to this component
   submitButtonHandler = () => {
-    const newContact = {
-      id: this.state.id,
-      name: this.state.name,
-      phone: this.state.phone,
-      email: this.state.email,
-      img: this.state.img
-    }
+    const newContact = Object.assign({}, this.state)
     console.log(this.state)
+    console.log(newContact)
     //we passed in the add contact function as a prop when we instantiated the form
     this.props.addContact(newContact);
     //we passed in the history prop when we instantiated the form
