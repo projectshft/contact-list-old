@@ -1,18 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from "react-router-dom";
+import React, { Component } from "react";
+import ContactList from "./components/ContactList.js";
+import "./App.css";
 
 class App extends Component {
+  constructor() {
+    super();
+
+    // initialize our basic state with contacts
+    this.state = {
+      contacts: [
+        {
+          id: 70219577,
+          first_name: "Albert",
+          last_name: "Einstein",
+          image_url:
+            "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
+          email: "aeinstein@example.com",
+          phone_number: "15555555555",
+        },
+      ],
+    };
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Switch>
+          <Route exact path="/" component={ContactList} />
+        </Switch>
       </div>
     );
   }
