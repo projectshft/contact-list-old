@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'
-import { Form, Row, Col, Button } from 'react-bootstrap'
-import '../ContactForm.css'
+import { Form, Col, Button } from 'react-bootstrap'
+import '../css/ContactForm.css'
 
 class ContactForm extends Component {
 
@@ -63,9 +63,9 @@ class ContactForm extends Component {
                 <Form>
 
                     {/* Name Input */}
-                    <Form.Group as={Row} controlId="input-name">
-                        <Form.Label column sm={2}>Contact Name: </Form.Label>
-                        <Col sm={10}>
+                    <Form.Group as={Form.Row} controlId="input-name">
+                        <Form.Label column sm={3}>Contact Name: </Form.Label>
+                        <Col sm={9}>
 
                             <Form.Control
                                 value={this.state.name}
@@ -78,9 +78,9 @@ class ContactForm extends Component {
                     </Form.Group>
 
                     {/* Email Input */}
-                    <Form.Group as={Row} controlId="input-name">
-                        <Form.Label column sm={2}>Email Address: </Form.Label>
-                        <Col sm={10}>
+                    <Form.Group as={Form.Row} controlId="input-name">
+                        <Form.Label column sm={3}>Email Address: </Form.Label>
+                        <Col sm={9}>
 
                             <Form.Control
                                 value={this.state.email}
@@ -93,25 +93,25 @@ class ContactForm extends Component {
                     </Form.Group>
 
                     {/* Phone Number Input */}
-                    <Form.Group as={Row} controlId="input-name">
-                        <Form.Label column sm={2}>Phone Number: </Form.Label>
-                        <Col sm={10}>
+                    <Form.Group as={Form.Row} controlId="input-name">
+                        <Form.Label column sm={3}>Phone Number: </Form.Label>
+                        <Col sm={9}>
 
                             <Form.Control
                                 value={this.state.phone}
                                 onChange={event => {
                                     this.setState({ phone: event.target.value })
                                 }}
-                                placeholder="1 (234) 555-6789"
+                                placeholder="(234) 555-6789"
                                 required />
                         </Col>
                     </Form.Group>
 
 
                     {/* Image Url Input */}
-                    <Form.Group as={Row} controlId="input-name">
-                        <Form.Label column sm={2}>Image URL: </Form.Label>
-                        <Col sm={10}>
+                    <Form.Group as={Form.Row} controlId="input-name">
+                        <Form.Label column sm={3}>Image URL: </Form.Label>
+                        <Col sm={9}>
 
                             <Form.Control
                                 value={this.state.image}
@@ -124,8 +124,8 @@ class ContactForm extends Component {
                     </Form.Group>
 
                     {/* Submit Button */}
-                    <Form.Group as={Row}>
-                        <Col sm={{ span: 10, offset: 2 }}>
+                    <Form.Group as={Form.Row}>
+                        <Col sm={{ span: 3, offset: 9 }}>
 
                             <Button id="submit-contact" type="button" onClick={this.createContact}>Add New Contact</Button>
 
@@ -135,9 +135,8 @@ class ContactForm extends Component {
                 </Form>
 
                 {/* Back Link */}
-                <div className="back-link">
-                    <Link to="/contacts">Back</Link>
-                </div>
+                    <Link className="back-link" to="/contacts">Back</Link>
+               
             </div>
         )
     }

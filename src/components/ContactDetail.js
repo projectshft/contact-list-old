@@ -2,7 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
-import '../ContactDetail.css'
+import '../css/ContactDetail.css'
+import { Container, Row, Col } from 'react-bootstrap';
 
 const ContactDetail = (props) => {
 
@@ -10,22 +11,32 @@ const ContactDetail = (props) => {
     const contact = _.find(props.contacts, { id: props.contactId });
 
     return (
-        
-        <div className="contact-detail">
 
-            <h2>Contact Details</h2>
-           
-            <img className="detail-image" src={contact.image} alt={contact.name}/>
+        // Contact Details
+        <Container fluid className="contact-detail">
+            <Row>
+                {/* Contact Image  */}
+                <Col className="detail-image" md={6}>
+                    <img src={contact.image} alt={contact.name} />
+                </Col>
 
-            <h2>{contact.name}</h2>
+                {/* Contact Info */}
+                <Col className="detail-info" md={6}>
+                    <h2>{contact.name}</h2>
 
-            <p>{contact.email}</p>
+                    <p>{contact.email}</p>
 
-            <p>{contact.phone}</p>
-            
+                    <p>{contact.phone}</p>
+                </Col>
+            </Row>
 
-             <Link to="/contacts">Back</Link>
-        </div>
+            {/* Back Link  */}
+            <Row>
+                <Col>
+                    <Link className="back-link" to="/contacts">Back</Link>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 
@@ -39,7 +50,8 @@ ContactDetail.propTypes = {
         email: PropTypes.string.isRequired,
         phone: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired
-}))}
+    }))
+}
 
 export default ContactDetail;
 

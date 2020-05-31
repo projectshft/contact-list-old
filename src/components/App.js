@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Home from './Home';
 import ContactForm from './ContactForm';
 import ContactDetail from './ContactDetail';
-// import Header from './Header';
 import JaneImage from '../images/jane_eyre.jpg'
 import RochesterImage from '../images/mr_rochester.jpg'
 import BerthaImage from '../images/mrs_rochester.jpg'
@@ -21,7 +20,7 @@ class App extends Component {
           id: 123,
           name: "Jane Eyre",
           email: "lonelyorphan@lowoodschool.edu",
-          phone: "12865559830",
+          phone: "(286) 555-9830",
           image: JaneImage
         },
 
@@ -29,7 +28,7 @@ class App extends Component {
           id: 456,
           name: "Edward Rochester",
           email: "sirmoody@thornfield.com",
-          phone: "16765552548",
+          phone: "(676) 555-2548",
           image: RochesterImage
         },
 
@@ -37,7 +36,7 @@ class App extends Component {
           id: 789,
           name: "Bertha Mason",
           email: "crazywife@theattic.net",
-          phone: "12375559372",
+          phone: "(23) 555-9372",
           image: BerthaImage
         }
       ]
@@ -57,8 +56,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <Header /> */}
-
         {/* to direct which component to display based on url entered */}
         <Switch>
           
