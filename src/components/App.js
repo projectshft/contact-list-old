@@ -3,9 +3,11 @@ import React, { Component } from 'react';
 import Home from './Home';
 import ContactForm from './ContactForm';
 import ContactDetail from './ContactDetail';
-import JaneImage from '../images/jane_eyre.jpg'
-import RochesterImage from '../images/mr_rochester.jpg'
-import BerthaImage from '../images/mrs_rochester.jpg'
+import JaneImage from '../images/jane_eyre.jpg';
+import RochesterImage from '../images/mr_rochester.jpg';
+import BerthaImage from '../images/mrs_rochester.jpg';
+import AdeleImage from '../images/adele_varens.jpg';
+import BlancheImage from '../images/blanche_ingram.jpg'
 
 class App extends Component {
   constructor () {
@@ -25,7 +27,7 @@ class App extends Component {
         },
 
         {
-          id: 456,
+          id: 234,
           name: "Edward Rochester",
           email: "sirmoody@thornfield.com",
           phone: "(676) 555-2548",
@@ -33,11 +35,27 @@ class App extends Component {
         },
 
         {
-          id: 789,
+          id: 345,
           name: "Bertha Mason",
           email: "crazywife@theattic.net",
-          phone: "(23) 555-9372",
+          phone: "(232) 555-9372",
           image: BerthaImage
+        },
+
+        {
+          id: 456,
+          name: "Adele Varens",
+          email: "fashionluvr@thornfield.com",
+          phone: "(676) 555-2548",
+          image: AdeleImage
+        },
+
+        {
+          id: 567,
+          name: "Blanche Ingram",
+          email: "golddigger@ingrampark.com",
+          phone: "(936) 555-0257",
+          image: BlancheImage
         }
       ]
     }

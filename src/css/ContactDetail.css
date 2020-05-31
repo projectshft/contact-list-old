@@ -13,8 +13,9 @@
 
 .detail-image img {
     display: inline-block;
-    width: 100%;
+    max-width: 100%;
     border: solid 2px #000;
+    max-height: 50vw;
 }
 
 .detail-info {
