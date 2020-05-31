@@ -23,14 +23,14 @@ const Contact = ({contacts, addContact}) => (
       {/* rendering the full contact list in App.js */}
       <Route path='/contacts' render={() => (
         <div className ="row">
-          <div className="col-md-4 offset-4 mt-5">
-            <div className="row">
-              <div className="col-md-6">
+          <div className="col-md-6 offset-3 mt-5">
+            <div className="row mb-4">
+              <div className="col-md-5">
                 <h1>Contacts</h1>
               </div>
               <div className="col-md-6 text-left pt-2 pl-0">
                 {/* Adding a button to link to the ContactNew component */}
-                <button className="btn btn-primary"><Link className="text-white" to='/contacts/new'>Add a Contact</Link></button>
+                <button className="btn btn-primary"><Link className="text-white" to='/contacts/new'>Add Contact</Link></button>
               </div>
             </div>
 
