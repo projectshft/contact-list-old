@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import ContactList from "./components/ContactList.js";
 import "./App.css";
 import NewContactForm from "./components/NewContactForm.js";
+import ContactInfo from "./components/ContactInfo.js";
 
 class App extends Component {
   constructor() {
@@ -16,7 +17,7 @@ class App extends Component {
           first_name: "Albert",
           last_name: "Einstein",
           image_url:
-            "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
+            "https://www.biography.com/.image/c_fit%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_620/MTE5NTU2MzE2MjExMDg2ODU5/albert-einstein-sticking-out-his-tongue.jpg",
           email: "aeinstein@example.com",
           phone_number: "15555555555",
         },
@@ -25,7 +26,7 @@ class App extends Component {
           first_name: "Lauren",
           last_name: "Donoghue",
           image_url:
-            "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
+            "https://www.biography.com/.image/c_fit%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_620/MTE5NTU2MzE2MjExMDg2ODU5/albert-einstein-sticking-out-his-tongue.jpg",
           email: "aeinstein@example.com",
           phone_number: "15555555555",
         },
@@ -34,7 +35,7 @@ class App extends Component {
           first_name: "Pierre",
           last_name: "Lourens",
           image_url:
-            "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
+            "https://www.biography.com/.image/c_fit%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_620/MTE5NTU2MzE2MjExMDg2ODU5/albert-einstein-sticking-out-his-tongue.jpg",
           email: "aeinstein@example.com",
           phone_number: "15555555555",
         },
@@ -60,6 +61,12 @@ class App extends Component {
             path="/"
             render={() => <ContactList contacts={this.state.contacts} />}
           />
+
+          <Route
+            exact
+            path="/contacts"
+            render={() => <ContactList contacts={this.state.contacts} />}
+          />
           <Route
             exact
             path="/contacts/new"
@@ -68,6 +75,16 @@ class App extends Component {
                 history={routerProps.history}
                 contacts={this.state.contacts}
                 addContact={this.addContact}
+              />
+            )}
+          />
+
+          <Route
+            path="/contacts/:number"
+            render={(routerProps) => (
+              <ContactInfo
+                contactId={parseInt(routerProps.match.params.number, 10)}
+                contacts={this.state.contacts}
               />
             )}
           />

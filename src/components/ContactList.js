@@ -8,7 +8,7 @@ const ContactList = ({ contacts }) => (
     <ul>
       {contacts.map((contact) => (
         <li key={contact.id}>
-          <Link to={`/contacts/${contact.id}`}>
+           <Link to={`/contacts/${contact.id}`}>
             <div className="contact-list-name">
               {contact.first_name} {contact.last_name}
             </div>
