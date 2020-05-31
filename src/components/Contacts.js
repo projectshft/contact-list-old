@@ -10,7 +10,7 @@ const Contacts = () => (
     <ul>
       {ContactsAPI.all().map(c => (
         <li key={c.id}>
-          <Link to={`/contacts/${c.id}`}>{c.name}</Link>
+          <Link to={`/contact/${c.id}`}>{c.name}</Link>
         </li>
       ))}
     </ul>

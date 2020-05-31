@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom';
 
 const App = () => (
   <div>
-    <Contacts />
+    <Main />
   </div>
 );
 
@@ -18,7 +18,7 @@ const Main = () => (
     <Switch>
       <Route exact path="/" component={Contacts} />
       <Route path="/contacts" component={Contacts} />
-      <Route path="/contacts/:id" component={Contact} />
+      <Route path="/contact/:id" component={Contact} />
       <Route path='/new-contact-form' component={NewContactForm} />
     </Switch>
   </main>
