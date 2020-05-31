@@ -58,10 +58,7 @@ class App extends React.Component {
         {/* Routing exact path of the list of contacts to be the home page
         and the /contacts route */}
         <Switch>
-          <Route exact path='/' render={() => (
-            <Contact addContact={this.addContact} contacts={this.state.contacts} />
-          )}/>
-          <Route path='/contacts' render={() => (
+          <Route path={['/', '/contacts']} render={() => (
             // passing addContact function and this.state to the Contact component
             <Contact  addContact={this.addContact} contacts={this.state.contacts} />
           )}/>

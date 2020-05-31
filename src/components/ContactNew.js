@@ -8,6 +8,7 @@ class ContactNew extends React.Component {
 
     this.state = {
       id: null,
+      profileImage: '',
       name: '',
       phoneNumber: '',
       email: ''
@@ -31,7 +32,7 @@ class ContactNew extends React.Component {
     // creating a object based on the user's values from the form input
     const newContact = {
       id: generateId(),
-      profileImage: '/images/unknown-image.png',
+      profileImage: this.state.profileImage,
       name: this.state.name,
       phoneNumber: this.state.phoneNumber,
       email: this.state.email
@@ -68,6 +69,13 @@ class ContactNew extends React.Component {
             <label><strong>Email</strong></label>
             <input type='text' className='form-control' onChange={event => this.setState({ email: event.target.value })
             }/>
+
+            <br/>
+
+            <label><strong>Profile Image</strong></label>
+            <input type='text' className='form-control' onChange={event => this.setState({ profileImage: event.target.value })
+            }/>
+
             {/* button to handle the start of the function that will pass 
             the new contact info to App.js */}
             <button className="submit-contact mt-3" type="button" onClick={this.handleSubmitNewContact}>Submit</button>
