@@ -16,7 +16,7 @@ const ContactInfo = ({contactId, contacts}) => {
     //rendering all of the data in the contacts props
     <div className="row">
       <div className="col-md-3 offset-md-2 mt-5">
-        <img className="w-100" src={contact.profileImage}></img>
+        <img className="profile-image w-100" src={contact.profileImage}></img>
       </div> 
       <div className="col-md-4 text-left mt-5 contact-details">
         <h1 className="name mb-4">{contact.name}</h1>

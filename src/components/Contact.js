@@ -22,15 +22,20 @@ const Contact = ({contacts, addContact}) => (
 
       {/* rendering the full contact list in App.js */}
       <Route path='/contacts' render={() => (
-        <div className="page-header">
-          <h1>Contact Info</h1>
-          {/* Adding a button to link to the ContactNew component */}
-          <button><Link to='/contacts/new'>Add a Contact</Link></button>
-          <br />
-          {/* passing contacts props to FullContact List */}
-          <FullContactList contacts={contacts} />
+        <div className ="row text-center">
+          <div className="col-md-4 offset-2 mt-5">
+            <div className="page-header">
+              <h1>Contact Info</h1>
+            </div>
+            <div>
+              {/* Adding a button to link to the ContactNew component */}
+            <button><Link to='/contacts/new'>Add a Contact</Link></button>
+            <br />
+            {/* passing contacts props to FullContact List */}
+            <FullContactList contacts={contacts} />
+            </div>
+          </div>
         </div>
-
       )}/>
     </Switch>
     
