@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom';
 import ContactsAPI from './ContactsAPI'
 import { v4 as uuidv4 } from 'uuid';
 
-const Contacts = () => (
+const AllContacts = () => (
   <div>
-  <h1>Contacts</h1>
+  <h1>Contacts</h1> <Link to={'/new-contact-form'}><button type="button" className="btn btn-primary add-post">Add New Contact</button></Link>
     <ul>
       {ContactsAPI.all().map(c => (
         <li key={c.id}>
@@ -14,8 +14,8 @@ const Contacts = () => (
         </li>
       ))}
     </ul>
-    <Link to={'/new-contact-form'}>New Contact</Link>
+
   </div>
 );
 
-export default Contacts;
+export default AllContacts;

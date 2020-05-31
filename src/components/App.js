@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import Contacts from './Contacts';
+import AllContacts from './AllContacts';
 import Contact from './Contact';
 import NewContactForm from './NewContactForm'
 import ReactDOM from 'react-dom';
@@ -16,8 +16,8 @@ const App = () => (
 const Main = () => (
   <main>
     <Switch>
-      <Route exact path="/" component={Contacts} />
-      <Route path="/contacts" component={Contacts} />
+      <Route exact path="/" component={AllContacts} />
+      <Route path="/contacts" component={AllContacts} />
       <Route path="/contact/:id" component={Contact} />
       <Route path='/new-contact-form' component={NewContactForm} />
     </Switch>
