@@ -9,23 +9,45 @@ class New extends Component {
       name: '',
       email: '',
       image: '',
-      phone: ''
+      phone: '',
+      key: 0
     }
+
+    this.sendAppState = this.sendAppState.bind(this)
+    this.setNewState = this.setNewState.bind(this)
   }
 
-  render() {
-    return (
+  render(){
+    return(
       <div>
-        <input type='text' placeholder='Name'/>
-        <input type='text' placeholder='Email'/>
-        <input type='text' placeholder='Image'/>
-        <input type='text' placeholder='Phone #'/>
+        {/* give each input reference to get value later */}
+        <input type='text' placeholder='Name' ref={(c) => this.name = c} />
+        <input type='text' placeholder='Email' ref={(c) => this.email = c} />
+        <input type='text' placeholder='Image' ref={(c) => this.image = c} />
+        <input type='text' placeholder='Phone #' ref={(c) => this.phone = c} />
         <Link to='/contacts'>
-          <button type='button'>Submit</button>
+          <button onClick={event => this.setNewState()} type='button'>Submit</button>
         </Link>
       </div>
     )
   }
+
+  setNewState() {
+    // give key a (fairly) unique number
+    const generateId = () => Math.round(Math.random() * 100000000)
+    // set the state for each input
+    this.setState({name: this.name.value})
+    this.setState({email: this.email.value})
+    this.setState({image: this.image.value})
+    this.setState({phone: this.phone.value})
+    this.setState({key: generateId()})
+    this.sendAppState()
+  }
+
+  sendAppState() {
+    this.props.addContact(this.state);
+  }
+
 }
 
 export default New

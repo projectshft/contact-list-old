@@ -8,6 +8,7 @@ import './App.css';
 
 class App extends Component {
   constructor() {
+    // inherit Component constructor with super()
     super();
 
     this.state = {
@@ -17,6 +18,13 @@ class App extends Component {
         {name: 'Hermione Granger', image:'', email: 'hgranger@hogwarts.edu', phone: 5028375829, key: 14525}
       ]
     }
+    // bind this to its context
+    this.addContact = this.addContact.bind(this)
+  }
+
+  addContact(object) {
+    const contacts = this.state.contacts.concat([object])
+    this.setState({contacts: contacts}, () => {console.log(this.state.contacts)});
   }
 
   render() {
@@ -25,7 +33,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' render={() => <ContactList contacts={this.state.contacts} />}/>
           <Route exact path='/contacts' render={() => <ContactList contacts={this.state.contacts} />}/>
-          <Route path='/contacts/new' component={New}/>
+          <Route path='/contacts/new' render={() => <New addContact={this.addContact}/>}/>
           <Route path='/contacts/:key' component={Contact} />
         </Switch>
       </main>
