@@ -2,34 +2,33 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import { Form, Col, Button } from 'react-bootstrap'
-import '../css/ContactForm.css'
+import '../css/EditForm.css'
 
-class ContactForm extends Component {
+class EditForm extends Component {
 
     constructor(props) {
         super(props)
 
         //to hold data from form input
         this.state = {
-            name: '',
-            email: '',
-            phone: '',
-            image: ''
+            name: props.contact.name,
+            email: props.contact.email,
+            phone: props.contact.phone,
+            image: props.contact.image
         }
 
         //bind handleClick to contact form
-        this.createContact = this.createContact.bind(this);
+        this.saveContact = this.saveContact.bind(this);
     }
 
-    //create new contact and add to contacts array on App state
-    createContact() {
-        console.log('handling click')
+    //save edits as new contact and add to contacts array on App state
+    saveContact() {
 
-        //create random id for new contact
+        //create new random id for edited contact
         const generateId = () => Math.round(Math.random() * 100000000)
 
-        //new contact to submit
-        const newContact = {
+        //new contact info to submit
+        const editedContact = {
             id: generateId(),
             name: this.state.name,
             email: this.state.email,
@@ -38,11 +37,13 @@ class ContactForm extends Component {
         }
 
         //check if all fields have been filled out
-        if (newContact.name && newContact.email && newContact.phone && newContact.image) {
-            console.log('fields completed')
+        if (editedContact.name && editedContact.email && editedContact.phone && editedContact.image) {
+
+            //remove previous version of contact from app state
+            this.props.deleteContact(this.props.contact.id)
 
             //add input value to contacts in App
-            this.props.addNew(newContact);
+            this.props.addNew(editedContact);
 
             //return to home screen
             this.props.history.push('/')
@@ -54,11 +55,10 @@ class ContactForm extends Component {
 
     render() {
         return (
-            <div className="add-contact-form">
+            <div className="edit-contact-form">
                 <header>
-                    <h1>Add Contact</h1>
+                    <h1>Edit Contact Information</h1>
                 </header>
-
 
                 <Form>
 
@@ -139,7 +139,7 @@ class ContactForm extends Component {
                     <Form.Group as={Form.Row}>
                         <Col sm={{ span: 3, offset: 9 }}>
 
-                            <Button className="submit-contact" type="button" onClick={this.createContact}>Add New Contact</Button>
+                            <Button className="submit-contact" type="button" onClick={this.saveContact}>Save Changes</Button>
 
                         </Col>
                     </Form.Group>
@@ -155,9 +155,19 @@ class ContactForm extends Component {
 }
 
 //set prop types
-ContactForm.propTypes = {
+EditForm.propTypes = {
+    contacts: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired
+    })),
+
     addNew: PropTypes.func.isRequired,
+
+    deleteContact: PropTypes.func.isRequired
 }
 
-export default ContactForm;
+export default EditForm;
 

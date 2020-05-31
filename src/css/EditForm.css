@@ -1,5 +1,5 @@
 
-.add-contact-form {   
+.edit-contact-form {   
     padding: 20px 20px 150px;
     background: url("../images/old_rolodex_card.jpg");
     background-size: 100% 100%;
@@ -27,7 +27,7 @@ h1 {
     color: #BA0202;
 }
 
-.submit-contact {
+#.submit-contact {
     background-color: transparent;
     font-weight: bold;
     color: #BA0202;

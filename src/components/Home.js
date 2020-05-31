@@ -6,13 +6,14 @@ import { Container, Col, Row, Button } from 'react-bootstrap';
 import '../css/Home.css'
 
 const Home = (props) => {
+
     return (
         <Container fluid id="home-page">
 
             <Row>
-                <Col  md={{ span: 4, offset: 1 }}>
-                    
-                        <h1>Contacts</h1>
+                <Col md={{ span: 4, offset: 1 }}>
+
+                    <h1>Contacts</h1>
 
                 </Col>
 
@@ -25,17 +26,17 @@ const Home = (props) => {
                     </Link>
 
                 </Col>
-                
+
             </Row>
-            <hr/>
+            <hr />
             {/* Full list of contacts */}
             <Row>
                 <Col>
 
-                    <ContactList contacts={props.contacts} deleteContact={props.deleteContact} />
+                    <ContactList contacts={props.contacts} deleteContact={props.deleteContact} editInfo={props.editInfo} />
 
                 </Col>
-                
+
             </Row>
         </Container>
     )
@@ -51,7 +52,8 @@ Home.propTypes = {
         image: PropTypes.string.isRequired
     })),
 
-    deleteContact: PropTypes.func
+    deleteContact: PropTypes.func.isRequired,
+    editInfo: PropTypes.func.isRequired
 }
 
 export default Home;

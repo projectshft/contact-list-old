@@ -6,7 +6,7 @@ import '../css/ContactList.css'
 
 
 // list of contacts shown on home page
-    const ContactList = (props) => {
+const ContactList = (props) => {
 
     // display each contact name and link it to contact details, with links also to edit and delete
     const listedContacts = props.contacts.map((contact) => {
@@ -27,7 +27,13 @@ import '../css/ContactList.css'
 
                 {/* Edit & Remove Links */}
                 <Col md={4}>
-                    <Link to="" className="edit-link"> edit</Link>
+                    <Link to="/contacts/edit"
+                        className="edit-link"
+                        onClick={event => {
+                            //use contact id to edit contact info from app state with passed function
+                            props.editInfo(contact.id);
+                        }}
+                    > edit</Link>
 
                     <Link to=""
                         className="delete-link"
@@ -67,7 +73,9 @@ ContactList.propTypes = {
         image: PropTypes.string.isRequired
     })),
 
-    deleteContact: PropTypes.func
+    deleteContact: PropTypes.func.isRequired,
+
+    editInfo: PropTypes.func.isRequired
 }
 
 export default ContactList;

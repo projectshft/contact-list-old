@@ -9,6 +9,7 @@ import BerthaImage from '../images/mrs_rochester.jpg';
 import AdeleImage from '../images/adele_varens.jpg';
 import BlancheImage from '../images/blanche_ingram.jpg';
 import _ from 'lodash';
+import EditForm from './EditForm';
 
 class App extends Component {
   constructor() {
@@ -58,17 +59,25 @@ class App extends Component {
           phone: "(936) 555-0257",
           image: BlancheImage
         }
-      ]
+      ],
+
+      contactToEdit: {
+        id: '',
+        name: '',
+        email: '',
+        phone: '',
+        image: ''
+      }
     }
 
     //bind functions to App component
     this.addContact = this.addContact.bind(this);
     this.removeContact = this.removeContact.bind(this);
+    this.editContact = this.editContact.bind(this);
   }
 
   // add new contact to app state with contact form input
   addContact = (newContact) => {
-    
     this.setState({ contacts: this.state.contacts.concat([newContact]) });
   }
 
@@ -93,6 +102,14 @@ class App extends Component {
     }
   }
 
+  editContact = (contactId) => {
+    //find selected contact in array of contacts in app state
+    const clickedContact = _.find(this.state.contacts, (contact) => { return contact.id === contactId; })
+
+    //set as contact to edit on app state
+    this.setState({ contactToEdit: clickedContact });
+  }
+
   render() {
     return (
       <div>
@@ -101,12 +118,17 @@ class App extends Component {
 
           {/* navigate to home from either path // pass contacts to render in list on home page*/}
           <Route exact path={['/', '/contacts']} render={() => (
-            <Home contacts={this.state.contacts} deleteContact={this.removeContact} />
+            <Home contacts={this.state.contacts} deleteContact={this.removeContact} editInfo={this.editContact} />
           )} />
 
           {/* pass function to add new contacts to app state through contact form */}
           <Route path='/contacts/new' render={(routerProps) => (
             <ContactForm addNew={this.addContact} history={routerProps.history} />
+          )} />
+
+          {/* pass function to edit contacts in app state through edit form */}
+          <Route path='/contacts/edit' render={(routerProps) => (
+            <EditForm deleteContact={this.removeContact} addNew={this.addContact} contact={this.state.contactToEdit} history={routerProps.history} />
           )} />
 
           {/* navigate to contact details by matching number in url path to contact id */}
