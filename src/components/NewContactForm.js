@@ -165,13 +165,15 @@ class NewContactForm extends React.Component {
           />
           <div className="error">{this.state.imageURLError}</div>
 
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
+          <div className="add-contact-form-buttons">
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
 
-          <Button variant="secondary" type="button" onClick={this.handleBackButton}>
-            Back
-          </Button>
+            <Button variant="secondary" type="button" onClick={this.handleBackButton}>
+              Back
+            </Button>
+          </div>
         </form>
       </div>
     );

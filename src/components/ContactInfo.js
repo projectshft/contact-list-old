@@ -19,11 +19,12 @@ const ContactInfo = ({ contacts, contactId }) => {
 
   return (
     <div>
-      <h1>{contact.name}</h1>
-
-      <h2>{contact.email}</h2>
-      <h2>{contact.phoneNumber}</h2>
-      <img className="contact-pic" src={contact.imageURL} />
+      <div id="individual-contact-info">
+        <h1>{contact.name}</h1>
+        <h2>{contact.email}</h2>
+        <h2>{contact.phoneNumber}</h2>
+        <img className="contact-pic" src={contact.imageURL} />
+      </div>
 
       <Link to="/contacts">
         <Button variant="outline-dark" size="sm" type="button">

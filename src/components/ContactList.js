@@ -24,7 +24,7 @@ const ContactList = ({ contacts }) => (
     </Row>
 
     {contacts.map((contact) => (
-      <Row className="contact-row" key={contact.id}>
+      <Row className="contact-row" noGutters="true" key={contact.id}>
         <Col md={{ span: 8 }}>
           <div className="contact-cover">
             <Link to={`/contacts/${contact.id}`}>
@@ -36,11 +36,11 @@ const ContactList = ({ contacts }) => (
         <Col>
           <div className="contact-options">
             <div className="contact-options-button-wrapper">
-              <Link to={`/contacts/${contact.id}`}>Edit</Link>
+              <a href="#">Edit</a>
             </div>
 
             <div className="contact-options-button-wrapper">
-              <Link to={`/contacts/${contact.id}`}>Delete</Link>
+              <a href="#">Delete</a>
             </div>
           </div>
         </Col>

@@ -2,35 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .error {
   color: red;
 }
@@ -39,13 +10,14 @@
   margin-top: 50px;
 }
 
-.contact-pic {
-  width: 100px;
+.contact-cover {
+  padding: 10px;
+  font-size: 18px;
+  border-right: 1px solid #ababab;
 }
 
-.contact-cover {
-  border: 1px solid silver;
-  padding: 10px;
+.contact-cover a {
+  color: #565656;
 }
 
 .contact-cover:hover {
@@ -60,6 +32,7 @@
 
 .contact-row {
   margin-bottom: 10px;
+  border: 1px solid #ababab;
 }
 
 .add-contact-button-wrapper {
@@ -75,7 +48,23 @@
   width: 100%;
   display: block;
   padding: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
   margin: 5px 0;
+  border: 1px solid #ababab;
+}
+
+.add-contact-form-buttons {
+  text-align: center;
+  padding: 10px;
+}
+.add-contact-form-buttons button {
+  margin-right: 5px;
+}
+
+.add- #individual-contact-info {
+  padding: 10px;
+}
+
+.contact-pic {
+  width: 150px;
 }
