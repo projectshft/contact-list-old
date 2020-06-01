@@ -9,9 +9,9 @@ const AllContacts = ({contacts}) => (
       { contacts.map(c => (
         <li key={c.id}>
           <Link to={`/contacts/${c.id}`}>{c.name}</Link>
-          <p>&nbsp;&nbsp;&nbsp;</p>
+          <p>&nbsp;&nbsp;</p>
           <Link>edit</Link>
-          <p>&nbsp;&nbsp;&nbsp;</p>
+          <p>&nbsp;&nbsp;</p>
           <Link>delete</Link>
         </li>
       ))}

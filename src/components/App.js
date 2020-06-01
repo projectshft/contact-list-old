@@ -1,5 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
-import React, { Component } from 'react';
+import React from 'react';
 import Contacts from './Contacts';
 
 
@@ -7,6 +7,7 @@ class App extends React.Component {
   constructor () {
     super()
 
+    // Pre-loaded contacts
     this.state = {
       contacts: [
         {

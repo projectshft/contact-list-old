@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 
 class ContactNew extends React.Component {
   constructor () {
@@ -58,26 +57,26 @@ class ContactNew extends React.Component {
         <h3>Add a New Contact</h3>
 
         <div className="form-group">
-          <input type="text" id="contact-name" className="form-control"          onChange={event => this.setState({ name: event.target.value })
+          <input type="text" id="contact-name" className="form-control" placeholder="Jane Doe"    onChange={event => this.setState({ name: event.target.value })
         }/>
 
           <br/>
           <br/>
 
-          <input type="text" className="form-control" placeholder="Ex: ##########"
+          <input type="text" className="form-control" placeholder="###-###-####"
           onChange={event => this.setState({ phone_number: event.target.value })
         }/>
 
           <br/>
           <br/>
 
-          <input type="text" className="form-control" placeholder="example@sample.com" onChange={event => this.setState({ email: event.target.value })
+          <input type="text" className="form-control" placeholder="example@example.com" onChange={event => this.setState({ email: event.target.value })
         }/>
 
           <br/>
           <br/>
 
-          <input type="text" className="form-control" placeholder="https://sample.org/image.jpeg" onChange={event => this.setState({ image_url: event.target.value })
+          <input type="text" className="form-control" placeholder="https://sample.org/image.jpg" onChange={event => this.setState({ image_url: event.target.value })
         }/>
 
         </div>
@@ -96,11 +95,10 @@ class ContactNew extends React.Component {
 }
 
 ContactNew.propTypes = {
-  // `name` must be a string, and it can't be `null` or `undefined`!
   name: PropTypes.string.isRequired,
   email: PropTypes.string,
   image_url: PropTypes.string,
-
+  phone_number: PropTypes.string,
 }
 
 ContactNew.propTypes = {
