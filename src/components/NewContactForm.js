@@ -34,7 +34,7 @@ class NewContactForm extends React.Component {
     let emailError = "";
     let phoneNumberError = "";
 
-    let phoneRegEx = /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/g;
+    let phoneRegEx = /^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/;
     let emailRegEx = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 
     if (!this.state.email.includes("@")) {
@@ -141,7 +141,7 @@ class NewContactForm extends React.Component {
           />
           <div className="error">{this.state.emailError}</div>
 
-          <label>Phone Number</label>
+          <label>Phone Number (10 digit US)</label>
           <input
             type="text"
             value={this.state.phoneNumber}
