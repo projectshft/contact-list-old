@@ -28,19 +28,17 @@ class App extends Component {
         },
         {
           id: 1234,
-          name: "Lauren",
-          imageURL:
-            "https://www.biography.com/.image/c_fit%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_620/MTE5NTU2MzE2MjExMDg2ODU5/albert-einstein-sticking-out-his-tongue.jpg",
-          email: "aeinstein@example.com",
-          phoneNumber: "15555555555",
+          name: "Piper Lourens",
+          imageURL: "https://i.imgur.com/dtpX9bK.jpg",
+          email: "ilikenaps@dogs.com",
+          phoneNumber: "919-9663-764",
         },
         {
           id: 34134,
-          name: "Pierre",
-          imageURL:
-            "https://www.biography.com/.image/c_fit%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_620/MTE5NTU2MzE2MjExMDg2ODU5/albert-einstein-sticking-out-his-tongue.jpg",
-          email: "aeinstein@example.com",
-          phoneNumber: "15555555555",
+          name: "Leslie Knope",
+          imageURL: "https://upload.wikimedia.org/wikipedia/en/3/34/Leslie_Knope_%28played_by_Amy_Poehler%29.png",
+          email: "leslie@pawnee.gov",
+          phoneNumber: "1234567890",
         },
       ],
     };

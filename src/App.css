@@ -13,7 +13,7 @@
 .contact-cover {
   padding: 10px;
   font-size: 18px;
-  border-right: 1px solid #ababab;
+  border-right: 1px solid #dddddd;
 }
 
 .contact-cover a {
@@ -21,7 +21,7 @@
 }
 
 .contact-cover:hover {
-  background-color: silver;
+  background-color: #eeeeee;
 }
 
 .button-wrapper {
@@ -32,7 +32,7 @@
 
 .contact-row {
   margin-bottom: 10px;
-  border: 1px solid #ababab;
+  border: 1px solid #dddddd;
 }
 
 .add-contact-button-wrapper {
@@ -66,5 +66,5 @@
 }
 
 .contact-pic {
-  width: 150px;
+  width: 300px;
 }

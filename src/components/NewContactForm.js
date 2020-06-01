@@ -52,6 +52,10 @@ class NewContactForm extends React.Component {
       emailError = "Enter a valid email address";
     }
 
+    if (!this.state.imageURLError) {
+      imageURLError = "Please enter a URL";
+    }
+
     // if there are any errors, we need to return false to stop submit
     // we'll also set the error to state for printing
     if (emailError || imageURLError || phoneNumberError || nameError) {
