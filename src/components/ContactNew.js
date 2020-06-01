@@ -18,9 +18,10 @@ class ContactNew extends React.Component {
     this.handleSubmitNewContact = this.handleSubmitNewContact.bind(this);
   };
   
-  //function to pass all user input from the form to App component
+  //function to pass all user input from the form to the App component
   handleSubmitNewContact () {
-    //check to see if all fields are filled in by the user
+    //check to see if all fields are filled in by the user except the profile image
+    //and alert the user if not filled in
     if (this.state.name === '' || this.state.phoneNumber === '' || this.state.email === '') {
       return alert('Please complete all fields and then click submit')
     }
@@ -53,12 +54,14 @@ class ContactNew extends React.Component {
   render() {
     return (
       <div className="row">
-        {/* form to hold the values the user will submit to add a new contact */}
-        
+    
         <div className="col-md-6 offset-md-3 mt-5">
+          
           <div className="page-header">
             <h1>Add New Contact</h1>
           </div>
+
+           {/* form to hold the values the user will submit to add a new contact */}
           <form>
             <label><strong>Name</strong></label>
             {/* updating the state with the value of the input */}

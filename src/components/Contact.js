@@ -16,6 +16,7 @@ const Contact = ({contacts, addContact}) => (
       
       {/* creating a route for each contact to link to it's respective ContactInfo */}
       <Route path='/contacts/:id' render={(routerProps) => (
+        // ensuring id is a number
         <ContactInfo contactId={parseInt(routerProps.match.params.id, 10)} contacts={contacts} />
         
       )}/>
@@ -29,7 +30,7 @@ const Contact = ({contacts, addContact}) => (
                 <h1>Contacts</h1>
               </div>
               <div className="col-md-6 text-left pt-2 pl-0">
-                {/* Adding a button to link to the ContactNew component */}
+                {/* Adding a button to link to the ContactNew component(page) */}
                 <button className="btn btn-primary"><Link className="text-white" to='/contacts/new'>Add Contact</Link></button>
               </div>
             </div>

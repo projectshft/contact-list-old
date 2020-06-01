@@ -47,7 +47,7 @@ class App extends React.Component {
     
     this.addContact = this.addContact.bind(this);
   }
-  //adding the contact based on input from ContactNew component when a users adds a new contact
+  //adding the contact based on input from ContactNew component when a user adds a new contact
   addContact (contact) {
     this.setState({contacts: this.state.contacts.concat([contact])})
   }

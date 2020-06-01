@@ -2,6 +2,7 @@
   text-overflow: hidden;
 }
 
+/* css for animated borders */
 .contact-list {
   --borderWidth: 3px;
   color: white;
@@ -21,4 +22,16 @@
   z-index: -1;
   animation: animatedgradient 3s ease alternate infinite;
   background-size: 300% 300%;
+}
+
+@keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }

@@ -1,8 +1,4 @@
-/* .contact-details {
-  border: 5px double #000000;
-  background-color: white;
-} */
-
+/* css for animated borders */
 .contact-details {
   --borderWidth: 3px;
   color: white;
