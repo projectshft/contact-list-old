@@ -17,16 +17,29 @@ class ContactNew extends React.Component {
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
   }
 
+
+
   handleSubmitContactClick () {
-    const newContact = {
-      "id": this.state.id,
-      "name": this.state.name,
-      "email": this.state.email,
-      "phone_number": this.state.phone_number,
-      "img_url": this.state.img_url
+    let formsAreValid = true;
+    Object.keys(this.state).forEach(key => {
+      console.log(key)
+      if(!this.state[key]) {
+        formsAreValid = false;
+      }
+    })
+    if(!formsAreValid) {
+      alert('All fields must be filled out to submit this form')
+    } else {
+      const newContact = {
+        "id": this.generateId(),
+        "name": this.state.name,
+        "email": this.state.email,
+        "phone_number": this.state.phone_number,
+        "img_url": this.state.img_url
+      }
+      this.props.addContact(newContact)
+      this.props.history.push('/contacts')
     }
-    this.props.addContact(newContact)
-    this.props.history.push('/contacts')
   }
 
   generateId() {
@@ -41,25 +54,25 @@ class ContactNew extends React.Component {
           <h1>Add a Contact</h1>
           <form>
             <div className="form-group">
-              <label for="name-input">Name</label>
+              <label htmlFor="name-input">Name</label>
               <input type="text" id="name-input" className="form-control" onChange={event =>
                 this.setState({ "name": event.target.value })
               }/>
             </div>
             <div className="form-group">
-              <label for="email-input">Email Address</label>
+              <label htmlFor="email-input">Email Address</label>
               <input type="email" id="email-input" className="form-control" onChange={event =>
                 this.setState({ "email": event.target.value })
               }/>
             </div>
             <div className="form-group">
-              <label for="phone-input">Phone Number</label>
+              <label htmlFor="phone-input">Phone Number</label>
               <input type="text" id="phone-input" className="form-control" onChange={event =>
                 this.setState({ "phone_number": event.target.value })
               }/>
             </div>
             <div className="form-group">
-              <label for="img-input">Profile Image URL</label>
+              <label htmlFor="img-input">Profile Image URL</label>
               <input type="text" id="img-input" className="form-control" onChange={event =>
                 this.setState({ "img_url": event.target.value })
               }/>

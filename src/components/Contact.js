@@ -3,6 +3,7 @@ import React from 'react'
 import ContactInfo from './ContactInfo'
 import FullContactsList from './FullContactsList'
 import ContactNew from './ContactNew'
+import PropTypes from 'prop-types'
 
 const Contact = ({contacts, addContact}) => (
   <Switch>
@@ -26,5 +27,16 @@ const Contact = ({contacts, addContact}) => (
 
   </Switch>
 )
+
+Contact.propTypes = {
+  addContact: PropTypes.func.isRequired,
+  contacts: PropTypes.arrayOf(PropTypes.exact({
+    "id": PropTypes.number.isRequired,
+    "name": PropTypes.string.isRequired,
+    "phone_number": PropTypes.string.isRequired,
+    "img_url": PropTypes.string.isRequired,
+    "email": PropTypes.string.isRequired
+  }))
+}
 
 export default Contact

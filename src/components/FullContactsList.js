@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import '../style.css'
+import PropTypes from 'prop-types'
 
 const FullContactsList = ({contacts}) => (
   <div className="row ">
@@ -26,5 +27,15 @@ const FullContactsList = ({contacts}) => (
     </div>
   </div>
 )
+
+FullContactsList.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.exact({
+    "id": PropTypes.number.isRequired,
+    "name": PropTypes.string.isRequired,
+    "phone_number": PropTypes.string.isRequired,
+    "img_url": PropTypes.string.isRequired,
+    "email": PropTypes.string.isRequired
+  }))
+}
 
 export default FullContactsList
