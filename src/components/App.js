@@ -5,6 +5,14 @@ import ContactForm from './ContactForm';
 import ContactDetail from './ContactDetail';
 import EditForm from './EditForm';
 import _ from 'lodash';
+import BenderImage from '../images/bender.jpg';
+import ClaireImage from '../images/claire.jpg';
+import AllisonImage from '../images/allison.jpg';
+import CarlImage from '../images/carl.jpg';
+import VernonImage from '../images/vernon.jpg';
+import AndrewImage from '../images/andrew.jpg';
+import BrianImage from '../images/brian.jpg';
+
 
 class App extends Component {
   constructor() {
@@ -20,7 +28,7 @@ class App extends Component {
           name: "John Bender",
           email: "criminal4life@detention.forever",
           phone: "(123) 555-4567",
-          image: "https://a1cf74336522e87f135f-2f21ace9a6cf0052456644b80fa06d4f.ssl.cf2.rackcdn.com/images/characters_opt/p-the-breakfast-club-judd-nelson.jpg"
+          image: BenderImage
         },
 
         {
@@ -28,7 +36,7 @@ class App extends Component {
           name: "Claire Standish",
           email: "imaprincess@breakfast.club",
           phone: "(234) 555-5678",
-          image: "https://vignette.wikia.nocookie.net/thebreakfastclub/images/b/b1/Claire_-_blu-ray_.jpg/revision/latest/scale-to-width-down/250?cb=20190217235850"
+          image: ClaireImage
         },
 
         {
@@ -36,7 +44,7 @@ class App extends Component {
           name: "Andrew Clark",
           email: "athlete01@breakfast.club",
           phone: "(345) 555-6789",
-          image: "https://vignette.wikia.nocookie.net/breakfastclub/images/d/db/Andrewclark.jpeg/revision/latest/scale-to-width-down/238?cb=20130309022413"
+          image: AndrewImage
         },
 
         {
@@ -44,7 +52,7 @@ class App extends Component {
           name: "Brian Johnson",
           email: "thebrain@breakfast.club",
           phone: "(456) 555-7890",
-          image: "https://a1cf74336522e87f135f-2f21ace9a6cf0052456644b80fa06d4f.ssl.cf2.rackcdn.com/images/characters_opt/p-the-breakfast-club-anthony-michael.jpg"
+          image: BrianImage
         },
 
         {
@@ -52,7 +60,7 @@ class App extends Component {
           name: "Allison Reynolds",
           email: "bazketcase@breakfast.club",
           phone: "(567) 555-8901",
-          image: "https://a1cf74336522e87f135f-2f21ace9a6cf0052456644b80fa06d4f.ssl.cf2.rackcdn.com/images/characters_opt/p-the-breakfast-club-ally-sheedy.jpg"
+          image: AllisonImage
         },
 
         {
@@ -60,7 +68,7 @@ class App extends Component {
           name: "Richard Vernon",
           email: "skullcracker@shermerhs.edu",
           phone: "(678) 555-9012",
-          image: "http://thebrekkyclub.weebly.com/uploads/2/9/3/7/29370051/7118438.jpg"
+          image: VernonImage
         },
 
         {
@@ -68,7 +76,7 @@ class App extends Component {
           name: "Carl Reed",
           email: "insightfuljanitor@shermerhs.edu",
           phone: "(789) 555-0123",
-          image: "https://vignette.wikia.nocookie.net/thebreakfastclub/images/6/6e/Carlthejanitor.jpg/revision/latest/scale-to-width-down/250?cb=20200303155040"
+          image: CarlImage
         }
       ],
 
