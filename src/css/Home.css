@@ -29,7 +29,7 @@ h1 {
 #add-contact-button:hover {
     color: #003F88;
     border-color: #003F88;
-
+    background: transparent;
 }
 
 

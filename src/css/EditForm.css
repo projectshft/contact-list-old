@@ -27,15 +27,16 @@ h1 {
     color: #BA0202;
 }
 
-#.submit-contact {
+.submit-contact {
     background-color: transparent;
     font-weight: bold;
     color: #BA0202;
-    font-size: 18px;
+    font-size: 20px;
     border: #BA0202 2px solid;
 }
 
 .submit-contact:hover {
     color: #003F88;
     border-color: #003F88;
+    background: transparent;
 }

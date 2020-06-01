@@ -10,36 +10,43 @@ const ContactDetail = (props) => {
     //find contact whose id matches id in url
     const contact = _.find(props.contacts, { id: props.contactId });
 
-    return (
+    //make sure contact was found
+    if (!contact) {
+        console.log("Could not find contact")
+    } else {
 
-        // Contact Details
-        <Container fluid className="contact-detail">
-            <Row>
-                {/* Contact Image  */}
-                <Col className="detail-image-col" md={6}>
-                    <div className="detail-image">
-                        <img src={contact.image} alt={contact.name} />
-                    </div>
-                </Col>
+        return (
+            // Contact Details
+            <Container fluid className="contact-detail">
+                <Row className="detail-row">
 
-                {/* Contact Info */}
-                <Col className="detail-info" md={6}>
-                    <h2>{contact.name}</h2>
+                    {/* Contact Image  */}
+                    <Col className="detail-image-col" md={6}>
+                        <div className="detail-image">
+                            <img src={contact.image} alt={contact.name} />
+                        </div>
+                    </Col>
 
-                    <p>{contact.email}</p>
+                    {/* Contact Info */}
+                    <Col className="detail-info" md={6}>
+                        <h2>{contact.name}</h2>
 
-                    <p>{contact.phone}</p>
-                </Col>
-            </Row>
+                        <p>{contact.email}</p>
 
-            {/* Back Link  */}
-            <Row>
-                <Col>
-                    <Link className="back-link" to="/contacts">Back</Link>
-                </Col>
-            </Row>
-        </Container>
-    )
+                        <p>{contact.phone}</p>
+                    </Col>
+
+                </Row>
+
+                {/* Back Link  */}
+                <Row>
+                    <Col>
+                        <Link className="back-link" to="/contacts">Back</Link>
+                    </Col>
+                </Row>
+            </Container>
+        )
+    }
 }
 
 //set prop types

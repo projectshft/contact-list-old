@@ -10,11 +10,10 @@ const Home = (props) => {
     return (
         <Container fluid id="home-page">
 
+            {/* Header */}
             <Row>
                 <Col md={{ span: 4, offset: 1 }}>
-
                     <h1>Contacts</h1>
-
                 </Col>
 
                 {/* Button to add new contacts */}
@@ -24,20 +23,19 @@ const Home = (props) => {
                     <Link to="/contacts/new">
                         <Button id="add-contact-button" type="text">Add Contact</Button>
                     </Link>
-
+                    
                 </Col>
-
             </Row>
+
             <hr />
+
             {/* Full list of contacts */}
             <Row>
                 <Col>
-
                     <ContactList contacts={props.contacts} deleteContact={props.deleteContact} editInfo={props.editInfo} />
-
                 </Col>
-
             </Row>
+
         </Container>
     )
 }

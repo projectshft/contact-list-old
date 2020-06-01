@@ -8,10 +8,11 @@ import '../css/ContactList.css'
 // list of contacts shown on home page
 const ContactList = (props) => {
 
-    const confirmDelete = (contactId) => {
-        if (window.confirm("Are you sure you want to remove this contact?")) {
+    //ask for confirmation before removing contact when user clicks delete link
+    const confirmDelete = (contactId, contactName) => {
+        if (window.confirm(`Are you sure you want to remove ${contactName} from your contacts?`)) {
             props.deleteContact(contactId)
-        }
+        } 
     }
 
     // display each contact name and link it to contact details, with links also to edit and delete
@@ -45,12 +46,11 @@ const ContactList = (props) => {
                         className="delete-link"
                         onClick={event => {
                             //use contact id to delete contact from app state with passed function 
-                            confirmDelete(contact.id);
+                            confirmDelete(contact.id, contact.name);
                         }}> delete</Link>
 
                     <hr />
                 </Col>
-
             </Row>
         )
     });
@@ -61,6 +61,7 @@ const ContactList = (props) => {
             <Row>
                 <Col id="contact-list">
 
+                    {/* display mapped contact results  */}
                     {listedContacts}
 
                 </Col>

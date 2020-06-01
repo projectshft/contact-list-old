@@ -3,13 +3,8 @@ import React, { Component } from 'react';
 import Home from './Home';
 import ContactForm from './ContactForm';
 import ContactDetail from './ContactDetail';
-import JaneImage from '../images/jane_eyre.jpg';
-import RochesterImage from '../images/mr_rochester.jpg';
-import BerthaImage from '../images/mrs_rochester.jpg';
-import AdeleImage from '../images/adele_varens.jpg';
-import BlancheImage from '../images/blanche_ingram.jpg';
-import _ from 'lodash';
 import EditForm from './EditForm';
+import _ from 'lodash';
 
 class App extends Component {
   constructor() {
@@ -22,45 +17,62 @@ class App extends Component {
         // default contacts to display
         {
           id: 123,
-          name: "Jane Eyre",
-          email: "lonelyorphan@lowoodschool.edu",
-          phone: "(286) 555-9830",
-          image: JaneImage
+          name: "John Bender",
+          email: "criminal4life@detention.forever",
+          phone: "(123) 555-4567",
+          image: "https://a1cf74336522e87f135f-2f21ace9a6cf0052456644b80fa06d4f.ssl.cf2.rackcdn.com/images/characters_opt/p-the-breakfast-club-judd-nelson.jpg"
         },
 
         {
           id: 234,
-          name: "Edward Rochester",
-          email: "sirmoody@thornfield.com",
-          phone: "(676) 555-2548",
-          image: RochesterImage
+          name: "Claire Standish",
+          email: "imaprincess@breakfast.club",
+          phone: "(234) 555-5678",
+          image: "https://vignette.wikia.nocookie.net/thebreakfastclub/images/b/b1/Claire_-_blu-ray_.jpg/revision/latest/scale-to-width-down/250?cb=20190217235850"
         },
 
         {
           id: 345,
-          name: "Bertha Mason",
-          email: "crazywife@theattic.net",
-          phone: "(232) 555-9372",
-          image: BerthaImage
+          name: "Andrew Clark",
+          email: "athlete01@breakfast.club",
+          phone: "(345) 555-6789",
+          image: "https://vignette.wikia.nocookie.net/breakfastclub/images/d/db/Andrewclark.jpeg/revision/latest/scale-to-width-down/238?cb=20130309022413"
         },
 
         {
           id: 456,
-          name: "Adele Varens",
-          email: "fashionluvr@thornfield.com",
-          phone: "(676) 555-2548",
-          image: AdeleImage
+          name: "Brian Johnson",
+          email: "thebrain@breakfast.club",
+          phone: "(456) 555-7890",
+          image: "https://a1cf74336522e87f135f-2f21ace9a6cf0052456644b80fa06d4f.ssl.cf2.rackcdn.com/images/characters_opt/p-the-breakfast-club-anthony-michael.jpg"
         },
 
         {
           id: 567,
-          name: "Blanche Ingram",
-          email: "golddigger@ingrampark.com",
-          phone: "(936) 555-0257",
-          image: BlancheImage
+          name: "Allison Reynolds",
+          email: "bazketcase@breakfast.club",
+          phone: "(567) 555-8901",
+          image: "https://a1cf74336522e87f135f-2f21ace9a6cf0052456644b80fa06d4f.ssl.cf2.rackcdn.com/images/characters_opt/p-the-breakfast-club-ally-sheedy.jpg"
+        },
+
+        {
+          id: 678,
+          name: "Richard Vernon",
+          email: "skullcracker@shermerhs.edu",
+          phone: "(678) 555-9012",
+          image: "http://thebrekkyclub.weebly.com/uploads/2/9/3/7/29370051/7118438.jpg"
+        },
+
+        {
+          id: 789,
+          name: "Carl Reed",
+          email: "insightfuljanitor@shermerhs.edu",
+          phone: "(789) 555-0123",
+          image: "https://vignette.wikia.nocookie.net/thebreakfastclub/images/6/6e/Carlthejanitor.jpg/revision/latest/scale-to-width-down/250?cb=20200303155040"
         }
       ],
 
+      //to store information on selected contact for editing
       contactToEdit: {
         id: '',
         name: '',
@@ -76,7 +88,7 @@ class App extends Component {
     this.editContact = this.editContact.bind(this);
   }
 
-  // add new contact to app state with contact form input
+  // add new contact to app state with input from contact form 
   addContact = (newContact) => {
     this.setState({ contacts: this.state.contacts.concat([newContact]) });
   }
@@ -98,10 +110,11 @@ class App extends Component {
       this.setState({ contacts: currentContacts });
 
     } else {
-      console.log('could not find contact to remove')
+      console.log('Could not find contact to remove')
     }
   }
 
+  // change state of contactToEdit on App (for edit form to use)
   editContact = (contactId) => {
     //find selected contact in array of contacts in app state
     const clickedContact = _.find(this.state.contacts, (contact) => { return contact.id === contactId; })
@@ -113,10 +126,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* to direct which component to display based on url entered */}
+        {/* to direct which component to display based on url path */}
         <Switch>
 
-          {/* navigate to home from either path // pass contacts to render in list on home page*/}
+          {/* navigate to home from either path // pass contacts to render in list on home page and functions to edit/remove */}
           <Route exact path={['/', '/contacts']} render={() => (
             <Home contacts={this.state.contacts} deleteContact={this.removeContact} editInfo={this.editContact} />
           )} />

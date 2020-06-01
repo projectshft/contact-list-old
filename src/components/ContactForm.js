@@ -17,13 +17,12 @@ class ContactForm extends Component {
             image: ''
         }
 
-        //bind handleClick to contact form
+        //bind function to contact form
         this.createContact = this.createContact.bind(this);
     }
 
     //create new contact and add to contacts array on App state
     createContact() {
-        console.log('handling click')
 
         //create random id for new contact
         const generateId = () => Math.round(Math.random() * 100000000)
@@ -37,9 +36,8 @@ class ContactForm extends Component {
             image: this.state.image
         }
 
-        //check if all fields have been filled out
-        if (newContact.name && newContact.email && newContact.phone && newContact.image) {
-            console.log('fields completed')
+        //check if all fields have been filled out & id has been generated
+        if (newContact.name && newContact.email && newContact.phone && newContact.image && newContact.id) {
 
             //add input value to contacts in App
             this.props.addNew(newContact);
@@ -76,6 +74,7 @@ class ContactForm extends Component {
                                     this.setState({ name: event.target.value })
                                 }}
                                 placeholder="John Doe"
+                                type="text"
                                 required />
                         </Col>
                     </Form.Group>
@@ -94,6 +93,7 @@ class ContactForm extends Component {
                                     this.setState({ email: event.target.value })
                                 }}
                                 placeholder="jdoe@gmail.com"
+                                type="email"
                                 required />
                         </Col>
                     </Form.Group>
@@ -112,6 +112,7 @@ class ContactForm extends Component {
                                     this.setState({ phone: event.target.value })
                                 }}
                                 placeholder="(234) 555-6789"
+                                type="tel"
                                 required />
                         </Col>
                     </Form.Group>
@@ -130,7 +131,8 @@ class ContactForm extends Component {
                                 onChange={event => {
                                     this.setState({ image: event.target.value })
                                 }}
-                                placeholder="https://www.website.com/contact_image.jpg"
+                                placeholder="https://pbs.twimg.com/media/EYKjWpyWAAEEBIh.jpg"
+                                type="url"
                                 required />
                         </Col>
                     </Form.Group>

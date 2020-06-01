@@ -17,11 +17,11 @@ class EditForm extends Component {
             image: props.contact.image
         }
 
-        //bind handleClick to contact form
+        //bind function to contact form
         this.saveContact = this.saveContact.bind(this);
     }
 
-    //save edits as new contact and add to contacts array on App state
+    //save edits as new contact and replace previous "version" of contact in contacts array on App state
     saveContact() {
 
         //create new random id for edited contact
@@ -36,8 +36,8 @@ class EditForm extends Component {
             image: this.state.image
         }
 
-        //check if all fields have been filled out
-        if (editedContact.name && editedContact.email && editedContact.phone && editedContact.image) {
+        //check if all fields have been filled out & id has been generated
+        if (editedContact.name && editedContact.email && editedContact.phone && editedContact.image && editedContact.id) {
 
             //remove previous version of contact from app state
             this.props.deleteContact(this.props.contact.id)
@@ -76,6 +76,7 @@ class EditForm extends Component {
                                     this.setState({ name: event.target.value })
                                 }}
                                 placeholder="John Doe"
+                                type="text"
                                 required />
                         </Col>
                     </Form.Group>
@@ -94,6 +95,7 @@ class EditForm extends Component {
                                     this.setState({ email: event.target.value })
                                 }}
                                 placeholder="jdoe@gmail.com"
+                                type="email"
                                 required />
                         </Col>
                     </Form.Group>
@@ -112,6 +114,7 @@ class EditForm extends Component {
                                     this.setState({ phone: event.target.value })
                                 }}
                                 placeholder="(234) 555-6789"
+                                type="tel"
                                 required />
                         </Col>
                     </Form.Group>
@@ -131,6 +134,7 @@ class EditForm extends Component {
                                     this.setState({ image: event.target.value })
                                 }}
                                 placeholder="https://www.website.com/contact_image.jpg"
+                                type="url"
                                 required />
                         </Col>
                     </Form.Group>
