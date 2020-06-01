@@ -1,6 +1,5 @@
 import { Route } from 'react-router-dom'
 import React from 'react'
-import FullContactsList from './FullContactsList'
 import Contact from './Contact'
 
 class App extends React.Component {
@@ -32,21 +31,22 @@ class App extends React.Component {
         }
       ]
     }
-
+    //binding addContact to this context
     this.addContact = this.addContact.bind(this)
 
   }
 
+  //generates an ID for each contact
   generateId() {
     return Math.round(Math.random() * 100000000);
   }
 
+  //function to add a next contact
   addContact (contact) {
     this.setState({"contacts": this.state.contacts.concat([contact])});
   }
 
   render() {
-    console.log(this.state.contacts);
     return (
       <div>
         <Route path='/' render={() => (

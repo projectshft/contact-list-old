@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../style.css'
 import PropTypes from 'prop-types'
 
+//stateless component to display list of all contacts
 const FullContactsList = ({contacts}) => (
   <div className="row ">
     <div className="col-md-3 offset-md-5 contacts-container">
@@ -13,9 +14,10 @@ const FullContactsList = ({contacts}) => (
         {
           contacts.map(contact => (
             <li className="list-group-item" key={contact.id}>
-              <Link to={`/contacts/${contact.id}`}>{contact.name}</Link>
-              <span>  edit  </span>
-              <span>  delete  </span>
+              <Link to={`/contacts/${contact.id}`}><h3>{contact.name}</h3></Link>
+              <button className="btn btn-secondary">edit</button>
+              <span>      </span>
+              <button className="btn btn-secondary">delete</button>
             </li>
           ))
         }

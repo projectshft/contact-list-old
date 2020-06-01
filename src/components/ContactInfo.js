@@ -5,10 +5,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../style.css'
 import PropTypes from 'prop-types'
 
-
+//stateless component for showing full contact info after clicking a contact
 const ContactInfo = ({contactId, contacts}) => {
+  //finding contact info with passed in ID from event
   const contact = _.find(contacts, { id: contactId });
-
+  //alert if there is no contact with this id
   if(!contact) {
     alert('contact does not exist');
   }

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 
+//component for form to add a new contact
 class ContactNew extends React.Component {
   constructor () {
     super ()
@@ -14,38 +15,49 @@ class ContactNew extends React.Component {
       "img_url": ''
     }
 
+    //binding handleSubmitContactClick to this context
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
   }
 
 
 
   handleSubmitContactClick () {
-    let formsAreValid = true;
-    Object.keys(this.state).forEach(key => {
-      console.log(key)
-      if(!this.state[key]) {
-        formsAreValid = false;
-      }
-    })
-    if(!formsAreValid) {
+    //making sure each forms is filled out before allowing submission
+    if(!this.validateForms()) {
       alert('All fields must be filled out to submit this form')
     } else {
       const newContact = {
-        "id": this.generateId(),
+        "id": this.state.id,
         "name": this.state.name,
         "email": this.state.email,
         "phone_number": this.state.phone_number,
         "img_url": this.state.img_url
       }
+      //adding contact
       this.props.addContact(newContact)
+      //redirecting user to FullContactsList
       this.props.history.push('/contacts')
     }
   }
 
+  //function to validate forms
+  // returns true or false (true if all forms are filled out)
+  // (I realize this could be done better with regex, but I'm not exactly sure how
+  // to do that as of now)
+  validateForms () {
+    let formsAreValid = true;
+    Object.keys(this.state).forEach(key => {
+      if(!this.state[key]) {
+        formsAreValid = false;
+      }
+    })
+    return formsAreValid
+  }
+
+  //generates an id for a new contact
   generateId() {
     return Math.round(Math.random() * 100000000);
   }
-
 
   render () {
     return (
