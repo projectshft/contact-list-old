@@ -2,12 +2,12 @@ import { Switch, Route } from 'react-router-dom';
 import React from 'react';
 import Contacts from './Contacts';
 
-
+// App
 class App extends React.Component {
   constructor () {
     super()
 
-    // Pre-loaded contacts
+    // State comes with pre-loaded contacts and an addContact function
     this.state = {
       contacts: [
         {
@@ -37,15 +37,15 @@ class App extends React.Component {
     this.addContact = this.addContact.bind(this);
   }
 
-    addContact (contact) {
-          this.setState({contacts: this.state.contacts.concat([contact])});
-    }
-    // const isContact = contact => contact.id === id;
-    // return this.contacts.find(isContact);
+  // This function modifies state by concatenation, preserving earlier state
+  addContact (contact) {
+        this.setState({contacts: this.state.contacts.concat([contact])});
+  }
 
-
-    render() {
-      return (
+  // Render returns two routes, both leading to the identical router Contacts
+  // App's state and addContact function are passed in as props
+  render() {
+    return (
       <div>
         <Switch>
           <Route exact path='/' render={() => (
