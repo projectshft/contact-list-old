@@ -3,6 +3,9 @@ import _ from "lodash";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
+//styling
+import Button from "react-bootstrap/Button";
+
 const ContactInfo = ({ contacts, contactId }) => {
   const contact = _.find(contacts, { id: contactId });
 
@@ -20,9 +23,13 @@ const ContactInfo = ({ contacts, contactId }) => {
 
       <h2>{contact.email}</h2>
       <h2>{contact.phone_number}</h2>
-      <img src={contact.image_url} />
+      <img className="contact-pic" src={contact.image_url} />
 
-      <Link to="/contacts">Back</Link>
+      <Link to="/contacts">
+        <Button variant="outline-dark" size="sm" type="button">
+          Back
+        </Button>
+      </Link>
     </div>
   );
 };
@@ -32,9 +39,9 @@ ContactInfo.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-      image_url: PropTypes.string.isRequired,
+      imageURL: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
-      phone_number: PropTypes.string.isRequired,
+      phoneNumber: PropTypes.string.isRequired,
     })
   ),
   contactId: PropTypes.number.isRequired,

@@ -2,23 +2,50 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
+// styling imports
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+
 const ContactList = ({ contacts }) => (
   <div>
-    <Link to={"/contacts/new"}>Add Contact</Link>
+    <Row>
+      <Col md={{ span: 6, offset: 3 }}>
+        <h1>Contacts</h1>
+      </Col>
+    </Row>
 
-    <ul>
-      {contacts.map((contact) => (
-        <li key={contact.id}>
-          <Link to={`/contacts/${contact.id}`}>
-            <div className="contact-list-name">{contact.name}</div>
-          </Link>
-          <div className="contact-options">
-            <button type="button">Edit</button>
-            <button type="button">Delete</button>
+    <Row className="add-contact-button-wrapper">
+      <Col>
+        <Link to={"/contacts/new"}>
+          <Button variant="secondary">Add Contact</Button>
+        </Link>
+      </Col>
+    </Row>
+
+    {contacts.map((contact) => (
+      <Row className="contact-row" key={contact.id}>
+        <Col md={{ span: 8 }}>
+          <div className="contact-cover">
+            <Link to={`/contacts/${contact.id}`}>
+              <div className="contact-list-name">{contact.name}</div>
+            </Link>
           </div>
-        </li>
-      ))}
-    </ul>
+        </Col>
+
+        <Col>
+          <div className="contact-options">
+            <div className="contact-options-button-wrapper">
+              <Link to={`/contacts/${contact.id}`}>Edit</Link>
+            </div>
+
+            <div className="contact-options-button-wrapper">
+              <Link to={`/contacts/${contact.id}`}>Delete</Link>
+            </div>
+          </div>
+        </Col>
+      </Row>
+    ))}
   </div>
 );
 

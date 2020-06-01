@@ -2,6 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import ReactRouterPropTypes from "react-router-prop-types";
 
+// styling
+import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 class NewContactForm extends React.Component {
   constructor(props) {
     super(props);
@@ -23,6 +28,7 @@ class NewContactForm extends React.Component {
   }
 
   validate = () => {
+    // should be empty by default so as not to display
     let nameError = "";
     let imageURLError = "";
     let emailError = "";
@@ -102,29 +108,70 @@ class NewContactForm extends React.Component {
   render() {
     return (
       <div>
+        <Row>
+          <Col md={{ span: 12 }}>
+            <h1>Add Contact</h1>
+          </Col>
+        </Row>
+
         {/* using onSubmit for the form so that return key works too */}
-        <form onSubmit={this.handleSubmitContact}>
+
+        <form onSubmit={this.handleSubmitContact} id="add-contact-form">
           <label>Name</label>
-          <input type="text" value={this.state.name} name="name" onChange={this.handleChange} />
+          <input
+            type="text"
+            value={this.state.name}
+            name="name"
+            onChange={this.handleChange}
+            placeholder="Dwight Schrute"
+            onFocus={(e) => (e.target.placeholder = "")}
+            onBlur={(e) => (e.target.placeholder = "Dwight Schrute")}
+          />
           <div className="error">{this.state.nameError}</div>
 
           <label>Email Address</label>
-          <input type="text" value={this.state.email} name="email" onChange={this.handleChange} />
+          <input
+            type="text"
+            value={this.state.email}
+            name="email"
+            onChange={this.handleChange}
+            placeholder="name@example.com"
+            onFocus={(e) => (e.target.placeholder = "")}
+            onBlur={(e) => (e.target.placeholder = "name@example.com")}
+          />
           <div className="error">{this.state.emailError}</div>
 
           <label>Phone Number</label>
-          <input type="text" value={this.state.phoneNumber} name="phoneNumber" onChange={this.handleChange} />
+          <input
+            type="text"
+            value={this.state.phoneNumber}
+            name="phoneNumber"
+            onChange={this.handleChange}
+            placeholder="919-867-5309"
+            onFocus={(e) => (e.target.placeholder = "")}
+            onBlur={(e) => (e.target.placeholder = "919-867-5309")}
+          />
           <div className="error">{this.state.phoneNumberError}</div>
 
           <label>Image URL</label>
-          <input type="text" value={this.state.imageURL} name="imageURL" onChange={this.handleChange} />
+          <input
+            type="text"
+            value={this.state.imageURL}
+            name="imageURL"
+            onChange={this.handleChange}
+            placeholder="https://upload.wikimedia.org/wikipedia/en/c/cd/Dwight_Schrute.jpg"
+            onFocus={(e) => (e.target.placeholder = "")}
+            onBlur={(e) => (e.target.placeholder = "https://upload.wikimedia.org/wikipedia/en/c/cd/Dwight_Schrute.jpg")}
+          />
           <div className="error">{this.state.imageURLError}</div>
 
-          <button type="submit">Submit</button>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
 
-          <button type="button" onClick={this.handleBackButton}>
+          <Button variant="secondary" type="button" onClick={this.handleBackButton}>
             Back
-          </button>
+          </Button>
         </form>
       </div>
     );

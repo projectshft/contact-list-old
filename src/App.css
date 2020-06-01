@@ -34,3 +34,48 @@
 .error {
   color: red;
 }
+
+#app-container {
+  margin-top: 50px;
+}
+
+.contact-pic {
+  width: 100px;
+}
+
+.contact-cover {
+  border: 1px solid silver;
+  padding: 10px;
+}
+
+.contact-cover:hover {
+  background-color: silver;
+}
+
+.button-wrapper {
+  margin-right: 10px;
+  display: inline-block;
+  float: left;
+}
+
+.contact-row {
+  margin-bottom: 10px;
+}
+
+.add-contact-button-wrapper {
+  margin-bottom: 10px;
+}
+
+#add-contact-form {
+  display: block;
+  text-align: left;
+}
+
+#add-contact-form input {
+  width: 100%;
+  display: block;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  margin: 5px 0;
+}
