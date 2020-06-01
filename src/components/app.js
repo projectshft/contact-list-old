@@ -1,8 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
 import React from 'react';
 import ContactRoutes from './ContactRoutes';
-import Contacts from './Contacts';
-
 
 
 class App extends React.Component {
@@ -19,6 +17,7 @@ class App extends React.Component {
 
     this.addContact = this.addContact.bind(this);//binds the addContacts function to the contacts state
     this.deleteContact = this.deleteContact.bind(this);//binds deleteContacts function to this state
+    this.editContact = this.editContact.bind(this); //binds editContact function to this state
   }
 
   addContact (contact) {
@@ -31,8 +30,14 @@ class App extends React.Component {
     // console.log(contactId)
     const contacts = this.state.contacts.filter(contact => contact.id !== contactId);
     this.setState({contacts: contacts})
-    // const items = this.state.items.filter(item => item.id !== contact);
-    // this.setState({ items: items });
+
+  }
+
+  editContact (contactId) {
+    const contacts = this.state.contacts.findIndex(contact => contact.id === contactId )
+    // let newArray = [...this.state.contacts]
+    // TODO
+    console.log(contacts)
   }
 
   render() {
@@ -49,11 +54,12 @@ class App extends React.Component {
 
             <Switch>
               <Route exact path='/' render={() => (
-                <ContactRoutes addContact={this.addContact} deleteContact={this.deleteContact} contacts={this.state.contacts} />
+                <ContactRoutes addContact={this.addContact} deleteContact={this.deleteContact} editContact={this.editContact} contacts={this.state.contacts} />
               )}/>
               <Route path='/contacts' render={() => (
-                <ContactRoutes addContact={this.addContact} deleteContact={this.deleteContact} contacts={this.state.contacts} />
+                <ContactRoutes addContact={this.addContact} deleteContact={this.deleteContact} editContact={this.editContact} contacts={this.state.contacts} />
               )}/>
+
 
             </Switch>
           </div>

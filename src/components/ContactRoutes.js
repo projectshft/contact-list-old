@@ -5,10 +5,10 @@ import NewContact from './NewContact';
 import Contacts from './Contacts';
 import PropTypes from 'prop-types';
 
-//Inherits contacts and addContacts from parent comonent App.
+//Inherits contacts and addContacts from parent component App.
 //routerProps.history sends the memory history to all routes
 //routerProps.match matches the url path based on the provided parameters (id)
-const ContactRoutes = ({contacts, addContact, deleteContact}) => (
+const ContactRoutes = ({contacts, contactId, addContact, deleteContact, editContact}) => (
   <Switch>{/*Path to NewContent passing past properties */}
     <Route path='/contacts/new' render={(routerProps) => (
       <NewContact history={routerProps.history} contacts={contacts} addContact={addContact} />
@@ -22,11 +22,17 @@ const ContactRoutes = ({contacts, addContact, deleteContact}) => (
 
     {/*creates route to Contacts list and passes contact proprties */}
     <Route path='/contacts' render={() => (
-      <Contacts contacts={contacts} deleteContact={deleteContact}/>
+      <Contacts contacts={contacts} deleteContact={deleteContact} editContact={editContact}/>
     )}/>
+
+    {/*sets contacts page as the same as the main home page */}
     <Route path='/' render={() => (
-      <Contacts contacts={contacts} deleteContact={deleteContact}/>
+      <Contacts contacts={contacts} deleteContact={deleteContact} editContact={editContact}/>
     )}/>
+
+
+
+
   </Switch>
 )
 
