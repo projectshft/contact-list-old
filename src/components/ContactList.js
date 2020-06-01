@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const ContactList = ({ contacts }) => (
   <div>
@@ -9,9 +10,7 @@ const ContactList = ({ contacts }) => (
       {contacts.map((contact) => (
         <li key={contact.id}>
           <Link to={`/contacts/${contact.id}`}>
-            <div className="contact-list-name">
-              {contact.first_name} {contact.last_name}
-            </div>
+            <div className="contact-list-name">{contact.name}</div>
           </Link>
           <div className="contact-options">
             <button type="button">Edit</button>
@@ -22,5 +21,17 @@ const ContactList = ({ contacts }) => (
     </ul>
   </div>
 );
+
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      image_url: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      phone_number: PropTypes.string.isRequired,
+    })
+  ),
+};
 
 export default ContactList;

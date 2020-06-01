@@ -14,8 +14,7 @@ class App extends Component {
       contacts: [
         {
           id: 70219577,
-          first_name: "Albert",
-          last_name: "Einstein",
+          name: "Albert Einsten",
           image_url:
             "https://www.biography.com/.image/c_fit%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_620/MTE5NTU2MzE2MjExMDg2ODU5/albert-einstein-sticking-out-his-tongue.jpg",
           email: "aeinstein@example.com",
@@ -23,8 +22,7 @@ class App extends Component {
         },
         {
           id: 1234,
-          first_name: "Lauren",
-          last_name: "Donoghue",
+          name: "Lauren",
           image_url:
             "https://www.biography.com/.image/c_fit%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_620/MTE5NTU2MzE2MjExMDg2ODU5/albert-einstein-sticking-out-his-tongue.jpg",
           email: "aeinstein@example.com",
@@ -32,8 +30,7 @@ class App extends Component {
         },
         {
           id: 34134,
-          first_name: "Pierre",
-          last_name: "Lourens",
+          name: "Pierre",
           image_url:
             "https://www.biography.com/.image/c_fit%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_620/MTE5NTU2MzE2MjExMDg2ODU5/albert-einstein-sticking-out-his-tongue.jpg",
           email: "aeinstein@example.com",

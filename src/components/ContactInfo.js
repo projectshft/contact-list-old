@@ -15,9 +15,7 @@ const ContactInfo = (props) => {
 
   return (
     <div>
-      <h1>
-        {contact.first_name} {contact.last_name}
-      </h1>
+      <h1>{contact.name}</h1>
 
       <h2>{contact.email}</h2>
       <h2>{contact.phone_number}</h2>
