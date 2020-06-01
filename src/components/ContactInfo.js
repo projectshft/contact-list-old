@@ -28,16 +28,16 @@ import PropTypes from 'prop-types';
           <h1>{contact.name}</h1>
         </div>
         <div className="row offset-md-1">
-          <h3>Email: {contact.email}</h3>
+          <h4>Email: {contact.email}</h4>
         </div>
         <div className="row offset-md-1">
-          <h3>Phone: {contact.phone}</h3>
+          <h4>Phone: {contact.phone}</h4>
         </div>
         <div className="row offset-md-1">
           <img src={contact.img} />
         </div>
         <div className="row offset-md-1">
-          <button><Link to="/contact">Back</Link></button>
+          <button><Link to="/contact" className="link">Back</Link></button>
         </div>
       </div>
     )

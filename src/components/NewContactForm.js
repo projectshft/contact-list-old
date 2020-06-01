@@ -128,13 +128,13 @@ class NewContactForm extends Component {
     const newContact = Object.assign({}, this.state)
 
 
-    if (!this.validateEmailInput(newContact.email)) {
-      event.preventDefault();
-      window.alert('A valid email must be provided to create a contact')
-
-    } else if (!newContact.name) {
+    if (!newContact.name) {
       event.preventDefault();
       window.alert('A name must be provided to create a contact')
+
+    } else if (!this.validateEmailInput(newContact.email)) {
+      event.preventDefault();
+      window.alert('A valid email must be provided to create a contact')
 
     } else if (!this.validatePhoneInput(newContact.phone, newContact)) {
       event.preventDefault();
@@ -145,7 +145,6 @@ class NewContactForm extends Component {
       window.alert('An image must be uploaded to create a contact')
 
     } else {
-      console.log(newContact)
       this.props.addContact(newContact);
       this.props.history.push('/contact')
     }
@@ -179,8 +178,8 @@ class NewContactForm extends Component {
             />
           </div>
           <div className="form-group row">
-            <button type="button" className="col-md-1 offset-md-1"><Link onClick={event => this.handleFormSubmission(event)} to="/contact">Submit</Link></button>
-            <button className="col-md-1 offset-md-1"><Link to="/contact">Cancel</Link></button>
+            <button type="button" className="col-md-1 offset-md-1"><Link className="link" onClick={event => this.handleFormSubmission(event)} to="/contact">Submit</Link></button>
+            <button className="col-md-1 offset-md-1"><Link className="link" to="/contact">Cancel</Link></button>
           </div>
         </form>
 

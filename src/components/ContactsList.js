@@ -19,7 +19,7 @@ const ContactsList = ({contacts}) => (
             <h1>My Contacts</h1>
           </div>
           <div className="col-md-2 button-div">
-            <button><Link to="/contact/new">Add Contact</Link></button>
+            <button><Link to="/contact/new" className="link">Add Contact</Link></button>
           </div>
         </div>
         <div className="row">
@@ -27,9 +27,9 @@ const ContactsList = ({contacts}) => (
             <ul>
               {contacts.map(contact => (
                 <li key={contact.id}>
-                  <p className="contact-link"><Link to={`/contact/${contact.id}`}>{contact.name}</Link></p>
+                  <p className="contact-p"><Link to={`/contact/${contact.id}`} className="link">{contact.name}</Link></p>
                   <p className="edit-link"><Link to={`/contact/${contact.id}/edit`}>Edit</Link></p>
-                  <p className="delete-link"><Link>Delete</Link></p>
+                  <p className="link"><Link>Delete</Link></p>
                 </li>
               ))}
             </ul>

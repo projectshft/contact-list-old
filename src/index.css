@@ -3,6 +3,7 @@ body {
   padding: 0; */
   font-family: sans-serif;
   font-family: Arial, Helvetica, sans-serif;
+  
 }
 
 .heading {
@@ -14,9 +15,16 @@ body {
  
 }
 
+label {
+  color: rgb(31, 31, 73);
+}
+
+h1, h4 {
+  color: rgb(31, 31, 73);
+}
+
 button {
-  background-color:rgb(148, 219, 236);
-  border-radius: 20px;
+  background-color:rgb(147, 182, 228);
   height: 80%;
   margin-right: 20px;
 }
@@ -33,11 +41,15 @@ img {
   height: 225px;
 }
 
-.contact-link {
+.contact-p {
   width: 200px;
-  color: black;
+  color: rgb(31, 31, 73);
+  
 }
 
+.link {
+  color: rgb(31, 31, 73);
+}
 
 li p {
   display: inline-block;
