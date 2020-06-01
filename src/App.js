@@ -48,7 +48,6 @@ class App extends Component {
   addContact(contact) {
     console.log("The contact being concatted is ", contact);
     this.setState({ contacts: this.state.contacts.concat([contact]) });
-    console.log("The current state (after adding) is ", this.state.contacts);
   }
 
   render() {
@@ -56,36 +55,19 @@ class App extends Component {
       <div className="App">
         <Switch>
           {/* Contact list is our de-facto homepage, too */}
-          <Route
-            exact
-            path="/"
-            render={() => <ContactList contacts={this.state.contacts} />}
-          />
+          <Route exact path="/" render={() => <ContactList contacts={this.state.contacts} />} />
 
-          <Route
-            exact
-            path="/contacts"
-            render={() => <ContactList contacts={this.state.contacts} />}
-          />
+          <Route exact path="/contacts" render={() => <ContactList contacts={this.state.contacts} />} />
           <Route
             exact
             path="/contacts/new"
-            render={(routerProps) => (
-              <NewContactForm
-                history={routerProps.history}
-                contacts={this.state.contacts}
-                addContact={this.addContact}
-              />
-            )}
+            render={(routerProps) => <NewContactForm history={routerProps.history} addContact={this.addContact} />}
           />
 
           <Route
             path="/contacts/:number"
             render={(routerProps) => (
-              <ContactInfo
-                contactId={parseInt(routerProps.match.params.number, 10)}
-                contacts={this.state.contacts}
-              />
+              <ContactInfo contactId={parseInt(routerProps.match.params.number, 10)} contacts={this.state.contacts} />
             )}
           />
         </Switch>

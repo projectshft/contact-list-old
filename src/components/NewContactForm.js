@@ -6,49 +6,92 @@ class NewContactForm extends React.Component {
 
     this.state = {
       id: "",
-      first_name: "",
-      last_name: "",
-      image_url: "",
+      name: "",
+      imageURL: "",
       email: "",
-      phone_number: "",
+      phoneNumber: "",
+      nameError: "",
+      imageURLError: "",
+      emailError: "",
+      phoneNumberError: "",
     };
 
     this.handleSubmitContact = this.handleSubmitContact.bind(this);
     this.handleBackButton = this.handleBackButton.bind(this);
   }
 
+  validate = () => {
+    let nameError = "";
+    let imageURLError = "";
+    let emailError = "";
+    let phoneNumberError = "";
+
+    let phoneRegEx = /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/g;
+    let emailRegEx = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+
+    if (!this.state.email.includes("@")) {
+      emailError = "invalid email";
+    }
+
+    if (!this.state.name) {
+      nameError = "You must enter a name";
+    }
+
+    if (!phoneRegEx.test(this.state.phoneNumber)) {
+      phoneNumberError = "Enter a valid phone number";
+    }
+    if (!emailRegEx.test(this.state.email)) {
+      emailError = "Enter a valid email address";
+    }
+
+    // if there are any errors, we need to return false to stop submit
+    // we'll also set the error to state for printing
+    if (emailError || imageURLError || phoneNumberError || nameError) {
+      this.setState({ emailError, imageURLError, phoneNumberError, nameError });
+      return false;
+    }
+
+    return true;
+  };
+
   handleSubmitContact(event) {
-    const generateId = () => Math.round(Math.random() * 100000000);
-
-    // construct a new obj to pass
-    console.log("click");
-
-    const newContact = {
-      id: generateId(),
-      first_name: this.state.first_name,
-      last_name: this.state.last_name,
-      image_url: this.state.image_url,
-      email: this.state.email,
-      phone_number: this.state.phone_number,
-    };
-
-    console.log("The current props (before adding) are ", this.props);
-
-    this.props.addContact(newContact);
-
     // we want to prevent the browser from clearing inputs before React handles them
     event.preventDefault();
 
-    // clear the form in case the user wants to input another
-    this.setState({
-      id: "",
-      first_name: "",
-      last_name: "",
-      image_url: "",
-      email: "",
-      phone_number: "",
-    });
+    const generateId = () => Math.round(Math.random() * 100000000);
+
+    const isValid = this.validate();
+
+    if (isValid) {
+      // construct a new obj to pass
+      const newContact = {
+        id: generateId(),
+        name: this.state.name,
+        imageURL: this.state.imageURL,
+        email: this.state.email,
+        phoneNumber: this.state.phoneNumber,
+      };
+
+      this.props.addContact(newContact);
+
+      // clear the form in case the user wants to input another
+      this.setState({
+        id: "",
+        name: "",
+        imageURL: "",
+        email: "",
+        phoneNumber: "",
+        nameError: "",
+        imageURLError: "",
+        emailError: "",
+        phoneNumberError: "",
+      });
+    }
   }
+
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
   handleBackButton() {
     this.props.history.push("/");
@@ -57,49 +100,23 @@ class NewContactForm extends React.Component {
   render() {
     return (
       <div>
+        {/* using onSubmit for the form so that return key works too */}
         <form onSubmit={this.handleSubmitContact}>
-          <label>First Name</label>
-          <input
-            type="text"
-            value={this.state.first_name}
-            onChange={(event) =>
-              this.setState({ first_name: event.target.value })
-            }
-          />
-
-          <label>Last Name</label>
-          <input
-            type="text"
-            value={this.state.last_name}
-            onChange={(event) =>
-              this.setState({ last_name: event.target.value })
-            }
-          />
+          <label>Name</label>
+          <input type="text" value={this.state.name} name="name" onChange={this.handleChange} />
+          <div className="error">{this.state.nameError}</div>
 
           <label>Email Address</label>
-          <input
-            type="text"
-            value={this.state.email}
-            onChange={(event) => this.setState({ email: event.target.value })}
-          />
+          <input type="text" value={this.state.email} name="email" onChange={this.handleChange} />
+          <div className="error">{this.state.emailError}</div>
 
           <label>Phone Number</label>
-          <input
-            type="text"
-            value={this.state.phone_number}
-            onChange={(event) =>
-              this.setState({ phone_number: event.target.value })
-            }
-          />
+          <input type="text" value={this.state.phoneNumber} name="phoneNumber" onChange={this.handleChange} />
+          <div className="error">{this.state.phoneNumberError}</div>
 
           <label>Image URL</label>
-          <input
-            type="text"
-            value={this.state.image_url}
-            onChange={(event) =>
-              this.setState({ image_url: event.target.value })
-            }
-          />
+          <input type="text" value={this.state.imageURL} name="imageURL" onChange={this.handleChange} />
+          <div className="error">{this.state.imageURLError}</div>
 
           <button type="submit">Submit</button>
 
@@ -111,4 +128,5 @@ class NewContactForm extends React.Component {
     );
   }
 }
+
 export default NewContactForm;

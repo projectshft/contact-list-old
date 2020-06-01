@@ -2,11 +2,11 @@ import React from "react";
 import _ from "lodash";
 import { Link } from "react-router-dom";
 
-const ContactInfo = ({ contactId, contacts }) => {
-  const contact = _.find(contacts, { id: contactId });
+const ContactInfo = (props) => {
+  const contact = _.find(props.contacts, { id: props.contactId });
 
-  console.log("The passed contactId is ", contactId);
-  console.log("The passed contacts are", contacts);
+  console.log("The passed contactId is ", props.contactId);
+  console.log("The passed contacts are", props.contacts);
   console.log("The matching contact is ", contact);
 
   if (!contact) {
