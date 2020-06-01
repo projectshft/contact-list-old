@@ -54,9 +54,9 @@ ContactList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-      image_url: PropTypes.string.isRequired,
+      imageURL: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
-      phone_number: PropTypes.string.isRequired,
+      phoneNumber: PropTypes.string.isRequired,
     })
   ),
 };

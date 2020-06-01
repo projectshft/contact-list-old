@@ -21,26 +21,26 @@ class App extends Component {
         {
           id: 70219577,
           name: "Albert Einsten",
-          image_url:
+          imageURL:
             "https://www.biography.com/.image/c_fit%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_620/MTE5NTU2MzE2MjExMDg2ODU5/albert-einstein-sticking-out-his-tongue.jpg",
           email: "aeinstein@example.com",
-          phone_number: "15555555555",
+          phoneNumber: "15555555555",
         },
         {
           id: 1234,
           name: "Lauren",
-          image_url:
+          imageURL:
             "https://www.biography.com/.image/c_fit%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_620/MTE5NTU2MzE2MjExMDg2ODU5/albert-einstein-sticking-out-his-tongue.jpg",
           email: "aeinstein@example.com",
-          phone_number: "15555555555",
+          phoneNumber: "15555555555",
         },
         {
           id: 34134,
           name: "Pierre",
-          image_url:
+          imageURL:
             "https://www.biography.com/.image/c_fit%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_620/MTE5NTU2MzE2MjExMDg2ODU5/albert-einstein-sticking-out-his-tongue.jpg",
           email: "aeinstein@example.com",
-          phone_number: "15555555555",
+          phoneNumber: "15555555555",
         },
       ],
     };

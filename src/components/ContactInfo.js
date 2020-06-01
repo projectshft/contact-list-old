@@ -22,8 +22,8 @@ const ContactInfo = ({ contacts, contactId }) => {
       <h1>{contact.name}</h1>
 
       <h2>{contact.email}</h2>
-      <h2>{contact.phone_number}</h2>
-      <img className="contact-pic" src={contact.image_url} />
+      <h2>{contact.phoneNumber}</h2>
+      <img className="contact-pic" src={contact.imageURL} />
 
       <Link to="/contacts">
         <Button variant="outline-dark" size="sm" type="button">
