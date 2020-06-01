@@ -1,8 +1,9 @@
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
-class ContactNew extends Component {
+class ContactNew extends React.Component {
   constructor () {
     super ()
 
@@ -26,10 +27,24 @@ class ContactNew extends Component {
     phone_number: this.state.phone_number
   }
 
-    console.log(this.props)
-
+    if (newContact.name === '' || newContact.name === null) {
+      alert('Please enter a name')
+    } else {
+      if (newContact.image_url === '' || newContact.image_url === null) {
+        newContact.image_url = 'https://static.thenounproject.com/png/340719-200.png';
+        this.setState({ image_url: "https://static.thenounproject.com/png/340719-200.png" })
+      }
+      if (newContact.email === '' || newContact.email === null) {
+        newContact.email = 'N/A';
+        this.setState({ email: "N/A" })
+      }
+      if (newContact.phone_number === '' || newContact.phone_number === null) {
+        newContact.phone_number = 'N/A';
+        this.setState({ phone_number: "N/A" })
+      }
     this.props.addContact(newContact);
     this.props.history.push('/contacts');
+    }
   }
 
   generateId() {
@@ -47,16 +62,19 @@ class ContactNew extends Component {
         }/>
 
           <br/>
+          <br/>
 
           <input type="text" className="form-control" placeholder="Ex: ##########"
           onChange={event => this.setState({ phone_number: event.target.value })
         }/>
 
           <br/>
+          <br/>
 
           <input type="text" className="form-control" placeholder="example@sample.com" onChange={event => this.setState({ email: event.target.value })
         }/>
 
+          <br/>
           <br/>
 
           <input type="text" className="form-control" placeholder="https://sample.org/image.jpeg" onChange={event => this.setState({ image_url: event.target.value })
@@ -64,13 +82,33 @@ class ContactNew extends Component {
 
         </div>
 
+        <br/>
+
         <button type="button" onClick={this.handleSubmitContactClick}>Submit</button>
       </form>
+
+      <br/>
 
       <Link to="/contacts">Back</Link>
       </div>
     );
   }
 }
+
+ContactNew.propTypes = {
+  // `name` must be a string, and it can't be `null` or `undefined`!
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string,
+  image_url: PropTypes.string,
+
+}
+
+ContactNew.propTypes = {
+  email: 'N/A',
+  phone: 'N/A',
+  image_url: '',
+}
+
+
 
 export default ContactNew;

@@ -1,7 +1,6 @@
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { v4 as uuidv4 } from 'uuid';
+import { Link } from 'react-router-dom';
+import './style.css';
+import React from 'react';
 
 const AllContacts = ({contacts}) => (
   <div>
@@ -10,6 +9,10 @@ const AllContacts = ({contacts}) => (
       { contacts.map(c => (
         <li key={c.id}>
           <Link to={`/contacts/${c.id}`}>{c.name}</Link>
+          <p>&nbsp;&nbsp;&nbsp;</p>
+          <Link>edit</Link>
+          <p>&nbsp;&nbsp;&nbsp;</p>
+          <Link>delete</Link>
         </li>
       ))}
     </ul>

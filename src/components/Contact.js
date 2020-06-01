@@ -1,7 +1,7 @@
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
+import React from 'react';
 import _ from 'lodash'
-import ReactDOM from 'react-dom';
 
 const Contact = ({contactId, contacts}) => {
 
@@ -26,5 +26,7 @@ const Contact = ({contactId, contacts}) => {
     </div>
   );
 };
+
+
 
 export default Contact;
