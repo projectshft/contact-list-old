@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import Contacts from './ContactList'
+import NewContact from './NewContact'
 
 
 // Creating a simple div header
@@ -13,6 +14,7 @@ class App extends React.Component {
   }
 
   handleClick () {
+    // This needs to link to NewContact but I don't know how
     window.alert('CLICK');
   }
 

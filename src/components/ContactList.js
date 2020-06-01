@@ -41,7 +41,7 @@ function ContactList() {
       {contact.phone_number}
     <br />
       <h4>
-        Edit   Delete
+        Edit  |  Delete
       </h4>
       ===========================================
     </h2>

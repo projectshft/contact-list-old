@@ -4,7 +4,7 @@ __Index page with:
 
     __Its own route
 
-    __A list of all contacts
+    _X_ A list of all contacts
 
 
 __Allow the user to add a contact with:
