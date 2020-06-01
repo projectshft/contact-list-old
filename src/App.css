@@ -1,3 +1,18 @@
+body {
+  margin: 5%;
+}
+
+img {
+  width: 100px;
+  border-radius: 5px;
+  float: left;
+}
+
+.individual {
+  float: left;
+  margin-left: 20px;
+}
+
 .edit {
   margin-left: 10px;
 }

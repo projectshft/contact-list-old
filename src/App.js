@@ -13,9 +13,9 @@ class App extends Component {
 
     this.state = {
       contacts: [
-        {name: 'Harry Potter', image:'', email: 'hpotter@hogwarts.edu', phone: 3177501456, key: 14523},
-        {name: 'Ron Weasley', image:'', email: 'rweasley@hogwarts.edu', phone: 5728199503, key: 14524},
-        {name: 'Hermione Granger', image:'', email: 'hgranger@hogwarts.edu', phone: 5028375829, key: 14525}
+        {name: 'Harry Potter', image:'https://www.irishtimes.com/polopoly_fs/1.3170107.1501253408!/image/image.jpg_gen/derivatives/ratio_1x1_w1200/image.jpg', email: 'hpotter@hogwarts.edu', phone: 3177501456, key: 14523},
+        {name: 'Ron Weasley', image:'https://i.insider.com/568d4264dd0895a83d8b45eb?width=1048&format=jpeg', email: 'rweasley@hogwarts.edu', phone: 5728199503, key: 14524},
+        {name: 'Hermione Granger', image:'https://www.nypl.org/sites/default/files/hermione.jpg', email: 'hgranger@hogwarts.edu', phone: 5028375829, key: 14525}
       ]
     }
     // bind this to its context
@@ -23,6 +23,7 @@ class App extends Component {
   }
 
   addContact(object) {
+    // concatenate object array with state object array
     const contacts = this.state.contacts.concat([object])
     this.setState({contacts: contacts}, () => {console.log(this.state.contacts)});
   }

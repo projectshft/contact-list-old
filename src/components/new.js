@@ -12,7 +12,7 @@ class New extends Component {
       phone: 0,
       key: 0
     }
-
+    // bind this to its context
     this.sendAppState = this.sendAppState.bind(this)
     this.setNewState = this.setNewState.bind(this)
   }
@@ -20,12 +20,19 @@ class New extends Component {
   render(){
     return(
       <div>
-        {/* give each input reference to get value later */}
-        <input type='text' placeholder='Name' ref={(c) => this.name = c} />
-        <input type='text' placeholder='Email' ref={(c) => this.email = c} />
-        <input type='text' placeholder='Image' ref={(c) => this.image = c} />
-        <input type='text' placeholder='Phone #' ref={(c) => this.phone = c} />
-        <button onClick={event => this.setNewState()} type='button'>Submit</button>
+        <h1>Add a New Contact</h1>
+        <form className='form-group'>
+          <label>Name</label>
+          {/* give each input reference to get value later */}
+          <input type='text' className='form-control' placeholder='Name' ref={(c) => this.name = c} />
+          <label>Email</label>
+          <input type='text' className='form-control' placeholder='Email' ref={(c) => this.email = c} />
+          <label>Image</label>
+          <input type='text' className='form-control' placeholder='Image' ref={(c) => this.image = c} />
+          <label>Phone Number</label>
+          <input type='text' className='form-control' placeholder='Phone #' ref={(c) => this.phone = c} />
+        </form>
+        <button className='btn btn-primary' onClick={event => this.setNewState()} type='button'>Submit</button>
       </div>
     )
   }
@@ -46,7 +53,7 @@ class New extends Component {
     // send App the state as an object
     this.props.addContact(this.state);
     // then reroute back to contacts page
-    console.log(this.context)
+
   }
 
 }
@@ -61,7 +68,7 @@ New.propTypes = {
 }
 
 New.defaultProps = {
-  // name must be a string and is required, etc.
+  // set default properties to be eith N/A or 0
   name: 'N/A',
   email: 'N/A',
   image: 'N/A',
