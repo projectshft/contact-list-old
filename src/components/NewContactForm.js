@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+import ReactRouterPropTypes from "react-router-prop-types";
 
 class NewContactForm extends React.Component {
   constructor(props) {
@@ -128,5 +130,10 @@ class NewContactForm extends React.Component {
     );
   }
 }
+
+NewContactForm.propTypes = {
+  addContact: PropTypes.func.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
+};
 
 export default NewContactForm;
