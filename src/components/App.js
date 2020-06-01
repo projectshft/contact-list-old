@@ -12,12 +12,11 @@ class App extends React.Component {
       <div className="row">
         <div className="Contacts-main col-md-6 offset-md-3">
           <header className="Contacts-header">
-            <h1 className="Contacts-title">Contact List</h1>
-            <h2></h2>
+            <h1 className="Contacts-title">Contacts  <button>Add Contact</button></h1>
           </header>
-          <Contacts />
-          </div>
-          </div>
+            <Contacts />
+        </div>
+      </div>
     );
   }
 }
