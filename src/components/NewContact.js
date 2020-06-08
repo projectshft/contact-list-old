@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class NewContact extends Component {
 
 // Creating a form for input for a new contact.
@@ -19,7 +20,7 @@ class NewContact extends Component {
           <input type="text" id="contact-phone" className="form-control" placeholder="Phone Number"/>
         </div>
 
-        <button type="button" className="btn btn-primary add-contact">Create</button>
+        <button type="button" className="btn btn-primary add-contact">Create</button> //TODO
       </form>
     );
   }
