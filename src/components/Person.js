@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 const Person = (props) => {
     return (
       <div className="person">
-        <span>{props.contact.image_url}</span>
-        <span>({props.contact.name})</span>
-        <span>({props.contact.phone})</span>
-        <span>({props.contact.email})</span>
+        <span>{props.person.image_url}</span>
+        <span>({props.person.name})</span>
+        <span>({props.person.phone})</span>
+        <span>({props.person.email})</span>
       </div>
     );
   }

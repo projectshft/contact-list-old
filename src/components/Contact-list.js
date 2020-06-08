@@ -1,14 +1,27 @@
 import React from 'react';
 import Person from './Person.js'
 
+// const ContactList = ({contacts}) => (
+//   <div>
+//     <ul>
+//       {
+//         contacts.map()
+//       }
+//     </ul>
+//   </div>
+// )
+//
+//
+
+
 const ContactList = (props) => {
-  const listItems = props.contacts.map((person, index) => {
+  const listItems = props.contacts.map((person) => {
     return (
-      <Person contact={contact} phone={phone} email={email} image_url={image_url} />
+      <Person person={person}/>
     )
   })
     return (
-      <div className="contactList">
+      <div className="contact-list">
      { listItems }
       </div>
     )
