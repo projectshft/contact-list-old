@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-import '../App.css';
-import Contacts from './ContactList'
-import NewContact from './NewContact'
-
+import ContactForm from './Contact-form';
+import ContactList from './Contact-list';
 
 const generateId = () => Math.round(Math.random() * 100000000);
 
-
 class App extends Component {
   constructor () {
-    super();
+    super()
 
-
-    this.state: = {
-
+    this.state = {
       contacts: [
           {
             id: generateId(),
@@ -37,21 +32,25 @@ class App extends Component {
             phone: "1234567890"
           }
         ]
+}
+    this.addPerson = this.addPerson.bind(this);
+  }
 
-
-    }
-
+  addPerson (person) {
+    this.setState({ contacts: this.state.contacts.concat([person]) });
   }
 
 
+
   render() {
+
     return (
       <div className="row">
-        <div className="Contacts-main col-md-6 offset-md-3">
-          <header className="Contacts-header">
-            <h1 className="Contacts-title">Contacts</h1> <button>Add Contact</button> //TODO Link to NewContact
-          </header>
-            <Contacts />
+        <div className="col-md-6 offset-md-3">
+          <div className="page-header">
+            <h1>Contacts</h1>
+          </div>
+          <ContactList />
         </div>
       </div>
     );

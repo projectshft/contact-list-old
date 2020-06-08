@@ -1,3 +1,21 @@
+import React from 'react';
+import Person from './Person.js'
+
+const ContactList = (props) => {
+  const listItems = props.contacts.map((person, index) => {
+    return (
+      <Person contact={contact} phone={phone} email={email} image_url={image_url} />
+    )
+  })
+    return (
+      <div className="contactList">
+     { listItems }
+      </div>
+    )
+};
+
+export default ContactList
+
 
 
 //
