@@ -1,13 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../Person.css';
 
 const Person = (props) => {
+  console.log('The person is', props.person )
     return (
-      <div className="person">
-        <span>{props.person.image_url}</span>
-        <span>({props.person.name})</span>
-        <span>({props.person.phone})</span>
-        <span>({props.person.email})</span>
+      <div className="Person_info">
+        <span><img className="rounded float-right" src={props.person.image_url}/></span>
+        <br></br>
+        <span>{props.person.name}</span>
+        <br></br>
+        <span>{props.person.phone}</span>
+        <br></br>
+        <span>{props.person.email}</span>
       </div>
     );
   }
@@ -16,10 +21,7 @@ const Person = (props) => {
 
 //using prop validation to determine if data is of a certain type
 Person.propTypes = {
-  name: PropTypes.string.isRequired,
-  phone: PropTypes.number.isRequired,
-  email: PropTypes.string.isRequired,
-  image_url: PropTypes.string.isRequired
+  person: PropTypes.object.isRequired
 };
 
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Person from './Person.js'
+import PropTypes from 'prop-types';
 
 // const ContactList = ({contacts}) => (
 //   <div>
@@ -15,6 +16,7 @@ import Person from './Person.js'
 
 
 const ContactList = (props) => {
+  console.log('props for contact list are', props)
   const listItems = props.contacts.map((person) => {
     return (
       <Person person={person}/>
@@ -25,6 +27,10 @@ const ContactList = (props) => {
      { listItems }
       </div>
     )
+};
+
+ContactList.propTypes = {
+  contacts: PropTypes.array.isRequired
 };
 
 export default ContactList

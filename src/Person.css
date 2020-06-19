@@ -1,0 +1,14 @@
+.Person_info {
+
+    margin: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 2px solid rgba(13, 57, 151, 0.705);
+    text-align: right;
+    max-width:25%;
+
+}
+
+img {
+    max-width: 20%;
+}
