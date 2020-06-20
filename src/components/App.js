@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ContactForm from "./Contact-form";
 import ContactList from "./Contact-list";
 import Person from "./Person";
+import { Switch, Route } from 'react-router-dom'
 
 const generateId = () => Math.round(Math.random() * 100000000);
 
@@ -56,6 +57,7 @@ class App extends Component {
           {/* <Person person = { { name: "George Costanza" } } /> */}
           {/* <Person person={this.state.contacts[2]} /> */}
           <ContactList contacts={this.state.contacts} />
+          <ContactForm addPerson={this.addPerson}/>
         </div>
       </div>
     );

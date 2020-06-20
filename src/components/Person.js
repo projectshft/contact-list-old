@@ -13,6 +13,10 @@ const Person = (props) => {
         <span>{props.person.phone}</span>
         <br></br>
         <span>{props.person.email}</span>
+        {/* TODO */}
+        <button type="button" className="btn btn-primary edit-contact">Edit</button>
+        <button type="button" className="btn btn-primary delete-contact">Delete</button>
+
       </div>
     );
   }
