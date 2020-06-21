@@ -29,6 +29,7 @@ const ContactList = (props) => {
     )
 };
 
+
 ContactList.propTypes = {
   contacts: PropTypes.array.isRequired
 };

@@ -6,13 +6,14 @@ const Person = (props) => {
   console.log('The person is', props.person )
     return (
       <div className="Person_info">
-        <span><img className="rounded float-right" src={props.person.image_url}/></span>
-        <br></br>
+        <span><img className="image" alt="contact headshot" src={props.person.image_url}/></span>
+        <br/>
         <span>{props.person.name}</span>
-        <br></br>
+        <br/>
         <span>{props.person.phone}</span>
-        <br></br>
+        <br/>
         <span>{props.person.email}</span>
+        <br/>
         {/* TODO */}
         <button type="button" className="btn btn-primary edit-contact">Edit</button>
         <button type="button" className="btn btn-primary delete-contact">Delete</button>
