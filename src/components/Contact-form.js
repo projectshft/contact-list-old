@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from "react-router-dom";
 
 class ContactForm extends Component {
   constructor () {
@@ -11,18 +12,23 @@ class ContactForm extends Component {
       image_url: ''
     }
 
-    this.handleClick = this.handleClick.bind(this);
+    this.addPerson = this.addPerson.bind(this);
   }
 
-  handleClick () {
-    const person = {
+  // addPerson(person) {
+  //   this.setState({ contacts: this.state.contacts.concat([person]) });
+  // }
+
+  addPerson () {
+    const newPerson = {
       name: this.state.name,
       phone: this.state.phone,
       email: this.state.email,
       image_url: this.state.image_url
     }
 
-    this.props.addPerson(person);
+    this.props.addPerson(newPerson);
+    this.props.history.push('/')
   }
 
 
@@ -31,6 +37,7 @@ class ContactForm extends Component {
 
 render() {
   return (
+    
     <form>
       <h3>Add a New Contact</h3>
 
@@ -65,13 +72,22 @@ render() {
           value={this.state.image_url}
           onChange={event => this.setState({image_url: event.target.value})}
            />
+          <br/>
+          <button onClick={this.handleClick} type="button" className="btn btn-primary add-person">Submit</button>
 
+        <br/>
+        <br/>
+        <br/>
+        <Link to="/"><button type="button" className="btn btn-primary">Previous Page</button></Link>
       </div>
 
-      <button onClick={this.handleClick} type="button" className="btn btn-primary add-person">Submit</button>
     </form>
+    
   );
+
 }
+
 }
+
 
 export default ContactForm;

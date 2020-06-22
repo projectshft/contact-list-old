@@ -34,7 +34,7 @@ ContactList.propTypes = {
   contacts: PropTypes.array.isRequired
 };
 
-export default ContactList
+export default ContactList;
 
 
 
