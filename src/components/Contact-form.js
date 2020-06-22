@@ -12,23 +12,23 @@ class ContactForm extends Component {
       image_url: ''
     }
 
-    this.addPerson = this.addPerson.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   // addPerson(person) {
   //   this.setState({ contacts: this.state.contacts.concat([person]) });
   // }
 
-  addPerson () {
-    const newPerson = {
+  handleClick () {
+    const person = {
       name: this.state.name,
       phone: this.state.phone,
       email: this.state.email,
       image_url: this.state.image_url
     }
 
-    this.props.addPerson(newPerson);
-    this.props.history.push('/')
+    this.props.addPerson(person);
+    // this.props.history.push('/')
   }
 
 

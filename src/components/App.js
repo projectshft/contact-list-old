@@ -42,6 +42,7 @@ class App extends Component {
   }
 
   addPerson(person) {
+    console.log("ADDING CONTACT: ", person)
     this.setState({ contacts: this.state.contacts.concat([person]) });
   }
 
@@ -61,9 +62,9 @@ class App extends Component {
               <Route exact path="/" render={() => (
                 
                 <ContactList contacts={this.state.contacts} />
-                // <ContactForm addPerson={this.addPerson}/>
-                )} />
                 
+                )} />
+                <ContactForm addPerson={this.addPerson}/>
                 <Route path="/addcontact" component={ContactForm} />
                 
               </Switch>
