@@ -1,7 +1,7 @@
 import { Switch, Route } from 'react-router-dom';
 import React, { Component } from 'react';
 import ContactList from './components/contact-list'
-import Contact from './components/contact-single'
+import Contact from './components/contact'
 import New from './components/new'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -32,10 +32,12 @@ class App extends Component {
     return (
       <main>
         <Switch>
+          {/* 
+            */}
           <Route exact path='/' render={() => <ContactList contacts={this.state.contacts} />}/>
           <Route exact path='/contacts' render={() => <ContactList contacts={this.state.contacts} />}/>
-          <Route path='/contacts/new' render={() => <New addContact={this.addContact}/>}/>
-          <Route path='/contacts/:key' render={() => <Contact contacts={this.state.contacts} />} />
+          <Route path='/contacts/new' render={({ history }) => <New addContact={this.addContact} history={history}/>}/>
+          <Route path='/contacts/:key' render={({ match }) => <Contact contacts={this.state.contacts} match={match}/>} />
         </Switch>
       </main>
     );

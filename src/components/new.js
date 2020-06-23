@@ -37,14 +37,30 @@ class New extends Component {
     )
   }
 
+  emailIsValid (email) {
+  return /\S+@\S+\.\S+/.test(email)
+  }
+
   setNewState() {
     // give key a (fairly) unique number
     const generateId = () => Math.round(Math.random() * 100000000)
-    // set the state for each input
+    // if the input is valid, set the state for each input
+    // name must be present to submit
+    if (this.name.value) {
     this.setState({name: this.name.value})
-    this.setState({email: this.email.value})
-    this.setState({image: this.image.value})
-    this.setState({phone: this.phone.value})
+  } else return alert('Name input must contain a name to submit contact')
+    // email must be valid
+    if (this.emailIsValid(this.email.value)) {
+      this.setState({email: this.email.value})
+    } else return alert('That email address is invalid. Please follow the _@_._ format')
+    // image input must be present
+    if (this.image.value) {
+      this.setState({image: this.image.value})
+    } else return alert('Image input must contain image url to submit contact')
+    // only accepts phone numbers of 10 digits without dashes
+    if (this.phone.value.length === 10 && Number(this.phone.value)) {
+      this.setState({phone: this.phone.value})
+    } else return alert('That phone number is invalid. Please write phone number with zipcode and no dashes')
     // after all states have been set, run sendAppState()
     this.setState({key: generateId()}, () => {this.sendAppState()})
   }
@@ -53,27 +69,14 @@ class New extends Component {
     // send App the state as an object
     this.props.addContact(this.state);
     // then reroute back to contacts page
-
+    this.props.history.push('/contacts')
   }
 
 }
 
 New.propTypes = {
-  // name must be a string and is required, etc.
-  name: PropTypes.string,
-  email: PropTypes.string,
-  image: PropTypes.string,
-  phone: PropTypes.number,
-  key: PropTypes.number
-}
-
-New.defaultProps = {
-  // set default properties to be eith N/A or 0
-  name: 'N/A',
-  email: 'N/A',
-  image: 'N/A',
-  phone: 0,
-  key: 0
+  // addContact must be a function
+  addContact: PropTypes.func,
 }
 
 export default New
