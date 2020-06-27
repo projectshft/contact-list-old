@@ -1,8 +1,7 @@
+import { Switch, Route } from 'react-router-dom'
 import React, { Component } from "react";
-import ContactForm from "./Contact-form";
-import ContactList from "./Contact-list";
-// import Person from "./Person";
-import { Switch, Route, Link } from 'react-router-dom';
+import Header from './Header'
+import Contacts from './Contacts'
 
 const generateId = () => Math.round(Math.random() * 100000000);
 
@@ -24,7 +23,7 @@ class App extends Component {
           id: generateId(),
           name: "Homer Simpson",
           image_url:
-            "https://upload.wikimedia.org/wikipedia/en/0/02/Homer_Simpson_2006.png",
+            "https://i.pinimg.com/originals/16/8f/c2/168fc228b82500f528b4dbf6209a4ff8.jpg",
           email: "homer@compuglobalhypermeganet.com",
           phone: "9395550113",
         },
@@ -46,35 +45,22 @@ class App extends Component {
     this.setState({ contacts: this.state.contacts.concat([person]) });
   }
 
-  render() {
-    // console.log(this.state.contacts[2]);
-    // console.log(this.state.contacts[2].name);
-    return (
-      <div className="column">
-        <div className="Contact_main">
-          <div className="page-header">
-            <h1>Contacts</h1>         
-            
-              <Link to="/contacts/new"><button type="button" className="btn btn-primary add-contact">Add Contact</button></Link>
-                <Switch>
-                  
-                  <Route exact path="/contacts" render={() => (
-                  
-                    <ContactList contacts={this.state.contacts} />
-                    
-                    )} />
-                  <ContactForm addPerson={this.addPerson}/>
-                  <Route path="/contacts/new" component={ContactForm} />
-                  
-                </Switch>
-          </div>
-          {/* <Person person = { { name: "George Costanza" } } /> */}
-          {/* <Person person={this.state.contacts[2]} /> */}
 
-        </div>
+  render() {
+    return (
+      <div>
+        <Header/>
+        <Switch>
+          <Route path='/' render={() => (
+            <Contacts addPerson={this.addPerson} contacts={this.state.contacts} />
+          )}/>
+          <Route exact path='/contacts' render={() => (
+            <Contacts addPerson={this.addPerson} contacts={this.state.contacts} />
+          )}/>
+        </Switch>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
