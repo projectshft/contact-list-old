@@ -78,7 +78,7 @@ render() {
         <br/>
         <br/>
         <br/>
-        <Link to="/"><button type="button" className="btn btn-primary">Previous Page</button></Link>
+        <Link to="/contacts"><button type="button" className="btn btn-primary">Previous Page</button></Link>
       </div>
 
     </form>

@@ -1,33 +1,37 @@
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types';
-import '../Person.css';
+import { Link } from 'react-router-dom'
+import _ from 'lodash'
 
-const Person = (props) => {
-  console.log('The person is', props.person )
+
+const Person = ({personId, contacts}) => {
+  const contact = _.find(contacts, { id: personId });
+
+  if (!contact) {
+    return <div>Sorry, but that contact was not found :(
+      <br/>
+      <br/>
+      <Link to="/contacts"><button type="button" className="btn btn-primary">Previous Page</button></Link>
+    </div>
+    }
     return (
-      <div className="Person_info">
-        <span><img className="image" alt="contact headshot" src={props.person.image_url}/></span>
-        <br/>
-        <span>{props.person.name}</span>
-        <br/>
-        <span>{props.person.phone}</span>
-        <br/>
-        <span>{props.person.email}</span>
-        <br/>
-        {/* TODO */}
-        <button type="button" className="btn btn-primary edit-contact">Edit</button>
-        <button type="button" className="btn btn-primary delete-contact">Delete</button>
-
-      </div>
-    );
-  }
-
-
+    <div className="Person-info">
+      <br/>
+        <span><img className="image" alt="contact headshot" src={contact.image_url}/></span>
+      <br/>
+        <span><h2>{contact.name}</h2></span>
+        <span><h4>{contact.phone}</h4></span>
+        <span><h5>{contact.email}</h5></span>
+      <br/>
+      <br/>
+        <Link to="/contacts"><button type="button" className="btn btn-primary">Previous Page</button></Link>
+    </div>
+  );
+}
 
 //using prop validation to determine if data is of a certain type
 Person.propTypes = {
   person: PropTypes.object.isRequired
 };
-
 
 export default Person;

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ContactForm from "./Contact-form";
 import ContactList from "./Contact-list";
 // import Person from "./Person";
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 
 const generateId = () => Math.round(Math.random() * 100000000);
 
@@ -55,20 +55,18 @@ class App extends Component {
           <div className="page-header">
             <h1>Contacts</h1>         
             
-            <BrowserRouter>
-            <Link to="/addcontact"><button type="button" className="btn btn-primary add-contact">Add Contact</button></Link>
-              <Switch>
-                
-              <Route exact path="/" render={() => (
-                
-                <ContactList contacts={this.state.contacts} />
-                
-                )} />
-                <ContactForm addPerson={this.addPerson}/>
-                <Route path="/addcontact" component={ContactForm} />
-                
-              </Switch>
-            </BrowserRouter>
+              <Link to="/contacts/new"><button type="button" className="btn btn-primary add-contact">Add Contact</button></Link>
+                <Switch>
+                  
+                  <Route exact path="/contacts" render={() => (
+                  
+                    <ContactList contacts={this.state.contacts} />
+                    
+                    )} />
+                  <ContactForm addPerson={this.addPerson}/>
+                  <Route path="/contacts/new" component={ContactForm} />
+                  
+                </Switch>
           </div>
           {/* <Person person = { { name: "George Costanza" } } /> */}
           {/* <Person person={this.state.contacts[2]} /> */}
