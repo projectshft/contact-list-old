@@ -1,44 +1,48 @@
-import React, { Component } from 'react';
-import {Link} from "react-router-dom";
+import { Link, withRouter } from 'react-router-dom'
+import React from 'react'
+import Person from './Person.js'
+import PropTypes from 'prop-types';
 
-class ContactForm extends Component {
+//For generating new ids
+const generateId = () => Math.round(Math.random() * 100000000);
+
+class ContactNew extends React.Component {
   constructor () {
-    super()
+    super ()
 
     this.state = {
+      id:'',
       name: '',
       phone: '',
       email: '',
       image_url: ''
     }
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmitPersonClick = this.handleSubmitPersonClick.bind(this)
   }
 
-  // addPerson(person) {
-  //   this.setState({ contacts: this.state.contacts.concat([person]) });
-  // }
+   //Click event to submit data
 
-  handleClick () {
-    const person = {
+  handleSubmitPersonClick () {
+    const newPerson = {
+      id: generateId(),
       name: this.state.name,
       phone: this.state.phone,
       email: this.state.email,
       image_url: this.state.image_url
-    }
+    };
 
-    this.props.addPerson(person);
-    // this.props.history.push('/')
+    this.props.addPerson(newPerson)
+    this.props.history.push('/contacts')
   }
 
 
+  // Creating a form for input for a new contact.
 
-// Creating a form for input for a new contact.
-
-render() {
-  return (
-    
-    <form>
+  render () {
+    return (
+      <div>
+      <form onSubmit={e => e.preventDefault()}>
       <h3>Add a New Contact</h3>
 
       <div className="form-group">
@@ -73,7 +77,7 @@ render() {
           onChange={event => this.setState({image_url: event.target.value})}
            />
           <br/>
-          <button onClick={this.handleClick} type="button" className="btn btn-primary add-person">Submit</button>
+          <button onClick={this.handleSubmitPersonClick.bind(this)} type="button" className="btn btn-primary add-person">Submit</button>
 
         <br/>
         <br/>
@@ -82,12 +86,11 @@ render() {
       </div>
 
     </form>
-    
-  );
+      </div>
+    )
 
+  }
+  
 }
 
-}
-
-
-export default ContactForm;
+export default withRouter(ContactNew)
