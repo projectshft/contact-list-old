@@ -8,10 +8,11 @@ const Person = ({personId, contacts}) => {
   const contact = _.find(contacts, { id: personId });
 
   if (!contact) {
-    return <div>Sorry, but that contact was not found :(
+    return <div><br/>&nbsp; &nbsp; Sorry, but that contact was not found ¯\_(ツ)_/¯ 
       <br/>
       <br/>
-      <Link to="/contacts"><button type="button" className="btn btn-primary">Previous Page</button></Link>
+      &nbsp; &nbsp; &nbsp; 
+      <Link to="/contacts"><button type="button" className="btn btn-secondary">Previous Page</button></Link>
     </div>
     }
     return (

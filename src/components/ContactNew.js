@@ -42,7 +42,9 @@ class ContactNew extends React.Component {
     return (
       <div>
       <form onSubmit={e => e.preventDefault()}>
-      <h3>Add a New Contact</h3>
+      <br/>
+      <h3>&nbsp;&nbsp; Add a New Contact</h3>
+      <br/>
 
       <div className="form-group">
         <input
@@ -81,7 +83,7 @@ class ContactNew extends React.Component {
         <br/>
         <br/>
         <br/>
-        <Link to="/contacts"><button type="button" className="btn btn-primary">Previous Page</button></Link>
+        <Link to="/contacts"><button type="button" className="btn btn-secondary">Previous Page</button></Link>
       </div>
 
     </form>
