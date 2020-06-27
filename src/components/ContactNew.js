@@ -1,6 +1,5 @@
 import { Link, withRouter } from 'react-router-dom'
 import React from 'react'
-import Person from './Person.js'
 import PropTypes from 'prop-types';
 
 //For generating new ids
