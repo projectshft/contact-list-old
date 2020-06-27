@@ -5,6 +5,9 @@ import ContactNew from './ContactNew';
 import ContactList from './ContactList';
 
 const Contacts = ({contacts, addPerson}) => (
+
+    //Creating routes for new contact form and individual contact pages by contact id.
+    
   <Switch>
     <Route path='/contacts/new' render={(routerProps) => (
       <ContactNew history={routerProps.history} contacts={contacts} addPerson={addPerson} />

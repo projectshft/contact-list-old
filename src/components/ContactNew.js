@@ -89,7 +89,16 @@ class ContactNew extends React.Component {
     )
 
   }
-  
+
 }
+
+//PropType validation for new contacts
+
+ContactNew.propTypes = {
+  name: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  image_url: PropTypes.string.isRequired
+};
 
 export default withRouter(ContactNew)
