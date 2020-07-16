@@ -86,7 +86,7 @@ class ContactNew extends React.Component {
 
             <label><strong>Profile Image</strong></label>
             {/* updating the state with the value of the input */}
-            <input type='text' className='form-control' onChange={event => this.setState({ profileImage: event.target.value })
+            <input type='text' className='form-control' placeholder="Optional" onChange={event => this.setState({ profileImage: event.target.value })
             }/>
 
             {/* button to handle the start of the function that will pass 
