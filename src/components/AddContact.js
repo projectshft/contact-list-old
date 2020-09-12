@@ -1,0 +1,1 @@
+// component that will serve as button to route to the /contacts/new

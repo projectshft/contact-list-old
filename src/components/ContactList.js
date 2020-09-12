@@ -1,0 +1,1 @@
+// component that will hold the list of contacts on the /contacts (home) page
