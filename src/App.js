@@ -11,15 +11,66 @@
 //Individual contact view should include a "back" button
 
 
+// {
+//   "contacts": [
+//     {
+//       "id": 70219577,
+//       "name": "Albert Einstein",
+//       "image_url": "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
+//       "email": "aeinstein@example.com",
+//       "phone_number": "15555555555"
+//     }
+//   ]
+// }
+
+
+
 
 import React, { Component } from 'react';
-
+import { Switch, Route } from 'react-router-dom'
+import Contacts from './contacts'
 
 
 class App extends Component {
+  constructor () {
+    super()
+
+    this.state = {
+      contacts: [
+        {
+          "id": 70219577,
+          "name": "Albert Einstein",
+          "image_url": "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
+          "email": "aeinstein@example.com",
+          "phone_number": "15555555555"
+        }
+      ]
+    }
+
+    this.addContact = this.addContact.bind(this);
+  }
+  
+  addContact (contact) {
+    this.setState({contacts: this.state.contacts.concat([contact])});
+  }
+
   render() {
     return (
       <div>
+        <Switch>
+          <Route exact path= '/' component={Contacts}/>
+          <Route path='/contacts' render={() => (
+            <Contacts addContact={this.addContact} contacts={this.state.contacts}/>
+          )}/>
+        </Switch>
+        {/* <h1>
+          Contact List
+          <button>Add Contact</button>
+        </h1>
+        <ul>
+        <li>{this.state.contacts[0].name}<button id="edit">edit</button><button id="delete">delete</button></li>
+        </ul>
+         */}
       </div>
     );
   }
