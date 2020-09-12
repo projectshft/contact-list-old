@@ -1,1 +1,8 @@
-// component that will hold the list of contacts on the /contacts (home) page
+// component that will hold the list of contact components on the /contacts (home) page 
+import React from 'react'
+
+const ContactList = () => (
+    <div></div>
+)
+
+export default ContactList;
