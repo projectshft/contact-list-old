@@ -1,0 +1,114 @@
+DONE get bootstrap
+
+in index.js: 
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter } from 'react-router-dom';
+const App = () => (  // for router
+  <div>
+    <Main />
+  </div>
+);
+
+App.js "Header" - Contacts  + Add Contact button. event 'click' 'addContact' + state contacts[]
+<Main />
+Contact-list - stateless?
+Contact- links edit delete  
+AddContact
+EditContact
+
+import PropTypes from 'prop-types'
+input field example
+
+<div className="form-group">
+  <input
+    className="form-control"
+    placeholder="Post Text"
+    value={this.state.text}
+    onChange={event => this.setState({text: event.target.value})}
+     />
+
+  <br/>
+
+* router for index.js
+
+const Main = () => (
+  <main>
+    <Switch>
+      <Route exact path="/" component={Contacts} />
+      <Route path="/add" component={addContact} />
+      <Route path="/edit/:key" component={editContact} />
+    </Switch>
+  </main>
+);
+
+
+----------------------------------
+  * stateless constructor example
+  
+import React from 'react'
+
+const ContactsList = () => {  // TODO index/key is to be made random, so this is just a basic pass
+const contactsAll = props.contacts.map((contact, index)) => {
+  return (
+    <Contact key={index} contact={contact.name} />
+  )
+}
+  return (
+    <ul classname='col-md-4 contacts-list'> // ul is just for example
+      {contactsAll}
+    </u>
+  )
+}
+
+export default ContactsList
+
+
+--------------------
+contact.js  (stateless at the momement)
+
+const Contact = ({contact}) => {
+  return (
+    <li>
+      <span>{contact.name} - <a href="#edit">edit</a>&nbsp;<a href="#delete">delete</a></span>
+    </li>
+  )
+}
+
+
+To pass data from form to App's state array (contacts[]) define function in App and pass to form component through props
+<AddContactForm addContact={this.addContact} />
+
+  <ContactsList contacts={this.state.contacts} />
+
+
+addContact (newContact) { this.setState({contacts: this.state.contacts.concat([newContact])});}
+this.addContact = this.addContact.bind(this);
+
+event in AddContact calls this.props.addContact(newContact);
+
+* bind handleClick event 
+
+const ContactsDB =
+{
+  "contacts": [
+    {
+      "id": 70219577,
+      "name": "Albert Einstein",
+      "image_url": "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
+      "email": "aeinstein@example.com",
+      "phone_number": "15555555555"
+    }
+  ]
+}
+
+router stuff:  https://github.com/projectshft/cohort-10-curriculum/blob/cohort-10/week-05/day-02/react-router.md
+
+hash history needed?  does global state take care of this
+
+use proptypes
+
+.propTypes = {
+  // This time it's not required, but that's alright since we provide a default
+  // value!
+  name: PropTypes.string
+};
