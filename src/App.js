@@ -39,24 +39,9 @@ class App extends Component {
     this.handleAddContact = this.handleAddContact.bind(this);
   }
 
-  handleAddContact(contact) {
-    this.setState({ contacts: this.state.contacts.concat([contact]) });
-  }
-
-  editContact = (id) => {
-    console.log(`edit contact id #${id}`);
-  };
-
-  deleteContact = (id) => {
-    this.setState({
-      contacts: [...this.state.contacts.filter((contact) => contact.id !== id)],
-    });
-  };
-
   handleAddContact() {
     console.log('clicked');
-    this.props.history.push('/addContact');
-  }
+       }
 
   render() {
     return (
