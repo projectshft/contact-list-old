@@ -4,7 +4,7 @@
 import React from 'react';
 // adds a new contact component that will have input fields for a new contact to be added to our contat list on 
 // home page
-const NewContact = () => (
+const NewContact = ({contacts, addContacts}) => (
     <div>
         <form>
         <label>Name</label>

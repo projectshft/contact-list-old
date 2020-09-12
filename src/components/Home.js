@@ -5,9 +5,6 @@ import ContactList from './ContactList'
 import AddContact from './AddContact'
 import { Route } from 'react-router-dom'
 
-
-
-
 const Home = ({contacts}) => (
     
     <div>
@@ -16,7 +13,6 @@ const Home = ({contacts}) => (
         <Route path='/contacts' render={() => (
             <ContactList contacts={contacts} />
         )}/>
-
         
     </div>
     
