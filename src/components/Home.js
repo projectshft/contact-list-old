@@ -3,12 +3,21 @@
 import React from 'react'
 import ContactList from './ContactList'
 import AddContact from './AddContact'
+import { Route } from 'react-router-dom'
 
-const Home = () => (
+
+
+
+const Home = ({contacts}) => (
+    
     <div>
         <h1>Contacts</h1>
         <AddContact />
-        <ContactList />
+        <Route path='/contacts' render={() => (
+            <ContactList contacts={contacts} />
+        )}/>
+
+        
     </div>
     
 )
