@@ -12,6 +12,7 @@ class Contacts extends Component {
           deleteContact={this.props.deleteContact}
         />
     ));
+
   }
 }
 

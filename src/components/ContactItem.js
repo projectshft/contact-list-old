@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import AddContactButton from './AddContactButton';
 
 class ContactItem extends Component {
   render() {
@@ -25,9 +26,12 @@ class ContactItem extends Component {
           </div>
         </div>
       </div>
+   
     );
   }
 }
+
+<AddContactButton />
 
 ContactItem.propTypes = {
   contact: PropTypes.object.isRequired,

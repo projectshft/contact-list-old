@@ -1,8 +1,8 @@
 import { Switch, Route } from 'react-router-dom';
 import React, { Component } from 'react';
 import './App.css';
-import HeaderContacts from './components/layout/HeaderContacts';
 import Contacts from './components/Contacts';
+import AddContactForm from './components/AddContactForm';
 
 class App extends Component {
   constructor() {
@@ -36,10 +36,10 @@ class App extends Component {
       ],
     };
 
-    this.addContact = this.addContact.bind(this);
+    this.handleAddContact = this.handleAddContact.bind(this);
   }
 
-  addContact(contact) {
+  handleAddContact(contact) {
     this.setState({ contacts: this.state.contacts.concat([contact]) });
   }
 
@@ -53,19 +53,50 @@ class App extends Component {
     });
   };
 
+  handleAddContact() {
+    console.log('clicked');
+    this.props.history.push('/addContact');
+  }
+
   render() {
     return (
       <div className='App container'>
-        <div style={{ padding: '2 0px' }}>
-          <HeaderContacts />
+        <div className='row'>
+          <div className='col-md-3 offset-md-3'>
+            <h1 style={{ display: 'inline-block' }}>Contacts</h1>
+            <button
+              type='button'
+              className='add-contact'
+              style={{ display: 'inline-block' }}
+              onClick={this.handleAddContact}>
+              Add Contact
+            </button>
+          </div>
         </div>
-        <div>
-          <Contacts
-            contacts={this.state.contacts}
-            editContact={this.editContact}
-            deleteContact={this.deleteContact}
+        <Switch>
+          <Route
+            exact
+            path='/'
+            render={() => (
+              <Contacts
+                contacts={this.state.contacts}
+                editContact={this.editContact}
+                deleteContact={this.deleteContact}
+              />
+            )}
           />
-        </div>
+          <Route
+            path='/contacts'
+            render={() => (
+              <Contacts
+                contacts={this.state.contacts}
+                editContact={this.editContact}
+                deleteContact={this.deleteContact}
+              />
+            )}
+          />
+          <Route path='/addContact' render={() => <AddContactForm />} />
+        </Switch>
       </div>
     );
   }
