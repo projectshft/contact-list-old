@@ -1,12 +1,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
-  margin-left: 50px;
-}
-
-a {
-  color: #333;
-  text-decoration: none;
 }
 
 button {
@@ -14,6 +8,6 @@ button {
   margin-left: 50px;
   box-shadow: 1px 2px;
   position: absolute;
-  margin-top: 28px;
+  margin-top: 10px;
   font-weight: bold;
 }

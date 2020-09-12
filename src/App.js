@@ -49,19 +49,23 @@ class App extends Component {
 
   deleteContact = (id) => {
     this.setState({
-      contacts: [...this.state.contacts.filter(contact => contact.id !== id)]
-    });    
+      contacts: [...this.state.contacts.filter((contact) => contact.id !== id)],
+    });
   };
 
   render() {
     return (
-      <div className='App' style={{ padding: '5px' }}>
-        <HeaderContacts /> 
-        <Contacts
-          contacts={this.state.contacts}
-          editContact={this.editContact}
-          deleteContact={this.deleteContact}
-        />
+      <div className='App container'>
+        <div style={{ padding: '2 0px' }}>
+          <HeaderContacts />
+        </div>
+        <div>
+          <Contacts
+            contacts={this.state.contacts}
+            editContact={this.editContact}
+            deleteContact={this.deleteContact}
+          />
+        </div>
       </div>
     );
   }

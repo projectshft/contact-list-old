@@ -1,18 +1,29 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export class ContactItem extends Component {
-
+class ContactItem extends Component {
   render() {
     // destructuring to use the keys (id, name) below
     const { id, name } = this.props.contact;
     return (
-      <div>
-        <span style={{ padding: '5px', fontWeight: 'bold' }}>
-          {name} {'     '}
-        </span>
-        <span style={{ textDecoration: 'underline', cursor: 'pointer' }} onClick={this.props.editContact.bind(this, id)}>edit</span> {' / '}
-        <span style={{ textDecoration: 'underline', cursor: 'pointer' }} onClick={this.props.deleteContact.bind(this, id)}>delete</span>
+      <div className='container contact-item'>
+        <div className='row'>
+          <div class='col-md-3 offset-md-2' style={{ fontWeight: 'bold' }}>
+            {name}
+          </div>
+          <div
+            class='col-md-1 '
+            style={{ textDecoration: 'underline', cursor: 'pointer' }}
+            onClick={this.props.editContact.bind(this, id)}>
+            edit
+          </div>
+          <div
+            class='col-md-1 '
+            style={{ textDecoration: 'underline', cursor: 'pointer' }}
+            onClick={this.props.deleteContact.bind(this, id)}>
+            delete
+          </div>
+        </div>
       </div>
     );
   }
