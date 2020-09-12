@@ -1,8 +1,8 @@
 DONE get bootstrap
 
 in index.js: 
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter } from 'react-router-dom';
+DONE import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+DONE import { BrowserRouter } from 'react-router-dom';
 const App = () => (  // for router
   <div>
     <Main />
@@ -45,7 +45,7 @@ const Main = () => (
 ----------------------------------
   * stateless constructor example
   
-import React from 'react'
+DONE import React from 'react'
 
 const ContactsList = () => {  // TODO index/key is to be made random, so this is just a basic pass
 const contactsAll = props.contacts.map((contact, index)) => {
@@ -64,7 +64,7 @@ export default ContactsList
 
 
 --------------------
-contact.js  (stateless at the momement)
+ DONE contact.js  (stateless at the momement)
 
 const Contact = ({contact}) => {
   return (
