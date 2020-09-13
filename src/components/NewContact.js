@@ -30,8 +30,13 @@ class NewContact extends React.Component {
           email: this.state.email,
           phone_number: this.state.phone_number
         }
-        this.props.addContact(newContact)
-        // this.props.history.push('/contacts')
+        if (this.state.name === '' || this.state.email === '' || this.state.phone_number === '') {
+            alert('You must include a name, email, and phone number')
+        }
+        else {
+            this.props.addContact(newContact)
+        }
+        
     }
 
     render (){

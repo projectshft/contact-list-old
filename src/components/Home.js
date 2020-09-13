@@ -15,7 +15,7 @@ const Home = ({contacts, addContact}) => (
             <ContactList contacts={contacts} />
         )}/>
         <Route path='/contacts/new' render={(routerProps) => (
-            <NewContact history={routerProps.history} contacts={contacts} addContact={addContact} />
+            <NewContact contacts={contacts} addContact={addContact} />
         )}/>
         
     </div>
