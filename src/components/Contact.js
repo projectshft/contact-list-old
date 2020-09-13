@@ -15,11 +15,11 @@ const Contact = ({id, contacts}) => {
     return <div>Sorry, but the contact was not found</div>
   }
   return (
-    <div>
+    <div id='contact-view'>
       <h1>{contact.name}</h1>
       <img src={contact.image_url}></img>
-      <h2>phone: {contact.phone_number}</h2>
-      <h2>email: {contact.email}</h2>
+      <h2>Phone #: {contact.phone_number}</h2>
+      <h2>Email: {contact.email}</h2>
       <Link to='/contacts'><button className='contact-btn btn btn-info btn-lg'>Back</button></Link>
     </div>
   )

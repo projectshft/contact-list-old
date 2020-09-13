@@ -1,3 +1,12 @@
 .contact-btn {
     margin-left: 5%;
 }
+
+#contact-view {
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+body {
+    background-image: url(../images/dust_scratches.png)
+}

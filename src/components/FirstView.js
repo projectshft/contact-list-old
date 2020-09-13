@@ -25,7 +25,6 @@ const FirstView = ({contacts}) => (
 //define prop types
 FirstView.propTypes = {
     contacts: PropTypes.array.isRequired
-
 }
 
 export default FirstView
