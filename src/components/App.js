@@ -17,21 +17,21 @@ class App extends React.Component {
         {
           id: 70219577,
           name: "Albert Einstein",
-          image_url: "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
+          image_url: "https://ericafinds.com/wp-content/uploads/2012/09/Screen-Shot-2012-09-03-at-8.45.06-PM.png",
           email: "aeinstein@example.com",
           phone_number: 15555555555
         },
         {
           id: 70219576,
           name: "Nikola Tesla",
-          image_url: "",
+          image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSQ9PIywcpiJnxlbqIYFweVDULEWbqBGohS4w&usqp=CAU",
           email: "ntesla@example.com",
           phone_number: 13333333333
         },
         {
           id: 70219575,
           name: "George Washington Carver",
-          image_url: "",
+          image_url: "https://ipwatchdog.com/images/George_Washington_Carver_young.jpg",
           email: "gwcarver@example.com",
           phone_number: 12222222222
         }
