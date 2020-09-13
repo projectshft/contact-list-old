@@ -7,9 +7,8 @@ import App from './App';
 
 
 
-ReactDOM.render(
-  //<BrowserRouter>   // for future construction with router
-    <App />, document.getElementById('root'));
-  //</BrowserRouter>
-
-
+ReactDOM.render((
+  <BrowserRouter> 
+    <App />
+  </BrowserRouter>
+), document.getElementById('root'))

@@ -88,16 +88,31 @@ event in AddContact calls this.props.addContact(newContact);
 
 * bind handleClick event 
 
-const ContactsDB =
+this.state =
 {
   "contacts": [
     {
-      "id": 70219577,
+      "key": 70219577,
       "name": "Albert Einstein",
       "image_url": "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
       "email": "aeinstein@example.com",
       "phone_number": "15555555555"
+    },
+       {
+      "key": 745689488,
+      "name": "Neils Bohr",
+      "image_url": "http://scihi.org/wp-content/uploads/2019/10/Niels_Bohr.jpg",
+      "email": "bohr_n@example.com",
+      "phone_number": "15551235555"
+    },
+       {
+      "key": 215856254,
+      "name": "Ryan Gosling",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/5330664de4b0c8441aea50d8/1447360884466-K7Z81VSCRD94LDARHL5V/ke17ZwdGBToddI8pDm48kIBYwL2gfjkuDM9ElJqjMeJZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpw39SRFH7cZwRLAEdpZ_iLZN9tRJH6LUQfzxqckA9e31aHfMUHTKgG7XCAW3iRQW3w/hey+girl?format=1000w",
+      "email": "babygoose@example.com",
+      "phone_number": "15556661212"
     }
+
   ]
 }
 
@@ -112,3 +127,8 @@ use proptypes
   // value!
   name: PropTypes.string
 };
+
+
+TEST passing key to Contact, but not utilizing explicitly
+MAYBE break header into own component
+MAYBE break out App and Home
