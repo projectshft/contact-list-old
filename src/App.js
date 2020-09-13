@@ -43,16 +43,16 @@ class App extends Component {
   //   this.setState({ contacts: this.state.contacts.concat([contact]) });
   // }
 
-  editContact() {
-    console.log(`edit contact from app`);
-  }
+  // editContact() {
+  //   console.log(`edit contact from app`);
+  // }
 
-  deleteContact() {
-    console.log('delete from app');
+  // deleteContact() {
+    // console.log('delete from app');
     // this.setState({
     //   contacts: [...this.state.contacts.filter((c) => c.id !== id)],
     //});
-  }
+  // }
 
   render() {
     return (

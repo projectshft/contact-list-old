@@ -6,7 +6,9 @@ import AllContactList from './AllContactList';
 //import PropTypes from 'prop-types';
 
 const Contacts = ({ contacts, addContact, editContact, deleteContact }) => {
-
+  
+  
+return (
   <Switch>
     <Route
       path='/contacts/new'
@@ -24,7 +26,7 @@ const Contacts = ({ contacts, addContact, editContact, deleteContact }) => {
       render={(routerProps) => (
         <ContactItem
           history={routerProps.history}
-          contactId={parseInt(routerProps.match.params.number, 10)}
+          // contactId={parseInt(routerProps.match.params.number, 10)}
           contacts={contacts}
         />
       )}
@@ -50,8 +52,9 @@ const Contacts = ({ contacts, addContact, editContact, deleteContact }) => {
         />
       )}
     />
-  </Switch>;
-};
+    </Switch>
+)
+}
 
 // Contacts.propTypes = {
 //   contacts: PropTypes.array.isRequired,
