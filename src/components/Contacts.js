@@ -1,20 +1,34 @@
-import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import React from 'react';
 import ContactItem from './ContactItem';
+import ContactNew from './ContactNew';
+import AllContactList from './AllContactList';
 import PropTypes from 'prop-types';
 
-class Contacts extends Component {
-  
-  render() {
-    return this.props.contacts.map((contact) => (
-      <ContactItem
-        key={contact.id}
-        contact={contact}
-        editContact={this.props.editContact}
-        deleteContact={this.props.deleteContact}
-      />
-    ));
-  }
-}
+const Contacts = ({ contacts, addContact }) => (
+  <Switch>
+    <Route
+      path='/contacts/new'
+      render={(routerProps) => (
+        <ContactNew
+          history={routerProps.history}
+          contacts={contacts}
+          addContact={addContact}
+        />
+      )}
+    />
+
+    <Route
+      path='/contacts/:id'
+      render={() => <ContactItem contactId={contacts.id} contacts={contacts} />}
+    />
+
+    <Route
+      path='/contacts'
+      render={() => <AllContactList contacts={contacts} />}
+    />
+  </Switch>
+);
 
 Contacts.propTypes = {
   contacts: PropTypes.array.isRequired,
