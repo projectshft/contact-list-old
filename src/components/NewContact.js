@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class NewContact extends React.Component {
     constructor () {
@@ -19,14 +20,28 @@ class NewContact extends React.Component {
     handleSubmitContactClick () {
         const generateId = () => Math.round(Math.random() * 100000000)
         
+        const nameCheck = () => {
+            if (!this.state.name) {
+               return 'No Name Added'
+            }
+        }
+
+        const imgCheck = () => {
+            if (!this.state.image_url) {
+                return 'No Image Added'
+            }
+        }
+
+        const emailCheck = () => {}
+
         const newContact = {
             id: generateId(),
-            name: this.state.name,
-            image_url: this.state.image_url,
+            name: nameCheck(),
+            image_url: imgCheck(),
             email: this.state.email,
             phone_number: this.state.phone_number
         }
-        console.log(this.props.history)
+        // console.log(newContact)
         this.props.addContact(newContact)
         this.props.history.push('/contacts')
     }
@@ -69,4 +84,9 @@ class NewContact extends React.Component {
     }
 }
 
+NewContact.propTypes = {
+    addContact: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
+    contacts: PropTypes.array.isRequired
+}
 export default NewContact

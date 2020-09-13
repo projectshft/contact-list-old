@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 import _ from 'lodash'
+import PropTypes from 'prop-types'
 
 const Contact = ({contactId, contacts}) => {
     const contact = _.find(contacts, { id: contactId});
@@ -8,6 +9,7 @@ const Contact = ({contactId, contacts}) => {
     if (!contact) {
         return <div>Contact not found</div>
     }
+
     return (
         <div>
             <h1>{contact.name}</h1>
@@ -19,4 +21,8 @@ const Contact = ({contactId, contacts}) => {
     )
 }
 
+Contact.propTypes = {
+    contactId: PropTypes.number.isRequired,
+    contacts: PropTypes.array.isRequired
+}
 export default Contact

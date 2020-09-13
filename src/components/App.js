@@ -15,6 +15,7 @@
 
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
+import AllContacts from './AllContacts';
 import Contacts from './contacts'
 
 
@@ -24,11 +25,11 @@ class App extends Component {
     this.state = {
       contacts: [
         {
-          "id": 70219577,
-          "name": "Albert Einstein",
-          "image_url": "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
-          "email": "aeinstein@example.com",
-          "phone_number": "15555555555"
+          "id": 90876377,
+          "name": "Amelia Earhart",
+          "image_url": "https://www.ameliaearhart.com/wp-content/uploads/2017/04/gallery23.jpg",
+          "email": "aearhart@example.com",
+          "phone_number": "15555897555"
         }
       ]
     }
@@ -44,7 +45,9 @@ class App extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path= '/' component={Contacts}/>
+          <Route exact path='/' render={() => (
+            <AllContacts contacts={this.state.contacts}/>
+          )}/>
           <Route path='/contacts' render={() => (
             <Contacts addContact={this.addContact} contacts={this.state.contacts}/>
           )} />

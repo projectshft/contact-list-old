@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const AllContacts = ({contacts}) => (
     <div>
@@ -10,7 +11,8 @@ const AllContacts = ({contacts}) => (
             {
                 contacts.map(elem => (
                     <li key={elem.id}>
-                        <Link to={`/contacts/${elem.id}`}>{elem.name}</Link><span>edit</span> <span>delete</span>
+                        <Link to={`/contacts/${elem.id}`}>{elem.name}</Link>
+                        <span id='edit'>edit</span> <span id='delete'>delete</span>
                     </li>
                 ))
             }
@@ -18,4 +20,7 @@ const AllContacts = ({contacts}) => (
     </div>
 )
 
+AllContacts.propTypes = {
+    contacts: PropTypes.array.isRequired
+};
 export default AllContacts
