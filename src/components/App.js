@@ -12,14 +12,10 @@
 
 
 
-//addContact is not being passed into contacts and NewContact
-
-
 
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
 import Contacts from './contacts'
-
 
 
 class App extends Component {
@@ -38,7 +34,6 @@ class App extends Component {
     }
     
     this.addContact = this.addContact.bind(this);
-    console.log(this)
   }
   
   addContact (contact) {
@@ -52,16 +47,8 @@ class App extends Component {
           <Route exact path= '/' component={Contacts}/>
           <Route path='/contacts' render={() => (
             <Contacts addContact={this.addContact} contacts={this.state.contacts}/>
-          )}/>
+          )} />
         </Switch>
-        {/* <h1>
-          Contact List
-          <button>Add Contact</button>
-        </h1>
-        <ul>
-        <li>{this.state.contacts[0].name}<button id="edit">edit</button><button id="delete">delete</button></li>
-        </ul>
-         */}
       </div>
     );
   }

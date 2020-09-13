@@ -18,8 +18,6 @@ class NewContact extends React.Component {
 
     handleSubmitContactClick () {
         const generateId = () => Math.round(Math.random() * 100000000)
-
-        console.log(this)
         
         const newContact = {
             id: generateId(),
@@ -28,7 +26,7 @@ class NewContact extends React.Component {
             email: this.state.email,
             phone_number: this.state.phone_number
         }
-        //console.log(this.props)
+        console.log(this.props.history)
         this.props.addContact(newContact)
         this.props.history.push('/contacts')
     }
