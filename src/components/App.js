@@ -5,6 +5,7 @@ import Home from './Home'
 import NewContact from './NewContact'
 import Contact from './Contact'
 import FirstView from './FirstView'
+import 'bootstrap/dist/css/bootstrap.css'
 
 
 
@@ -34,6 +35,27 @@ class App extends React.Component {
           image_url: "https://ipwatchdog.com/images/George_Washington_Carver_young.jpg",
           email: "gwcarver@example.com",
           phone_number: 12222222222
+        },
+        {
+          id: 70219574,
+          name: "Alexander Graham Bell",
+          image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Alexander_Graham_Bell_in_colors-1-.jpg/220px-Alexander_Graham_Bell_in_colors-1-.jpg",
+          email: "agbell@example.com",
+          phone_number: 18888888888
+        },
+        {
+          id: 70219573,
+          name: "Thomas Edison",
+          image_url: "https://www.loc.gov/static/portals/disability-employment-awareness-month/images/profile-thomas-edison.jpg",
+          email: "tedison@example.com",
+          phone_number: 17777777777
+        },
+        {
+          id: 70219572,
+          name: "Charles Babbage",
+          image_url: "https://thelifeofcharlesbabbage.weebly.com/uploads/1/3/8/9/13890900/180138957.jpg",
+          email: "cbabbage@example.com",
+          phone_number: 1666666666
         }
 
       ]

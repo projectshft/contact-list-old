@@ -5,16 +5,16 @@ import ContactList from './ContactList'
 import AddContact from './AddContact'
 import { Route } from 'react-router-dom'
 import NewContact from './NewContact'
+import '../CSS/Home_ContactList_AddContact.css'
 
 const Home = ({contacts, addContact}) => (
     
-    <div>
-        <h1>Contacts</h1>
+    <div id='home-view'>
         <AddContact />
         <Route path='/contacts' render={() => (
             <ContactList contacts={contacts} />
         )}/>
-        <Route path='/contacts/new' render={(routerProps) => (
+        <Route path='/contacts/new' render={() => (
             <NewContact contacts={contacts} addContact={addContact} />
         )}/>
         

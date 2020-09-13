@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const AddContact = () => (
     <div>
-        <Link to='/contacts/new'><button>Add Contact</button></Link>
+        <h1><u>Contacts</u>&nbsp;<Link to='/contacts/new'><button className='btn btn-info btn-lg add-contact'>Add Contact</button></Link></h1>      
     </div>
 )
 

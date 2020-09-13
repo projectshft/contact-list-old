@@ -10,8 +10,8 @@ const ContactList = ({contacts}) => (
             {
                 contacts.map(c => (
                     <li key={c.id}>
-                        <h3><Link to={`/contacts/${c.id}`} style={{textDecoration: 'none'}}>{c.name}</Link>&nbsp;
-                        <a href='' style={{pointerEvents: 'none'}}>Edit</a>&nbsp;<a href='' style={{pointerEvents: 'none'}}>Delete</a></h3>
+                        <h3 id='contact-list-element'><Link to={`/contacts/${c.id}`} style={{textDecoration: 'none'}}>{c.name}</Link>&nbsp;
+                        <u><a href='' style={{pointerEvents: 'none', color:'black'}}>Edit</a></u>&nbsp;<u><a href='' style={{pointerEvents: 'none', color:'black'}}>Delete</a></u></h3>
                     </li>
                 ))
             }

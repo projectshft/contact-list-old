@@ -7,6 +7,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import '../CSS/NewContact.css'
 
 class NewContact extends React.Component {
     constructor (){
@@ -42,32 +43,35 @@ class NewContact extends React.Component {
 
     render (){
         return (
-            <div>
-                <form>
-                <label>Name</label>
-                <input type='text' className='form-control'onChange={event =>
-                    this.setState({ name: event.target.value})}/>
+            <div className='row'>
+                <div className='form col-md-6 offset-3'>
+                
+                    <form>
+                    <label className='label'>Name</label>
+                    <input type='text' className='form-control'onChange={event =>
+                        this.setState({ name: event.target.value})}/>
 
-                <br/>
+                    <br/>
 
-                <label>Image URL</label>
-                <input type='text' className='form-control'onChange={event =>
-                    this.setState({ image_url: event.target.value})}/>
+                    <label className='label'>Image URL</label>
+                    <input type='text' className='form-control'onChange={event =>
+                        this.setState({ image_url: event.target.value})}/>
 
-                <br/>
+                    <br/>
 
-                <label>Phone #</label>
-                <input type='text' className='form-control'onChange={event =>
-                    this.setState({ phone_number: event.target.value})}/>
+                    <label className='label'>Phone #</label>
+                    <input type='text' className='form-control'onChange={event =>
+                        this.setState({ phone_number: event.target.value})}/>
 
-                <br/>
+                    <br/>
 
-                <label>Email</label>
-                <input type='text' className='form-control'onChange={event =>
-                    this.setState({ email: event.target.value})}/>
+                    <label className='label'>Email</label>
+                    <input type='text' className='form-control'onChange={event =>
+                        this.setState({ email: event.target.value})}/>
 
-                <Link to='/contacts'><button type="button" onClick={this.handleSubmitContactClick}>Submit</button></Link>
-                </form>
+                    <Link to='/contacts'><button className='btn btn-info btn-lg'type="button" onClick={this.handleSubmitContactClick}>Submit</button></Link>
+                    </form>
+                </div>
             </div>
         )
     }

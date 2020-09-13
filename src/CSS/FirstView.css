@@ -1,0 +1,17 @@
+#first-view {
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+#first-view-list-item {
+    margin: 2%;
+}
+
+root {
+    background-image: url()
+}
