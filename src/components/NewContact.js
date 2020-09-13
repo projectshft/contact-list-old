@@ -66,37 +66,38 @@ class NewContact extends React.Component {
 
     render () {
         return (
-            <div>
+            <div className='container col-md-4'>
+                <Link to='/contacts'>Contacts</Link>
                 <form>
-                    <label>Name</label>
-                    <input type="text" className='form-control' onChange={event =>
-                        this.setState({name: event.target.value})
-                    }/>
+                    <div className="form-group">
+                        <label>Name</label>
+                        <input type="text" className='form-control' onChange={event =>
+                            this.setState({name: event.target.value})
+                        }/>
 
-                    <br/>
+                        <br/>
 
-                    <label>Image</label>
-                    <input type='text' className='form-control' onChange={event =>
-                        this.setState({image_url: event.target.value})
-                    }/>
+                        <label>Image</label>
+                        <input type='text' className='form-control' onChange={event =>
+                            this.setState({image_url: event.target.value})
+                        }/>
 
-                    <br/>
+                        <br/>
 
-                    <label>email</label>
-                    <input type='text' className='form-control' onChange={event => 
-                        this.setState({email: event.target.value})
-                    }/>
+                        <label>E-mail</label>
+                        <input type='text' className='form-control' onChange={event => 
+                            this.setState({email: event.target.value})
+                        }/>
 
-                    <br/>
+                        <br/>
 
-                    <label>Phone Number</label>
-                    <input type='text' className='form-control' onChange={event =>
-                        this.setState({phone_number: event.target.value})
-                    }/>
+                        <label>Phone Number</label>
+                        <input type='text' className='form-control' onChange={event =>
+                            this.setState({phone_number: event.target.value})
+                        }/>
+                    </div>
                 </form>
                 <button type="button" onClick={this.handleSubmitContactClick}>Submit</button>
-                <br/>
-                <Link to='/contacts'>Contacts</Link>
             </div>
         )
     }

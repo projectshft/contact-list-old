@@ -7,7 +7,7 @@ const AllContacts = ({contacts}) => (
         <div className='container text-left contacts-title'>
             <div className='row'>
                 <h1 id='contact-title'>Contacts</h1>
-                <button><Link to={`/contacts/new`}>Add Contact</Link></button>
+                <button id='add-contact'><Link to={`/contacts/new`}>Add Contact</Link></button>
             </div>
         </div>
         <div className='container contact-list'>
