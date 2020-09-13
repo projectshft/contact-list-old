@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 class NewContact extends React.Component {
     constructor () {
         super()
+        console.log(this)
 
         this.state = {
             id: '',

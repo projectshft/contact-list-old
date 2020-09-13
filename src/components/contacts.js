@@ -6,10 +6,10 @@ import AllContacts from './AllContacts'
 import PropTypes from 'prop-types'
 
 
-const Contacts= ({contacts, addContact}) => (
+const Contacts= ({contacts, addContact, deleteContact}) => (
     <Switch>
         <Route path='/contacts/new' render={(routerProps) => (
-            <NewContact history={routerProps.history}  addContact={addContact} contacts={contacts}/> // 
+            <NewContact history={routerProps.history} addContact={addContact} contacts={contacts}/>
         )}/>
 
         <Route path='/contacts/:id' render={(routerProps) => (
@@ -17,7 +17,7 @@ const Contacts= ({contacts, addContact}) => (
         )}/>
 
         <Route path='/contacts' render={() => (
-            <AllContacts contacts={contacts} />
+            <AllContacts contacts={contacts} deleteContact={deleteContact}/>
         )}/>
     </Switch>
 )
