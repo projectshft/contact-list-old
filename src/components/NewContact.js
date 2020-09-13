@@ -23,25 +23,43 @@ class NewContact extends React.Component {
         const nameCheck = () => {
             if (!this.state.name) {
                return 'No Name Added'
+            } else {
+                return this.state.name
             }
         }
 
         const imgCheck = () => {
             if (!this.state.image_url) {
-                return 'No Image Added'
+                return 'https://upload.wikimedia.org/wikipedia/commons/1/15/No_image_available_600_x_450.svg'
+            } else {
+                return this.state.image_url
             }
         }
 
-        const emailCheck = () => {}
+        const emailCheck = () => {
+            if (!this.state.email) {
+                return 'No E-mail Added'
+            } else {
+                return this.state.email
+            }
+        }
+
+        const phoneCheck = () => {
+            if (!this.state.phone_number) {
+                return 'No Phone Number Added'
+            } else {
+                return this.state.phone_number
+            }
+        }
 
         const newContact = {
             id: generateId(),
             name: nameCheck(),
             image_url: imgCheck(),
-            email: this.state.email,
-            phone_number: this.state.phone_number
+            email: emailCheck(),
+            phone_number: phoneCheck()
         }
-        // console.log(newContact)
+
         this.props.addContact(newContact)
         this.props.history.push('/contacts')
     }
