@@ -47,7 +47,7 @@ class App extends Component {
     this.setState({contacts: this.state.contacts.concat([contact])});
   }
 
-  //TODO redirect / to /contacts? confused by this
+
   render() {
     return (
       <div>
@@ -58,7 +58,7 @@ class App extends Component {
           <Route exact path='/contacts' render={(routerProps) => (
             <ListAll history={routerProps.history} addContact={this.addContact} contacts={this.state.contacts} />
           )}/>
-          <Route path='/new' render={(routerProps) => (
+          <Route path='/contacts/new' render={(routerProps) => (
             <AddContact history={routerProps.history} addContact={this.addContact} contacts={this.state.contacts} />
           )}/>
         </Switch>
