@@ -4,6 +4,9 @@ import React from 'react'
 import Home from './Home'
 import NewContact from './NewContact'
 import Contact from './Contact'
+import FirstView from './FirstView'
+
+
 
 class App extends React.Component {
   constructor () {
@@ -46,6 +49,10 @@ class App extends React.Component {
     return (
       <div>
         <Switch>
+          <Route exact path ='/' 
+            render={() => (
+              <FirstView addContact={this.addContact} contacts={this.state.contacts} />
+            )}/> 
           <Route exact path ='/contacts' 
           render={() => (
             <Home addContact={this.addContact} contacts={this.state.contacts} />
