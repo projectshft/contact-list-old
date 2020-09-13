@@ -11,7 +11,7 @@ import FirstView from './FirstView'
 class App extends React.Component {
   constructor () {
     super ()
-
+// state that will contain list of contacts
     this.state = {
       contacts: [
         {
@@ -41,7 +41,7 @@ class App extends React.Component {
 
     this.addContact = this.addContact.bind(this);
   }
-  // create a function that will take the inputs from the new contact form and add the valueses to the contact list
+  //function that will take the inputs from the new contact form and add the values to the contact list
   addContact (contact) {
     this.setState({contacts: this.state.contacts.concat([contact])});
   }

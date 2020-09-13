@@ -1,5 +1,6 @@
 // component that will show the initial list of contacts
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 // create a function to render each contact entry to the first page
 const FirstView = ({contacts}) => (
@@ -12,6 +13,7 @@ const FirstView = ({contacts}) => (
                     </li>
                 ))
             }
+            <Link to='/contacts'><button>Go to contacts page</button></Link>
         </ul>
     </div>
 )
