@@ -60,7 +60,7 @@ class NewContact extends React.Component {
                 <input type='text' className='form-control'onChange={event =>
                     this.setState({ email: event.target.value})}/>
 
-                <button type="button" onClick={this.handleSubmitContactClick}>Submit</button>
+                <Link to='/contacts'><button type="button" onClick={this.handleSubmitContactClick}>Submit</button></Link>
                 </form>
             </div>
         )
