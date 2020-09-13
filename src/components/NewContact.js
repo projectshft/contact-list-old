@@ -12,19 +12,23 @@ class NewContact extends React.Component {
             email: '',
             phone_number: ''
         }
-
+        
         this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this)
     }
 
     handleSubmitContactClick () {
+        const generateId = () => Math.round(Math.random() * 100000000)
+
+        console.log(this)
+        
         const newContact = {
-            id: this.state.id,
+            id: generateId(),
             name: this.state.name,
             image_url: this.state.image_url,
             email: this.state.email,
             phone_number: this.state.phone_number
         }
-        
+        //console.log(this.props)
         this.props.addContact(newContact)
         this.props.history.push('/contacts')
     }
@@ -59,6 +63,8 @@ class NewContact extends React.Component {
                         this.setState({phone_number: event.target.value})
                     }/>
                 </form>
+                <button type="button" onClick={this.handleSubmitContactClick}>Submit</button>
+                <br/>
                 <Link to='/contacts'>Contacts</Link>
             </div>
         )

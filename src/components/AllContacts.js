@@ -4,6 +4,9 @@ import React from 'react'
 const AllContacts = ({contacts}) => (
     <div>
         <ul>
+            <h1>Contacts
+                <button><Link to={`/contacts/new`}>Add Contact</Link></button>
+            </h1>
             {
                 contacts.map(elem => (
                     <li key={elem.id}>

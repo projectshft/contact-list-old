@@ -11,7 +11,7 @@ const Contact = ({contactId, contacts}) => {
     return (
         <div>
             <h1>{contact.name}</h1>
-            <img src={contact.image_url}></img>
+            <img src={contact.image_url} alt=''></img>
             <h2>Email: {contact.email}</h2>
             <h2>Phone Number: {contact.phone_number}</h2>
             <Link to='/contacts'>Back</Link>

@@ -11,18 +11,8 @@
 //Individual contact view should include a "back" button
 
 
-// {
-//   "contacts": [
-//     {
-//       "id": 70219577,
-//       "name": "Albert Einstein",
-//       "image_url": "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
-//       "email": "aeinstein@example.com",
-//       "phone_number": "15555555555"
-//     }
-//   ]
-// }
 
+//addContact is not being passed into contacts and NewContact
 
 
 
@@ -31,10 +21,10 @@ import { Switch, Route } from 'react-router-dom'
 import Contacts from './contacts'
 
 
+
 class App extends Component {
   constructor () {
     super()
-
     this.state = {
       contacts: [
         {
@@ -46,7 +36,7 @@ class App extends Component {
         }
       ]
     }
-
+    console.log(this)
     this.addContact = this.addContact.bind(this);
   }
   
