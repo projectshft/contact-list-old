@@ -35,25 +35,24 @@ class App extends Component {
       ],
     };
 
-    // this.addContact = this.addContact.bind(this);
+    this.addContact = this.addContact.bind(this);
   }
 
-  // addContact() {
-  //   console.log('clicked');
-  //   addContact(contact) {
-  //     this.setState({ contacts: this.state.contacts.concat([contact]) });
-  //   }
-  // }
+ 
+    addContact(contact) {
+      this.setState({ contacts: this.state.contacts.concat([contact]) });
+    }
+  
 
-  editContact = (id) => {
+  editContact (id) {
     console.log(`edit contact id #${id}`);
-  };
+}
 
-  deleteContact = (id) => {
+  deleteContact (id) {
     this.setState({
       contacts: [...this.state.contacts.filter((contact) => contact.id !== id)],
     });
-  };
+  }
 
   render() {
     return (

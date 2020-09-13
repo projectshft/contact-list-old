@@ -6,6 +6,7 @@ import AllContactList from './AllContactList';
 import PropTypes from 'prop-types';
 
 const Contacts = ({ contacts, addContact }) => (
+
   <Switch>
     <Route
       path='/contacts/new'
@@ -28,6 +29,7 @@ const Contacts = ({ contacts, addContact }) => (
       render={() => <AllContactList contacts={contacts} />}
     />
   </Switch>
+
 );
 
 Contacts.propTypes = {
