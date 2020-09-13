@@ -16,7 +16,7 @@ class AddContact extends Component {
       phone_number: ''
     },
 
-    // this.props.addContact = this.props.addContact.bind(this);
+    //this.props.addContact = this.props.addContact.bind(this);
     this.handleContactSubmitClick = this.handleContactSubmitClick.bind(this);
   
   }
