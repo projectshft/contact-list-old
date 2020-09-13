@@ -6,6 +6,7 @@ import AddContact from './AddContact'
 import { Route } from 'react-router-dom'
 import NewContact from './NewContact'
 import '../CSS/Home_ContactList_AddContact.css'
+import { Link } from 'react-router-dom'
 
 const Home = ({contacts, addContact}) => (
     
@@ -17,6 +18,7 @@ const Home = ({contacts, addContact}) => (
         <Route path='/contacts/new' render={() => (
             <NewContact contacts={contacts} addContact={addContact} />
         )}/>
+        <Link to='/'><button className='contact-btn btn btn-info btn-lg'>Back</button></Link>
         
     </div>
     
