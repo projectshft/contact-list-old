@@ -4,6 +4,7 @@ import React from 'react'
 import Home from './Home'
 import NewContact from './NewContact'
 import Contact from './Contact'
+import ContactList from './ContactList'
 
 class App extends React.Component {
   constructor () {

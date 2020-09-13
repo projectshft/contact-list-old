@@ -4,14 +4,18 @@ import React from 'react'
 import ContactList from './ContactList'
 import AddContact from './AddContact'
 import { Route } from 'react-router-dom'
+import NewContact from './NewContact'
 
-const Home = ({contacts}) => (
+const Home = ({contacts, addContact}) => (
     
     <div>
         <h1>Contacts</h1>
         <AddContact />
         <Route path='/contacts' render={() => (
             <ContactList contacts={contacts} />
+        )}/>
+        <Route path='/contacts/new' render={(routerProps) => (
+            <NewContact history={routerProps.history} contacts={contacts} addContact={addContact} />
         )}/>
         
     </div>
