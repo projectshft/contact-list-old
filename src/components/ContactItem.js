@@ -5,9 +5,9 @@ import _ from 'lodash';
 
 const ContactItem = ({ contactId, contacts }) => {
   console.log(this.contactID);
-  const contact = _.find(contacts, { id: contactId });
+  const oneContact = _.find(contacts, { id: contactId });
 
-  if (!contact) {
+  if (!oneContact) {
     return (
       <div>
         <div>Sorry, but the contact was not found</div>
@@ -27,7 +27,7 @@ const ContactItem = ({ contactId, contacts }) => {
 };
 
 ContactItem.propTypes = {
-  contact: PropTypes.object.isRequired,
+  oneContact: PropTypes.object.isRequired,
 };
 
 export default ContactItem;

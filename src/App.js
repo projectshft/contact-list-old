@@ -2,7 +2,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import './App.css';
 import Contacts from './components/Contacts';
-import ContactItem from './components/ContactItem';
+//import ContactItem from './components/ContactItem';
 
 class App extends Component {
   constructor() {
@@ -36,65 +36,61 @@ class App extends Component {
       ],
     };
 
-    this.addContact = this.addContact.bind(this);
+    // this.addContact = this.addContact.bind(this);
   }
 
-  addContact(contact) {
-    this.setState({ contacts: this.state.contacts.concat([contact]) });
-  }
+  // addContact(contact) {
+  //   this.setState({ contacts: this.state.contacts.concat([contact]) });
+  // }
 
   editContact() {
     console.log(`edit contact from app`);
   }
 
   deleteContact() {
-    console.log('delete from app')
+    console.log('delete from app');
     // this.setState({
-    //   contacts: [...this.state.contacts.filter((contact) => contact.id !== id)],
+    //   contacts: [...this.state.contacts.filter((c) => c.id !== id)],
     //});
   }
 
   render() {
     return (
-      <div>
-        <div className='inheritances'>
-          <Contacts contacts={this.state.contacts} editContact={this.editContact} deleteContact={this.deleteContact} />
-        </div>
-        <div className='App container'>
-          <div className='row'>
-            <div className='col-md-3 offset-md-3'>
-              <h1 style={{ display: 'inline-block' }}>Contacts</h1>
-            </div>
-            <Link className='add-contact-link' to={`/contacts/new`}>
-              Add Another Contact
-            </Link>
+      <div className='App container'>
+        <div className='row'>
+          <div className='col-md-3 offset-md-3'>
+            <h1 style={{ display: 'inline-block' }}>Contacts</h1>
           </div>
-          <Switch>
-            <Route
-              exact
-              path='/'
-              render={() => (
-                <Contacts
-                  addContact={this.addContact}
-                  editContact={this.editContact}
-                  deleteContact={this.deleteContact}
-                  contacts={this.state.contacts}
-                />
-              )}
-            />
-            <Route
-              path='/contacts'
-              render={() => (
-                <Contacts
-                  addContact={this.addContact}
-                  editContact={this.editContact}
-                  deleteContact={this.deleteContact}
-                  contacts={this.state.contacts}
-                />
-              )}
-            />
-          </Switch>
+          <Link className='add-contact-link' to={`/contacts/new`}>
+            Add Another Contact
+          </Link>
         </div>
+        <Switch>
+          <Route
+            exact
+            path='/'
+            render={() => (
+              <Contacts
+                addContact={this.addContact}
+                editContact={this.editContact}
+                deleteContact={this.deleteContact}
+                contacts={this.state.contacts}
+              />
+            )}
+          />
+
+          <Route
+            path='/contacts'
+            render={() => (
+              <Contacts
+                addContact={this.addContact}
+                editContact={this.editContact}
+                deleteContact={this.deleteContact}
+                contacts={this.state.contacts}
+              />
+            )}
+          />
+        </Switch>
       </div>
     );
   }

@@ -7,12 +7,12 @@ const AllContactList = ({contacts, editContact, deleteContact}) => (
  <div>
     <ul>
       {
-        contacts.map(contact => (
-          <li key={contact.id} contact={contact}>
-            <Link style={{fontWeight: 'bold'}}to={`/contacts/${contact.id}`}>{contact.name}</Link>
+        contacts.map(c => (
+          <li key={c.id} >
+            <Link style={{fontWeight: 'bold'}}to={`/contacts/${c.id}`}>{c.name}</Link>
             {': '}
             <span style={{ textDecoration: 'underline', cursor: 'pointer' }} onClick={editContact.bind(this)}>edit</span><span> / </span><span style={{ textDecoration: 'underline', cursor: 'pointer' }}
-          onClick={deleteContact.bind(this, contact.id)}>delete</span>
+          onClick={deleteContact.bind(this, c.id)}>delete</span>
           </li>
         ))
       }
@@ -20,27 +20,7 @@ const AllContactList = ({contacts, editContact, deleteContact}) => (
   </div>
 )
 
+   
   
-AllContactList.propTypes = {
-  contact: PropTypes.object.isRequired,
-};
-       
-  
-export default AllContactList;
-
-
-
-
-          {/* <li style={{ padding: '5px', fontWeight: 'bold' }} key={c.id}>
-          style={{ textDecoration: 'underline', cursor: 'pointer' }}
-          onClick={this.props.editContact}>
-          edit
- 
-          style={{ textDecoration: 'underline', cursor: 'pointer' }}
-          onClick={this.props.deleteContact}>
-              delete       */}
-
-
-
-    
+export default AllContactList;   
     
