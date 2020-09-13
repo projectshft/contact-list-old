@@ -8,7 +8,7 @@ import AllContacts from './AllContacts'
 const Contacts = ({contacts}) => (
     <Switch>
         <Route path='/contacts/new' render={(routerProps) => (
-            <NewContact history={routerProps.history} addContact={addContact} contacts={contacts}/>  
+            <NewContact history={routerProps.history}  contacts={contacts}/>  //addContact={addContact}
         )}/>
 
         <Route path='/contacts/:id' render={(routerProps) => (

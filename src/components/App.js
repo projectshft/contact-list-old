@@ -36,8 +36,9 @@ class App extends Component {
         }
       ]
     }
-    console.log(this)
+    
     this.addContact = this.addContact.bind(this);
+    console.log(this)
   }
   
   addContact (contact) {
