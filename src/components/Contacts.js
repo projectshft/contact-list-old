@@ -12,10 +12,10 @@ const Contacts = ({contacts, addContact, editContact, deleteContact}) => {
       <div>
         <div className='inheritances'>
         <AllContactList
-          key={this.props.contact.id}
-          contact={this.props.contact}
-          editContact={this.props.editContact}
-          deleteContact={this.props.deleteContact}
+          key={contact.id} //why still undefined?
+          contact={contact} //why still undefined? 
+          editContact={editContact}
+          deleteContact={deleteContact}
         />
         </div>
         <div>
