@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 
 class ContactNew extends Component {
+
+ //this.props.contacts, this.props.addContact, this.props.history were passed by the Router
+
   constructor () {
     super();
 
@@ -16,7 +19,8 @@ class ContactNew extends Component {
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this);
   }
 
-  handleSubmitContactClick () {
+  handleSubmitContactClick() {
+    console.log('clicked!')
     const newContact = {
       id: this.state.id,
       name: this.state.name,
@@ -118,7 +122,6 @@ class ContactNew extends Component {
           <button type='button' onClick={this.handleSubmitContactClick}>Submit</button>
         </div>
         <br/>
-
       </div>
     );
   }

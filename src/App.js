@@ -2,6 +2,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import './App.css';
 import Contacts from './components/Contacts';
+import ContactItem from './components/ContactItem';
 
 class App extends Component {
   constructor() {
@@ -10,7 +11,7 @@ class App extends Component {
     this.state = {
       contacts: [
         {
-          id: Math.round(Math.random() * 10000),
+          id: '1921', //nobel prize
           name: 'Albert Einstein',
           email: 'emc.deux@aol.com',
           telephone: '123-456-7890',
@@ -18,14 +19,14 @@ class App extends Component {
             'https://en.wikipedia.org/wiki/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg',
         },
         {
-          id: Math.round(Math.random() * 10000),
+          id: '3948', //asteroid
           name: 'Niels Bohr',
           email: 'atomic.og@quantum.com',
           telephone: '987-654-3210',
           imgSrc: 'https://en.wikipedia.org/wiki/File:Niels_Bohr.jpg',
         },
         {
-          id: Math.round(Math.random() * 10000),
+          id: '1010',
           name: 'Ryan Gosling',
           email: 'baby.goose@hotmail.com',
           telephone: '919-867-5309',
@@ -38,44 +39,62 @@ class App extends Component {
     this.addContact = this.addContact.bind(this);
   }
 
- 
-    addContact(contact) {
-      this.setState({ contacts: this.state.contacts.concat([contact]) });
-    }
-  
+  addContact(contact) {
+    this.setState({ contacts: this.state.contacts.concat([contact]) });
+  }
 
-  editContact (id) {
-    console.log(`edit contact id #${id}`);
-}
+  editContact() {
+    console.log(`edit contact from app`);
+  }
 
-  deleteContact (id) {
-    this.setState({
-      contacts: [...this.state.contacts.filter((contact) => contact.id !== id)],
-    });
+  deleteContact() {
+    console.log('delete from app')
+    // this.setState({
+    //   contacts: [...this.state.contacts.filter((contact) => contact.id !== id)],
+    //});
   }
 
   render() {
     return (
-      <div className='App container'>
-        <div className='row'>
-          <div className='col-md-3 offset-md-3'>
-            <h1 style={{ display: 'inline-block' }}>Contacts</h1>
-          </div>
-          <Link className='add-contact-link'  to={`/contacts/new`}>Add Another Contact</Link>
+      <div>
+        <div className='inheritances'>
+          <Contacts contacts={this.state.contacts} editContact={this.editContact} deleteContact={this.deleteContact} />
         </div>
-        <Switch>
-          <Route
-            exact
-            path='/'
-            render={() => (
-              <Contacts addContact={this.addContact} contacts={this.state.contacts} />
-            )}/>
-          <Route
-            path='/contacts'
-            render={() => (
-              <Contacts addContact={this.addContact} contacts={this.state.contacts} />
-            )}/>
-        </Switch>
+        <div className='App container'>
+          <div className='row'>
+            <div className='col-md-3 offset-md-3'>
+              <h1 style={{ display: 'inline-block' }}>Contacts</h1>
+            </div>
+            <Link className='add-contact-link' to={`/contacts/new`}>
+              Add Another Contact
+            </Link>
+          </div>
+          <Switch>
+            <Route
+              exact
+              path='/'
+              render={() => (
+                <Contacts
+                  addContact={this.addContact}
+                  editContact={this.editContact}
+                  deleteContact={this.deleteContact}
+                  contacts={this.state.contacts}
+                />
+              )}
+            />
+            <Route
+              path='/contacts'
+              render={() => (
+                <Contacts
+                  addContact={this.addContact}
+                  editContact={this.editContact}
+                  deleteContact={this.deleteContact}
+                  contacts={this.state.contacts}
+                />
+              )}
+            />
+          </Switch>
+        </div>
       </div>
     );
   }
