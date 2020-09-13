@@ -1,6 +1,7 @@
 // component that will hold the list of contact components on the /contacts (home) page 
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 // create a function to render each contact entry to the page
 const ContactList = ({contacts}) => (
@@ -17,5 +18,11 @@ const ContactList = ({contacts}) => (
         </ul>
     </div>
 )
+
+//define prop types
+ContactList.propTypes = {
+    contacts: PropTypes.array.isRequired
+
+}
 
 export default ContactList;

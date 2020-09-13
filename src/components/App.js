@@ -51,7 +51,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path ='/' 
             render={() => (
-              <FirstView addContact={this.addContact} contacts={this.state.contacts} />
+              <FirstView contacts={this.state.contacts} />
             )}/> 
           <Route exact path ='/contacts' 
           render={() => (

@@ -6,6 +6,7 @@
 // home page
 import React from 'react';
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 class NewContact extends React.Component {
     constructor (){
@@ -70,6 +71,11 @@ class NewContact extends React.Component {
             </div>
         )
     }
+}
+// declare prop types
+NewContact.propTypes = {
+   addContact: PropTypes.func.isRequired
+
 }
 
 
