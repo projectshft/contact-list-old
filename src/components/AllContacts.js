@@ -41,7 +41,7 @@ class AllContacts extends React.Component {
                                 this.props.contacts.map(elem => (
                                     <li key={elem.id}>
                                         <Link to={`/contacts/${elem.id}`}>{elem.name}</Link>
-                                        <span id='edit'>edit</span> 
+                                        <span className='edit-contact'>edit</span> 
                                         <span className='delete-contact' onClick={this.handleDeleteClick.bind(this, elem.id)}>delete</span>
                                     </li>
                                 ))
