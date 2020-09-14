@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 class NewContact extends React.Component {
     constructor () {
         super()
-        // console.log(this)
 
+        // Sets empty template for a new contact entry 
         this.state = {
             id: '',
             name: '',
@@ -19,8 +19,10 @@ class NewContact extends React.Component {
     }
 
     handleSubmitContactClick () {
+        //generate "random" id for each new contact entry
         const generateId = () => Math.round(Math.random() * 100000000)
         
+        //Form field checks
         const nameCheck = () => {
             if (!this.state.name) {
                return 'No Name Added'
@@ -61,12 +63,14 @@ class NewContact extends React.Component {
             phone_number: phoneCheck()
         }
 
+        //Pass new contact entry to addContact and update history
         this.props.addContact(newContact)
         this.props.history.push('/contacts')
     }
 
     render () {
         return (
+            //Form fields and link back to '/contacts'
             <div className='container col-md-4'>
                 <Link to='/contacts'>Contacts</Link>
                 <form>

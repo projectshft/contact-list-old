@@ -4,12 +4,14 @@ import _ from 'lodash'
 import PropTypes from 'prop-types'
 
 const Contact = ({contactId, contacts}) => {
+    //Check for existence of contact using Id
     const contact = _.find(contacts, { id: contactId});
-
+    
     if (!contact) {
         return <div>Contact not found</div>
     }
 
+    //Render contact info and link back to '/contacts'
     return (
         <div>
             <h1>{contact.name}</h1>
