@@ -3,7 +3,7 @@ import React from 'react';
 import ContactItem from './ContactItem';
 import ContactNew from './ContactNew';
 import AllContactList from './AllContactList';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const Contacts = ({ contacts, addContact, editContact, deleteContact }) => {
   
@@ -26,7 +26,7 @@ return (
       render={(routerProps) => (
         <ContactItem
           history={routerProps.history}
-          // contactId={parseInt(routerProps.match.params.number, 10)}
+          contactId={Number(routerProps.match.params.id)}
           contacts={contacts}
         />
       )}
@@ -34,21 +34,24 @@ return (
 
     <Route
       path='/contacts'
-      render={() => (
+      render={(routerProps) => (
         <AllContactList
           contacts={contacts}
           editContact={editContact}
           deleteContact={deleteContact}
+          contactId={Number(routerProps.match.params.number)}
         />
       )}
     />
+    //to replicate what appears on the /contacts page
     <Route
       path='/'
-      render={() => (
+      render={(routerProps) => (
         <AllContactList
           contacts={contacts}
           editContact={editContact}
           deleteContact={deleteContact}
+          contactId={Number(routerProps.match.params.number)}
         />
       )}
     />
@@ -56,9 +59,9 @@ return (
 )
 }
 
-// Contacts.propTypes = {
-//   contacts: PropTypes.array.isRequired,
-// };
+Contacts.propTypes = {
+  contacts: PropTypes.array.isRequired,
+};
 
 export default Contacts;
 

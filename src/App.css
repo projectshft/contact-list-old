@@ -19,12 +19,34 @@ button {
   display: inline-block;
   width: 200px;
   height: 25px;
-  border: 1px solid #000;
+  border: 2px solid #000;
+  border-radius: 10px;
   box-shadow: 1px 2px #000;
   text-align: center;  
   font-weight: bold;
 }
 
+.view-contact-link {
+  color: #000;
+  font-weight: bold;
+}
+
 .back-clicker {
-  margin-left: -75px
+  margin-left: -75px;
+}
+
+.back-text {
+  font-weight: bold;
+  border: 2px solid blue;
+  border-radius: 10px;
+  box-shadow: 1px 2px blue;
+  padding: 5px;
+}
+
+.new-contact-details {
+  margin-left: 110px;
+}
+
+.contact-photo {
+  max-height: 400px;
 }

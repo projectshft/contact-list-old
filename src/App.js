@@ -2,6 +2,8 @@ import { Switch, Route, Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import './App.css';
 import Contacts from './components/Contacts';
+import ContactNew from './components/ContactNew';
+
 //import ContactItem from './components/ContactItem';
 
 class App extends Component {
@@ -11,22 +13,22 @@ class App extends Component {
     this.state = {
       contacts: [
         {
-          id: '1921', //nobel prize
+          id: 1921, //nobel prize
           name: 'Albert Einstein',
           email: 'emc.deux@aol.com',
           telephone: '123-456-7890',
           imgSrc:
-            'https://en.wikipedia.org/wiki/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg',
+            'https://1zl13gzmcsu3l9yq032yyf51-wpengine.netdna-ssl.com/wp-content/uploads/2017/03/Albert-Einstein-quotes-Genius1-1068x561.jpg',
         },
         {
-          id: '3948', //asteroid
+          id: 3948, //asteroid
           name: 'Niels Bohr',
           email: 'atomic.og@quantum.com',
           telephone: '987-654-3210',
-          imgSrc: 'https://en.wikipedia.org/wiki/File:Niels_Bohr.jpg',
+          imgSrc: 'https://i.pinimg.com/originals/c2/21/c0/c221c028394f57279cf4279d4139d61d.png',
         },
         {
-          id: '1010',
+          id: 1010,
           name: 'Ryan Gosling',
           email: 'baby.goose@hotmail.com',
           telephone: '919-867-5309',
@@ -36,12 +38,13 @@ class App extends Component {
       ],
     };
 
-    // this.addContact = this.addContact.bind(this);
+    this.addContact = this.addContact.bind(this);
   }
 
-  // addContact(contact) {
-  //   this.setState({ contacts: this.state.contacts.concat([contact]) });
-  // }
+  addContact(contact) {
+    console.log('addingContact!')
+    this.setState({ contacts: this.state.contacts.concat([contact]) });
+  }
 
   // editContact() {
   //   console.log(`edit contact from app`);
@@ -78,7 +81,7 @@ class App extends Component {
               />
             )}
           />
-
+          
           <Route
             path='/contacts'
             render={() => (

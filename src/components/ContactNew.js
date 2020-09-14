@@ -8,7 +8,7 @@ class ContactNew extends Component {
     super();
 
     this.state = {
-      id: '',
+      id: Math.round(Math.random() * 10000),
       name: '',
       email: '',
       telephone: '',
@@ -20,24 +20,22 @@ class ContactNew extends Component {
 
   handleSubmitContactClick() {
     console.log('clicked!');
-    const newContact = {
-      id: this.state.id,
-      name: this.state.name,
-      email: this.state.email,
-      telephone: this.state.telephone,
-      imgSrc: this.state.imgSrc,
-    };
+    if (!document.getElementById("inputName").value || !document.getElementById("inputEmail").value || !document.getElementById("inputTelephone").value || !document.getElementById("inputImage").value) {
+      alert("Please complete all contact entry fields. Include a placeholder value if necessary");
+    } else {
+      const newContact = {
+        id: this.state.id,
+        name: this.state.name,
+        email: this.state.email,
+        telephone: this.state.telephone,
+        imgSrc: this.state.imgSrc,
+      };
 
-    this.props.addContact(newContact);
-    this.props.history.push('/contacts');
+      this.props.addContact(newContact);
+      this.props.history.push('/contacts');
+    }
   }
 
-  getRandom() {
-    let newIdValue = Math.round(Math.random() * 10000);
-    this.setState({
-      id: newIdValue,
-    });
-  }
 
   render() {
     return (
@@ -45,9 +43,9 @@ class ContactNew extends Component {
         <div className='row'>
           <div className='col-md-1'>
             <div className='row back-clicker'></div>
-            <Link to='/contacts'>Back</Link>
+            <Link className='back-text' to='/contacts'>Back</Link>
           </div>
-          <h5 className='new-contact-details'>New Contact Details</h5>
+          <h5 className='new-contact-details'>New Contact</h5>
           <br />
         </div>
         <form className='add-contact-form'>
@@ -61,85 +59,66 @@ class ContactNew extends Component {
                 className='form-control'
                 id='inputName'
                 placeholder='Name'
+                required
                 onChange={(event) =>
                   this.setState({ name: event.target.value })
                 }
               />
             </div>
           </div>
-
           <div className='form-group row'>
             <label htmlFor='inputEmail' className='col-sm-2 col-form-label'>
               Email
             </label>
             <div className='col-sm-6'>
               <input
-                type='text'
+                type='email'
                 className='form-control'
                 id='inputEmail'
-                placeholder='Email'
+                placeholder='Email address'
+                required
                 onChange={(event) =>
                   this.setState({ email: event.target.value })
                 }
               />
             </div>
           </div>
-
           <div className='form-group row'>
             <label htmlFor='inputTelephone' className='col-sm-2 col-form-label'>
               Phone
             </label>
             <div className='col-sm-6'>
               <input
-                type='text'
+                type='tel'
                 className='form-control'
                 id='inputTelephone'
-                placeholder='Telephone number'
+                placeholder="1234567890"
+                required
                 onChange={(event) =>
                   this.setState({ telephone: event.target.value })
                 }
               />
             </div>
           </div>
-
           <div className='form-group row'>
             <label htmlFor='inputImage' className='col-sm-2 col-form-label'>
               Image
             </label>
             <div className='col-sm-6'>
               <input
-                type='text'
+                type='url'
                 className='form-control'
                 id='inputImage'
                 placeholder='Link to an image (https://...)'
+                required
                 onChange={(event) =>
                   this.setState({ imgSrc: event.target.value })
                 }
               />
             </div>
-          </div>
-
-          <div className='form-group row'>
-            <label htmlFor='inputId' className='col-sm-2 col-form-label'>
-              Id
-            </label>
-            <div className='col-sm-6'>
-              <input
-                type='text'
-                className='form-control'
-                id='inputId'
-                value=''
-                onChange={(event) => this.setState({ id: event.target.value })}
-              />
-            </div>
-          </div>
+          </div>         
         </form>
         <br />
-        <div className='row'>
-          <button onClick={this.getRandom} type='button'>
-            Generate Id
-          </button>
-        </div>
         <br />
         <br />
         <div className='row'>

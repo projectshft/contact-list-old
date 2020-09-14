@@ -2,16 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const AllContactList = ({contacts, editContact, deleteContact}) => {
+const AllContactList = ({contacts, editContact, deleteContact, contactId}) => {
 
   
-// editContact() {
+//  editContact(anId) {
 //    console.log(`edit contact from app`);
 //  }
 
-//  deleteContact() {
+//   deleteContact(anId) {
 //  console.log('delete from app'); 
-// }    
+// } 
+  
+  function saveClickedID() {
+    console.log(`clicked `);
+  }
 
     return (
       <div>
@@ -19,7 +23,7 @@ const AllContactList = ({contacts, editContact, deleteContact}) => {
           {
             contacts.map(c => (
               <li key={c.id}>
-                <Link style={{ fontWeight: 'bold' }} to={`/contacts/${c.id}`}>{c.name}</Link>
+                <Link className="view-contact-link" onClick={saveClickedID()} to={`/contacts/${c.id}`}>{c.name}</Link>
                 {': '}
                 <span style={{ textDecoration: 'underline', cursor: 'pointer' }} onClick={editContact}>edit</span><span> / </span><span style={{ textDecoration: 'underline', cursor: 'pointer' }}
                   onClick={deleteContact}>delete</span>
