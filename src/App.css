@@ -19,9 +19,9 @@ button {
   display: inline-block;
   width: 200px;
   height: 25px;
-  border: 2px solid #000;
+  border: 2px solid blue;
   border-radius: 10px;
-  box-shadow: 1px 2px #000;
+  box-shadow: 1px 2px blue;
   text-align: center;  
   font-weight: bold;
 }
@@ -36,11 +36,22 @@ button {
 }
 
 .back-text {
+  color: black;
   font-weight: bold;
+  text-decoration: underline;
   border: 2px solid blue;
   border-radius: 10px;
   box-shadow: 1px 2px blue;
   padding: 5px;
+}
+
+.submit-button {
+  color: black;
+  border: 2px solid blue;
+  box-shadow: 1px 2px blue;
+  background-color: white;
+  border-radius: 10px;
+  margin-left: 205px;
 }
 
 .new-contact-details {
@@ -49,4 +60,9 @@ button {
 
 .contact-photo {
   max-height: 400px;
+}
+
+img {
+  color: rgb(255, 0, 157);
+  font: 35px serif;
 }

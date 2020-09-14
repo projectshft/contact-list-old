@@ -6,62 +6,61 @@ import AllContactList from './AllContactList';
 import PropTypes from 'prop-types';
 
 const Contacts = ({ contacts, addContact, editContact, deleteContact }) => {
-  
-  
-return (
-  <Switch>
-    <Route
-      path='/contacts/new'
-      render={(routerProps) => (
-        <ContactNew
-          history={routerProps.history}
-          contacts={contacts}
-          addContact={addContact}
-        />
-      )}
-    />
+  //Define a series of nested routing paths from ./contacts.
+  //Each Route delivers props if needed (as 'render={(routerProps)})
+  //and sends props to components as listed below the component name.
+  return (
+    <Switch>
+      <Route
+        path='/contacts/new'
+        render={(routerProps) => (
+          <ContactNew
+            history={routerProps.history}
+            contacts={contacts}
+            addContact={addContact}
+          />
+        )}
+      />
 
-    <Route
-      path='/contacts/:id'
-      render={(routerProps) => (
-        <ContactItem
-          history={routerProps.history}
-          contactId={Number(routerProps.match.params.id)}
-          contacts={contacts}
-        />
-      )}
-    />
+      <Route
+        path='/contacts/:id'
+        render={(routerProps) => (
+          <ContactItem
+            history={routerProps.history}
+            contactId={Number(routerProps.match.params.id)}
+            contacts={contacts}
+          />
+        )}
+      />
 
-    <Route
-      path='/contacts'
-      render={(routerProps) => (
-        <AllContactList
-          contacts={contacts}
-          editContact={editContact}
-          deleteContact={deleteContact}
-          contactId={Number(routerProps.match.params.number)}
-        />
-      )}
-    />
-    //to replicate what appears on the /contacts page
-    <Route
-      path='/'
-      render={(routerProps) => (
-        <AllContactList
-          contacts={contacts}
-          editContact={editContact}
-          deleteContact={deleteContact}
-          contactId={Number(routerProps.match.params.number)}
-        />
-      )}
-    />
+      <Route
+        path='/contacts'
+        render={() => (
+          <AllContactList
+            contacts={contacts}
+            editContact={editContact}
+            deleteContact={deleteContact}
+          />
+        )}
+      />
+      {/* to replicate what appears on the /contacts page */}
+      <Route
+        path='/'
+        render={() => (
+          <AllContactList
+            contacts={contacts}
+            editContact={editContact}
+            deleteContact={deleteContact}
+          />
+        )}
+      />
     </Switch>
-)
-}
+  );
+};
 
+//Requires that contacts come in as an array
 Contacts.propTypes = {
   contacts: PropTypes.array.isRequired,
 };
 
 export default Contacts;
-

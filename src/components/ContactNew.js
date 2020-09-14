@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 
+//A class component because it has state and defines a new function
 class ContactNew extends Component {
   //this.props.contacts, this.props.addContact, this.props.history were passed by the Router
 
   constructor() {
     super();
 
+    //Set the default state for this new contact object. ID will be calculated quasi-randomly.  
     this.state = {
       id: Math.round(Math.random() * 10000),
       name: '',
@@ -15,14 +17,16 @@ class ContactNew extends Component {
       imgSrc: '',
     };
 
+    //bind this click handler to this component
     this.handleSubmitContactClick = this.handleSubmitContactClick.bind(this);
   }
 
   handleSubmitContactClick() {
-    console.log('clicked!');
-    if (!document.getElementById("inputName").value || !document.getElementById("inputEmail").value || !document.getElementById("inputTelephone").value || !document.getElementById("inputImage").value) {
-      alert("Please complete all contact entry fields. Include a placeholder value if necessary");
+    //When submit is clicked, check that name, email, and phone are populated. Alert if not.
+    if (!document.getElementById("inputName").value || !document.getElementById("inputEmail").value || !document.getElementById("inputTelephone").value) {
+      alert("Please complete at least Name, Email, and Phone fields. Include a placeholder value if necessary");
     } else {
+      //Assign the state object to a new variable 
       const newContact = {
         id: this.state.id,
         name: this.state.name,
@@ -31,12 +35,14 @@ class ContactNew extends Component {
         imgSrc: this.state.imgSrc,
       };
 
+      //Carry the new contact to the addContact function (in App.js).
       this.props.addContact(newContact);
+      //Return to the contact list page.
       this.props.history.push('/contacts');
     }
   }
 
-
+  //The entry form for new contacts with bootstrap styling
   render() {
     return (
       <div>
@@ -59,7 +65,6 @@ class ContactNew extends Component {
                 className='form-control'
                 id='inputName'
                 placeholder='Name'
-                required
                 onChange={(event) =>
                   this.setState({ name: event.target.value })
                 }
@@ -76,7 +81,6 @@ class ContactNew extends Component {
                 className='form-control'
                 id='inputEmail'
                 placeholder='Email address'
-                required
                 onChange={(event) =>
                   this.setState({ email: event.target.value })
                 }
@@ -93,7 +97,6 @@ class ContactNew extends Component {
                 className='form-control'
                 id='inputTelephone'
                 placeholder="1234567890"
-                required
                 onChange={(event) =>
                   this.setState({ telephone: event.target.value })
                 }
@@ -110,7 +113,6 @@ class ContactNew extends Component {
                 className='form-control'
                 id='inputImage'
                 placeholder='Link to an image (https://...)'
-                required
                 onChange={(event) =>
                   this.setState({ imgSrc: event.target.value })
                 }
@@ -118,11 +120,9 @@ class ContactNew extends Component {
             </div>
           </div>         
         </form>
-        <br />
-        <br />
-        <br />
         <div className='row'>
-          <button type='button' onClick={this.handleSubmitContactClick}>
+          {/* See above for the button click handler function */}
+          <button className='submit-button' type='button' onClick={this.handleSubmitContactClick}>
             Submit
           </button>
         </div>

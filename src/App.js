@@ -2,14 +2,12 @@ import { Switch, Route, Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import './App.css';
 import Contacts from './components/Contacts';
-import ContactNew from './components/ContactNew';
-
-//import ContactItem from './components/ContactItem';
 
 class App extends Component {
   constructor() {
     super();
 
+    //Default contacts for the rolodex: an array of objects
     this.state = {
       contacts: [
         {
@@ -38,14 +36,16 @@ class App extends Component {
       ],
     };
 
+    //Binds this method to the current component. 
     this.addContact = this.addContact.bind(this);
   }
 
+  //When addContact is called from ContactNew, the new contact is added to the list.
   addContact(contact) {
-    console.log('addingContact!')
     this.setState({ contacts: this.state.contacts.concat([contact]) });
   }
 
+  //TO FIX: The edit and delete methods from AllContactsList are incomplete, somehow related to Routing.
   // editContact() {
   //   console.log(`edit contact from app`);
   // }
@@ -57,6 +57,9 @@ class App extends Component {
     //});
   // }
 
+
+  //Displays the page header and then Routes to the base pages (./ and ./contacts)
+  //Each Route sends props to components as listed below the component name.
   render() {
     return (
       <div className='App container'>
@@ -80,8 +83,7 @@ class App extends Component {
                 contacts={this.state.contacts}
               />
             )}
-          />
-          
+          />          
           <Route
             path='/contacts'
             render={() => (
