@@ -1,6 +1,6 @@
 import { BrowserRouter, Switch, Link } from 'react-router-dom'
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 class AddContact extends Component {
   constructor () {
     super()
@@ -9,7 +9,7 @@ class AddContact extends Component {
   
     
   this.state = {
-      key: '',
+      key: Math.round(Math.random() * 100000000),
       name: '',
       image_url: '',
       email: '',
@@ -21,10 +21,22 @@ class AddContact extends Component {
   
   }
   handleContactSubmitClick () {
+    const validEntry = (obj) => {
+      console.log('in validEntry() ', obj)
+      for (const keys in obj) {
+        if (obj[keys] === ''){
+          console.log('logic testing ', obj[keys])
+          return false;}
+      } 
+      return true; 
+    }
+
+    console.log('about to test valid ', this.state)
+    if (validEntry(this.state)) {
     const newContact = {
       // copy state to obj to send to addContact, fire function; return to home
       // create 'unique' key at this time
-      key: Math.round(Math.random() * 100000000),
+      key: this.state.key,
       name: this.state.name,
       image_url: this.state.image_url,
       email: this.state.email,
@@ -33,11 +45,17 @@ class AddContact extends Component {
     console.log('the newContact obj ', newContact);
     // console.log('props in AddContact ', routerProps);
 
-    this.props.AddContact(newContact)
-    this.props.history.push('./contacts')
-
+    this.props.addContact(newContact)
+    this.props.history.push('/contacts')
+    
   }
+  else{
+    alert('Please fill out all fields');
+  }
+
+}
   render () {
+    console.log('addContact addContact is', this.props.addContact);
     return (
       <div className="App container">
         <div className="row">
@@ -78,6 +96,14 @@ class AddContact extends Component {
       </div>
     )
   }
+
 }
 
+const propTypes = {
+  key: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  image_url: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  phone_number: PropTypes.number.isRequired
+};
   export default AddContact

@@ -128,7 +128,14 @@ use proptypes
   name: PropTypes.string
 };
 
+TODO test for all fields required
 
 TEST passing key to Contact, but not utilizing explicitly
 MAYBE break header into own component
 MAYBE break out App and Home
+
+  // old button code
+  // <button type="button" onClick={this.handleAddContactClick} className="btn float-right btn-outline-dark shadow add-contact ml-5 mt-2">Add Contact</button>
+  //  <form action="/new">
+  // <input type="submit" value="Add Contact" className="btn float-right btn-outline-dark shadow add-contact ml-5 mt-2"></input>
+  // </form>
