@@ -30,7 +30,7 @@ const ContactItem = ({ contactId, contacts }) => {
       <h4>Name: {oneContact.name}</h4>
       <h4>Telephone: {oneContact.telephone}</h4>
       <h4>Email: {oneContact.email}</h4>
-      <img className='contact-photo' src={oneContact.imgSrc} alt='Image needed!'/>
+      <img className='contact-photo' src={oneContact.imgSrc} alt='Photo needed!'/>
     </div>
     );
   }

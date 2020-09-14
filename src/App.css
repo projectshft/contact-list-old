@@ -66,3 +66,7 @@ img {
   color: rgb(255, 0, 157);
   font: 35px serif;
 }
+
+ul {
+  list-style-type: none;
+}
