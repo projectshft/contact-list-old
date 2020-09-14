@@ -12,7 +12,7 @@ const ContactsList = ({contacts}) => {
     //console.log('mapping this: ', contact);
     
     return (
-      <Contact key={contact.key} contact={contact.name} />
+      <Contact keyNo={contact.key} contact={contact.name} />
     )
   });
 

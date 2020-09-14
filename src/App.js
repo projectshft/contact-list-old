@@ -2,6 +2,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import React, { Component } from 'react';
 import ListAll from './ListAll'
 import AddContact from './AddContact'
+import ContactDetails from './ContactDetails'
 
 class App extends Component {
   constructor () {
@@ -57,6 +58,9 @@ class App extends Component {
           )}/>
           <Route exact path='/contacts' render={(routerProps) => (
             <ListAll history={routerProps.history} addContact={this.addContact} contacts={this.state.contacts} />
+          )}/>
+          <Route path='/contacts/:number' render={(routerProps) => (
+            <ContactDetails keyNo={parseInt(routerProps.match.params.number, 10)} contacts={this.state.contacts} />
           )}/>
           <Route path='/contacts/new' render={(routerProps) => (
             <AddContact history={routerProps.history} addContact={this.addContact} contacts={this.state.contacts} />

@@ -1,11 +1,12 @@
+import { Link } from 'react-router-dom'
 import React from 'react'
 
-const Contact = ({contact}) => {
+const Contact = ({keyNo, contact}) => {
   console.log('in Contact');
   console.log('Contact received ', contact);
   return (
     <li>
-      <span data-key="{ index }">{contact} - <a href="#edit">edit</a>&nbsp;<a href="#delete">delete</a></span>
+      <Link to={`/contacts/${keyNo}`} className="text-reset"> {contact} </Link>- <a href="#edit">edit</a>&nbsp;<a href="#delete">delete</a>
     </li>
   )
 }
