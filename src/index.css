@@ -2,7 +2,7 @@ ul {
   list-style-type: none
 }
 
-#edit {
+.edit-contact {
   margin: 5px;
   margin-left: 10px
 }
@@ -17,7 +17,7 @@ ul {
 
 #add-contact {
   height: 30px;
-  margin-top: 15px;
+  margin-top: 10px;
   margin-left: 10px;
 }
 
