@@ -17,14 +17,15 @@ const Contacts= ({contacts, addContact, deleteContact}) => (
         )}/>
 
         <Route path='/contacts' render={() => (
-            <AllContacts contacts={contacts} deleteContact={deleteContact}/>
+            <AllContacts contacts={contacts} deleteContact={deleteContact} />
         )}/>
     </Switch>
 )
 
 Contacts.propTypes = {
     contacts: PropTypes.array.isRequired,
-    addContact: PropTypes.func.isRequired
+    addContact: PropTypes.func.isRequired,
+    deleteContact: PropTypes.func.isRequired
 }
 
 export default Contacts

@@ -42,8 +42,8 @@ class App extends Component {
     this.setState({contacts: this.state.contacts.concat([contact])});
   }
 
-  deleteContact (contact) {
-    console.log(contact)
+  deleteContact (deletedContactArray) {
+    this.setState({contacts: deletedContactArray})
   }
 
   render() {
@@ -51,10 +51,10 @@ class App extends Component {
       <div>
         <Switch>
           <Route exact path='/' render={() => (
-            <AllContacts contacts={this.state.contacts} deleteContact={this.deleteContact}/>
+            <AllContacts contacts={this.state.contacts} deleteContact={this.deleteContact}/> // 
           )}/>
           <Route path='/contacts' render={() => (
-            <Contacts addContact={this.addContact} contacts={this.state.contacts} deleteContact={this.deleteContact}/>
+            <Contacts addContact={this.addContact} contacts={this.state.contacts} deleteContact={this.deleteContact}/> //  
           )} />
         </Switch>
       </div>

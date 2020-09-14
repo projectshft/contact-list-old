@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 import PropTypes from 'prop-types'
+import _ from 'lodash'
 
 //create a handleDeleteClick function
     // create delete contact function
@@ -9,17 +10,19 @@ import PropTypes from 'prop-types'
 class AllContacts extends React.Component {
     constructor () {
         super()
-        //console.log(this)
         
+        this.state = this
+       
         this.handleDeleteClick = this.handleDeleteClick.bind(this)
     }
 
-    handleDeleteClick (contact) {
-        this.props.deleteContact(contact)
-        //takes in a contact
-        //find the id of the contact
-        //run deleteContact on that contact 
-        //should only run onClick ***************************************
+    handleDeleteClick (elemId) {
+        const contacts = this.props.contacts
+        const contact = _.find(contacts, { id: elemId})
+
+        let deletedContactArray = contacts.filter(e => e !== contact)
+
+        this.props.deleteContact(deletedContactArray)
     }
 
     render () {
@@ -39,7 +42,7 @@ class AllContacts extends React.Component {
                                     <li key={elem.id}>
                                         <Link to={`/contacts/${elem.id}`}>{elem.name}</Link>
                                         <span id='edit'>edit</span> 
-                                        <span className='delete-contact' onClick={this.handleDeleteClick(this)}>delete</span>
+                                        <span className='delete-contact' onClick={this.handleDeleteClick.bind(this, elem.id)}>delete</span>
                                     </li>
                                 ))
                             }
