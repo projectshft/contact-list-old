@@ -48,5 +48,11 @@ const AllContactList = ({ contacts, editContact, deleteContact }) => {
 AllContactList.propTypes = {
   contacts: PropTypes.array.isRequired,
 };
+AllContactList.propTypes = {
+  editContact: PropTypes.string.isRequired
+};
+AllContactList.propTypes = {
+  deleteContact: PropTypes.string.isRequired
+};
 
 export default AllContactList;

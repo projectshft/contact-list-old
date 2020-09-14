@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types'; 
 import _ from 'lodash';
 
-//contactID and contacts props were delivered by Router and are taken in here.
+//contactId and contacts props were delivered by Router and are taken in here.
 const ContactItem = ({ contactId, contacts }) => {
   //Lodash find method searches the contacts array for an id match
   //between a current contact and the selected id. This assigns that
@@ -40,5 +40,8 @@ const ContactItem = ({ contactId, contacts }) => {
 ContactItem.propTypes = {
   contacts: PropTypes.array.isRequired,
 };
+ContactItem.propTypes = {
+  contactId: PropTypes.number.isRequired,
+}
 
 export default ContactItem;

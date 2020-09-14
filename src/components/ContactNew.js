@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 
 //A class component because it has state and defines a new function
 class ContactNew extends Component {
-  //this.props.contacts, this.props.addContact, this.props.history were passed by the Router
+  //contacts, addContact, history props were passed by the Router
 
   constructor() {
     super();
@@ -131,5 +133,15 @@ class ContactNew extends Component {
     );
   }
 }
+
+ContactNew.propTypes = {
+  contacts: PropTypes.array.isRequired,
+};
+ContactNew.propTypes = {
+  addContact: PropTypes.string.isRequired
+};
+ContactNew.propTypes = {
+  history: PropTypes.string.isRequired
+};
 
 export default ContactNew;

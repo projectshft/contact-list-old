@@ -58,9 +58,17 @@ const Contacts = ({ contacts, addContact, editContact, deleteContact }) => {
   );
 };
 
-//Requires that contacts come in as an array
 Contacts.propTypes = {
   contacts: PropTypes.array.isRequired,
+};
+Contacts.propTypes = {
+  addContact: PropTypes.string.isRequired
+};
+Contacts.propTypes = {
+  editContact: PropTypes.string.isRequired
+};
+Contacts.propTypes = {
+  deleteContact: PropTypes.string.isRequired
 };
 
 export default Contacts;
