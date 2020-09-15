@@ -13,7 +13,7 @@ class App extends Component {
         {
         "key": 70219577,
         "name": "Albert Einstein",
-        "image_url": "https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Einstein_1921_by_F_Schmutzer_-_restoration.jpg/456px-Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
         "email": "aeinstein@example.com",
         "phone_number": "15555555555"
         },
@@ -59,11 +59,11 @@ class App extends Component {
           <Route exact path='/contacts' render={(routerProps) => (
             <ListAll history={routerProps.history} addContact={this.addContact} contacts={this.state.contacts} />
           )}/>
-          <Route path='/contacts/:number' render={(routerProps) => (
-            <ContactDetails keyNo={parseInt(routerProps.match.params.number, 10)} contacts={this.state.contacts} />
-          )}/>
           <Route path='/contacts/new' render={(routerProps) => (
             <AddContact history={routerProps.history} addContact={this.addContact} contacts={this.state.contacts} />
+          )}/>
+          <Route path='/contacts/:number' render={(routerProps) => (
+            <ContactDetails keyNo={parseInt(routerProps.match.params.number, 10)} contacts={this.state.contacts} />
           )}/>
         </Switch>
       </div>
