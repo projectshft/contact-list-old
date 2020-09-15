@@ -1,4 +1,5 @@
 WARN Key done all wrong
+WARN edge cases are on their own
 DONE get bootstrap
 
 in index.js: 

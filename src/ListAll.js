@@ -9,11 +9,11 @@ const ListAll = ({history, addContact, contacts}) => {
   return (
     
     <div className="App container">
-        <Switch>
-      <Route path='/contacts/new' render={() => (
-        <AddContact history={history} addContact={addContact} />
-        )}/>
-    </Switch>
+      <Switch>
+        <Route path='/contacts/new' render={() => (
+          <AddContact history={history} addContact={addContact} />
+          )}/>
+      </Switch>
       <div className="row">
       <header className="App-header">
         <div className="col-md">
@@ -33,6 +33,7 @@ const ListAll = ({history, addContact, contacts}) => {
     </div>
 )
 }
+
 ListAll.proptypes = {
   addContact: PropTypes.func.isRequired,
   contacts: PropTypes.array.isRequired
