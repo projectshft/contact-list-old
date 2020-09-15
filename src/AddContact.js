@@ -1,25 +1,25 @@
-import { BrowserRouter, Switch, Link } from 'react-router-dom'
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
 class AddContact extends Component {
   constructor () {
     super()
-    console.log('In AddContact. props are ', this.props);
-  // need a state to contain new contact entry data.
-  
-    
+    //console.log('In AddContact. props are ', this.props);
+
+  // need a state to contain new contact entry data.    
+  // create key now for easy validation of entry data
   this.state = {
       key: Math.round(Math.random() * 100000000),
       name: '',
       image_url: '',
       email: '',
       phone_number: ''
-    },
+    }
 
-    //this.props.addContact = this.props.addContact.bind(this);
     this.handleContactSubmitClick = this.handleContactSubmitClick.bind(this);
   
   }
+
   handleContactSubmitClick () {
     const validEntry = (obj) => {
       console.log('in validEntry() ', obj)
@@ -31,11 +31,10 @@ class AddContact extends Component {
       return true; 
     }
 
-    console.log('about to test valid ', this.state)
     if (validEntry(this.state)) {
     const newContact = {
       // copy state to obj to send to addContact, fire function; return to home
-      // create 'unique' key at this time
+
       key: this.state.key,
       name: this.state.name,
       image_url: this.state.image_url,
@@ -55,7 +54,6 @@ class AddContact extends Component {
 
 }
   render () {
-    console.log('addContact addContact is', this.props.addContact);
     return (
       <div className="App container">
         <div className="row">
@@ -99,11 +97,8 @@ class AddContact extends Component {
 
 }
 
-const propTypes = {
-  key: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  image_url: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  phone_number: PropTypes.number.isRequired
-};
+AddContact.proptypes = {
+  addContact: PropTypes.func.isRequired
+}
+
   export default AddContact

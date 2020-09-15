@@ -1,8 +1,8 @@
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
-import React, { Component } from 'react';
+import {Route, Switch } from 'react-router-dom'
+import React from 'react';
 import ContactsList from './ContactsList';
-import { add } from 'lodash';
 import AddContact from './AddContact';
+import PropTypes from 'prop-types';
 
 const ListAll = ({history, addContact, contacts}) => {
 
@@ -19,7 +19,7 @@ const ListAll = ({history, addContact, contacts}) => {
         <div className="col-md">
          <h1 className="App-title float-left">Contacts</h1>
        
-        <a href="/contacts/new" className="border float-right shadow ml-5 mt-2 p-1 text-reset"> <h4>Add Contact</h4></a>
+        <a href="/contacts/new" className="badge badge-light float-right shadow-sm ml-5 mt-2 pl-1 pr-1 pt-2 text-reset align-bottom"> <h5>Add Contact</h5></a>
         </div>
       </header>
       </div>
@@ -32,6 +32,10 @@ const ListAll = ({history, addContact, contacts}) => {
   
     </div>
 )
+}
+ListAll.proptypes = {
+  addContact: PropTypes.func.isRequired,
+  contacts: PropTypes.array.isRequired
 }
 
   export default ListAll

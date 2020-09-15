@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import React, { Component } from 'react';
 import ListAll from './ListAll'
 import AddContact from './AddContact'
@@ -72,6 +72,5 @@ class App extends Component {
   }
 }
 
-//TODO add PropTypes
-// send contacts to ListAll and addContact 
+
 export default App;

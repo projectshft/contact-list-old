@@ -1,5 +1,6 @@
 import React from 'react'
-import Contact from './Contact';
+import Contact from './Contact'
+import PropTypes from 'prop-types'
 
 // WARN do not beautify the JSX
 // TODO index/key is to be made random, or is this a different index?
@@ -24,6 +25,9 @@ const ContactsList = ({contacts}) => {
     );
   }
   
-
+ContactsList.proptypes = {
+    contacts: PropTypes.array.isRequired
+  }
+  
 
 export default ContactsList
